@@ -71,19 +71,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Member.h" />
+    <ClInclude Include="Packet.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="Session.h" />
   </ItemGroup>
