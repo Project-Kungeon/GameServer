@@ -23,6 +23,57 @@ public:
 		memset(_sendBuffer, 0, SendBufferSize);
 	}
 
+	void Start()
+	{
+		
+	}
+
+	tcp::socket& GetSocket()
+	{
+		return _socket;
+	}
+
+	void Send(asio::mutable_buffer& buffer)
+	{
+
+	}
+
+protected:
+	void AsyncRead()
+	{
+		memset(_recvBuffer, 0, RecvBufferSize);
+		_socket.async_read_some(asio::buffer(_recvBuffer, RecvBufferSize), asio::bind_executor(_strand, boost::bind(&Session::OnRead, this,
+			asio::placeholders::error,
+			asio::placeholders::bytes_transferred
+			)));
+	}
+
+	void OnRead(const boost::system::error_code& err, size_t size)
+	{
+		// 牧刨明 内靛
+	}
+
+	void AsyncWrite(const char* message, size_t size)
+	{
+		memcpy(_sendBuffer, message, size);
+		asio::async_write(_socket,
+			asio::buffer(_sendBuffer, size),
+			asio::bind_executor(_strand, boost::bind(&Session::OnWrite,
+				this,
+				asio::placeholders::error,
+				asio::placeholders::bytes_transferred)
+			)
+		);
+
+	}
+
+	void OnWrite(const boost::system::error_code& err, size_t size)
+	{
+		// 牧刨明 内靛
+	}
+
+
+
 private:
 	tcp::socket _socket;
 	const static int RecvBufferSize = 1024;

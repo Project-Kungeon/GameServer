@@ -9,5 +9,6 @@
     <ClInclude Include="Member.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="Packet.h" />
   </ItemGroup>
 </Project>
