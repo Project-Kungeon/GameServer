@@ -1,0 +1,17 @@
+﻿  Room.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  Session.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Session.h(35,1): warning C4624: 'Session': 소멸자가 암시적으로 삭제된 것으로 정의되었습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Session.h(35,1): error C2282: 'Session::~Session'은(는) 'Member::~Member'을(를) 재정의할 수 없습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Member.h(9,11): message : 'Member::~Member'이(가) 삭제되지 않았습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Session.h(21,1): error C2248: 'Member::Member': private 멤버('Member' 클래스에서 선언)에 액세스할 수 없습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Member.h(8,2): message : 'Member::Member' 선언을 참조하십시오.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Member.h(6,7): message : 'Member' 선언을 참조하십시오.
+  코드를 생성하고 있습니다...
