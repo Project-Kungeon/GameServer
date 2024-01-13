@@ -2,13 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="BWServer.cpp" />
-    <ClCompile Include="Session.cpp" />
-    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Message.pb.cc">
+      <Filter>Packets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Member.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="Packet.h" />
+    <ClInclude Include="Message.pb.h">
+      <Filter>Packets</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Packets">
+      <UniqueIdentifier>{fb44685e-89f1-43d5-ad0b-ecc79e355765}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\protobuf-3.20.3\MakeBuild\Debug\GenPacket.bat">
+      <Filter>Packets</Filter>
+    </None>
+    <None Include="..\..\protobuf-3.20.3\MakeBuild\Debug\Message.proto">
+      <Filter>Packets</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -5,6 +5,9 @@
 #include <boost/asio/buffer.hpp>
 #include "Room.h"
 #include "Member.h"
+#include "Packet.h"
+#include "Message.pb.h"
+#include <iostream>
 
 using boost::asio::ip::tcp;
 using namespace boost;
@@ -25,7 +28,8 @@ public:
 
 	void Start()
 	{
-		
+		_room.Join(this->shared_from_this());
+		AsyncRead();
 	}
 
 	tcp::socket& GetSocket()
@@ -35,7 +39,7 @@ public:
 
 	void Send(asio::mutable_buffer& buffer)
 	{
-
+		AsyncWrite(static_cast<const char*>(buffer.data()), buffer.size());
 	}
 
 protected:
@@ -51,6 +55,17 @@ protected:
 	void OnRead(const boost::system::error_code& err, size_t size)
 	{
 		// 牧刨明 内靛
+		std::cout << "OnRead : " << size << '\n';
+		if (!err)
+		{
+			HandlePacket(_recvBuffer, size);
+			AsyncRead();
+		}
+		else
+		{
+			std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
+			_room.Leave(this->shared_from_this());
+		}
 	}
 
 	void AsyncWrite(const char* message, size_t size)
@@ -64,13 +79,55 @@ protected:
 				asio::placeholders::bytes_transferred)
 			)
 		);
-
 	}
 
 	void OnWrite(const boost::system::error_code& err, size_t size)
 	{
 		// 牧刨明 内靛
+		if (!err)
+		{
+
+		}
+		else
+		{
+			std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
+			_room.Leave(this->shared_from_this());
+		}
 	}
+
+	void HandlePacket(char* ptr, size_t size)
+	{
+		asio::mutable_buffer buffer = asio::buffer(ptr, size);
+		int offset = 0;
+		PacketHeader header;
+		PacketUtil::ParseHeader(buffer, &header, offset);
+
+		std::cout << "HandlePacket : " << message::MessageCode_Name(header.Code) << '\n';
+		switch (header.Code)
+		{
+		case message::MessageCode::LOGIN_REQ:
+			HandleLoginReq(buffer, header, offset);
+			break;
+		default:
+			break;
+		}
+	}
+
+	void HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset)
+	{
+		message::LoginReq msg;
+		PacketUtil::Parse(msg, buffer, buffer.size(), offset);
+
+		message::LoginRes res;
+		res.set_result(true);
+		const size_t requiredSize = PacketUtil::RequiredSize(res);
+
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::MessageCode::LOGIN_RES, res);
+		this->Send(sendBuffer);
+	}
+	
 
 
 
@@ -85,3 +142,4 @@ private:
 	asio::strand<asio::io_context::executor_type> _strand;
 };
 
+typedef boost::shared_ptr<Session> SessionPtr;
