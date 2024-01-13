@@ -66,4 +66,26 @@ public:
 		return true;
 	}
 
+	// payloadSize : 헤더를 제외한 사이즈
+	// offset : 헤더 이후 시작되는 payload 시작점
+	static bool Parse(google::protobuf::Message& msg, const asio::mutable_buffer& buffer, const int payloadSize, int& offset)
+	{
+		if (buffer.size() < sizeof(PacketHeader))
+			return false;
+
+		const char* payloadPtr = static_cast<char*>(buffer.data()) + offset;
+		const size_t remainedSize = buffer.size() - offset;
+		const bool parseResult = msg.ParseFromArray(payloadPtr, payloadSize);
+		if (parseResult)
+		{
+			offset += static_cast<int>(msg.ByteSizeLong());
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
 };
