@@ -7,11 +7,11 @@ assignees: peace0096
 
 ---
 
-# Description
+# 📖 Description
 ---
 설명
 
-# Todo
+# 📅 Todo
 ---
 - [ ] todo
 - [ ] todo
