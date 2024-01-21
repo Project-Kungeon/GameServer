@@ -1,7 +1,7 @@
 ---
 name: "✅FEATURE"
 about: 기능 작업 사항 입력
-title: ''
+title: "✏️[기능]"
 labels: "\U0001F50Dfeat"
 assignees: peace0096
 
