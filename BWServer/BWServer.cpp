@@ -17,16 +17,7 @@ int main()
     std::vector<thread> threads;
     int count = 2;
 
-    for (int i = 0; i < count; i++)
-    {
-        threads.emplace_back([&]
-        {
-            io_context.run();
-        });
-    }
+    std::thread t(boost::bind(&boost::asio::io_context::run, &io_context));
 
-    for (auto& thread : threads)
-    {
-        thread.join();
-    }
+    t.join();
 }
