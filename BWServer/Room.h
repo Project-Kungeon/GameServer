@@ -8,7 +8,7 @@ class Room
 public:
 	void Join(MemberPtr member)
 	{
-
+		_members.insert(member);
 	}
 	void Leave(MemberPtr member)
 	{
