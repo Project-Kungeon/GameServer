@@ -45,8 +45,9 @@ public:
 protected:
 	void AsyncRead()
 	{
+		std::cout << "Reading.." << '\n';
 		memset(_recvBuffer, 0, RecvBufferSize);
-		_socket.async_read_some(asio::buffer(_recvBuffer, RecvBufferSize), asio::bind_executor(_strand, boost::bind(&Session::OnRead, this,
+		_socket.async_read_some(asio::buffer(_recvBuffer, RecvBufferSize), asio::bind_executor(_strand, boost::bind(&Session::OnRead, shared_from_this(),
 			asio::placeholders::error,
 			asio::placeholders::bytes_transferred
 			)));
@@ -54,7 +55,6 @@ protected:
 
 	void OnRead(const boost::system::error_code& err, size_t size)
 	{
-		// ÄÁÅÙÃ÷ ÄÚµå
 		std::cout << "OnRead : " << size << '\n';
 		if (!err)
 		{
@@ -64,7 +64,7 @@ protected:
 		else
 		{
 			std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
-			_room.Leave(this->shared_from_this());
+			//_room.Leave(this->shared_from_this());
 		}
 	}
 
@@ -74,7 +74,7 @@ protected:
 		asio::async_write(_socket,
 			asio::buffer(_sendBuffer, size),
 			asio::bind_executor(_strand, boost::bind(&Session::OnWrite,
-				this,
+				shared_from_this(),
 				asio::placeholders::error,
 				asio::placeholders::bytes_transferred)
 			)
@@ -83,7 +83,7 @@ protected:
 
 	void OnWrite(const boost::system::error_code& err, size_t size)
 	{
-		// ÄÁÅÙÃ÷ ÄÚµå
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
 		if (!err)
 		{
 
@@ -115,6 +115,7 @@ protected:
 
 	void HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset)
 	{
+		std::cout << "Receive LoginReq";
 		message::LoginReq msg;
 		PacketUtil::Parse(msg, buffer, buffer.size(), offset);
 

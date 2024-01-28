@@ -36,7 +36,7 @@ public:
 
 		char* payloadPtr = static_cast<char*>(buffer.data()) + sizeof(PacketHeader);
 
-		// buffer ¿¡¼­ proto packetÀ¸·Î º¯È¯
+		// buffer ï¿½ï¿½ï¿½ï¿½ proto packetï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 		if (!msg.SerializeToArray(payloadPtr,
 			static_cast<int>(buffer.size()) - sizeof(PacketHeader)))
 			return false;
@@ -50,11 +50,11 @@ public:
 		int& offset
 	)
 	{
-		// ÀÐ°í ÀÖ´Â ºÎºÐÀÌ ¹öÆÛ ¹Ù±ùÀÌ¶ó¸é
+		// ï¿½Ð°ï¿½ ï¿½Ö´ï¿½ ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù±ï¿½ï¿½Ì¶ï¿½ï¿½
 		if (buffer.size() <= offset)
 			return false;
 
-		// ³²Àº ¹öÆÛ µ¥ÀÌÅÍ°¡ Çì´õ »çÀÌÁîº¸´Ù ÀÛÀ¸¸é ¸ø ÀÐÀ½
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½îº¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		const size_t remainedSize = buffer.size() - offset;
 		if (remainedSize < sizeof(PacketHeader))
 			return false;
@@ -66,8 +66,8 @@ public:
 		return true;
 	}
 
-	// payloadSize : Çì´õ¸¦ Á¦¿ÜÇÑ »çÀÌÁî
-	// offset : Çì´õ ÀÌÈÄ ½ÃÀÛµÇ´Â payload ½ÃÀÛÁ¡
+	// payloadSize : ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// offset : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÛµÇ´ï¿½ payload ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	static bool Parse(google::protobuf::Message& msg, const asio::mutable_buffer& buffer, const int payloadSize, int& offset)
 	{
 		if (buffer.size() < sizeof(PacketHeader))

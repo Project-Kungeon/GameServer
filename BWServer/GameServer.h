@@ -37,3 +37,5 @@ private:
 	Room _room;
 	asio::io_context& _io_context;
 };
+
+typedef boost::shared_ptr<GameServer> GameServerPtr;
