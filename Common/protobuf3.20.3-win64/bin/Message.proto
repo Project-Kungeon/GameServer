@@ -1,0 +1,70 @@
+syntax = "proto3";
+package message;
+
+enum MessageCode
+{
+	NONE = 0;
+	LOGIN_REQ = 1;
+	LOGIN_RES = 2;
+}
+
+message LoginReq
+{
+	uint32 id = 1;
+	uint32 id2 = 2;
+	uint32 id3 = 3;
+}
+
+message LoginRes
+{
+	bool result = 1;
+}
+
+// 클라이언트 -> 서버 로그인
+message C_Login
+{
+	// TODO : 인증 정보 넣을지..
+}
+
+// 로그인 성공 후, 서버 -> 클라이언트 결과 반환
+message S_Login
+{
+	bool success = 1;
+
+}
+
+// 방 입장 요청
+message C_EnterRoom
+{
+
+}
+
+// 방 입장 결과
+message S_EnterRoom
+{
+
+}
+
+// 방 떠나기 요청
+message C_LeaveRoom
+{
+
+}
+
+// 방 떠나기 결과
+message C_LeaveRoomRes
+{
+
+}
+
+// 다른 플레이어 입장 패킷
+message S_Spawn
+{
+
+}
+
+// 다른 플레이어 퇴장 패킷
+message S_Despawn
+{
+
+}

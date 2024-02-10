@@ -2,7 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="BWServer.cpp" />
+    <ClCompile Include="Enum.pb.cc">
+      <Filter>Packets</Filter>
+    </ClCompile>
     <ClCompile Include="Message.pb.cc">
+      <Filter>Packets</Filter>
+    </ClCompile>
+    <ClCompile Include="Struct.pb.cc">
       <Filter>Packets</Filter>
     </ClCompile>
   </ItemGroup>
@@ -11,27 +17,36 @@
     <ClInclude Include="Session.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="Packet.h" />
+    <ClInclude Include="GameServer.h" />
+    <ClInclude Include="Enum.pb.h">
+      <Filter>Packets</Filter>
+    </ClInclude>
     <ClInclude Include="Message.pb.h">
       <Filter>Packets</Filter>
     </ClInclude>
-    <ClInclude Include="GameServer.h" />
+    <ClInclude Include="Struct.pb.h">
+      <Filter>Packets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
       <UniqueIdentifier>{fb44685e-89f1-43d5-ad0b-ecc79e355765}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Packets\Proto">
+      <UniqueIdentifier>{e3f56d52-33c3-4aee-b422-08fcc14dd05d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Common\protobuf3.20.3-win64\Enum.proto">
-      <Filter>Packets</Filter>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto">
+      <Filter>Packets\Proto</Filter>
     </None>
-    <None Include="..\Common\protobuf3.20.3-win64\GenPacket.bat">
-      <Filter>Packets</Filter>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Struct.proto">
+      <Filter>Packets\Proto</Filter>
     </None>
-    <None Include="..\Common\protobuf3.20.3-win64\Message.proto">
-      <Filter>Packets</Filter>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto">
+      <Filter>Packets\Proto</Filter>
     </None>
-    <None Include="..\Common\protobuf3.20.3-win64\Struct.proto">
+    <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat">
       <Filter>Packets</Filter>
     </None>
   </ItemGroup>
