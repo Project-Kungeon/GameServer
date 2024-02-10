@@ -22,10 +22,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\protobuf-3.20.3\MakeBuild\Debug\GenPacket.bat">
+    <None Include="..\Common\protobuf3.20.3-win64\Enum.proto">
       <Filter>Packets</Filter>
     </None>
-    <None Include="..\..\protobuf-3.20.3\MakeBuild\Debug\Message.proto">
+    <None Include="..\Common\protobuf3.20.3-win64\GenPacket.bat">
+      <Filter>Packets</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\Message.proto">
+      <Filter>Packets</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\Struct.proto">
       <Filter>Packets</Filter>
     </None>
   </ItemGroup>

@@ -1,0 +1,24 @@
+syntax = "proto3";
+package message;
+
+// 오브젝트 타입
+enum ObjectType
+{
+	OBJECT_TYPE_NONE = 0;
+	OBJECT_TYPE_CREATURE = 1;
+	
+}
+
+enum CreatureType
+{
+	CREATURE_TYPE_NONE = 0;
+	CREATURE_TYPE_PLAYER = 1;
+	CREATURE_TYPE_MONSTER = 2;
+}
+
+enum PlayerType
+{
+	PLAYER_TYPE_NONE = 0;
+	PLAYER_TYPE_WARRIOR = 1;
+	PLAYER_TYPE_ARCHER = 2;
+}
