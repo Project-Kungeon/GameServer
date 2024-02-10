@@ -40,7 +40,7 @@ message C_EnterRoom
 }
 
 // 방 입장 결과
-message C_EnterRoom
+message S_EnterRoom
 {
 
 }
