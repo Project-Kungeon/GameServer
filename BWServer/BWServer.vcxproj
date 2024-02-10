@@ -159,8 +159,10 @@
     <ClInclude Include="Session.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\protobuf-3.20.3\MakeBuild\Debug\GenPacket.bat" />
-    <None Include="..\..\protobuf-3.20.3\MakeBuild\Debug\Message.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\Enum.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\GenPacket.bat" />
+    <None Include="..\Common\protobuf3.20.3-win64\Message.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\Struct.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
