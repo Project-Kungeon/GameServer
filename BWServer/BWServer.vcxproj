@@ -98,6 +98,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>CALL $(SolutionDir)Common\protobuf3.20.3-win64\bin\GenPacket.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -115,6 +118,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>CALL $(SolutionDir)Common\protobuf3.20.3-win64\bin\GenPacket.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -128,6 +134,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>CALL $(SolutionDir)Common\protobuf3.20.3-win64\bin\GenPacket.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -145,24 +154,37 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>CALL $(SolutionDir)Common\protobuf3.20.3-win64\bin\GenPacket.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BWServer.cpp" />
+    <ClCompile Include="Enum.pb.cc" />
     <ClCompile Include="Message.pb.cc" />
+    <ClCompile Include="Struct.pb.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enum.pb.h" />
     <ClInclude Include="GameServer.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Message.pb.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="Session.h" />
+    <ClInclude Include="Struct.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Common\protobuf3.20.3-win64\Enum.proto" />
-    <None Include="..\Common\protobuf3.20.3-win64\GenPacket.bat" />
-    <None Include="..\Common\protobuf3.20.3-win64\Message.proto" />
-    <None Include="..\Common\protobuf3.20.3-win64\Struct.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Struct.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
+    <UpToDateCheckInput Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />
+    <UpToDateCheckInput Include="..\Common\protobuf3.20.3-win64\bin\Message.proto" />
+    <UpToDateCheckInput Include="..\Common\protobuf3.20.3-win64\bin\Struct.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
