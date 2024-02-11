@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="BWServer.cpp" />
     <ClCompile Include="Enum.pb.cc" />
+    <ClCompile Include="LobbyPacketHandler.h" />
     <ClCompile Include="Message.pb.cc" />
     <ClCompile Include="Struct.pb.cc" />
   </ItemGroup>
@@ -175,6 +176,7 @@
     <ClInclude Include="Struct.pb.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto" />

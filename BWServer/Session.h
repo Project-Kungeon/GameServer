@@ -82,12 +82,11 @@ protected:
 	}
 
 	void OnWrite(const boost::system::error_code& err, size_t size)
-	{
-		// ������ �ڵ�
+	{ 
 		if (!err)
 		{
 
-		}
+		} 
 		else
 		{
 			std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;

@@ -18,7 +18,12 @@
   Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Session.h(120,45): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Enum.pb.cc
+  LobbyPacketHandler.h
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\LobbyPacketHandler.h(7,6): fatal  error C1004: 예기치 않은 파일의 끝이 나타났습니다.
   Message.pb.cc
   Struct.pb.cc
   코드를 생성하고 있습니다...
-  BWServer.vcxproj -> C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServer.exe
