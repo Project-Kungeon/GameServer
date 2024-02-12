@@ -1,6 +1,7 @@
 #pragma once
 #include <set>
 #include "Member.h"
+#include <boost/make_shared.hpp>
 using namespace std;
 
 class Room
@@ -13,4 +14,4 @@ public:
 private:
 	set<MemberPtr> _members;
 };
-
+typedef boost::shared_ptr<Room> RoomRef;
