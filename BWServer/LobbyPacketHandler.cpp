@@ -11,6 +11,7 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& p
 	message::S_Login sLogin;
 	//sLogin.add
 	message::ObjectInfo* player = sLogin.add_players();
+	
 	message::PosInfo* posInfo = player->mutable_pos_info();
 	posInfo->set_x(RandomUtil::GetRandom(0.f, 100.f));
 	posInfo->set_y(RandomUtil::GetRandom(0.f, 100.f));
@@ -28,4 +29,14 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& p
 	session->Send(sendBuffer);
 
 	return true;
+}
+
+bool LobbyPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_EnterRoom& pkt)
+{
+	// Deserialize Request Packet
+	int idx = pkt.playerindex();
+
+	// Serialize Response Packet
+
+	return false;
 }

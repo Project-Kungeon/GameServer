@@ -23,7 +23,6 @@
     <ClCompile Include="GameServer.cpp">
       <Filter>Main\Server</Filter>
     </ClCompile>
-    <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="RoomPacketHandler.cpp">
       <Filter>Packets\handler\room</Filter>
     </ClCompile>
@@ -39,6 +38,18 @@
     </ClCompile>
     <ClCompile Include="RandomUtil.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSession.cpp">
+      <Filter>Main\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Main\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Creature.cpp">
+      <Filter>Main\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Main\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +80,6 @@
     <ClInclude Include="CoreMacro.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="GameSession.h" />
     <ClInclude Include="RoomPacketHandler.h">
       <Filter>Packets\handler\room</Filter>
     </ClInclude>
@@ -93,6 +103,18 @@
     </ClInclude>
     <ClInclude Include="RandomUtil.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSession.h">
+      <Filter>Main\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Main\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Creature.h">
+      <Filter>Main\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Main\Game\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +147,12 @@
     </Filter>
     <Filter Include="Utils">
       <UniqueIdentifier>{804603e5-5271-4a2f-b0dc-289b0a647782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game">
+      <UniqueIdentifier>{f38536f5-7b83-4c3c-998e-dee35bd29c90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object">
+      <UniqueIdentifier>{7c618e03-bee1-4e94-8503-f951baade96f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
