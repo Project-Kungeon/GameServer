@@ -1,18 +1,23 @@
 #pragma once
+#include "Room.h"
+#include <memory>
+
 class Object : public boost::enable_shared_from_this<Object>
 {
 public:
 	Object();
 	virtual ~Object();
 
-	bool IsPlayer() { return IsPlayer; }
+	bool IsPlayer() { return _isPlayer; }
 
 public:
 	message::ObjectInfo*	objectInfo;
 	message::PosInfo*		posInfo;
 
 public:
-	atomic<boost::weak_ptr<Room>> room;
+	atomic<std::weak_ptr<Room>> room;
+
+
 
 
 protected:

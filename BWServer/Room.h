@@ -1,7 +1,5 @@
 #pragma once
-#include <set>
 #include "Member.h"
-#include <boost/make_shared.hpp>
 using namespace std;
 
 class Room
