@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Session.h"
 
 Session::Session(asio::io_context& io_context, Room& room)
@@ -7,6 +8,11 @@ Session::Session(asio::io_context& io_context, Room& room)
 {
 	memset(_recvBuffer, 0, RecvBufferSize);
 	memset(_sendBuffer, 0, SendBufferSize);
+}
+
+SessionPtr Session::GetSessionPtr()
+{
+	return static_pointer_cast<Session>(shared_from_this());
 }
 
 void Session::Start()
@@ -78,20 +84,25 @@ void Session::OnWrite(const boost::system::error_code& err, size_t size)
 
 void Session::HandlePacket(char* ptr, size_t size)
 {
-	asio::mutable_buffer buffer = asio::buffer(ptr, size);
-	int offset = 0;
-	PacketHeader header;
-	PacketUtil::ParseHeader(buffer, &header, offset);
+	SessionPtr session = this->GetSessionPtr();
+	ServerPacketHandler::HandlePacket(session, ptr, size);
 
-	std::cout << "HandlePacket : " << message::MessageCode_Name(header.Code) << '\n';
-	switch (header.Code)
-	{
-	case message::MessageCode::LOGIN_REQ:
-		HandleLoginReq(buffer, header, offset);
-		break;
-	default:
-		break;
-	}
+
+	//asio::mutable_buffer buffer = asio::buffer(ptr, size);
+	//int offset = 0;
+	//PacketHeader header;
+	//PacketUtil::ParseHeader(buffer, &header, offset);
+
+	//std::cout << "HandlePacket : " << message::MessageCode_Name(header.Code) << '\n';
+	//switch (header.Code)
+	//{
+	//case message::MessageCode::LOGIN_REQ:
+	//	LobbyPacketHandler::Handle_C_Login(session, buffer, header, offset);
+	//	//HandleLoginReq(buffer, header, offset);
+	//	break;
+	//default:
+	//	break;
+	//}
 }
 
 void Session::HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset)

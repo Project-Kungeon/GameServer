@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "GameServer.h"
 
 GameServer::GameServer(asio::io_context& io_context, int port)

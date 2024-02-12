@@ -11,16 +11,37 @@
     <ClCompile Include="Enum.pb.cc">
       <Filter>Packets\build</Filter>
     </ClCompile>
-    <ClCompile Include="LobbyPacketHandler.h">
+    <ClCompile Include="Session.cpp">
+      <Filter>Main\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSessionManager.cpp">
+      <Filter>Main\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServer.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSession.cpp" />
+    <ClCompile Include="RoomPacketHandler.cpp">
       <Filter>Packets\handler\room</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerPacketHandler.cpp" />
+    <ClCompile Include="pch.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CorePch.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyPacketHandler.cpp">
+      <Filter>Packets\handler\lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomUtil.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Member.h" />
-    <ClInclude Include="Session.h" />
-    <ClInclude Include="Room.h" />
-    <ClInclude Include="Packet.h" />
-    <ClInclude Include="GameServer.h" />
     <ClInclude Include="Struct.pb.h">
       <Filter>Packets\build</Filter>
     </ClInclude>
@@ -29,6 +50,49 @@
     </ClInclude>
     <ClInclude Include="Enum.pb.h">
       <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Main\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="Member.h">
+      <Filter>Main\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServer.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSessionManager.h">
+      <Filter>Main\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreMacro.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSession.h" />
+    <ClInclude Include="RoomPacketHandler.h">
+      <Filter>Packets\handler\room</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPacketHandler.h">
+      <Filter>Packets\handler</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CorePch.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyPacketHandler.h">
+      <Filter>Packets\handler\lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomUtil.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +113,18 @@
     </Filter>
     <Filter Include="Packets\handler\room">
       <UniqueIdentifier>{f3793bd2-6238-487a-87f6-1268e93775e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{363349c9-5e8f-4435-8436-91c062f6072d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Session">
+      <UniqueIdentifier>{edfce316-12ea-41f4-9c6c-1cb04a8af42b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Server">
+      <UniqueIdentifier>{447d2a70-ca00-4c1a-afad-1523ccfc80d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{804603e5-5271-4a2f-b0dc-289b0a647782}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
