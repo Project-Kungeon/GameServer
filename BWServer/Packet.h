@@ -1,3 +1,5 @@
+#pragma once
+
 #include <google/protobuf/message.h>
 #include <boost/asio.hpp>
 #include <boost/asio/buffer.hpp>
@@ -36,7 +38,7 @@ public:
 
 		char* payloadPtr = static_cast<char*>(buffer.data()) + sizeof(PacketHeader);
 
-		// buffer ���� proto packet���� ��ȯ
+		// buffer      proto packet       ȯ
 		if (!msg.SerializeToArray(payloadPtr,
 			static_cast<int>(buffer.size()) - sizeof(PacketHeader)))
 			return false;
@@ -50,11 +52,11 @@ public:
 		int& offset
 	)
 	{
-		// �а� �ִ� �κ��� ���� �ٱ��̶��
+		//  а   ִ   κ          ٱ  ̶  
 		if (buffer.size() <= offset)
 			return false;
 
-		// ���� ���� �����Ͱ� ��� ������� ������ �� ����
+		//                Ͱ                            
 		const size_t remainedSize = buffer.size() - offset;
 		if (remainedSize < sizeof(PacketHeader))
 			return false;
@@ -66,8 +68,8 @@ public:
 		return true;
 	}
 
-	// payloadSize : ����� ������ ������
-	// offset : ��� ���� ���۵Ǵ� payload ������
+	// payloadSize :                    
+	// offset :             ۵Ǵ  payload       
 	static bool Parse(google::protobuf::Message& msg, const asio::mutable_buffer& buffer, const int payloadSize, int& offset)
 	{
 		if (buffer.size() < sizeof(PacketHeader))
