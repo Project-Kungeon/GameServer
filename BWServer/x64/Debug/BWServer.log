@@ -24,15 +24,15 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(31
           ]
   BWServer.cpp
   CorePch.cpp
+  Creature.cpp
   GameServer.cpp
   GameSession.cpp
   GameSessionManager.cpp
   LobbyPacketHandler.cpp
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\RandomUtil.h(15,2): warning C4984: 'if constexpr'은 C++17 언어 확장입니다.
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\RandomUtil.h(6,11): message : 이 진단은 컴파일러 생성 함수 'T RandomUtil::GetRandom(T,T)'에서 수행되었습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\LobbyPacketHandler.cpp(37,10): warning C4244: '초기화 중': 'uint64_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Object.cpp
+  Player.cpp
   RandomUtil.cpp
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\RandomUtil.h(15,2): warning C4984: 'if constexpr'은 C++17 언어 확장입니다.
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\RandomUtil.h(6,11): message : 이 진단은 컴파일러 생성 함수 'T RandomUtil::GetRandom(T,T)'에서 수행되었습니다.
   Room.cpp
   RoomPacketHandler.cpp
   ServerPacketHandler.cpp

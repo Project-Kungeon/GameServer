@@ -1,5 +1,7 @@
 #pragma once
 #include "pch.h"
+#include "Player.h"
+#include <memory>
 
 class GameSession : public Session
 {
@@ -8,7 +10,7 @@ public:
 	virtual void OnDisconnected() override;
 
 private:
-	atomic<boost::shared_ptr<Player>> player;
+	atomic<std::shared_ptr<Player>> player;
 	
 };
 
