@@ -38,6 +38,10 @@ protected:
 	void HandlePacket(char* ptr, size_t size);
 	void HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset);
 
+	virtual void OnConnected() {};
+	virtual void OnDisconnected() {};
+
+
 private:
 	tcp::socket _socket;
 	const static int RecvBufferSize = 1024;
