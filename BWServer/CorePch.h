@@ -13,6 +13,7 @@
 #include <unordered_set>
 #include <random>
 #include <iostream>
+#include <memory>
 
 #include "Session.h"
 #include "GameSession.h"
