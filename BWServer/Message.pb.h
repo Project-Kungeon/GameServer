@@ -1261,9 +1261,10 @@ class S_LeaveRoom final :
 // -------------------------------------------------------------------
 
 class S_Spawn final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:message.S_Spawn) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.S_Spawn) */ {
  public:
   inline S_Spawn() : S_Spawn(nullptr) {}
+  ~S_Spawn() override;
   explicit PROTOBUF_CONSTEXPR S_Spawn(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   S_Spawn(const S_Spawn& from);
@@ -1336,15 +1337,27 @@ class S_Spawn final :
   S_Spawn* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<S_Spawn>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const S_Spawn& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const S_Spawn& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Spawn& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Spawn& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Spawn* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -1365,6 +1378,27 @@ class S_Spawn final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kPlayersFieldNumber = 1,
+  };
+  // repeated .message.ObjectInfo players = 1;
+  int players_size() const;
+  private:
+  int _internal_players_size() const;
+  public:
+  void clear_players();
+  ::message::ObjectInfo* mutable_players(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >*
+      mutable_players();
+  private:
+  const ::message::ObjectInfo& _internal_players(int index) const;
+  ::message::ObjectInfo* _internal_add_players();
+  public:
+  const ::message::ObjectInfo& players(int index) const;
+  ::message::ObjectInfo* add_players();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >&
+      players() const;
+
   // @@protoc_insertion_point(class_scope:message.S_Spawn)
  private:
   class _Internal;
@@ -1372,14 +1406,17 @@ class S_Spawn final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo > players_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
 // -------------------------------------------------------------------
 
 class S_Despawn final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:message.S_Despawn) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.S_Despawn) */ {
  public:
   inline S_Despawn() : S_Despawn(nullptr) {}
+  ~S_Despawn() override;
   explicit PROTOBUF_CONSTEXPR S_Despawn(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   S_Despawn(const S_Despawn& from);
@@ -1452,15 +1489,27 @@ class S_Despawn final :
   S_Despawn* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<S_Despawn>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const S_Despawn& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const S_Despawn& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Despawn& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Despawn& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Despawn* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -1481,6 +1530,31 @@ class S_Despawn final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kObjectIdsFieldNumber = 1,
+  };
+  // repeated uint64 object_ids = 1;
+  int object_ids_size() const;
+  private:
+  int _internal_object_ids_size() const;
+  public:
+  void clear_object_ids();
+  private:
+  uint64_t _internal_object_ids(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+      _internal_object_ids() const;
+  void _internal_add_object_ids(uint64_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+      _internal_mutable_object_ids();
+  public:
+  uint64_t object_ids(int index) const;
+  void set_object_ids(int index, uint64_t value);
+  void add_object_ids(uint64_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+      object_ids() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+      mutable_object_ids();
+
   // @@protoc_insertion_point(class_scope:message.S_Despawn)
  private:
   class _Internal;
@@ -1488,6 +1562,9 @@ class S_Despawn final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t > object_ids_;
+  mutable std::atomic<int> _object_ids_cached_byte_size_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
 // ===================================================================
@@ -1795,9 +1872,93 @@ inline void S_EnterRoom::set_allocated_player(::message::ObjectInfo* player) {
 
 // S_Spawn
 
+// repeated .message.ObjectInfo players = 1;
+inline int S_Spawn::_internal_players_size() const {
+  return players_.size();
+}
+inline int S_Spawn::players_size() const {
+  return _internal_players_size();
+}
+inline ::message::ObjectInfo* S_Spawn::mutable_players(int index) {
+  // @@protoc_insertion_point(field_mutable:message.S_Spawn.players)
+  return players_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >*
+S_Spawn::mutable_players() {
+  // @@protoc_insertion_point(field_mutable_list:message.S_Spawn.players)
+  return &players_;
+}
+inline const ::message::ObjectInfo& S_Spawn::_internal_players(int index) const {
+  return players_.Get(index);
+}
+inline const ::message::ObjectInfo& S_Spawn::players(int index) const {
+  // @@protoc_insertion_point(field_get:message.S_Spawn.players)
+  return _internal_players(index);
+}
+inline ::message::ObjectInfo* S_Spawn::_internal_add_players() {
+  return players_.Add();
+}
+inline ::message::ObjectInfo* S_Spawn::add_players() {
+  ::message::ObjectInfo* _add = _internal_add_players();
+  // @@protoc_insertion_point(field_add:message.S_Spawn.players)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >&
+S_Spawn::players() const {
+  // @@protoc_insertion_point(field_list:message.S_Spawn.players)
+  return players_;
+}
+
 // -------------------------------------------------------------------
 
 // S_Despawn
+
+// repeated uint64 object_ids = 1;
+inline int S_Despawn::_internal_object_ids_size() const {
+  return object_ids_.size();
+}
+inline int S_Despawn::object_ids_size() const {
+  return _internal_object_ids_size();
+}
+inline void S_Despawn::clear_object_ids() {
+  object_ids_.Clear();
+}
+inline uint64_t S_Despawn::_internal_object_ids(int index) const {
+  return object_ids_.Get(index);
+}
+inline uint64_t S_Despawn::object_ids(int index) const {
+  // @@protoc_insertion_point(field_get:message.S_Despawn.object_ids)
+  return _internal_object_ids(index);
+}
+inline void S_Despawn::set_object_ids(int index, uint64_t value) {
+  object_ids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.S_Despawn.object_ids)
+}
+inline void S_Despawn::_internal_add_object_ids(uint64_t value) {
+  object_ids_.Add(value);
+}
+inline void S_Despawn::add_object_ids(uint64_t value) {
+  _internal_add_object_ids(value);
+  // @@protoc_insertion_point(field_add:message.S_Despawn.object_ids)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+S_Despawn::_internal_object_ids() const {
+  return object_ids_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+S_Despawn::object_ids() const {
+  // @@protoc_insertion_point(field_list:message.S_Despawn.object_ids)
+  return _internal_object_ids();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+S_Despawn::_internal_mutable_object_ids() {
+  return &object_ids_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+S_Despawn::mutable_object_ids() {
+  // @@protoc_insertion_point(field_mutable_list:message.S_Despawn.object_ids)
+  return _internal_mutable_object_ids();
+}
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop

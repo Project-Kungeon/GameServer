@@ -53,7 +53,7 @@
     <ClCompile Include="ServerPacketHandler.cpp">
       <Filter>Packets\handler</Filter>
     </ClCompile>
-    <ClCompile Include="ObejctUtils.cpp">
+    <ClCompile Include="ObjectUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
@@ -121,7 +121,7 @@
     <ClInclude Include="Player.h">
       <Filter>Main\Game\Object</Filter>
     </ClInclude>
-    <ClInclude Include="ObejctUtils.h">
+    <ClInclude Include="ObjectUtils.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

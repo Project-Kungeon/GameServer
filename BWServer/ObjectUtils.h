@@ -1,8 +1,8 @@
 #pragma once
-class ObejctUtils
+class ObjectUtils
 {
 public:
-	PlayerPtr CreatePlayer(GameSessionPtr session);
+	static PlayerPtr CreatePlayer(GameSessionPtr session);
 
 private:
 	static atomic<unsigned int> s_idGenerator;
