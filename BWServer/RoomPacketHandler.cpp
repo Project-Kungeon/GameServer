@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ObjectUtils.h"
+#include "Room.h"
 #include "RoomPacketHandler.h"
 
 bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_EnterRoom& pkt)

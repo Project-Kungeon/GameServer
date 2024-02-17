@@ -2,7 +2,7 @@
 #include "Member.h"
 using namespace std;
 
-extern RoomPtr GRoom[UINT16_MAX];
+
 
 class Room
 {
@@ -24,3 +24,5 @@ private:
 	set<MemberPtr> _members;
 	unordered_map<unsigned int, ObjectPtr> _objects;
 };
+
+extern RoomPtr GRoom[UINT16_MAX];
