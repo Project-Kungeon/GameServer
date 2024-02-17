@@ -251,16 +251,23 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "nterRoom\022\023\n\013playerIndex\030\001 \001(\004\"C\n\013S_Enter"
   "Room\022\017\n\007success\030\001 \001(\010\022#\n\006player\030\002 \001(\0132\023."
   "message.ObjectInfo\"\r\n\013C_LeaveRoom\"\r\n\013S_L"
-  "eaveRoom\"\t\n\007S_Spawn\"\013\n\tS_Despawn*5\n\013Mess"
-  "ageCode\022\010\n\004NONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGI"
-  "N_RES\020\002b\006proto3"
+  "eaveRoom\"\t\n\007S_Spawn\"\013\n\tS_Despawn*\330\002\n\006HEA"
+  "DER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGIN_RE"
+  "S\020\002\022\022\n\016ENTER_ROOM_REQ\020\003\022\022\n\016ENTER_ROOM_RE"
+  "S\020\004\022\022\n\016LEAVE_ROOM_REQ\020\005\022\022\n\016LEAVE_ROOM_RE"
+  "S\020\006\022\022\n\016LEAVE_GAME_REQ\020\007\022\022\n\016LEAVE_GAME_RE"
+  "S\020\010\022\024\n\020PLAYER_SPAWN_RES\020\t\022\026\n\022PLAYER_DESP"
+  "AWN_RES\020\n\022\023\n\017PLAYER_CHAT_REQ\020\013\022\023\n\017PLAYER"
+  "_CHAT_RES\020\014\022\023\n\017PLAYER_MOVE_REQ\020\r\022\023\n\017PLAY"
+  "ER_MOVE_RES\020\016\022\025\n\021PLAYER_ATTACK_REQ\020\017\022\025\n\021"
+  "PLAYER_ATTACK_RES\020\020b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[1] = {
   &::descriptor_table_Struct_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 415, descriptor_table_protodef_Message_2eproto,
+    false, false, 707, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
     &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 1, 10,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
@@ -274,15 +281,29 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Message_
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Message_2eproto(&descriptor_table_Message_2eproto);
 namespace message {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageCode_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HEADER_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Message_2eproto);
   return file_level_enum_descriptors_Message_2eproto[0];
 }
-bool MessageCode_IsValid(int value) {
+bool HEADER_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
     case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
       return true;
     default:
       return false;

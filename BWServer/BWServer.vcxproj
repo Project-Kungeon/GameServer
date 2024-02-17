@@ -190,6 +190,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ObejctUtils.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -221,6 +222,7 @@
     <ClInclude Include="LobbyPacketHandler.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Message.pb.h" />
+    <ClInclude Include="ObejctUtils.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="pch.h" />
