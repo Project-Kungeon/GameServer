@@ -11,4 +11,4 @@ public:
 	virtual void Send(asio::mutable_buffer& buffer) abstract;
 };
 
-typedef boost::shared_ptr<Member> MemberPtr;
+typedef std::shared_ptr<Member> MemberPtr;

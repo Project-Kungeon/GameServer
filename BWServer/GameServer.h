@@ -14,4 +14,4 @@ private:
 	asio::io_context& _io_context;
 };
 
-typedef boost::shared_ptr<GameServer> GameServerPtr;
+typedef std::shared_ptr<GameServer> GameServerPtr;
