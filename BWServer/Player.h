@@ -7,6 +7,6 @@ public:
 	virtual ~Player();
 
 public:
-	boost::weak_ptr<GameSession> session;
+	std::weak_ptr<GameSession> session;
 };
 

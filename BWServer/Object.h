@@ -2,7 +2,7 @@
 #include "Room.h"
 #include <memory>
 
-class Object : public boost::enable_shared_from_this<Object>
+class Object : public std::enable_shared_from_this<Object>
 {
 public:
 	Object();

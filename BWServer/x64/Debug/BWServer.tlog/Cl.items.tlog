@@ -7,6 +7,7 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSession.cpp;C:\Users
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSessionManager.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSessionManager.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\LobbyPacketHandler.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\LobbyPacketHandler.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Message.pb.cc;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Message.pb.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ObejctUtils.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\ObejctUtils.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Object.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Object.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\pch.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\pch.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Player.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Player.obj
