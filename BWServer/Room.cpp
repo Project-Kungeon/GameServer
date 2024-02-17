@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Room.h"
 
-extern RoomPtr GRoom[UINT16_MAX];
+RoomPtr GRoom[UINT16_MAX];
 
 // 전역변수 GRoom 초기화
 void Room::init()
@@ -126,7 +126,6 @@ void Room::Broadcast(asio::mutable_buffer& buffer, unsigned int exceptId)
 
 }
 
-// TODO
 bool Room::HandleEnterPlayer(PlayerPtr player)
 {
 	return Join(player);
@@ -134,10 +133,12 @@ bool Room::HandleEnterPlayer(PlayerPtr player)
 
 bool Room::HandleLeavePlayer(PlayerPtr player)
 {
+	return Leave(player);
 }
 
 void Room::HandleMovePlayer(PlayerPtr player)
 {
+	// TODO
 }
 
 // Room의 STL에 오브젝트 추가
