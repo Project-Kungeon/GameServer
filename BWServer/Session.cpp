@@ -17,7 +17,7 @@ SessionPtr Session::GetSessionPtr()
 
 void Session::Start()
 {
-	_room.Join(this->shared_from_this());
+	//_room.Join(this->shared_from_this());
 	AsyncRead();
 }
 
@@ -78,7 +78,7 @@ void Session::OnWrite(const boost::system::error_code& err, size_t size)
 	else
 	{
 		std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
-		_room.Leave(this->shared_from_this());
+		//_room.Leave(this->shared_from_this());
 	}
 }
 

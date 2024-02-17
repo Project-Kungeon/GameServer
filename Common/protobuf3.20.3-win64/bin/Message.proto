@@ -84,11 +84,11 @@ message S_LeaveRoom
 // 다른 플레이어 입장 패킷
 message S_Spawn
 {
-
+	repeated ObjectInfo players = 1;
 }
 
 // 다른 플레이어 퇴장 패킷
 message S_Despawn
 {
-
+	repeated uint64 object_ids = 1;
 }
