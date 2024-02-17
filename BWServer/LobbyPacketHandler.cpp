@@ -24,19 +24,9 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& p
 
 	char* rawBuffer = new char[requiredSize];
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::MessageCode::LOGIN_RES, sLogin);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::LOGIN_RES, sLogin);
 
 	session->Send(sendBuffer);
 
 	return true;
-}
-
-bool LobbyPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_EnterRoom& pkt)
-{
-	// Deserialize Request Packet
-	int idx = pkt.playerindex();
-
-	// Serialize Response Packet
-
-	return false;
 }

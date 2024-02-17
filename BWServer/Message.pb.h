@@ -93,31 +93,45 @@ template<> ::message::S_Spawn* Arena::CreateMaybeMessage<::message::S_Spawn>(Are
 PROTOBUF_NAMESPACE_CLOSE
 namespace message {
 
-enum MessageCode : int {
+enum HEADER : int {
   NONE = 0,
   LOGIN_REQ = 1,
   LOGIN_RES = 2,
-  MessageCode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  MessageCode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+  ENTER_ROOM_REQ = 3,
+  ENTER_ROOM_RES = 4,
+  LEAVE_ROOM_REQ = 5,
+  LEAVE_ROOM_RES = 6,
+  LEAVE_GAME_REQ = 7,
+  LEAVE_GAME_RES = 8,
+  PLAYER_SPAWN_RES = 9,
+  PLAYER_DESPAWN_RES = 10,
+  PLAYER_CHAT_REQ = 11,
+  PLAYER_CHAT_RES = 12,
+  PLAYER_MOVE_REQ = 13,
+  PLAYER_MOVE_RES = 14,
+  PLAYER_ATTACK_REQ = 15,
+  PLAYER_ATTACK_RES = 16,
+  HEADER_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  HEADER_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool MessageCode_IsValid(int value);
-constexpr MessageCode MessageCode_MIN = NONE;
-constexpr MessageCode MessageCode_MAX = LOGIN_RES;
-constexpr int MessageCode_ARRAYSIZE = MessageCode_MAX + 1;
+bool HEADER_IsValid(int value);
+constexpr HEADER HEADER_MIN = NONE;
+constexpr HEADER HEADER_MAX = PLAYER_ATTACK_RES;
+constexpr int HEADER_ARRAYSIZE = HEADER_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageCode_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HEADER_descriptor();
 template<typename T>
-inline const std::string& MessageCode_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, MessageCode>::value ||
+inline const std::string& HEADER_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, HEADER>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function MessageCode_Name.");
+    "Incorrect type passed to function HEADER_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    MessageCode_descriptor(), enum_t_value);
+    HEADER_descriptor(), enum_t_value);
 }
-inline bool MessageCode_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, MessageCode* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MessageCode>(
-    MessageCode_descriptor(), name, value);
+inline bool HEADER_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, HEADER* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<HEADER>(
+    HEADER_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -1813,10 +1827,10 @@ inline void S_EnterRoom::set_allocated_player(::message::ObjectInfo* player) {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::message::MessageCode> : ::std::true_type {};
+template <> struct is_proto_enum< ::message::HEADER> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::message::MessageCode>() {
-  return ::message::MessageCode_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::message::HEADER>() {
+  return ::message::HEADER_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

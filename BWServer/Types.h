@@ -10,3 +10,4 @@
 
 USING_SHARED_PTR(Session);
 USING_SHARED_PTR(GameSession);
+USING_SHARED_PTR(Player);
