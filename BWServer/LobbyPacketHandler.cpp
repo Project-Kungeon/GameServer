@@ -11,6 +11,7 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& p
 	message::S_Login sLogin;
 	//sLogin.add
 	message::ObjectInfo* player = sLogin.add_players();
+	
 	message::PosInfo* posInfo = player->mutable_pos_info();
 	posInfo->set_x(RandomUtil::GetRandom(0.f, 100.f));
 	posInfo->set_y(RandomUtil::GetRandom(0.f, 100.f));
@@ -23,7 +24,7 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& p
 
 	char* rawBuffer = new char[requiredSize];
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::MessageCode::LOGIN_RES, sLogin);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::LOGIN_RES, sLogin);
 
 	session->Send(sendBuffer);
 

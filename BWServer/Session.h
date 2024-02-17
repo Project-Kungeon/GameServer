@@ -15,11 +15,11 @@ using boost::asio::ip::tcp;
 using namespace boost;
 
 class Session;
-typedef boost::shared_ptr<Session> SessionPtr;
+typedef std::shared_ptr<Session> SessionPtr;
 
 class Session
 	: public Member
-	, public boost::enable_shared_from_this<Session>
+	, public std::enable_shared_from_this<Session>
 {
 public:
 	Session(asio::io_context& io_context, Room& room);
@@ -37,6 +37,10 @@ protected:
 	void OnWrite(const boost::system::error_code& err, size_t size);
 	void HandlePacket(char* ptr, size_t size);
 	void HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset);
+
+	virtual void OnConnected() {};
+	virtual void OnDisconnected() {};
+
 
 private:
 	tcp::socket _socket;
