@@ -3,11 +3,32 @@ package message;
 
 import "Struct.proto";
 
-enum MessageCode
+enum HEADER
 {
 	NONE = 0;
 	LOGIN_REQ = 1;
 	LOGIN_RES = 2;
+
+	ENTER_ROOM_REQ = 3;
+	ENTER_ROOM_RES = 4;
+
+	LEAVE_ROOM_REQ = 5;
+	LEAVE_ROOM_RES = 6;
+
+	LEAVE_GAME_REQ = 7;
+	LEAVE_GAME_RES = 8;
+
+	PLAYER_SPAWN_RES = 9;
+	PLAYER_DESPAWN_RES = 10;
+
+	PLAYER_CHAT_REQ = 11;
+	PLAYER_CHAT_RES = 12;
+
+	PLAYER_MOVE_REQ = 13;
+	PLAYER_MOVE_RES = 14;
+
+	PLAYER_ATTACK_REQ = 15;
+	PLAYER_ATTACK_RES = 16;
 }
 
 message LoginReq
@@ -63,11 +84,11 @@ message S_LeaveRoom
 // 다른 플레이어 입장 패킷
 message S_Spawn
 {
-
+	repeated ObjectInfo players = 1;
 }
 
 // 다른 플레이어 퇴장 패킷
 message S_Despawn
 {
-
+	repeated uint64 object_ids = 1;
 }
