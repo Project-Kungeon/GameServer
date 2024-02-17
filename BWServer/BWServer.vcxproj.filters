@@ -26,7 +26,6 @@
     <ClCompile Include="RoomPacketHandler.cpp">
       <Filter>Packets\handler\room</Filter>
     </ClCompile>
-    <ClCompile Include="ServerPacketHandler.cpp" />
     <ClCompile Include="pch.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -50,6 +49,12 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Main\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerPacketHandler.cpp">
+      <Filter>Packets\handler</Filter>
+    </ClCompile>
+    <ClCompile Include="ObejctUtils.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +120,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Main\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObejctUtils.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

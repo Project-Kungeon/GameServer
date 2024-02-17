@@ -117,6 +117,6 @@ void Session::HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& h
 
 	char* rawBuffer = new char[requiredSize];
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::MessageCode::LOGIN_RES, res);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::LOGIN_RES, res);
 	this->Send(sendBuffer);
 }

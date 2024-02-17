@@ -9,12 +9,6 @@
 using PacketHandlerFunc = std::function<bool(SessionPtr&, asio::mutable_buffer&, int&)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
-enum : unsigned int
-{
-	PKT_C_LOGIN = 1000,
-	PKT_S_LOGIN = 1001,
-	
-};
 
 bool Handle_INVALID(SessionPtr& session, asio::mutable_buffer& buffer, int& offset);
 
@@ -26,7 +20,7 @@ public:
 		for (int i = 0; i < UINT16_MAX; i++)
 			GPacketHandler[i] = Handle_INVALID;
 
-		GPacketHandler[PKT_C_LOGIN] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		GPacketHandler[1] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			return HandlePacket<message::C_Login>(LobbyPacketHandler::Handle_C_Login, session, buffer, offset);
 		};
