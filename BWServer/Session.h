@@ -15,11 +15,11 @@ using boost::asio::ip::tcp;
 using namespace boost;
 
 class Session;
-typedef boost::shared_ptr<Session> SessionPtr;
+typedef std::shared_ptr<Session> SessionPtr;
 
 class Session
 	: public Member
-	, public boost::enable_shared_from_this<Session>
+	, public std::enable_shared_from_this<Session>
 {
 public:
 	Session(asio::io_context& io_context, Room& room);

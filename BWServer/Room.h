@@ -12,4 +12,4 @@ public:
 private:
 	set<MemberPtr> _members;
 };
-typedef boost::shared_ptr<Room> RoomRef;
+typedef std::shared_ptr<Room> RoomRef;
