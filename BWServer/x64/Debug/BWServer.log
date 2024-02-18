@@ -1,4 +1,5 @@
-﻿  C:Enum.pb.h
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8004: Output 디렉터리가 슬래시로 끝나지 않습니다. Output 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
+  C:Enum.pb.h
   1 File(s) copied
   C:Enum.pb.cc
   1 File(s) copied
@@ -29,15 +30,15 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(25
   GameSession.cpp
   GameSessionManager.cpp
   LobbyPacketHandler.cpp
-  Object.cpp
   ObjectUtils.cpp
+  Object.cpp
   Player.cpp
   RandomUtil.cpp
   Room.cpp
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(59,54): warning C4244: '인수': 'uint64_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(71,62): warning C4244: '초기화 중': 'uint64_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(71,31): warning C4244: '초기화 중': 'uint64_t'에서 'const unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(148,49): warning C4244: '인수': 'uint64_t'에서 'const _Kty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(150,49): warning C4244: '인수': 'uint64_t'에서 'const _Kty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
           [
               _Kty=unsigned int
@@ -47,21 +48,21 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.3253
           [
               _Ty1=const unsigned int
           ]
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(152,18): message : 컴파일되는 함수 템플릿 인스턴스화 'std::pair<const unsigned int,ObjectPtr>::pair<uint64_t,ObjectPtr&,0>(_Other1 &&,_Other2) noexcept'에 대한 참조를 확인하세요.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(154,18): message : 컴파일되는 함수 템플릿 인스턴스화 'std::pair<const unsigned int,ObjectPtr>::pair<uint64_t,ObjectPtr&,0>(_Other1 &&,_Other2) noexcept'에 대한 참조를 확인하세요.
           with
           [
               _Other1=uint64_t,
               _Other2=ObjectPtr &
           ]
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(152,17): message : 'Room::AddObject'에서 'std::pair<const unsigned int,ObjectPtr>::pair'에 대한 첫 번째 참조를 확인하세요.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(154,17): message : 'Room::AddObject'에서 'std::pair<const unsigned int,ObjectPtr>::pair'에 대한 첫 번째 참조를 확인하세요.
   RoomPacketHandler.cpp
   ServerPacketHandler.cpp
   Session.cpp
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Session.cpp(112,44): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다...
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp(106): warning C4715: 'Room::Leave': 모든 제어 경로에서 값을 반환하지는 않습니다.
   Enum.pb.cc
   Message.pb.cc
   Struct.pb.cc
   코드를 생성하고 있습니다...
-  BWServer.vcxproj -> C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServer.exe
+  LINK : C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  BWServer.vcxproj -> C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.exe
