@@ -1,3 +1,23 @@
 ﻿  pch.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(50,50): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(25,11): message : 컴파일되는 함수 템플릿 인스턴스화 'bool ServerPacketHandler::HandlePacket<message::C_Login,bool(__cdecl *)(SessionPtr &,message::C_Login &)>(ProcessFunc,SessionPtr &,boost::asio::mutable_buffer &,int &)'에 대한 참조를 확인하세요.
+          with
+          [
+              ProcessFunc=bool (__cdecl *)(SessionPtr &,message::C_Login &)
+          ]
   test.cpp
-C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Packet.h(3,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'google/protobuf/message.h': No such file or directory
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(50,50): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(25,11): message : 컴파일되는 함수 템플릿 인스턴스화 'bool ServerPacketHandler::HandlePacket<message::C_Login,bool(__cdecl *)(SessionPtr &,message::C_Login &)>(ProcessFunc,SessionPtr &,boost::asio::mutable_buffer &,int &)'에 대한 참조를 확인하세요.
+          with
+          [
+              ProcessFunc=bool (__cdecl *)(SessionPtr &,message::C_Login &)
+          ]
+  BWServerTest.vcxproj -> C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe

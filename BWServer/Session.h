@@ -28,7 +28,7 @@ public:
 	void Start();
 	tcp::socket& GetSocket();
 
-	void Send(asio::mutable_buffer& buffer);
+	virtual void Send(asio::mutable_buffer& buffer);
 
 protected:
 	void AsyncRead();

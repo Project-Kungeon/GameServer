@@ -69,7 +69,7 @@ bool Room::Leave(ObjectPtr object)
 		return false;
 
 	const unsigned int object_id = object->objectInfo->object_id();
-	RemoveObject(object_id);
+	bool success = RemoveObject(object_id);
 
 	// 플레이어라면
 	if (auto player = dynamic_pointer_cast<Player>(object))
@@ -103,6 +103,8 @@ bool Room::Leave(ObjectPtr object)
 			if (auto session = player->session.lock())
 				session->Send(sendBuffer);
 	}
+
+	return success;
 }
 
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
@@ -166,5 +168,5 @@ bool Room::RemoveObject(unsigned int objectId)
 
 	_objects.erase(objectId);
 
-	return false;
+	return true;
 }
