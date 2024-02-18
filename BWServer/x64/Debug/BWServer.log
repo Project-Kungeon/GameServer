@@ -30,8 +30,8 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(25
   GameSession.cpp
   GameSessionManager.cpp
   LobbyPacketHandler.cpp
-  Object.cpp
   ObjectUtils.cpp
+  Object.cpp
   Player.cpp
   RandomUtil.cpp
   Room.cpp
@@ -64,4 +64,5 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Session.cpp(112,44): war
   Message.pb.cc
   Struct.pb.cc
   코드를 생성하고 있습니다...
-  BWServer.vcxproj -> C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.lib
+  LINK : C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  BWServer.vcxproj -> C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.exe

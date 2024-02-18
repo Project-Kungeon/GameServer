@@ -4,8 +4,12 @@
 #include "GameServer.h"
 #include "Room.h"
 
+
 int main()
 {
+    spdlog::set_level(spdlog::level::trace);
+    spdlog::info("SpdLog Test");
+
     int port = 4242;
     boost::asio::io_context io_context;
     GameServer server(io_context, port);

@@ -27,26 +27,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,22 +71,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
     <OutDir>$(SolutionDir)lib</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
     <OutDir>$(SolutionDir)lib</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
     <OutDir>$(SolutionDir)lib</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
     <OutDir>$(SolutionDir)lib</OutDir>
   </PropertyGroup>
