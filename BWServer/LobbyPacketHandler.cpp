@@ -5,7 +5,7 @@
 bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& pkt)
 {
 	// Deserialize Request Packet
-
+	
 
 	// Serialize Response Packet
 	message::S_Login sLogin;
