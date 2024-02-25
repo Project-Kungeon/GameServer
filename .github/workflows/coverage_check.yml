@@ -1,0 +1,22 @@
+name: Coverage Checker
+
+on:
+  pull_request:
+    types: [opened]
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: configure
+      run: ./configure
+      
+    - uses: 5monkeys/cobertura-action@master
+      with:
+        path: ./test_coverage/cobertura.xml
+        minimum_coverage: 75
