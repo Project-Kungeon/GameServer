@@ -138,9 +138,32 @@ bool Room::HandleLeavePlayer(PlayerPtr player)
 	return Leave(player);
 }
 
-void Room::HandleMovePlayer(PlayerPtr player)
+void Room::HandleMove(message::C_Move pkt)
 {
-	// TODO
+	// is there object equals pkt's object id?
+	const uint64 object_id = pkt.posinfo().object_id();
+
+	// no object...
+	if (_objects.find(object_id) == _objects.end())
+		return;
+
+	PlayerPtr player = dynamic_pointer_cast<Player>(_objects[object_id]);
+	player->posInfo->CopyFrom(pkt.posinfo());
+
+	// make buffer for notification that all client received.
+	{
+		message::S_Move movePkt;
+		{
+			message::PosInfo* posInfo = movePkt.mutable_posinfo();
+			posInfo->CopyFrom(pkt.posinfo());
+		}
+		const size_t requiredSize = PacketUtil::RequiredSize(movePkt);
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_MOVE_RES, movePkt);
+
+		Broadcast(sendBuffer, object_id);
+	}
 }
 
 // Room의 STL에 오브젝트 추가
