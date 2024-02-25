@@ -2478,7 +2478,8 @@
             "c:\\users\\noris_g513\\desktop\\workspace\\bwserver\\lib\\include\\spdlog-1.13.0\\include\\spdlog\\sinks\\rotating_file_sink-inl.h",
             "c:\\users\\noris_g513\\desktop\\workspace\\bwserver\\lib\\include\\spdlog-1.13.0\\include\\spdlog\\sinks\\daily_file_sink.h",
             "c:\\users\\noris_g513\\desktop\\workspace\\bwserver\\lib\\include\\spdlog-1.13.0\\include\\spdlog\\fmt\\chrono.h",
-            "c:\\users\\noris_g513\\desktop\\workspace\\bwserver\\lib\\include\\spdlog-1.13.0\\include\\spdlog\\fmt\\bundled\\chrono.h"
+            "c:\\users\\noris_g513\\desktop\\workspace\\bwserver\\lib\\include\\spdlog-1.13.0\\include\\spdlog\\fmt\\bundled\\chrono.h",
+            "c:\\users\\noris_g513\\desktop\\workspace\\bwserver\\bwservertest\\mocksession.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
