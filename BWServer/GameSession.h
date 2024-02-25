@@ -9,7 +9,8 @@ public:
 	virtual void OnConnected() override;
 	virtual void OnDisconnected() override;
 
-private:
+
+public:
 	atomic<std::shared_ptr<Player>> player;
 	
 };
