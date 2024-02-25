@@ -1,8 +1,7 @@
 #pragma once
 #include "Member.h"
+#include "Message.pb.h"
 using namespace std;
-
-
 
 class Room
 {
@@ -14,7 +13,7 @@ public:
 
 	bool HandleEnterPlayer(PlayerPtr player);
 	bool HandleLeavePlayer(PlayerPtr player);
-	void HandleMovePlayer(PlayerPtr player);
+	void HandleMove(message::C_Move pkt);
 
 private:
 	bool AddObject(ObjectPtr object);

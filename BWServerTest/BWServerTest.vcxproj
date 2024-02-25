@@ -34,28 +34,30 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include;C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\src;C:\Users\NoriS_G513\Desktop\workspace\BoostAsio\boost_1_83_0;$(SolutionDir)BWServer\;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\NoriS_G513\Desktop\workspace\protobuf-3.20.3\MakeBuild\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemGroup>
+    <ClInclude Include="MockSession.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LoginTest.h" />
     <ClCompile Include="test.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
