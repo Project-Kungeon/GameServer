@@ -1,0 +1,27 @@
+[2024-02-25 17:42:23] [info] Start Program:
+Path:"C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe"
+Arguments:
+Working directory: "C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServerTest\"
+Modules: Selected: C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.lib C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe Excluded: 
+Sources: Selected: C:\Users\NoriS_G513\Desktop\workspace\BWServer C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServerTest C:\Users\NoriS_G513\Desktop\workspace\BWServer\packages\gmock.1.11.0\lib\native\src\gmock C:\Users\NoriS_G513\Desktop\workspace\BWServer\packages\gmock.1.11.0\lib\native\src\gtest Excluded: gmock pb.cc pb.h BWServerTest spdlog 
+Log Level: Normal
+Cover Children: 1
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Html C:\Users\NoriS_G513\Desktop\workspace Cobertura C:\Users\NoriS_G513\Desktop\workspace\BWServer\test_coverage\cobertura.xml Binary C:\Users\NoriS_G513\AppData\Local\Temp\bne4hrk1.q12 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2024-02-25 17:42:24] [info] Module: C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe is selected because it matches selected pattern: C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe
+[2024-02-25 17:42:24] [info] ----------------------------------------------------
+[2024-02-25 17:42:24] [info] Coverage generated in Folder C:\Users\NoriS_G513\Desktop\workspace
+[2024-02-25 17:42:24] [info] ----------------------------------------------------
+[2024-02-25 17:42:24] [info] ----------------------------------------------------
+[2024-02-25 17:42:24] [info] Cobertura report generated: C:\Users\NoriS_G513\Desktop\workspace\BWServer\test_coverage\cobertura.xml
+[2024-02-25 17:42:24] [info] ----------------------------------------------------
+[2024-02-25 17:42:24] [info] ----------------------------------------------------
+[2024-02-25 17:42:24] [info] Coverage binary generated in file: C:\Users\NoriS_G513\AppData\Local\Temp\bne4hrk1.q12
+[2024-02-25 17:42:24] [info] ----------------------------------------------------
