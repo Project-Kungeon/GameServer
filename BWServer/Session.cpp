@@ -43,15 +43,18 @@ void Session::AsyncRead()
 
 void Session::OnRead(const boost::system::error_code& err, size_t size)
 {
-	std::cout << "OnRead : " << size << '\n';
+	//std::cout << "OnRead : " << size << '\n';
 	if (!err)
 	{
+		std::string addr = GetSocket().remote_endpoint().address().to_string();
+		spdlog::info("OnRead IP: {}, Size: {}", addr, size);
 		HandlePacket(_recvBuffer, size);
 		AsyncRead();
 	}
 	else
 	{
-		std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
+		spdlog::error("error code : {}, msg : {}", err.value(), err.message());
+		//std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
 		//_room.Leave(this->shared_from_this());
 	}
 }
@@ -103,20 +106,4 @@ void Session::HandlePacket(char* ptr, size_t size)
 	//default:
 	//	break;
 	//}
-}
-
-void Session::HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset)
-{
-	std::cout << "Receive LoginReq";
-	message::LoginReq msg;
-	PacketUtil::Parse(msg, buffer, buffer.size(), offset);
-
-	message::LoginRes res;
-	res.set_result(true);
-	const size_t requiredSize = PacketUtil::RequiredSize(res);
-
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::LOGIN_RES, res);
-	this->Send(sendBuffer);
 }

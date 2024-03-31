@@ -28,6 +28,10 @@ public:
 		{
 			return HandlePacket<message::C_EnterRoom>(RoomPacketHandler::Handle_C_EnterRoom, session, buffer, offset);
 		};
+		GPacketHandler[message::HEADER::PLAYER_MOVE_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<message::C_Move>(RoomPacketHandler::Handle_C_Move, session, buffer, offset);
+		};
 		
 
 	}
@@ -47,7 +51,7 @@ private:
 	static bool HandlePacket(ProcessFunc func, SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 	{
 		PacketType pkt;
-		if (!PacketUtil::Parse(pkt, buffer, buffer.size(), offset)) return false;
+		if (!PacketUtil::Parse(pkt, buffer, buffer.size() - offset, offset)) return false;
 
 		return func(session, pkt);
 	}

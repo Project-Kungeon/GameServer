@@ -4,6 +4,11 @@
 #include <boost/asio.hpp>
 #include <boost/asio/buffer.hpp>
 
+#include "spdlog/spdlog.h" 
+#include "spdlog/sinks/basic_file_sink.h" 
+#include "spdlog/sinks/rotating_file_sink.h" 
+#include "spdlog/sinks/daily_file_sink.h" 
+
 using namespace std;
 using namespace boost;
 
@@ -85,6 +90,7 @@ public:
 		}
 		else
 		{
+			spdlog::error(msg.InitializationErrorString());
 			return false;
 		}
 	}
