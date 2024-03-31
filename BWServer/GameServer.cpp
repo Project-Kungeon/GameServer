@@ -23,7 +23,7 @@ void GameServer::OnAccept(SessionPtr session, const boost::system::error_code& e
 {
 	if (!err)
 	{
-		std::cout << "Connected " << '\n';
+		spdlog::info("Session Connected");
 		session->Start();
 	}
 	StartAccept();

@@ -36,7 +36,6 @@ protected:
 	void AsyncWrite(const char* message, size_t size);
 	void OnWrite(const boost::system::error_code& err, size_t size);
 	void HandlePacket(char* ptr, size_t size);
-	void HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset);
 
 	virtual void OnConnected() {};
 	virtual void OnDisconnected() {};

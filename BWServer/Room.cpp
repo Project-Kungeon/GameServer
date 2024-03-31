@@ -68,7 +68,7 @@ bool Room::Leave(ObjectPtr object)
 	if (object == nullptr)
 		return false;
 
-	const unsigned int object_id = object->objectInfo->object_id();
+	const uint64 object_id = object->objectInfo->object_id();
 	bool success = RemoveObject(object_id);
 
 	// 플레이어라면
@@ -108,7 +108,7 @@ bool Room::Leave(ObjectPtr object)
 }
 
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
-void Room::Broadcast(asio::mutable_buffer& buffer, unsigned int exceptId)
+void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 {
 	// 오브젝트 리스트 탐색
 	for (auto& item : _objects)
@@ -180,7 +180,7 @@ bool Room::AddObject(ObjectPtr object)
 }
 
 // Room의 STL에 오브젝트 삭제
-bool Room::RemoveObject(unsigned int objectId)
+bool Room::RemoveObject(uint64 objectId)
 {
 	// 해당 아이디가 존재하지 않다면
 	if (_objects.find(objectId) == _objects.end())

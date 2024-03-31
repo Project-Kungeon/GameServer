@@ -11,7 +11,7 @@ bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_Enter
 	// Serialize Response Packet
 	GRoom[0]->HandleEnterPlayer(player);
 
-	return false;
+	return true;
 }
 
 bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
