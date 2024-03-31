@@ -3273,8 +3273,7 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(25
           [
               ProcessFunc=bool (__cdecl *)(SessionPtr &,message::C_Login &)
           ]
-  gtest-all.cc
   gmock-all.cc
+  gtest-all.cc
   코드를 생성하고 있습니다...
-  LINK : C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
   BWServerTest.vcxproj -> C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe

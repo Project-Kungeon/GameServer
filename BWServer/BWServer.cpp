@@ -3,10 +3,12 @@
 #include "pch.h"
 #include "GameServer.h"
 #include "Room.h"
-
+#include "ServerPacketHandler.h"
 
 int main()
 {
+    ServerPacketHandler::Init();
+    Room::init();
     spdlog::set_level(spdlog::level::trace);
     spdlog::info("SpdLog Test");
 
@@ -14,6 +16,7 @@ int main()
     boost::asio::io_context io_context;
     GameServer server(io_context, port);
     server.StartAccept();
+    spdlog::info("Server Start {}", port);
     std::cout << "Server Start " << port << '\n';
 
     std::vector<thread> threads;
