@@ -90,7 +90,7 @@ public:
 		}
 		else
 		{
-			spdlog::error(msg.InitializationErrorString());
+			spdlog::error("Can not parsing Packet!");
 			return false;
 		}
 	}
