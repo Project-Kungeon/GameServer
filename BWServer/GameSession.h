@@ -9,8 +9,8 @@ public:
 	virtual void OnConnected() override;
 	virtual void OnDisconnected() override;
 
-
 public:
+	bool isEnterGame = false;
 	atomic<std::shared_ptr<Player>> player;
 	
 };

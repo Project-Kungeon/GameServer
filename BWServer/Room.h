@@ -3,13 +3,14 @@
 #include "Message.pb.h"
 using namespace std;
 
-class Room
+class Room : public std::enable_shared_from_this<Room>
 {
 public:
 	static void init();
 	bool Join(ObjectPtr object);
 	bool Leave(ObjectPtr object);
 	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
+	RoomPtr GetRoomRef();
 
 	bool HandleEnterPlayer(PlayerPtr player);
 	bool HandleLeavePlayer(PlayerPtr player);

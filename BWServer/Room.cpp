@@ -59,6 +59,34 @@ bool Room::Join(ObjectPtr object)
 		Broadcast(sendBuffer, object->objectInfo->object_id());
 	}
 
+	// 접속한 플레이어에게 전체 오브젝트 정보를 전달
+	// TODO : 자기 자신 오브젝트는 보내면 안된다. 수정해야할 것.
+	if (auto player = dynamic_pointer_cast<Player>(object))
+	{
+		message::S_Spawn spawnPkt;
+		spdlog::info("{} Player에게 전달할 info 개수 : {}", object->objectInfo->object_id(), _objects.size());
+
+		for (auto& item : _objects)
+		{
+			if (dynamic_pointer_cast<Player>(item.second) == nullptr) continue;
+
+			message::ObjectInfo* playerInfo = spawnPkt.add_players();
+			playerInfo->CopyFrom(*item.second->objectInfo);
+
+		}
+
+		if (auto session = player->session.lock())
+		{
+			const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
+
+			char* rawBuffer = new char[requiredSize];
+			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+			PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_SPAWN_RES, spawnPkt);
+
+			session->Send(sendBuffer);
+		}
+	}
+
 	return success;
 }
 
@@ -110,6 +138,7 @@ bool Room::Leave(ObjectPtr object)
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
 void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 {
+	
 	// 오브젝트 리스트 탐색
 	for (auto& item : _objects)
 	{
@@ -122,10 +151,16 @@ void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 
 		if (GameSessionPtr session = player->session.lock())
 		{
+			spdlog::info("Broadcast to {} player", item.first);
 			session->Send(buffer);
 		}
 	}
 
+}
+
+RoomPtr Room::GetRoomRef()
+{
+	return static_pointer_cast<Room>(shared_from_this());
 }
 
 bool Room::HandleEnterPlayer(PlayerPtr player)
@@ -175,6 +210,7 @@ bool Room::AddObject(ObjectPtr object)
 		return false;
 	}
 	_objects.insert({ object->objectInfo->object_id(), object });
+	object->room.store(GetRoomRef());
 
 	return true;
 }
