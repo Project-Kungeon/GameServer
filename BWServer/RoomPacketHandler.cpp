@@ -37,5 +37,5 @@ bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
 	room->HandleMove(pkt);
 	
 
-	return false;
+	return true;
 }
