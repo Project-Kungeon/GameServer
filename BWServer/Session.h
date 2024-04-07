@@ -36,7 +36,6 @@ protected:
 	void AsyncWrite(const char* message, size_t size);
 	void OnWrite(const boost::system::error_code& err, size_t size);
 	void HandlePacket(char* ptr, size_t size);
-	void HandleLoginReq(asio::mutable_buffer& buffer, const PacketHeader& header, int& offset);
 
 	virtual void OnConnected() {};
 	virtual void OnDisconnected() {};
@@ -44,9 +43,9 @@ protected:
 
 private:
 	tcp::socket _socket;
-	const static int RecvBufferSize = 1024;
+	const static int RecvBufferSize = 2048;
 	char _recvBuffer[RecvBufferSize];
-	const static int SendBufferSize = 1024;
+	const static int SendBufferSize = 2048;
 	char _sendBuffer[SendBufferSize];
 
 	Room& _room;

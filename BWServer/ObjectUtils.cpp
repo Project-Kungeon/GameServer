@@ -13,6 +13,7 @@ PlayerPtr ObjectUtils::CreatePlayer(GameSessionPtr session)
 	player->posInfo->set_object_id(newId);
 	
 	player->session = session;
+	session->player.store(player);
 
 	return player;
 }

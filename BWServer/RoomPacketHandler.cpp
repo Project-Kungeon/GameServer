@@ -9,9 +9,13 @@ bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_Enter
 	PlayerPtr player = ObjectUtils::CreatePlayer(static_pointer_cast<GameSession>(session));
 
 	// Serialize Response Packet
-	GRoom[0]->HandleEnterPlayer(player);
+	bool success = GRoom[0]->HandleEnterPlayer(player);
+	if (success == true)
+	{
+		static_pointer_cast<GameSession>(session)->isEnterGame = true;
+	}
 
-	return false;
+	return true;
 }
 
 bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
@@ -19,7 +23,10 @@ bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
 	// cast into GameSession ( for getting object info)
 	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
 
-	// if is not lock.. get player
+	// 플레이어 정보가 들어오지 않았다면 일단 패스
+	if (!gameSession->isEnterGame) return false;
+
+	// if is not lock.. get player 
 	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
@@ -30,5 +37,5 @@ bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
 	room->HandleMove(pkt);
 	
 
-	return false;
+	return true;
 }

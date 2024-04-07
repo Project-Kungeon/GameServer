@@ -31,18 +31,6 @@ enum HEADER
 	PLAYER_ATTACK_RES = 16;
 }
 
-message LoginReq
-{
-	uint32 id = 1;
-	uint32 id2 = 2;
-	uint32 id3 = 3;
-}
-
-message LoginRes
-{
-	bool result = 1;
-}
-
 // 클라이언트 -> 서버 로그인
 message C_Login
 {
@@ -52,7 +40,7 @@ message C_Login
 // 로그인 성공 후, 서버 -> 클라이언트 결과 반환
 message S_Login
 {
-	bool success = 1;
+	uint32 success = 1;
 	repeated ObjectInfo players = 2;
 }
 
@@ -65,7 +53,7 @@ message C_EnterRoom
 // 방 입장 결과
 message S_EnterRoom
 {
-	bool success = 1;
+	uint32 success = 1;
 	ObjectInfo player = 2;
 }
 
