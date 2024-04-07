@@ -43,9 +43,9 @@ protected:
 
 private:
 	tcp::socket _socket;
-	const static int RecvBufferSize = 1024;
+	const static int RecvBufferSize = 2048;
 	char _recvBuffer[RecvBufferSize];
-	const static int SendBufferSize = 1024;
+	const static int SendBufferSize = 2048;
 	char _sendBuffer[SendBufferSize];
 
 	Room& _room;
