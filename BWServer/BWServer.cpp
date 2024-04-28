@@ -22,11 +22,7 @@ int main()
     std::vector<thread> threads;
     int count = 2;
 
-    //io_context.run();
-
     std::thread t(boost::bind(&boost::asio::io_context::run, &io_context));
-    //std::thread t1(boost::bind(&boost::asio::io_context::run, &io_context));
-    io_context.run();
+
     t.join();
-    //t1.join();
 }
