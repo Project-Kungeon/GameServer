@@ -33,3 +33,6 @@
 
 # VS Cache File
 .vs/*
+
+*.pdb
+*.ilk
