@@ -34,5 +34,5 @@
 # VS Cache File
 .vs/*
 
-*.pdb
-*.ilk
+lib/BWServer.pdb
+BWServer/x64/Debug/BWServer.ilk
