@@ -1,21 +1,21 @@
-[2024-02-25 16:36:27] [info] Start Program:
+[2024-04-28 16:44:01] [info] Start Program:
 Path:"C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.lib"
 Arguments:
 Working directory: "C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\"
-Modules: Selected: C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.lib C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe Excluded: 
+Modules: Selected: C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.exe C:\Users\NoriS_G513\Desktop\workspace\BWServer\x64\Debug\BWServerTest.exe Excluded: 
 Sources: Selected: C:\Users\NoriS_G513\Desktop\workspace\BWServer C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServerTest C:\Users\NoriS_G513\Desktop\workspace\BWServer\packages\gmock.1.11.0\lib\native\src\gmock C:\Users\NoriS_G513\Desktop\workspace\BWServer\packages\gmock.1.11.0\lib\native\src\gtest Excluded: 
 Log Level: Normal
 Cover Children: 0
 Aggregate by file: 1
 Continue after C++ exception: 0
 Optimized build support: 0
-Export: Binary C:\Users\NoriS_G513\AppData\Local\Temp\0lpa5i01.zsn 
+Export: Binary C:\Users\NoriS_G513\AppData\Local\Temp\vvxoovog.jf2 
 Input coverage: 
 Unified diff: 
 Excluded line regular expressions: 
 Substitute pdb source paths: 
 
-[2024-02-25 16:36:27] [error] Error: Cannot run process, check if it is a valid executable:
+[2024-04-28 16:44:01] [error] Error: Cannot run process, check if it is a valid executable:
 Path:"C:\Users\NoriS_G513\Desktop\workspace\BWServer\lib\BWServer.lib"
 Arguments:
 Working directory: "C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\"Last error code:193
