@@ -21,7 +21,7 @@ bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_Enter
 bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
 {
 	// cast into GameSession ( for getting object info)
- 	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
+	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
 
 	// 플레이어 정보가 들어오지 않았다면 일단 패스
 	if (!gameSession->isEnterGame) return false;
