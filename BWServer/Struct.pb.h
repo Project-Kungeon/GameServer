@@ -185,7 +185,9 @@ class PosInfo final :
     kYFieldNumber = 3,
     kZFieldNumber = 4,
     kYawFieldNumber = 5,
-    kStateFieldNumber = 6,
+    kPitchFieldNumber = 6,
+    kRollFieldNumber = 7,
+    kStateFieldNumber = 8,
   };
   // uint64 object_id = 1;
   void clear_object_id();
@@ -232,7 +234,25 @@ class PosInfo final :
   void _internal_set_yaw(float value);
   public:
 
-  // .message.MoveState state = 6;
+  // float pitch = 6;
+  void clear_pitch();
+  float pitch() const;
+  void set_pitch(float value);
+  private:
+  float _internal_pitch() const;
+  void _internal_set_pitch(float value);
+  public:
+
+  // float roll = 7;
+  void clear_roll();
+  float roll() const;
+  void set_roll(float value);
+  private:
+  float _internal_roll() const;
+  void _internal_set_roll(float value);
+  public:
+
+  // .message.MoveState state = 8;
   void clear_state();
   ::message::MoveState state() const;
   void set_state(::message::MoveState value);
@@ -253,6 +273,8 @@ class PosInfo final :
   float y_;
   float z_;
   float yaw_;
+  float pitch_;
+  float roll_;
   int state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
@@ -542,7 +564,47 @@ inline void PosInfo::set_yaw(float value) {
   // @@protoc_insertion_point(field_set:message.PosInfo.yaw)
 }
 
-// .message.MoveState state = 6;
+// float pitch = 6;
+inline void PosInfo::clear_pitch() {
+  pitch_ = 0;
+}
+inline float PosInfo::_internal_pitch() const {
+  return pitch_;
+}
+inline float PosInfo::pitch() const {
+  // @@protoc_insertion_point(field_get:message.PosInfo.pitch)
+  return _internal_pitch();
+}
+inline void PosInfo::_internal_set_pitch(float value) {
+  
+  pitch_ = value;
+}
+inline void PosInfo::set_pitch(float value) {
+  _internal_set_pitch(value);
+  // @@protoc_insertion_point(field_set:message.PosInfo.pitch)
+}
+
+// float roll = 7;
+inline void PosInfo::clear_roll() {
+  roll_ = 0;
+}
+inline float PosInfo::_internal_roll() const {
+  return roll_;
+}
+inline float PosInfo::roll() const {
+  // @@protoc_insertion_point(field_get:message.PosInfo.roll)
+  return _internal_roll();
+}
+inline void PosInfo::_internal_set_roll(float value) {
+  
+  roll_ = value;
+}
+inline void PosInfo::set_roll(float value) {
+  _internal_set_roll(value);
+  // @@protoc_insertion_point(field_set:message.PosInfo.roll)
+}
+
+// .message.MoveState state = 8;
 inline void PosInfo::clear_state() {
   state_ = 0;
 }

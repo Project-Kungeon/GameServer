@@ -28,6 +28,8 @@ PROTOBUF_CONSTEXPR PosInfo::PosInfo(
   , y_(0)
   , z_(0)
   , yaw_(0)
+  , pitch_(0)
+  , roll_(0)
   , state_(0)
 {}
 struct PosInfoDefaultTypeInternal {
@@ -71,6 +73,8 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::message::PosInfo, y_),
   PROTOBUF_FIELD_OFFSET(::message::PosInfo, z_),
   PROTOBUF_FIELD_OFFSET(::message::PosInfo, yaw_),
+  PROTOBUF_FIELD_OFFSET(::message::PosInfo, pitch_),
+  PROTOBUF_FIELD_OFFSET(::message::PosInfo, roll_),
   PROTOBUF_FIELD_OFFSET(::message::PosInfo, state_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::ObjectInfo, _internal_metadata_),
@@ -84,7 +88,7 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::message::PosInfo)},
-  { 12, -1, -1, sizeof(::message::ObjectInfo)},
+  { 14, -1, -1, sizeof(::message::ObjectInfo)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -93,20 +97,21 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_Struct_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014Struct.proto\022\007message\032\nEnum.proto\"m\n\007P"
-  "osInfo\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001"
-  "y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\022!\n\005state"
-  "\030\006 \001(\0162\022.message.MoveState\"m\n\nObjectInfo"
-  "\022\021\n\tobject_id\030\001 \001(\004\022(\n\013object_type\030\002 \001(\016"
-  "2\023.message.ObjectType\022\"\n\010pos_info\030\003 \001(\0132"
-  "\020.message.PosInfob\006proto3"
+  "\n\014Struct.proto\022\007message\032\nEnum.proto\"\212\001\n\007"
+  "PosInfo\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n"
+  "\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\022\r\n\005pitc"
+  "h\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\022!\n\005state\030\010 \001(\0162\022.m"
+  "essage.MoveState\"m\n\nObjectInfo\022\021\n\tobject"
+  "_id\030\001 \001(\004\022(\n\013object_type\030\002 \001(\0162\023.message"
+  ".ObjectType\022\"\n\010pos_info\030\003 \001(\0132\020.message."
+  "PosInfob\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Struct_2eproto_deps[1] = {
   &::descriptor_table_Enum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Struct_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Struct_2eproto = {
-    false, false, 265, descriptor_table_protodef_Struct_2eproto,
+    false, false, 295, descriptor_table_protodef_Struct_2eproto,
     "Struct.proto",
     &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 2,
     schemas, file_default_instances, TableStruct_Struct_2eproto::offsets,
@@ -224,9 +229,25 @@ const char* PosInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) 
         } else
           goto handle_unusual;
         continue;
-      // .message.MoveState state = 6;
+      // float pitch = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          pitch_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float roll = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          roll_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // .message.MoveState state = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_state(static_cast<::message::MoveState>(val));
@@ -308,11 +329,31 @@ uint8_t* PosInfo::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_yaw(), target);
   }
 
-  // .message.MoveState state = 6;
+  // float pitch = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = this->_internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_pitch(), target);
+  }
+
+  // float roll = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = this->_internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_roll(), target);
+  }
+
+  // .message.MoveState state = 8;
   if (this->_internal_state() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      6, this->_internal_state(), target);
+      8, this->_internal_state(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -372,7 +413,25 @@ size_t PosInfo::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // .message.MoveState state = 6;
+  // float pitch = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = this->_internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float roll = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = this->_internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
+    total_size += 1 + 4;
+  }
+
+  // .message.MoveState state = 8;
   if (this->_internal_state() != 0) {
     total_size += 1 +
       ::_pbi::WireFormatLite::EnumSize(this->_internal_state());
@@ -430,6 +489,20 @@ void PosInfo::MergeFrom(const PosInfo& from) {
   memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
   if (raw_yaw != 0) {
     _internal_set_yaw(from._internal_yaw());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = from._internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    _internal_set_pitch(from._internal_pitch());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = from._internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
+    _internal_set_roll(from._internal_roll());
   }
   if (from._internal_state() != 0) {
     _internal_set_state(from._internal_state());

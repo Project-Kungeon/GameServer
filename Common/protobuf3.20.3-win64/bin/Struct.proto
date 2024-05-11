@@ -10,11 +10,19 @@ message PosInfo
 	float y = 3;
 	float z = 4;
 	float yaw = 5;
-	MoveState state = 6;
+	float pitch = 6;
+	float roll = 7;
+	MoveState state = 8;
 }
 
 message ObjectInfo {
 	uint64 object_id = 1;
 	ObjectType object_type = 2;
 	PosInfo pos_info = 3;
+}
+
+message ItemInfo {
+	uint64 item_id = 1;
+	ItemType item_type = 2;
+	string item_description = 3;
 }
