@@ -175,6 +175,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattlePacketHandler.cpp" />
     <ClCompile Include="BWServer.cpp" />
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="Creature.cpp" />
@@ -194,6 +195,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="ObjectUtils.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">
@@ -216,6 +218,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattlePacketHandler.h" />
     <ClInclude Include="CoreMacro.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="Creature.h" />
@@ -226,6 +229,7 @@
     <ClInclude Include="LobbyPacketHandler.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Message.pb.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="ObjectUtils.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Packet.h" />

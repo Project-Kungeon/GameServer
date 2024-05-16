@@ -35,6 +35,7 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(25
           [
               ProcessFunc=bool (__cdecl *)(SessionPtr &,message::C_Login &)
           ]
+  BattlePacketHandler.cpp
   BWServer.cpp
   CorePch.cpp
   Creature.cpp
@@ -42,8 +43,9 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(25
   GameSession.cpp
   GameSessionManager.cpp
   LobbyPacketHandler.cpp
-  Object.cpp
+  Monster.cpp
   ObjectUtils.cpp
+  Object.cpp
   Player.cpp
   RandomUtil.cpp
   Room.cpp

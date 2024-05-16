@@ -201,6 +201,25 @@ void Room::HandleMove(message::C_Move pkt)
 	}
 }
 
+void Room::HandleAttack(message::C_Attack pkt)
+{
+	uint64 attacker_id = pkt.attack_object_id();
+	uint64 victim_id = pkt.victim_object_id();
+	uint32 damage = pkt.damage();
+
+	
+	if (_objects.find(attacker_id) != _objects.end() || _objects.find(victim_id) != _objects.end())
+	{
+		// 공격/피격 오브젝트가 존재하지 않을 경우
+	}
+
+	// TODO : 유효성 검증 해야할 것.
+	PlayerPtr attacker = static_pointer_cast<Player>(_objects[attacker_id]);
+	
+
+
+}
+
 // Room의 STL에 오브젝트 추가
 bool Room::AddObject(ObjectPtr object)
 {

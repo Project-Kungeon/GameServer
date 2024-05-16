@@ -7,6 +7,7 @@ public:
 	virtual ~Player();
 
 public:
+	message::PlayerInfo* player_info;
 	std::weak_ptr<GameSession> session;
 };
 

@@ -56,6 +56,12 @@
     <ClCompile Include="ObjectUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="BattlePacketHandler.cpp">
+      <Filter>Packets\handler\battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Main\Game\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -124,6 +130,12 @@
     <ClInclude Include="ObjectUtils.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="BattlePacketHandler.h">
+      <Filter>Packets\handler\battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Main\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -161,6 +173,9 @@
     </Filter>
     <Filter Include="Main\Game\Object">
       <UniqueIdentifier>{7c618e03-bee1-4e94-8503-f951baade96f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packets\handler\battle">
+      <UniqueIdentifier>{493a6ff4-a495-4e1a-9fee-b9a4c00d7f45}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
