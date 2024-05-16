@@ -17,9 +17,6 @@ public:
 public:
 	atomic<std::weak_ptr<Room>> room;
 
-
-
-
 protected:
 	bool _isPlayer = false;
 };

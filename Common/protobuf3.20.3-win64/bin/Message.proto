@@ -22,7 +22,7 @@ enum HEADER
 	PLAYER_DESPAWN_RES = 10;
 
 	PLAYER_CHAT_REQ = 11;
-	PLAYER_CHAT_RES = 12;
+	PLAYERT_RES = 12;
 
 	PLAYER_MOVE_REQ = 13;
 	PLAYER_MOVE_RES = 14;
@@ -93,9 +93,9 @@ message S_Move
 
 message C_Attack
 {
-	uint64 object_id = 1;
-	uint32 damage = 2;
-	float target_range = 3;
+	uint64 attack_object_id = 1;
+	uint64 victim_object_id = 2;
+	uint32 damage = 3;
 }
 
 message S_Attack

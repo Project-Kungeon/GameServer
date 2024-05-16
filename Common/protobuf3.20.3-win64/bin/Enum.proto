@@ -33,7 +33,7 @@ enum MoveState
 
 enum ItemType
 {
-	NONE = 0;
+	NONE_ITEM = 0;
 	WEAPON_SWORD = 1;
 	POTION_HEALTH = 1001;
 

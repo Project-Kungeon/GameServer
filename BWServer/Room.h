@@ -15,6 +15,7 @@ public:
 	bool HandleEnterPlayer(PlayerPtr player);
 	bool HandleLeavePlayer(PlayerPtr player);
 	void HandleMove(message::C_Move pkt);
+	void HandleAttack(message::C_Attack pkt);
 
 private:
 	bool AddObject(ObjectPtr object);
