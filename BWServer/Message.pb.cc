@@ -47,7 +47,8 @@ struct S_LoginDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_LoginDefaultTypeInternal _S_Login_default_instance_;
 PROTOBUF_CONSTEXPR C_EnterRoom::C_EnterRoom(
     ::_pbi::ConstantInitialized)
-  : playerindex_(uint64_t{0u}){}
+  : player_type_(0)
+{}
 struct C_EnterRoomDefaultTypeInternal {
   PROTOBUF_CONSTEXPR C_EnterRoomDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -59,7 +60,7 @@ struct C_EnterRoomDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_EnterRoomDefaultTypeInternal _C_EnterRoom_default_instance_;
 PROTOBUF_CONSTEXPR S_EnterRoom::S_EnterRoom(
     ::_pbi::ConstantInitialized)
-  : player_(nullptr)
+  : player_info_(nullptr)
   , success_(0u){}
 struct S_EnterRoomDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_EnterRoomDefaultTypeInternal()
@@ -94,7 +95,9 @@ struct S_LeaveRoomDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_LeaveRoomDefaultTypeInternal _S_LeaveRoom_default_instance_;
 PROTOBUF_CONSTEXPR S_Spawn::S_Spawn(
     ::_pbi::ConstantInitialized)
-  : players_(){}
+  : objects_()
+  , creatures_()
+  , players_(){}
 struct S_SpawnDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_SpawnDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -143,9 +146,10 @@ struct S_MoveDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_MoveDefaultTypeInternal _S_Move_default_instance_;
 PROTOBUF_CONSTEXPR C_Attack::C_Attack(
     ::_pbi::ConstantInitialized)
-  : attack_object_id_(uint64_t{0u})
-  , victim_object_id_(uint64_t{0u})
-  , damage_(0u){}
+  : target_ids_()
+  , _target_ids_cached_byte_size_(0)
+  , object_id_(uint64_t{0u})
+  , damage_(0){}
 struct C_AttackDefaultTypeInternal {
   PROTOBUF_CONSTEXPR C_AttackDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -157,10 +161,10 @@ struct C_AttackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_AttackDefaultTypeInternal _C_Attack_default_instance_;
 PROTOBUF_CONSTEXPR S_Attack::S_Attack(
     ::_pbi::ConstantInitialized)
-  : victims_object_ids_()
-  , _victims_object_ids_cached_byte_size_(0)
+  : target_ids_()
+  , _target_ids_cached_byte_size_(0)
   , object_id_(uint64_t{0u})
-  , damage_(0u){}
+  , damage_(0){}
 struct S_AttackDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_AttackDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -223,7 +227,7 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::message::C_EnterRoom, playerindex_),
+  PROTOBUF_FIELD_OFFSET(::message::C_EnterRoom, player_type_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::S_EnterRoom, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -231,7 +235,7 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::message::S_EnterRoom, success_),
-  PROTOBUF_FIELD_OFFSET(::message::S_EnterRoom, player_),
+  PROTOBUF_FIELD_OFFSET(::message::S_EnterRoom, player_info_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::C_LeaveRoom, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -250,6 +254,8 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::message::S_Spawn, objects_),
+  PROTOBUF_FIELD_OFFSET(::message::S_Spawn, creatures_),
   PROTOBUF_FIELD_OFFSET(::message::S_Spawn, players_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::S_Despawn, _internal_metadata_),
@@ -278,8 +284,8 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::message::C_Attack, attack_object_id_),
-  PROTOBUF_FIELD_OFFSET(::message::C_Attack, victim_object_id_),
+  PROTOBUF_FIELD_OFFSET(::message::C_Attack, object_id_),
+  PROTOBUF_FIELD_OFFSET(::message::C_Attack, target_ids_),
   PROTOBUF_FIELD_OFFSET(::message::C_Attack, damage_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::S_Attack, _internal_metadata_),
@@ -288,7 +294,7 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::message::S_Attack, object_id_),
-  PROTOBUF_FIELD_OFFSET(::message::S_Attack, victims_object_ids_),
+  PROTOBUF_FIELD_OFFSET(::message::S_Attack, target_ids_),
   PROTOBUF_FIELD_OFFSET(::message::S_Attack, damage_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::C_PickUp, _internal_metadata_),
@@ -316,13 +322,13 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 29, -1, -1, sizeof(::message::C_LeaveRoom)},
   { 35, -1, -1, sizeof(::message::S_LeaveRoom)},
   { 41, -1, -1, sizeof(::message::S_Spawn)},
-  { 48, -1, -1, sizeof(::message::S_Despawn)},
-  { 55, -1, -1, sizeof(::message::C_Move)},
-  { 62, -1, -1, sizeof(::message::S_Move)},
-  { 69, -1, -1, sizeof(::message::C_Attack)},
-  { 78, -1, -1, sizeof(::message::S_Attack)},
-  { 87, -1, -1, sizeof(::message::C_PickUp)},
-  { 96, -1, -1, sizeof(::message::S_PickUp)},
+  { 50, -1, -1, sizeof(::message::S_Despawn)},
+  { 57, -1, -1, sizeof(::message::C_Move)},
+  { 64, -1, -1, sizeof(::message::S_Move)},
+  { 71, -1, -1, sizeof(::message::C_Attack)},
+  { 80, -1, -1, sizeof(::message::S_Attack)},
+  { 89, -1, -1, sizeof(::message::C_PickUp)},
+  { 98, -1, -1, sizeof(::message::S_PickUp)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -343,42 +349,50 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rMessage.proto\022\007message\032\014Struct.proto\"\t"
-  "\n\007C_Login\"@\n\007S_Login\022\017\n\007success\030\001 \001(\r\022$\n"
-  "\007players\030\002 \003(\0132\023.message.ObjectInfo\"\"\n\013C"
-  "_EnterRoom\022\023\n\013playerIndex\030\001 \001(\004\"C\n\013S_Ent"
-  "erRoom\022\017\n\007success\030\001 \001(\r\022#\n\006player\030\002 \001(\0132"
-  "\023.message.ObjectInfo\"\r\n\013C_LeaveRoom\"\r\n\013S"
-  "_LeaveRoom\"/\n\007S_Spawn\022$\n\007players\030\001 \003(\0132\023"
-  ".message.ObjectInfo\"\037\n\tS_Despawn\022\022\n\nobje"
-  "ct_ids\030\001 \003(\004\"+\n\006C_Move\022!\n\007PosInfo\030\001 \001(\0132"
-  "\020.message.PosInfo\"+\n\006S_Move\022!\n\007PosInfo\030\001"
-  " \001(\0132\020.message.PosInfo\"N\n\010C_Attack\022\030\n\020at"
-  "tack_object_id\030\001 \001(\004\022\030\n\020victim_object_id"
-  "\030\002 \001(\004\022\016\n\006damage\030\003 \001(\r\"I\n\010S_Attack\022\021\n\tob"
-  "ject_id\030\001 \001(\004\022\032\n\022victims_object_ids\030\002 \003("
-  "\004\022\016\n\006damage\030\003 \001(\r\"]\n\010C_PickUp\022\021\n\tobject_"
-  "id\030\001 \001(\004\022\030\n\020picked_object_id\030\002 \001(\004\022$\n\tit"
-  "em_info\030\003 \001(\0132\021.message.ItemInfo\"7\n\010S_Pi"
-  "ckUp\022\021\n\tobject_id\030\001 \001(\004\022\030\n\020picked_object"
-  "_id\030\002 \001(\004*\324\002\n\006HEADER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_"
-  "REQ\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n\016ENTER_ROOM_REQ\020\003"
-  "\022\022\n\016ENTER_ROOM_RES\020\004\022\022\n\016LEAVE_ROOM_REQ\020\005"
-  "\022\022\n\016LEAVE_ROOM_RES\020\006\022\022\n\016LEAVE_GAME_REQ\020\007"
-  "\022\022\n\016LEAVE_GAME_RES\020\010\022\024\n\020PLAYER_SPAWN_RES"
-  "\020\t\022\026\n\022PLAYER_DESPAWN_RES\020\n\022\023\n\017PLAYER_CHA"
-  "T_REQ\020\013\022\017\n\013PLAYERT_RES\020\014\022\023\n\017PLAYER_MOVE_"
-  "REQ\020\r\022\023\n\017PLAYER_MOVE_RES\020\016\022\025\n\021PLAYER_ATT"
-  "ACK_REQ\020\017\022\025\n\021PLAYER_ATTACK_RES\020\020b\006proto3"
+  "\n\rMessage.proto\022\007message\032\nEnum.proto\032\014St"
+  "ruct.proto\"\t\n\007C_Login\"@\n\007S_Login\022\017\n\007succ"
+  "ess\030\001 \001(\r\022$\n\007players\030\002 \003(\0132\023.message.Obj"
+  "ectInfo\"7\n\013C_EnterRoom\022(\n\013player_type\030\001 "
+  "\001(\0162\023.message.PlayerType\"H\n\013S_EnterRoom\022"
+  "\017\n\007success\030\001 \001(\r\022(\n\013player_info\030\002 \001(\0132\023."
+  "message.PlayerInfo\"\r\n\013C_LeaveRoom\"\r\n\013S_L"
+  "eaveRoom\"\177\n\007S_Spawn\022$\n\007objects\030\001 \003(\0132\023.m"
+  "essage.ObjectInfo\022(\n\tcreatures\030\002 \003(\0132\025.m"
+  "essage.CreatureInfo\022$\n\007players\030\003 \003(\0132\023.m"
+  "essage.PlayerInfo\"\037\n\tS_Despawn\022\022\n\nobject"
+  "_ids\030\001 \003(\004\"+\n\006C_Move\022!\n\007PosInfo\030\001 \001(\0132\020."
+  "message.PosInfo\"+\n\006S_Move\022!\n\007PosInfo\030\001 \001"
+  "(\0132\020.message.PosInfo\"A\n\010C_Attack\022\021\n\tobje"
+  "ct_id\030\001 \001(\004\022\022\n\ntarget_ids\030\002 \003(\004\022\016\n\006damag"
+  "e\030\003 \001(\002\"A\n\010S_Attack\022\021\n\tobject_id\030\001 \001(\004\022\022"
+  "\n\ntarget_ids\030\002 \003(\004\022\016\n\006damage\030\003 \001(\002\"]\n\010C_"
+  "PickUp\022\021\n\tobject_id\030\001 \001(\004\022\030\n\020picked_obje"
+  "ct_id\030\002 \001(\004\022$\n\titem_info\030\003 \001(\0132\021.message"
+  ".ItemInfo\"7\n\010S_PickUp\022\021\n\tobject_id\030\001 \001(\004"
+  "\022\030\n\020picked_object_id\030\002 \001(\004*\366\003\n\006HEADER\022\010\n"
+  "\004NONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n"
+  "\016ENTER_ROOM_REQ\020\003\022\022\n\016ENTER_ROOM_RES\020\004\022\022\n"
+  "\016LEAVE_ROOM_REQ\020\005\022\022\n\016LEAVE_ROOM_RES\020\006\022\022\n"
+  "\016LEAVE_GAME_REQ\020\007\022\022\n\016LEAVE_GAME_RES\020\010\022\024\n"
+  "\020PLAYER_SPAWN_RES\020\t\022\026\n\022PLAYER_DESPAWN_RE"
+  "S\020\n\022\023\n\017PLAYER_CHAT_REQ\020\013\022\017\n\013PLAYERT_RES\020"
+  "\014\022\023\n\017PLAYER_MOVE_REQ\020\r\022\023\n\017PLAYER_MOVE_RE"
+  "S\020\016\022\025\n\021PLAYER_ATTACK_REQ\020\017\022\025\n\021PLAYER_ATT"
+  "ACK_RES\020\020\022\026\n\022WARRIOR_ATTACK_REQ\020\021\022\026\n\022WAR"
+  "RIOR_ATTACK_RES\020\022\022\021\n\rWARRIOR_Q_REQ\020\023\022\021\n\r"
+  "WARRIOR_Q_RES\020\024\022\021\n\rWARRIOR_E_REQ\020\025\022\021\n\rWA"
+  "RRIOR_E_RES\020\026\022\021\n\rWARRIOR_R_REQ\020\027\022\021\n\rWARR"
+  "IOR_R_RES\020\030b\006proto3"
   ;
-static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[2] = {
+  &::descriptor_table_Enum_2eproto,
   &::descriptor_table_Struct_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 1080, descriptor_table_protodef_Message_2eproto,
+    false, false, 1339, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
-    &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 1, 14,
+    &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 2, 14,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
     file_level_metadata_Message_2eproto, file_level_enum_descriptors_Message_2eproto,
     file_level_service_descriptors_Message_2eproto,
@@ -413,6 +427,14 @@ bool HEADER_IsValid(int value) {
     case 14:
     case 15:
     case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24:
       return true;
     default:
       return false;
@@ -681,12 +703,12 @@ C_EnterRoom::C_EnterRoom(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 C_EnterRoom::C_EnterRoom(const C_EnterRoom& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  playerindex_ = from.playerindex_;
+  player_type_ = from.player_type_;
   // @@protoc_insertion_point(copy_constructor:message.C_EnterRoom)
 }
 
 inline void C_EnterRoom::SharedCtor() {
-playerindex_ = uint64_t{0u};
+player_type_ = 0;
 }
 
 C_EnterRoom::~C_EnterRoom() {
@@ -712,7 +734,7 @@ void C_EnterRoom::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  playerindex_ = uint64_t{0u};
+  player_type_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -722,11 +744,12 @@ const char* C_EnterRoom::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint64 playerIndex = 1;
+      // .message.PlayerType player_type = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          playerindex_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+          _internal_set_player_type(static_cast<::message::PlayerType>(val));
         } else
           goto handle_unusual;
         continue;
@@ -759,10 +782,11 @@ uint8_t* C_EnterRoom::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 playerIndex = 1;
-  if (this->_internal_playerindex() != 0) {
+  // .message.PlayerType player_type = 1;
+  if (this->_internal_player_type() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_playerindex(), target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_player_type(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -781,9 +805,10 @@ size_t C_EnterRoom::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint64 playerIndex = 1;
-  if (this->_internal_playerindex() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_playerindex());
+  // .message.PlayerType player_type = 1;
+  if (this->_internal_player_type() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_player_type());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -808,8 +833,8 @@ void C_EnterRoom::MergeFrom(const C_EnterRoom& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_playerindex() != 0) {
-    _internal_set_playerindex(from._internal_playerindex());
+  if (from._internal_player_type() != 0) {
+    _internal_set_player_type(from._internal_player_type());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -828,7 +853,7 @@ bool C_EnterRoom::IsInitialized() const {
 void C_EnterRoom::InternalSwap(C_EnterRoom* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(playerindex_, other->playerindex_);
+  swap(player_type_, other->player_type_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_EnterRoom::GetMetadata() const {
@@ -841,18 +866,18 @@ void C_EnterRoom::InternalSwap(C_EnterRoom* other) {
 
 class S_EnterRoom::_Internal {
  public:
-  static const ::message::ObjectInfo& player(const S_EnterRoom* msg);
+  static const ::message::PlayerInfo& player_info(const S_EnterRoom* msg);
 };
 
-const ::message::ObjectInfo&
-S_EnterRoom::_Internal::player(const S_EnterRoom* msg) {
-  return *msg->player_;
+const ::message::PlayerInfo&
+S_EnterRoom::_Internal::player_info(const S_EnterRoom* msg) {
+  return *msg->player_info_;
 }
-void S_EnterRoom::clear_player() {
-  if (GetArenaForAllocation() == nullptr && player_ != nullptr) {
-    delete player_;
+void S_EnterRoom::clear_player_info() {
+  if (GetArenaForAllocation() == nullptr && player_info_ != nullptr) {
+    delete player_info_;
   }
-  player_ = nullptr;
+  player_info_ = nullptr;
 }
 S_EnterRoom::S_EnterRoom(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -863,10 +888,10 @@ S_EnterRoom::S_EnterRoom(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 S_EnterRoom::S_EnterRoom(const S_EnterRoom& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_player()) {
-    player_ = new ::message::ObjectInfo(*from.player_);
+  if (from._internal_has_player_info()) {
+    player_info_ = new ::message::PlayerInfo(*from.player_info_);
   } else {
-    player_ = nullptr;
+    player_info_ = nullptr;
   }
   success_ = from.success_;
   // @@protoc_insertion_point(copy_constructor:message.S_EnterRoom)
@@ -874,9 +899,9 @@ S_EnterRoom::S_EnterRoom(const S_EnterRoom& from)
 
 inline void S_EnterRoom::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&player_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&player_info_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&success_) -
-    reinterpret_cast<char*>(&player_)) + sizeof(success_));
+    reinterpret_cast<char*>(&player_info_)) + sizeof(success_));
 }
 
 S_EnterRoom::~S_EnterRoom() {
@@ -890,7 +915,7 @@ S_EnterRoom::~S_EnterRoom() {
 
 inline void S_EnterRoom::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete player_;
+  if (this != internal_default_instance()) delete player_info_;
 }
 
 void S_EnterRoom::SetCachedSize(int size) const {
@@ -903,10 +928,10 @@ void S_EnterRoom::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaForAllocation() == nullptr && player_ != nullptr) {
-    delete player_;
+  if (GetArenaForAllocation() == nullptr && player_info_ != nullptr) {
+    delete player_info_;
   }
-  player_ = nullptr;
+  player_info_ = nullptr;
   success_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -925,10 +950,10 @@ const char* S_EnterRoom::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
         } else
           goto handle_unusual;
         continue;
-      // .message.ObjectInfo player = 2;
+      // .message.PlayerInfo player_info = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_player(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_player_info(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -968,11 +993,11 @@ uint8_t* S_EnterRoom::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_success(), target);
   }
 
-  // .message.ObjectInfo player = 2;
-  if (this->_internal_has_player()) {
+  // .message.PlayerInfo player_info = 2;
+  if (this->_internal_has_player_info()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::player(this),
-        _Internal::player(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(2, _Internal::player_info(this),
+        _Internal::player_info(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -991,11 +1016,11 @@ size_t S_EnterRoom::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .message.ObjectInfo player = 2;
-  if (this->_internal_has_player()) {
+  // .message.PlayerInfo player_info = 2;
+  if (this->_internal_has_player_info()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *player_);
+        *player_info_);
   }
 
   // uint32 success = 1;
@@ -1025,8 +1050,8 @@ void S_EnterRoom::MergeFrom(const S_EnterRoom& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_player()) {
-    _internal_mutable_player()->::message::ObjectInfo::MergeFrom(from._internal_player());
+  if (from._internal_has_player_info()) {
+    _internal_mutable_player_info()->::message::PlayerInfo::MergeFrom(from._internal_player_info());
   }
   if (from._internal_success() != 0) {
     _internal_set_success(from._internal_success());
@@ -1051,9 +1076,9 @@ void S_EnterRoom::InternalSwap(S_EnterRoom* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(S_EnterRoom, success_)
       + sizeof(S_EnterRoom::success_)
-      - PROTOBUF_FIELD_OFFSET(S_EnterRoom, player_)>(
-          reinterpret_cast<char*>(&player_),
-          reinterpret_cast<char*>(&other->player_));
+      - PROTOBUF_FIELD_OFFSET(S_EnterRoom, player_info_)>(
+          reinterpret_cast<char*>(&player_info_),
+          reinterpret_cast<char*>(&other->player_info_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_EnterRoom::GetMetadata() const {
@@ -1146,18 +1171,28 @@ class S_Spawn::_Internal {
  public:
 };
 
+void S_Spawn::clear_objects() {
+  objects_.Clear();
+}
+void S_Spawn::clear_creatures() {
+  creatures_.Clear();
+}
 void S_Spawn::clear_players() {
   players_.Clear();
 }
 S_Spawn::S_Spawn(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  objects_(arena),
+  creatures_(arena),
   players_(arena) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:message.S_Spawn)
 }
 S_Spawn::S_Spawn(const S_Spawn& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
+      objects_(from.objects_),
+      creatures_(from.creatures_),
       players_(from.players_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:message.S_Spawn)
@@ -1189,6 +1224,8 @@ void S_Spawn::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  objects_.Clear();
+  creatures_.Clear();
   players_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -1199,16 +1236,42 @@ const char* S_Spawn::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) 
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .message.ObjectInfo players = 1;
+      // repeated .message.ObjectInfo objects = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_objects(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .message.CreatureInfo creatures = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_creatures(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .message.PlayerInfo players = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_players(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1241,12 +1304,28 @@ uint8_t* S_Spawn::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .message.ObjectInfo players = 1;
+  // repeated .message.ObjectInfo objects = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_objects_size()); i < n; i++) {
+    const auto& repfield = this->_internal_objects(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // repeated .message.CreatureInfo creatures = 2;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_creatures_size()); i < n; i++) {
+    const auto& repfield = this->_internal_creatures(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // repeated .message.PlayerInfo players = 3;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_players_size()); i < n; i++) {
     const auto& repfield = this->_internal_players(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+        InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1265,7 +1344,21 @@ size_t S_Spawn::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .message.ObjectInfo players = 1;
+  // repeated .message.ObjectInfo objects = 1;
+  total_size += 1UL * this->_internal_objects_size();
+  for (const auto& msg : this->objects_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .message.CreatureInfo creatures = 2;
+  total_size += 1UL * this->_internal_creatures_size();
+  for (const auto& msg : this->creatures_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .message.PlayerInfo players = 3;
   total_size += 1UL * this->_internal_players_size();
   for (const auto& msg : this->players_) {
     total_size +=
@@ -1294,6 +1387,8 @@ void S_Spawn::MergeFrom(const S_Spawn& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  objects_.MergeFrom(from.objects_);
+  creatures_.MergeFrom(from.creatures_);
   players_.MergeFrom(from.players_);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1312,6 +1407,8 @@ bool S_Spawn::IsInitialized() const {
 void S_Spawn::InternalSwap(S_Spawn* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  objects_.InternalSwap(&other->objects_);
+  creatures_.InternalSwap(&other->creatures_);
   players_.InternalSwap(&other->players_);
 }
 
@@ -1899,24 +1996,26 @@ class C_Attack::_Internal {
 
 C_Attack::C_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  target_ids_(arena) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:message.C_Attack)
 }
 C_Attack::C_Attack(const C_Attack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      target_ids_(from.target_ids_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&attack_object_id_, &from.attack_object_id_,
+  ::memcpy(&object_id_, &from.object_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&damage_) -
-    reinterpret_cast<char*>(&attack_object_id_)) + sizeof(damage_));
+    reinterpret_cast<char*>(&object_id_)) + sizeof(damage_));
   // @@protoc_insertion_point(copy_constructor:message.C_Attack)
 }
 
 inline void C_Attack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&attack_object_id_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&damage_) -
-    reinterpret_cast<char*>(&attack_object_id_)) + sizeof(damage_));
+    reinterpret_cast<char*>(&object_id_)) + sizeof(damage_));
 }
 
 C_Attack::~C_Attack() {
@@ -1942,9 +2041,10 @@ void C_Attack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&attack_object_id_, 0, static_cast<size_t>(
+  target_ids_.Clear();
+  ::memset(&object_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&damage_) -
-      reinterpret_cast<char*>(&attack_object_id_)) + sizeof(damage_));
+      reinterpret_cast<char*>(&object_id_)) + sizeof(damage_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1954,27 +2054,30 @@ const char* C_Attack::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint64 attack_object_id = 1;
+      // uint64 object_id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          attack_object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint64 victim_object_id = 2;
+      // repeated uint64 target_ids = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          victim_object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_target_ids(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 16) {
+          _internal_add_target_ids(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 damage = 3;
+      // float damage = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          damage_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          damage_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -2007,22 +2110,29 @@ uint8_t* C_Attack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 attack_object_id = 1;
-  if (this->_internal_attack_object_id() != 0) {
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_attack_object_id(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
   }
 
-  // uint64 victim_object_id = 2;
-  if (this->_internal_victim_object_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(2, this->_internal_victim_object_id(), target);
+  // repeated uint64 target_ids = 2;
+  {
+    int byte_size = _target_ids_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteUInt64Packed(
+          2, _internal_target_ids(), byte_size, target);
+    }
   }
 
-  // uint32 damage = 3;
-  if (this->_internal_damage() != 0) {
+  // float damage = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_damage = this->_internal_damage();
+  uint32_t raw_damage;
+  memcpy(&raw_damage, &tmp_damage, sizeof(tmp_damage));
+  if (raw_damage != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_damage(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_damage(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2041,19 +2151,32 @@ size_t C_Attack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint64 attack_object_id = 1;
-  if (this->_internal_attack_object_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_attack_object_id());
+  // repeated uint64 target_ids = 2;
+  {
+    size_t data_size = ::_pbi::WireFormatLite::
+      UInt64Size(this->target_ids_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    int cached_size = ::_pbi::ToCachedSize(data_size);
+    _target_ids_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
   }
 
-  // uint64 victim_object_id = 2;
-  if (this->_internal_victim_object_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_victim_object_id());
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
   }
 
-  // uint32 damage = 3;
-  if (this->_internal_damage() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_damage());
+  // float damage = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_damage = this->_internal_damage();
+  uint32_t raw_damage;
+  memcpy(&raw_damage, &tmp_damage, sizeof(tmp_damage));
+  if (raw_damage != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2078,13 +2201,15 @@ void C_Attack::MergeFrom(const C_Attack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_attack_object_id() != 0) {
-    _internal_set_attack_object_id(from._internal_attack_object_id());
+  target_ids_.MergeFrom(from.target_ids_);
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
   }
-  if (from._internal_victim_object_id() != 0) {
-    _internal_set_victim_object_id(from._internal_victim_object_id());
-  }
-  if (from._internal_damage() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_damage = from._internal_damage();
+  uint32_t raw_damage;
+  memcpy(&raw_damage, &tmp_damage, sizeof(tmp_damage));
+  if (raw_damage != 0) {
     _internal_set_damage(from._internal_damage());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2104,12 +2229,13 @@ bool C_Attack::IsInitialized() const {
 void C_Attack::InternalSwap(C_Attack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  target_ids_.InternalSwap(&other->target_ids_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(C_Attack, damage_)
       + sizeof(C_Attack::damage_)
-      - PROTOBUF_FIELD_OFFSET(C_Attack, attack_object_id_)>(
-          reinterpret_cast<char*>(&attack_object_id_),
-          reinterpret_cast<char*>(&other->attack_object_id_));
+      - PROTOBUF_FIELD_OFFSET(C_Attack, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_Attack::GetMetadata() const {
@@ -2127,13 +2253,13 @@ class S_Attack::_Internal {
 S_Attack::S_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  victims_object_ids_(arena) {
+  target_ids_(arena) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:message.S_Attack)
 }
 S_Attack::S_Attack(const S_Attack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      victims_object_ids_(from.victims_object_ids_) {
+      target_ids_(from.target_ids_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&object_id_, &from.object_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&damage_) -
@@ -2171,7 +2297,7 @@ void S_Attack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  victims_object_ids_.Clear();
+  target_ids_.Clear();
   ::memset(&object_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&damage_) -
       reinterpret_cast<char*>(&object_id_)) + sizeof(damage_));
@@ -2192,22 +2318,22 @@ const char* S_Attack::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
         } else
           goto handle_unusual;
         continue;
-      // repeated uint64 victims_object_ids = 2;
+      // repeated uint64 target_ids = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_victims_object_ids(), ptr, ctx);
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt64Parser(_internal_mutable_target_ids(), ptr, ctx);
           CHK_(ptr);
         } else if (static_cast<uint8_t>(tag) == 16) {
-          _internal_add_victims_object_ids(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          _internal_add_target_ids(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 damage = 3;
+      // float damage = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          damage_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          damage_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -2246,19 +2372,23 @@ uint8_t* S_Attack::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
   }
 
-  // repeated uint64 victims_object_ids = 2;
+  // repeated uint64 target_ids = 2;
   {
-    int byte_size = _victims_object_ids_cached_byte_size_.load(std::memory_order_relaxed);
+    int byte_size = _target_ids_cached_byte_size_.load(std::memory_order_relaxed);
     if (byte_size > 0) {
       target = stream->WriteUInt64Packed(
-          2, _internal_victims_object_ids(), byte_size, target);
+          2, _internal_target_ids(), byte_size, target);
     }
   }
 
-  // uint32 damage = 3;
-  if (this->_internal_damage() != 0) {
+  // float damage = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_damage = this->_internal_damage();
+  uint32_t raw_damage;
+  memcpy(&raw_damage, &tmp_damage, sizeof(tmp_damage));
+  if (raw_damage != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_damage(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_damage(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2277,16 +2407,16 @@ size_t S_Attack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint64 victims_object_ids = 2;
+  // repeated uint64 target_ids = 2;
   {
     size_t data_size = ::_pbi::WireFormatLite::
-      UInt64Size(this->victims_object_ids_);
+      UInt64Size(this->target_ids_);
     if (data_size > 0) {
       total_size += 1 +
         ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
     }
     int cached_size = ::_pbi::ToCachedSize(data_size);
-    _victims_object_ids_cached_byte_size_.store(cached_size,
+    _target_ids_cached_byte_size_.store(cached_size,
                                     std::memory_order_relaxed);
     total_size += data_size;
   }
@@ -2296,9 +2426,13 @@ size_t S_Attack::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
   }
 
-  // uint32 damage = 3;
-  if (this->_internal_damage() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_damage());
+  // float damage = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_damage = this->_internal_damage();
+  uint32_t raw_damage;
+  memcpy(&raw_damage, &tmp_damage, sizeof(tmp_damage));
+  if (raw_damage != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2323,11 +2457,15 @@ void S_Attack::MergeFrom(const S_Attack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  victims_object_ids_.MergeFrom(from.victims_object_ids_);
+  target_ids_.MergeFrom(from.target_ids_);
   if (from._internal_object_id() != 0) {
     _internal_set_object_id(from._internal_object_id());
   }
-  if (from._internal_damage() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_damage = from._internal_damage();
+  uint32_t raw_damage;
+  memcpy(&raw_damage, &tmp_damage, sizeof(tmp_damage));
+  if (raw_damage != 0) {
     _internal_set_damage(from._internal_damage());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2347,7 +2485,7 @@ bool S_Attack::IsInitialized() const {
 void S_Attack::InternalSwap(S_Attack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  victims_object_ids_.InternalSwap(&other->victims_object_ids_);
+  target_ids_.InternalSwap(&other->target_ids_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(S_Attack, damage_)
       + sizeof(S_Attack::damage_)

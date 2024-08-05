@@ -1,10 +1,12 @@
 #pragma once
 #include "Message.pb.h"
+#include "Skill.pb.h"
 #include "Packet.h"
 
 // 핸들러 모음
 #include "LobbyPacketHandler.h"
 #include "RoomPacketHandler.h"
+#include "BattlePacketHandler.h"
 
 using PacketHandlerFunc = std::function<bool(SessionPtr&, asio::mutable_buffer&, int&)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
@@ -31,6 +33,22 @@ public:
 		GPacketHandler[message::HEADER::PLAYER_MOVE_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			return HandlePacket<message::C_Move>(RoomPacketHandler::Handle_C_Move, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::PLAYER_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<message::C_Attack>(BattlePacketHandler::Handle_C_Attack, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::WARRIOR_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Warrior_Attack>(BattlePacketHandler::Handle_C_WarriorAttack, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::WARRIOR_E_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Warrior_E>(BattlePacketHandler::Handle_C_WarriorE, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::WARRIOR_R_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Warrior_R>(BattlePacketHandler::Handle_C_WarriorR, session, buffer, offset);
 		};
 		
 

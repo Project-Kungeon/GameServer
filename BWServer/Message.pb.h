@@ -32,6 +32,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "Enum.pb.h"
 #include "Struct.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -127,12 +128,20 @@ enum HEADER : int {
   PLAYER_MOVE_RES = 14,
   PLAYER_ATTACK_REQ = 15,
   PLAYER_ATTACK_RES = 16,
+  WARRIOR_ATTACK_REQ = 17,
+  WARRIOR_ATTACK_RES = 18,
+  WARRIOR_Q_REQ = 19,
+  WARRIOR_Q_RES = 20,
+  WARRIOR_E_REQ = 21,
+  WARRIOR_E_RES = 22,
+  WARRIOR_R_REQ = 23,
+  WARRIOR_R_RES = 24,
   HEADER_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   HEADER_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool HEADER_IsValid(int value);
 constexpr HEADER HEADER_MIN = NONE;
-constexpr HEADER HEADER_MAX = PLAYER_ATTACK_RES;
+constexpr HEADER HEADER_MAX = WARRIOR_R_RES;
 constexpr int HEADER_ARRAYSIZE = HEADER_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HEADER_descriptor();
@@ -549,15 +558,15 @@ class C_EnterRoom final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPlayerIndexFieldNumber = 1,
+    kPlayerTypeFieldNumber = 1,
   };
-  // uint64 playerIndex = 1;
-  void clear_playerindex();
-  uint64_t playerindex() const;
-  void set_playerindex(uint64_t value);
+  // .message.PlayerType player_type = 1;
+  void clear_player_type();
+  ::message::PlayerType player_type() const;
+  void set_player_type(::message::PlayerType value);
   private:
-  uint64_t _internal_playerindex() const;
-  void _internal_set_playerindex(uint64_t value);
+  ::message::PlayerType _internal_player_type() const;
+  void _internal_set_player_type(::message::PlayerType value);
   public:
 
   // @@protoc_insertion_point(class_scope:message.C_EnterRoom)
@@ -567,7 +576,7 @@ class C_EnterRoom final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  uint64_t playerindex_;
+  int player_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
@@ -692,26 +701,26 @@ class S_EnterRoom final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPlayerFieldNumber = 2,
+    kPlayerInfoFieldNumber = 2,
     kSuccessFieldNumber = 1,
   };
-  // .message.ObjectInfo player = 2;
-  bool has_player() const;
+  // .message.PlayerInfo player_info = 2;
+  bool has_player_info() const;
   private:
-  bool _internal_has_player() const;
+  bool _internal_has_player_info() const;
   public:
-  void clear_player();
-  const ::message::ObjectInfo& player() const;
-  PROTOBUF_NODISCARD ::message::ObjectInfo* release_player();
-  ::message::ObjectInfo* mutable_player();
-  void set_allocated_player(::message::ObjectInfo* player);
+  void clear_player_info();
+  const ::message::PlayerInfo& player_info() const;
+  PROTOBUF_NODISCARD ::message::PlayerInfo* release_player_info();
+  ::message::PlayerInfo* mutable_player_info();
+  void set_allocated_player_info(::message::PlayerInfo* player_info);
   private:
-  const ::message::ObjectInfo& _internal_player() const;
-  ::message::ObjectInfo* _internal_mutable_player();
+  const ::message::PlayerInfo& _internal_player_info() const;
+  ::message::PlayerInfo* _internal_mutable_player_info();
   public:
-  void unsafe_arena_set_allocated_player(
-      ::message::ObjectInfo* player);
-  ::message::ObjectInfo* unsafe_arena_release_player();
+  void unsafe_arena_set_allocated_player_info(
+      ::message::PlayerInfo* player_info);
+  ::message::PlayerInfo* unsafe_arena_release_player_info();
 
   // uint32 success = 1;
   void clear_success();
@@ -729,7 +738,7 @@ class S_EnterRoom final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::message::ObjectInfo* player_;
+  ::message::PlayerInfo* player_info_;
   uint32_t success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
@@ -1087,24 +1096,62 @@ class S_Spawn final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPlayersFieldNumber = 1,
+    kObjectsFieldNumber = 1,
+    kCreaturesFieldNumber = 2,
+    kPlayersFieldNumber = 3,
   };
-  // repeated .message.ObjectInfo players = 1;
+  // repeated .message.ObjectInfo objects = 1;
+  int objects_size() const;
+  private:
+  int _internal_objects_size() const;
+  public:
+  void clear_objects();
+  ::message::ObjectInfo* mutable_objects(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >*
+      mutable_objects();
+  private:
+  const ::message::ObjectInfo& _internal_objects(int index) const;
+  ::message::ObjectInfo* _internal_add_objects();
+  public:
+  const ::message::ObjectInfo& objects(int index) const;
+  ::message::ObjectInfo* add_objects();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >&
+      objects() const;
+
+  // repeated .message.CreatureInfo creatures = 2;
+  int creatures_size() const;
+  private:
+  int _internal_creatures_size() const;
+  public:
+  void clear_creatures();
+  ::message::CreatureInfo* mutable_creatures(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::CreatureInfo >*
+      mutable_creatures();
+  private:
+  const ::message::CreatureInfo& _internal_creatures(int index) const;
+  ::message::CreatureInfo* _internal_add_creatures();
+  public:
+  const ::message::CreatureInfo& creatures(int index) const;
+  ::message::CreatureInfo* add_creatures();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::CreatureInfo >&
+      creatures() const;
+
+  // repeated .message.PlayerInfo players = 3;
   int players_size() const;
   private:
   int _internal_players_size() const;
   public:
   void clear_players();
-  ::message::ObjectInfo* mutable_players(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >*
+  ::message::PlayerInfo* mutable_players(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo >*
       mutable_players();
   private:
-  const ::message::ObjectInfo& _internal_players(int index) const;
-  ::message::ObjectInfo* _internal_add_players();
+  const ::message::PlayerInfo& _internal_players(int index) const;
+  ::message::PlayerInfo* _internal_add_players();
   public:
-  const ::message::ObjectInfo& players(int index) const;
-  ::message::ObjectInfo* add_players();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >&
+  const ::message::PlayerInfo& players(int index) const;
+  ::message::PlayerInfo* add_players();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo >&
       players() const;
 
   // @@protoc_insertion_point(class_scope:message.S_Spawn)
@@ -1114,7 +1161,9 @@ class S_Spawn final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo > players_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo > objects_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::CreatureInfo > creatures_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo > players_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
@@ -1700,35 +1749,48 @@ class C_Attack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kAttackObjectIdFieldNumber = 1,
-    kVictimObjectIdFieldNumber = 2,
+    kTargetIdsFieldNumber = 2,
+    kObjectIdFieldNumber = 1,
     kDamageFieldNumber = 3,
   };
-  // uint64 attack_object_id = 1;
-  void clear_attack_object_id();
-  uint64_t attack_object_id() const;
-  void set_attack_object_id(uint64_t value);
+  // repeated uint64 target_ids = 2;
+  int target_ids_size() const;
   private:
-  uint64_t _internal_attack_object_id() const;
-  void _internal_set_attack_object_id(uint64_t value);
+  int _internal_target_ids_size() const;
+  public:
+  void clear_target_ids();
+  private:
+  uint64_t _internal_target_ids(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+      _internal_target_ids() const;
+  void _internal_add_target_ids(uint64_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+      _internal_mutable_target_ids();
+  public:
+  uint64_t target_ids(int index) const;
+  void set_target_ids(int index, uint64_t value);
+  void add_target_ids(uint64_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+      target_ids() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+      mutable_target_ids();
+
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
   public:
 
-  // uint64 victim_object_id = 2;
-  void clear_victim_object_id();
-  uint64_t victim_object_id() const;
-  void set_victim_object_id(uint64_t value);
-  private:
-  uint64_t _internal_victim_object_id() const;
-  void _internal_set_victim_object_id(uint64_t value);
-  public:
-
-  // uint32 damage = 3;
+  // float damage = 3;
   void clear_damage();
-  uint32_t damage() const;
-  void set_damage(uint32_t value);
+  float damage() const;
+  void set_damage(float value);
   private:
-  uint32_t _internal_damage() const;
-  void _internal_set_damage(uint32_t value);
+  float _internal_damage() const;
+  void _internal_set_damage(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:message.C_Attack)
@@ -1738,9 +1800,10 @@ class C_Attack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  uint64_t attack_object_id_;
-  uint64_t victim_object_id_;
-  uint32_t damage_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t > target_ids_;
+  mutable std::atomic<int> _target_ids_cached_byte_size_;
+  uint64_t object_id_;
+  float damage_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
@@ -1865,31 +1928,31 @@ class S_Attack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kVictimsObjectIdsFieldNumber = 2,
+    kTargetIdsFieldNumber = 2,
     kObjectIdFieldNumber = 1,
     kDamageFieldNumber = 3,
   };
-  // repeated uint64 victims_object_ids = 2;
-  int victims_object_ids_size() const;
+  // repeated uint64 target_ids = 2;
+  int target_ids_size() const;
   private:
-  int _internal_victims_object_ids_size() const;
+  int _internal_target_ids_size() const;
   public:
-  void clear_victims_object_ids();
+  void clear_target_ids();
   private:
-  uint64_t _internal_victims_object_ids(int index) const;
+  uint64_t _internal_target_ids(int index) const;
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-      _internal_victims_object_ids() const;
-  void _internal_add_victims_object_ids(uint64_t value);
+      _internal_target_ids() const;
+  void _internal_add_target_ids(uint64_t value);
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-      _internal_mutable_victims_object_ids();
+      _internal_mutable_target_ids();
   public:
-  uint64_t victims_object_ids(int index) const;
-  void set_victims_object_ids(int index, uint64_t value);
-  void add_victims_object_ids(uint64_t value);
+  uint64_t target_ids(int index) const;
+  void set_target_ids(int index, uint64_t value);
+  void add_target_ids(uint64_t value);
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-      victims_object_ids() const;
+      target_ids() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-      mutable_victims_object_ids();
+      mutable_target_ids();
 
   // uint64 object_id = 1;
   void clear_object_id();
@@ -1900,13 +1963,13 @@ class S_Attack final :
   void _internal_set_object_id(uint64_t value);
   public:
 
-  // uint32 damage = 3;
+  // float damage = 3;
   void clear_damage();
-  uint32_t damage() const;
-  void set_damage(uint32_t value);
+  float damage() const;
+  void set_damage(float value);
   private:
-  uint32_t _internal_damage() const;
-  void _internal_set_damage(uint32_t value);
+  float _internal_damage() const;
+  void _internal_set_damage(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:message.S_Attack)
@@ -1916,10 +1979,10 @@ class S_Attack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t > victims_object_ids_;
-  mutable std::atomic<int> _victims_object_ids_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t > target_ids_;
+  mutable std::atomic<int> _target_ids_cached_byte_size_;
   uint64_t object_id_;
-  uint32_t damage_;
+  float damage_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
@@ -2327,24 +2390,24 @@ S_Login::players() const {
 
 // C_EnterRoom
 
-// uint64 playerIndex = 1;
-inline void C_EnterRoom::clear_playerindex() {
-  playerindex_ = uint64_t{0u};
+// .message.PlayerType player_type = 1;
+inline void C_EnterRoom::clear_player_type() {
+  player_type_ = 0;
 }
-inline uint64_t C_EnterRoom::_internal_playerindex() const {
-  return playerindex_;
+inline ::message::PlayerType C_EnterRoom::_internal_player_type() const {
+  return static_cast< ::message::PlayerType >(player_type_);
 }
-inline uint64_t C_EnterRoom::playerindex() const {
-  // @@protoc_insertion_point(field_get:message.C_EnterRoom.playerIndex)
-  return _internal_playerindex();
+inline ::message::PlayerType C_EnterRoom::player_type() const {
+  // @@protoc_insertion_point(field_get:message.C_EnterRoom.player_type)
+  return _internal_player_type();
 }
-inline void C_EnterRoom::_internal_set_playerindex(uint64_t value) {
+inline void C_EnterRoom::_internal_set_player_type(::message::PlayerType value) {
   
-  playerindex_ = value;
+  player_type_ = value;
 }
-inline void C_EnterRoom::set_playerindex(uint64_t value) {
-  _internal_set_playerindex(value);
-  // @@protoc_insertion_point(field_set:message.C_EnterRoom.playerIndex)
+inline void C_EnterRoom::set_player_type(::message::PlayerType value) {
+  _internal_set_player_type(value);
+  // @@protoc_insertion_point(field_set:message.C_EnterRoom.player_type)
 }
 
 // -------------------------------------------------------------------
@@ -2371,39 +2434,39 @@ inline void S_EnterRoom::set_success(uint32_t value) {
   // @@protoc_insertion_point(field_set:message.S_EnterRoom.success)
 }
 
-// .message.ObjectInfo player = 2;
-inline bool S_EnterRoom::_internal_has_player() const {
-  return this != internal_default_instance() && player_ != nullptr;
+// .message.PlayerInfo player_info = 2;
+inline bool S_EnterRoom::_internal_has_player_info() const {
+  return this != internal_default_instance() && player_info_ != nullptr;
 }
-inline bool S_EnterRoom::has_player() const {
-  return _internal_has_player();
+inline bool S_EnterRoom::has_player_info() const {
+  return _internal_has_player_info();
 }
-inline const ::message::ObjectInfo& S_EnterRoom::_internal_player() const {
-  const ::message::ObjectInfo* p = player_;
-  return p != nullptr ? *p : reinterpret_cast<const ::message::ObjectInfo&>(
-      ::message::_ObjectInfo_default_instance_);
+inline const ::message::PlayerInfo& S_EnterRoom::_internal_player_info() const {
+  const ::message::PlayerInfo* p = player_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::message::PlayerInfo&>(
+      ::message::_PlayerInfo_default_instance_);
 }
-inline const ::message::ObjectInfo& S_EnterRoom::player() const {
-  // @@protoc_insertion_point(field_get:message.S_EnterRoom.player)
-  return _internal_player();
+inline const ::message::PlayerInfo& S_EnterRoom::player_info() const {
+  // @@protoc_insertion_point(field_get:message.S_EnterRoom.player_info)
+  return _internal_player_info();
 }
-inline void S_EnterRoom::unsafe_arena_set_allocated_player(
-    ::message::ObjectInfo* player) {
+inline void S_EnterRoom::unsafe_arena_set_allocated_player_info(
+    ::message::PlayerInfo* player_info) {
   if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(player_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(player_info_);
   }
-  player_ = player;
-  if (player) {
+  player_info_ = player_info;
+  if (player_info) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:message.S_EnterRoom.player)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:message.S_EnterRoom.player_info)
 }
-inline ::message::ObjectInfo* S_EnterRoom::release_player() {
+inline ::message::PlayerInfo* S_EnterRoom::release_player_info() {
   
-  ::message::ObjectInfo* temp = player_;
-  player_ = nullptr;
+  ::message::PlayerInfo* temp = player_info_;
+  player_info_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
   temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
@@ -2415,45 +2478,45 @@ inline ::message::ObjectInfo* S_EnterRoom::release_player() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::message::ObjectInfo* S_EnterRoom::unsafe_arena_release_player() {
-  // @@protoc_insertion_point(field_release:message.S_EnterRoom.player)
+inline ::message::PlayerInfo* S_EnterRoom::unsafe_arena_release_player_info() {
+  // @@protoc_insertion_point(field_release:message.S_EnterRoom.player_info)
   
-  ::message::ObjectInfo* temp = player_;
-  player_ = nullptr;
+  ::message::PlayerInfo* temp = player_info_;
+  player_info_ = nullptr;
   return temp;
 }
-inline ::message::ObjectInfo* S_EnterRoom::_internal_mutable_player() {
+inline ::message::PlayerInfo* S_EnterRoom::_internal_mutable_player_info() {
   
-  if (player_ == nullptr) {
-    auto* p = CreateMaybeMessage<::message::ObjectInfo>(GetArenaForAllocation());
-    player_ = p;
+  if (player_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::message::PlayerInfo>(GetArenaForAllocation());
+    player_info_ = p;
   }
-  return player_;
+  return player_info_;
 }
-inline ::message::ObjectInfo* S_EnterRoom::mutable_player() {
-  ::message::ObjectInfo* _msg = _internal_mutable_player();
-  // @@protoc_insertion_point(field_mutable:message.S_EnterRoom.player)
+inline ::message::PlayerInfo* S_EnterRoom::mutable_player_info() {
+  ::message::PlayerInfo* _msg = _internal_mutable_player_info();
+  // @@protoc_insertion_point(field_mutable:message.S_EnterRoom.player_info)
   return _msg;
 }
-inline void S_EnterRoom::set_allocated_player(::message::ObjectInfo* player) {
+inline void S_EnterRoom::set_allocated_player_info(::message::PlayerInfo* player_info) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(player_);
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(player_info_);
   }
-  if (player) {
+  if (player_info) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
         ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(player));
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(player_info));
     if (message_arena != submessage_arena) {
-      player = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, player, submessage_arena);
+      player_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, player_info, submessage_arena);
     }
     
   } else {
     
   }
-  player_ = player;
-  // @@protoc_insertion_point(field_set_allocated:message.S_EnterRoom.player)
+  player_info_ = player_info;
+  // @@protoc_insertion_point(field_set_allocated:message.S_EnterRoom.player_info)
 }
 
 // -------------------------------------------------------------------
@@ -2468,38 +2531,112 @@ inline void S_EnterRoom::set_allocated_player(::message::ObjectInfo* player) {
 
 // S_Spawn
 
-// repeated .message.ObjectInfo players = 1;
+// repeated .message.ObjectInfo objects = 1;
+inline int S_Spawn::_internal_objects_size() const {
+  return objects_.size();
+}
+inline int S_Spawn::objects_size() const {
+  return _internal_objects_size();
+}
+inline ::message::ObjectInfo* S_Spawn::mutable_objects(int index) {
+  // @@protoc_insertion_point(field_mutable:message.S_Spawn.objects)
+  return objects_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >*
+S_Spawn::mutable_objects() {
+  // @@protoc_insertion_point(field_mutable_list:message.S_Spawn.objects)
+  return &objects_;
+}
+inline const ::message::ObjectInfo& S_Spawn::_internal_objects(int index) const {
+  return objects_.Get(index);
+}
+inline const ::message::ObjectInfo& S_Spawn::objects(int index) const {
+  // @@protoc_insertion_point(field_get:message.S_Spawn.objects)
+  return _internal_objects(index);
+}
+inline ::message::ObjectInfo* S_Spawn::_internal_add_objects() {
+  return objects_.Add();
+}
+inline ::message::ObjectInfo* S_Spawn::add_objects() {
+  ::message::ObjectInfo* _add = _internal_add_objects();
+  // @@protoc_insertion_point(field_add:message.S_Spawn.objects)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >&
+S_Spawn::objects() const {
+  // @@protoc_insertion_point(field_list:message.S_Spawn.objects)
+  return objects_;
+}
+
+// repeated .message.CreatureInfo creatures = 2;
+inline int S_Spawn::_internal_creatures_size() const {
+  return creatures_.size();
+}
+inline int S_Spawn::creatures_size() const {
+  return _internal_creatures_size();
+}
+inline ::message::CreatureInfo* S_Spawn::mutable_creatures(int index) {
+  // @@protoc_insertion_point(field_mutable:message.S_Spawn.creatures)
+  return creatures_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::CreatureInfo >*
+S_Spawn::mutable_creatures() {
+  // @@protoc_insertion_point(field_mutable_list:message.S_Spawn.creatures)
+  return &creatures_;
+}
+inline const ::message::CreatureInfo& S_Spawn::_internal_creatures(int index) const {
+  return creatures_.Get(index);
+}
+inline const ::message::CreatureInfo& S_Spawn::creatures(int index) const {
+  // @@protoc_insertion_point(field_get:message.S_Spawn.creatures)
+  return _internal_creatures(index);
+}
+inline ::message::CreatureInfo* S_Spawn::_internal_add_creatures() {
+  return creatures_.Add();
+}
+inline ::message::CreatureInfo* S_Spawn::add_creatures() {
+  ::message::CreatureInfo* _add = _internal_add_creatures();
+  // @@protoc_insertion_point(field_add:message.S_Spawn.creatures)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::CreatureInfo >&
+S_Spawn::creatures() const {
+  // @@protoc_insertion_point(field_list:message.S_Spawn.creatures)
+  return creatures_;
+}
+
+// repeated .message.PlayerInfo players = 3;
 inline int S_Spawn::_internal_players_size() const {
   return players_.size();
 }
 inline int S_Spawn::players_size() const {
   return _internal_players_size();
 }
-inline ::message::ObjectInfo* S_Spawn::mutable_players(int index) {
+inline ::message::PlayerInfo* S_Spawn::mutable_players(int index) {
   // @@protoc_insertion_point(field_mutable:message.S_Spawn.players)
   return players_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo >*
 S_Spawn::mutable_players() {
   // @@protoc_insertion_point(field_mutable_list:message.S_Spawn.players)
   return &players_;
 }
-inline const ::message::ObjectInfo& S_Spawn::_internal_players(int index) const {
+inline const ::message::PlayerInfo& S_Spawn::_internal_players(int index) const {
   return players_.Get(index);
 }
-inline const ::message::ObjectInfo& S_Spawn::players(int index) const {
+inline const ::message::PlayerInfo& S_Spawn::players(int index) const {
   // @@protoc_insertion_point(field_get:message.S_Spawn.players)
   return _internal_players(index);
 }
-inline ::message::ObjectInfo* S_Spawn::_internal_add_players() {
+inline ::message::PlayerInfo* S_Spawn::_internal_add_players() {
   return players_.Add();
 }
-inline ::message::ObjectInfo* S_Spawn::add_players() {
-  ::message::ObjectInfo* _add = _internal_add_players();
+inline ::message::PlayerInfo* S_Spawn::add_players() {
+  ::message::PlayerInfo* _add = _internal_add_players();
   // @@protoc_insertion_point(field_add:message.S_Spawn.players)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo >&
 S_Spawn::players() const {
   // @@protoc_insertion_point(field_list:message.S_Spawn.players)
   return players_;
@@ -2738,62 +2875,89 @@ inline void S_Move::set_allocated_posinfo(::message::PosInfo* posinfo) {
 
 // C_Attack
 
-// uint64 attack_object_id = 1;
-inline void C_Attack::clear_attack_object_id() {
-  attack_object_id_ = uint64_t{0u};
+// uint64 object_id = 1;
+inline void C_Attack::clear_object_id() {
+  object_id_ = uint64_t{0u};
 }
-inline uint64_t C_Attack::_internal_attack_object_id() const {
-  return attack_object_id_;
+inline uint64_t C_Attack::_internal_object_id() const {
+  return object_id_;
 }
-inline uint64_t C_Attack::attack_object_id() const {
-  // @@protoc_insertion_point(field_get:message.C_Attack.attack_object_id)
-  return _internal_attack_object_id();
+inline uint64_t C_Attack::object_id() const {
+  // @@protoc_insertion_point(field_get:message.C_Attack.object_id)
+  return _internal_object_id();
 }
-inline void C_Attack::_internal_set_attack_object_id(uint64_t value) {
+inline void C_Attack::_internal_set_object_id(uint64_t value) {
   
-  attack_object_id_ = value;
+  object_id_ = value;
 }
-inline void C_Attack::set_attack_object_id(uint64_t value) {
-  _internal_set_attack_object_id(value);
-  // @@protoc_insertion_point(field_set:message.C_Attack.attack_object_id)
+inline void C_Attack::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:message.C_Attack.object_id)
 }
 
-// uint64 victim_object_id = 2;
-inline void C_Attack::clear_victim_object_id() {
-  victim_object_id_ = uint64_t{0u};
+// repeated uint64 target_ids = 2;
+inline int C_Attack::_internal_target_ids_size() const {
+  return target_ids_.size();
 }
-inline uint64_t C_Attack::_internal_victim_object_id() const {
-  return victim_object_id_;
+inline int C_Attack::target_ids_size() const {
+  return _internal_target_ids_size();
 }
-inline uint64_t C_Attack::victim_object_id() const {
-  // @@protoc_insertion_point(field_get:message.C_Attack.victim_object_id)
-  return _internal_victim_object_id();
+inline void C_Attack::clear_target_ids() {
+  target_ids_.Clear();
 }
-inline void C_Attack::_internal_set_victim_object_id(uint64_t value) {
-  
-  victim_object_id_ = value;
+inline uint64_t C_Attack::_internal_target_ids(int index) const {
+  return target_ids_.Get(index);
 }
-inline void C_Attack::set_victim_object_id(uint64_t value) {
-  _internal_set_victim_object_id(value);
-  // @@protoc_insertion_point(field_set:message.C_Attack.victim_object_id)
+inline uint64_t C_Attack::target_ids(int index) const {
+  // @@protoc_insertion_point(field_get:message.C_Attack.target_ids)
+  return _internal_target_ids(index);
+}
+inline void C_Attack::set_target_ids(int index, uint64_t value) {
+  target_ids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.C_Attack.target_ids)
+}
+inline void C_Attack::_internal_add_target_ids(uint64_t value) {
+  target_ids_.Add(value);
+}
+inline void C_Attack::add_target_ids(uint64_t value) {
+  _internal_add_target_ids(value);
+  // @@protoc_insertion_point(field_add:message.C_Attack.target_ids)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+C_Attack::_internal_target_ids() const {
+  return target_ids_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+C_Attack::target_ids() const {
+  // @@protoc_insertion_point(field_list:message.C_Attack.target_ids)
+  return _internal_target_ids();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+C_Attack::_internal_mutable_target_ids() {
+  return &target_ids_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+C_Attack::mutable_target_ids() {
+  // @@protoc_insertion_point(field_mutable_list:message.C_Attack.target_ids)
+  return _internal_mutable_target_ids();
 }
 
-// uint32 damage = 3;
+// float damage = 3;
 inline void C_Attack::clear_damage() {
-  damage_ = 0u;
+  damage_ = 0;
 }
-inline uint32_t C_Attack::_internal_damage() const {
+inline float C_Attack::_internal_damage() const {
   return damage_;
 }
-inline uint32_t C_Attack::damage() const {
+inline float C_Attack::damage() const {
   // @@protoc_insertion_point(field_get:message.C_Attack.damage)
   return _internal_damage();
 }
-inline void C_Attack::_internal_set_damage(uint32_t value) {
+inline void C_Attack::_internal_set_damage(float value) {
   
   damage_ = value;
 }
-inline void C_Attack::set_damage(uint32_t value) {
+inline void C_Attack::set_damage(float value) {
   _internal_set_damage(value);
   // @@protoc_insertion_point(field_set:message.C_Attack.damage)
 }
@@ -2822,69 +2986,69 @@ inline void S_Attack::set_object_id(uint64_t value) {
   // @@protoc_insertion_point(field_set:message.S_Attack.object_id)
 }
 
-// repeated uint64 victims_object_ids = 2;
-inline int S_Attack::_internal_victims_object_ids_size() const {
-  return victims_object_ids_.size();
+// repeated uint64 target_ids = 2;
+inline int S_Attack::_internal_target_ids_size() const {
+  return target_ids_.size();
 }
-inline int S_Attack::victims_object_ids_size() const {
-  return _internal_victims_object_ids_size();
+inline int S_Attack::target_ids_size() const {
+  return _internal_target_ids_size();
 }
-inline void S_Attack::clear_victims_object_ids() {
-  victims_object_ids_.Clear();
+inline void S_Attack::clear_target_ids() {
+  target_ids_.Clear();
 }
-inline uint64_t S_Attack::_internal_victims_object_ids(int index) const {
-  return victims_object_ids_.Get(index);
+inline uint64_t S_Attack::_internal_target_ids(int index) const {
+  return target_ids_.Get(index);
 }
-inline uint64_t S_Attack::victims_object_ids(int index) const {
-  // @@protoc_insertion_point(field_get:message.S_Attack.victims_object_ids)
-  return _internal_victims_object_ids(index);
+inline uint64_t S_Attack::target_ids(int index) const {
+  // @@protoc_insertion_point(field_get:message.S_Attack.target_ids)
+  return _internal_target_ids(index);
 }
-inline void S_Attack::set_victims_object_ids(int index, uint64_t value) {
-  victims_object_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.S_Attack.victims_object_ids)
+inline void S_Attack::set_target_ids(int index, uint64_t value) {
+  target_ids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.S_Attack.target_ids)
 }
-inline void S_Attack::_internal_add_victims_object_ids(uint64_t value) {
-  victims_object_ids_.Add(value);
+inline void S_Attack::_internal_add_target_ids(uint64_t value) {
+  target_ids_.Add(value);
 }
-inline void S_Attack::add_victims_object_ids(uint64_t value) {
-  _internal_add_victims_object_ids(value);
-  // @@protoc_insertion_point(field_add:message.S_Attack.victims_object_ids)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-S_Attack::_internal_victims_object_ids() const {
-  return victims_object_ids_;
+inline void S_Attack::add_target_ids(uint64_t value) {
+  _internal_add_target_ids(value);
+  // @@protoc_insertion_point(field_add:message.S_Attack.target_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-S_Attack::victims_object_ids() const {
-  // @@protoc_insertion_point(field_list:message.S_Attack.victims_object_ids)
-  return _internal_victims_object_ids();
+S_Attack::_internal_target_ids() const {
+  return target_ids_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+S_Attack::target_ids() const {
+  // @@protoc_insertion_point(field_list:message.S_Attack.target_ids)
+  return _internal_target_ids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-S_Attack::_internal_mutable_victims_object_ids() {
-  return &victims_object_ids_;
+S_Attack::_internal_mutable_target_ids() {
+  return &target_ids_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-S_Attack::mutable_victims_object_ids() {
-  // @@protoc_insertion_point(field_mutable_list:message.S_Attack.victims_object_ids)
-  return _internal_mutable_victims_object_ids();
+S_Attack::mutable_target_ids() {
+  // @@protoc_insertion_point(field_mutable_list:message.S_Attack.target_ids)
+  return _internal_mutable_target_ids();
 }
 
-// uint32 damage = 3;
+// float damage = 3;
 inline void S_Attack::clear_damage() {
-  damage_ = 0u;
+  damage_ = 0;
 }
-inline uint32_t S_Attack::_internal_damage() const {
+inline float S_Attack::_internal_damage() const {
   return damage_;
 }
-inline uint32_t S_Attack::damage() const {
+inline float S_Attack::damage() const {
   // @@protoc_insertion_point(field_get:message.S_Attack.damage)
   return _internal_damage();
 }
-inline void S_Attack::_internal_set_damage(uint32_t value) {
+inline void S_Attack::_internal_set_damage(float value) {
   
   damage_ = value;
 }
-inline void S_Attack::set_damage(uint32_t value) {
+inline void S_Attack::set_damage(float value) {
   _internal_set_damage(value);
   // @@protoc_insertion_point(field_set:message.S_Attack.damage)
 }
