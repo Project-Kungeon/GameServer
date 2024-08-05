@@ -1,6 +1,7 @@
 #pragma once
 #include "Member.h"
 #include "Message.pb.h"
+#include "Skill.pb.h"
 using namespace std;
 
 class Room : public std::enable_shared_from_this<Room>
@@ -16,6 +17,10 @@ public:
 	bool HandleLeavePlayer(PlayerPtr player);
 	void HandleMove(message::C_Move pkt);
 	void HandleAttack(message::C_Attack pkt);
+
+	void HandleWarriorAttack(skill::C_Warrior_Attack pkt);
+	void HandleWarriorR(skill::C_Warrior_R pkt);
+	void HandleWarriorE(skill::C_Warrior_E pkt);
 
 private:
 	bool AddObject(ObjectPtr object);

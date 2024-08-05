@@ -3,6 +3,19 @@ package message;
 
 import "Enum.proto";
 
+message Timestamp {
+  // Represents seconds of UTC time since Unix epoch
+  // 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+  // 9999-12-31T23:59:59Z inclusive.
+  int64 seconds = 1;
+
+  // Non-negative fractions of a second at nanosecond resolution. Negative
+  // second values with fractions must still have non-negative nanos values
+  // that count forward in time. Must be from 0 to 999,999,999
+  // inclusive.
+  int32 nanos = 2;
+}
+
 message PosInfo
 {
 	uint64 object_id = 1;
@@ -19,35 +32,32 @@ message ObjectInfo {
 	uint64 object_id = 1;
 	ObjectType object_type = 2;
 	PosInfo pos_info = 3;
+	Timestamp last_updated = 4;
 }
 
 message CreatureInfo {
-	uint64 object_id = 1;
+	ObjectInfo object_info = 1;
 	CreatureType creature_type = 2;
-	uint32 health = 3;
-	uint32 attack_damage = 4;
+	float hp = 3;
+	float maxHp = 4;
+	float exp = 5;
+
+}
+message SkillCooltime {
+	uint32 q_cooltime = 1;
+	uint32 e_cooltime = 2;
+	uint32 r_cooltime = 3;
+	uint32 ls_cooltime = 4;
 }
 
 message PlayerInfo {
-	uint64 object_id = 1;
+	CreatureInfo creature_info = 1;
 	PlayerType player_type = 2;
+	SkillCooltime skill_cooltime = 3;
 }
 
 message ItemInfo {
 	uint64 item_id = 1;
 	ItemType item_type = 2;
 	repeated string description = 3;
-}
-
-message Timestamp {
-  // Represents seconds of UTC time since Unix epoch
-  // 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
-  // 9999-12-31T23:59:59Z inclusive.
-  int64 seconds = 1;
-
-  // Non-negative fractions of a second at nanosecond resolution. Negative
-  // second values with fractions must still have non-negative nanos values
-  // that count forward in time. Must be from 0 to 999,999,999
-  // inclusive.
-  int32 nanos = 2;
 }

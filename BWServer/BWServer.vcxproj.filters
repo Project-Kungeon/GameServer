@@ -62,6 +62,9 @@
     <ClCompile Include="Monster.cpp">
       <Filter>Main\Game\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Skill.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -136,6 +139,9 @@
     <ClInclude Include="Monster.h">
       <Filter>Main\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Skill.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -192,5 +198,8 @@
       <Filter>Packets</Filter>
     </None>
     <None Include="..\.editorconfig" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
   </ItemGroup>
 </Project>

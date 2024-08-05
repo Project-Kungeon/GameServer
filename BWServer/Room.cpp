@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Room.h"
+#include "ObjectUtils.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
@@ -29,10 +30,7 @@ bool Room::Join(ObjectPtr object)
 	{
 		message::S_EnterRoom enterRoomPkt;
 		enterRoomPkt.set_success(true);
-
-		message::ObjectInfo* objectInfo = new message::ObjectInfo();
-		objectInfo->CopyFrom(*player->objectInfo);
-		enterRoomPkt.set_allocated_player(objectInfo);
+		enterRoomPkt.mutable_player_info()->CopyFrom(ObjectUtils::toPlayerInfo(player));
 		if (auto session = player->session.lock())
 		{
 			const size_t requiredSize = PacketUtil::RequiredSize(enterRoomPkt);
@@ -48,8 +46,11 @@ bool Room::Join(ObjectPtr object)
 	// 모든 클라이언트에게 New 오브젝트 스폰 명령
 	{
 		message::S_Spawn spawnPkt;
-		message::ObjectInfo* objectInfo = spawnPkt.add_players();
-		objectInfo->CopyFrom(*object->objectInfo);
+		if (auto player = dynamic_pointer_cast<Player>(object))
+		{
+			message::PlayerInfo* playerInfo = spawnPkt.add_players();
+			playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(player));
+		}
 
 		const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
 		char* rawBuffer = new char[requiredSize];
@@ -69,10 +70,12 @@ bool Room::Join(ObjectPtr object)
 		for (auto& item : _objects)
 		{
 			if (dynamic_pointer_cast<Player>(item.second) == nullptr) continue;
-
-			message::ObjectInfo* playerInfo = spawnPkt.add_players();
-			playerInfo->CopyFrom(*item.second->objectInfo);
-
+			if (item.first == player->objectInfo->object_id()) continue;
+			if (auto otherPlayer = static_pointer_cast<Player>(item.second))
+			{
+				message::PlayerInfo* playerInfo = spawnPkt.add_players();
+				playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
+			}
 		}
 
 		if (auto session = player->session.lock())
@@ -203,21 +206,76 @@ void Room::HandleMove(message::C_Move pkt)
 
 void Room::HandleAttack(message::C_Attack pkt)
 {
-	uint64 attacker_id = pkt.attack_object_id();
-	uint64 victim_id = pkt.victim_object_id();
+	uint64 attacker_id = pkt.object_id();
 	uint32 damage = pkt.damage();
 
 	
-	if (_objects.find(attacker_id) != _objects.end() || _objects.find(victim_id) != _objects.end())
+	if (_objects.find(attacker_id) != _objects.end())
 	{
-		// 공격/피격 오브젝트가 존재하지 않을 경우
+		message::S_Attack attackPkt;
+		attackPkt.set_object_id(attacker_id);
+		float damage = pkt.damage();
+		auto attacker = static_pointer_cast<Creature>(_objects[attacker_id]);
+		attackPkt.set_damage(pkt.damage());
+
+		for (auto& victim_id : pkt.target_ids())
+		{
+			if (_objects.find(victim_id) != _objects.end())
+			{
+				auto victim = static_pointer_cast<Creature>(_objects[attacker_id]);
+				victim->hp = victim->hp - damage;
+				attackPkt.add_target_ids(victim_id);
+			}
+			
+		}
+		const size_t requiredSize = PacketUtil::RequiredSize(attackPkt);
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_ATTACK_RES, attackPkt);
+
+		Broadcast(sendBuffer, 0);
+		
 	}
 
-	// TODO : 유효성 검증 해야할 것.
-	PlayerPtr attacker = static_pointer_cast<Player>(_objects[attacker_id]);
-	
+}
 
+void Room::HandleWarriorAttack(skill::C_Warrior_Attack pkt)
+{
+	skill::S_Warrior_Attack attackPkt;
+	attackPkt.set_object_id(pkt.object_id());
 
+	const size_t requiredSize = PacketUtil::RequiredSize(attackPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_ATTACK_RES, attackPkt);
+
+	Broadcast(sendBuffer, pkt.object_id());
+}
+
+void Room::HandleWarriorR(skill::C_Warrior_R pkt)
+{
+	skill::S_Warrior_R skillPkt;
+	skillPkt.set_object_id(pkt.object_id());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_R_RES, skillPkt);
+
+	Broadcast(sendBuffer, pkt.object_id());
+}
+
+void Room::HandleWarriorE(skill::C_Warrior_E pkt)
+{
+	skill::S_Warrior_E skillPkt;
+	skillPkt.set_object_id(pkt.object_id());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_REQ, skillPkt);
+
+	Broadcast(sendBuffer, pkt.object_id());
 }
 
 // Room의 STL에 오브젝트 추가

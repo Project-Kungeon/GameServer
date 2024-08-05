@@ -5,10 +5,14 @@ class Creature : public Object
 {
 public:
 	Creature();
+	Creature(message::CreatureType creatuerType, float hp, float maxHp, float exp);
 	virtual ~Creature();
 
 public:
-	message::CreatureInfo* creatureInfo;
+	message::CreatureType creatureType;
+	float hp;
+	float maxHp;
+	float exp;
 
 };
 
