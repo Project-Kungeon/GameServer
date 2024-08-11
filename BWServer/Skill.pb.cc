@@ -167,7 +167,7 @@ struct S_Warrior_LSDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Warrior_LSDefaultTypeInternal _S_Warrior_LS_default_instance_;
 }  // namespace skill
 static ::_pb::Metadata file_level_metadata_Skill_2eproto[11];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Skill_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Skill_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Skill_2eproto = nullptr;
 
 const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -289,28 +289,30 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\013Skill.proto\022\005skill\032\rMessage.proto\"\?\n\nS"
-  "_CoolTime\022\014\n\004time\030\001 \001(\005\022#\n\nskill_type\030\002 "
-  "\001(\0162\017.message.HEADER\"%\n\020C_Warrior_Attack"
-  "\022\021\n\tobject_id\030\001 \001(\004\"%\n\020S_Warrior_Attack\022"
-  "\021\n\tobject_id\030\001 \001(\004\"3\n\013C_Warrior_Q\022\021\n\tobj"
-  "ect_id\030\001 \001(\004\022\021\n\ttarget_id\030\002 \001(\004\"3\n\013S_War"
-  "rior_Q\022\021\n\tobject_id\030\001 \001(\004\022\021\n\ttarget_id\030\002"
-  " \001(\004\" \n\013C_Warrior_E\022\021\n\tobject_id\030\001 \001(\004\" "
-  "\n\013S_Warrior_E\022\021\n\tobject_id\030\001 \001(\004\" \n\013C_Wa"
-  "rrior_R\022\021\n\tobject_id\030\001 \001(\004\" \n\013S_Warrior_"
-  "R\022\021\n\tobject_id\030\001 \001(\004\"O\n\014C_Warrior_LS\022\021\n\t"
-  "object_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n"
-  "\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\"O\n\014S_Warrior_LS\022\021\n"
+  "\n\013Skill.proto\022\005skill\032\rMessage.proto\"@\n\nS"
+  "_CoolTime\022\014\n\004time\030\001 \001(\005\022$\n\nskill_type\030\002 "
+  "\001(\0162\020.skill.SKILLTYPE\"%\n\020C_Warrior_Attac"
+  "k\022\021\n\tobject_id\030\001 \001(\004\"%\n\020S_Warrior_Attack"
+  "\022\021\n\tobject_id\030\001 \001(\004\"3\n\013C_Warrior_Q\022\021\n\tob"
+  "ject_id\030\001 \001(\004\022\021\n\ttarget_id\030\002 \001(\004\"3\n\013S_Wa"
+  "rrior_Q\022\021\n\tobject_id\030\001 \001(\004\022\021\n\ttarget_id\030"
+  "\002 \001(\004\" \n\013C_Warrior_E\022\021\n\tobject_id\030\001 \001(\004\""
+  " \n\013S_Warrior_E\022\021\n\tobject_id\030\001 \001(\004\" \n\013C_W"
+  "arrior_R\022\021\n\tobject_id\030\001 \001(\004\" \n\013S_Warrior"
+  "_R\022\021\n\tobject_id\030\001 \001(\004\"O\n\014C_Warrior_LS\022\021\n"
   "\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t"
-  "\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002b\006proto3"
+  "\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\"O\n\014S_Warrior_LS\022\021"
+  "\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022"
+  "\t\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002*2\n\tSKILLTYPE\022\010\n\004"
+  "NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n\001R\020\003\022\006\n\002LS\020\004b\006pro"
+  "to3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Skill_2eproto_deps[1] = {
   &::descriptor_table_Message_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Skill_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Skill_2eproto = {
-    false, false, 590, descriptor_table_protodef_Skill_2eproto,
+    false, false, 643, descriptor_table_protodef_Skill_2eproto,
     "Skill.proto",
     &descriptor_table_Skill_2eproto_once, descriptor_table_Skill_2eproto_deps, 1, 11,
     schemas, file_default_instances, TableStruct_Skill_2eproto::offsets,
@@ -324,6 +326,23 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Skill_2e
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Skill_2eproto(&descriptor_table_Skill_2eproto);
 namespace skill {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SKILLTYPE_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Skill_2eproto);
+  return file_level_enum_descriptors_Skill_2eproto[0];
+}
+bool SKILLTYPE_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
@@ -396,12 +415,12 @@ const char* S_CoolTime::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
         } else
           goto handle_unusual;
         continue;
-      // .message.HEADER skill_type = 2;
+      // .skill.SKILLTYPE skill_type = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          _internal_set_skill_type(static_cast<::message::HEADER>(val));
+          _internal_set_skill_type(static_cast<::skill::SKILLTYPE>(val));
         } else
           goto handle_unusual;
         continue;
@@ -440,7 +459,7 @@ uint8_t* S_CoolTime::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_time(), target);
   }
 
-  // .message.HEADER skill_type = 2;
+  // .skill.SKILLTYPE skill_type = 2;
   if (this->_internal_skill_type() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
@@ -468,7 +487,7 @@ size_t S_CoolTime::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_time());
   }
 
-  // .message.HEADER skill_type = 2;
+  // .skill.SKILLTYPE skill_type = 2;
   if (this->_internal_skill_type() != 0) {
     total_size += 1 +
       ::_pbi::WireFormatLite::EnumSize(this->_internal_skill_type());

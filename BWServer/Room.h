@@ -22,6 +22,10 @@ public:
 	void HandleWarriorR(skill::C_Warrior_R pkt);
 	void HandleWarriorE(skill::C_Warrior_E pkt);
 
+	// Tick
+public:
+	void HandleCoolTime(long long elapsed_millisecond);
+
 private:
 	bool AddObject(ObjectPtr object);
 	bool RemoveObject(uint64 objectId);

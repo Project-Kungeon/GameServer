@@ -29,6 +29,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "Message.pb.h"
 // @@protoc_insertion_point(includes)
@@ -95,6 +96,34 @@ template<> ::skill::S_Warrior_R* Arena::CreateMaybeMessage<::skill::S_Warrior_R>
 PROTOBUF_NAMESPACE_CLOSE
 namespace skill {
 
+enum SKILLTYPE : int {
+  NONE = 0,
+  Q = 1,
+  E = 2,
+  R = 3,
+  LS = 4,
+  SKILLTYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  SKILLTYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool SKILLTYPE_IsValid(int value);
+constexpr SKILLTYPE SKILLTYPE_MIN = NONE;
+constexpr SKILLTYPE SKILLTYPE_MAX = LS;
+constexpr int SKILLTYPE_ARRAYSIZE = SKILLTYPE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SKILLTYPE_descriptor();
+template<typename T>
+inline const std::string& SKILLTYPE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, SKILLTYPE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function SKILLTYPE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    SKILLTYPE_descriptor(), enum_t_value);
+}
+inline bool SKILLTYPE_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SKILLTYPE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SKILLTYPE>(
+    SKILLTYPE_descriptor(), name, value);
+}
 // ===================================================================
 
 class S_CoolTime final :
@@ -228,13 +257,13 @@ class S_CoolTime final :
   void _internal_set_time(int32_t value);
   public:
 
-  // .message.HEADER skill_type = 2;
+  // .skill.SKILLTYPE skill_type = 2;
   void clear_skill_type();
-  ::message::HEADER skill_type() const;
-  void set_skill_type(::message::HEADER value);
+  ::skill::SKILLTYPE skill_type() const;
+  void set_skill_type(::skill::SKILLTYPE value);
   private:
-  ::message::HEADER _internal_skill_type() const;
-  void _internal_set_skill_type(::message::HEADER value);
+  ::skill::SKILLTYPE _internal_skill_type() const;
+  void _internal_set_skill_type(::skill::SKILLTYPE value);
   public:
 
   // @@protoc_insertion_point(class_scope:skill.S_CoolTime)
@@ -1820,22 +1849,22 @@ inline void S_CoolTime::set_time(int32_t value) {
   // @@protoc_insertion_point(field_set:skill.S_CoolTime.time)
 }
 
-// .message.HEADER skill_type = 2;
+// .skill.SKILLTYPE skill_type = 2;
 inline void S_CoolTime::clear_skill_type() {
   skill_type_ = 0;
 }
-inline ::message::HEADER S_CoolTime::_internal_skill_type() const {
-  return static_cast< ::message::HEADER >(skill_type_);
+inline ::skill::SKILLTYPE S_CoolTime::_internal_skill_type() const {
+  return static_cast< ::skill::SKILLTYPE >(skill_type_);
 }
-inline ::message::HEADER S_CoolTime::skill_type() const {
+inline ::skill::SKILLTYPE S_CoolTime::skill_type() const {
   // @@protoc_insertion_point(field_get:skill.S_CoolTime.skill_type)
   return _internal_skill_type();
 }
-inline void S_CoolTime::_internal_set_skill_type(::message::HEADER value) {
+inline void S_CoolTime::_internal_set_skill_type(::skill::SKILLTYPE value) {
   
   skill_type_ = value;
 }
-inline void S_CoolTime::set_skill_type(::message::HEADER value) {
+inline void S_CoolTime::set_skill_type(::skill::SKILLTYPE value) {
   _internal_set_skill_type(value);
   // @@protoc_insertion_point(field_set:skill.S_CoolTime.skill_type)
 }
@@ -2307,6 +2336,16 @@ inline void S_Warrior_LS::set_yaw(float value) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace skill
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::skill::SKILLTYPE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::skill::SKILLTYPE>() {
+  return ::skill::SKILLTYPE_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

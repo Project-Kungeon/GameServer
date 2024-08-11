@@ -136,12 +136,13 @@ enum HEADER : int {
   WARRIOR_E_RES = 22,
   WARRIOR_R_REQ = 23,
   WARRIOR_R_RES = 24,
+  COOLTIME_RES = 1000,
   HEADER_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   HEADER_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool HEADER_IsValid(int value);
 constexpr HEADER HEADER_MIN = NONE;
-constexpr HEADER HEADER_MAX = WARRIOR_R_RES;
+constexpr HEADER HEADER_MAX = COOLTIME_RES;
 constexpr int HEADER_ARRAYSIZE = HEADER_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HEADER_descriptor();

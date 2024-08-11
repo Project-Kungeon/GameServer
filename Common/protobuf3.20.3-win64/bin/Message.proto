@@ -42,6 +42,8 @@ enum HEADER
 
 	WARRIOR_R_REQ = 23;
 	WARRIOR_R_RES = 24;
+
+	COOLTIME_RES = 1000;
 }
 
 // 클라이언트 -> 서버 로그인
