@@ -3,10 +3,20 @@ package skill;
 
 import "Message.proto";
 
+enum SKILLTYPE
+{
+	NONE = 0;
+
+	Q = 1;
+	E = 2;
+	R = 3;
+	LS = 4;
+}
+
 message S_CoolTime
 {
 	int32 time = 1;
-	.message.HEADER skill_type = 2;
+	SKILLTYPE skill_type = 2;
 }
 
 message C_Warrior_Attack

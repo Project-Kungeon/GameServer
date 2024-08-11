@@ -369,7 +369,7 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "PickUp\022\021\n\tobject_id\030\001 \001(\004\022\030\n\020picked_obje"
   "ct_id\030\002 \001(\004\022$\n\titem_info\030\003 \001(\0132\021.message"
   ".ItemInfo\"7\n\010S_PickUp\022\021\n\tobject_id\030\001 \001(\004"
-  "\022\030\n\020picked_object_id\030\002 \001(\004*\366\003\n\006HEADER\022\010\n"
+  "\022\030\n\020picked_object_id\030\002 \001(\004*\211\004\n\006HEADER\022\010\n"
   "\004NONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n"
   "\016ENTER_ROOM_REQ\020\003\022\022\n\016ENTER_ROOM_RES\020\004\022\022\n"
   "\016LEAVE_ROOM_REQ\020\005\022\022\n\016LEAVE_ROOM_RES\020\006\022\022\n"
@@ -382,7 +382,7 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "RIOR_ATTACK_RES\020\022\022\021\n\rWARRIOR_Q_REQ\020\023\022\021\n\r"
   "WARRIOR_Q_RES\020\024\022\021\n\rWARRIOR_E_REQ\020\025\022\021\n\rWA"
   "RRIOR_E_RES\020\026\022\021\n\rWARRIOR_R_REQ\020\027\022\021\n\rWARR"
-  "IOR_R_RES\020\030b\006proto3"
+  "IOR_R_RES\020\030\022\021\n\014COOLTIME_RES\020\350\007b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[2] = {
   &::descriptor_table_Enum_2eproto,
@@ -390,7 +390,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_dep
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 1339, descriptor_table_protodef_Message_2eproto,
+    false, false, 1358, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
     &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 2, 14,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
@@ -435,6 +435,7 @@ bool HEADER_IsValid(int value) {
     case 22:
     case 23:
     case 24:
+    case 1000:
       return true;
     default:
       return false;

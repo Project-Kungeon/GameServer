@@ -254,6 +254,38 @@ void Room::HandleWarriorAttack(skill::C_Warrior_Attack pkt)
 
 void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 {
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->skillCoolTime->r_cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
+
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+		}
+		else
+		{
+			player->skillCoolTime->set_r_cooltime(20000);
+		}
+	}
+
+	
+
 	skill::S_Warrior_R skillPkt;
 	skillPkt.set_object_id(pkt.object_id());
 
@@ -262,20 +294,94 @@ void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_R_RES, skillPkt);
 
-	Broadcast(sendBuffer, pkt.object_id());
+	Broadcast(sendBuffer, 0);
 }
 
 void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 {
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->skillCoolTime->e_cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->skillCoolTime->e_cooltime());
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+		}
+		else
+		{
+			player->skillCoolTime->set_e_cooltime(10000);
+		}
+	}
+
 	skill::S_Warrior_E skillPkt;
 	skillPkt.set_object_id(pkt.object_id());
 
 	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
 	char* rawBuffer = new char[requiredSize];
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_REQ, skillPkt);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_RES, skillPkt);
 
-	Broadcast(sendBuffer, pkt.object_id());
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleCoolTime(long long elapsed_millisecond)
+{
+	for (auto& item : _objects)
+	{
+		const uint64 object_id = item.first;
+		if (auto player = dynamic_pointer_cast<Player>(item.second))
+		{
+			int decrement = elapsed_millisecond;
+			int qCooltime = player->skillCoolTime->q_cooltime();
+			int eCooltime = player->skillCoolTime->e_cooltime();
+			int rCooltime = player->skillCoolTime->r_cooltime();
+			int lsCooltime = player->skillCoolTime->ls_cooltime();
+			if (qCooltime > 0)
+			{
+				player->skillCoolTime->set_q_cooltime(
+					qCooltime - decrement > 0 ? 
+					qCooltime - decrement : 0
+				);
+			}
+			if (eCooltime > 0)
+			{
+				player->skillCoolTime->set_e_cooltime(
+					eCooltime - decrement > 0 ?
+					eCooltime - decrement : 0
+				);
+			}
+			if (rCooltime > 0)
+			{
+				player->skillCoolTime->set_r_cooltime(
+					rCooltime - decrement > 0 ?
+					rCooltime - decrement : 0
+				);
+				spdlog::info("R cooltime : {}", ((float)rCooltime - decrement) / 1000);
+			}
+			if (lsCooltime > 0)
+			{
+				player->skillCoolTime->set_ls_cooltime(
+					lsCooltime - decrement > 0 ?
+					lsCooltime - decrement : 0
+				);
+			}
+		}
+	}
 }
 
 // Room의 STL에 오브젝트 추가

@@ -65,6 +65,9 @@
     <ClCompile Include="Skill.pb.cc">
       <Filter>Packets\build</Filter>
     </ClCompile>
+    <ClCompile Include="TickGenerator.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -141,6 +144,9 @@
     </ClInclude>
     <ClInclude Include="Skill.pb.h">
       <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="TickGenerator.h">
+      <Filter>Main\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
