@@ -31,7 +31,6 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "Message.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_Skill_2eproto
@@ -47,6 +46,18 @@ struct TableStruct_Skill_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Skill_2eproto;
 namespace skill {
+class C_ASSASSIN_Attack;
+struct C_ASSASSIN_AttackDefaultTypeInternal;
+extern C_ASSASSIN_AttackDefaultTypeInternal _C_ASSASSIN_Attack_default_instance_;
+class C_ASSASSIN_LS;
+struct C_ASSASSIN_LSDefaultTypeInternal;
+extern C_ASSASSIN_LSDefaultTypeInternal _C_ASSASSIN_LS_default_instance_;
+class C_ASSASSIN_Q;
+struct C_ASSASSIN_QDefaultTypeInternal;
+extern C_ASSASSIN_QDefaultTypeInternal _C_ASSASSIN_Q_default_instance_;
+class C_ASSASSIN_R;
+struct C_ASSASSIN_RDefaultTypeInternal;
+extern C_ASSASSIN_RDefaultTypeInternal _C_ASSASSIN_R_default_instance_;
 class C_Warrior_Attack;
 struct C_Warrior_AttackDefaultTypeInternal;
 extern C_Warrior_AttackDefaultTypeInternal _C_Warrior_Attack_default_instance_;
@@ -62,6 +73,18 @@ extern C_Warrior_QDefaultTypeInternal _C_Warrior_Q_default_instance_;
 class C_Warrior_R;
 struct C_Warrior_RDefaultTypeInternal;
 extern C_Warrior_RDefaultTypeInternal _C_Warrior_R_default_instance_;
+class S_ASSASSIN_Attack;
+struct S_ASSASSIN_AttackDefaultTypeInternal;
+extern S_ASSASSIN_AttackDefaultTypeInternal _S_ASSASSIN_Attack_default_instance_;
+class S_ASSASSIN_LS;
+struct S_ASSASSIN_LSDefaultTypeInternal;
+extern S_ASSASSIN_LSDefaultTypeInternal _S_ASSASSIN_LS_default_instance_;
+class S_ASSASSIN_Q;
+struct S_ASSASSIN_QDefaultTypeInternal;
+extern S_ASSASSIN_QDefaultTypeInternal _S_ASSASSIN_Q_default_instance_;
+class S_ASSASSIN_R;
+struct S_ASSASSIN_RDefaultTypeInternal;
+extern S_ASSASSIN_RDefaultTypeInternal _S_ASSASSIN_R_default_instance_;
 class S_CoolTime;
 struct S_CoolTimeDefaultTypeInternal;
 extern S_CoolTimeDefaultTypeInternal _S_CoolTime_default_instance_;
@@ -82,11 +105,19 @@ struct S_Warrior_RDefaultTypeInternal;
 extern S_Warrior_RDefaultTypeInternal _S_Warrior_R_default_instance_;
 }  // namespace skill
 PROTOBUF_NAMESPACE_OPEN
+template<> ::skill::C_ASSASSIN_Attack* Arena::CreateMaybeMessage<::skill::C_ASSASSIN_Attack>(Arena*);
+template<> ::skill::C_ASSASSIN_LS* Arena::CreateMaybeMessage<::skill::C_ASSASSIN_LS>(Arena*);
+template<> ::skill::C_ASSASSIN_Q* Arena::CreateMaybeMessage<::skill::C_ASSASSIN_Q>(Arena*);
+template<> ::skill::C_ASSASSIN_R* Arena::CreateMaybeMessage<::skill::C_ASSASSIN_R>(Arena*);
 template<> ::skill::C_Warrior_Attack* Arena::CreateMaybeMessage<::skill::C_Warrior_Attack>(Arena*);
 template<> ::skill::C_Warrior_E* Arena::CreateMaybeMessage<::skill::C_Warrior_E>(Arena*);
 template<> ::skill::C_Warrior_LS* Arena::CreateMaybeMessage<::skill::C_Warrior_LS>(Arena*);
 template<> ::skill::C_Warrior_Q* Arena::CreateMaybeMessage<::skill::C_Warrior_Q>(Arena*);
 template<> ::skill::C_Warrior_R* Arena::CreateMaybeMessage<::skill::C_Warrior_R>(Arena*);
+template<> ::skill::S_ASSASSIN_Attack* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_Attack>(Arena*);
+template<> ::skill::S_ASSASSIN_LS* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_LS>(Arena*);
+template<> ::skill::S_ASSASSIN_Q* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_Q>(Arena*);
+template<> ::skill::S_ASSASSIN_R* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_R>(Arena*);
 template<> ::skill::S_CoolTime* Arena::CreateMaybeMessage<::skill::S_CoolTime>(Arena*);
 template<> ::skill::S_Warrior_Attack* Arena::CreateMaybeMessage<::skill::S_Warrior_Attack>(Arena*);
 template<> ::skill::S_Warrior_E* Arena::CreateMaybeMessage<::skill::S_Warrior_E>(Arena*);
@@ -1818,6 +1849,1238 @@ class S_Warrior_LS final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
+// -------------------------------------------------------------------
+
+class C_ASSASSIN_Attack final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_ASSASSIN_Attack) */ {
+ public:
+  inline C_ASSASSIN_Attack() : C_ASSASSIN_Attack(nullptr) {}
+  ~C_ASSASSIN_Attack() override;
+  explicit PROTOBUF_CONSTEXPR C_ASSASSIN_Attack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_ASSASSIN_Attack(const C_ASSASSIN_Attack& from);
+  C_ASSASSIN_Attack(C_ASSASSIN_Attack&& from) noexcept
+    : C_ASSASSIN_Attack() {
+    *this = ::std::move(from);
+  }
+
+  inline C_ASSASSIN_Attack& operator=(const C_ASSASSIN_Attack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_ASSASSIN_Attack& operator=(C_ASSASSIN_Attack&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_ASSASSIN_Attack& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_ASSASSIN_Attack* internal_default_instance() {
+    return reinterpret_cast<const C_ASSASSIN_Attack*>(
+               &_C_ASSASSIN_Attack_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(C_ASSASSIN_Attack& a, C_ASSASSIN_Attack& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_ASSASSIN_Attack* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_ASSASSIN_Attack* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_ASSASSIN_Attack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_ASSASSIN_Attack>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_ASSASSIN_Attack& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_ASSASSIN_Attack& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_ASSASSIN_Attack* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_ASSASSIN_Attack";
+  }
+  protected:
+  explicit C_ASSASSIN_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_ASSASSIN_Attack)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_ASSASSIN_Attack final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_ASSASSIN_Attack) */ {
+ public:
+  inline S_ASSASSIN_Attack() : S_ASSASSIN_Attack(nullptr) {}
+  ~S_ASSASSIN_Attack() override;
+  explicit PROTOBUF_CONSTEXPR S_ASSASSIN_Attack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_ASSASSIN_Attack(const S_ASSASSIN_Attack& from);
+  S_ASSASSIN_Attack(S_ASSASSIN_Attack&& from) noexcept
+    : S_ASSASSIN_Attack() {
+    *this = ::std::move(from);
+  }
+
+  inline S_ASSASSIN_Attack& operator=(const S_ASSASSIN_Attack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_ASSASSIN_Attack& operator=(S_ASSASSIN_Attack&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_ASSASSIN_Attack& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_ASSASSIN_Attack* internal_default_instance() {
+    return reinterpret_cast<const S_ASSASSIN_Attack*>(
+               &_S_ASSASSIN_Attack_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(S_ASSASSIN_Attack& a, S_ASSASSIN_Attack& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_ASSASSIN_Attack* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_ASSASSIN_Attack* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_ASSASSIN_Attack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_ASSASSIN_Attack>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_ASSASSIN_Attack& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_ASSASSIN_Attack& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_ASSASSIN_Attack* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_ASSASSIN_Attack";
+  }
+  protected:
+  explicit S_ASSASSIN_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_ASSASSIN_Attack)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_ASSASSIN_Q final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_ASSASSIN_Q) */ {
+ public:
+  inline C_ASSASSIN_Q() : C_ASSASSIN_Q(nullptr) {}
+  ~C_ASSASSIN_Q() override;
+  explicit PROTOBUF_CONSTEXPR C_ASSASSIN_Q(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_ASSASSIN_Q(const C_ASSASSIN_Q& from);
+  C_ASSASSIN_Q(C_ASSASSIN_Q&& from) noexcept
+    : C_ASSASSIN_Q() {
+    *this = ::std::move(from);
+  }
+
+  inline C_ASSASSIN_Q& operator=(const C_ASSASSIN_Q& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_ASSASSIN_Q& operator=(C_ASSASSIN_Q&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_ASSASSIN_Q& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_ASSASSIN_Q* internal_default_instance() {
+    return reinterpret_cast<const C_ASSASSIN_Q*>(
+               &_C_ASSASSIN_Q_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(C_ASSASSIN_Q& a, C_ASSASSIN_Q& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_ASSASSIN_Q* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_ASSASSIN_Q* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_ASSASSIN_Q* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_ASSASSIN_Q>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_ASSASSIN_Q& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_ASSASSIN_Q& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_ASSASSIN_Q* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_ASSASSIN_Q";
+  }
+  protected:
+  explicit C_ASSASSIN_Q(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
+    kYawFieldNumber = 5,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float x = 2;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 3;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 4;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // float yaw = 5;
+  void clear_yaw();
+  float yaw() const;
+  void set_yaw(float value);
+  private:
+  float _internal_yaw() const;
+  void _internal_set_yaw(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_ASSASSIN_Q)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float x_;
+  float y_;
+  float z_;
+  float yaw_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_ASSASSIN_Q final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_ASSASSIN_Q) */ {
+ public:
+  inline S_ASSASSIN_Q() : S_ASSASSIN_Q(nullptr) {}
+  ~S_ASSASSIN_Q() override;
+  explicit PROTOBUF_CONSTEXPR S_ASSASSIN_Q(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_ASSASSIN_Q(const S_ASSASSIN_Q& from);
+  S_ASSASSIN_Q(S_ASSASSIN_Q&& from) noexcept
+    : S_ASSASSIN_Q() {
+    *this = ::std::move(from);
+  }
+
+  inline S_ASSASSIN_Q& operator=(const S_ASSASSIN_Q& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_ASSASSIN_Q& operator=(S_ASSASSIN_Q&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_ASSASSIN_Q& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_ASSASSIN_Q* internal_default_instance() {
+    return reinterpret_cast<const S_ASSASSIN_Q*>(
+               &_S_ASSASSIN_Q_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(S_ASSASSIN_Q& a, S_ASSASSIN_Q& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_ASSASSIN_Q* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_ASSASSIN_Q* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_ASSASSIN_Q* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_ASSASSIN_Q>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_ASSASSIN_Q& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_ASSASSIN_Q& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_ASSASSIN_Q* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_ASSASSIN_Q";
+  }
+  protected:
+  explicit S_ASSASSIN_Q(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
+    kYawFieldNumber = 5,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float x = 2;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 3;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 4;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // float yaw = 5;
+  void clear_yaw();
+  float yaw() const;
+  void set_yaw(float value);
+  private:
+  float _internal_yaw() const;
+  void _internal_set_yaw(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_ASSASSIN_Q)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float x_;
+  float y_;
+  float z_;
+  float yaw_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_ASSASSIN_R final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_ASSASSIN_R) */ {
+ public:
+  inline C_ASSASSIN_R() : C_ASSASSIN_R(nullptr) {}
+  ~C_ASSASSIN_R() override;
+  explicit PROTOBUF_CONSTEXPR C_ASSASSIN_R(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_ASSASSIN_R(const C_ASSASSIN_R& from);
+  C_ASSASSIN_R(C_ASSASSIN_R&& from) noexcept
+    : C_ASSASSIN_R() {
+    *this = ::std::move(from);
+  }
+
+  inline C_ASSASSIN_R& operator=(const C_ASSASSIN_R& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_ASSASSIN_R& operator=(C_ASSASSIN_R&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_ASSASSIN_R& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_ASSASSIN_R* internal_default_instance() {
+    return reinterpret_cast<const C_ASSASSIN_R*>(
+               &_C_ASSASSIN_R_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(C_ASSASSIN_R& a, C_ASSASSIN_R& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_ASSASSIN_R* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_ASSASSIN_R* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_ASSASSIN_R* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_ASSASSIN_R>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_ASSASSIN_R& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_ASSASSIN_R& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_ASSASSIN_R* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_ASSASSIN_R";
+  }
+  protected:
+  explicit C_ASSASSIN_R(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_ASSASSIN_R)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_ASSASSIN_R final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_ASSASSIN_R) */ {
+ public:
+  inline S_ASSASSIN_R() : S_ASSASSIN_R(nullptr) {}
+  ~S_ASSASSIN_R() override;
+  explicit PROTOBUF_CONSTEXPR S_ASSASSIN_R(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_ASSASSIN_R(const S_ASSASSIN_R& from);
+  S_ASSASSIN_R(S_ASSASSIN_R&& from) noexcept
+    : S_ASSASSIN_R() {
+    *this = ::std::move(from);
+  }
+
+  inline S_ASSASSIN_R& operator=(const S_ASSASSIN_R& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_ASSASSIN_R& operator=(S_ASSASSIN_R&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_ASSASSIN_R& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_ASSASSIN_R* internal_default_instance() {
+    return reinterpret_cast<const S_ASSASSIN_R*>(
+               &_S_ASSASSIN_R_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    16;
+
+  friend void swap(S_ASSASSIN_R& a, S_ASSASSIN_R& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_ASSASSIN_R* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_ASSASSIN_R* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_ASSASSIN_R* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_ASSASSIN_R>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_ASSASSIN_R& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_ASSASSIN_R& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_ASSASSIN_R* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_ASSASSIN_R";
+  }
+  protected:
+  explicit S_ASSASSIN_R(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_ASSASSIN_R)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_ASSASSIN_LS final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_ASSASSIN_LS) */ {
+ public:
+  inline C_ASSASSIN_LS() : C_ASSASSIN_LS(nullptr) {}
+  ~C_ASSASSIN_LS() override;
+  explicit PROTOBUF_CONSTEXPR C_ASSASSIN_LS(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_ASSASSIN_LS(const C_ASSASSIN_LS& from);
+  C_ASSASSIN_LS(C_ASSASSIN_LS&& from) noexcept
+    : C_ASSASSIN_LS() {
+    *this = ::std::move(from);
+  }
+
+  inline C_ASSASSIN_LS& operator=(const C_ASSASSIN_LS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_ASSASSIN_LS& operator=(C_ASSASSIN_LS&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_ASSASSIN_LS& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_ASSASSIN_LS* internal_default_instance() {
+    return reinterpret_cast<const C_ASSASSIN_LS*>(
+               &_C_ASSASSIN_LS_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(C_ASSASSIN_LS& a, C_ASSASSIN_LS& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_ASSASSIN_LS* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_ASSASSIN_LS* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_ASSASSIN_LS* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_ASSASSIN_LS>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_ASSASSIN_LS& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_ASSASSIN_LS& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_ASSASSIN_LS* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_ASSASSIN_LS";
+  }
+  protected:
+  explicit C_ASSASSIN_LS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_ASSASSIN_LS)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_ASSASSIN_LS final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_ASSASSIN_LS) */ {
+ public:
+  inline S_ASSASSIN_LS() : S_ASSASSIN_LS(nullptr) {}
+  ~S_ASSASSIN_LS() override;
+  explicit PROTOBUF_CONSTEXPR S_ASSASSIN_LS(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_ASSASSIN_LS(const S_ASSASSIN_LS& from);
+  S_ASSASSIN_LS(S_ASSASSIN_LS&& from) noexcept
+    : S_ASSASSIN_LS() {
+    *this = ::std::move(from);
+  }
+
+  inline S_ASSASSIN_LS& operator=(const S_ASSASSIN_LS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_ASSASSIN_LS& operator=(S_ASSASSIN_LS&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_ASSASSIN_LS& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_ASSASSIN_LS* internal_default_instance() {
+    return reinterpret_cast<const S_ASSASSIN_LS*>(
+               &_S_ASSASSIN_LS_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(S_ASSASSIN_LS& a, S_ASSASSIN_LS& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_ASSASSIN_LS* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_ASSASSIN_LS* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_ASSASSIN_LS* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_ASSASSIN_LS>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_ASSASSIN_LS& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_ASSASSIN_LS& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_ASSASSIN_LS* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_ASSASSIN_LS";
+  }
+  protected:
+  explicit S_ASSASSIN_LS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_ASSASSIN_LS)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
 // ===================================================================
 
 
@@ -2309,9 +3572,377 @@ inline void S_Warrior_LS::set_yaw(float value) {
   // @@protoc_insertion_point(field_set:skill.S_Warrior_LS.yaw)
 }
 
+// -------------------------------------------------------------------
+
+// C_ASSASSIN_Attack
+
+// uint64 object_id = 1;
+inline void C_ASSASSIN_Attack::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_ASSASSIN_Attack::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_ASSASSIN_Attack::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_Attack.object_id)
+  return _internal_object_id();
+}
+inline void C_ASSASSIN_Attack::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_ASSASSIN_Attack::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_Attack.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_ASSASSIN_Attack
+
+// uint64 object_id = 1;
+inline void S_ASSASSIN_Attack::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_ASSASSIN_Attack::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_ASSASSIN_Attack::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_Attack.object_id)
+  return _internal_object_id();
+}
+inline void S_ASSASSIN_Attack::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_ASSASSIN_Attack::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_Attack.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// C_ASSASSIN_Q
+
+// uint64 object_id = 1;
+inline void C_ASSASSIN_Q::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_ASSASSIN_Q::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_ASSASSIN_Q::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_Q.object_id)
+  return _internal_object_id();
+}
+inline void C_ASSASSIN_Q::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_ASSASSIN_Q::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_Q.object_id)
+}
+
+// float x = 2;
+inline void C_ASSASSIN_Q::clear_x() {
+  x_ = 0;
+}
+inline float C_ASSASSIN_Q::_internal_x() const {
+  return x_;
+}
+inline float C_ASSASSIN_Q::x() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_Q.x)
+  return _internal_x();
+}
+inline void C_ASSASSIN_Q::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void C_ASSASSIN_Q::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_Q.x)
+}
+
+// float y = 3;
+inline void C_ASSASSIN_Q::clear_y() {
+  y_ = 0;
+}
+inline float C_ASSASSIN_Q::_internal_y() const {
+  return y_;
+}
+inline float C_ASSASSIN_Q::y() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_Q.y)
+  return _internal_y();
+}
+inline void C_ASSASSIN_Q::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void C_ASSASSIN_Q::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_Q.y)
+}
+
+// float z = 4;
+inline void C_ASSASSIN_Q::clear_z() {
+  z_ = 0;
+}
+inline float C_ASSASSIN_Q::_internal_z() const {
+  return z_;
+}
+inline float C_ASSASSIN_Q::z() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_Q.z)
+  return _internal_z();
+}
+inline void C_ASSASSIN_Q::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void C_ASSASSIN_Q::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_Q.z)
+}
+
+// float yaw = 5;
+inline void C_ASSASSIN_Q::clear_yaw() {
+  yaw_ = 0;
+}
+inline float C_ASSASSIN_Q::_internal_yaw() const {
+  return yaw_;
+}
+inline float C_ASSASSIN_Q::yaw() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_Q.yaw)
+  return _internal_yaw();
+}
+inline void C_ASSASSIN_Q::_internal_set_yaw(float value) {
+  
+  yaw_ = value;
+}
+inline void C_ASSASSIN_Q::set_yaw(float value) {
+  _internal_set_yaw(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_Q.yaw)
+}
+
+// -------------------------------------------------------------------
+
+// S_ASSASSIN_Q
+
+// uint64 object_id = 1;
+inline void S_ASSASSIN_Q::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_ASSASSIN_Q::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_ASSASSIN_Q::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_Q.object_id)
+  return _internal_object_id();
+}
+inline void S_ASSASSIN_Q::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_ASSASSIN_Q::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_Q.object_id)
+}
+
+// float x = 2;
+inline void S_ASSASSIN_Q::clear_x() {
+  x_ = 0;
+}
+inline float S_ASSASSIN_Q::_internal_x() const {
+  return x_;
+}
+inline float S_ASSASSIN_Q::x() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_Q.x)
+  return _internal_x();
+}
+inline void S_ASSASSIN_Q::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void S_ASSASSIN_Q::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_Q.x)
+}
+
+// float y = 3;
+inline void S_ASSASSIN_Q::clear_y() {
+  y_ = 0;
+}
+inline float S_ASSASSIN_Q::_internal_y() const {
+  return y_;
+}
+inline float S_ASSASSIN_Q::y() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_Q.y)
+  return _internal_y();
+}
+inline void S_ASSASSIN_Q::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void S_ASSASSIN_Q::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_Q.y)
+}
+
+// float z = 4;
+inline void S_ASSASSIN_Q::clear_z() {
+  z_ = 0;
+}
+inline float S_ASSASSIN_Q::_internal_z() const {
+  return z_;
+}
+inline float S_ASSASSIN_Q::z() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_Q.z)
+  return _internal_z();
+}
+inline void S_ASSASSIN_Q::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void S_ASSASSIN_Q::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_Q.z)
+}
+
+// float yaw = 5;
+inline void S_ASSASSIN_Q::clear_yaw() {
+  yaw_ = 0;
+}
+inline float S_ASSASSIN_Q::_internal_yaw() const {
+  return yaw_;
+}
+inline float S_ASSASSIN_Q::yaw() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_Q.yaw)
+  return _internal_yaw();
+}
+inline void S_ASSASSIN_Q::_internal_set_yaw(float value) {
+  
+  yaw_ = value;
+}
+inline void S_ASSASSIN_Q::set_yaw(float value) {
+  _internal_set_yaw(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_Q.yaw)
+}
+
+// -------------------------------------------------------------------
+
+// C_ASSASSIN_R
+
+// uint64 object_id = 1;
+inline void C_ASSASSIN_R::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_ASSASSIN_R::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_ASSASSIN_R::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_R.object_id)
+  return _internal_object_id();
+}
+inline void C_ASSASSIN_R::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_ASSASSIN_R::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_R.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_ASSASSIN_R
+
+// uint64 object_id = 1;
+inline void S_ASSASSIN_R::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_ASSASSIN_R::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_ASSASSIN_R::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_R.object_id)
+  return _internal_object_id();
+}
+inline void S_ASSASSIN_R::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_ASSASSIN_R::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_R.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// C_ASSASSIN_LS
+
+// uint64 object_id = 1;
+inline void C_ASSASSIN_LS::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_ASSASSIN_LS::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_ASSASSIN_LS::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_ASSASSIN_LS.object_id)
+  return _internal_object_id();
+}
+inline void C_ASSASSIN_LS::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_ASSASSIN_LS::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_ASSASSIN_LS.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_ASSASSIN_LS
+
+// uint64 object_id = 1;
+inline void S_ASSASSIN_LS::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_ASSASSIN_LS::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_ASSASSIN_LS::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_ASSASSIN_LS.object_id)
+  return _internal_object_id();
+}
+inline void S_ASSASSIN_LS::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_ASSASSIN_LS::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_ASSASSIN_LS.object_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

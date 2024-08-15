@@ -25,3 +25,23 @@ bool BattlePacketHandler::Handle_C_WarriorE(SessionPtr& session, skill::C_Warrio
 	GRoom[0]->HandleWarriorE(pkt);
 	return true;
 }
+
+bool BattlePacketHandler::Handle_C_AssassinAttack(SessionPtr& session, skill::C_ASSASSIN_Q& pkt)
+{
+	return false;
+}
+
+bool BattlePacketHandler::Handle_C_AssassinQ(SessionPtr& session, skill::C_ASSASSIN_Q& pkt)
+{
+	return false;
+}
+
+bool BattlePacketHandler::Handle_C_AssassinR(SessionPtr& session, skill::C_ASSASSIN_R& pkt)
+{
+	return false;
+}
+
+bool BattlePacketHandler::Handle_C_AssassinLS(SessionPtr& session, skill::C_ASSASSIN_LS& pkt)
+{
+	return false;
+}
