@@ -339,6 +339,149 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 	Broadcast(sendBuffer, 0);
 }
 
+void Room::HandleAssassinAttack(skill::C_ASSASSIN_Attack pkt)
+{
+	skill::S_ASSASSIN_Attack attackPkt;
+	attackPkt.set_object_id(pkt.object_id());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(attackPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_ATTACK_RES, attackPkt);
+
+	Broadcast(sendBuffer, pkt.object_id());
+}
+
+void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->skillCoolTime->q_cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+
+		}
+		else
+		{
+			player->skillCoolTime->set_q_cooltime(5000);
+		}
+		skill::S_ASSASSIN_Q skillPkt;
+		skillPkt.set_object_id(pkt.object_id());
+		skillPkt.set_x(pkt.x());
+		skillPkt.set_y(pkt.y());
+		skillPkt.set_z(pkt.z());
+		skillPkt.set_yaw(pkt.yaw());
+
+		const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_Q_RES, skillPkt);
+
+		Broadcast(sendBuffer, 0);
+	}
+}
+
+void Room::HandleAssassinR(skill::C_ASSASSIN_R pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->skillCoolTime->r_cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+
+		}
+		else
+		{
+			player->skillCoolTime->set_r_cooltime(20000);
+		}
+		skill::S_ASSASSIN_R skillPkt;
+		skillPkt.set_object_id(pkt.object_id());
+
+		const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_R_RES, skillPkt);
+
+		Broadcast(sendBuffer, 0);
+	}
+}
+
+void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->skillCoolTime->ls_cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+
+		}
+		else
+		{
+			player->skillCoolTime->set_ls_cooltime(5000);
+		}
+		skill::S_ASSASSIN_LS skillPkt;
+		skillPkt.set_object_id(pkt.object_id());
+
+		const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_LS_RES, skillPkt);
+
+		Broadcast(sendBuffer, 0);
+	}
+}
+
 void Room::HandleCoolTime(long long elapsed_millisecond)
 {
 	for (auto& item : _objects)
