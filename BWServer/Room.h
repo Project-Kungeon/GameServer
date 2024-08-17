@@ -22,6 +22,11 @@ public:
 	void HandleWarriorR(skill::C_Warrior_R pkt);
 	void HandleWarriorE(skill::C_Warrior_E pkt);
 
+	void HandleAssassinAttack(skill::C_ASSASSIN_Attack pkt);
+	void HandleAssassinQ(skill::C_ASSASSIN_Q pkt);
+	void HandleAssassinR(skill::C_ASSASSIN_R pkt);
+	void HandleAssassinLS(skill::C_ASSASSIN_LS pkt);
+
 	// Tick
 public:
 	void HandleCoolTime(long long elapsed_millisecond);
