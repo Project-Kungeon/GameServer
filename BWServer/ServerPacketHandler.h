@@ -38,6 +38,8 @@ public:
 		{
 			return HandlePacket<message::C_Attack>(BattlePacketHandler::Handle_C_Attack, session, buffer, offset);
 		};
+
+		// Warrior
 		GPacketHandler[message::HEADER::WARRIOR_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			return HandlePacket<skill::C_Warrior_Attack>(BattlePacketHandler::Handle_C_WarriorAttack, session, buffer, offset);
@@ -49,6 +51,24 @@ public:
 		GPacketHandler[message::HEADER::WARRIOR_R_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			return HandlePacket<skill::C_Warrior_R>(BattlePacketHandler::Handle_C_WarriorR, session, buffer, offset);
+		};
+
+		// Assassin
+		GPacketHandler[message::HEADER::ASSASSIN_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_ASSASSIN_Attack>(BattlePacketHandler::Handle_C_AssassinAttack, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::ASSASSIN_Q_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_ASSASSIN_Q>(BattlePacketHandler::Handle_C_AssassinQ, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::ASSASSIN_R_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_ASSASSIN_R>(BattlePacketHandler::Handle_C_AssassinR, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::ASSASSIN_LS_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_ASSASSIN_LS>(BattlePacketHandler::Handle_C_AssassinLS, session, buffer, offset);
 		};
 		
 

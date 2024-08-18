@@ -195,7 +195,9 @@ PROTOBUF_CONSTEXPR C_ASSASSIN_Q::C_ASSASSIN_Q(
   , x_(0)
   , y_(0)
   , z_(0)
-  , yaw_(0){}
+  , pitch_(0)
+  , yaw_(0)
+  , roll_(0){}
 struct C_ASSASSIN_QDefaultTypeInternal {
   PROTOBUF_CONSTEXPR C_ASSASSIN_QDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -211,7 +213,9 @@ PROTOBUF_CONSTEXPR S_ASSASSIN_Q::S_ASSASSIN_Q(
   , x_(0)
   , y_(0)
   , z_(0)
-  , yaw_(0){}
+  , pitch_(0)
+  , yaw_(0)
+  , roll_(0){}
 struct S_ASSASSIN_QDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_ASSASSIN_QDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -221,6 +225,30 @@ struct S_ASSASSIN_QDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_ASSASSIN_QDefaultTypeInternal _S_ASSASSIN_Q_default_instance_;
+PROTOBUF_CONSTEXPR C_Assassin_E::C_Assassin_E(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct C_Assassin_EDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Assassin_EDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Assassin_EDefaultTypeInternal() {}
+  union {
+    C_Assassin_E _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Assassin_EDefaultTypeInternal _C_Assassin_E_default_instance_;
+PROTOBUF_CONSTEXPR S_Assassin_E::S_Assassin_E(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct S_Assassin_EDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Assassin_EDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Assassin_EDefaultTypeInternal() {}
+  union {
+    S_Assassin_E _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Assassin_EDefaultTypeInternal _S_Assassin_E_default_instance_;
 PROTOBUF_CONSTEXPR C_ASSASSIN_R::C_ASSASSIN_R(
     ::_pbi::ConstantInitialized)
   : object_id_(uint64_t{0u}){}
@@ -269,8 +297,32 @@ struct S_ASSASSIN_LSDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_ASSASSIN_LSDefaultTypeInternal _S_ASSASSIN_LS_default_instance_;
+PROTOBUF_CONSTEXPR C_Assassin_LS_Off::C_Assassin_LS_Off(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct C_Assassin_LS_OffDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Assassin_LS_OffDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Assassin_LS_OffDefaultTypeInternal() {}
+  union {
+    C_Assassin_LS_Off _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Assassin_LS_OffDefaultTypeInternal _C_Assassin_LS_Off_default_instance_;
+PROTOBUF_CONSTEXPR S_Assassin_LS_Off::S_Assassin_LS_Off(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct S_Assassin_LS_OffDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Assassin_LS_OffDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Assassin_LS_OffDefaultTypeInternal() {}
+  union {
+    S_Assassin_LS_Off _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Assassin_LS_OffDefaultTypeInternal _S_Assassin_LS_Off_default_instance_;
 }  // namespace skill
-static ::_pb::Metadata file_level_metadata_Skill_2eproto[19];
+static ::_pb::Metadata file_level_metadata_Skill_2eproto[23];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Skill_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Skill_2eproto = nullptr;
 
@@ -387,7 +439,9 @@ const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_Q, x_),
   PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_Q, y_),
   PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_Q, z_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_Q, pitch_),
   PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_Q, yaw_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_Q, roll_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_Q, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -398,7 +452,23 @@ const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_Q, x_),
   PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_Q, y_),
   PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_Q, z_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_Q, pitch_),
   PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_Q, yaw_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_Q, roll_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_E, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_E, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_E, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_E, object_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_R, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -427,6 +497,20 @@ const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::skill::S_ASSASSIN_LS, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_LS_Off, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_LS_Off, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_LS_Off, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_LS_Off, object_id_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::skill::S_CoolTime)},
@@ -443,11 +527,15 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 88, -1, -1, sizeof(::skill::C_ASSASSIN_Attack)},
   { 95, -1, -1, sizeof(::skill::S_ASSASSIN_Attack)},
   { 102, -1, -1, sizeof(::skill::C_ASSASSIN_Q)},
-  { 113, -1, -1, sizeof(::skill::S_ASSASSIN_Q)},
-  { 124, -1, -1, sizeof(::skill::C_ASSASSIN_R)},
-  { 131, -1, -1, sizeof(::skill::S_ASSASSIN_R)},
-  { 138, -1, -1, sizeof(::skill::C_ASSASSIN_LS)},
-  { 145, -1, -1, sizeof(::skill::S_ASSASSIN_LS)},
+  { 115, -1, -1, sizeof(::skill::S_ASSASSIN_Q)},
+  { 128, -1, -1, sizeof(::skill::C_Assassin_E)},
+  { 135, -1, -1, sizeof(::skill::S_Assassin_E)},
+  { 142, -1, -1, sizeof(::skill::C_ASSASSIN_R)},
+  { 149, -1, -1, sizeof(::skill::S_ASSASSIN_R)},
+  { 156, -1, -1, sizeof(::skill::C_ASSASSIN_LS)},
+  { 163, -1, -1, sizeof(::skill::S_ASSASSIN_LS)},
+  { 170, -1, -1, sizeof(::skill::C_Assassin_LS_Off)},
+  { 177, -1, -1, sizeof(::skill::S_Assassin_LS_Off)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -466,10 +554,14 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::skill::_S_ASSASSIN_Attack_default_instance_._instance,
   &::skill::_C_ASSASSIN_Q_default_instance_._instance,
   &::skill::_S_ASSASSIN_Q_default_instance_._instance,
+  &::skill::_C_Assassin_E_default_instance_._instance,
+  &::skill::_S_Assassin_E_default_instance_._instance,
   &::skill::_C_ASSASSIN_R_default_instance_._instance,
   &::skill::_S_ASSASSIN_R_default_instance_._instance,
   &::skill::_C_ASSASSIN_LS_default_instance_._instance,
   &::skill::_S_ASSASSIN_LS_default_instance_._instance,
+  &::skill::_C_Assassin_LS_Off_default_instance_._instance,
+  &::skill::_S_Assassin_LS_Off_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -489,22 +581,27 @@ const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003y"
   "aw\030\005 \001(\002\"&\n\021C_ASSASSIN_Attack\022\021\n\tobject_"
   "id\030\001 \001(\004\"&\n\021S_ASSASSIN_Attack\022\021\n\tobject_"
-  "id\030\001 \001(\004\"O\n\014C_ASSASSIN_Q\022\021\n\tobject_id\030\001 "
-  "\001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003"
-  "yaw\030\005 \001(\002\"O\n\014S_ASSASSIN_Q\022\021\n\tobject_id\030\001"
-  " \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n"
-  "\003yaw\030\005 \001(\002\"!\n\014C_ASSASSIN_R\022\021\n\tobject_id\030"
-  "\001 \001(\004\"!\n\014S_ASSASSIN_R\022\021\n\tobject_id\030\001 \001(\004"
-  "\"\"\n\rC_ASSASSIN_LS\022\021\n\tobject_id\030\001 \001(\004\"\"\n\r"
-  "S_ASSASSIN_LS\022\021\n\tobject_id\030\001 \001(\004*2\n\tSKIL"
-  "LTYPE\022\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n\001R\020\003\022\006\n\002"
-  "LS\020\004b\006proto3"
+  "id\030\001 \001(\004\"l\n\014C_ASSASSIN_Q\022\021\n\tobject_id\030\001 "
+  "\001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\r\n\005"
+  "pitch\030\005 \001(\002\022\013\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"l"
+  "\n\014S_ASSASSIN_Q\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002"
+  " \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\r\n\005pitch\030\005 \001("
+  "\002\022\013\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"!\n\014C_Assass"
+  "in_E\022\021\n\tobject_id\030\001 \001(\004\"!\n\014S_Assassin_E\022"
+  "\021\n\tobject_id\030\001 \001(\004\"!\n\014C_ASSASSIN_R\022\021\n\tob"
+  "ject_id\030\001 \001(\004\"!\n\014S_ASSASSIN_R\022\021\n\tobject_"
+  "id\030\001 \001(\004\"\"\n\rC_ASSASSIN_LS\022\021\n\tobject_id\030\001"
+  " \001(\004\"\"\n\rS_ASSASSIN_LS\022\021\n\tobject_id\030\001 \001(\004"
+  "\"&\n\021C_Assassin_LS_Off\022\021\n\tobject_id\030\001 \001(\004"
+  "\"&\n\021S_Assassin_LS_Off\022\021\n\tobject_id\030\001 \001(\004"
+  "*2\n\tSKILLTYPE\022\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n"
+  "\001R\020\003\022\006\n\002LS\020\004b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Skill_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Skill_2eproto = {
-    false, false, 1012, descriptor_table_protodef_Skill_2eproto,
+    false, false, 1220, descriptor_table_protodef_Skill_2eproto,
     "Skill.proto",
-    &descriptor_table_Skill_2eproto_once, nullptr, 0, 19,
+    &descriptor_table_Skill_2eproto_once, nullptr, 0, 23,
     schemas, file_default_instances, TableStruct_Skill_2eproto::offsets,
     file_level_metadata_Skill_2eproto, file_level_enum_descriptors_Skill_2eproto,
     file_level_service_descriptors_Skill_2eproto,
@@ -3174,16 +3271,16 @@ C_ASSASSIN_Q::C_ASSASSIN_Q(const C_ASSASSIN_Q& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&object_id_, &from.object_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&yaw_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+    static_cast<size_t>(reinterpret_cast<char*>(&roll_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(roll_));
   // @@protoc_insertion_point(copy_constructor:skill.C_ASSASSIN_Q)
 }
 
 inline void C_ASSASSIN_Q::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&yaw_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&roll_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(roll_));
 }
 
 C_ASSASSIN_Q::~C_ASSASSIN_Q() {
@@ -3210,8 +3307,8 @@ void C_ASSASSIN_Q::Clear() {
   (void) cached_has_bits;
 
   ::memset(&object_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&yaw_) -
-      reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+      reinterpret_cast<char*>(&roll_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(roll_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -3253,10 +3350,26 @@ const char* C_ASSASSIN_Q::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
-      // float yaw = 5;
+      // float pitch = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          pitch_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float yaw = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
           yaw_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float roll = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          roll_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -3326,14 +3439,34 @@ uint8_t* C_ASSASSIN_Q::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
   }
 
-  // float yaw = 5;
+  // float pitch = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = this->_internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_pitch(), target);
+  }
+
+  // float yaw = 6;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_yaw = this->_internal_yaw();
   uint32_t raw_yaw;
   memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
   if (raw_yaw != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_yaw(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_yaw(), target);
+  }
+
+  // float roll = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = this->_internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_roll(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3384,12 +3517,30 @@ size_t C_ASSASSIN_Q::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float yaw = 5;
+  // float pitch = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = this->_internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float yaw = 6;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_yaw = this->_internal_yaw();
   uint32_t raw_yaw;
   memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
   if (raw_yaw != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float roll = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = this->_internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
     total_size += 1 + 4;
   }
 
@@ -3440,11 +3591,25 @@ void C_ASSASSIN_Q::MergeFrom(const C_ASSASSIN_Q& from) {
     _internal_set_z(from._internal_z());
   }
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = from._internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    _internal_set_pitch(from._internal_pitch());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_yaw = from._internal_yaw();
   uint32_t raw_yaw;
   memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
   if (raw_yaw != 0) {
     _internal_set_yaw(from._internal_yaw());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = from._internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
+    _internal_set_roll(from._internal_roll());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -3464,8 +3629,8 @@ void C_ASSASSIN_Q::InternalSwap(C_ASSASSIN_Q* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(C_ASSASSIN_Q, yaw_)
-      + sizeof(C_ASSASSIN_Q::yaw_)
+      PROTOBUF_FIELD_OFFSET(C_ASSASSIN_Q, roll_)
+      + sizeof(C_ASSASSIN_Q::roll_)
       - PROTOBUF_FIELD_OFFSET(C_ASSASSIN_Q, object_id_)>(
           reinterpret_cast<char*>(&object_id_),
           reinterpret_cast<char*>(&other->object_id_));
@@ -3493,16 +3658,16 @@ S_ASSASSIN_Q::S_ASSASSIN_Q(const S_ASSASSIN_Q& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&object_id_, &from.object_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&yaw_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+    static_cast<size_t>(reinterpret_cast<char*>(&roll_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(roll_));
   // @@protoc_insertion_point(copy_constructor:skill.S_ASSASSIN_Q)
 }
 
 inline void S_ASSASSIN_Q::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&yaw_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&roll_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(roll_));
 }
 
 S_ASSASSIN_Q::~S_ASSASSIN_Q() {
@@ -3529,8 +3694,8 @@ void S_ASSASSIN_Q::Clear() {
   (void) cached_has_bits;
 
   ::memset(&object_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&yaw_) -
-      reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+      reinterpret_cast<char*>(&roll_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(roll_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -3572,10 +3737,26 @@ const char* S_ASSASSIN_Q::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
-      // float yaw = 5;
+      // float pitch = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          pitch_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float yaw = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
           yaw_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float roll = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          roll_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -3645,14 +3826,34 @@ uint8_t* S_ASSASSIN_Q::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
   }
 
-  // float yaw = 5;
+  // float pitch = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = this->_internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_pitch(), target);
+  }
+
+  // float yaw = 6;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_yaw = this->_internal_yaw();
   uint32_t raw_yaw;
   memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
   if (raw_yaw != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_yaw(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_yaw(), target);
+  }
+
+  // float roll = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = this->_internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_roll(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3703,12 +3904,30 @@ size_t S_ASSASSIN_Q::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float yaw = 5;
+  // float pitch = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = this->_internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float yaw = 6;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_yaw = this->_internal_yaw();
   uint32_t raw_yaw;
   memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
   if (raw_yaw != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float roll = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = this->_internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
     total_size += 1 + 4;
   }
 
@@ -3759,11 +3978,25 @@ void S_ASSASSIN_Q::MergeFrom(const S_ASSASSIN_Q& from) {
     _internal_set_z(from._internal_z());
   }
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch = from._internal_pitch();
+  uint32_t raw_pitch;
+  memcpy(&raw_pitch, &tmp_pitch, sizeof(tmp_pitch));
+  if (raw_pitch != 0) {
+    _internal_set_pitch(from._internal_pitch());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_yaw = from._internal_yaw();
   uint32_t raw_yaw;
   memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
   if (raw_yaw != 0) {
     _internal_set_yaw(from._internal_yaw());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_roll = from._internal_roll();
+  uint32_t raw_roll;
+  memcpy(&raw_roll, &tmp_roll, sizeof(tmp_roll));
+  if (raw_roll != 0) {
+    _internal_set_roll(from._internal_roll());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -3783,8 +4016,8 @@ void S_ASSASSIN_Q::InternalSwap(S_ASSASSIN_Q* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(S_ASSASSIN_Q, yaw_)
-      + sizeof(S_ASSASSIN_Q::yaw_)
+      PROTOBUF_FIELD_OFFSET(S_ASSASSIN_Q, roll_)
+      + sizeof(S_ASSASSIN_Q::roll_)
       - PROTOBUF_FIELD_OFFSET(S_ASSASSIN_Q, object_id_)>(
           reinterpret_cast<char*>(&object_id_),
           reinterpret_cast<char*>(&other->object_id_));
@@ -3794,6 +4027,348 @@ void S_ASSASSIN_Q::InternalSwap(S_ASSASSIN_Q* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
       file_level_metadata_Skill_2eproto[14]);
+}
+
+// ===================================================================
+
+class C_Assassin_E::_Internal {
+ public:
+};
+
+C_Assassin_E::C_Assassin_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Assassin_E)
+}
+C_Assassin_E::C_Assassin_E(const C_Assassin_E& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.C_Assassin_E)
+}
+
+inline void C_Assassin_E::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+C_Assassin_E::~C_Assassin_E() {
+  // @@protoc_insertion_point(destructor:skill.C_Assassin_E)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Assassin_E::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Assassin_E::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Assassin_E::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Assassin_E)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Assassin_E::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Assassin_E::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Assassin_E)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Assassin_E)
+  return target;
+}
+
+size_t C_Assassin_E::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Assassin_E)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Assassin_E::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Assassin_E::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Assassin_E::GetClassData() const { return &_class_data_; }
+
+void C_Assassin_E::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Assassin_E *>(to)->MergeFrom(
+      static_cast<const C_Assassin_E &>(from));
+}
+
+
+void C_Assassin_E::MergeFrom(const C_Assassin_E& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Assassin_E)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Assassin_E::CopyFrom(const C_Assassin_E& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Assassin_E)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Assassin_E::IsInitialized() const {
+  return true;
+}
+
+void C_Assassin_E::InternalSwap(C_Assassin_E* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Assassin_E::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[15]);
+}
+
+// ===================================================================
+
+class S_Assassin_E::_Internal {
+ public:
+};
+
+S_Assassin_E::S_Assassin_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Assassin_E)
+}
+S_Assassin_E::S_Assassin_E(const S_Assassin_E& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.S_Assassin_E)
+}
+
+inline void S_Assassin_E::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+S_Assassin_E::~S_Assassin_E() {
+  // @@protoc_insertion_point(destructor:skill.S_Assassin_E)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Assassin_E::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Assassin_E::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Assassin_E::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Assassin_E)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Assassin_E::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Assassin_E::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Assassin_E)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Assassin_E)
+  return target;
+}
+
+size_t S_Assassin_E::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Assassin_E)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Assassin_E::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Assassin_E::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Assassin_E::GetClassData() const { return &_class_data_; }
+
+void S_Assassin_E::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Assassin_E *>(to)->MergeFrom(
+      static_cast<const S_Assassin_E &>(from));
+}
+
+
+void S_Assassin_E::MergeFrom(const S_Assassin_E& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Assassin_E)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Assassin_E::CopyFrom(const S_Assassin_E& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Assassin_E)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Assassin_E::IsInitialized() const {
+  return true;
+}
+
+void S_Assassin_E::InternalSwap(S_Assassin_E* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Assassin_E::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[16]);
 }
 
 // ===================================================================
@@ -3964,7 +4539,7 @@ void C_ASSASSIN_R::InternalSwap(C_ASSASSIN_R* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_ASSASSIN_R::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
-      file_level_metadata_Skill_2eproto[15]);
+      file_level_metadata_Skill_2eproto[17]);
 }
 
 // ===================================================================
@@ -4135,7 +4710,7 @@ void S_ASSASSIN_R::InternalSwap(S_ASSASSIN_R* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata S_ASSASSIN_R::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
-      file_level_metadata_Skill_2eproto[16]);
+      file_level_metadata_Skill_2eproto[18]);
 }
 
 // ===================================================================
@@ -4306,7 +4881,7 @@ void C_ASSASSIN_LS::InternalSwap(C_ASSASSIN_LS* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_ASSASSIN_LS::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
-      file_level_metadata_Skill_2eproto[17]);
+      file_level_metadata_Skill_2eproto[19]);
 }
 
 // ===================================================================
@@ -4477,7 +5052,349 @@ void S_ASSASSIN_LS::InternalSwap(S_ASSASSIN_LS* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata S_ASSASSIN_LS::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
-      file_level_metadata_Skill_2eproto[18]);
+      file_level_metadata_Skill_2eproto[20]);
+}
+
+// ===================================================================
+
+class C_Assassin_LS_Off::_Internal {
+ public:
+};
+
+C_Assassin_LS_Off::C_Assassin_LS_Off(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Assassin_LS_Off)
+}
+C_Assassin_LS_Off::C_Assassin_LS_Off(const C_Assassin_LS_Off& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.C_Assassin_LS_Off)
+}
+
+inline void C_Assassin_LS_Off::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+C_Assassin_LS_Off::~C_Assassin_LS_Off() {
+  // @@protoc_insertion_point(destructor:skill.C_Assassin_LS_Off)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Assassin_LS_Off::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Assassin_LS_Off::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Assassin_LS_Off::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Assassin_LS_Off)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Assassin_LS_Off::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Assassin_LS_Off::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Assassin_LS_Off)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Assassin_LS_Off)
+  return target;
+}
+
+size_t C_Assassin_LS_Off::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Assassin_LS_Off)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Assassin_LS_Off::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Assassin_LS_Off::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Assassin_LS_Off::GetClassData() const { return &_class_data_; }
+
+void C_Assassin_LS_Off::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Assassin_LS_Off *>(to)->MergeFrom(
+      static_cast<const C_Assassin_LS_Off &>(from));
+}
+
+
+void C_Assassin_LS_Off::MergeFrom(const C_Assassin_LS_Off& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Assassin_LS_Off)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Assassin_LS_Off::CopyFrom(const C_Assassin_LS_Off& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Assassin_LS_Off)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Assassin_LS_Off::IsInitialized() const {
+  return true;
+}
+
+void C_Assassin_LS_Off::InternalSwap(C_Assassin_LS_Off* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Assassin_LS_Off::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[21]);
+}
+
+// ===================================================================
+
+class S_Assassin_LS_Off::_Internal {
+ public:
+};
+
+S_Assassin_LS_Off::S_Assassin_LS_Off(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Assassin_LS_Off)
+}
+S_Assassin_LS_Off::S_Assassin_LS_Off(const S_Assassin_LS_Off& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.S_Assassin_LS_Off)
+}
+
+inline void S_Assassin_LS_Off::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+S_Assassin_LS_Off::~S_Assassin_LS_Off() {
+  // @@protoc_insertion_point(destructor:skill.S_Assassin_LS_Off)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Assassin_LS_Off::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Assassin_LS_Off::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Assassin_LS_Off::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Assassin_LS_Off)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Assassin_LS_Off::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Assassin_LS_Off::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Assassin_LS_Off)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Assassin_LS_Off)
+  return target;
+}
+
+size_t S_Assassin_LS_Off::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Assassin_LS_Off)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Assassin_LS_Off::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Assassin_LS_Off::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Assassin_LS_Off::GetClassData() const { return &_class_data_; }
+
+void S_Assassin_LS_Off::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Assassin_LS_Off *>(to)->MergeFrom(
+      static_cast<const S_Assassin_LS_Off &>(from));
+}
+
+
+void S_Assassin_LS_Off::MergeFrom(const S_Assassin_LS_Off& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Assassin_LS_Off)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Assassin_LS_Off::CopyFrom(const S_Assassin_LS_Off& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Assassin_LS_Off)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Assassin_LS_Off::IsInitialized() const {
+  return true;
+}
+
+void S_Assassin_LS_Off::InternalSwap(S_Assassin_LS_Off* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Assassin_LS_Off::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[22]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -4543,6 +5460,14 @@ template<> PROTOBUF_NOINLINE ::skill::S_ASSASSIN_Q*
 Arena::CreateMaybeMessage< ::skill::S_ASSASSIN_Q >(Arena* arena) {
   return Arena::CreateMessageInternal< ::skill::S_ASSASSIN_Q >(arena);
 }
+template<> PROTOBUF_NOINLINE ::skill::C_Assassin_E*
+Arena::CreateMaybeMessage< ::skill::C_Assassin_E >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Assassin_E >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Assassin_E*
+Arena::CreateMaybeMessage< ::skill::S_Assassin_E >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Assassin_E >(arena);
+}
 template<> PROTOBUF_NOINLINE ::skill::C_ASSASSIN_R*
 Arena::CreateMaybeMessage< ::skill::C_ASSASSIN_R >(Arena* arena) {
   return Arena::CreateMessageInternal< ::skill::C_ASSASSIN_R >(arena);
@@ -4558,6 +5483,14 @@ Arena::CreateMaybeMessage< ::skill::C_ASSASSIN_LS >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::skill::S_ASSASSIN_LS*
 Arena::CreateMaybeMessage< ::skill::S_ASSASSIN_LS >(Arena* arena) {
   return Arena::CreateMessageInternal< ::skill::S_ASSASSIN_LS >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::C_Assassin_LS_Off*
+Arena::CreateMaybeMessage< ::skill::C_Assassin_LS_Off >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Assassin_LS_Off >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Assassin_LS_Off*
+Arena::CreateMaybeMessage< ::skill::S_Assassin_LS_Off >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Assassin_LS_Off >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
