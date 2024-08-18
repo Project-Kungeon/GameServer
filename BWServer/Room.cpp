@@ -387,7 +387,9 @@ void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
 		skillPkt.set_x(pkt.x());
 		skillPkt.set_y(pkt.y());
 		skillPkt.set_z(pkt.z());
+		skillPkt.set_pitch(pkt.pitch());
 		skillPkt.set_yaw(pkt.yaw());
+		skillPkt.set_roll(pkt.roll());
 
 		const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
 		char* rawBuffer = new char[requiredSize];
