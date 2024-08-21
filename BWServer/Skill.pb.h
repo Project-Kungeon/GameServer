@@ -2691,6 +2691,9 @@ class C_Assassin_E final :
 
   enum : int {
     kObjectIdFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
   };
   // uint64 object_id = 1;
   void clear_object_id();
@@ -2701,6 +2704,33 @@ class C_Assassin_E final :
   void _internal_set_object_id(uint64_t value);
   public:
 
+  // float x = 2;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 3;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 4;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:skill.C_Assassin_E)
  private:
   class _Internal;
@@ -2709,6 +2739,9 @@ class C_Assassin_E final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   uint64_t object_id_;
+  float x_;
+  float y_;
+  float z_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
@@ -2834,6 +2867,9 @@ class S_Assassin_E final :
 
   enum : int {
     kObjectIdFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
   };
   // uint64 object_id = 1;
   void clear_object_id();
@@ -2844,6 +2880,33 @@ class S_Assassin_E final :
   void _internal_set_object_id(uint64_t value);
   public:
 
+  // float x = 2;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 3;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 4;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:skill.S_Assassin_E)
  private:
   class _Internal;
@@ -2852,6 +2915,9 @@ class S_Assassin_E final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   uint64_t object_id_;
+  float x_;
+  float y_;
+  float z_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
@@ -4564,6 +4630,66 @@ inline void C_Assassin_E::set_object_id(uint64_t value) {
   // @@protoc_insertion_point(field_set:skill.C_Assassin_E.object_id)
 }
 
+// float x = 2;
+inline void C_Assassin_E::clear_x() {
+  x_ = 0;
+}
+inline float C_Assassin_E::_internal_x() const {
+  return x_;
+}
+inline float C_Assassin_E::x() const {
+  // @@protoc_insertion_point(field_get:skill.C_Assassin_E.x)
+  return _internal_x();
+}
+inline void C_Assassin_E::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void C_Assassin_E::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:skill.C_Assassin_E.x)
+}
+
+// float y = 3;
+inline void C_Assassin_E::clear_y() {
+  y_ = 0;
+}
+inline float C_Assassin_E::_internal_y() const {
+  return y_;
+}
+inline float C_Assassin_E::y() const {
+  // @@protoc_insertion_point(field_get:skill.C_Assassin_E.y)
+  return _internal_y();
+}
+inline void C_Assassin_E::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void C_Assassin_E::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:skill.C_Assassin_E.y)
+}
+
+// float z = 4;
+inline void C_Assassin_E::clear_z() {
+  z_ = 0;
+}
+inline float C_Assassin_E::_internal_z() const {
+  return z_;
+}
+inline float C_Assassin_E::z() const {
+  // @@protoc_insertion_point(field_get:skill.C_Assassin_E.z)
+  return _internal_z();
+}
+inline void C_Assassin_E::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void C_Assassin_E::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:skill.C_Assassin_E.z)
+}
+
 // -------------------------------------------------------------------
 
 // S_Assassin_E
@@ -4586,6 +4712,66 @@ inline void S_Assassin_E::_internal_set_object_id(uint64_t value) {
 inline void S_Assassin_E::set_object_id(uint64_t value) {
   _internal_set_object_id(value);
   // @@protoc_insertion_point(field_set:skill.S_Assassin_E.object_id)
+}
+
+// float x = 2;
+inline void S_Assassin_E::clear_x() {
+  x_ = 0;
+}
+inline float S_Assassin_E::_internal_x() const {
+  return x_;
+}
+inline float S_Assassin_E::x() const {
+  // @@protoc_insertion_point(field_get:skill.S_Assassin_E.x)
+  return _internal_x();
+}
+inline void S_Assassin_E::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void S_Assassin_E::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:skill.S_Assassin_E.x)
+}
+
+// float y = 3;
+inline void S_Assassin_E::clear_y() {
+  y_ = 0;
+}
+inline float S_Assassin_E::_internal_y() const {
+  return y_;
+}
+inline float S_Assassin_E::y() const {
+  // @@protoc_insertion_point(field_get:skill.S_Assassin_E.y)
+  return _internal_y();
+}
+inline void S_Assassin_E::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void S_Assassin_E::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:skill.S_Assassin_E.y)
+}
+
+// float z = 4;
+inline void S_Assassin_E::clear_z() {
+  z_ = 0;
+}
+inline float S_Assassin_E::_internal_z() const {
+  return z_;
+}
+inline float S_Assassin_E::z() const {
+  // @@protoc_insertion_point(field_get:skill.S_Assassin_E.z)
+  return _internal_z();
+}
+inline void S_Assassin_E::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void S_Assassin_E::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:skill.S_Assassin_E.z)
 }
 
 // -------------------------------------------------------------------

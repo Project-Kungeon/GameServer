@@ -28,7 +28,17 @@ bool BattlePacketHandler::Handle_C_WarriorE(SessionPtr& session, skill::C_Warrio
 
 bool BattlePacketHandler::Handle_C_AssassinAttack(SessionPtr& session, skill::C_ASSASSIN_Attack& pkt)
 {
-	GRoom[0]->HandleAssassinAttack(pkt);
+	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
+	if (!gameSession->isEnterGame) return false;
+
+	// if is not lock.. get player 
+	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	if (player == nullptr) return false;
+
+	RoomPtr room = player->room.load().lock();
+	if (room == nullptr) return false;
+
+	room->HandleAssassinAttack(pkt);
 	return true;
 }
 
@@ -47,5 +57,21 @@ bool BattlePacketHandler::Handle_C_AssassinR(SessionPtr& session, skill::C_ASSAS
 bool BattlePacketHandler::Handle_C_AssassinLS(SessionPtr& session, skill::C_ASSASSIN_LS& pkt)
 {
 	GRoom[0]->HandleAssassinLS(pkt);
+	return true;
+}
+
+bool BattlePacketHandler::Handle_C_AssassinE(SessionPtr& session, skill::C_Assassin_E& pkt)
+{
+	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
+	if (!gameSession->isEnterGame) return false;
+
+	// if is not lock.. get player 
+	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	if (player == nullptr) return false;
+
+	RoomPtr room = player->room.load().lock();
+	if (room == nullptr) return false;
+
+	room->HandleAssassinE(pkt);
 	return true;
 }

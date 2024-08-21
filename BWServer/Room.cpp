@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Room.h"
 #include "ObjectUtils.h"
+#include "Assassin.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
@@ -341,15 +342,28 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 
 void Room::HandleAssassinAttack(skill::C_ASSASSIN_Attack pkt)
 {
-	skill::S_ASSASSIN_Attack attackPkt;
-	attackPkt.set_object_id(pkt.object_id());
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		//PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
+		{
+			if (assassin->isClocking)
+			{
+				this->HandleAssassinLSOff(assassin, object_id);
+			}
+			skill::S_ASSASSIN_Attack attackPkt;
+			attackPkt.set_object_id(pkt.object_id());
 
-	const size_t requiredSize = PacketUtil::RequiredSize(attackPkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_ATTACK_RES, attackPkt);
+			const size_t requiredSize = PacketUtil::RequiredSize(attackPkt);
+			char* rawBuffer = new char[requiredSize];
+			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+			PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_ATTACK_RES, attackPkt);
 
-	Broadcast(sendBuffer, pkt.object_id());
+			Broadcast(sendBuffer, pkt.object_id());
+		}
+	}
+	
 }
 
 void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
@@ -357,46 +371,54 @@ void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
 	const uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
 	{
-		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
-
-		// 스킬 쿨타임 체크
-		if (player->skillCoolTime->q_cooltime() > 0)
+		//PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
-			if (auto session = player->session.lock())
+			// 스킬 쿨타임 체크
+			if (assassin->skillCoolTime->q_cooltime() > 0)
 			{
-				skill::S_CoolTime coolTimePkt;
-				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
-				coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
+				if (auto session = assassin->session.lock())
+				{
+					skill::S_CoolTime coolTimePkt;
+					coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+					session->Send(sendBuffer);
+					return;
+				}
+
+			}
+			else
+			{
+				if (assassin->isClocking)
+				{
+					this->HandleAssassinLSOff(assassin, object_id);
+				}
+				assassin->skillCoolTime->set_q_cooltime(5000);
+				skill::S_ASSASSIN_Q skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+				skillPkt.set_x(pkt.x());
+				skillPkt.set_y(pkt.y());
+				skillPkt.set_z(pkt.z());
+				skillPkt.set_pitch(pkt.pitch());
+				skillPkt.set_yaw(pkt.yaw());
+				skillPkt.set_roll(pkt.roll());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
 				char* rawBuffer = new char[requiredSize];
 				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_Q_RES, skillPkt);
 
-				session->Send(sendBuffer);
-				return;
+				Broadcast(sendBuffer, 0);
 			}
-
 		}
-		else
-		{
-			player->skillCoolTime->set_q_cooltime(5000);
-		}
-		skill::S_ASSASSIN_Q skillPkt;
-		skillPkt.set_object_id(pkt.object_id());
-		skillPkt.set_x(pkt.x());
-		skillPkt.set_y(pkt.y());
-		skillPkt.set_z(pkt.z());
-		skillPkt.set_pitch(pkt.pitch());
-		skillPkt.set_yaw(pkt.yaw());
-		skillPkt.set_roll(pkt.roll());
-
-		const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_Q_RES, skillPkt);
-
-		Broadcast(sendBuffer, 0);
+		
+		
 	}
 }
 
@@ -405,40 +427,48 @@ void Room::HandleAssassinR(skill::C_ASSASSIN_R pkt)
 	const uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
 	{
-		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
-
-		// 스킬 쿨타임 체크
-		if (player->skillCoolTime->r_cooltime() > 0)
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
-			if (auto session = player->session.lock())
+			// 스킬 쿨타임 체크
+			if (assassin->skillCoolTime->r_cooltime() > 0)
 			{
-				skill::S_CoolTime coolTimePkt;
-				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
-				coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
+				if (auto session = assassin->session.lock())
+				{
+					skill::S_CoolTime coolTimePkt;
+					coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+					session->Send(sendBuffer);
+					return;
+				}
+
+			}
+			else
+			{
+				if (assassin->isClocking)
+				{
+					this->HandleAssassinLSOff(assassin, object_id);
+				}
+				assassin->skillCoolTime->set_r_cooltime(20000);
+				skill::S_ASSASSIN_R skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
 				char* rawBuffer = new char[requiredSize];
 				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_R_RES, skillPkt);
 
-				session->Send(sendBuffer);
-				return;
+				Broadcast(sendBuffer, 0);
 			}
-
 		}
-		else
-		{
-			player->skillCoolTime->set_r_cooltime(20000);
-		}
-		skill::S_ASSASSIN_R skillPkt;
-		skillPkt.set_object_id(pkt.object_id());
-
-		const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_R_RES, skillPkt);
-
-		Broadcast(sendBuffer, 0);
+		
+		
 	}
 }
 
@@ -447,41 +477,107 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 	const uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
 	{
-		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
-
-		// 스킬 쿨타임 체크
-		if (player->skillCoolTime->ls_cooltime() > 0)
+		//PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
-			if (auto session = player->session.lock())
+			// If Not cloking -> Skill On
+			if (!assassin->isClocking)
 			{
-				skill::S_CoolTime coolTimePkt;
-				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
-				coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
+				// 스킬 쿨타임 체크
+				if (assassin->skillCoolTime->ls_cooltime() > 0)
+				{
+					if (auto session = assassin->session.lock())
+					{
+						skill::S_CoolTime coolTimePkt;
+						coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+						coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
 
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+						const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+						char* rawBuffer = new char[requiredSize];
+						auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+						PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
 
-				session->Send(sendBuffer);
-				return;
+						session->Send(sendBuffer);
+						return;
+					}
+
+				}
+				// Can use Skill
+				else
+				{
+					assassin->isClocking = true;
+					assassin->skillCoolTime->set_ls_cooltime(5000);
+					skill::S_ASSASSIN_LS skillPkt;
+					skillPkt.set_object_id(pkt.object_id());
+
+					const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_LS_RES, skillPkt);
+
+					Broadcast(sendBuffer, 0);
+				}
+				
+			}
+			// If Clocking -> Cloking Off!
+			else
+			{
+				this->HandleAssassinLSOff(assassin, object_id);
+
 			}
 
+			
 		}
-		else
-		{
-			player->skillCoolTime->set_ls_cooltime(5000);
-		}
-		skill::S_ASSASSIN_LS skillPkt;
-		skillPkt.set_object_id(pkt.object_id());
-
-		const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_LS_RES, skillPkt);
-
-		Broadcast(sendBuffer, 0);
+	
 	}
+
+
+		
+}
+
+void Room::HandleAssassinLSOff(AssassinPtr assassin, uint64 object_id)
+{
+	assassin->isClocking = false;
+	skill::C_Assassin_LS_Off pkt;
+	pkt.set_object_id(object_id);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_LS_OFF_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleAssassinE(skill::C_Assassin_E pkt)
+{
+	uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
+		{
+			if (assassin->isClocking)
+			{
+				this->HandleAssassinLSOff(assassin, object_id);
+			}
+			skill::S_Assassin_E skillPkt;
+			skillPkt.set_object_id(pkt.object_id());
+			skillPkt.set_x(pkt.x());
+			skillPkt.set_y(pkt.y());
+			skillPkt.set_z(pkt.z());
+
+			const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+			char* rawBuffer = new char[requiredSize];
+			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+			PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_E_RES, skillPkt);
+
+			Broadcast(sendBuffer, 0);
+		}
+	}
+
+
+	
 }
 
 void Room::HandleCoolTime(long long elapsed_millisecond)
