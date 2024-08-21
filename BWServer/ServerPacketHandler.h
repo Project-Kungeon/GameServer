@@ -70,6 +70,10 @@ public:
 		{
 			return HandlePacket<skill::C_ASSASSIN_LS>(BattlePacketHandler::Handle_C_AssassinLS, session, buffer, offset);
 		};
+		GPacketHandler[message::HEADER::ASSASSIN_E_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Assassin_E>(BattlePacketHandler::Handle_C_AssassinE, session, buffer, offset);
+		};
 		
 
 	}

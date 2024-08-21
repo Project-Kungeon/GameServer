@@ -146,13 +146,16 @@ enum HEADER : int {
   ASSASSIN_R_RES = 2106,
   ASSASSIN_LS_REQ = 2107,
   ASSASSIN_LS_RES = 2108,
+  ASSASSIN_LS_OFF_RES = 2111,
+  ASSASSIN_E_REQ = 2109,
+  ASSASSIN_E_RES = 2110,
   COOLTIME_RES = 1000,
   HEADER_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   HEADER_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool HEADER_IsValid(int value);
 constexpr HEADER HEADER_MIN = NONE;
-constexpr HEADER HEADER_MAX = ASSASSIN_LS_RES;
+constexpr HEADER HEADER_MAX = ASSASSIN_LS_OFF_RES;
 constexpr int HEADER_ARRAYSIZE = HEADER_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HEADER_descriptor();

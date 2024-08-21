@@ -12,5 +12,6 @@ public:
 	static bool Handle_C_AssassinQ(SessionPtr& session, skill::C_ASSASSIN_Q& pkt);
 	static bool Handle_C_AssassinR(SessionPtr& session, skill::C_ASSASSIN_R& pkt);
 	static bool Handle_C_AssassinLS(SessionPtr& session, skill::C_ASSASSIN_LS& pkt);
+	static bool Handle_C_AssassinE(SessionPtr& session, skill::C_Assassin_E& pkt);
 };
 

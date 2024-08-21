@@ -369,7 +369,7 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "PickUp\022\021\n\tobject_id\030\001 \001(\004\022\030\n\020picked_obje"
   "ct_id\030\002 \001(\004\022$\n\titem_info\030\003 \001(\0132\021.message"
   ".ItemInfo\"7\n\010S_PickUp\022\021\n\tobject_id\030\001 \001(\004"
-  "\022\030\n\020picked_object_id\030\002 \001(\004*\345\005\n\006HEADER\022\010\n"
+  "\022\030\n\020picked_object_id\030\002 \001(\004*\251\006\n\006HEADER\022\010\n"
   "\004NONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n"
   "\016ENTER_ROOM_REQ\020\003\022\022\n\016ENTER_ROOM_RES\020\004\022\022\n"
   "\016LEAVE_ROOM_REQ\020\005\022\022\n\016LEAVE_ROOM_RES\020\006\022\022\n"
@@ -387,8 +387,10 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\023ASSASSIN_ATTACK_RES\020\266\020\022\023\n\016ASSASSIN_Q_RE"
   "Q\020\267\020\022\023\n\016ASSASSIN_Q_RES\020\270\020\022\023\n\016ASSASSIN_R_"
   "REQ\020\271\020\022\023\n\016ASSASSIN_R_RES\020\272\020\022\024\n\017ASSASSIN_"
-  "LS_REQ\020\273\020\022\024\n\017ASSASSIN_LS_RES\020\274\020\022\021\n\014COOLT"
-  "IME_RES\020\350\007b\006proto3"
+  "LS_REQ\020\273\020\022\024\n\017ASSASSIN_LS_RES\020\274\020\022\030\n\023ASSAS"
+  "SIN_LS_OFF_RES\020\277\020\022\023\n\016ASSASSIN_E_REQ\020\275\020\022\023"
+  "\n\016ASSASSIN_E_RES\020\276\020\022\021\n\014COOLTIME_RES\020\350\007b\006"
+  "proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[2] = {
   &::descriptor_table_Enum_2eproto,
@@ -396,7 +398,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_dep
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 1578, descriptor_table_protodef_Message_2eproto,
+    false, false, 1646, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
     &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 2, 14,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
@@ -452,6 +454,9 @@ bool HEADER_IsValid(int value) {
     case 2106:
     case 2107:
     case 2108:
+    case 2109:
+    case 2110:
+    case 2111:
       return true;
     default:
       return false;

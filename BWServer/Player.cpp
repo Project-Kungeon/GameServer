@@ -18,4 +18,5 @@ Player::Player(message::PlayerType playerType, float hp, float maxHp, float exp)
 Player::~Player()
 {
 	delete skillCoolTime;
+	skillCoolTime = nullptr;
 }

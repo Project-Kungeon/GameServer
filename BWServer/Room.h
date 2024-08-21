@@ -26,6 +26,8 @@ public:
 	void HandleAssassinQ(skill::C_ASSASSIN_Q pkt);
 	void HandleAssassinR(skill::C_ASSASSIN_R pkt);
 	void HandleAssassinLS(skill::C_ASSASSIN_LS pkt);
+	void HandleAssassinLSOff(AssassinPtr assassin, uint64 object_id);
+	void HandleAssassinE(skill::C_Assassin_E pkt);
 
 	// Tick
 public:

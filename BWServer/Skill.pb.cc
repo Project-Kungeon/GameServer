@@ -227,7 +227,10 @@ struct S_ASSASSIN_QDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_ASSASSIN_QDefaultTypeInternal _S_ASSASSIN_Q_default_instance_;
 PROTOBUF_CONSTEXPR C_Assassin_E::C_Assassin_E(
     ::_pbi::ConstantInitialized)
-  : object_id_(uint64_t{0u}){}
+  : object_id_(uint64_t{0u})
+  , x_(0)
+  , y_(0)
+  , z_(0){}
 struct C_Assassin_EDefaultTypeInternal {
   PROTOBUF_CONSTEXPR C_Assassin_EDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -239,7 +242,10 @@ struct C_Assassin_EDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Assassin_EDefaultTypeInternal _C_Assassin_E_default_instance_;
 PROTOBUF_CONSTEXPR S_Assassin_E::S_Assassin_E(
     ::_pbi::ConstantInitialized)
-  : object_id_(uint64_t{0u}){}
+  : object_id_(uint64_t{0u})
+  , x_(0)
+  , y_(0)
+  , z_(0){}
 struct S_Assassin_EDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_Assassin_EDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -462,6 +468,9 @@ const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_E, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_E, x_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_E, y_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Assassin_E, z_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_E, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -469,6 +478,9 @@ const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_E, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_E, x_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_E, y_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_E, z_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::skill::C_ASSASSIN_R, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -529,13 +541,13 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 102, -1, -1, sizeof(::skill::C_ASSASSIN_Q)},
   { 115, -1, -1, sizeof(::skill::S_ASSASSIN_Q)},
   { 128, -1, -1, sizeof(::skill::C_Assassin_E)},
-  { 135, -1, -1, sizeof(::skill::S_Assassin_E)},
-  { 142, -1, -1, sizeof(::skill::C_ASSASSIN_R)},
-  { 149, -1, -1, sizeof(::skill::S_ASSASSIN_R)},
-  { 156, -1, -1, sizeof(::skill::C_ASSASSIN_LS)},
-  { 163, -1, -1, sizeof(::skill::S_ASSASSIN_LS)},
-  { 170, -1, -1, sizeof(::skill::C_Assassin_LS_Off)},
-  { 177, -1, -1, sizeof(::skill::S_Assassin_LS_Off)},
+  { 138, -1, -1, sizeof(::skill::S_Assassin_E)},
+  { 148, -1, -1, sizeof(::skill::C_ASSASSIN_R)},
+  { 155, -1, -1, sizeof(::skill::S_ASSASSIN_R)},
+  { 162, -1, -1, sizeof(::skill::C_ASSASSIN_LS)},
+  { 169, -1, -1, sizeof(::skill::S_ASSASSIN_LS)},
+  { 176, -1, -1, sizeof(::skill::C_Assassin_LS_Off)},
+  { 183, -1, -1, sizeof(::skill::S_Assassin_LS_Off)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -586,20 +598,22 @@ const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "pitch\030\005 \001(\002\022\013\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"l"
   "\n\014S_ASSASSIN_Q\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002"
   " \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\r\n\005pitch\030\005 \001("
-  "\002\022\013\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"!\n\014C_Assass"
-  "in_E\022\021\n\tobject_id\030\001 \001(\004\"!\n\014S_Assassin_E\022"
-  "\021\n\tobject_id\030\001 \001(\004\"!\n\014C_ASSASSIN_R\022\021\n\tob"
-  "ject_id\030\001 \001(\004\"!\n\014S_ASSASSIN_R\022\021\n\tobject_"
-  "id\030\001 \001(\004\"\"\n\rC_ASSASSIN_LS\022\021\n\tobject_id\030\001"
-  " \001(\004\"\"\n\rS_ASSASSIN_LS\022\021\n\tobject_id\030\001 \001(\004"
-  "\"&\n\021C_Assassin_LS_Off\022\021\n\tobject_id\030\001 \001(\004"
-  "\"&\n\021S_Assassin_LS_Off\022\021\n\tobject_id\030\001 \001(\004"
-  "*2\n\tSKILLTYPE\022\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n"
-  "\001R\020\003\022\006\n\002LS\020\004b\006proto3"
+  "\002\022\013\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"B\n\014C_Assass"
+  "in_E\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030"
+  "\003 \001(\002\022\t\n\001z\030\004 \001(\002\"B\n\014S_Assassin_E\022\021\n\tobje"
+  "ct_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004"
+  " \001(\002\"!\n\014C_ASSASSIN_R\022\021\n\tobject_id\030\001 \001(\004\""
+  "!\n\014S_ASSASSIN_R\022\021\n\tobject_id\030\001 \001(\004\"\"\n\rC_"
+  "ASSASSIN_LS\022\021\n\tobject_id\030\001 \001(\004\"\"\n\rS_ASSA"
+  "SSIN_LS\022\021\n\tobject_id\030\001 \001(\004\"&\n\021C_Assassin"
+  "_LS_Off\022\021\n\tobject_id\030\001 \001(\004\"&\n\021S_Assassin"
+  "_LS_Off\022\021\n\tobject_id\030\001 \001(\004*2\n\tSKILLTYPE\022"
+  "\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n\001R\020\003\022\006\n\002LS\020\004b\006"
+  "proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Skill_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Skill_2eproto = {
-    false, false, 1220, descriptor_table_protodef_Skill_2eproto,
+    false, false, 1286, descriptor_table_protodef_Skill_2eproto,
     "Skill.proto",
     &descriptor_table_Skill_2eproto_once, nullptr, 0, 23,
     schemas, file_default_instances, TableStruct_Skill_2eproto::offsets,
@@ -4044,12 +4058,17 @@ C_Assassin_E::C_Assassin_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 C_Assassin_E::C_Assassin_E(const C_Assassin_E& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  object_id_ = from.object_id_;
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
   // @@protoc_insertion_point(copy_constructor:skill.C_Assassin_E)
 }
 
 inline void C_Assassin_E::SharedCtor() {
-object_id_ = uint64_t{0u};
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
 }
 
 C_Assassin_E::~C_Assassin_E() {
@@ -4075,7 +4094,9 @@ void C_Assassin_E::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  object_id_ = uint64_t{0u};
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4090,6 +4111,30 @@ const char* C_Assassin_E::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -4128,6 +4173,36 @@ uint8_t* C_Assassin_E::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
   }
 
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -4147,6 +4222,33 @@ size_t C_Assassin_E::ByteSizeLong() const {
   // uint64 object_id = 1;
   if (this->_internal_object_id() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -4174,6 +4276,27 @@ void C_Assassin_E::MergeFrom(const C_Assassin_E& from) {
   if (from._internal_object_id() != 0) {
     _internal_set_object_id(from._internal_object_id());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = from._internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    _internal_set_z(from._internal_z());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -4191,7 +4314,12 @@ bool C_Assassin_E::IsInitialized() const {
 void C_Assassin_E::InternalSwap(C_Assassin_E* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(object_id_, other->object_id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(C_Assassin_E, z_)
+      + sizeof(C_Assassin_E::z_)
+      - PROTOBUF_FIELD_OFFSET(C_Assassin_E, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_Assassin_E::GetMetadata() const {
@@ -4215,12 +4343,17 @@ S_Assassin_E::S_Assassin_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 S_Assassin_E::S_Assassin_E(const S_Assassin_E& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  object_id_ = from.object_id_;
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
   // @@protoc_insertion_point(copy_constructor:skill.S_Assassin_E)
 }
 
 inline void S_Assassin_E::SharedCtor() {
-object_id_ = uint64_t{0u};
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
 }
 
 S_Assassin_E::~S_Assassin_E() {
@@ -4246,7 +4379,9 @@ void S_Assassin_E::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  object_id_ = uint64_t{0u};
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4261,6 +4396,30 @@ const char* S_Assassin_E::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -4299,6 +4458,36 @@ uint8_t* S_Assassin_E::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
   }
 
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -4318,6 +4507,33 @@ size_t S_Assassin_E::ByteSizeLong() const {
   // uint64 object_id = 1;
   if (this->_internal_object_id() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -4345,6 +4561,27 @@ void S_Assassin_E::MergeFrom(const S_Assassin_E& from) {
   if (from._internal_object_id() != 0) {
     _internal_set_object_id(from._internal_object_id());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = from._internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    _internal_set_z(from._internal_z());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -4362,7 +4599,12 @@ bool S_Assassin_E::IsInitialized() const {
 void S_Assassin_E::InternalSwap(S_Assassin_E* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(object_id_, other->object_id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_Assassin_E, z_)
+      + sizeof(S_Assassin_E::z_)
+      - PROTOBUF_FIELD_OFFSET(S_Assassin_E, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_Assassin_E::GetMetadata() const {
