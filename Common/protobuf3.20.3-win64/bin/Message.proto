@@ -1,6 +1,7 @@
 syntax = "proto3";
 package message;
 
+import "Enum.proto";
 import "Struct.proto";
 
 enum HEADER
@@ -22,13 +23,46 @@ enum HEADER
 	PLAYER_DESPAWN_RES = 10;
 
 	PLAYER_CHAT_REQ = 11;
-	PLAYER_CHAT_RES = 12;
+	PLAYERT_RES = 12;
 
 	PLAYER_MOVE_REQ = 13;
 	PLAYER_MOVE_RES = 14;
 
 	PLAYER_ATTACK_REQ = 15;
 	PLAYER_ATTACK_RES = 16;
+
+	WARRIOR_ATTACK_REQ = 17;
+	WARRIOR_ATTACK_RES = 18;
+
+	WARRIOR_Q_REQ = 19;
+	WARRIOR_Q_RES = 20;
+
+	WARRIOR_E_REQ = 21;
+	WARRIOR_E_RES = 22;
+
+	WARRIOR_R_REQ = 23;
+	WARRIOR_R_RES = 24;
+
+	WARRIOR_LS_REQ = 25;
+	WARRIOR_LS_RES = 26;
+
+	ASSASSIN_ATTACK_REQ = 2101;
+	ASSASSIN_ATTACK_RES = 2102;
+
+	ASSASSIN_Q_REQ = 2103;
+	ASSASSIN_Q_RES = 2104;
+
+	ASSASSIN_R_REQ = 2105;
+	ASSASSIN_R_RES = 2106;
+
+	ASSASSIN_LS_REQ = 2107;
+	ASSASSIN_LS_RES = 2108;
+	ASSASSIN_LS_OFF_RES = 2111;
+
+	ASSASSIN_E_REQ = 2109;
+	ASSASSIN_E_RES = 2110;
+
+	COOLTIME_RES = 1000;
 }
 
 // 클라이언트 -> 서버 로그인
@@ -47,14 +81,14 @@ message S_Login
 // 방 입장 요청
 message C_EnterRoom
 {
-	uint64 playerIndex = 1;
+	PlayerType player_type = 1;
 }
 
 // 방 입장 결과
 message S_EnterRoom
 {
 	uint32 success = 1;
-	ObjectInfo player = 2;
+	PlayerInfo player_info = 2;
 }
 
 // 방 떠나기 요청
@@ -72,7 +106,9 @@ message S_LeaveRoom
 // 다른 플레이어 입장 패킷
 message S_Spawn
 {
-	repeated ObjectInfo players = 1;
+	repeated ObjectInfo objects = 1;
+	repeated CreatureInfo creatures = 2;
+	repeated PlayerInfo players = 3;
 }
 
 // 다른 플레이어 퇴장 패킷
@@ -94,15 +130,15 @@ message S_Move
 message C_Attack
 {
 	uint64 object_id = 1;
-	uint32 damage = 2;
-	float target_range = 3;
+	repeated uint64 target_ids = 2;
+	float damage = 3;
 }
 
 message S_Attack
 {
 	uint64 object_id = 1;
-	repeated uint64 victims_object_ids = 2;
-	uint32 damage = 3;
+	repeated uint64 target_ids = 2;
+	float damage = 3;
 }
 
 message C_PickUp

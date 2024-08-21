@@ -6,7 +6,7 @@
 bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_EnterRoom& pkt)
 {
 	// Create Player
-	PlayerPtr player = ObjectUtils::CreatePlayer(static_pointer_cast<GameSession>(session));
+	PlayerPtr player = ObjectUtils::CreatePlayer(static_pointer_cast<GameSession>(session), pkt.player_type());
 
 	// Serialize Response Packet
 	bool success = GRoom[0]->HandleEnterPlayer(player);

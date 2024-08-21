@@ -175,6 +175,8 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Assassin.cpp" />
+    <ClCompile Include="BattlePacketHandler.cpp" />
     <ClCompile Include="BWServer.cpp" />
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="Creature.cpp" />
@@ -194,6 +196,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="ObjectUtils.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">
@@ -208,14 +211,21 @@
     <ClCompile Include="RoomPacketHandler.cpp" />
     <ClCompile Include="ServerPacketHandler.cpp" />
     <ClCompile Include="Session.cpp" />
+    <ClCompile Include="Skill.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Struct.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TickGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assassin.h" />
+    <ClInclude Include="BattlePacketHandler.h" />
     <ClInclude Include="CoreMacro.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="Creature.h" />
@@ -226,6 +236,7 @@
     <ClInclude Include="LobbyPacketHandler.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Message.pb.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="ObjectUtils.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Packet.h" />
@@ -236,7 +247,9 @@
     <ClInclude Include="RoomPacketHandler.h" />
     <ClInclude Include="ServerPacketHandler.h" />
     <ClInclude Include="Session.h" />
+    <ClInclude Include="Skill.pb.h" />
     <ClInclude Include="Struct.pb.h" />
+    <ClInclude Include="TickGenerator.h" />
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +257,7 @@
     <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Struct.proto" />
   </ItemGroup>
   <ItemGroup>

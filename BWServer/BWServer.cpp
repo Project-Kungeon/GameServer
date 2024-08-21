@@ -4,6 +4,7 @@
 #include "GameServer.h"
 #include "Room.h"
 #include "ServerPacketHandler.h"
+#include "TickGenerator.h"
 
 int main()
 {
@@ -14,15 +15,31 @@ int main()
 
     int port = 4242;
     boost::asio::io_context io_context;
+    boost::asio::io_context io_context_tick;
+    TickGenerator tickGenerator(io_context_tick, 45);
+
     GameServer server(io_context, port);
     server.StartAccept();
     spdlog::info("Server Start {}", port);
     std::cout << "Server Start " << port << '\n';
 
-    std::vector<thread> threads;
-    int count = 2;
+    //int count = 2;
+    tickGenerator.start(nullptr);
+
+    //std::vector<std::thread> threads;
+    //for (int i = 0; i < 5; ++i) {
+    //    threads.emplace_back([&io_context]() {
+    //        io_context.run();
+    //        });
+    //}
 
     std::thread t(boost::bind(&boost::asio::io_context::run, &io_context));
 
+    std::thread t1(boost::bind(&boost::asio::io_context::run, &io_context_tick));
+    std::thread t2(boost::bind(&boost::asio::io_context::run, &io_context_tick));
+    io_context_tick.run();
+
     t.join();
+    t1.join();
+    t2.join();
 }

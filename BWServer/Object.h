@@ -6,6 +6,7 @@ class Object : public std::enable_shared_from_this<Object>
 {
 public:
 	Object();
+	Object(message::ObjectType objectType);
 	virtual ~Object();
 
 	bool IsPlayer() { return _isPlayer; }
@@ -16,9 +17,6 @@ public:
 
 public:
 	atomic<std::weak_ptr<Room>> room;
-
-
-
 
 protected:
 	bool _isPlayer = false;

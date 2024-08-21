@@ -1,3 +1,5 @@
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Assassin.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Assassin.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\BattlePacketHandler.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\BWServer.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\BWServer.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\CorePch.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\CorePch.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Creature.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Creature.obj
@@ -7,6 +9,7 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSession.cpp;C:\Users
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSessionManager.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSessionManager.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\LobbyPacketHandler.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\LobbyPacketHandler.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Message.pb.cc;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Message.pb.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Monster.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Monster.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ObjectUtils.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\ObjectUtils.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Object.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Object.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\pch.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\pch.obj
@@ -16,4 +19,6 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Room.cpp;C:\Users\NoriS_
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\RoomPacketHandler.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\RoomPacketHandler.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\ServerPacketHandler.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Session.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Session.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Skill.pb.cc;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Skill.pb.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Struct.pb.cc;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Struct.pb.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\TickGenerator.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\TickGenerator.obj

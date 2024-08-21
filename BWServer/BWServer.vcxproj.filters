@@ -44,17 +44,32 @@
     <ClCompile Include="Object.cpp">
       <Filter>Main\Game\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Creature.cpp">
-      <Filter>Main\Game\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Main\Game\Object</Filter>
-    </ClCompile>
     <ClCompile Include="ServerPacketHandler.cpp">
       <Filter>Packets\handler</Filter>
     </ClCompile>
     <ClCompile Include="ObjectUtils.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="BattlePacketHandler.cpp">
+      <Filter>Packets\handler\battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
+    <ClCompile Include="TickGenerator.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Creature.cpp">
+      <Filter>Main\Game\Object\Creature</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Main\Game\Object\Creature\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Main\Game\Object\Creature\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Assassin.cpp">
+      <Filter>Main\Game\Object\Creature\Player\Assassin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,14 +130,29 @@
     <ClInclude Include="Object.h">
       <Filter>Main\Game\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Creature.h">
-      <Filter>Main\Game\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Main\Game\Object</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectUtils.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="BattlePacketHandler.h">
+      <Filter>Packets\handler\battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="TickGenerator.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Creature.h">
+      <Filter>Main\Game\Object\Creature</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Main\Game\Object\Creature\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Main\Game\Object\Creature\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Assassin.h">
+      <Filter>Main\Game\Object\Creature\Player\Assassin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +192,27 @@
     <Filter Include="Main\Game\Object">
       <UniqueIdentifier>{7c618e03-bee1-4e94-8503-f951baade96f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Packets\handler\battle">
+      <UniqueIdentifier>{493a6ff4-a495-4e1a-9fee-b9a4c00d7f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature">
+      <UniqueIdentifier>{be8659ab-3aa4-4037-a39b-9c121e3e0489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature\Monster">
+      <UniqueIdentifier>{4793de22-b0c6-4ade-8391-0f6218bd59d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature\Player">
+      <UniqueIdentifier>{dc033220-9c32-4e8a-9b44-d1ae56233ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature\Player\Warrior">
+      <UniqueIdentifier>{d51b305b-b903-40d8-8424-6749d836792c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature\Player\Assassin">
+      <UniqueIdentifier>{d2de3c89-8d47-4a1d-b1e0-d0fbc0620636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature\Player\Archor">
+      <UniqueIdentifier>{0722d116-0f3f-4454-8891-eb75eb42dd2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto">
@@ -177,5 +228,8 @@
       <Filter>Packets</Filter>
     </None>
     <None Include="..\.editorconfig" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
   </ItemGroup>
 </Project>
