@@ -41,7 +41,7 @@ private:
             tick_count_++;
 
             if (tick_callback_) {
-                tick_callback_(tick_count_);
+                tick_callback_(ticks_per_second_);
             }
 
             // 쿨타임 감소

@@ -58,6 +58,24 @@ extern C_ASSASSIN_QDefaultTypeInternal _C_ASSASSIN_Q_default_instance_;
 class C_ASSASSIN_R;
 struct C_ASSASSIN_RDefaultTypeInternal;
 extern C_ASSASSIN_RDefaultTypeInternal _C_ASSASSIN_R_default_instance_;
+class C_Archor_Attack;
+struct C_Archor_AttackDefaultTypeInternal;
+extern C_Archor_AttackDefaultTypeInternal _C_Archor_Attack_default_instance_;
+class C_Archor_E;
+struct C_Archor_EDefaultTypeInternal;
+extern C_Archor_EDefaultTypeInternal _C_Archor_E_default_instance_;
+class C_Archor_LS;
+struct C_Archor_LSDefaultTypeInternal;
+extern C_Archor_LSDefaultTypeInternal _C_Archor_LS_default_instance_;
+class C_Archor_Q_Charging;
+struct C_Archor_Q_ChargingDefaultTypeInternal;
+extern C_Archor_Q_ChargingDefaultTypeInternal _C_Archor_Q_Charging_default_instance_;
+class C_Archor_Q_Shot;
+struct C_Archor_Q_ShotDefaultTypeInternal;
+extern C_Archor_Q_ShotDefaultTypeInternal _C_Archor_Q_Shot_default_instance_;
+class C_Archor_R;
+struct C_Archor_RDefaultTypeInternal;
+extern C_Archor_RDefaultTypeInternal _C_Archor_R_default_instance_;
 class C_Assassin_E;
 struct C_Assassin_EDefaultTypeInternal;
 extern C_Assassin_EDefaultTypeInternal _C_Assassin_E_default_instance_;
@@ -91,6 +109,30 @@ extern S_ASSASSIN_QDefaultTypeInternal _S_ASSASSIN_Q_default_instance_;
 class S_ASSASSIN_R;
 struct S_ASSASSIN_RDefaultTypeInternal;
 extern S_ASSASSIN_RDefaultTypeInternal _S_ASSASSIN_R_default_instance_;
+class S_Archor_Attack;
+struct S_Archor_AttackDefaultTypeInternal;
+extern S_Archor_AttackDefaultTypeInternal _S_Archor_Attack_default_instance_;
+class S_Archor_E;
+struct S_Archor_EDefaultTypeInternal;
+extern S_Archor_EDefaultTypeInternal _S_Archor_E_default_instance_;
+class S_Archor_LS;
+struct S_Archor_LSDefaultTypeInternal;
+extern S_Archor_LSDefaultTypeInternal _S_Archor_LS_default_instance_;
+class S_Archor_LS_Off;
+struct S_Archor_LS_OffDefaultTypeInternal;
+extern S_Archor_LS_OffDefaultTypeInternal _S_Archor_LS_Off_default_instance_;
+class S_Archor_Q_Charging;
+struct S_Archor_Q_ChargingDefaultTypeInternal;
+extern S_Archor_Q_ChargingDefaultTypeInternal _S_Archor_Q_Charging_default_instance_;
+class S_Archor_Q_Shot;
+struct S_Archor_Q_ShotDefaultTypeInternal;
+extern S_Archor_Q_ShotDefaultTypeInternal _S_Archor_Q_Shot_default_instance_;
+class S_Archor_R;
+struct S_Archor_RDefaultTypeInternal;
+extern S_Archor_RDefaultTypeInternal _S_Archor_R_default_instance_;
+class S_Archor_R_Off;
+struct S_Archor_R_OffDefaultTypeInternal;
+extern S_Archor_R_OffDefaultTypeInternal _S_Archor_R_Off_default_instance_;
 class S_Assassin_E;
 struct S_Assassin_EDefaultTypeInternal;
 extern S_Assassin_EDefaultTypeInternal _S_Assassin_E_default_instance_;
@@ -121,6 +163,12 @@ template<> ::skill::C_ASSASSIN_Attack* Arena::CreateMaybeMessage<::skill::C_ASSA
 template<> ::skill::C_ASSASSIN_LS* Arena::CreateMaybeMessage<::skill::C_ASSASSIN_LS>(Arena*);
 template<> ::skill::C_ASSASSIN_Q* Arena::CreateMaybeMessage<::skill::C_ASSASSIN_Q>(Arena*);
 template<> ::skill::C_ASSASSIN_R* Arena::CreateMaybeMessage<::skill::C_ASSASSIN_R>(Arena*);
+template<> ::skill::C_Archor_Attack* Arena::CreateMaybeMessage<::skill::C_Archor_Attack>(Arena*);
+template<> ::skill::C_Archor_E* Arena::CreateMaybeMessage<::skill::C_Archor_E>(Arena*);
+template<> ::skill::C_Archor_LS* Arena::CreateMaybeMessage<::skill::C_Archor_LS>(Arena*);
+template<> ::skill::C_Archor_Q_Charging* Arena::CreateMaybeMessage<::skill::C_Archor_Q_Charging>(Arena*);
+template<> ::skill::C_Archor_Q_Shot* Arena::CreateMaybeMessage<::skill::C_Archor_Q_Shot>(Arena*);
+template<> ::skill::C_Archor_R* Arena::CreateMaybeMessage<::skill::C_Archor_R>(Arena*);
 template<> ::skill::C_Assassin_E* Arena::CreateMaybeMessage<::skill::C_Assassin_E>(Arena*);
 template<> ::skill::C_Assassin_LS_Off* Arena::CreateMaybeMessage<::skill::C_Assassin_LS_Off>(Arena*);
 template<> ::skill::C_Warrior_Attack* Arena::CreateMaybeMessage<::skill::C_Warrior_Attack>(Arena*);
@@ -132,6 +180,14 @@ template<> ::skill::S_ASSASSIN_Attack* Arena::CreateMaybeMessage<::skill::S_ASSA
 template<> ::skill::S_ASSASSIN_LS* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_LS>(Arena*);
 template<> ::skill::S_ASSASSIN_Q* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_Q>(Arena*);
 template<> ::skill::S_ASSASSIN_R* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_R>(Arena*);
+template<> ::skill::S_Archor_Attack* Arena::CreateMaybeMessage<::skill::S_Archor_Attack>(Arena*);
+template<> ::skill::S_Archor_E* Arena::CreateMaybeMessage<::skill::S_Archor_E>(Arena*);
+template<> ::skill::S_Archor_LS* Arena::CreateMaybeMessage<::skill::S_Archor_LS>(Arena*);
+template<> ::skill::S_Archor_LS_Off* Arena::CreateMaybeMessage<::skill::S_Archor_LS_Off>(Arena*);
+template<> ::skill::S_Archor_Q_Charging* Arena::CreateMaybeMessage<::skill::S_Archor_Q_Charging>(Arena*);
+template<> ::skill::S_Archor_Q_Shot* Arena::CreateMaybeMessage<::skill::S_Archor_Q_Shot>(Arena*);
+template<> ::skill::S_Archor_R* Arena::CreateMaybeMessage<::skill::S_Archor_R>(Arena*);
+template<> ::skill::S_Archor_R_Off* Arena::CreateMaybeMessage<::skill::S_Archor_R_Off>(Arena*);
 template<> ::skill::S_Assassin_E* Arena::CreateMaybeMessage<::skill::S_Assassin_E>(Arena*);
 template<> ::skill::S_Assassin_LS_Off* Arena::CreateMaybeMessage<::skill::S_Assassin_LS_Off>(Arena*);
 template<> ::skill::S_CoolTime* Arena::CreateMaybeMessage<::skill::S_CoolTime>(Arena*);
@@ -3779,6 +3835,2371 @@ class S_Assassin_LS_Off final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
+// -------------------------------------------------------------------
+
+class C_Archor_Attack final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Archor_Attack) */ {
+ public:
+  inline C_Archor_Attack() : C_Archor_Attack(nullptr) {}
+  ~C_Archor_Attack() override;
+  explicit PROTOBUF_CONSTEXPR C_Archor_Attack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Archor_Attack(const C_Archor_Attack& from);
+  C_Archor_Attack(C_Archor_Attack&& from) noexcept
+    : C_Archor_Attack() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Archor_Attack& operator=(const C_Archor_Attack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Archor_Attack& operator=(C_Archor_Attack&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Archor_Attack& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Archor_Attack* internal_default_instance() {
+    return reinterpret_cast<const C_Archor_Attack*>(
+               &_C_Archor_Attack_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(C_Archor_Attack& a, C_Archor_Attack& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Archor_Attack* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Archor_Attack* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Archor_Attack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Archor_Attack>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Archor_Attack& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Archor_Attack& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Archor_Attack* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Archor_Attack";
+  }
+  protected:
+  explicit C_Archor_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kStartXFieldNumber = 2,
+    kStartYFieldNumber = 3,
+    kStartZFieldNumber = 4,
+    kEndXFieldNumber = 5,
+    kEndYFieldNumber = 6,
+    kEndZFieldNumber = 7,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float start_x = 2;
+  void clear_start_x();
+  float start_x() const;
+  void set_start_x(float value);
+  private:
+  float _internal_start_x() const;
+  void _internal_set_start_x(float value);
+  public:
+
+  // float start_y = 3;
+  void clear_start_y();
+  float start_y() const;
+  void set_start_y(float value);
+  private:
+  float _internal_start_y() const;
+  void _internal_set_start_y(float value);
+  public:
+
+  // float start_z = 4;
+  void clear_start_z();
+  float start_z() const;
+  void set_start_z(float value);
+  private:
+  float _internal_start_z() const;
+  void _internal_set_start_z(float value);
+  public:
+
+  // float end_x = 5;
+  void clear_end_x();
+  float end_x() const;
+  void set_end_x(float value);
+  private:
+  float _internal_end_x() const;
+  void _internal_set_end_x(float value);
+  public:
+
+  // float end_y = 6;
+  void clear_end_y();
+  float end_y() const;
+  void set_end_y(float value);
+  private:
+  float _internal_end_y() const;
+  void _internal_set_end_y(float value);
+  public:
+
+  // float end_z = 7;
+  void clear_end_z();
+  float end_z() const;
+  void set_end_z(float value);
+  private:
+  float _internal_end_z() const;
+  void _internal_set_end_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_Archor_Attack)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float start_x_;
+  float start_y_;
+  float start_z_;
+  float end_x_;
+  float end_y_;
+  float end_z_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_Attack final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_Attack) */ {
+ public:
+  inline S_Archor_Attack() : S_Archor_Attack(nullptr) {}
+  ~S_Archor_Attack() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_Attack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_Attack(const S_Archor_Attack& from);
+  S_Archor_Attack(S_Archor_Attack&& from) noexcept
+    : S_Archor_Attack() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_Attack& operator=(const S_Archor_Attack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_Attack& operator=(S_Archor_Attack&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_Attack& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_Attack* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_Attack*>(
+               &_S_Archor_Attack_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  friend void swap(S_Archor_Attack& a, S_Archor_Attack& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_Attack* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_Attack* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_Attack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_Attack>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_Attack& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_Attack& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_Attack* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_Attack";
+  }
+  protected:
+  explicit S_Archor_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kStartXFieldNumber = 2,
+    kStartYFieldNumber = 3,
+    kStartZFieldNumber = 4,
+    kEndXFieldNumber = 5,
+    kEndYFieldNumber = 6,
+    kEndZFieldNumber = 7,
+    kRModeFieldNumber = 8,
+    kLSModeFieldNumber = 9,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float start_x = 2;
+  void clear_start_x();
+  float start_x() const;
+  void set_start_x(float value);
+  private:
+  float _internal_start_x() const;
+  void _internal_set_start_x(float value);
+  public:
+
+  // float start_y = 3;
+  void clear_start_y();
+  float start_y() const;
+  void set_start_y(float value);
+  private:
+  float _internal_start_y() const;
+  void _internal_set_start_y(float value);
+  public:
+
+  // float start_z = 4;
+  void clear_start_z();
+  float start_z() const;
+  void set_start_z(float value);
+  private:
+  float _internal_start_z() const;
+  void _internal_set_start_z(float value);
+  public:
+
+  // float end_x = 5;
+  void clear_end_x();
+  float end_x() const;
+  void set_end_x(float value);
+  private:
+  float _internal_end_x() const;
+  void _internal_set_end_x(float value);
+  public:
+
+  // float end_y = 6;
+  void clear_end_y();
+  float end_y() const;
+  void set_end_y(float value);
+  private:
+  float _internal_end_y() const;
+  void _internal_set_end_y(float value);
+  public:
+
+  // float end_z = 7;
+  void clear_end_z();
+  float end_z() const;
+  void set_end_z(float value);
+  private:
+  float _internal_end_z() const;
+  void _internal_set_end_z(float value);
+  public:
+
+  // int32 R_Mode = 8;
+  void clear_r_mode();
+  int32_t r_mode() const;
+  void set_r_mode(int32_t value);
+  private:
+  int32_t _internal_r_mode() const;
+  void _internal_set_r_mode(int32_t value);
+  public:
+
+  // int32 LS_Mode = 9;
+  void clear_ls_mode();
+  int32_t ls_mode() const;
+  void set_ls_mode(int32_t value);
+  private:
+  int32_t _internal_ls_mode() const;
+  void _internal_set_ls_mode(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_Attack)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float start_x_;
+  float start_y_;
+  float start_z_;
+  float end_x_;
+  float end_y_;
+  float end_z_;
+  int32_t r_mode_;
+  int32_t ls_mode_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Archor_Q_Charging final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Archor_Q_Charging) */ {
+ public:
+  inline C_Archor_Q_Charging() : C_Archor_Q_Charging(nullptr) {}
+  ~C_Archor_Q_Charging() override;
+  explicit PROTOBUF_CONSTEXPR C_Archor_Q_Charging(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Archor_Q_Charging(const C_Archor_Q_Charging& from);
+  C_Archor_Q_Charging(C_Archor_Q_Charging&& from) noexcept
+    : C_Archor_Q_Charging() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Archor_Q_Charging& operator=(const C_Archor_Q_Charging& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Archor_Q_Charging& operator=(C_Archor_Q_Charging&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Archor_Q_Charging& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Archor_Q_Charging* internal_default_instance() {
+    return reinterpret_cast<const C_Archor_Q_Charging*>(
+               &_C_Archor_Q_Charging_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    25;
+
+  friend void swap(C_Archor_Q_Charging& a, C_Archor_Q_Charging& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Archor_Q_Charging* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Archor_Q_Charging* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Archor_Q_Charging* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Archor_Q_Charging>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Archor_Q_Charging& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Archor_Q_Charging& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Archor_Q_Charging* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Archor_Q_Charging";
+  }
+  protected:
+  explicit C_Archor_Q_Charging(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_Archor_Q_Charging)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_Q_Charging final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_Q_Charging) */ {
+ public:
+  inline S_Archor_Q_Charging() : S_Archor_Q_Charging(nullptr) {}
+  ~S_Archor_Q_Charging() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_Q_Charging(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_Q_Charging(const S_Archor_Q_Charging& from);
+  S_Archor_Q_Charging(S_Archor_Q_Charging&& from) noexcept
+    : S_Archor_Q_Charging() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_Q_Charging& operator=(const S_Archor_Q_Charging& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_Q_Charging& operator=(S_Archor_Q_Charging&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_Q_Charging& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_Q_Charging* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_Q_Charging*>(
+               &_S_Archor_Q_Charging_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  friend void swap(S_Archor_Q_Charging& a, S_Archor_Q_Charging& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_Q_Charging* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_Q_Charging* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_Q_Charging* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_Q_Charging>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_Q_Charging& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_Q_Charging& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_Q_Charging* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_Q_Charging";
+  }
+  protected:
+  explicit S_Archor_Q_Charging(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kRModeFieldNumber = 2,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // int32 R_Mode = 2;
+  void clear_r_mode();
+  int32_t r_mode() const;
+  void set_r_mode(int32_t value);
+  private:
+  int32_t _internal_r_mode() const;
+  void _internal_set_r_mode(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_Q_Charging)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  int32_t r_mode_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Archor_Q_Shot final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Archor_Q_Shot) */ {
+ public:
+  inline C_Archor_Q_Shot() : C_Archor_Q_Shot(nullptr) {}
+  ~C_Archor_Q_Shot() override;
+  explicit PROTOBUF_CONSTEXPR C_Archor_Q_Shot(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Archor_Q_Shot(const C_Archor_Q_Shot& from);
+  C_Archor_Q_Shot(C_Archor_Q_Shot&& from) noexcept
+    : C_Archor_Q_Shot() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Archor_Q_Shot& operator=(const C_Archor_Q_Shot& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Archor_Q_Shot& operator=(C_Archor_Q_Shot&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Archor_Q_Shot& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Archor_Q_Shot* internal_default_instance() {
+    return reinterpret_cast<const C_Archor_Q_Shot*>(
+               &_C_Archor_Q_Shot_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    27;
+
+  friend void swap(C_Archor_Q_Shot& a, C_Archor_Q_Shot& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Archor_Q_Shot* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Archor_Q_Shot* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Archor_Q_Shot* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Archor_Q_Shot>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Archor_Q_Shot& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Archor_Q_Shot& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Archor_Q_Shot* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Archor_Q_Shot";
+  }
+  protected:
+  explicit C_Archor_Q_Shot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kStartXFieldNumber = 2,
+    kStartYFieldNumber = 3,
+    kStartZFieldNumber = 4,
+    kEndXFieldNumber = 5,
+    kEndYFieldNumber = 6,
+    kEndZFieldNumber = 7,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float start_x = 2;
+  void clear_start_x();
+  float start_x() const;
+  void set_start_x(float value);
+  private:
+  float _internal_start_x() const;
+  void _internal_set_start_x(float value);
+  public:
+
+  // float start_y = 3;
+  void clear_start_y();
+  float start_y() const;
+  void set_start_y(float value);
+  private:
+  float _internal_start_y() const;
+  void _internal_set_start_y(float value);
+  public:
+
+  // float start_z = 4;
+  void clear_start_z();
+  float start_z() const;
+  void set_start_z(float value);
+  private:
+  float _internal_start_z() const;
+  void _internal_set_start_z(float value);
+  public:
+
+  // float end_x = 5;
+  void clear_end_x();
+  float end_x() const;
+  void set_end_x(float value);
+  private:
+  float _internal_end_x() const;
+  void _internal_set_end_x(float value);
+  public:
+
+  // float end_y = 6;
+  void clear_end_y();
+  float end_y() const;
+  void set_end_y(float value);
+  private:
+  float _internal_end_y() const;
+  void _internal_set_end_y(float value);
+  public:
+
+  // float end_z = 7;
+  void clear_end_z();
+  float end_z() const;
+  void set_end_z(float value);
+  private:
+  float _internal_end_z() const;
+  void _internal_set_end_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_Archor_Q_Shot)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float start_x_;
+  float start_y_;
+  float start_z_;
+  float end_x_;
+  float end_y_;
+  float end_z_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_Q_Shot final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_Q_Shot) */ {
+ public:
+  inline S_Archor_Q_Shot() : S_Archor_Q_Shot(nullptr) {}
+  ~S_Archor_Q_Shot() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_Q_Shot(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_Q_Shot(const S_Archor_Q_Shot& from);
+  S_Archor_Q_Shot(S_Archor_Q_Shot&& from) noexcept
+    : S_Archor_Q_Shot() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_Q_Shot& operator=(const S_Archor_Q_Shot& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_Q_Shot& operator=(S_Archor_Q_Shot&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_Q_Shot& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_Q_Shot* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_Q_Shot*>(
+               &_S_Archor_Q_Shot_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    28;
+
+  friend void swap(S_Archor_Q_Shot& a, S_Archor_Q_Shot& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_Q_Shot* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_Q_Shot* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_Q_Shot* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_Q_Shot>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_Q_Shot& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_Q_Shot& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_Q_Shot* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_Q_Shot";
+  }
+  protected:
+  explicit S_Archor_Q_Shot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kStartXFieldNumber = 2,
+    kStartYFieldNumber = 3,
+    kStartZFieldNumber = 4,
+    kEndXFieldNumber = 5,
+    kEndYFieldNumber = 6,
+    kEndZFieldNumber = 7,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float start_x = 2;
+  void clear_start_x();
+  float start_x() const;
+  void set_start_x(float value);
+  private:
+  float _internal_start_x() const;
+  void _internal_set_start_x(float value);
+  public:
+
+  // float start_y = 3;
+  void clear_start_y();
+  float start_y() const;
+  void set_start_y(float value);
+  private:
+  float _internal_start_y() const;
+  void _internal_set_start_y(float value);
+  public:
+
+  // float start_z = 4;
+  void clear_start_z();
+  float start_z() const;
+  void set_start_z(float value);
+  private:
+  float _internal_start_z() const;
+  void _internal_set_start_z(float value);
+  public:
+
+  // float end_x = 5;
+  void clear_end_x();
+  float end_x() const;
+  void set_end_x(float value);
+  private:
+  float _internal_end_x() const;
+  void _internal_set_end_x(float value);
+  public:
+
+  // float end_y = 6;
+  void clear_end_y();
+  float end_y() const;
+  void set_end_y(float value);
+  private:
+  float _internal_end_y() const;
+  void _internal_set_end_y(float value);
+  public:
+
+  // float end_z = 7;
+  void clear_end_z();
+  float end_z() const;
+  void set_end_z(float value);
+  private:
+  float _internal_end_z() const;
+  void _internal_set_end_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_Q_Shot)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float start_x_;
+  float start_y_;
+  float start_z_;
+  float end_x_;
+  float end_y_;
+  float end_z_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Archor_E final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Archor_E) */ {
+ public:
+  inline C_Archor_E() : C_Archor_E(nullptr) {}
+  ~C_Archor_E() override;
+  explicit PROTOBUF_CONSTEXPR C_Archor_E(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Archor_E(const C_Archor_E& from);
+  C_Archor_E(C_Archor_E&& from) noexcept
+    : C_Archor_E() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Archor_E& operator=(const C_Archor_E& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Archor_E& operator=(C_Archor_E&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Archor_E& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Archor_E* internal_default_instance() {
+    return reinterpret_cast<const C_Archor_E*>(
+               &_C_Archor_E_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    29;
+
+  friend void swap(C_Archor_E& a, C_Archor_E& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Archor_E* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Archor_E* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Archor_E* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Archor_E>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Archor_E& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Archor_E& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Archor_E* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Archor_E";
+  }
+  protected:
+  explicit C_Archor_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float x = 2;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 3;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 4;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_Archor_E)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float x_;
+  float y_;
+  float z_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_E final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_E) */ {
+ public:
+  inline S_Archor_E() : S_Archor_E(nullptr) {}
+  ~S_Archor_E() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_E(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_E(const S_Archor_E& from);
+  S_Archor_E(S_Archor_E&& from) noexcept
+    : S_Archor_E() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_E& operator=(const S_Archor_E& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_E& operator=(S_Archor_E&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_E& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_E* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_E*>(
+               &_S_Archor_E_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    30;
+
+  friend void swap(S_Archor_E& a, S_Archor_E& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_E* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_E* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_E* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_E>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_E& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_E& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_E* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_E";
+  }
+  protected:
+  explicit S_Archor_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // float x = 2;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 3;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 4;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_E)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  float x_;
+  float y_;
+  float z_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Archor_R final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Archor_R) */ {
+ public:
+  inline C_Archor_R() : C_Archor_R(nullptr) {}
+  ~C_Archor_R() override;
+  explicit PROTOBUF_CONSTEXPR C_Archor_R(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Archor_R(const C_Archor_R& from);
+  C_Archor_R(C_Archor_R&& from) noexcept
+    : C_Archor_R() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Archor_R& operator=(const C_Archor_R& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Archor_R& operator=(C_Archor_R&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Archor_R& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Archor_R* internal_default_instance() {
+    return reinterpret_cast<const C_Archor_R*>(
+               &_C_Archor_R_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    31;
+
+  friend void swap(C_Archor_R& a, C_Archor_R& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Archor_R* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Archor_R* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Archor_R* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Archor_R>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Archor_R& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Archor_R& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Archor_R* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Archor_R";
+  }
+  protected:
+  explicit C_Archor_R(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_Archor_R)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_R final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_R) */ {
+ public:
+  inline S_Archor_R() : S_Archor_R(nullptr) {}
+  ~S_Archor_R() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_R(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_R(const S_Archor_R& from);
+  S_Archor_R(S_Archor_R&& from) noexcept
+    : S_Archor_R() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_R& operator=(const S_Archor_R& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_R& operator=(S_Archor_R&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_R& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_R* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_R*>(
+               &_S_Archor_R_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    32;
+
+  friend void swap(S_Archor_R& a, S_Archor_R& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_R* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_R* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_R* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_R>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_R& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_R& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_R* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_R";
+  }
+  protected:
+  explicit S_Archor_R(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_R)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Archor_LS final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Archor_LS) */ {
+ public:
+  inline C_Archor_LS() : C_Archor_LS(nullptr) {}
+  ~C_Archor_LS() override;
+  explicit PROTOBUF_CONSTEXPR C_Archor_LS(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Archor_LS(const C_Archor_LS& from);
+  C_Archor_LS(C_Archor_LS&& from) noexcept
+    : C_Archor_LS() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Archor_LS& operator=(const C_Archor_LS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Archor_LS& operator=(C_Archor_LS&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Archor_LS& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Archor_LS* internal_default_instance() {
+    return reinterpret_cast<const C_Archor_LS*>(
+               &_C_Archor_LS_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    33;
+
+  friend void swap(C_Archor_LS& a, C_Archor_LS& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Archor_LS* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Archor_LS* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Archor_LS* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Archor_LS>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Archor_LS& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Archor_LS& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Archor_LS* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Archor_LS";
+  }
+  protected:
+  explicit C_Archor_LS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_Archor_LS)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_LS final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_LS) */ {
+ public:
+  inline S_Archor_LS() : S_Archor_LS(nullptr) {}
+  ~S_Archor_LS() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_LS(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_LS(const S_Archor_LS& from);
+  S_Archor_LS(S_Archor_LS&& from) noexcept
+    : S_Archor_LS() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_LS& operator=(const S_Archor_LS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_LS& operator=(S_Archor_LS&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_LS& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_LS* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_LS*>(
+               &_S_Archor_LS_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    34;
+
+  friend void swap(S_Archor_LS& a, S_Archor_LS& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_LS* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_LS* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_LS* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_LS>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_LS& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_LS& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_LS* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_LS";
+  }
+  protected:
+  explicit S_Archor_LS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_LS)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_R_Off final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_R_Off) */ {
+ public:
+  inline S_Archor_R_Off() : S_Archor_R_Off(nullptr) {}
+  ~S_Archor_R_Off() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_R_Off(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_R_Off(const S_Archor_R_Off& from);
+  S_Archor_R_Off(S_Archor_R_Off&& from) noexcept
+    : S_Archor_R_Off() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_R_Off& operator=(const S_Archor_R_Off& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_R_Off& operator=(S_Archor_R_Off&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_R_Off& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_R_Off* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_R_Off*>(
+               &_S_Archor_R_Off_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    35;
+
+  friend void swap(S_Archor_R_Off& a, S_Archor_R_Off& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_R_Off* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_R_Off* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_R_Off* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_R_Off>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_R_Off& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_R_Off& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_R_Off* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_R_Off";
+  }
+  protected:
+  explicit S_Archor_R_Off(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_R_Off)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Archor_LS_Off final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Archor_LS_Off) */ {
+ public:
+  inline S_Archor_LS_Off() : S_Archor_LS_Off(nullptr) {}
+  ~S_Archor_LS_Off() override;
+  explicit PROTOBUF_CONSTEXPR S_Archor_LS_Off(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Archor_LS_Off(const S_Archor_LS_Off& from);
+  S_Archor_LS_Off(S_Archor_LS_Off&& from) noexcept
+    : S_Archor_LS_Off() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Archor_LS_Off& operator=(const S_Archor_LS_Off& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Archor_LS_Off& operator=(S_Archor_LS_Off&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Archor_LS_Off& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Archor_LS_Off* internal_default_instance() {
+    return reinterpret_cast<const S_Archor_LS_Off*>(
+               &_S_Archor_LS_Off_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    36;
+
+  friend void swap(S_Archor_LS_Off& a, S_Archor_LS_Off& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Archor_LS_Off* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Archor_LS_Off* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Archor_LS_Off* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Archor_LS_Off>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Archor_LS_Off& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Archor_LS_Off& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Archor_LS_Off* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Archor_LS_Off";
+  }
+  protected:
+  explicit S_Archor_LS_Off(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Archor_LS_Off)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
 // ===================================================================
 
 
@@ -4918,9 +7339,1033 @@ inline void S_Assassin_LS_Off::set_object_id(uint64_t value) {
   // @@protoc_insertion_point(field_set:skill.S_Assassin_LS_Off.object_id)
 }
 
+// -------------------------------------------------------------------
+
+// C_Archor_Attack
+
+// uint64 object_id = 1;
+inline void C_Archor_Attack::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Archor_Attack::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Archor_Attack::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Attack.object_id)
+  return _internal_object_id();
+}
+inline void C_Archor_Attack::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Archor_Attack::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Attack.object_id)
+}
+
+// float start_x = 2;
+inline void C_Archor_Attack::clear_start_x() {
+  start_x_ = 0;
+}
+inline float C_Archor_Attack::_internal_start_x() const {
+  return start_x_;
+}
+inline float C_Archor_Attack::start_x() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Attack.start_x)
+  return _internal_start_x();
+}
+inline void C_Archor_Attack::_internal_set_start_x(float value) {
+  
+  start_x_ = value;
+}
+inline void C_Archor_Attack::set_start_x(float value) {
+  _internal_set_start_x(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Attack.start_x)
+}
+
+// float start_y = 3;
+inline void C_Archor_Attack::clear_start_y() {
+  start_y_ = 0;
+}
+inline float C_Archor_Attack::_internal_start_y() const {
+  return start_y_;
+}
+inline float C_Archor_Attack::start_y() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Attack.start_y)
+  return _internal_start_y();
+}
+inline void C_Archor_Attack::_internal_set_start_y(float value) {
+  
+  start_y_ = value;
+}
+inline void C_Archor_Attack::set_start_y(float value) {
+  _internal_set_start_y(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Attack.start_y)
+}
+
+// float start_z = 4;
+inline void C_Archor_Attack::clear_start_z() {
+  start_z_ = 0;
+}
+inline float C_Archor_Attack::_internal_start_z() const {
+  return start_z_;
+}
+inline float C_Archor_Attack::start_z() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Attack.start_z)
+  return _internal_start_z();
+}
+inline void C_Archor_Attack::_internal_set_start_z(float value) {
+  
+  start_z_ = value;
+}
+inline void C_Archor_Attack::set_start_z(float value) {
+  _internal_set_start_z(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Attack.start_z)
+}
+
+// float end_x = 5;
+inline void C_Archor_Attack::clear_end_x() {
+  end_x_ = 0;
+}
+inline float C_Archor_Attack::_internal_end_x() const {
+  return end_x_;
+}
+inline float C_Archor_Attack::end_x() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Attack.end_x)
+  return _internal_end_x();
+}
+inline void C_Archor_Attack::_internal_set_end_x(float value) {
+  
+  end_x_ = value;
+}
+inline void C_Archor_Attack::set_end_x(float value) {
+  _internal_set_end_x(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Attack.end_x)
+}
+
+// float end_y = 6;
+inline void C_Archor_Attack::clear_end_y() {
+  end_y_ = 0;
+}
+inline float C_Archor_Attack::_internal_end_y() const {
+  return end_y_;
+}
+inline float C_Archor_Attack::end_y() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Attack.end_y)
+  return _internal_end_y();
+}
+inline void C_Archor_Attack::_internal_set_end_y(float value) {
+  
+  end_y_ = value;
+}
+inline void C_Archor_Attack::set_end_y(float value) {
+  _internal_set_end_y(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Attack.end_y)
+}
+
+// float end_z = 7;
+inline void C_Archor_Attack::clear_end_z() {
+  end_z_ = 0;
+}
+inline float C_Archor_Attack::_internal_end_z() const {
+  return end_z_;
+}
+inline float C_Archor_Attack::end_z() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Attack.end_z)
+  return _internal_end_z();
+}
+inline void C_Archor_Attack::_internal_set_end_z(float value) {
+  
+  end_z_ = value;
+}
+inline void C_Archor_Attack::set_end_z(float value) {
+  _internal_set_end_z(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Attack.end_z)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_Attack
+
+// uint64 object_id = 1;
+inline void S_Archor_Attack::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_Attack::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_Attack::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_Attack::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_Attack::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.object_id)
+}
+
+// float start_x = 2;
+inline void S_Archor_Attack::clear_start_x() {
+  start_x_ = 0;
+}
+inline float S_Archor_Attack::_internal_start_x() const {
+  return start_x_;
+}
+inline float S_Archor_Attack::start_x() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.start_x)
+  return _internal_start_x();
+}
+inline void S_Archor_Attack::_internal_set_start_x(float value) {
+  
+  start_x_ = value;
+}
+inline void S_Archor_Attack::set_start_x(float value) {
+  _internal_set_start_x(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.start_x)
+}
+
+// float start_y = 3;
+inline void S_Archor_Attack::clear_start_y() {
+  start_y_ = 0;
+}
+inline float S_Archor_Attack::_internal_start_y() const {
+  return start_y_;
+}
+inline float S_Archor_Attack::start_y() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.start_y)
+  return _internal_start_y();
+}
+inline void S_Archor_Attack::_internal_set_start_y(float value) {
+  
+  start_y_ = value;
+}
+inline void S_Archor_Attack::set_start_y(float value) {
+  _internal_set_start_y(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.start_y)
+}
+
+// float start_z = 4;
+inline void S_Archor_Attack::clear_start_z() {
+  start_z_ = 0;
+}
+inline float S_Archor_Attack::_internal_start_z() const {
+  return start_z_;
+}
+inline float S_Archor_Attack::start_z() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.start_z)
+  return _internal_start_z();
+}
+inline void S_Archor_Attack::_internal_set_start_z(float value) {
+  
+  start_z_ = value;
+}
+inline void S_Archor_Attack::set_start_z(float value) {
+  _internal_set_start_z(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.start_z)
+}
+
+// float end_x = 5;
+inline void S_Archor_Attack::clear_end_x() {
+  end_x_ = 0;
+}
+inline float S_Archor_Attack::_internal_end_x() const {
+  return end_x_;
+}
+inline float S_Archor_Attack::end_x() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.end_x)
+  return _internal_end_x();
+}
+inline void S_Archor_Attack::_internal_set_end_x(float value) {
+  
+  end_x_ = value;
+}
+inline void S_Archor_Attack::set_end_x(float value) {
+  _internal_set_end_x(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.end_x)
+}
+
+// float end_y = 6;
+inline void S_Archor_Attack::clear_end_y() {
+  end_y_ = 0;
+}
+inline float S_Archor_Attack::_internal_end_y() const {
+  return end_y_;
+}
+inline float S_Archor_Attack::end_y() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.end_y)
+  return _internal_end_y();
+}
+inline void S_Archor_Attack::_internal_set_end_y(float value) {
+  
+  end_y_ = value;
+}
+inline void S_Archor_Attack::set_end_y(float value) {
+  _internal_set_end_y(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.end_y)
+}
+
+// float end_z = 7;
+inline void S_Archor_Attack::clear_end_z() {
+  end_z_ = 0;
+}
+inline float S_Archor_Attack::_internal_end_z() const {
+  return end_z_;
+}
+inline float S_Archor_Attack::end_z() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.end_z)
+  return _internal_end_z();
+}
+inline void S_Archor_Attack::_internal_set_end_z(float value) {
+  
+  end_z_ = value;
+}
+inline void S_Archor_Attack::set_end_z(float value) {
+  _internal_set_end_z(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.end_z)
+}
+
+// int32 R_Mode = 8;
+inline void S_Archor_Attack::clear_r_mode() {
+  r_mode_ = 0;
+}
+inline int32_t S_Archor_Attack::_internal_r_mode() const {
+  return r_mode_;
+}
+inline int32_t S_Archor_Attack::r_mode() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.R_Mode)
+  return _internal_r_mode();
+}
+inline void S_Archor_Attack::_internal_set_r_mode(int32_t value) {
+  
+  r_mode_ = value;
+}
+inline void S_Archor_Attack::set_r_mode(int32_t value) {
+  _internal_set_r_mode(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.R_Mode)
+}
+
+// int32 LS_Mode = 9;
+inline void S_Archor_Attack::clear_ls_mode() {
+  ls_mode_ = 0;
+}
+inline int32_t S_Archor_Attack::_internal_ls_mode() const {
+  return ls_mode_;
+}
+inline int32_t S_Archor_Attack::ls_mode() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Attack.LS_Mode)
+  return _internal_ls_mode();
+}
+inline void S_Archor_Attack::_internal_set_ls_mode(int32_t value) {
+  
+  ls_mode_ = value;
+}
+inline void S_Archor_Attack::set_ls_mode(int32_t value) {
+  _internal_set_ls_mode(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Attack.LS_Mode)
+}
+
+// -------------------------------------------------------------------
+
+// C_Archor_Q_Charging
+
+// uint64 object_id = 1;
+inline void C_Archor_Q_Charging::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Archor_Q_Charging::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Archor_Q_Charging::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Charging.object_id)
+  return _internal_object_id();
+}
+inline void C_Archor_Q_Charging::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Archor_Q_Charging::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Charging.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_Q_Charging
+
+// uint64 object_id = 1;
+inline void S_Archor_Q_Charging::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_Q_Charging::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_Q_Charging::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Charging.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_Q_Charging::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_Q_Charging::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Charging.object_id)
+}
+
+// int32 R_Mode = 2;
+inline void S_Archor_Q_Charging::clear_r_mode() {
+  r_mode_ = 0;
+}
+inline int32_t S_Archor_Q_Charging::_internal_r_mode() const {
+  return r_mode_;
+}
+inline int32_t S_Archor_Q_Charging::r_mode() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Charging.R_Mode)
+  return _internal_r_mode();
+}
+inline void S_Archor_Q_Charging::_internal_set_r_mode(int32_t value) {
+  
+  r_mode_ = value;
+}
+inline void S_Archor_Q_Charging::set_r_mode(int32_t value) {
+  _internal_set_r_mode(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Charging.R_Mode)
+}
+
+// -------------------------------------------------------------------
+
+// C_Archor_Q_Shot
+
+// uint64 object_id = 1;
+inline void C_Archor_Q_Shot::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Archor_Q_Shot::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Archor_Q_Shot::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Shot.object_id)
+  return _internal_object_id();
+}
+inline void C_Archor_Q_Shot::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Archor_Q_Shot::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Shot.object_id)
+}
+
+// float start_x = 2;
+inline void C_Archor_Q_Shot::clear_start_x() {
+  start_x_ = 0;
+}
+inline float C_Archor_Q_Shot::_internal_start_x() const {
+  return start_x_;
+}
+inline float C_Archor_Q_Shot::start_x() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Shot.start_x)
+  return _internal_start_x();
+}
+inline void C_Archor_Q_Shot::_internal_set_start_x(float value) {
+  
+  start_x_ = value;
+}
+inline void C_Archor_Q_Shot::set_start_x(float value) {
+  _internal_set_start_x(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Shot.start_x)
+}
+
+// float start_y = 3;
+inline void C_Archor_Q_Shot::clear_start_y() {
+  start_y_ = 0;
+}
+inline float C_Archor_Q_Shot::_internal_start_y() const {
+  return start_y_;
+}
+inline float C_Archor_Q_Shot::start_y() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Shot.start_y)
+  return _internal_start_y();
+}
+inline void C_Archor_Q_Shot::_internal_set_start_y(float value) {
+  
+  start_y_ = value;
+}
+inline void C_Archor_Q_Shot::set_start_y(float value) {
+  _internal_set_start_y(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Shot.start_y)
+}
+
+// float start_z = 4;
+inline void C_Archor_Q_Shot::clear_start_z() {
+  start_z_ = 0;
+}
+inline float C_Archor_Q_Shot::_internal_start_z() const {
+  return start_z_;
+}
+inline float C_Archor_Q_Shot::start_z() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Shot.start_z)
+  return _internal_start_z();
+}
+inline void C_Archor_Q_Shot::_internal_set_start_z(float value) {
+  
+  start_z_ = value;
+}
+inline void C_Archor_Q_Shot::set_start_z(float value) {
+  _internal_set_start_z(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Shot.start_z)
+}
+
+// float end_x = 5;
+inline void C_Archor_Q_Shot::clear_end_x() {
+  end_x_ = 0;
+}
+inline float C_Archor_Q_Shot::_internal_end_x() const {
+  return end_x_;
+}
+inline float C_Archor_Q_Shot::end_x() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Shot.end_x)
+  return _internal_end_x();
+}
+inline void C_Archor_Q_Shot::_internal_set_end_x(float value) {
+  
+  end_x_ = value;
+}
+inline void C_Archor_Q_Shot::set_end_x(float value) {
+  _internal_set_end_x(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Shot.end_x)
+}
+
+// float end_y = 6;
+inline void C_Archor_Q_Shot::clear_end_y() {
+  end_y_ = 0;
+}
+inline float C_Archor_Q_Shot::_internal_end_y() const {
+  return end_y_;
+}
+inline float C_Archor_Q_Shot::end_y() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Shot.end_y)
+  return _internal_end_y();
+}
+inline void C_Archor_Q_Shot::_internal_set_end_y(float value) {
+  
+  end_y_ = value;
+}
+inline void C_Archor_Q_Shot::set_end_y(float value) {
+  _internal_set_end_y(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Shot.end_y)
+}
+
+// float end_z = 7;
+inline void C_Archor_Q_Shot::clear_end_z() {
+  end_z_ = 0;
+}
+inline float C_Archor_Q_Shot::_internal_end_z() const {
+  return end_z_;
+}
+inline float C_Archor_Q_Shot::end_z() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_Q_Shot.end_z)
+  return _internal_end_z();
+}
+inline void C_Archor_Q_Shot::_internal_set_end_z(float value) {
+  
+  end_z_ = value;
+}
+inline void C_Archor_Q_Shot::set_end_z(float value) {
+  _internal_set_end_z(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_Q_Shot.end_z)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_Q_Shot
+
+// uint64 object_id = 1;
+inline void S_Archor_Q_Shot::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_Q_Shot::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_Q_Shot::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Shot.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_Q_Shot::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_Q_Shot::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Shot.object_id)
+}
+
+// float start_x = 2;
+inline void S_Archor_Q_Shot::clear_start_x() {
+  start_x_ = 0;
+}
+inline float S_Archor_Q_Shot::_internal_start_x() const {
+  return start_x_;
+}
+inline float S_Archor_Q_Shot::start_x() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Shot.start_x)
+  return _internal_start_x();
+}
+inline void S_Archor_Q_Shot::_internal_set_start_x(float value) {
+  
+  start_x_ = value;
+}
+inline void S_Archor_Q_Shot::set_start_x(float value) {
+  _internal_set_start_x(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Shot.start_x)
+}
+
+// float start_y = 3;
+inline void S_Archor_Q_Shot::clear_start_y() {
+  start_y_ = 0;
+}
+inline float S_Archor_Q_Shot::_internal_start_y() const {
+  return start_y_;
+}
+inline float S_Archor_Q_Shot::start_y() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Shot.start_y)
+  return _internal_start_y();
+}
+inline void S_Archor_Q_Shot::_internal_set_start_y(float value) {
+  
+  start_y_ = value;
+}
+inline void S_Archor_Q_Shot::set_start_y(float value) {
+  _internal_set_start_y(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Shot.start_y)
+}
+
+// float start_z = 4;
+inline void S_Archor_Q_Shot::clear_start_z() {
+  start_z_ = 0;
+}
+inline float S_Archor_Q_Shot::_internal_start_z() const {
+  return start_z_;
+}
+inline float S_Archor_Q_Shot::start_z() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Shot.start_z)
+  return _internal_start_z();
+}
+inline void S_Archor_Q_Shot::_internal_set_start_z(float value) {
+  
+  start_z_ = value;
+}
+inline void S_Archor_Q_Shot::set_start_z(float value) {
+  _internal_set_start_z(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Shot.start_z)
+}
+
+// float end_x = 5;
+inline void S_Archor_Q_Shot::clear_end_x() {
+  end_x_ = 0;
+}
+inline float S_Archor_Q_Shot::_internal_end_x() const {
+  return end_x_;
+}
+inline float S_Archor_Q_Shot::end_x() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Shot.end_x)
+  return _internal_end_x();
+}
+inline void S_Archor_Q_Shot::_internal_set_end_x(float value) {
+  
+  end_x_ = value;
+}
+inline void S_Archor_Q_Shot::set_end_x(float value) {
+  _internal_set_end_x(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Shot.end_x)
+}
+
+// float end_y = 6;
+inline void S_Archor_Q_Shot::clear_end_y() {
+  end_y_ = 0;
+}
+inline float S_Archor_Q_Shot::_internal_end_y() const {
+  return end_y_;
+}
+inline float S_Archor_Q_Shot::end_y() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Shot.end_y)
+  return _internal_end_y();
+}
+inline void S_Archor_Q_Shot::_internal_set_end_y(float value) {
+  
+  end_y_ = value;
+}
+inline void S_Archor_Q_Shot::set_end_y(float value) {
+  _internal_set_end_y(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Shot.end_y)
+}
+
+// float end_z = 7;
+inline void S_Archor_Q_Shot::clear_end_z() {
+  end_z_ = 0;
+}
+inline float S_Archor_Q_Shot::_internal_end_z() const {
+  return end_z_;
+}
+inline float S_Archor_Q_Shot::end_z() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_Q_Shot.end_z)
+  return _internal_end_z();
+}
+inline void S_Archor_Q_Shot::_internal_set_end_z(float value) {
+  
+  end_z_ = value;
+}
+inline void S_Archor_Q_Shot::set_end_z(float value) {
+  _internal_set_end_z(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_Q_Shot.end_z)
+}
+
+// -------------------------------------------------------------------
+
+// C_Archor_E
+
+// uint64 object_id = 1;
+inline void C_Archor_E::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Archor_E::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Archor_E::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_E.object_id)
+  return _internal_object_id();
+}
+inline void C_Archor_E::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Archor_E::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_E.object_id)
+}
+
+// float x = 2;
+inline void C_Archor_E::clear_x() {
+  x_ = 0;
+}
+inline float C_Archor_E::_internal_x() const {
+  return x_;
+}
+inline float C_Archor_E::x() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_E.x)
+  return _internal_x();
+}
+inline void C_Archor_E::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void C_Archor_E::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_E.x)
+}
+
+// float y = 3;
+inline void C_Archor_E::clear_y() {
+  y_ = 0;
+}
+inline float C_Archor_E::_internal_y() const {
+  return y_;
+}
+inline float C_Archor_E::y() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_E.y)
+  return _internal_y();
+}
+inline void C_Archor_E::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void C_Archor_E::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_E.y)
+}
+
+// float z = 4;
+inline void C_Archor_E::clear_z() {
+  z_ = 0;
+}
+inline float C_Archor_E::_internal_z() const {
+  return z_;
+}
+inline float C_Archor_E::z() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_E.z)
+  return _internal_z();
+}
+inline void C_Archor_E::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void C_Archor_E::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_E.z)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_E
+
+// uint64 object_id = 1;
+inline void S_Archor_E::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_E::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_E::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_E.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_E::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_E::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_E.object_id)
+}
+
+// float x = 2;
+inline void S_Archor_E::clear_x() {
+  x_ = 0;
+}
+inline float S_Archor_E::_internal_x() const {
+  return x_;
+}
+inline float S_Archor_E::x() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_E.x)
+  return _internal_x();
+}
+inline void S_Archor_E::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void S_Archor_E::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_E.x)
+}
+
+// float y = 3;
+inline void S_Archor_E::clear_y() {
+  y_ = 0;
+}
+inline float S_Archor_E::_internal_y() const {
+  return y_;
+}
+inline float S_Archor_E::y() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_E.y)
+  return _internal_y();
+}
+inline void S_Archor_E::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void S_Archor_E::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_E.y)
+}
+
+// float z = 4;
+inline void S_Archor_E::clear_z() {
+  z_ = 0;
+}
+inline float S_Archor_E::_internal_z() const {
+  return z_;
+}
+inline float S_Archor_E::z() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_E.z)
+  return _internal_z();
+}
+inline void S_Archor_E::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void S_Archor_E::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_E.z)
+}
+
+// -------------------------------------------------------------------
+
+// C_Archor_R
+
+// uint64 object_id = 1;
+inline void C_Archor_R::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Archor_R::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Archor_R::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_R.object_id)
+  return _internal_object_id();
+}
+inline void C_Archor_R::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Archor_R::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_R.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_R
+
+// uint64 object_id = 1;
+inline void S_Archor_R::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_R::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_R::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_R.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_R::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_R::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_R.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// C_Archor_LS
+
+// uint64 object_id = 1;
+inline void C_Archor_LS::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Archor_LS::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Archor_LS::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Archor_LS.object_id)
+  return _internal_object_id();
+}
+inline void C_Archor_LS::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Archor_LS::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Archor_LS.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_LS
+
+// uint64 object_id = 1;
+inline void S_Archor_LS::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_LS::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_LS::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_LS.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_LS::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_LS::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_LS.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_R_Off
+
+// uint64 object_id = 1;
+inline void S_Archor_R_Off::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_R_Off::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_R_Off::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_R_Off.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_R_Off::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_R_Off::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_R_Off.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Archor_LS_Off
+
+// uint64 object_id = 1;
+inline void S_Archor_LS_Off::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Archor_LS_Off::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Archor_LS_Off::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Archor_LS_Off.object_id)
+  return _internal_object_id();
+}
+inline void S_Archor_LS_Off::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Archor_LS_Off::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Archor_LS_Off.object_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

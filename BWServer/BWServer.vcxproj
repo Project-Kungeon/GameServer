@@ -175,6 +175,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Archor.cpp" />
     <ClCompile Include="Assassin.cpp" />
     <ClCompile Include="BattlePacketHandler.cpp" />
     <ClCompile Include="BWServer.cpp" />
@@ -224,6 +225,7 @@
     <ClCompile Include="TickGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Archor.h" />
     <ClInclude Include="Assassin.h" />
     <ClInclude Include="BattlePacketHandler.h" />
     <ClInclude Include="CoreMacro.h" />

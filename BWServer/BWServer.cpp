@@ -36,10 +36,10 @@ int main()
     std::thread t(boost::bind(&boost::asio::io_context::run, &io_context));
 
     std::thread t1(boost::bind(&boost::asio::io_context::run, &io_context_tick));
-    std::thread t2(boost::bind(&boost::asio::io_context::run, &io_context_tick));
+    //std::thread t2(boost::bind(&boost::asio::io_context::run, &io_context_tick));
     io_context_tick.run();
 
     t.join();
     t1.join();
-    t2.join();
+    //t2.join();
 }

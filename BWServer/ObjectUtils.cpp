@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ObjectUtils.h"
 #include "Assassin.h"
+#include "Archor.h"
 
 atomic<unsigned int> ObjectUtils::s_idGenerator = 1;
 
@@ -13,7 +14,7 @@ PlayerPtr ObjectUtils::CreatePlayer(GameSessionPtr session, message::PlayerType 
 	}
 	else if (type == message::PLAYER_TYPE_ARCHER)
 	{
-		player = std::make_shared<Player>(type, 100.0f, 100.0f, 0.0f);
+		player = std::make_shared<Archor>(100.0f, 100.0f, 0.0f);
 	}
 	else if (type == message::PLAYER_TYPE_ASSASSIN)
 	{

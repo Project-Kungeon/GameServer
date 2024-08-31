@@ -20,3 +20,23 @@ Player::~Player()
 	delete skillCoolTime;
 	skillCoolTime = nullptr;
 }
+
+void Player::UseSkillQ()
+{
+	skillCoolTime->set_q_cooltime(Q_COOLTIME);
+}
+
+void Player::UseSkillE()
+{
+	skillCoolTime->set_e_cooltime(E_COOLTIME);
+}
+
+void Player::UseSkillR()
+{
+	skillCoolTime->set_r_cooltime(R_COOLTIME);
+}
+
+void Player::UseSkillLS()
+{
+	skillCoolTime->set_ls_cooltime(LS_COOLTIME);
+}

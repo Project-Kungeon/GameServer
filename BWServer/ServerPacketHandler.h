@@ -75,7 +75,16 @@ public:
 			return HandlePacket<skill::C_Assassin_E>(BattlePacketHandler::Handle_C_AssassinE, session, buffer, offset);
 		};
 		
+		// Archor
+		GPacketHandler[message::HEADER::ARCHOR_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Archor_Attack>(BattlePacketHandler::Handle_C_ArchorAttack, session, buffer, offset);
+		};
 
+		GPacketHandler[message::HEADER::ARCHOR_E_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Archor_E>(BattlePacketHandler::Handle_C_ArchorE, session, buffer, offset);
+		};
 	}
 
 	static bool HandlePacket(SessionPtr& session, char* ptr, size_t size)
