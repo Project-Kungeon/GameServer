@@ -2,6 +2,7 @@
 #include "Room.h"
 #include "ObjectUtils.h"
 #include "Assassin.h"
+#include "Archor.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
@@ -578,6 +579,267 @@ void Room::HandleAssassinE(skill::C_Assassin_E pkt)
 
 
 	
+}
+
+void Room::HandleArchorAttack(skill::C_Archor_Attack& pkt)
+{
+	uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
+		{
+			skill::S_Archor_Attack attackPkt;
+			attackPkt.set_object_id(pkt.object_id());
+			attackPkt.set_start_x(pkt.start_x());
+			attackPkt.set_start_y(pkt.start_y());
+			attackPkt.set_start_z(pkt.start_z());
+			attackPkt.set_end_x(pkt.end_x());
+			attackPkt.set_end_y(pkt.end_y());
+			attackPkt.set_end_z(pkt.end_z());
+
+			const size_t requiredSize = PacketUtil::RequiredSize(attackPkt);
+			char* rawBuffer = new char[requiredSize];
+			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+			PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_ATTACK_RES, attackPkt);
+
+			Broadcast(sendBuffer, 0);
+		}
+	}
+}
+
+void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt)
+{
+	uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
+		{
+			if (archor->skillCoolTime->q_cooltime() > 0)
+			{
+				if (auto session = archor->session.lock())
+				{
+					skill::S_CoolTime coolTimePkt;
+					coolTimePkt.set_time(archor->skillCoolTime->q_cooltime());
+					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
+
+					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+					session->Send(sendBuffer);
+					return;
+				}
+
+			}
+			else
+			{
+				skill::S_Archor_Q_Charging skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+				skillPkt.set_r_mode((int)archor->R_Mode);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_Q_CHARGING_RES, skillPkt);
+
+				Broadcast(sendBuffer, 0);
+				
+			}
+			
+		}
+	}
+}
+
+void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt)
+{
+	uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
+		{
+			if (archor->skillCoolTime->q_cooltime() > 0)
+			{
+				if (auto session = archor->session.lock())
+				{
+					skill::S_CoolTime coolTimePkt;
+					coolTimePkt.set_time(archor->skillCoolTime->q_cooltime());
+					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
+
+					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+					session->Send(sendBuffer);
+					return;
+				}
+
+			}
+			else
+			{
+				skill::S_Archor_Q_Shot skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+				skillPkt.set_start_x(pkt.start_x());
+				skillPkt.set_start_y(pkt.start_y());
+				skillPkt.set_start_z(pkt.start_z());
+				skillPkt.set_end_x(pkt.end_x());
+				skillPkt.set_end_y(pkt.end_y());
+				skillPkt.set_end_z(pkt.end_z());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_Q_SHOT_RES, skillPkt);
+
+				Broadcast(sendBuffer, 0);
+				archor->UseSkillQ();
+
+			}
+
+		}
+	}
+}
+
+void Room::HandleArchorE(skill::C_Archor_E& pkt)
+{
+	uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
+		{
+			if (archor->skillCoolTime->e_cooltime() > 0)
+			{
+				if (auto session = archor->session.lock())
+				{
+					skill::S_CoolTime coolTimePkt;
+					coolTimePkt.set_time(archor->skillCoolTime->e_cooltime());
+					coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
+
+					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+					session->Send(sendBuffer);
+					return;
+				}
+
+			}
+			else
+			{
+				skill::S_Archor_E skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+				skillPkt.set_x(pkt.x());
+				skillPkt.set_y(pkt.y());
+				skillPkt.set_z(pkt.z());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_E_RES, skillPkt);
+
+				Broadcast(sendBuffer, 0);
+				archor->UseSkillE();
+
+			}
+
+		}
+	}
+}
+
+void Room::HandleArchorR(skill::C_Archor_R& pkt)
+{
+	uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
+		{
+			if (archor->skillCoolTime->r_cooltime() > 0)
+			{
+				if (auto session = archor->session.lock())
+				{
+					skill::S_CoolTime coolTimePkt;
+					coolTimePkt.set_time(archor->skillCoolTime->r_cooltime());
+					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
+
+					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+					session->Send(sendBuffer);
+					return;
+				}
+
+			}
+			else
+			{
+				skill::S_Archor_R skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_R_RES, skillPkt);
+
+				Broadcast(sendBuffer, 0);
+				archor->UseSkillR();
+
+			}
+
+		}
+	}
+}
+
+void Room::HandleArchorLS(skill::C_Archor_LS& pkt)
+{
+	uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
+		{
+			if (archor->skillCoolTime->ls_cooltime() > 0)
+			{
+				if (auto session = archor->session.lock())
+				{
+					skill::S_CoolTime coolTimePkt;
+					coolTimePkt.set_time(archor->skillCoolTime->ls_cooltime());
+					coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
+
+					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+					session->Send(sendBuffer);
+					return;
+				}
+
+			}
+			else
+			{
+				skill::S_Archor_LS skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_LS_RES, skillPkt);
+
+				Broadcast(sendBuffer, 0);
+				archor->UseSkillLS();
+
+			}
+
+		}
+	}
 }
 
 void Room::HandleCoolTime(long long elapsed_millisecond)

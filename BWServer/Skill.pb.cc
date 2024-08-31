@@ -327,8 +327,209 @@ struct S_Assassin_LS_OffDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Assassin_LS_OffDefaultTypeInternal _S_Assassin_LS_Off_default_instance_;
+PROTOBUF_CONSTEXPR C_Archor_Attack::C_Archor_Attack(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u})
+  , start_x_(0)
+  , start_y_(0)
+  , start_z_(0)
+  , end_x_(0)
+  , end_y_(0)
+  , end_z_(0){}
+struct C_Archor_AttackDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Archor_AttackDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Archor_AttackDefaultTypeInternal() {}
+  union {
+    C_Archor_Attack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Archor_AttackDefaultTypeInternal _C_Archor_Attack_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_Attack::S_Archor_Attack(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u})
+  , start_x_(0)
+  , start_y_(0)
+  , start_z_(0)
+  , end_x_(0)
+  , end_y_(0)
+  , end_z_(0)
+  , r_mode_(0)
+  , ls_mode_(0){}
+struct S_Archor_AttackDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_AttackDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_AttackDefaultTypeInternal() {}
+  union {
+    S_Archor_Attack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_AttackDefaultTypeInternal _S_Archor_Attack_default_instance_;
+PROTOBUF_CONSTEXPR C_Archor_Q_Charging::C_Archor_Q_Charging(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct C_Archor_Q_ChargingDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Archor_Q_ChargingDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Archor_Q_ChargingDefaultTypeInternal() {}
+  union {
+    C_Archor_Q_Charging _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Archor_Q_ChargingDefaultTypeInternal _C_Archor_Q_Charging_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_Q_Charging::S_Archor_Q_Charging(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u})
+  , r_mode_(0){}
+struct S_Archor_Q_ChargingDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_Q_ChargingDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_Q_ChargingDefaultTypeInternal() {}
+  union {
+    S_Archor_Q_Charging _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_Q_ChargingDefaultTypeInternal _S_Archor_Q_Charging_default_instance_;
+PROTOBUF_CONSTEXPR C_Archor_Q_Shot::C_Archor_Q_Shot(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u})
+  , start_x_(0)
+  , start_y_(0)
+  , start_z_(0)
+  , end_x_(0)
+  , end_y_(0)
+  , end_z_(0){}
+struct C_Archor_Q_ShotDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Archor_Q_ShotDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Archor_Q_ShotDefaultTypeInternal() {}
+  union {
+    C_Archor_Q_Shot _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Archor_Q_ShotDefaultTypeInternal _C_Archor_Q_Shot_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_Q_Shot::S_Archor_Q_Shot(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u})
+  , start_x_(0)
+  , start_y_(0)
+  , start_z_(0)
+  , end_x_(0)
+  , end_y_(0)
+  , end_z_(0){}
+struct S_Archor_Q_ShotDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_Q_ShotDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_Q_ShotDefaultTypeInternal() {}
+  union {
+    S_Archor_Q_Shot _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_Q_ShotDefaultTypeInternal _S_Archor_Q_Shot_default_instance_;
+PROTOBUF_CONSTEXPR C_Archor_E::C_Archor_E(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u})
+  , x_(0)
+  , y_(0)
+  , z_(0){}
+struct C_Archor_EDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Archor_EDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Archor_EDefaultTypeInternal() {}
+  union {
+    C_Archor_E _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Archor_EDefaultTypeInternal _C_Archor_E_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_E::S_Archor_E(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u})
+  , x_(0)
+  , y_(0)
+  , z_(0){}
+struct S_Archor_EDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_EDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_EDefaultTypeInternal() {}
+  union {
+    S_Archor_E _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_EDefaultTypeInternal _S_Archor_E_default_instance_;
+PROTOBUF_CONSTEXPR C_Archor_R::C_Archor_R(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct C_Archor_RDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Archor_RDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Archor_RDefaultTypeInternal() {}
+  union {
+    C_Archor_R _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Archor_RDefaultTypeInternal _C_Archor_R_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_R::S_Archor_R(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct S_Archor_RDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_RDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_RDefaultTypeInternal() {}
+  union {
+    S_Archor_R _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_RDefaultTypeInternal _S_Archor_R_default_instance_;
+PROTOBUF_CONSTEXPR C_Archor_LS::C_Archor_LS(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct C_Archor_LSDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Archor_LSDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~C_Archor_LSDefaultTypeInternal() {}
+  union {
+    C_Archor_LS _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Archor_LSDefaultTypeInternal _C_Archor_LS_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_LS::S_Archor_LS(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct S_Archor_LSDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_LSDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_LSDefaultTypeInternal() {}
+  union {
+    S_Archor_LS _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_LSDefaultTypeInternal _S_Archor_LS_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_R_Off::S_Archor_R_Off(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct S_Archor_R_OffDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_R_OffDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_R_OffDefaultTypeInternal() {}
+  union {
+    S_Archor_R_Off _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_R_OffDefaultTypeInternal _S_Archor_R_Off_default_instance_;
+PROTOBUF_CONSTEXPR S_Archor_LS_Off::S_Archor_LS_Off(
+    ::_pbi::ConstantInitialized)
+  : object_id_(uint64_t{0u}){}
+struct S_Archor_LS_OffDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Archor_LS_OffDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S_Archor_LS_OffDefaultTypeInternal() {}
+  union {
+    S_Archor_LS_Off _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Archor_LS_OffDefaultTypeInternal _S_Archor_LS_Off_default_instance_;
 }  // namespace skill
-static ::_pb::Metadata file_level_metadata_Skill_2eproto[23];
+static ::_pb::Metadata file_level_metadata_Skill_2eproto[37];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Skill_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Skill_2eproto = nullptr;
 
@@ -523,6 +724,137 @@ const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::skill::S_Assassin_LS_Off, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, start_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, start_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, start_z_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, end_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, end_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Attack, end_z_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, start_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, start_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, start_z_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, end_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, end_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, end_z_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, r_mode_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Attack, ls_mode_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Charging, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Charging, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Charging, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Charging, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Charging, r_mode_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, start_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, start_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, start_z_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, end_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, end_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_Q_Shot, end_z_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, start_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, start_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, start_z_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, end_x_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, end_y_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_Q_Shot, end_z_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_E, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_E, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_E, x_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_E, y_),
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_E, z_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_E, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_E, object_id_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_E, x_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_E, y_),
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_E, z_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_R, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_R, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_R, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_R, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_LS, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::C_Archor_LS, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_LS, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_LS, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_R_Off, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_R_Off, object_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_LS_Off, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::skill::S_Archor_LS_Off, object_id_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::skill::S_CoolTime)},
@@ -548,6 +880,20 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 169, -1, -1, sizeof(::skill::S_ASSASSIN_LS)},
   { 176, -1, -1, sizeof(::skill::C_Assassin_LS_Off)},
   { 183, -1, -1, sizeof(::skill::S_Assassin_LS_Off)},
+  { 190, -1, -1, sizeof(::skill::C_Archor_Attack)},
+  { 203, -1, -1, sizeof(::skill::S_Archor_Attack)},
+  { 218, -1, -1, sizeof(::skill::C_Archor_Q_Charging)},
+  { 225, -1, -1, sizeof(::skill::S_Archor_Q_Charging)},
+  { 233, -1, -1, sizeof(::skill::C_Archor_Q_Shot)},
+  { 246, -1, -1, sizeof(::skill::S_Archor_Q_Shot)},
+  { 259, -1, -1, sizeof(::skill::C_Archor_E)},
+  { 269, -1, -1, sizeof(::skill::S_Archor_E)},
+  { 279, -1, -1, sizeof(::skill::C_Archor_R)},
+  { 286, -1, -1, sizeof(::skill::S_Archor_R)},
+  { 293, -1, -1, sizeof(::skill::C_Archor_LS)},
+  { 300, -1, -1, sizeof(::skill::S_Archor_LS)},
+  { 307, -1, -1, sizeof(::skill::S_Archor_R_Off)},
+  { 314, -1, -1, sizeof(::skill::S_Archor_LS_Off)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -574,6 +920,20 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::skill::_S_ASSASSIN_LS_default_instance_._instance,
   &::skill::_C_Assassin_LS_Off_default_instance_._instance,
   &::skill::_S_Assassin_LS_Off_default_instance_._instance,
+  &::skill::_C_Archor_Attack_default_instance_._instance,
+  &::skill::_S_Archor_Attack_default_instance_._instance,
+  &::skill::_C_Archor_Q_Charging_default_instance_._instance,
+  &::skill::_S_Archor_Q_Charging_default_instance_._instance,
+  &::skill::_C_Archor_Q_Shot_default_instance_._instance,
+  &::skill::_S_Archor_Q_Shot_default_instance_._instance,
+  &::skill::_C_Archor_E_default_instance_._instance,
+  &::skill::_S_Archor_E_default_instance_._instance,
+  &::skill::_C_Archor_R_default_instance_._instance,
+  &::skill::_S_Archor_R_default_instance_._instance,
+  &::skill::_C_Archor_LS_default_instance_._instance,
+  &::skill::_S_Archor_LS_default_instance_._instance,
+  &::skill::_S_Archor_R_Off_default_instance_._instance,
+  &::skill::_S_Archor_LS_Off_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -607,15 +967,40 @@ const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "ASSASSIN_LS\022\021\n\tobject_id\030\001 \001(\004\"\"\n\rS_ASSA"
   "SSIN_LS\022\021\n\tobject_id\030\001 \001(\004\"&\n\021C_Assassin"
   "_LS_Off\022\021\n\tobject_id\030\001 \001(\004\"&\n\021S_Assassin"
-  "_LS_Off\022\021\n\tobject_id\030\001 \001(\004*2\n\tSKILLTYPE\022"
-  "\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n\001R\020\003\022\006\n\002LS\020\004b\006"
-  "proto3"
+  "_LS_Off\022\021\n\tobject_id\030\001 \001(\004\"\204\001\n\017C_Archor_"
+  "Attack\022\021\n\tobject_id\030\001 \001(\004\022\017\n\007start_x\030\002 \001"
+  "(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007start_z\030\004 \001(\002\022\r\n\005"
+  "end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001(\002\022\r\n\005end_z\030\007 \001("
+  "\002\"\245\001\n\017S_Archor_Attack\022\021\n\tobject_id\030\001 \001(\004"
+  "\022\017\n\007start_x\030\002 \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007st"
+  "art_z\030\004 \001(\002\022\r\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001("
+  "\002\022\r\n\005end_z\030\007 \001(\002\022\016\n\006R_Mode\030\010 \001(\005\022\017\n\007LS_M"
+  "ode\030\t \001(\005\"(\n\023C_Archor_Q_Charging\022\021\n\tobje"
+  "ct_id\030\001 \001(\004\"8\n\023S_Archor_Q_Charging\022\021\n\tob"
+  "ject_id\030\001 \001(\004\022\016\n\006R_Mode\030\002 \001(\005\"\204\001\n\017C_Arch"
+  "or_Q_Shot\022\021\n\tobject_id\030\001 \001(\004\022\017\n\007start_x\030"
+  "\002 \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007start_z\030\004 \001(\002\022"
+  "\r\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001(\002\022\r\n\005end_z\030\007"
+  " \001(\002\"\204\001\n\017S_Archor_Q_Shot\022\021\n\tobject_id\030\001 "
+  "\001(\004\022\017\n\007start_x\030\002 \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n"
+  "\007start_z\030\004 \001(\002\022\r\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006"
+  " \001(\002\022\r\n\005end_z\030\007 \001(\002\"@\n\nC_Archor_E\022\021\n\tobj"
+  "ect_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030"
+  "\004 \001(\002\"@\n\nS_Archor_E\022\021\n\tobject_id\030\001 \001(\004\022\t"
+  "\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"\037\n\nC_Arc"
+  "hor_R\022\021\n\tobject_id\030\001 \001(\004\"\037\n\nS_Archor_R\022\021"
+  "\n\tobject_id\030\001 \001(\004\" \n\013C_Archor_LS\022\021\n\tobje"
+  "ct_id\030\001 \001(\004\" \n\013S_Archor_LS\022\021\n\tobject_id\030"
+  "\001 \001(\004\"#\n\016S_Archor_R_Off\022\021\n\tobject_id\030\001 \001"
+  "(\004\"$\n\017S_Archor_LS_Off\022\021\n\tobject_id\030\001 \001(\004"
+  "*2\n\tSKILLTYPE\022\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n"
+  "\001R\020\003\022\006\n\002LS\020\004b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Skill_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Skill_2eproto = {
-    false, false, 1286, descriptor_table_protodef_Skill_2eproto,
+    false, false, 2300, descriptor_table_protodef_Skill_2eproto,
     "Skill.proto",
-    &descriptor_table_Skill_2eproto_once, nullptr, 0, 23,
+    &descriptor_table_Skill_2eproto_once, nullptr, 0, 37,
     schemas, file_default_instances, TableStruct_Skill_2eproto::offsets,
     file_level_metadata_Skill_2eproto, file_level_enum_descriptors_Skill_2eproto,
     file_level_service_descriptors_Skill_2eproto,
@@ -5639,6 +6024,3570 @@ void S_Assassin_LS_Off::InternalSwap(S_Assassin_LS_Off* other) {
       file_level_metadata_Skill_2eproto[22]);
 }
 
+// ===================================================================
+
+class C_Archor_Attack::_Internal {
+ public:
+};
+
+C_Archor_Attack::C_Archor_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Archor_Attack)
+}
+C_Archor_Attack::C_Archor_Attack(const C_Archor_Attack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&end_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+  // @@protoc_insertion_point(copy_constructor:skill.C_Archor_Attack)
+}
+
+inline void C_Archor_Attack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&end_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+}
+
+C_Archor_Attack::~C_Archor_Attack() {
+  // @@protoc_insertion_point(destructor:skill.C_Archor_Attack)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Archor_Attack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Archor_Attack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Archor_Attack::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Archor_Attack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&end_z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Archor_Attack::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          start_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          start_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          start_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_x = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          end_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_y = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          end_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_z = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          end_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Archor_Attack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Archor_Attack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_start_x(), target);
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_start_y(), target);
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_start_z(), target);
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_end_x(), target);
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_end_y(), target);
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_end_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Archor_Attack)
+  return target;
+}
+
+size_t C_Archor_Attack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Archor_Attack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Archor_Attack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Archor_Attack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Archor_Attack::GetClassData() const { return &_class_data_; }
+
+void C_Archor_Attack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Archor_Attack *>(to)->MergeFrom(
+      static_cast<const C_Archor_Attack &>(from));
+}
+
+
+void C_Archor_Attack::MergeFrom(const C_Archor_Attack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Archor_Attack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = from._internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    _internal_set_start_x(from._internal_start_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = from._internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    _internal_set_start_y(from._internal_start_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = from._internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    _internal_set_start_z(from._internal_start_z());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = from._internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    _internal_set_end_x(from._internal_end_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = from._internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    _internal_set_end_y(from._internal_end_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = from._internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    _internal_set_end_z(from._internal_end_z());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Archor_Attack::CopyFrom(const C_Archor_Attack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Archor_Attack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Archor_Attack::IsInitialized() const {
+  return true;
+}
+
+void C_Archor_Attack::InternalSwap(C_Archor_Attack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(C_Archor_Attack, end_z_)
+      + sizeof(C_Archor_Attack::end_z_)
+      - PROTOBUF_FIELD_OFFSET(C_Archor_Attack, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Archor_Attack::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[23]);
+}
+
+// ===================================================================
+
+class S_Archor_Attack::_Internal {
+ public:
+};
+
+S_Archor_Attack::S_Archor_Attack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_Attack)
+}
+S_Archor_Attack::S_Archor_Attack(const S_Archor_Attack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&ls_mode_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(ls_mode_));
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_Attack)
+}
+
+inline void S_Archor_Attack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&ls_mode_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(ls_mode_));
+}
+
+S_Archor_Attack::~S_Archor_Attack() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_Attack)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_Attack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_Attack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_Attack::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_Attack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&ls_mode_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(ls_mode_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_Attack::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          start_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          start_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          start_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_x = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          end_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_y = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          end_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_z = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          end_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 R_Mode = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          r_mode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 LS_Mode = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
+          ls_mode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_Attack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_Attack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_start_x(), target);
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_start_y(), target);
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_start_z(), target);
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_end_x(), target);
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_end_y(), target);
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_end_z(), target);
+  }
+
+  // int32 R_Mode = 8;
+  if (this->_internal_r_mode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(8, this->_internal_r_mode(), target);
+  }
+
+  // int32 LS_Mode = 9;
+  if (this->_internal_ls_mode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(9, this->_internal_ls_mode(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_Attack)
+  return target;
+}
+
+size_t S_Archor_Attack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_Attack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  // int32 R_Mode = 8;
+  if (this->_internal_r_mode() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_r_mode());
+  }
+
+  // int32 LS_Mode = 9;
+  if (this->_internal_ls_mode() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_ls_mode());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_Attack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_Attack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_Attack::GetClassData() const { return &_class_data_; }
+
+void S_Archor_Attack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_Attack *>(to)->MergeFrom(
+      static_cast<const S_Archor_Attack &>(from));
+}
+
+
+void S_Archor_Attack::MergeFrom(const S_Archor_Attack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_Attack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = from._internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    _internal_set_start_x(from._internal_start_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = from._internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    _internal_set_start_y(from._internal_start_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = from._internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    _internal_set_start_z(from._internal_start_z());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = from._internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    _internal_set_end_x(from._internal_end_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = from._internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    _internal_set_end_y(from._internal_end_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = from._internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    _internal_set_end_z(from._internal_end_z());
+  }
+  if (from._internal_r_mode() != 0) {
+    _internal_set_r_mode(from._internal_r_mode());
+  }
+  if (from._internal_ls_mode() != 0) {
+    _internal_set_ls_mode(from._internal_ls_mode());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_Attack::CopyFrom(const S_Archor_Attack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_Attack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_Attack::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_Attack::InternalSwap(S_Archor_Attack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_Archor_Attack, ls_mode_)
+      + sizeof(S_Archor_Attack::ls_mode_)
+      - PROTOBUF_FIELD_OFFSET(S_Archor_Attack, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_Attack::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[24]);
+}
+
+// ===================================================================
+
+class C_Archor_Q_Charging::_Internal {
+ public:
+};
+
+C_Archor_Q_Charging::C_Archor_Q_Charging(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Archor_Q_Charging)
+}
+C_Archor_Q_Charging::C_Archor_Q_Charging(const C_Archor_Q_Charging& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.C_Archor_Q_Charging)
+}
+
+inline void C_Archor_Q_Charging::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+C_Archor_Q_Charging::~C_Archor_Q_Charging() {
+  // @@protoc_insertion_point(destructor:skill.C_Archor_Q_Charging)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Archor_Q_Charging::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Archor_Q_Charging::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Archor_Q_Charging::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Archor_Q_Charging)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Archor_Q_Charging::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Archor_Q_Charging::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Archor_Q_Charging)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Archor_Q_Charging)
+  return target;
+}
+
+size_t C_Archor_Q_Charging::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Archor_Q_Charging)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Archor_Q_Charging::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Archor_Q_Charging::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Archor_Q_Charging::GetClassData() const { return &_class_data_; }
+
+void C_Archor_Q_Charging::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Archor_Q_Charging *>(to)->MergeFrom(
+      static_cast<const C_Archor_Q_Charging &>(from));
+}
+
+
+void C_Archor_Q_Charging::MergeFrom(const C_Archor_Q_Charging& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Archor_Q_Charging)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Archor_Q_Charging::CopyFrom(const C_Archor_Q_Charging& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Archor_Q_Charging)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Archor_Q_Charging::IsInitialized() const {
+  return true;
+}
+
+void C_Archor_Q_Charging::InternalSwap(C_Archor_Q_Charging* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Archor_Q_Charging::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[25]);
+}
+
+// ===================================================================
+
+class S_Archor_Q_Charging::_Internal {
+ public:
+};
+
+S_Archor_Q_Charging::S_Archor_Q_Charging(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_Q_Charging)
+}
+S_Archor_Q_Charging::S_Archor_Q_Charging(const S_Archor_Q_Charging& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&r_mode_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(r_mode_));
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_Q_Charging)
+}
+
+inline void S_Archor_Q_Charging::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&r_mode_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(r_mode_));
+}
+
+S_Archor_Q_Charging::~S_Archor_Q_Charging() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_Q_Charging)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_Q_Charging::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_Q_Charging::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_Q_Charging::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_Q_Charging)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&r_mode_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(r_mode_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_Q_Charging::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 R_Mode = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          r_mode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_Q_Charging::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_Q_Charging)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  // int32 R_Mode = 2;
+  if (this->_internal_r_mode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_r_mode(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_Q_Charging)
+  return target;
+}
+
+size_t S_Archor_Q_Charging::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_Q_Charging)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // int32 R_Mode = 2;
+  if (this->_internal_r_mode() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_r_mode());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_Q_Charging::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_Q_Charging::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_Q_Charging::GetClassData() const { return &_class_data_; }
+
+void S_Archor_Q_Charging::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_Q_Charging *>(to)->MergeFrom(
+      static_cast<const S_Archor_Q_Charging &>(from));
+}
+
+
+void S_Archor_Q_Charging::MergeFrom(const S_Archor_Q_Charging& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_Q_Charging)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  if (from._internal_r_mode() != 0) {
+    _internal_set_r_mode(from._internal_r_mode());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_Q_Charging::CopyFrom(const S_Archor_Q_Charging& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_Q_Charging)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_Q_Charging::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_Q_Charging::InternalSwap(S_Archor_Q_Charging* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_Archor_Q_Charging, r_mode_)
+      + sizeof(S_Archor_Q_Charging::r_mode_)
+      - PROTOBUF_FIELD_OFFSET(S_Archor_Q_Charging, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_Q_Charging::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[26]);
+}
+
+// ===================================================================
+
+class C_Archor_Q_Shot::_Internal {
+ public:
+};
+
+C_Archor_Q_Shot::C_Archor_Q_Shot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Archor_Q_Shot)
+}
+C_Archor_Q_Shot::C_Archor_Q_Shot(const C_Archor_Q_Shot& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&end_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+  // @@protoc_insertion_point(copy_constructor:skill.C_Archor_Q_Shot)
+}
+
+inline void C_Archor_Q_Shot::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&end_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+}
+
+C_Archor_Q_Shot::~C_Archor_Q_Shot() {
+  // @@protoc_insertion_point(destructor:skill.C_Archor_Q_Shot)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Archor_Q_Shot::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Archor_Q_Shot::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Archor_Q_Shot::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Archor_Q_Shot)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&end_z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Archor_Q_Shot::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          start_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          start_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          start_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_x = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          end_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_y = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          end_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_z = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          end_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Archor_Q_Shot::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Archor_Q_Shot)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_start_x(), target);
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_start_y(), target);
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_start_z(), target);
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_end_x(), target);
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_end_y(), target);
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_end_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Archor_Q_Shot)
+  return target;
+}
+
+size_t C_Archor_Q_Shot::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Archor_Q_Shot)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Archor_Q_Shot::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Archor_Q_Shot::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Archor_Q_Shot::GetClassData() const { return &_class_data_; }
+
+void C_Archor_Q_Shot::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Archor_Q_Shot *>(to)->MergeFrom(
+      static_cast<const C_Archor_Q_Shot &>(from));
+}
+
+
+void C_Archor_Q_Shot::MergeFrom(const C_Archor_Q_Shot& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Archor_Q_Shot)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = from._internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    _internal_set_start_x(from._internal_start_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = from._internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    _internal_set_start_y(from._internal_start_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = from._internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    _internal_set_start_z(from._internal_start_z());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = from._internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    _internal_set_end_x(from._internal_end_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = from._internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    _internal_set_end_y(from._internal_end_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = from._internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    _internal_set_end_z(from._internal_end_z());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Archor_Q_Shot::CopyFrom(const C_Archor_Q_Shot& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Archor_Q_Shot)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Archor_Q_Shot::IsInitialized() const {
+  return true;
+}
+
+void C_Archor_Q_Shot::InternalSwap(C_Archor_Q_Shot* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(C_Archor_Q_Shot, end_z_)
+      + sizeof(C_Archor_Q_Shot::end_z_)
+      - PROTOBUF_FIELD_OFFSET(C_Archor_Q_Shot, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Archor_Q_Shot::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[27]);
+}
+
+// ===================================================================
+
+class S_Archor_Q_Shot::_Internal {
+ public:
+};
+
+S_Archor_Q_Shot::S_Archor_Q_Shot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_Q_Shot)
+}
+S_Archor_Q_Shot::S_Archor_Q_Shot(const S_Archor_Q_Shot& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&end_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_Q_Shot)
+}
+
+inline void S_Archor_Q_Shot::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&end_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+}
+
+S_Archor_Q_Shot::~S_Archor_Q_Shot() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_Q_Shot)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_Q_Shot::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_Q_Shot::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_Q_Shot::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_Q_Shot)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&end_z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(end_z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_Q_Shot::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          start_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          start_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float start_z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          start_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_x = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          end_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_y = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          end_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end_z = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          end_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_Q_Shot::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_Q_Shot)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_start_x(), target);
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_start_y(), target);
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_start_z(), target);
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_end_x(), target);
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_end_y(), target);
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_end_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_Q_Shot)
+  return target;
+}
+
+size_t S_Archor_Q_Shot::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_Q_Shot)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float start_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = this->_internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = this->_internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float start_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = this->_internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_x = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = this->_internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_y = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = this->_internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end_z = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = this->_internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_Q_Shot::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_Q_Shot::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_Q_Shot::GetClassData() const { return &_class_data_; }
+
+void S_Archor_Q_Shot::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_Q_Shot *>(to)->MergeFrom(
+      static_cast<const S_Archor_Q_Shot &>(from));
+}
+
+
+void S_Archor_Q_Shot::MergeFrom(const S_Archor_Q_Shot& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_Q_Shot)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_x = from._internal_start_x();
+  uint32_t raw_start_x;
+  memcpy(&raw_start_x, &tmp_start_x, sizeof(tmp_start_x));
+  if (raw_start_x != 0) {
+    _internal_set_start_x(from._internal_start_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_y = from._internal_start_y();
+  uint32_t raw_start_y;
+  memcpy(&raw_start_y, &tmp_start_y, sizeof(tmp_start_y));
+  if (raw_start_y != 0) {
+    _internal_set_start_y(from._internal_start_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start_z = from._internal_start_z();
+  uint32_t raw_start_z;
+  memcpy(&raw_start_z, &tmp_start_z, sizeof(tmp_start_z));
+  if (raw_start_z != 0) {
+    _internal_set_start_z(from._internal_start_z());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_x = from._internal_end_x();
+  uint32_t raw_end_x;
+  memcpy(&raw_end_x, &tmp_end_x, sizeof(tmp_end_x));
+  if (raw_end_x != 0) {
+    _internal_set_end_x(from._internal_end_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_y = from._internal_end_y();
+  uint32_t raw_end_y;
+  memcpy(&raw_end_y, &tmp_end_y, sizeof(tmp_end_y));
+  if (raw_end_y != 0) {
+    _internal_set_end_y(from._internal_end_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end_z = from._internal_end_z();
+  uint32_t raw_end_z;
+  memcpy(&raw_end_z, &tmp_end_z, sizeof(tmp_end_z));
+  if (raw_end_z != 0) {
+    _internal_set_end_z(from._internal_end_z());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_Q_Shot::CopyFrom(const S_Archor_Q_Shot& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_Q_Shot)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_Q_Shot::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_Q_Shot::InternalSwap(S_Archor_Q_Shot* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_Archor_Q_Shot, end_z_)
+      + sizeof(S_Archor_Q_Shot::end_z_)
+      - PROTOBUF_FIELD_OFFSET(S_Archor_Q_Shot, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_Q_Shot::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[28]);
+}
+
+// ===================================================================
+
+class C_Archor_E::_Internal {
+ public:
+};
+
+C_Archor_E::C_Archor_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Archor_E)
+}
+C_Archor_E::C_Archor_E(const C_Archor_E& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
+  // @@protoc_insertion_point(copy_constructor:skill.C_Archor_E)
+}
+
+inline void C_Archor_E::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
+}
+
+C_Archor_E::~C_Archor_E() {
+  // @@protoc_insertion_point(destructor:skill.C_Archor_E)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Archor_E::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Archor_E::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Archor_E::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Archor_E)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Archor_E::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Archor_E::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Archor_E)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Archor_E)
+  return target;
+}
+
+size_t C_Archor_E::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Archor_E)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Archor_E::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Archor_E::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Archor_E::GetClassData() const { return &_class_data_; }
+
+void C_Archor_E::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Archor_E *>(to)->MergeFrom(
+      static_cast<const C_Archor_E &>(from));
+}
+
+
+void C_Archor_E::MergeFrom(const C_Archor_E& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Archor_E)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = from._internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    _internal_set_z(from._internal_z());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Archor_E::CopyFrom(const C_Archor_E& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Archor_E)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Archor_E::IsInitialized() const {
+  return true;
+}
+
+void C_Archor_E::InternalSwap(C_Archor_E* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(C_Archor_E, z_)
+      + sizeof(C_Archor_E::z_)
+      - PROTOBUF_FIELD_OFFSET(C_Archor_E, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Archor_E::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[29]);
+}
+
+// ===================================================================
+
+class S_Archor_E::_Internal {
+ public:
+};
+
+S_Archor_E::S_Archor_E(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_E)
+}
+S_Archor_E::S_Archor_E(const S_Archor_E& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_E)
+}
+
+inline void S_Archor_E::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
+}
+
+S_Archor_E::~S_Archor_E() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_E)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_E::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_E::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_E::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_E)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_E::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_E::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_E)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_E)
+  return target;
+}
+
+size_t S_Archor_E::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_E)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  // float x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_E::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_E::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_E::GetClassData() const { return &_class_data_; }
+
+void S_Archor_E::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_E *>(to)->MergeFrom(
+      static_cast<const S_Archor_E &>(from));
+}
+
+
+void S_Archor_E::MergeFrom(const S_Archor_E& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_E)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = from._internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    _internal_set_z(from._internal_z());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_E::CopyFrom(const S_Archor_E& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_E)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_E::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_E::InternalSwap(S_Archor_E* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_Archor_E, z_)
+      + sizeof(S_Archor_E::z_)
+      - PROTOBUF_FIELD_OFFSET(S_Archor_E, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_E::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[30]);
+}
+
+// ===================================================================
+
+class C_Archor_R::_Internal {
+ public:
+};
+
+C_Archor_R::C_Archor_R(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Archor_R)
+}
+C_Archor_R::C_Archor_R(const C_Archor_R& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.C_Archor_R)
+}
+
+inline void C_Archor_R::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+C_Archor_R::~C_Archor_R() {
+  // @@protoc_insertion_point(destructor:skill.C_Archor_R)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Archor_R::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Archor_R::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Archor_R::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Archor_R)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Archor_R::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Archor_R::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Archor_R)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Archor_R)
+  return target;
+}
+
+size_t C_Archor_R::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Archor_R)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Archor_R::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Archor_R::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Archor_R::GetClassData() const { return &_class_data_; }
+
+void C_Archor_R::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Archor_R *>(to)->MergeFrom(
+      static_cast<const C_Archor_R &>(from));
+}
+
+
+void C_Archor_R::MergeFrom(const C_Archor_R& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Archor_R)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Archor_R::CopyFrom(const C_Archor_R& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Archor_R)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Archor_R::IsInitialized() const {
+  return true;
+}
+
+void C_Archor_R::InternalSwap(C_Archor_R* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Archor_R::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[31]);
+}
+
+// ===================================================================
+
+class S_Archor_R::_Internal {
+ public:
+};
+
+S_Archor_R::S_Archor_R(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_R)
+}
+S_Archor_R::S_Archor_R(const S_Archor_R& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_R)
+}
+
+inline void S_Archor_R::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+S_Archor_R::~S_Archor_R() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_R)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_R::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_R::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_R::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_R)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_R::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_R::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_R)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_R)
+  return target;
+}
+
+size_t S_Archor_R::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_R)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_R::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_R::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_R::GetClassData() const { return &_class_data_; }
+
+void S_Archor_R::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_R *>(to)->MergeFrom(
+      static_cast<const S_Archor_R &>(from));
+}
+
+
+void S_Archor_R::MergeFrom(const S_Archor_R& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_R)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_R::CopyFrom(const S_Archor_R& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_R)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_R::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_R::InternalSwap(S_Archor_R* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_R::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[32]);
+}
+
+// ===================================================================
+
+class C_Archor_LS::_Internal {
+ public:
+};
+
+C_Archor_LS::C_Archor_LS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.C_Archor_LS)
+}
+C_Archor_LS::C_Archor_LS(const C_Archor_LS& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.C_Archor_LS)
+}
+
+inline void C_Archor_LS::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+C_Archor_LS::~C_Archor_LS() {
+  // @@protoc_insertion_point(destructor:skill.C_Archor_LS)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void C_Archor_LS::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void C_Archor_LS::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_Archor_LS::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.C_Archor_LS)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_Archor_LS::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_Archor_LS::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.C_Archor_LS)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.C_Archor_LS)
+  return target;
+}
+
+size_t C_Archor_LS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.C_Archor_LS)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Archor_LS::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_Archor_LS::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Archor_LS::GetClassData() const { return &_class_data_; }
+
+void C_Archor_LS::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_Archor_LS *>(to)->MergeFrom(
+      static_cast<const C_Archor_LS &>(from));
+}
+
+
+void C_Archor_LS::MergeFrom(const C_Archor_LS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.C_Archor_LS)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Archor_LS::CopyFrom(const C_Archor_LS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.C_Archor_LS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool C_Archor_LS::IsInitialized() const {
+  return true;
+}
+
+void C_Archor_LS::InternalSwap(C_Archor_LS* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata C_Archor_LS::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[33]);
+}
+
+// ===================================================================
+
+class S_Archor_LS::_Internal {
+ public:
+};
+
+S_Archor_LS::S_Archor_LS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_LS)
+}
+S_Archor_LS::S_Archor_LS(const S_Archor_LS& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_LS)
+}
+
+inline void S_Archor_LS::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+S_Archor_LS::~S_Archor_LS() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_LS)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_LS::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_LS::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_LS::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_LS)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_LS::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_LS::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_LS)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_LS)
+  return target;
+}
+
+size_t S_Archor_LS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_LS)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_LS::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_LS::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_LS::GetClassData() const { return &_class_data_; }
+
+void S_Archor_LS::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_LS *>(to)->MergeFrom(
+      static_cast<const S_Archor_LS &>(from));
+}
+
+
+void S_Archor_LS::MergeFrom(const S_Archor_LS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_LS)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_LS::CopyFrom(const S_Archor_LS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_LS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_LS::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_LS::InternalSwap(S_Archor_LS* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_LS::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[34]);
+}
+
+// ===================================================================
+
+class S_Archor_R_Off::_Internal {
+ public:
+};
+
+S_Archor_R_Off::S_Archor_R_Off(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_R_Off)
+}
+S_Archor_R_Off::S_Archor_R_Off(const S_Archor_R_Off& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_R_Off)
+}
+
+inline void S_Archor_R_Off::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+S_Archor_R_Off::~S_Archor_R_Off() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_R_Off)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_R_Off::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_R_Off::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_R_Off::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_R_Off)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_R_Off::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_R_Off::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_R_Off)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_R_Off)
+  return target;
+}
+
+size_t S_Archor_R_Off::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_R_Off)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_R_Off::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_R_Off::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_R_Off::GetClassData() const { return &_class_data_; }
+
+void S_Archor_R_Off::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_R_Off *>(to)->MergeFrom(
+      static_cast<const S_Archor_R_Off &>(from));
+}
+
+
+void S_Archor_R_Off::MergeFrom(const S_Archor_R_Off& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_R_Off)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_R_Off::CopyFrom(const S_Archor_R_Off& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_R_Off)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_R_Off::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_R_Off::InternalSwap(S_Archor_R_Off* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_R_Off::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[35]);
+}
+
+// ===================================================================
+
+class S_Archor_LS_Off::_Internal {
+ public:
+};
+
+S_Archor_LS_Off::S_Archor_LS_Off(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:skill.S_Archor_LS_Off)
+}
+S_Archor_LS_Off::S_Archor_LS_Off(const S_Archor_LS_Off& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  object_id_ = from.object_id_;
+  // @@protoc_insertion_point(copy_constructor:skill.S_Archor_LS_Off)
+}
+
+inline void S_Archor_LS_Off::SharedCtor() {
+object_id_ = uint64_t{0u};
+}
+
+S_Archor_LS_Off::~S_Archor_LS_Off() {
+  // @@protoc_insertion_point(destructor:skill.S_Archor_LS_Off)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void S_Archor_LS_Off::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void S_Archor_LS_Off::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void S_Archor_LS_Off::Clear() {
+// @@protoc_insertion_point(message_clear_start:skill.S_Archor_LS_Off)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_id_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* S_Archor_LS_Off::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 object_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* S_Archor_LS_Off::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:skill.S_Archor_LS_Off)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:skill.S_Archor_LS_Off)
+  return target;
+}
+
+size_t S_Archor_LS_Off::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:skill.S_Archor_LS_Off)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 object_id = 1;
+  if (this->_internal_object_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Archor_LS_Off::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    S_Archor_LS_Off::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Archor_LS_Off::GetClassData() const { return &_class_data_; }
+
+void S_Archor_LS_Off::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<S_Archor_LS_Off *>(to)->MergeFrom(
+      static_cast<const S_Archor_LS_Off &>(from));
+}
+
+
+void S_Archor_LS_Off::MergeFrom(const S_Archor_LS_Off& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:skill.S_Archor_LS_Off)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_object_id() != 0) {
+    _internal_set_object_id(from._internal_object_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Archor_LS_Off::CopyFrom(const S_Archor_LS_Off& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:skill.S_Archor_LS_Off)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool S_Archor_LS_Off::IsInitialized() const {
+  return true;
+}
+
+void S_Archor_LS_Off::InternalSwap(S_Archor_LS_Off* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(object_id_, other->object_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata S_Archor_LS_Off::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Skill_2eproto_getter, &descriptor_table_Skill_2eproto_once,
+      file_level_metadata_Skill_2eproto[36]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace skill
 PROTOBUF_NAMESPACE_OPEN
@@ -5733,6 +9682,62 @@ Arena::CreateMaybeMessage< ::skill::C_Assassin_LS_Off >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::skill::S_Assassin_LS_Off*
 Arena::CreateMaybeMessage< ::skill::S_Assassin_LS_Off >(Arena* arena) {
   return Arena::CreateMessageInternal< ::skill::S_Assassin_LS_Off >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::C_Archor_Attack*
+Arena::CreateMaybeMessage< ::skill::C_Archor_Attack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Archor_Attack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_Attack*
+Arena::CreateMaybeMessage< ::skill::S_Archor_Attack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_Attack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::C_Archor_Q_Charging*
+Arena::CreateMaybeMessage< ::skill::C_Archor_Q_Charging >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Archor_Q_Charging >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_Q_Charging*
+Arena::CreateMaybeMessage< ::skill::S_Archor_Q_Charging >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_Q_Charging >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::C_Archor_Q_Shot*
+Arena::CreateMaybeMessage< ::skill::C_Archor_Q_Shot >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Archor_Q_Shot >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_Q_Shot*
+Arena::CreateMaybeMessage< ::skill::S_Archor_Q_Shot >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_Q_Shot >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::C_Archor_E*
+Arena::CreateMaybeMessage< ::skill::C_Archor_E >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Archor_E >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_E*
+Arena::CreateMaybeMessage< ::skill::S_Archor_E >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_E >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::C_Archor_R*
+Arena::CreateMaybeMessage< ::skill::C_Archor_R >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Archor_R >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_R*
+Arena::CreateMaybeMessage< ::skill::S_Archor_R >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_R >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::C_Archor_LS*
+Arena::CreateMaybeMessage< ::skill::C_Archor_LS >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::C_Archor_LS >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_LS*
+Arena::CreateMaybeMessage< ::skill::S_Archor_LS >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_LS >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_R_Off*
+Arena::CreateMaybeMessage< ::skill::S_Archor_R_Off >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_R_Off >(arena);
+}
+template<> PROTOBUF_NOINLINE ::skill::S_Archor_LS_Off*
+Arena::CreateMaybeMessage< ::skill::S_Archor_LS_Off >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::skill::S_Archor_LS_Off >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

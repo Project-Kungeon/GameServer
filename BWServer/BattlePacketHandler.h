@@ -13,5 +13,12 @@ public:
 	static bool Handle_C_AssassinR(SessionPtr& session, skill::C_ASSASSIN_R& pkt);
 	static bool Handle_C_AssassinLS(SessionPtr& session, skill::C_ASSASSIN_LS& pkt);
 	static bool Handle_C_AssassinE(SessionPtr& session, skill::C_Assassin_E& pkt);
+
+	static bool Handle_C_ArchorAttack(SessionPtr& session, skill::C_Archor_Attack& pkt);
+	static bool Handle_C_ArchorQ_Charging(SessionPtr& session, skill::C_Archor_Q_Charging& pkt);
+	static bool Handle_C_ArchorQ_Shot(SessionPtr& session, skill::C_Archor_Q_Shot& pkt);
+	static bool Handle_C_ArchorE(SessionPtr& session, skill::C_Archor_E& pkt);
+	static bool Handle_C_ArchorR(SessionPtr& session, skill::C_Archor_R& pkt);
+	static bool Handle_C_ArchorLS(SessionPtr& session, skill::C_Archor_LS& pkt);
 };
 
