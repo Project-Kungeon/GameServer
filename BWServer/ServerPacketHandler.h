@@ -80,7 +80,14 @@ public:
 		{
 			return HandlePacket<skill::C_Archor_Attack>(BattlePacketHandler::Handle_C_ArchorAttack, session, buffer, offset);
 		};
-
+		GPacketHandler[message::HEADER::ARCHOR_Q_CHARGING_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Archor_Q_Charging>(BattlePacketHandler::Handle_C_ArchorQ_Charging, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::ARCHOR_Q_SHOT_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			return HandlePacket<skill::C_Archor_Q_Shot>(BattlePacketHandler::Handle_C_ArchorQ_Shot, session, buffer, offset);
+		};
 		GPacketHandler[message::HEADER::ARCHOR_E_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			return HandlePacket<skill::C_Archor_E>(BattlePacketHandler::Handle_C_ArchorE, session, buffer, offset);
