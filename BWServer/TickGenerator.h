@@ -47,6 +47,7 @@ private:
             // 쿨타임 감소
             boost::asio::post(io_context_, [this]() {
                 GRoom[0]->HandleCoolTime(1000 / ticks_per_second_);
+                GRoom[0]->HandleBuffTime(1000 / ticks_per_second_);
                 });
 
             // 실제 틱 레이트 계산 및 출력
