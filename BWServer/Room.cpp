@@ -603,7 +603,7 @@ void Room::HandleArchorAttack(skill::C_Archor_Attack& pkt)
 			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 			PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_ATTACK_RES, attackPkt);
 
-			Broadcast(sendBuffer, 0);
+			Broadcast(sendBuffer, pkt.object_id());
 		}
 	}
 }
@@ -797,6 +797,20 @@ void Room::HandleArchorR(skill::C_Archor_R& pkt)
 	}
 }
 
+void Room::HandleArchorR_Off(ArchorPtr archor, uint64 object_id)
+{
+	archor->DisableR();
+	skill::S_Archor_R_Off pkt;
+	pkt.set_object_id(object_id);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_R_OFF_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
 void Room::HandleArchorLS(skill::C_Archor_LS& pkt)
 {
 	uint64 object_id = pkt.object_id();
@@ -842,6 +856,20 @@ void Room::HandleArchorLS(skill::C_Archor_LS& pkt)
 	}
 }
 
+void Room::HandleArchorLS_Off(ArchorPtr archor, uint64 object_id)
+{
+	archor->DisbleLS();
+	skill::S_Archor_LS_Off pkt;
+	pkt.set_object_id(object_id);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_LS_OFF_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
 void Room::HandleCoolTime(long long elapsed_millisecond)
 {
 	for (auto& item : _objects)
@@ -857,21 +885,21 @@ void Room::HandleCoolTime(long long elapsed_millisecond)
 			if (qCooltime > 0)
 			{
 				player->skillCoolTime->set_q_cooltime(
-					qCooltime - decrement > 0 ? 
+					qCooltime > decrement ? 
 					qCooltime - decrement : 0
 				);
 			}
 			if (eCooltime > 0)
 			{
 				player->skillCoolTime->set_e_cooltime(
-					eCooltime - decrement > 0 ?
+					eCooltime > decrement ?
 					eCooltime - decrement : 0
 				);
 			}
 			if (rCooltime > 0)
 			{
 				player->skillCoolTime->set_r_cooltime(
-					rCooltime - decrement > 0 ?
+					rCooltime > decrement ?
 					rCooltime - decrement : 0
 				);
 				spdlog::info("R cooltime : {}", ((float)rCooltime - decrement) / 1000);
@@ -879,11 +907,51 @@ void Room::HandleCoolTime(long long elapsed_millisecond)
 			if (lsCooltime > 0)
 			{
 				player->skillCoolTime->set_ls_cooltime(
-					lsCooltime - decrement > 0 ?
+					lsCooltime > decrement ?
 					lsCooltime - decrement : 0
 				);
 			}
 		}
+	}
+}
+
+void Room::HandleBuffTime(long long elapsed_millisecond)
+{
+	std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_ls_off;
+	std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_r_off;
+
+	for (auto& item : _objects)
+	{
+		const uint64 object_id = item.first;
+		if (auto archor = dynamic_pointer_cast<Archor>(item.second))
+		{
+			int decrement = elapsed_millisecond;
+			if (archor->LS_Mode)
+			{
+				archor->LS_Time_Remaining = archor->LS_Time_Remaining > decrement ? archor->LS_Time_Remaining - decrement : 0;
+				if (archor->LS_Time_Remaining == 0)
+				{
+					to_handle_ls_off.push_back({ archor, object_id });
+				}
+			}
+			if (archor->R_Mode)
+			{
+				archor->R_Time_Remaining = archor->R_Time_Remaining > decrement ? archor->R_Time_Remaining - decrement : 0;
+				if (archor->R_Time_Remaining == 0)
+				{
+					to_handle_r_off.push_back({ archor, object_id });
+				}
+			}
+		}
+	}
+	// Collect all state changes first, then handle them
+	for (auto& pair : to_handle_ls_off)
+	{
+		this->HandleArchorLS_Off(pair.first, pair.second);
+	}
+	for (auto& pair : to_handle_r_off)
+	{
+		this->HandleArchorR_Off(pair.first, pair.second);
 	}
 }
 
