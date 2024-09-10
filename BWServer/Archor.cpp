@@ -5,11 +5,13 @@ Archor::Archor()
 	: Player()
 {
 	playerType = message::PLAYER_TYPE_ARCHER;
+	Init();
 }
 
 Archor::Archor(float hp, float maxHp, float exp)
 	: Player(message::PLAYER_TYPE_ARCHER, hp, maxHp, exp)
 {
+	Init();
 }
 
 void Archor::Init()

@@ -225,7 +225,7 @@ void Room::HandleAttack(message::C_Attack pkt)
 			if (_objects.find(victim_id) != _objects.end())
 			{
 				auto victim = static_pointer_cast<Creature>(_objects[attacker_id]);
-				victim->hp = victim->hp - damage;
+				victim->Damaged(attacker, damage);
 				attackPkt.add_target_ids(victim_id);
 			}
 			
@@ -236,9 +236,21 @@ void Room::HandleAttack(message::C_Attack pkt)
 		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_ATTACK_RES, attackPkt);
 
 		Broadcast(sendBuffer, 0);
-		
 	}
 
+}
+
+void Room::HandleDeath(CreaturePtr creature)
+{
+	message::S_Death deathPkt;
+	deathPkt.set_object_id(creature->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(deathPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::CREATURE_DEATH_RES, deathPkt);
+
+	Broadcast(sendBuffer, 0);
 }
 
 void Room::HandleWarriorAttack(skill::C_Warrior_Attack pkt)
@@ -282,7 +294,7 @@ void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 		}
 		else
 		{
-			player->skillCoolTime->set_r_cooltime(20000);
+			player->UseSkillR();
 		}
 	}
 
@@ -326,7 +338,7 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 		}
 		else
 		{
-			player->skillCoolTime->set_e_cooltime(10000);
+			player->UseSkillE();
 		}
 	}
 
@@ -349,7 +361,7 @@ void Room::HandleAssassinAttack(skill::C_ASSASSIN_Attack pkt)
 		//PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
-			if (assassin->isClocking)
+			if (assassin->IsClokingMode())
 			{
 				this->HandleAssassinLSOff(assassin, object_id);
 			}
@@ -396,11 +408,11 @@ void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
 			}
 			else
 			{
-				if (assassin->isClocking)
+				if (assassin->IsClokingMode())
 				{
 					this->HandleAssassinLSOff(assassin, object_id);
 				}
-				assassin->skillCoolTime->set_q_cooltime(5000);
+				assassin->UseSkillQ();
 				skill::S_ASSASSIN_Q skillPkt;
 				skillPkt.set_object_id(pkt.object_id());
 				skillPkt.set_x(pkt.x());
@@ -452,11 +464,11 @@ void Room::HandleAssassinR(skill::C_ASSASSIN_R pkt)
 			}
 			else
 			{
-				if (assassin->isClocking)
+				if (assassin->IsClokingMode())
 				{
 					this->HandleAssassinLSOff(assassin, object_id);
 				}
-				assassin->skillCoolTime->set_r_cooltime(20000);
+				assassin->UseSkillR();
 				skill::S_ASSASSIN_R skillPkt;
 				skillPkt.set_object_id(pkt.object_id());
 
@@ -482,7 +494,7 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
 			// If Not cloking -> Skill On
-			if (!assassin->isClocking)
+			if (!assassin->IsClokingMode())
 			{
 				// 스킬 쿨타임 체크
 				if (assassin->skillCoolTime->ls_cooltime() > 0)
@@ -506,8 +518,7 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 				// Can use Skill
 				else
 				{
-					assassin->isClocking = true;
-					assassin->skillCoolTime->set_ls_cooltime(5000);
+					assassin->UseSkillLS();
 					skill::S_ASSASSIN_LS skillPkt;
 					skillPkt.set_object_id(pkt.object_id());
 
@@ -538,7 +549,7 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 
 void Room::HandleAssassinLSOff(AssassinPtr assassin, uint64 object_id)
 {
-	assassin->isClocking = false;
+	assassin->DisableLS();
 	skill::C_Assassin_LS_Off pkt;
 	pkt.set_object_id(object_id);
 
@@ -558,7 +569,7 @@ void Room::HandleAssassinE(skill::C_Assassin_E pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
-			if (assassin->isClocking)
+			if (assassin->IsClokingMode())
 			{
 				this->HandleAssassinLSOff(assassin, object_id);
 			}
@@ -902,7 +913,6 @@ void Room::HandleCoolTime(long long elapsed_millisecond)
 					rCooltime > decrement ?
 					rCooltime - decrement : 0
 				);
-				spdlog::info("R cooltime : {}", ((float)rCooltime - decrement) / 1000);
 			}
 			if (lsCooltime > 0)
 			{

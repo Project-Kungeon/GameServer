@@ -223,6 +223,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TickGenerator.cpp" />
+    <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archor.h" />
@@ -253,6 +254,7 @@
     <ClInclude Include="Struct.pb.h" />
     <ClInclude Include="TickGenerator.h" />
     <ClInclude Include="Types.h" />
+    <ClInclude Include="Warrior.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" />
