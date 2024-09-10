@@ -11,6 +11,11 @@ public:
 
 	bool IsPlayer() { return _isPlayer; }
 
+	// Set&Get
+public:
+	uint32 GetObjectId() { return objectInfo->object_id(); }
+
+
 public:
 	message::ObjectInfo*	objectInfo;
 	message::PosInfo*		posInfo;

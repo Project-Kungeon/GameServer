@@ -17,6 +17,7 @@ public:
 	bool HandleLeavePlayer(PlayerPtr player);
 	void HandleMove(message::C_Move pkt);
 	void HandleAttack(message::C_Attack pkt);
+	void HandleDeath(CreaturePtr creature);
 
 	void HandleWarriorAttack(skill::C_Warrior_Attack pkt);
 	void HandleWarriorR(skill::C_Warrior_R pkt);
@@ -29,9 +30,19 @@ public:
 	void HandleAssassinLSOff(AssassinPtr assassin, uint64 object_id);
 	void HandleAssassinE(skill::C_Assassin_E pkt);
 
+	void HandleArchorAttack(skill::C_Archor_Attack& pkt);
+	void HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt);
+	void HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt);
+	void HandleArchorE(skill::C_Archor_E& pkt);
+	void HandleArchorR(skill::C_Archor_R& pkt);
+	void HandleArchorR_Off(ArchorPtr archor, uint64 object_id);
+	void HandleArchorLS(skill::C_Archor_LS& pkt);
+	void HandleArchorLS_Off(ArchorPtr archor, uint64 object_id);
+
 	// Tick
 public:
 	void HandleCoolTime(long long elapsed_millisecond);
+	void HandleBuffTime(long long elapsed_millisecond);
 
 private:
 	bool AddObject(ObjectPtr object);

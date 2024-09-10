@@ -175,6 +175,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Archor.cpp" />
     <ClCompile Include="Assassin.cpp" />
     <ClCompile Include="BattlePacketHandler.cpp" />
     <ClCompile Include="BWServer.cpp" />
@@ -222,8 +223,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TickGenerator.cpp" />
+    <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Archor.h" />
     <ClInclude Include="Assassin.h" />
     <ClInclude Include="BattlePacketHandler.h" />
     <ClInclude Include="CoreMacro.h" />
@@ -251,6 +254,7 @@
     <ClInclude Include="Struct.pb.h" />
     <ClInclude Include="TickGenerator.h" />
     <ClInclude Include="Types.h" />
+    <ClInclude Include="Warrior.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" />

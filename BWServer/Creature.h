@@ -9,10 +9,24 @@ public:
 	virtual ~Creature();
 
 public:
+	void Damaged(CreaturePtr attacker, float damage);
+	bool IsDead();
+
+	// Set&Get
+public:
+	float GetHp() { return hp; }
+	float GetMaxHp() { return maxHp; }
+	
+
+
+public:
 	message::CreatureType creatureType;
 	float hp;
 	float maxHp;
 	float exp;
+
+private:
+	bool dead = false;
 
 };
 

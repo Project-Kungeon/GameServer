@@ -9,8 +9,8 @@ public:
 template<typename T>
 inline T RandomUtil::GetRandom(T min, T max)
 {
-	std::random_device randomDevice;
-	std::mt19937 generator(randomDevice());
+	//std::random_device randomDevice;
+	std::mt19937 generator(static_cast<unsigned int>(std::time(nullptr)));
 
 	if constexpr (std::is_integral_v<T>)
 	{

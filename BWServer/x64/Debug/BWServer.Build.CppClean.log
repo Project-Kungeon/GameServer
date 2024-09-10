@@ -18,6 +18,11 @@ c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\creature.obj
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\corepch.obj
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\battlepackethandler.obj
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\bwserver.obj
+c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\assassin.obj
+c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\archor.obj
+c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\bwserver.pch
+c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\pch.obj
+c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\warrior.obj
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\struct.pb.obj
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\skill.pb.obj
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\message.pb.obj
@@ -25,6 +30,7 @@ c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\enum.pb.obj
 c:\users\noris_g513\desktop\workspace\bwserver\lib\bwserver.exe
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\bwserver.ilk
 c:\users\noris_g513\desktop\workspace\bwserver\lib\bwserver.pdb
+c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\room.obj.enc
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\bwserver.tlog\cl.command.1.tlog
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\bwserver.tlog\cl.items.tlog
 c:\users\noris_g513\desktop\workspace\bwserver\bwserver\x64\debug\bwserver.tlog\cl.read.1.tlog

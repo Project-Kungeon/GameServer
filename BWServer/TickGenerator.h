@@ -18,12 +18,18 @@ private:
     int test = 20000;
 
 public:
-    TickGenerator(boost::asio::io_context& io_context, int ticks_per_second)
+    TickGenerator(
+        boost::asio::io_context& io_context, 
+        int ticks_per_second,
+        RoomPtr room)
         : io_context_(io_context),
         strand_(boost::asio::make_strand(io_context)),
         timer_(strand_),
         ticks_per_second_(ticks_per_second),
-        tick_count_(0) {}
+        tick_count_(0)
+    {
+        this->Room.store(room);
+    }
 
     void start(std::function<void(int)> callback) {
         tick_callback_ = std::move(callback);
@@ -41,13 +47,16 @@ private:
             tick_count_++;
 
             if (tick_callback_) {
-                tick_callback_(tick_count_);
+                tick_callback_(ticks_per_second_);
             }
 
             // 쿨타임 감소
             boost::asio::post(io_context_, [this]() {
-                GRoom[0]->HandleCoolTime(1000 / ticks_per_second_);
+                RoomPtr room = Room.load().lock();
+                room->HandleCoolTime(1000 / ticks_per_second_);
+                room->HandleBuffTime(1000 / ticks_per_second_);
                 });
+            
 
             // 실제 틱 레이트 계산 및 출력
             auto elapsed_since_start = std::chrono::duration_cast<std::chrono::milliseconds>(now - start_time_).count();
@@ -86,5 +95,8 @@ private:
 
        
     }
+
+private:
+    atomic<std::weak_ptr<Room>> Room;
 };
 

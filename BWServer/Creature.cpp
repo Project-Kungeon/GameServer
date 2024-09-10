@@ -22,3 +22,27 @@ Creature::Creature(message::CreatureType creatuerType, float hp, float maxHp, fl
 Creature::~Creature()
 {
 }
+
+void Creature::Damaged(CreaturePtr attacker, float damage)
+{
+	spdlog::info("{} attacks {}", attacker->GetObjectId(), this->GetObjectId());
+	this->hp -= damage;
+
+	if (IsDead())
+	{
+		RoomPtr roomptr = room.load().lock();
+		roomptr->HandleDeath(static_pointer_cast<Creature>(shared_from_this()));
+	}
+}
+
+bool Creature::IsDead()
+{
+	if (!dead && hp <= 0)
+	{
+		dead = true;
+		spdlog::info("{} is dead..", this->GetObjectId());
+		return true;
+	}
+	
+	return false;
+}
