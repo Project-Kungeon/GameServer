@@ -17,6 +17,7 @@ public:
 	bool HandleLeavePlayer(PlayerPtr player);
 	void HandleMove(message::C_Move pkt);
 	void HandleAttack(message::C_Attack pkt);
+	void HandleDeath(CreaturePtr creature);
 
 	void HandleWarriorAttack(skill::C_Warrior_Attack pkt);
 	void HandleWarriorR(skill::C_Warrior_R pkt);

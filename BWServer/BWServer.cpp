@@ -16,7 +16,7 @@ int main()
     int port = 4242;
     boost::asio::io_context io_context;
     boost::asio::io_context io_context_tick;
-    TickGenerator tickGenerator(io_context_tick, 45);
+    TickGenerator tickGenerator(io_context_tick, 45, GRoom[0]);
 
     GameServer server(io_context, port);
     server.StartAccept();

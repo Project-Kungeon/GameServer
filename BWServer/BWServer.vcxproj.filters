@@ -74,6 +74,9 @@
     <ClCompile Include="Archor.cpp">
       <Filter>Main\Game\Object\Creature\Player\Archor</Filter>
     </ClCompile>
+    <ClCompile Include="Warrior.cpp">
+      <Filter>Main\Game\Object\Creature\Player\Warrior</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -159,6 +162,9 @@
     </ClInclude>
     <ClInclude Include="Archor.h">
       <Filter>Main\Game\Object\Creature\Player\Archor</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.h">
+      <Filter>Main\Game\Object\Creature\Player\Warrior</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
