@@ -14,12 +14,17 @@ public:
 
 	// Set&Get
 public:
-	float GetHp() { return hp; }
-	float GetMaxHp() { return maxHp; }
+	const message::CreatureType GetCreatureType() { return creatureType; }
+	const float GetHp() { GetReadLock(); return hp; }
+	const float GetMaxHp() { GetReadLock(); return maxHp; }
+	const float GetExp() { GetReadLock(); return exp; }
+
+public:
+	virtual void Tick(uint32 DeltaTime);
 	
 
 
-public:
+private:
 	message::CreatureType creatureType;
 	float hp;
 	float maxHp;

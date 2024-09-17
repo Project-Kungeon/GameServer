@@ -77,6 +77,9 @@
     <ClCompile Include="Warrior.cpp">
       <Filter>Main\Game\Object\Creature\Player\Warrior</Filter>
     </ClCompile>
+    <ClCompile Include="Rampage.cpp">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -166,6 +169,9 @@
     <ClInclude Include="Warrior.h">
       <Filter>Main\Game\Object\Creature\Player\Warrior</Filter>
     </ClInclude>
+    <ClInclude Include="Rampage.h">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -225,6 +231,9 @@
     <Filter Include="Main\Game\Object\Creature\Player\Archor">
       <UniqueIdentifier>{0722d116-0f3f-4454-8891-eb75eb42dd2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\Game\Object\Creature\Monster\Rampage">
+      <UniqueIdentifier>{42a576a1-65f1-47a2-8f13-712566012587}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto">
@@ -241,6 +250,9 @@
     </None>
     <None Include="..\.editorconfig" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Rampage.proto">
       <Filter>Packets\Proto</Filter>
     </None>
   </ItemGroup>

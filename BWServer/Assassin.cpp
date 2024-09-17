@@ -2,20 +2,29 @@
 #include "Assassin.h"
 
 Assassin::Assassin()
-	: Player()
+	: Player(
+		message::PLAYER_TYPE_ASSASSIN,
+		ObjectUtils::ASSASSIN_MAX_HP,
+		ObjectUtils::ASSASSIN_MAX_HP,
+		0,
+		ObjectUtils::ASSASSIN_Q_COOLTIME,
+		ObjectUtils::ASSASSIN_E_COOLTIME,
+		ObjectUtils::ASSASSIN_R_COOLTIME,
+		ObjectUtils::ASSASSIN_LS_COOLTIME)
 {
-	playerType = message::PLAYER_TYPE_ASSASSIN;
-	Init();
 }
 
 Assassin::Assassin(float hp, float maxHp, float exp)
-	: Player(message::PLAYER_TYPE_ASSASSIN, hp, maxHp, exp)
+	: Player(
+		message::PLAYER_TYPE_ASSASSIN,
+		hp,
+		maxHp,
+		exp,
+		ObjectUtils::ASSASSIN_Q_COOLTIME,
+		ObjectUtils::ASSASSIN_E_COOLTIME,
+		ObjectUtils::ASSASSIN_R_COOLTIME,
+		ObjectUtils::ASSASSIN_LS_COOLTIME)
 {
-}
-
-void Assassin::Init()
-{
-	Init();
 }
 
 Assassin::~Assassin()

@@ -25,6 +25,7 @@ Creature::~Creature()
 
 void Creature::Damaged(CreaturePtr attacker, float damage)
 {
+	GetWriteLock();
 	spdlog::info("{} attacks {}", attacker->GetObjectId(), this->GetObjectId());
 	this->hp -= damage;
 
@@ -37,6 +38,7 @@ void Creature::Damaged(CreaturePtr attacker, float damage)
 
 bool Creature::IsDead()
 {
+
 	if (!dead && hp <= 0)
 	{
 		dead = true;
@@ -45,4 +47,8 @@ bool Creature::IsDead()
 	}
 	
 	return false;
+}
+
+void Creature::Tick(uint32 DeltaTime)
+{
 }

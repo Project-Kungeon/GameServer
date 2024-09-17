@@ -140,6 +140,44 @@ bool Room::Leave(ObjectPtr object)
 	return success;
 }
 
+// Lock 소유를 한 상태에서 호출해야 합니다.
+// 만약 안한다면 무슨 일이 일어날지 모름,,,
+std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float Distance)
+{
+	/*
+		Self로부터 가장 가까운 크리처 찾기(distance 내 아무것도 없으면 nullptr)
+	*/
+	Location SelfLoc = Self->GetLocation();
+	pair<double, std::weak_ptr<Player>> NearestPlayer = { 0, std::weak_ptr<Player>() };
+	for (auto& object : _objects)
+	{
+		// 만약 플레이어라면, 거리 계산을 합니다.
+		if (auto player = dynamic_pointer_cast<Player>(object.second))
+		{
+			Location targetLoc = player->GetLocation();
+			double distance_interval = sqrt(pow(abs((int)(SelfLoc.x - targetLoc.x)), 2) +
+				pow(abs((int)(SelfLoc.y - targetLoc.y)), 2) +
+				pow(abs((int)(SelfLoc.z - targetLoc.z)), 2));
+
+			if (distance_interval <= Distance)
+			{
+				// 초기값 선언
+				if (!NearestPlayer.second.lock())
+				{
+					NearestPlayer = { distance_interval, player };
+				}
+				// 거리 비교 -> 만약 기존 플레이어보다 더 가까이 있을 경우
+				else if (NearestPlayer.first > distance_interval)
+				{
+					NearestPlayer = { distance_interval, player };
+				}
+			}
+		}
+	}
+	return NearestPlayer.second;
+		
+}
+
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
 void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 {
@@ -274,12 +312,12 @@ void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 
 		// 스킬 쿨타임 체크
-		if (player->skillCoolTime->r_cooltime() > 0)
+		if (player->GetR_Cooltime() > 0)
 		{
 			if (auto session = player->session.lock())
 			{
 				skill::S_CoolTime coolTimePkt;
-				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
+				coolTimePkt.set_time(player->R_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
 
@@ -319,12 +357,12 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 
 		// 스킬 쿨타임 체크
-		if (player->skillCoolTime->e_cooltime() > 0)
+		if (player->GetE_Cooltime() > 0)
 		{
 			if (auto session = player->session.lock())
 			{
 				skill::S_CoolTime coolTimePkt;
-				coolTimePkt.set_time(player->skillCoolTime->e_cooltime());
+				coolTimePkt.set_time(player->E_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
 
 				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -388,12 +426,12 @@ void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
 		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
 			// 스킬 쿨타임 체크
-			if (assassin->skillCoolTime->q_cooltime() > 0)
+			if (assassin->GetQ_Cooltime() > 0)
 			{
 				if (auto session = assassin->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+					coolTimePkt.set_time(assassin->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -444,12 +482,12 @@ void Room::HandleAssassinR(skill::C_ASSASSIN_R pkt)
 		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
 			// 스킬 쿨타임 체크
-			if (assassin->skillCoolTime->r_cooltime() > 0)
+			if (assassin->GetR_Cooltime() > 0)
 			{
 				if (auto session = assassin->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+					coolTimePkt.set_time(assassin->R_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -497,12 +535,12 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 			if (!assassin->IsClokingMode())
 			{
 				// 스킬 쿨타임 체크
-				if (assassin->skillCoolTime->ls_cooltime() > 0)
+				if (assassin->GetLS_Cooltime())
 				{
 					if (auto session = assassin->session.lock())
 					{
 						skill::S_CoolTime coolTimePkt;
-						coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+						coolTimePkt.set_time(assassin->LS_COOLTIME);
 						coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
 
 						const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -627,12 +665,12 @@ void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->q_cooltime() > 0)
+			if (archor->GetQ_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->q_cooltime());
+					coolTimePkt.set_time(archor->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -672,12 +710,12 @@ void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->q_cooltime() > 0)
+			if (archor->GetQ_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->q_cooltime());
+					coolTimePkt.set_time(archor->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -723,12 +761,12 @@ void Room::HandleArchorE(skill::C_Archor_E& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->e_cooltime() > 0)
+			if (archor->GetE_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->e_cooltime());
+					coolTimePkt.set_time(archor->E_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -771,12 +809,12 @@ void Room::HandleArchorR(skill::C_Archor_R& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->r_cooltime() > 0)
+			if (archor->GetR_Cooltime()> 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->r_cooltime());
+					coolTimePkt.set_time(archor->R_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -830,12 +868,12 @@ void Room::HandleArchorLS(skill::C_Archor_LS& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->ls_cooltime() > 0)
+			if (archor->GetLS_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->ls_cooltime());
+					coolTimePkt.set_time(archor->LS_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -889,34 +927,43 @@ void Room::HandleCoolTime(long long elapsed_millisecond)
 		if (auto player = dynamic_pointer_cast<Player>(item.second))
 		{
 			int decrement = elapsed_millisecond;
-			int qCooltime = player->skillCoolTime->q_cooltime();
-			int eCooltime = player->skillCoolTime->e_cooltime();
-			int rCooltime = player->skillCoolTime->r_cooltime();
-			int lsCooltime = player->skillCoolTime->ls_cooltime();
+			//int qCooltime = player->GetQ_Cooltime();
+			//int eCooltime = player->GetE_Cooltime();
+			//int rCooltime = player->GetR_Cooltime();
+			//int lsCooltime = player->GetLS_Cooltime();
+			
+			vector<uint32> Cooltimes = player->GetCooltimes();
+			int qCooltime = Cooltimes[0];
+			int eCooltime = Cooltimes[1];
+			int rCooltime = Cooltimes[2];
+			int lsCooltime = Cooltimes[3];
+			vector<uint32>().swap(Cooltimes);
+
+
 			if (qCooltime > 0)
 			{
-				player->skillCoolTime->set_q_cooltime(
+				player->SetQ_Cooltime(
 					qCooltime > decrement ? 
 					qCooltime - decrement : 0
 				);
 			}
 			if (eCooltime > 0)
 			{
-				player->skillCoolTime->set_e_cooltime(
+				player->SetE_Cooltime(
 					eCooltime > decrement ?
 					eCooltime - decrement : 0
 				);
 			}
 			if (rCooltime > 0)
 			{
-				player->skillCoolTime->set_r_cooltime(
+				player->SetR_Cooltime(
 					rCooltime > decrement ?
 					rCooltime - decrement : 0
 				);
 			}
 			if (lsCooltime > 0)
 			{
-				player->skillCoolTime->set_ls_cooltime(
+				player->SetLS_Cooltime(
 					lsCooltime > decrement ?
 					lsCooltime - decrement : 0
 				);

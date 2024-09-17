@@ -11,20 +11,20 @@ PlayerPtr ObjectUtils::CreatePlayer(GameSessionPtr session, message::PlayerType 
 	PlayerPtr player = nullptr;
 	if (type == message::PLAYER_TYPE_WARRIOR)
 	{
-		player = std::make_shared<Warrior>(type, 100.0f, 100.0f, 0.0f);
+		player = std::make_shared<Warrior>();
 	}
 	else if (type == message::PLAYER_TYPE_ARCHER)
 	{
-		player = std::make_shared<Archor>(100.0f, 100.0f, 0.0f);
+		player = std::make_shared<Archor>();
 	}
 	else if (type == message::PLAYER_TYPE_ASSASSIN)
 	{
 		
-		player = std::make_shared<Assassin>(100.0f, 100.0f, 0.0f);
+		player = std::make_shared<Assassin>();
 	}
 	else
 	{
-		player = std::make_shared<Player>(type, 100.0f, 100.0f, 0.0f);
+		player = std::make_shared<Player>();
 	}
 
 	// Generate ID
@@ -52,10 +52,10 @@ message::CreatureInfo ObjectUtils::toCreatureInfo(CreaturePtr creaturePtr)
 	message::CreatureInfo creatureInfo;
 	message::ObjectInfo* objectInfo = creatureInfo.mutable_object_info();
 	objectInfo->CopyFrom(toObjectInfo(static_pointer_cast<Object>(creaturePtr)));
-	creatureInfo.set_creature_type(creaturePtr->creatureType);
-	creatureInfo.set_hp(creaturePtr->hp);
-	creatureInfo.set_maxhp(creaturePtr->maxHp);
-	creatureInfo.set_exp(creaturePtr->exp);
+	creatureInfo.set_creature_type(creaturePtr->GetCreatureType());
+	creatureInfo.set_hp(creaturePtr->GetHp());
+	creatureInfo.set_maxhp(creaturePtr->GetMaxHp());
+	creatureInfo.set_exp(creaturePtr->GetExp());
 
 	return creatureInfo;
 }
@@ -69,8 +69,8 @@ message::PlayerInfo ObjectUtils::toPlayerInfo(PlayerPtr playerPtr)
 	message::SkillCooltime* skillCooltime = playerInfo.mutable_skill_cooltime();
 	
 	creatureInfo->CopyFrom(toCreatureInfo(static_pointer_cast<Creature>(playerPtr)));
-	skillCooltime->CopyFrom(*playerPtr->skillCoolTime);
-	playerInfo.set_player_type(playerPtr->playerType);
+	skillCooltime->CopyFrom(*playerPtr->GetSkillCooltime());
+	playerInfo.set_player_type(playerPtr->GetPlayerType());
 
 	return playerInfo;
 }

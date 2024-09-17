@@ -1,0 +1,36 @@
+syntax = "proto3";
+package rampage;
+
+// 일반공격 시도
+message S_Rampage_BasicAttack
+{
+	uint64 object_id = 1;
+
+}
+
+// 일반 공격 -> 공격 체크 시 전송
+message C_Rampage_BasicAttackCheck
+{
+	uint64 object_id = 1;
+	uint64 target_id = 2;
+}
+
+message S_Rampage_Roar
+{
+	uint64 object_id = 1;
+}
+
+message S_Rampage_EarthQuake
+{
+	uint64 object_id = 1;
+}
+
+message S_Rampage_EnhanceAttack
+{
+	uint64 object_id = 1;
+}
+
+message S_Rampage_ThrowAttack
+{
+	uint64 object_id = 1;
+}
