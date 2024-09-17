@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -207,6 +207,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Rampage.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomPacketHandler.cpp" />
@@ -245,6 +246,7 @@
     <ClInclude Include="Packet.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rampage.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomPacketHandler.h" />
@@ -261,6 +263,7 @@
     <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Rampage.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Struct.proto" />
   </ItemGroup>

@@ -1,25 +1,31 @@
 #include "pch.h"
+#include "ObjectUtils.h"
 #include "Archor.h"
 
 Archor::Archor()
-	: Player()
+	: Player(
+		message::PLAYER_TYPE_ARCHER,
+		ObjectUtils::ARCHOR_MAX_HP,
+		ObjectUtils::ARCHOR_MAX_HP,
+		0,
+		ObjectUtils::ARCHOR_Q_COOLTIME,
+		ObjectUtils::ARCHOR_E_COOLTIME,
+		ObjectUtils::ARCHOR_R_COOLTIME,
+		ObjectUtils::ARCHOR_LS_COOLTIME)
 {
-	playerType = message::PLAYER_TYPE_ARCHER;
-	Init();
 }
 
 Archor::Archor(float hp, float maxHp, float exp)
-	: Player(message::PLAYER_TYPE_ARCHER, hp, maxHp, exp)
+	: Player(
+		message::PLAYER_TYPE_ARCHER,
+		hp,
+		maxHp,
+		exp,
+		ObjectUtils::ARCHOR_Q_COOLTIME,
+		ObjectUtils::ARCHOR_E_COOLTIME,
+		ObjectUtils::ARCHOR_R_COOLTIME,
+		ObjectUtils::ARCHOR_LS_COOLTIME)
 {
-	Init();
-}
-
-void Archor::Init()
-{
-	Q_COOLTIME = ARCHOR_Q_COOLTIME;
-	E_COOLTIME = ARCHOR_E_COOLTIME;
-	R_COOLTIME = ARCHOR_R_COOLTIME;
-	LS_COOLTIME = ARCHOR_LS_COOLTIME;
 }
 
 Archor::~Archor()

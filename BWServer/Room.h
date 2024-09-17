@@ -10,6 +10,7 @@ public:
 	static void init();
 	bool Join(ObjectPtr object);
 	bool Leave(ObjectPtr object);
+	std::weak_ptr<Player> FindClosePlayerBySelf(CreaturePtr Self, const float Distance);
 	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	RoomPtr GetRoomRef();
 

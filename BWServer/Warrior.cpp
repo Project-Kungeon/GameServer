@@ -2,24 +2,29 @@
 #include "Warrior.h"
 
 Warrior::Warrior()
-	: Player()
+	: Player(
+		message::PLAYER_TYPE_WARRIOR,
+		ObjectUtils::WARRIOR_MAX_HP,
+		ObjectUtils::WARRIOR_MAX_HP,
+		0,
+		ObjectUtils::WARRIOR_Q_COOLTIME,
+		ObjectUtils::WARRIOR_E_COOLTIME,
+		ObjectUtils::WARRIOR_R_COOLTIME,
+		ObjectUtils::WARRIOR_LS_COOLTIME)
 {
-	playerType = message::PLAYER_TYPE_WARRIOR;
-	Init();
 }
 
 Warrior::Warrior(float hp, float maxHp, float exp)
-	: Player(message::PLAYER_TYPE_WARRIOR, hp, maxHp, exp)
+	: Player(
+		message::PLAYER_TYPE_WARRIOR,
+		hp,
+		maxHp,
+		exp,
+		ObjectUtils::WARRIOR_Q_COOLTIME,
+		ObjectUtils::WARRIOR_E_COOLTIME,
+		ObjectUtils::WARRIOR_R_COOLTIME,
+		ObjectUtils::WARRIOR_LS_COOLTIME)
 {
-	Init();
-}
-
-void Warrior::Init()
-{
-	Q_COOLTIME = WARRIOR_Q_COOLTIME;
-	E_COOLTIME = WARRIOR_E_COOLTIME;
-	R_COOLTIME = WARRIOR_R_COOLTIME;
-	LS_COOLTIME = WARRIOR_LS_COOLTIME;
 }
 
 Warrior::~Warrior()

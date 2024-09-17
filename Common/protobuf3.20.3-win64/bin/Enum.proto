@@ -16,6 +16,12 @@ enum CreatureType
 	CREATURE_TYPE_MONSTER = 2;
 }
 
+enum MonsterType
+{
+	MONSTER_TYPE_NONE = 0;
+	MONSTER_TYPE_RAMPAGE = 1;
+}
+
 enum PlayerType
 {
 	PLAYER_TYPE_NONE = 0;

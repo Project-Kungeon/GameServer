@@ -32,10 +32,7 @@ private:
     const uint32 R_DURATION = 2000;
     const uint32 LS_DURATION = 6000;
 
-    const uint32 ARCHOR_Q_COOLTIME = 500;
-    const uint32 ARCHOR_E_COOLTIME = 8000;
-    const uint32 ARCHOR_R_COOLTIME = 20000;
-    const uint32 ARCHOR_LS_COOLTIME = 10000;
+    
 
 };
 
