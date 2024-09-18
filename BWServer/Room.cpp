@@ -919,97 +919,105 @@ void Room::HandleArchorLS_Off(ArchorPtr archor, uint64 object_id)
 	Broadcast(sendBuffer, 0);
 }
 
-void Room::HandleCoolTime(long long elapsed_millisecond)
+void Room::HandleTick(uint32 Deltatime)
 {
 	for (auto& item : _objects)
 	{
-		const uint64 object_id = item.first;
-		if (auto player = dynamic_pointer_cast<Player>(item.second))
-		{
-			int decrement = elapsed_millisecond;
-			//int qCooltime = player->GetQ_Cooltime();
-			//int eCooltime = player->GetE_Cooltime();
-			//int rCooltime = player->GetR_Cooltime();
-			//int lsCooltime = player->GetLS_Cooltime();
-			
-			vector<uint32> Cooltimes = player->GetCooltimes();
-			int qCooltime = Cooltimes[0];
-			int eCooltime = Cooltimes[1];
-			int rCooltime = Cooltimes[2];
-			int lsCooltime = Cooltimes[3];
-			vector<uint32>().swap(Cooltimes);
-
-
-			if (qCooltime > 0)
-			{
-				player->SetQ_Cooltime(
-					qCooltime > decrement ? 
-					qCooltime - decrement : 0
-				);
-			}
-			if (eCooltime > 0)
-			{
-				player->SetE_Cooltime(
-					eCooltime > decrement ?
-					eCooltime - decrement : 0
-				);
-			}
-			if (rCooltime > 0)
-			{
-				player->SetR_Cooltime(
-					rCooltime > decrement ?
-					rCooltime - decrement : 0
-				);
-			}
-			if (lsCooltime > 0)
-			{
-				player->SetLS_Cooltime(
-					lsCooltime > decrement ?
-					lsCooltime - decrement : 0
-				);
-			}
-		}
+		item.second->Tick(Deltatime);
 	}
+}
+
+void Room::HandleCoolTime(long long elapsed_millisecond)
+{
+	//for (auto& item : _objects)
+	//{
+	//	const uint64 object_id = item.first;
+	//	if (auto player = dynamic_pointer_cast<Player>(item.second))
+	//	{
+	//		int decrement = elapsed_millisecond;
+	//		//int qCooltime = player->GetQ_Cooltime();
+	//		//int eCooltime = player->GetE_Cooltime();
+	//		//int rCooltime = player->GetR_Cooltime();
+	//		//int lsCooltime = player->GetLS_Cooltime();
+	//		
+	//		vector<uint32> Cooltimes = player->GetCooltimes();
+	//		int qCooltime = Cooltimes[0];
+	//		int eCooltime = Cooltimes[1];
+	//		int rCooltime = Cooltimes[2];
+	//		int lsCooltime = Cooltimes[3];
+	//		vector<uint32>().swap(Cooltimes);
+
+
+	//		if (qCooltime > 0)
+	//		{
+	//			player->SetQ_Cooltime(
+	//				qCooltime > decrement ? 
+	//				qCooltime - decrement : 0
+	//			);
+	//		}
+	//		if (eCooltime > 0)
+	//		{
+	//			player->SetE_Cooltime(
+	//				eCooltime > decrement ?
+	//				eCooltime - decrement : 0
+	//			);
+	//		}
+	//		if (rCooltime > 0)
+	//		{
+	//			player->SetR_Cooltime(
+	//				rCooltime > decrement ?
+	//				rCooltime - decrement : 0
+	//			);
+	//		}
+	//		if (lsCooltime > 0)
+	//		{
+	//			player->SetLS_Cooltime(
+	//				lsCooltime > decrement ?
+	//				lsCooltime - decrement : 0
+	//			);
+	//		}
+	//	}
+	//}
 }
 
 void Room::HandleBuffTime(long long elapsed_millisecond)
 {
-	std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_ls_off;
-	std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_r_off;
+	//std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_ls_off;
+	//std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_r_off;
 
-	for (auto& item : _objects)
-	{
-		const uint64 object_id = item.first;
-		if (auto archor = dynamic_pointer_cast<Archor>(item.second))
-		{
-			int decrement = elapsed_millisecond;
-			if (archor->LS_Mode)
-			{
-				archor->LS_Time_Remaining = archor->LS_Time_Remaining > decrement ? archor->LS_Time_Remaining - decrement : 0;
-				if (archor->LS_Time_Remaining == 0)
-				{
-					to_handle_ls_off.push_back({ archor, object_id });
-				}
-			}
-			if (archor->R_Mode)
-			{
-				archor->R_Time_Remaining = archor->R_Time_Remaining > decrement ? archor->R_Time_Remaining - decrement : 0;
-				if (archor->R_Time_Remaining == 0)
-				{
-					to_handle_r_off.push_back({ archor, object_id });
-				}
-			}
-		}
-	}
-	// Collect all state changes first, then handle them
-	for (auto& pair : to_handle_ls_off)
-	{
-		this->HandleArchorLS_Off(pair.first, pair.second);
-	}
-	for (auto& pair : to_handle_r_off)
-	{
-		this->HandleArchorR_Off(pair.first, pair.second);
-	}
+	//for (auto& item : _objects)
+	//{
+	//	const uint64 object_id = item.first;
+	//	if (auto archor = dynamic_pointer_cast<Archor>(item.second))
+	//	{
+	//		int decrement = elapsed_millisecond;
+	//		if (archor->LS_Mode)
+	//		{
+	//			archor->LS_Time_Remaining = archor->LS_Time_Remaining > decrement ? archor->LS_Time_Remaining - decrement : 0;
+	//			if (archor->LS_Time_Remaining == 0)
+	//			{
+	//				to_handle_ls_off.push_back({ archor, object_id });
+	//			}
+	//		}
+	//		if (archor->R_Mode)
+	//		{
+	//			archor->R_Time_Remaining = archor->R_Time_Remaining > decrement ? archor->R_Time_Remaining - decrement : 0;
+	//			if (archor->R_Time_Remaining == 0)
+	//			{
+	//				to_handle_r_off.push_back({ archor, object_id });
+	//			}
+	//		}
+	//	}
+	//}
+	//// Collect all state changes first, then handle them
+	//for (auto& pair : to_handle_ls_off)
+	//{
+	//	this->HandleArchorLS_Off(pair.first, pair.second);
+	//}
+	//for (auto& pair : to_handle_r_off)
+	//{
+	//	this->HandleArchorR_Off(pair.first, pair.second);
+	//}
 }
 
 // Room의 STL에 오브젝트 추가

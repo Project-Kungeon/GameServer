@@ -6,7 +6,6 @@ class Warrior :
 public:
     Warrior();
     Warrior(float hp, float maxHp, float exp);
-    void Init();
     virtual ~Warrior();
 
 public:

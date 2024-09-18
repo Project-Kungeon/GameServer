@@ -37,6 +37,53 @@ Player::~Player()
 	skillCoolTime = nullptr;
 }
 
+void Player::Tick(uint32 DeltaTime)
+{
+	Creature::Tick(DeltaTime);
+	int decrement = DeltaTime;
+	//int qCooltime = player->GetQ_Cooltime();
+	//int eCooltime = player->GetE_Cooltime();
+	//int rCooltime = player->GetR_Cooltime();
+	//int lsCooltime = player->GetLS_Cooltime();
+
+	vector<uint32> Cooltimes = GetCooltimes();
+	int qCooltime = Cooltimes[0];
+	int eCooltime = Cooltimes[1];
+	int rCooltime = Cooltimes[2];
+	int lsCooltime = Cooltimes[3];
+	vector<uint32>().swap(Cooltimes);
+
+
+	if (qCooltime > 0)
+	{
+		SetQ_Cooltime(
+			qCooltime > decrement ?
+			qCooltime - decrement : 0
+		);
+	}
+	if (eCooltime > 0)
+	{
+		SetE_Cooltime(
+			eCooltime > decrement ?
+			eCooltime - decrement : 0
+		);
+	}
+	if (rCooltime > 0)
+	{
+		SetR_Cooltime(
+			rCooltime > decrement ?
+			rCooltime - decrement : 0
+		);
+	}
+	if (lsCooltime > 0)
+	{
+		SetLS_Cooltime(
+			lsCooltime > decrement ?
+			lsCooltime - decrement : 0
+		);
+	}
+}
+
 void Player::UseSkillQ()
 {
 	skillCoolTime->set_q_cooltime(Q_COOLTIME);

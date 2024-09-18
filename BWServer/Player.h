@@ -16,6 +16,7 @@ public:
 	virtual ~Player();
 
 public:
+	virtual void Tick(uint32 DeltaTime);
 	virtual void UseSkillQ();
 	virtual void UseSkillE();
 	virtual void UseSkillR();

@@ -32,6 +32,30 @@ Archor::~Archor()
 {
 }
 
+void Archor::Tick(uint32 DeltaTime)
+{
+	Player::Tick(DeltaTime);
+	int decrement = DeltaTime;
+	if (LS_Mode)
+	{
+		LS_Time_Remaining = LS_Time_Remaining > decrement ? LS_Time_Remaining - decrement : 0;
+		if (LS_Time_Remaining == 0)
+		{
+			RoomPtr roomPtr = room.load().lock();
+			roomPtr->HandleArchorLS_Off(static_pointer_cast<Archor>(shared_from_this()), GetObjectId());
+		}
+	}
+	if (R_Mode)
+	{
+		R_Time_Remaining = R_Time_Remaining > decrement ? R_Time_Remaining - decrement : 0;
+		if (R_Time_Remaining == 0)
+		{
+			RoomPtr roomPtr = room.load().lock();
+			roomPtr->HandleArchorR_Off(static_pointer_cast<Archor>(shared_from_this()), GetObjectId());
+		}
+	}
+}
+
 void Archor::EnableR()
 {
 	R_Time_Remaining = R_DURATION;

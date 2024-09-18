@@ -14,7 +14,7 @@ public:
 
 public:
     virtual void Tick(uint32 DeltaTime);
-    bool isAttacking() { GetReadLock(); return isAttacking; }
+    bool isAttack() { GetReadLock(); return isAttacking; }
 
 private:
     bool FindClosePlayer();

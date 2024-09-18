@@ -6,7 +6,6 @@ class Assassin :
 public:
     Assassin();
     Assassin(float hp, float maxHp, float exp);
-    void Init();
     virtual ~Assassin();
 
 public:

@@ -6,8 +6,8 @@ class Archor :
 public:
     Archor();
     Archor(float hp, float maxHp, float exp);
-    void Init();
     virtual ~Archor();
+    virtual void Tick(uint32 DeltaTime);
 
 public:
     void EnableR();
