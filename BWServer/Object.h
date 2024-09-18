@@ -16,6 +16,7 @@ public:
 	Object();
 	Object(message::ObjectType objectType);
 	virtual ~Object();
+	virtual void Tick(uint32 DeltaTime);
 
 	const bool IsPlayer()
 	{ 

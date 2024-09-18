@@ -1,6 +1,12 @@
 syntax = "proto3";
 package rampage;
 
+// 스폰
+message S_Rampage_Spawn
+{
+	uint64 object_id = 1;
+}
+
 // 일반공격 시도
 message S_Rampage_BasicAttack
 {

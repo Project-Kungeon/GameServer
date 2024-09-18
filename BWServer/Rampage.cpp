@@ -29,7 +29,7 @@ void Rampage::Tick(uint32 DeltaTime)
 		}
 	}
 
-
+	
 }
 
 bool Rampage::FindClosePlayer()

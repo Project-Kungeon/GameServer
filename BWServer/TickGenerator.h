@@ -53,8 +53,9 @@ private:
             // 쿨타임 감소
             boost::asio::post(io_context_, [this]() {
                 RoomPtr room = Room.load().lock();
-                room->HandleCoolTime(1000 / ticks_per_second_);
-                room->HandleBuffTime(1000 / ticks_per_second_);
+                room->HandleTick(1000 / ticks_per_second_);
+                //room->HandleCoolTime(1000 / ticks_per_second_);
+                //room->HandleBuffTime(1000 / ticks_per_second_);
                 });
             
 

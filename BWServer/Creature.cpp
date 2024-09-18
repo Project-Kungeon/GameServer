@@ -51,4 +51,5 @@ bool Creature::IsDead()
 
 void Creature::Tick(uint32 DeltaTime)
 {
+	Object::Tick(DeltaTime);
 }
