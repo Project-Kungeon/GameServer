@@ -80,6 +80,9 @@
     <ClCompile Include="Rampage.cpp">
       <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
     </ClCompile>
+    <ClCompile Include="RampageTree.cpp">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -170,6 +173,12 @@
       <Filter>Main\Game\Object\Creature\Player\Warrior</Filter>
     </ClInclude>
     <ClInclude Include="Rampage.h">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClInclude>
+    <ClInclude Include="Selector.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RampageTree.h">
       <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
     </ClInclude>
   </ItemGroup>
