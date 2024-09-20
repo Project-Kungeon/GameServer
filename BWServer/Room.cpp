@@ -3,6 +3,7 @@
 #include "ObjectUtils.h"
 #include "Assassin.h"
 #include "Archor.h"
+#include "Rampage.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
@@ -208,6 +209,13 @@ RoomPtr Room::GetRoomRef()
 
 bool Room::HandleEnterPlayer(PlayerPtr player)
 {
+	// Temp : For Rampage Spawn Test..
+	if (_objects.size() == 1)
+	{
+		MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
+		Join(monster);
+	}
+
 	return Join(player);
 }
 

@@ -3,6 +3,7 @@
 #include "Assassin.h"
 #include "Warrior.h"
 #include "Archor.h"
+#include "Rampage.h"
 
 atomic<unsigned int> ObjectUtils::s_idGenerator = 1;
 
@@ -38,6 +39,24 @@ PlayerPtr ObjectUtils::CreatePlayer(GameSessionPtr session, message::PlayerType 
 	session->player.store(player);
 
 	return player;
+}
+
+MonsterPtr ObjectUtils::CreateMonster(message::MonsterType type)
+{
+	MonsterPtr monster = nullptr;
+	if (type == message::MONSTER_TYPE_RAMPAGE)
+	{
+		monster = std::make_shared<Rampage>();
+	}
+
+	// Generate ID
+	const unsigned int newId = s_idGenerator.fetch_add(1);
+
+	monster->objectInfo->set_object_id(newId);
+	monster->posInfo->set_object_id(newId);
+
+
+	return monster;
 }
 
 message::ObjectInfo ObjectUtils::toObjectInfo(ObjectPtr objectPtr)

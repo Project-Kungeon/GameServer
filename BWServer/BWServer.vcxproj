@@ -208,6 +208,7 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rampage.cpp" />
+    <ClCompile Include="RampageTree.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomPacketHandler.cpp" />
@@ -247,9 +248,11 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rampage.h" />
+    <ClInclude Include="RampageTree.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomPacketHandler.h" />
+    <ClInclude Include="Selector.h" />
     <ClInclude Include="ServerPacketHandler.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="Skill.pb.h" />
