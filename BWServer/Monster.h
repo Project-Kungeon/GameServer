@@ -1,4 +1,6 @@
 #pragma once
+#include "MonsterPattern.pb.h"
+
 class Monster : public Creature
 {
 public:
@@ -8,6 +10,8 @@ public:
 
 public:
 	virtual void Tick(uint32 DeltaTime);
+
+	message::MonsterType GetMonsterType() { return monsterType; }
 
 private:
 	message::MonsterType monsterType;

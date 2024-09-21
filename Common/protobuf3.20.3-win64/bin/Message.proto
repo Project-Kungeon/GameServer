@@ -86,6 +86,12 @@ enum HEADER
 	ARCHOR_LS_OFF_RES = 3114;
 
 	COOLTIME_RES = 1000;
+
+	RAMPAGE_ROAR_RES = 11001;
+	RAMPAGE_EARTHQUAKE_RES = 11002;
+	RAMPAGE_TURNTOTARGET_RES = 11003;
+	RAMPAGE_THROWAWAY_RES = 11004;
+	RAMPAGE_ENHANCEDATTACK_RES = 11005;
 }
 
 // 클라이언트 -> 서버 로그인
@@ -132,6 +138,7 @@ message S_Spawn
 	repeated ObjectInfo objects = 1;
 	repeated CreatureInfo creatures = 2;
 	repeated PlayerInfo players = 3;
+	repeated MonsterInfo monsters = 4;
 }
 
 // 다른 플레이어 퇴장 패킷

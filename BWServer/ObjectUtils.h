@@ -8,6 +8,7 @@ public:
 	static MonsterPtr CreateMonster(message::MonsterType type);
 	static message::ObjectInfo toObjectInfo(ObjectPtr objectPtr);
 	static message::CreatureInfo toCreatureInfo(CreaturePtr creaturePtr);
+	static message::MonsterInfo toMonsterInfo(MonsterPtr monsterPtr);
 	static message::PlayerInfo toPlayerInfo(PlayerPtr playerPtr);
 private:
 	static std::atomic<unsigned int> s_idGenerator;

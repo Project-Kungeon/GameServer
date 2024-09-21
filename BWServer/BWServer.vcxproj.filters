@@ -83,6 +83,9 @@
     <ClCompile Include="RampageTree.cpp">
       <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
     </ClCompile>
+    <ClCompile Include="MonsterPattern.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -181,6 +184,9 @@
     <ClInclude Include="RampageTree.h">
       <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
     </ClInclude>
+    <ClInclude Include="MonsterPattern.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -261,7 +267,7 @@
     <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto">
       <Filter>Packets\Proto</Filter>
     </None>
-    <None Include="..\Common\protobuf3.20.3-win64\bin\Rampage.proto">
+    <None Include="..\Common\protobuf3.20.3-win64\bin\MonsterPattern.proto">
       <Filter>Packets\Proto</Filter>
     </None>
   </ItemGroup>

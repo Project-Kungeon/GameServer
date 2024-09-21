@@ -47,6 +47,7 @@ bool Room::Join(ObjectPtr object)
 	}
 
 	// 모든 클라이언트에게 New 오브젝트 스폰 명령
+	// 여기선 첫 입장이라 RTTI로 검증하고 패킷을 보낸다!
 	{
 		message::S_Spawn spawnPkt;
 		if (auto player = dynamic_pointer_cast<Player>(object))
@@ -54,7 +55,12 @@ bool Room::Join(ObjectPtr object)
 			message::PlayerInfo* playerInfo = spawnPkt.add_players();
 			playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(player));
 		}
-
+		else if (auto monster = dynamic_pointer_cast<Monster>(object))
+		{
+			message::MonsterInfo* monsterInfo = spawnPkt.add_monsters();
+			monsterInfo->CopyFrom(ObjectUtils::toMonsterInfo(monster));
+		}
+		
 		const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
 		char* rawBuffer = new char[requiredSize];
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
@@ -72,13 +78,33 @@ bool Room::Join(ObjectPtr object)
 
 		for (auto& item : _objects)
 		{
-			if (dynamic_pointer_cast<Player>(item.second) == nullptr) continue;
 			if (item.first == player->objectInfo->object_id()) continue;
-			if (auto otherPlayer = static_pointer_cast<Player>(item.second))
+
+			// RTTI 줄이기
+			if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE)
 			{
-				message::PlayerInfo* playerInfo = spawnPkt.add_players();
-				playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
+				CreaturePtr creature = static_pointer_cast<Creature>(item.second);
+				if (creature->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+				{
+					auto otherPlayer = static_pointer_cast<Player>(item.second);
+					message::PlayerInfo* otherPlayerInfo = spawnPkt.add_players();
+					otherPlayerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
+				}
+				else if (creature->GetCreatureType() == message::CREATURE_TYPE_MONSTER)
+				{
+					auto otherMonster = static_pointer_cast<Monster>(item.second);
+					message::MonsterInfo* otherMonsterInfo = spawnPkt.add_monsters();
+					otherMonsterInfo->CopyFrom(ObjectUtils::toMonsterInfo(otherMonster));
+				}
+
 			}
+			//if (dynamic_pointer_cast<Player>(item.second) == nullptr) continue;
+			//if (item.first == player->objectInfo->object_id()) continue;
+			//if (auto otherPlayer = static_pointer_cast<Player>(item.second))
+			//{
+			//	message::PlayerInfo* playerInfo = spawnPkt.add_players();
+			//	playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
+			//}
 		}
 
 		if (auto session = player->session.lock())
@@ -209,19 +235,17 @@ RoomPtr Room::GetRoomRef()
 
 bool Room::HandleEnterPlayer(PlayerPtr player)
 {
-	// Temp : For Rampage Spawn Test..
-	if (_objects.size() == 1)
-	{
-		MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
-		Join(monster);
-	}
-
 	return Join(player);
 }
 
 bool Room::HandleLeavePlayer(PlayerPtr player)
 {
 	return Leave(player);
+}
+
+bool Room::SpawnMonster(MonsterPtr monster)
+{
+	return Join(monster);
 }
 
 void Room::HandleMove(message::C_Move pkt)

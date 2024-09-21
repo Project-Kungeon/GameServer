@@ -16,6 +16,7 @@ public:
 
 	bool HandleEnterPlayer(PlayerPtr player);
 	bool HandleLeavePlayer(PlayerPtr player);
+	bool SpawnMonster(MonsterPtr monster);
 	void HandleMove(message::C_Move pkt);
 	void HandleAttack(message::C_Attack pkt);
 	void HandleDeath(CreaturePtr creature);

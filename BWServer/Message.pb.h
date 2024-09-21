@@ -173,12 +173,17 @@ enum HEADER : int {
   ARCHOR_R_OFF_RES = 3113,
   ARCHOR_LS_OFF_RES = 3114,
   COOLTIME_RES = 1000,
+  RAMPAGE_ROAR_RES = 11001,
+  RAMPAGE_EARTHQUAKE_RES = 11002,
+  RAMPAGE_TURNTOTARGET_RES = 11003,
+  RAMPAGE_THROWAWAY_RES = 11004,
+  RAMPAGE_ENHANCEDATTACK_RES = 11005,
   HEADER_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   HEADER_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool HEADER_IsValid(int value);
 constexpr HEADER HEADER_MIN = NONE;
-constexpr HEADER HEADER_MAX = ARCHOR_LS_OFF_RES;
+constexpr HEADER HEADER_MAX = RAMPAGE_ENHANCEDATTACK_RES;
 constexpr int HEADER_ARRAYSIZE = HEADER_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HEADER_descriptor();
@@ -1136,6 +1141,7 @@ class S_Spawn final :
     kObjectsFieldNumber = 1,
     kCreaturesFieldNumber = 2,
     kPlayersFieldNumber = 3,
+    kMonstersFieldNumber = 4,
   };
   // repeated .message.ObjectInfo objects = 1;
   int objects_size() const;
@@ -1191,6 +1197,24 @@ class S_Spawn final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo >&
       players() const;
 
+  // repeated .message.MonsterInfo monsters = 4;
+  int monsters_size() const;
+  private:
+  int _internal_monsters_size() const;
+  public:
+  void clear_monsters();
+  ::message::MonsterInfo* mutable_monsters(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::MonsterInfo >*
+      mutable_monsters();
+  private:
+  const ::message::MonsterInfo& _internal_monsters(int index) const;
+  ::message::MonsterInfo* _internal_add_monsters();
+  public:
+  const ::message::MonsterInfo& monsters(int index) const;
+  ::message::MonsterInfo* add_monsters();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::MonsterInfo >&
+      monsters() const;
+
   // @@protoc_insertion_point(class_scope:message.S_Spawn)
  private:
   class _Internal;
@@ -1201,6 +1225,7 @@ class S_Spawn final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::ObjectInfo > objects_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::CreatureInfo > creatures_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo > players_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::MonsterInfo > monsters_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
@@ -2963,6 +2988,43 @@ inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::PlayerInfo >&
 S_Spawn::players() const {
   // @@protoc_insertion_point(field_list:message.S_Spawn.players)
   return players_;
+}
+
+// repeated .message.MonsterInfo monsters = 4;
+inline int S_Spawn::_internal_monsters_size() const {
+  return monsters_.size();
+}
+inline int S_Spawn::monsters_size() const {
+  return _internal_monsters_size();
+}
+inline ::message::MonsterInfo* S_Spawn::mutable_monsters(int index) {
+  // @@protoc_insertion_point(field_mutable:message.S_Spawn.monsters)
+  return monsters_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::MonsterInfo >*
+S_Spawn::mutable_monsters() {
+  // @@protoc_insertion_point(field_mutable_list:message.S_Spawn.monsters)
+  return &monsters_;
+}
+inline const ::message::MonsterInfo& S_Spawn::_internal_monsters(int index) const {
+  return monsters_.Get(index);
+}
+inline const ::message::MonsterInfo& S_Spawn::monsters(int index) const {
+  // @@protoc_insertion_point(field_get:message.S_Spawn.monsters)
+  return _internal_monsters(index);
+}
+inline ::message::MonsterInfo* S_Spawn::_internal_add_monsters() {
+  return monsters_.Add();
+}
+inline ::message::MonsterInfo* S_Spawn::add_monsters() {
+  ::message::MonsterInfo* _add = _internal_add_monsters();
+  // @@protoc_insertion_point(field_add:message.S_Spawn.monsters)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::message::MonsterInfo >&
+S_Spawn::monsters() const {
+  // @@protoc_insertion_point(field_list:message.S_Spawn.monsters)
+  return monsters_;
 }
 
 // -------------------------------------------------------------------

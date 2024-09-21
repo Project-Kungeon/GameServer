@@ -32,6 +32,11 @@ public:
 		return objectInfo->object_id(); 
 	}
 
+	const message::ObjectType GetObjectType()
+	{
+		return objectInfo->object_type();
+	}
+
 
 public:
 	message::ObjectInfo*	objectInfo;

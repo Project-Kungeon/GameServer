@@ -97,7 +97,8 @@ PROTOBUF_CONSTEXPR S_Spawn::S_Spawn(
     ::_pbi::ConstantInitialized)
   : objects_()
   , creatures_()
-  , players_(){}
+  , players_()
+  , monsters_(){}
 struct S_SpawnDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_SpawnDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -281,6 +282,7 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::message::S_Spawn, objects_),
   PROTOBUF_FIELD_OFFSET(::message::S_Spawn, creatures_),
   PROTOBUF_FIELD_OFFSET(::message::S_Spawn, players_),
+  PROTOBUF_FIELD_OFFSET(::message::S_Spawn, monsters_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::S_Despawn, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -360,15 +362,15 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 29, -1, -1, sizeof(::message::C_LeaveRoom)},
   { 35, -1, -1, sizeof(::message::S_LeaveRoom)},
   { 41, -1, -1, sizeof(::message::S_Spawn)},
-  { 50, -1, -1, sizeof(::message::S_Despawn)},
-  { 57, -1, -1, sizeof(::message::C_Move)},
-  { 64, -1, -1, sizeof(::message::S_Move)},
-  { 71, -1, -1, sizeof(::message::C_Attack)},
-  { 80, -1, -1, sizeof(::message::S_Attack)},
-  { 89, -1, -1, sizeof(::message::C_Death)},
-  { 96, -1, -1, sizeof(::message::S_Death)},
-  { 103, -1, -1, sizeof(::message::C_PickUp)},
-  { 112, -1, -1, sizeof(::message::S_PickUp)},
+  { 51, -1, -1, sizeof(::message::S_Despawn)},
+  { 58, -1, -1, sizeof(::message::C_Move)},
+  { 65, -1, -1, sizeof(::message::S_Move)},
+  { 72, -1, -1, sizeof(::message::C_Attack)},
+  { 81, -1, -1, sizeof(::message::S_Attack)},
+  { 90, -1, -1, sizeof(::message::C_Death)},
+  { 97, -1, -1, sizeof(::message::S_Death)},
+  { 104, -1, -1, sizeof(::message::C_PickUp)},
+  { 113, -1, -1, sizeof(::message::S_PickUp)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -398,51 +400,55 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\001(\0162\023.message.PlayerType\"H\n\013S_EnterRoom\022"
   "\017\n\007success\030\001 \001(\r\022(\n\013player_info\030\002 \001(\0132\023."
   "message.PlayerInfo\"\r\n\013C_LeaveRoom\"\r\n\013S_L"
-  "eaveRoom\"\177\n\007S_Spawn\022$\n\007objects\030\001 \003(\0132\023.m"
-  "essage.ObjectInfo\022(\n\tcreatures\030\002 \003(\0132\025.m"
-  "essage.CreatureInfo\022$\n\007players\030\003 \003(\0132\023.m"
-  "essage.PlayerInfo\"\037\n\tS_Despawn\022\022\n\nobject"
-  "_ids\030\001 \003(\004\"+\n\006C_Move\022!\n\007PosInfo\030\001 \001(\0132\020."
-  "message.PosInfo\"+\n\006S_Move\022!\n\007PosInfo\030\001 \001"
-  "(\0132\020.message.PosInfo\"A\n\010C_Attack\022\021\n\tobje"
-  "ct_id\030\001 \001(\004\022\022\n\ntarget_ids\030\002 \003(\004\022\016\n\006damag"
-  "e\030\003 \001(\002\"A\n\010S_Attack\022\021\n\tobject_id\030\001 \001(\004\022\022"
-  "\n\ntarget_ids\030\002 \003(\004\022\016\n\006damage\030\003 \001(\002\"\034\n\007C_"
-  "Death\022\021\n\tobject_id\030\001 \001(\004\"\034\n\007S_Death\022\021\n\to"
-  "bject_id\030\001 \001(\004\"]\n\010C_PickUp\022\021\n\tobject_id\030"
-  "\001 \001(\004\022\030\n\020picked_object_id\030\002 \001(\004\022$\n\titem_"
-  "info\030\003 \001(\0132\021.message.ItemInfo\"7\n\010S_PickU"
-  "p\022\021\n\tobject_id\030\001 \001(\004\022\030\n\020picked_object_id"
-  "\030\002 \001(\004*\206\t\n\006HEADER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_REQ"
-  "\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n\016ENTER_ROOM_REQ\020\003\022\022\n"
-  "\016ENTER_ROOM_RES\020\004\022\022\n\016LEAVE_ROOM_REQ\020\005\022\022\n"
-  "\016LEAVE_ROOM_RES\020\006\022\022\n\016LEAVE_GAME_REQ\020\007\022\022\n"
-  "\016LEAVE_GAME_RES\020\010\022\024\n\020PLAYER_SPAWN_RES\020\t\022"
-  "\026\n\022PLAYER_DESPAWN_RES\020\n\022\023\n\017PLAYER_CHAT_R"
-  "EQ\020\013\022\017\n\013PLAYERT_RES\020\014\022\023\n\017PLAYER_MOVE_REQ"
-  "\020\r\022\023\n\017PLAYER_MOVE_RES\020\016\022\025\n\021PLAYER_ATTACK"
-  "_REQ\020\017\022\025\n\021PLAYER_ATTACK_RES\020\020\022\026\n\022CREATUR"
-  "E_DEATH_RES\020\021\022\027\n\022WARRIOR_ATTACK_REQ\020\315\010\022\027"
-  "\n\022WARRIOR_ATTACK_RES\020\316\010\022\022\n\rWARRIOR_Q_REQ"
-  "\020\317\010\022\022\n\rWARRIOR_Q_RES\020\320\010\022\022\n\rWARRIOR_E_REQ"
-  "\020\321\010\022\022\n\rWARRIOR_E_RES\020\322\010\022\022\n\rWARRIOR_R_REQ"
-  "\020\323\010\022\022\n\rWARRIOR_R_RES\020\324\010\022\023\n\016WARRIOR_LS_RE"
-  "Q\020\325\010\022\023\n\016WARRIOR_LS_RES\020\326\010\022\030\n\023ASSASSIN_AT"
-  "TACK_REQ\020\265\020\022\030\n\023ASSASSIN_ATTACK_RES\020\266\020\022\023\n"
-  "\016ASSASSIN_Q_REQ\020\267\020\022\023\n\016ASSASSIN_Q_RES\020\270\020\022"
-  "\023\n\016ASSASSIN_R_REQ\020\271\020\022\023\n\016ASSASSIN_R_RES\020\272"
-  "\020\022\024\n\017ASSASSIN_LS_REQ\020\273\020\022\024\n\017ASSASSIN_LS_R"
-  "ES\020\274\020\022\030\n\023ASSASSIN_LS_OFF_RES\020\277\020\022\023\n\016ASSAS"
-  "SIN_E_REQ\020\275\020\022\023\n\016ASSASSIN_E_RES\020\276\020\022\026\n\021ARC"
-  "HOR_ATTACK_REQ\020\235\030\022\026\n\021ARCHOR_ATTACK_RES\020\236"
-  "\030\022\032\n\025ARCHOR_Q_CHARGING_REQ\020\237\030\022\032\n\025ARCHOR_"
-  "Q_CHARGING_RES\020\240\030\022\026\n\021ARCHOR_Q_SHOT_REQ\020\241"
-  "\030\022\026\n\021ARCHOR_Q_SHOT_RES\020\242\030\022\021\n\014ARCHOR_E_RE"
-  "Q\020\243\030\022\021\n\014ARCHOR_E_RES\020\244\030\022\021\n\014ARCHOR_R_REQ\020"
-  "\245\030\022\021\n\014ARCHOR_R_RES\020\246\030\022\022\n\rARCHOR_LS_REQ\020\247"
-  "\030\022\022\n\rARCHOR_LS_RES\020\250\030\022\025\n\020ARCHOR_R_OFF_RE"
-  "S\020\251\030\022\026\n\021ARCHOR_LS_OFF_RES\020\252\030\022\021\n\014COOLTIME"
-  "_RES\020\350\007b\006proto3"
+  "eaveRoom\"\247\001\n\007S_Spawn\022$\n\007objects\030\001 \003(\0132\023."
+  "message.ObjectInfo\022(\n\tcreatures\030\002 \003(\0132\025."
+  "message.CreatureInfo\022$\n\007players\030\003 \003(\0132\023."
+  "message.PlayerInfo\022&\n\010monsters\030\004 \003(\0132\024.m"
+  "essage.MonsterInfo\"\037\n\tS_Despawn\022\022\n\nobjec"
+  "t_ids\030\001 \003(\004\"+\n\006C_Move\022!\n\007PosInfo\030\001 \001(\0132\020"
+  ".message.PosInfo\"+\n\006S_Move\022!\n\007PosInfo\030\001 "
+  "\001(\0132\020.message.PosInfo\"A\n\010C_Attack\022\021\n\tobj"
+  "ect_id\030\001 \001(\004\022\022\n\ntarget_ids\030\002 \003(\004\022\016\n\006dama"
+  "ge\030\003 \001(\002\"A\n\010S_Attack\022\021\n\tobject_id\030\001 \001(\004\022"
+  "\022\n\ntarget_ids\030\002 \003(\004\022\016\n\006damage\030\003 \001(\002\"\034\n\007C"
+  "_Death\022\021\n\tobject_id\030\001 \001(\004\"\034\n\007S_Death\022\021\n\t"
+  "object_id\030\001 \001(\004\"]\n\010C_PickUp\022\021\n\tobject_id"
+  "\030\001 \001(\004\022\030\n\020picked_object_id\030\002 \001(\004\022$\n\titem"
+  "_info\030\003 \001(\0132\021.message.ItemInfo\"7\n\010S_Pick"
+  "Up\022\021\n\tobject_id\030\001 \001(\004\022\030\n\020picked_object_i"
+  "d\030\002 \001(\004*\226\n\n\006HEADER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_RE"
+  "Q\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n\016ENTER_ROOM_REQ\020\003\022\022"
+  "\n\016ENTER_ROOM_RES\020\004\022\022\n\016LEAVE_ROOM_REQ\020\005\022\022"
+  "\n\016LEAVE_ROOM_RES\020\006\022\022\n\016LEAVE_GAME_REQ\020\007\022\022"
+  "\n\016LEAVE_GAME_RES\020\010\022\024\n\020PLAYER_SPAWN_RES\020\t"
+  "\022\026\n\022PLAYER_DESPAWN_RES\020\n\022\023\n\017PLAYER_CHAT_"
+  "REQ\020\013\022\017\n\013PLAYERT_RES\020\014\022\023\n\017PLAYER_MOVE_RE"
+  "Q\020\r\022\023\n\017PLAYER_MOVE_RES\020\016\022\025\n\021PLAYER_ATTAC"
+  "K_REQ\020\017\022\025\n\021PLAYER_ATTACK_RES\020\020\022\026\n\022CREATU"
+  "RE_DEATH_RES\020\021\022\027\n\022WARRIOR_ATTACK_REQ\020\315\010\022"
+  "\027\n\022WARRIOR_ATTACK_RES\020\316\010\022\022\n\rWARRIOR_Q_RE"
+  "Q\020\317\010\022\022\n\rWARRIOR_Q_RES\020\320\010\022\022\n\rWARRIOR_E_RE"
+  "Q\020\321\010\022\022\n\rWARRIOR_E_RES\020\322\010\022\022\n\rWARRIOR_R_RE"
+  "Q\020\323\010\022\022\n\rWARRIOR_R_RES\020\324\010\022\023\n\016WARRIOR_LS_R"
+  "EQ\020\325\010\022\023\n\016WARRIOR_LS_RES\020\326\010\022\030\n\023ASSASSIN_A"
+  "TTACK_REQ\020\265\020\022\030\n\023ASSASSIN_ATTACK_RES\020\266\020\022\023"
+  "\n\016ASSASSIN_Q_REQ\020\267\020\022\023\n\016ASSASSIN_Q_RES\020\270\020"
+  "\022\023\n\016ASSASSIN_R_REQ\020\271\020\022\023\n\016ASSASSIN_R_RES\020"
+  "\272\020\022\024\n\017ASSASSIN_LS_REQ\020\273\020\022\024\n\017ASSASSIN_LS_"
+  "RES\020\274\020\022\030\n\023ASSASSIN_LS_OFF_RES\020\277\020\022\023\n\016ASSA"
+  "SSIN_E_REQ\020\275\020\022\023\n\016ASSASSIN_E_RES\020\276\020\022\026\n\021AR"
+  "CHOR_ATTACK_REQ\020\235\030\022\026\n\021ARCHOR_ATTACK_RES\020"
+  "\236\030\022\032\n\025ARCHOR_Q_CHARGING_REQ\020\237\030\022\032\n\025ARCHOR"
+  "_Q_CHARGING_RES\020\240\030\022\026\n\021ARCHOR_Q_SHOT_REQ\020"
+  "\241\030\022\026\n\021ARCHOR_Q_SHOT_RES\020\242\030\022\021\n\014ARCHOR_E_R"
+  "EQ\020\243\030\022\021\n\014ARCHOR_E_RES\020\244\030\022\021\n\014ARCHOR_R_REQ"
+  "\020\245\030\022\021\n\014ARCHOR_R_RES\020\246\030\022\022\n\rARCHOR_LS_REQ\020"
+  "\247\030\022\022\n\rARCHOR_LS_RES\020\250\030\022\025\n\020ARCHOR_R_OFF_R"
+  "ES\020\251\030\022\026\n\021ARCHOR_LS_OFF_RES\020\252\030\022\021\n\014COOLTIM"
+  "E_RES\020\350\007\022\025\n\020RAMPAGE_ROAR_RES\020\371U\022\033\n\026RAMPA"
+  "GE_EARTHQUAKE_RES\020\372U\022\035\n\030RAMPAGE_TURNTOTA"
+  "RGET_RES\020\373U\022\032\n\025RAMPAGE_THROWAWAY_RES\020\374U\022"
+  "\037\n\032RAMPAGE_ENHANCEDATTACK_RES\020\375Ub\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[2] = {
   &::descriptor_table_Enum_2eproto,
@@ -450,7 +456,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_dep
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 2055, descriptor_table_protodef_Message_2eproto,
+    false, false, 2240, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
     &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 2, 16,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
@@ -524,6 +530,11 @@ bool HEADER_IsValid(int value) {
     case 3112:
     case 3113:
     case 3114:
+    case 11001:
+    case 11002:
+    case 11003:
+    case 11004:
+    case 11005:
       return true;
     default:
       return false;
@@ -1269,12 +1280,16 @@ void S_Spawn::clear_creatures() {
 void S_Spawn::clear_players() {
   players_.Clear();
 }
+void S_Spawn::clear_monsters() {
+  monsters_.Clear();
+}
 S_Spawn::S_Spawn(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   objects_(arena),
   creatures_(arena),
-  players_(arena) {
+  players_(arena),
+  monsters_(arena) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:message.S_Spawn)
 }
@@ -1282,7 +1297,8 @@ S_Spawn::S_Spawn(const S_Spawn& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       objects_(from.objects_),
       creatures_(from.creatures_),
-      players_(from.players_) {
+      players_(from.players_),
+      monsters_(from.monsters_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:message.S_Spawn)
 }
@@ -1316,6 +1332,7 @@ void S_Spawn::Clear() {
   objects_.Clear();
   creatures_.Clear();
   players_.Clear();
+  monsters_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1361,6 +1378,19 @@ const char* S_Spawn::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) 
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .message.MonsterInfo monsters = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_monsters(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1417,6 +1447,14 @@ uint8_t* S_Spawn::_InternalSerialize(
         InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  // repeated .message.MonsterInfo monsters = 4;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_monsters_size()); i < n; i++) {
+    const auto& repfield = this->_internal_monsters(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(4, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1454,6 +1492,13 @@ size_t S_Spawn::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
+  // repeated .message.MonsterInfo monsters = 4;
+  total_size += 1UL * this->_internal_monsters_size();
+  for (const auto& msg : this->monsters_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -1479,6 +1524,7 @@ void S_Spawn::MergeFrom(const S_Spawn& from) {
   objects_.MergeFrom(from.objects_);
   creatures_.MergeFrom(from.creatures_);
   players_.MergeFrom(from.players_);
+  monsters_.MergeFrom(from.monsters_);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1499,6 +1545,7 @@ void S_Spawn::InternalSwap(S_Spawn* other) {
   objects_.InternalSwap(&other->objects_);
   creatures_.InternalSwap(&other->creatures_);
   players_.InternalSwap(&other->players_);
+  monsters_.InternalSwap(&other->monsters_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_Spawn::GetMetadata() const {

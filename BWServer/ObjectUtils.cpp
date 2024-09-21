@@ -47,6 +47,7 @@ MonsterPtr ObjectUtils::CreateMonster(message::MonsterType type)
 	if (type == message::MONSTER_TYPE_RAMPAGE)
 	{
 		monster = std::make_shared<Rampage>();
+		static_pointer_cast<Rampage>(monster)->Init();
 	}
 
 	// Generate ID
@@ -77,6 +78,17 @@ message::CreatureInfo ObjectUtils::toCreatureInfo(CreaturePtr creaturePtr)
 	creatureInfo.set_exp(creaturePtr->GetExp());
 
 	return creatureInfo;
+}
+
+message::MonsterInfo ObjectUtils::toMonsterInfo(MonsterPtr monsterPtr)
+{
+	message::MonsterInfo monsterInfo;
+	message::CreatureInfo* creatureInfo = monsterInfo.mutable_creature_info();
+
+	creatureInfo->CopyFrom(toCreatureInfo(static_pointer_cast<Creature>(monsterPtr)));
+	monsterInfo.set_monster_type(monsterPtr->GetMonsterType());
+
+	return monsterInfo;
 }
 
 

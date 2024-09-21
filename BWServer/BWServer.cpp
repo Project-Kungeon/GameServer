@@ -5,6 +5,7 @@
 #include "Room.h"
 #include "ServerPacketHandler.h"
 #include "TickGenerator.h"
+#include "Monster.h"
 
 int main()
 {
@@ -22,6 +23,9 @@ int main()
     server.StartAccept();
     spdlog::info("Server Start {}", port);
     std::cout << "Server Start " << port << '\n';
+
+    MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
+    GRoom[0]->SpawnMonster(monster);
 
     //int count = 2;
     tickGenerator.start(nullptr);
