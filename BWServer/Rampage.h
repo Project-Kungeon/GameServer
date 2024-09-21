@@ -15,8 +15,10 @@ public:
 public:
 
 public:
-    virtual void Tick(uint32 DeltaTime);
+    void Init();
+    virtual void Tick(uint32 DeltaTime) override;
     bool isAttack() { GetReadLock(); return isAttacking; }
+    virtual void Damaged(CreaturePtr attacker, float damage) override;
 
 public:
     // Detect Function
@@ -49,10 +51,16 @@ public:
     void EnhancedAttack();
 
 private:
+    void cleanupExpiredPointers();
+    void FindTopDamageDealerToAggro();
+
+private:
     // 가장 가까운 타겟 & 나에게 피해를 많이 입힌 타겟(어그로)
     std::weak_ptr<Creature> CloseTarget;
     std::weak_ptr<Creature> AggroTarget;
     std::shared_ptr<RampageTree> Tree;
+    std::unordered_map<uint32, std::pair<std::weak_ptr<Creature>, float>> damageStats;
+
 
     // Phase
     short phase = 1;

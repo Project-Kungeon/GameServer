@@ -28,6 +28,13 @@ message PosInfo
 	MoveState state = 8;
 }
 
+message SkillCooltime {
+	uint32 q_cooltime = 1;
+	uint32 e_cooltime = 2;
+	uint32 r_cooltime = 3;
+	uint32 ls_cooltime = 4;
+}
+
 message ObjectInfo {
 	uint64 object_id = 1;
 	ObjectType object_type = 2;
@@ -41,13 +48,11 @@ message CreatureInfo {
 	float hp = 3;
 	float maxHp = 4;
 	float exp = 5;
-
 }
-message SkillCooltime {
-	uint32 q_cooltime = 1;
-	uint32 e_cooltime = 2;
-	uint32 r_cooltime = 3;
-	uint32 ls_cooltime = 4;
+
+message MonsterInfo {
+	CreatureInfo creature_info = 1;
+	MonsterType monster_type = 2;
 }
 
 message PlayerInfo {

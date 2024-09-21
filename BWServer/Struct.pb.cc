@@ -54,6 +54,21 @@ struct PosInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PosInfoDefaultTypeInternal _PosInfo_default_instance_;
+PROTOBUF_CONSTEXPR SkillCooltime::SkillCooltime(
+    ::_pbi::ConstantInitialized)
+  : q_cooltime_(0u)
+  , e_cooltime_(0u)
+  , r_cooltime_(0u)
+  , ls_cooltime_(0u){}
+struct SkillCooltimeDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SkillCooltimeDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SkillCooltimeDefaultTypeInternal() {}
+  union {
+    SkillCooltime _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SkillCooltimeDefaultTypeInternal _SkillCooltime_default_instance_;
 PROTOBUF_CONSTEXPR ObjectInfo::ObjectInfo(
     ::_pbi::ConstantInitialized)
   : pos_info_(nullptr)
@@ -87,21 +102,20 @@ struct CreatureInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreatureInfoDefaultTypeInternal _CreatureInfo_default_instance_;
-PROTOBUF_CONSTEXPR SkillCooltime::SkillCooltime(
+PROTOBUF_CONSTEXPR MonsterInfo::MonsterInfo(
     ::_pbi::ConstantInitialized)
-  : q_cooltime_(0u)
-  , e_cooltime_(0u)
-  , r_cooltime_(0u)
-  , ls_cooltime_(0u){}
-struct SkillCooltimeDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SkillCooltimeDefaultTypeInternal()
+  : creature_info_(nullptr)
+  , monster_type_(0)
+{}
+struct MonsterInfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MonsterInfoDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SkillCooltimeDefaultTypeInternal() {}
+  ~MonsterInfoDefaultTypeInternal() {}
   union {
-    SkillCooltime _instance;
+    MonsterInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SkillCooltimeDefaultTypeInternal _SkillCooltime_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MonsterInfoDefaultTypeInternal _MonsterInfo_default_instance_;
 PROTOBUF_CONSTEXPR PlayerInfo::PlayerInfo(
     ::_pbi::ConstantInitialized)
   : creature_info_(nullptr)
@@ -133,7 +147,7 @@ struct ItemInfoDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ItemInfoDefaultTypeInternal _ItemInfo_default_instance_;
 }  // namespace message
-static ::_pb::Metadata file_level_metadata_Struct_2eproto[7];
+static ::_pb::Metadata file_level_metadata_Struct_2eproto[8];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Struct_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Struct_2eproto = nullptr;
 
@@ -161,6 +175,16 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::message::PosInfo, roll_),
   PROTOBUF_FIELD_OFFSET(::message::PosInfo, state_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, q_cooltime_),
+  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, e_cooltime_),
+  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, r_cooltime_),
+  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, ls_cooltime_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::ObjectInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -182,15 +206,13 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::message::CreatureInfo, maxhp_),
   PROTOBUF_FIELD_OFFSET(::message::CreatureInfo, exp_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::message::MonsterInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, q_cooltime_),
-  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, e_cooltime_),
-  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, r_cooltime_),
-  PROTOBUF_FIELD_OFFSET(::message::SkillCooltime, ls_cooltime_),
+  PROTOBUF_FIELD_OFFSET(::message::MonsterInfo, creature_info_),
+  PROTOBUF_FIELD_OFFSET(::message::MonsterInfo, monster_type_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::PlayerInfo, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -213,19 +235,21 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::message::Timestamp)},
   { 8, -1, -1, sizeof(::message::PosInfo)},
-  { 22, -1, -1, sizeof(::message::ObjectInfo)},
-  { 32, -1, -1, sizeof(::message::CreatureInfo)},
-  { 43, -1, -1, sizeof(::message::SkillCooltime)},
-  { 53, -1, -1, sizeof(::message::PlayerInfo)},
-  { 62, -1, -1, sizeof(::message::ItemInfo)},
+  { 22, -1, -1, sizeof(::message::SkillCooltime)},
+  { 32, -1, -1, sizeof(::message::ObjectInfo)},
+  { 42, -1, -1, sizeof(::message::CreatureInfo)},
+  { 53, -1, -1, sizeof(::message::MonsterInfo)},
+  { 61, -1, -1, sizeof(::message::PlayerInfo)},
+  { 70, -1, -1, sizeof(::message::ItemInfo)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::message::_Timestamp_default_instance_._instance,
   &::message::_PosInfo_default_instance_._instance,
+  &::message::_SkillCooltime_default_instance_._instance,
   &::message::_ObjectInfo_default_instance_._instance,
   &::message::_CreatureInfo_default_instance_._instance,
-  &::message::_SkillCooltime_default_instance_._instance,
+  &::message::_MonsterInfo_default_instance_._instance,
   &::message::_PlayerInfo_default_instance_._instance,
   &::message::_ItemInfo_default_instance_._instance,
 };
@@ -236,32 +260,35 @@ const char descriptor_table_protodef_Struct_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "\"\212\001\n\007PosInfo\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001"
   "(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\022\r\n"
   "\005pitch\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\022!\n\005state\030\010 \001("
-  "\0162\022.message.MoveState\"\227\001\n\nObjectInfo\022\021\n\t"
-  "object_id\030\001 \001(\004\022(\n\013object_type\030\002 \001(\0162\023.m"
-  "essage.ObjectType\022\"\n\010pos_info\030\003 \001(\0132\020.me"
-  "ssage.PosInfo\022(\n\014last_updated\030\004 \001(\0132\022.me"
-  "ssage.Timestamp\"\216\001\n\014CreatureInfo\022(\n\013obje"
-  "ct_info\030\001 \001(\0132\023.message.ObjectInfo\022,\n\rcr"
-  "eature_type\030\002 \001(\0162\025.message.CreatureType"
-  "\022\n\n\002hp\030\003 \001(\002\022\r\n\005maxHp\030\004 \001(\002\022\013\n\003exp\030\005 \001(\002"
-  "\"`\n\rSkillCooltime\022\022\n\nq_cooltime\030\001 \001(\r\022\022\n"
-  "\ne_cooltime\030\002 \001(\r\022\022\n\nr_cooltime\030\003 \001(\r\022\023\n"
-  "\013ls_cooltime\030\004 \001(\r\"\224\001\n\nPlayerInfo\022,\n\rcre"
+  "\0162\022.message.MoveState\"`\n\rSkillCooltime\022\022"
+  "\n\nq_cooltime\030\001 \001(\r\022\022\n\ne_cooltime\030\002 \001(\r\022\022"
+  "\n\nr_cooltime\030\003 \001(\r\022\023\n\013ls_cooltime\030\004 \001(\r\""
+  "\227\001\n\nObjectInfo\022\021\n\tobject_id\030\001 \001(\004\022(\n\013obj"
+  "ect_type\030\002 \001(\0162\023.message.ObjectType\022\"\n\010p"
+  "os_info\030\003 \001(\0132\020.message.PosInfo\022(\n\014last_"
+  "updated\030\004 \001(\0132\022.message.Timestamp\"\216\001\n\014Cr"
+  "eatureInfo\022(\n\013object_info\030\001 \001(\0132\023.messag"
+  "e.ObjectInfo\022,\n\rcreature_type\030\002 \001(\0162\025.me"
+  "ssage.CreatureType\022\n\n\002hp\030\003 \001(\002\022\r\n\005maxHp\030"
+  "\004 \001(\002\022\013\n\003exp\030\005 \001(\002\"g\n\013MonsterInfo\022,\n\rcre"
   "ature_info\030\001 \001(\0132\025.message.CreatureInfo\022"
-  "(\n\013player_type\030\002 \001(\0162\023.message.PlayerTyp"
-  "e\022.\n\016skill_cooltime\030\003 \001(\0132\026.message.Skil"
-  "lCooltime\"V\n\010ItemInfo\022\017\n\007item_id\030\001 \001(\004\022$"
-  "\n\titem_type\030\002 \001(\0162\021.message.ItemType\022\023\n\013"
-  "description\030\003 \003(\tb\006proto3"
+  "*\n\014monster_type\030\002 \001(\0162\024.message.MonsterT"
+  "ype\"\224\001\n\nPlayerInfo\022,\n\rcreature_info\030\001 \001("
+  "\0132\025.message.CreatureInfo\022(\n\013player_type\030"
+  "\002 \001(\0162\023.message.PlayerType\022.\n\016skill_cool"
+  "time\030\003 \001(\0132\026.message.SkillCooltime\"V\n\010It"
+  "emInfo\022\017\n\007item_id\030\001 \001(\004\022$\n\titem_type\030\002 \001"
+  "(\0162\021.message.ItemType\022\023\n\013description\030\003 \003"
+  "(\tb\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Struct_2eproto_deps[1] = {
   &::descriptor_table_Enum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Struct_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Struct_2eproto = {
-    false, false, 865, descriptor_table_protodef_Struct_2eproto,
+    false, false, 970, descriptor_table_protodef_Struct_2eproto,
     "Struct.proto",
-    &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 7,
+    &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 8,
     schemas, file_default_instances, TableStruct_Struct_2eproto::offsets,
     file_level_metadata_Struct_2eproto, file_level_enum_descriptors_Struct_2eproto,
     file_level_service_descriptors_Struct_2eproto,
@@ -893,6 +920,255 @@ void PosInfo::InternalSwap(PosInfo* other) {
 
 // ===================================================================
 
+class SkillCooltime::_Internal {
+ public:
+};
+
+SkillCooltime::SkillCooltime(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:message.SkillCooltime)
+}
+SkillCooltime::SkillCooltime(const SkillCooltime& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&q_cooltime_, &from.q_cooltime_,
+    static_cast<size_t>(reinterpret_cast<char*>(&ls_cooltime_) -
+    reinterpret_cast<char*>(&q_cooltime_)) + sizeof(ls_cooltime_));
+  // @@protoc_insertion_point(copy_constructor:message.SkillCooltime)
+}
+
+inline void SkillCooltime::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&q_cooltime_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&ls_cooltime_) -
+    reinterpret_cast<char*>(&q_cooltime_)) + sizeof(ls_cooltime_));
+}
+
+SkillCooltime::~SkillCooltime() {
+  // @@protoc_insertion_point(destructor:message.SkillCooltime)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SkillCooltime::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void SkillCooltime::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void SkillCooltime::Clear() {
+// @@protoc_insertion_point(message_clear_start:message.SkillCooltime)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&q_cooltime_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&ls_cooltime_) -
+      reinterpret_cast<char*>(&q_cooltime_)) + sizeof(ls_cooltime_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SkillCooltime::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 q_cooltime = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          q_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 e_cooltime = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          e_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 r_cooltime = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          r_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 ls_cooltime = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          ls_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SkillCooltime::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.SkillCooltime)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 q_cooltime = 1;
+  if (this->_internal_q_cooltime() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_q_cooltime(), target);
+  }
+
+  // uint32 e_cooltime = 2;
+  if (this->_internal_e_cooltime() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_e_cooltime(), target);
+  }
+
+  // uint32 r_cooltime = 3;
+  if (this->_internal_r_cooltime() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_r_cooltime(), target);
+  }
+
+  // uint32 ls_cooltime = 4;
+  if (this->_internal_ls_cooltime() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_ls_cooltime(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.SkillCooltime)
+  return target;
+}
+
+size_t SkillCooltime::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:message.SkillCooltime)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 q_cooltime = 1;
+  if (this->_internal_q_cooltime() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_q_cooltime());
+  }
+
+  // uint32 e_cooltime = 2;
+  if (this->_internal_e_cooltime() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_e_cooltime());
+  }
+
+  // uint32 r_cooltime = 3;
+  if (this->_internal_r_cooltime() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_r_cooltime());
+  }
+
+  // uint32 ls_cooltime = 4;
+  if (this->_internal_ls_cooltime() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_ls_cooltime());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SkillCooltime::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    SkillCooltime::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SkillCooltime::GetClassData() const { return &_class_data_; }
+
+void SkillCooltime::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<SkillCooltime *>(to)->MergeFrom(
+      static_cast<const SkillCooltime &>(from));
+}
+
+
+void SkillCooltime::MergeFrom(const SkillCooltime& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:message.SkillCooltime)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_q_cooltime() != 0) {
+    _internal_set_q_cooltime(from._internal_q_cooltime());
+  }
+  if (from._internal_e_cooltime() != 0) {
+    _internal_set_e_cooltime(from._internal_e_cooltime());
+  }
+  if (from._internal_r_cooltime() != 0) {
+    _internal_set_r_cooltime(from._internal_r_cooltime());
+  }
+  if (from._internal_ls_cooltime() != 0) {
+    _internal_set_ls_cooltime(from._internal_ls_cooltime());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SkillCooltime::CopyFrom(const SkillCooltime& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:message.SkillCooltime)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SkillCooltime::IsInitialized() const {
+  return true;
+}
+
+void SkillCooltime::InternalSwap(SkillCooltime* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SkillCooltime, ls_cooltime_)
+      + sizeof(SkillCooltime::ls_cooltime_)
+      - PROTOBUF_FIELD_OFFSET(SkillCooltime, q_cooltime_)>(
+          reinterpret_cast<char*>(&q_cooltime_),
+          reinterpret_cast<char*>(&other->q_cooltime_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SkillCooltime::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
+      file_level_metadata_Struct_2eproto[2]);
+}
+
+// ===================================================================
+
 class ObjectInfo::_Internal {
  public:
   static const ::message::PosInfo& pos_info(const ObjectInfo* msg);
@@ -1176,7 +1452,7 @@ void ObjectInfo::InternalSwap(ObjectInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ObjectInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[2]);
+      file_level_metadata_Struct_2eproto[3]);
 }
 
 // ===================================================================
@@ -1504,39 +1780,47 @@ void CreatureInfo::InternalSwap(CreatureInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreatureInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[3]);
+      file_level_metadata_Struct_2eproto[4]);
 }
 
 // ===================================================================
 
-class SkillCooltime::_Internal {
+class MonsterInfo::_Internal {
  public:
+  static const ::message::CreatureInfo& creature_info(const MonsterInfo* msg);
 };
 
-SkillCooltime::SkillCooltime(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+const ::message::CreatureInfo&
+MonsterInfo::_Internal::creature_info(const MonsterInfo* msg) {
+  return *msg->creature_info_;
+}
+MonsterInfo::MonsterInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:message.SkillCooltime)
+  // @@protoc_insertion_point(arena_constructor:message.MonsterInfo)
 }
-SkillCooltime::SkillCooltime(const SkillCooltime& from)
+MonsterInfo::MonsterInfo(const MonsterInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&q_cooltime_, &from.q_cooltime_,
-    static_cast<size_t>(reinterpret_cast<char*>(&ls_cooltime_) -
-    reinterpret_cast<char*>(&q_cooltime_)) + sizeof(ls_cooltime_));
-  // @@protoc_insertion_point(copy_constructor:message.SkillCooltime)
+  if (from._internal_has_creature_info()) {
+    creature_info_ = new ::message::CreatureInfo(*from.creature_info_);
+  } else {
+    creature_info_ = nullptr;
+  }
+  monster_type_ = from.monster_type_;
+  // @@protoc_insertion_point(copy_constructor:message.MonsterInfo)
 }
 
-inline void SkillCooltime::SharedCtor() {
+inline void MonsterInfo::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&q_cooltime_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&ls_cooltime_) -
-    reinterpret_cast<char*>(&q_cooltime_)) + sizeof(ls_cooltime_));
+    reinterpret_cast<char*>(&creature_info_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&monster_type_) -
+    reinterpret_cast<char*>(&creature_info_)) + sizeof(monster_type_));
 }
 
-SkillCooltime::~SkillCooltime() {
-  // @@protoc_insertion_point(destructor:message.SkillCooltime)
+MonsterInfo::~MonsterInfo() {
+  // @@protoc_insertion_point(destructor:message.MonsterInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -1544,61 +1828,49 @@ SkillCooltime::~SkillCooltime() {
   SharedDtor();
 }
 
-inline void SkillCooltime::SharedDtor() {
+inline void MonsterInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete creature_info_;
 }
 
-void SkillCooltime::SetCachedSize(int size) const {
+void MonsterInfo::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void SkillCooltime::Clear() {
-// @@protoc_insertion_point(message_clear_start:message.SkillCooltime)
+void MonsterInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:message.MonsterInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&q_cooltime_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&ls_cooltime_) -
-      reinterpret_cast<char*>(&q_cooltime_)) + sizeof(ls_cooltime_));
+  if (GetArenaForAllocation() == nullptr && creature_info_ != nullptr) {
+    delete creature_info_;
+  }
+  creature_info_ = nullptr;
+  monster_type_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SkillCooltime::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* MonsterInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint32 q_cooltime = 1;
+      // .message.CreatureInfo creature_info = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          q_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_creature_info(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 e_cooltime = 2;
+      // .message.MonsterType monster_type = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          e_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 r_cooltime = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          r_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 ls_cooltime = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          ls_cooltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+          _internal_set_monster_type(static_cast<::message::MonsterType>(val));
         } else
           goto handle_unusual;
         continue;
@@ -1625,135 +1897,112 @@ failure:
 #undef CHK_
 }
 
-uint8_t* SkillCooltime::_InternalSerialize(
+uint8_t* MonsterInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:message.SkillCooltime)
+  // @@protoc_insertion_point(serialize_to_array_start:message.MonsterInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 q_cooltime = 1;
-  if (this->_internal_q_cooltime() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_q_cooltime(), target);
+  // .message.CreatureInfo creature_info = 1;
+  if (this->_internal_has_creature_info()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::creature_info(this),
+        _Internal::creature_info(this).GetCachedSize(), target, stream);
   }
 
-  // uint32 e_cooltime = 2;
-  if (this->_internal_e_cooltime() != 0) {
+  // .message.MonsterType monster_type = 2;
+  if (this->_internal_monster_type() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_e_cooltime(), target);
-  }
-
-  // uint32 r_cooltime = 3;
-  if (this->_internal_r_cooltime() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_r_cooltime(), target);
-  }
-
-  // uint32 ls_cooltime = 4;
-  if (this->_internal_ls_cooltime() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_ls_cooltime(), target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_monster_type(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:message.SkillCooltime)
+  // @@protoc_insertion_point(serialize_to_array_end:message.MonsterInfo)
   return target;
 }
 
-size_t SkillCooltime::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:message.SkillCooltime)
+size_t MonsterInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:message.MonsterInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 q_cooltime = 1;
-  if (this->_internal_q_cooltime() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_q_cooltime());
+  // .message.CreatureInfo creature_info = 1;
+  if (this->_internal_has_creature_info()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *creature_info_);
   }
 
-  // uint32 e_cooltime = 2;
-  if (this->_internal_e_cooltime() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_e_cooltime());
-  }
-
-  // uint32 r_cooltime = 3;
-  if (this->_internal_r_cooltime() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_r_cooltime());
-  }
-
-  // uint32 ls_cooltime = 4;
-  if (this->_internal_ls_cooltime() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_ls_cooltime());
+  // .message.MonsterType monster_type = 2;
+  if (this->_internal_monster_type() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_monster_type());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SkillCooltime::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MonsterInfo::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    SkillCooltime::MergeImpl
+    MonsterInfo::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SkillCooltime::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MonsterInfo::GetClassData() const { return &_class_data_; }
 
-void SkillCooltime::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void MonsterInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<SkillCooltime *>(to)->MergeFrom(
-      static_cast<const SkillCooltime &>(from));
+  static_cast<MonsterInfo *>(to)->MergeFrom(
+      static_cast<const MonsterInfo &>(from));
 }
 
 
-void SkillCooltime::MergeFrom(const SkillCooltime& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:message.SkillCooltime)
+void MonsterInfo::MergeFrom(const MonsterInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:message.MonsterInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_q_cooltime() != 0) {
-    _internal_set_q_cooltime(from._internal_q_cooltime());
+  if (from._internal_has_creature_info()) {
+    _internal_mutable_creature_info()->::message::CreatureInfo::MergeFrom(from._internal_creature_info());
   }
-  if (from._internal_e_cooltime() != 0) {
-    _internal_set_e_cooltime(from._internal_e_cooltime());
-  }
-  if (from._internal_r_cooltime() != 0) {
-    _internal_set_r_cooltime(from._internal_r_cooltime());
-  }
-  if (from._internal_ls_cooltime() != 0) {
-    _internal_set_ls_cooltime(from._internal_ls_cooltime());
+  if (from._internal_monster_type() != 0) {
+    _internal_set_monster_type(from._internal_monster_type());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void SkillCooltime::CopyFrom(const SkillCooltime& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:message.SkillCooltime)
+void MonsterInfo::CopyFrom(const MonsterInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:message.MonsterInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool SkillCooltime::IsInitialized() const {
+bool MonsterInfo::IsInitialized() const {
   return true;
 }
 
-void SkillCooltime::InternalSwap(SkillCooltime* other) {
+void MonsterInfo::InternalSwap(MonsterInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SkillCooltime, ls_cooltime_)
-      + sizeof(SkillCooltime::ls_cooltime_)
-      - PROTOBUF_FIELD_OFFSET(SkillCooltime, q_cooltime_)>(
-          reinterpret_cast<char*>(&q_cooltime_),
-          reinterpret_cast<char*>(&other->q_cooltime_));
+      PROTOBUF_FIELD_OFFSET(MonsterInfo, monster_type_)
+      + sizeof(MonsterInfo::monster_type_)
+      - PROTOBUF_FIELD_OFFSET(MonsterInfo, creature_info_)>(
+          reinterpret_cast<char*>(&creature_info_),
+          reinterpret_cast<char*>(&other->creature_info_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata SkillCooltime::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata MonsterInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[4]);
+      file_level_metadata_Struct_2eproto[5]);
 }
 
 // ===================================================================
@@ -2015,7 +2264,7 @@ void PlayerInfo::InternalSwap(PlayerInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[5]);
+      file_level_metadata_Struct_2eproto[6]);
 }
 
 // ===================================================================
@@ -2261,7 +2510,7 @@ void ItemInfo::InternalSwap(ItemInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[6]);
+      file_level_metadata_Struct_2eproto[7]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2275,6 +2524,10 @@ template<> PROTOBUF_NOINLINE ::message::PosInfo*
 Arena::CreateMaybeMessage< ::message::PosInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::message::PosInfo >(arena);
 }
+template<> PROTOBUF_NOINLINE ::message::SkillCooltime*
+Arena::CreateMaybeMessage< ::message::SkillCooltime >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::message::SkillCooltime >(arena);
+}
 template<> PROTOBUF_NOINLINE ::message::ObjectInfo*
 Arena::CreateMaybeMessage< ::message::ObjectInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::message::ObjectInfo >(arena);
@@ -2283,9 +2536,9 @@ template<> PROTOBUF_NOINLINE ::message::CreatureInfo*
 Arena::CreateMaybeMessage< ::message::CreatureInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::message::CreatureInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::message::SkillCooltime*
-Arena::CreateMaybeMessage< ::message::SkillCooltime >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::message::SkillCooltime >(arena);
+template<> PROTOBUF_NOINLINE ::message::MonsterInfo*
+Arena::CreateMaybeMessage< ::message::MonsterInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::message::MonsterInfo >(arena);
 }
 template<> PROTOBUF_NOINLINE ::message::PlayerInfo*
 Arena::CreateMaybeMessage< ::message::PlayerInfo >(Arena* arena) {

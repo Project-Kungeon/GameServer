@@ -45,19 +45,19 @@ struct S_Rampage_BasicAttackDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Rampage_BasicAttackDefaultTypeInternal _S_Rampage_BasicAttack_default_instance_;
-PROTOBUF_CONSTEXPR C_Rampage_BasicAttackCheck::C_Rampage_BasicAttackCheck(
+PROTOBUF_CONSTEXPR C_Rampage_BasicAttackHit::C_Rampage_BasicAttackHit(
     ::_pbi::ConstantInitialized)
   : object_id_(uint64_t{0u})
   , target_id_(uint64_t{0u}){}
-struct C_Rampage_BasicAttackCheckDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR C_Rampage_BasicAttackCheckDefaultTypeInternal()
+struct C_Rampage_BasicAttackHitDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR C_Rampage_BasicAttackHitDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~C_Rampage_BasicAttackCheckDefaultTypeInternal() {}
+  ~C_Rampage_BasicAttackHitDefaultTypeInternal() {}
   union {
-    C_Rampage_BasicAttackCheck _instance;
+    C_Rampage_BasicAttackHit _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Rampage_BasicAttackCheckDefaultTypeInternal _C_Rampage_BasicAttackCheck_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_Rampage_BasicAttackHitDefaultTypeInternal _C_Rampage_BasicAttackHit_default_instance_;
 PROTOBUF_CONSTEXPR S_Rampage_Roar::S_Rampage_Roar(
     ::_pbi::ConstantInitialized)
   : object_id_(uint64_t{0u}){}
@@ -94,18 +94,21 @@ struct S_Rampage_EnhanceAttackDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Rampage_EnhanceAttackDefaultTypeInternal _S_Rampage_EnhanceAttack_default_instance_;
-PROTOBUF_CONSTEXPR S_Rampage_ThrowAttack::S_Rampage_ThrowAttack(
+PROTOBUF_CONSTEXPR S_Rampage_Throwaway::S_Rampage_Throwaway(
     ::_pbi::ConstantInitialized)
-  : object_id_(uint64_t{0u}){}
-struct S_Rampage_ThrowAttackDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR S_Rampage_ThrowAttackDefaultTypeInternal()
+  : object_id_(uint64_t{0u})
+  , target_x_(0)
+  , target_y_(0)
+  , target_z_(0){}
+struct S_Rampage_ThrowawayDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S_Rampage_ThrowawayDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~S_Rampage_ThrowAttackDefaultTypeInternal() {}
+  ~S_Rampage_ThrowawayDefaultTypeInternal() {}
   union {
-    S_Rampage_ThrowAttack _instance;
+    S_Rampage_Throwaway _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Rampage_ThrowAttackDefaultTypeInternal _S_Rampage_ThrowAttack_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_Rampage_ThrowawayDefaultTypeInternal _S_Rampage_Throwaway_default_instance_;
 }  // namespace rampage
 static ::_pb::Metadata file_level_metadata_Rampage_2eproto[7];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Rampage_2eproto = nullptr;
@@ -127,13 +130,13 @@ const uint32_t TableStruct_Rampage_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_BasicAttack, object_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::rampage::C_Rampage_BasicAttackCheck, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::rampage::C_Rampage_BasicAttackHit, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::rampage::C_Rampage_BasicAttackCheck, object_id_),
-  PROTOBUF_FIELD_OFFSET(::rampage::C_Rampage_BasicAttackCheck, target_id_),
+  PROTOBUF_FIELD_OFFSET(::rampage::C_Rampage_BasicAttackHit, object_id_),
+  PROTOBUF_FIELD_OFFSET(::rampage::C_Rampage_BasicAttackHit, target_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_Roar, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -156,47 +159,52 @@ const uint32_t TableStruct_Rampage_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_EnhanceAttack, object_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_ThrowAttack, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_Throwaway, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_ThrowAttack, object_id_),
+  PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_Throwaway, object_id_),
+  PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_Throwaway, target_x_),
+  PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_Throwaway, target_y_),
+  PROTOBUF_FIELD_OFFSET(::rampage::S_Rampage_Throwaway, target_z_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::rampage::S_Rampage_Spawn)},
   { 7, -1, -1, sizeof(::rampage::S_Rampage_BasicAttack)},
-  { 14, -1, -1, sizeof(::rampage::C_Rampage_BasicAttackCheck)},
+  { 14, -1, -1, sizeof(::rampage::C_Rampage_BasicAttackHit)},
   { 22, -1, -1, sizeof(::rampage::S_Rampage_Roar)},
   { 29, -1, -1, sizeof(::rampage::S_Rampage_EarthQuake)},
   { 36, -1, -1, sizeof(::rampage::S_Rampage_EnhanceAttack)},
-  { 43, -1, -1, sizeof(::rampage::S_Rampage_ThrowAttack)},
+  { 43, -1, -1, sizeof(::rampage::S_Rampage_Throwaway)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::rampage::_S_Rampage_Spawn_default_instance_._instance,
   &::rampage::_S_Rampage_BasicAttack_default_instance_._instance,
-  &::rampage::_C_Rampage_BasicAttackCheck_default_instance_._instance,
+  &::rampage::_C_Rampage_BasicAttackHit_default_instance_._instance,
   &::rampage::_S_Rampage_Roar_default_instance_._instance,
   &::rampage::_S_Rampage_EarthQuake_default_instance_._instance,
   &::rampage::_S_Rampage_EnhanceAttack_default_instance_._instance,
-  &::rampage::_S_Rampage_ThrowAttack_default_instance_._instance,
+  &::rampage::_S_Rampage_Throwaway_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Rampage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\rRampage.proto\022\007rampage\"$\n\017S_Rampage_Sp"
   "awn\022\021\n\tobject_id\030\001 \001(\004\"*\n\025S_Rampage_Basi"
-  "cAttack\022\021\n\tobject_id\030\001 \001(\004\"B\n\032C_Rampage_"
-  "BasicAttackCheck\022\021\n\tobject_id\030\001 \001(\004\022\021\n\tt"
-  "arget_id\030\002 \001(\004\"#\n\016S_Rampage_Roar\022\021\n\tobje"
-  "ct_id\030\001 \001(\004\")\n\024S_Rampage_EarthQuake\022\021\n\to"
-  "bject_id\030\001 \001(\004\",\n\027S_Rampage_EnhanceAttac"
-  "k\022\021\n\tobject_id\030\001 \001(\004\"*\n\025S_Rampage_ThrowA"
-  "ttack\022\021\n\tobject_id\030\001 \001(\004b\006proto3"
+  "cAttack\022\021\n\tobject_id\030\001 \001(\004\"@\n\030C_Rampage_"
+  "BasicAttackHit\022\021\n\tobject_id\030\001 \001(\004\022\021\n\ttar"
+  "get_id\030\002 \001(\004\"#\n\016S_Rampage_Roar\022\021\n\tobject"
+  "_id\030\001 \001(\004\")\n\024S_Rampage_EarthQuake\022\021\n\tobj"
+  "ect_id\030\001 \001(\004\",\n\027S_Rampage_EnhanceAttack\022"
+  "\021\n\tobject_id\030\001 \001(\004\"^\n\023S_Rampage_Throwawa"
+  "y\022\021\n\tobject_id\030\001 \001(\004\022\020\n\010target_x\030\002 \001(\002\022\020"
+  "\n\010target_y\030\003 \001(\002\022\020\n\010target_z\030\004 \001(\002b\006prot"
+  "o3"
   ;
 static ::_pbi::once_flag descriptor_table_Rampage_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Rampage_2eproto = {
-    false, false, 352, descriptor_table_protodef_Rampage_2eproto,
+    false, false, 402, descriptor_table_protodef_Rampage_2eproto,
     "Rampage.proto",
     &descriptor_table_Rampage_2eproto_once, nullptr, 0, 7,
     schemas, file_default_instances, TableStruct_Rampage_2eproto::offsets,
@@ -555,34 +563,34 @@ void S_Rampage_BasicAttack::InternalSwap(S_Rampage_BasicAttack* other) {
 
 // ===================================================================
 
-class C_Rampage_BasicAttackCheck::_Internal {
+class C_Rampage_BasicAttackHit::_Internal {
  public:
 };
 
-C_Rampage_BasicAttackCheck::C_Rampage_BasicAttackCheck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+C_Rampage_BasicAttackHit::C_Rampage_BasicAttackHit(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:rampage.C_Rampage_BasicAttackCheck)
+  // @@protoc_insertion_point(arena_constructor:rampage.C_Rampage_BasicAttackHit)
 }
-C_Rampage_BasicAttackCheck::C_Rampage_BasicAttackCheck(const C_Rampage_BasicAttackCheck& from)
+C_Rampage_BasicAttackHit::C_Rampage_BasicAttackHit(const C_Rampage_BasicAttackHit& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&object_id_, &from.object_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&target_id_) -
     reinterpret_cast<char*>(&object_id_)) + sizeof(target_id_));
-  // @@protoc_insertion_point(copy_constructor:rampage.C_Rampage_BasicAttackCheck)
+  // @@protoc_insertion_point(copy_constructor:rampage.C_Rampage_BasicAttackHit)
 }
 
-inline void C_Rampage_BasicAttackCheck::SharedCtor() {
+inline void C_Rampage_BasicAttackHit::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&target_id_) -
     reinterpret_cast<char*>(&object_id_)) + sizeof(target_id_));
 }
 
-C_Rampage_BasicAttackCheck::~C_Rampage_BasicAttackCheck() {
-  // @@protoc_insertion_point(destructor:rampage.C_Rampage_BasicAttackCheck)
+C_Rampage_BasicAttackHit::~C_Rampage_BasicAttackHit() {
+  // @@protoc_insertion_point(destructor:rampage.C_Rampage_BasicAttackHit)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -590,16 +598,16 @@ C_Rampage_BasicAttackCheck::~C_Rampage_BasicAttackCheck() {
   SharedDtor();
 }
 
-inline void C_Rampage_BasicAttackCheck::SharedDtor() {
+inline void C_Rampage_BasicAttackHit::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void C_Rampage_BasicAttackCheck::SetCachedSize(int size) const {
+void C_Rampage_BasicAttackHit::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void C_Rampage_BasicAttackCheck::Clear() {
-// @@protoc_insertion_point(message_clear_start:rampage.C_Rampage_BasicAttackCheck)
+void C_Rampage_BasicAttackHit::Clear() {
+// @@protoc_insertion_point(message_clear_start:rampage.C_Rampage_BasicAttackHit)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -610,7 +618,7 @@ void C_Rampage_BasicAttackCheck::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* C_Rampage_BasicAttackCheck::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* C_Rampage_BasicAttackHit::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -655,9 +663,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* C_Rampage_BasicAttackCheck::_InternalSerialize(
+uint8_t* C_Rampage_BasicAttackHit::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:rampage.C_Rampage_BasicAttackCheck)
+  // @@protoc_insertion_point(serialize_to_array_start:rampage.C_Rampage_BasicAttackHit)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -677,12 +685,12 @@ uint8_t* C_Rampage_BasicAttackCheck::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:rampage.C_Rampage_BasicAttackCheck)
+  // @@protoc_insertion_point(serialize_to_array_end:rampage.C_Rampage_BasicAttackHit)
   return target;
 }
 
-size_t C_Rampage_BasicAttackCheck::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:rampage.C_Rampage_BasicAttackCheck)
+size_t C_Rampage_BasicAttackHit::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:rampage.C_Rampage_BasicAttackHit)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -702,21 +710,21 @@ size_t C_Rampage_BasicAttackCheck::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Rampage_BasicAttackCheck::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Rampage_BasicAttackHit::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    C_Rampage_BasicAttackCheck::MergeImpl
+    C_Rampage_BasicAttackHit::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Rampage_BasicAttackCheck::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Rampage_BasicAttackHit::GetClassData() const { return &_class_data_; }
 
-void C_Rampage_BasicAttackCheck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void C_Rampage_BasicAttackHit::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<C_Rampage_BasicAttackCheck *>(to)->MergeFrom(
-      static_cast<const C_Rampage_BasicAttackCheck &>(from));
+  static_cast<C_Rampage_BasicAttackHit *>(to)->MergeFrom(
+      static_cast<const C_Rampage_BasicAttackHit &>(from));
 }
 
 
-void C_Rampage_BasicAttackCheck::MergeFrom(const C_Rampage_BasicAttackCheck& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:rampage.C_Rampage_BasicAttackCheck)
+void C_Rampage_BasicAttackHit::MergeFrom(const C_Rampage_BasicAttackHit& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:rampage.C_Rampage_BasicAttackHit)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -730,29 +738,29 @@ void C_Rampage_BasicAttackCheck::MergeFrom(const C_Rampage_BasicAttackCheck& fro
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void C_Rampage_BasicAttackCheck::CopyFrom(const C_Rampage_BasicAttackCheck& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:rampage.C_Rampage_BasicAttackCheck)
+void C_Rampage_BasicAttackHit::CopyFrom(const C_Rampage_BasicAttackHit& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:rampage.C_Rampage_BasicAttackHit)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool C_Rampage_BasicAttackCheck::IsInitialized() const {
+bool C_Rampage_BasicAttackHit::IsInitialized() const {
   return true;
 }
 
-void C_Rampage_BasicAttackCheck::InternalSwap(C_Rampage_BasicAttackCheck* other) {
+void C_Rampage_BasicAttackHit::InternalSwap(C_Rampage_BasicAttackHit* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(C_Rampage_BasicAttackCheck, target_id_)
-      + sizeof(C_Rampage_BasicAttackCheck::target_id_)
-      - PROTOBUF_FIELD_OFFSET(C_Rampage_BasicAttackCheck, object_id_)>(
+      PROTOBUF_FIELD_OFFSET(C_Rampage_BasicAttackHit, target_id_)
+      + sizeof(C_Rampage_BasicAttackHit::target_id_)
+      - PROTOBUF_FIELD_OFFSET(C_Rampage_BasicAttackHit, object_id_)>(
           reinterpret_cast<char*>(&object_id_),
           reinterpret_cast<char*>(&other->object_id_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata C_Rampage_BasicAttackCheck::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata C_Rampage_BasicAttackHit::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Rampage_2eproto_getter, &descriptor_table_Rampage_2eproto_once,
       file_level_metadata_Rampage_2eproto[2]);
@@ -1273,29 +1281,34 @@ void S_Rampage_EnhanceAttack::InternalSwap(S_Rampage_EnhanceAttack* other) {
 
 // ===================================================================
 
-class S_Rampage_ThrowAttack::_Internal {
+class S_Rampage_Throwaway::_Internal {
  public:
 };
 
-S_Rampage_ThrowAttack::S_Rampage_ThrowAttack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+S_Rampage_Throwaway::S_Rampage_Throwaway(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:rampage.S_Rampage_ThrowAttack)
+  // @@protoc_insertion_point(arena_constructor:rampage.S_Rampage_Throwaway)
 }
-S_Rampage_ThrowAttack::S_Rampage_ThrowAttack(const S_Rampage_ThrowAttack& from)
+S_Rampage_Throwaway::S_Rampage_Throwaway(const S_Rampage_Throwaway& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  object_id_ = from.object_id_;
-  // @@protoc_insertion_point(copy_constructor:rampage.S_Rampage_ThrowAttack)
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&target_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(target_z_));
+  // @@protoc_insertion_point(copy_constructor:rampage.S_Rampage_Throwaway)
 }
 
-inline void S_Rampage_ThrowAttack::SharedCtor() {
-object_id_ = uint64_t{0u};
+inline void S_Rampage_Throwaway::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&target_z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(target_z_));
 }
 
-S_Rampage_ThrowAttack::~S_Rampage_ThrowAttack() {
-  // @@protoc_insertion_point(destructor:rampage.S_Rampage_ThrowAttack)
+S_Rampage_Throwaway::~S_Rampage_Throwaway() {
+  // @@protoc_insertion_point(destructor:rampage.S_Rampage_Throwaway)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -1303,25 +1316,27 @@ S_Rampage_ThrowAttack::~S_Rampage_ThrowAttack() {
   SharedDtor();
 }
 
-inline void S_Rampage_ThrowAttack::SharedDtor() {
+inline void S_Rampage_Throwaway::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void S_Rampage_ThrowAttack::SetCachedSize(int size) const {
+void S_Rampage_Throwaway::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void S_Rampage_ThrowAttack::Clear() {
-// @@protoc_insertion_point(message_clear_start:rampage.S_Rampage_ThrowAttack)
+void S_Rampage_Throwaway::Clear() {
+// @@protoc_insertion_point(message_clear_start:rampage.S_Rampage_Throwaway)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  object_id_ = uint64_t{0u};
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&target_z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(target_z_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* S_Rampage_ThrowAttack::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* S_Rampage_Throwaway::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -1332,6 +1347,30 @@ const char* S_Rampage_ThrowAttack::_InternalParse(const char* ptr, ::_pbi::Parse
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           object_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float target_x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          target_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float target_y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          target_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float target_z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          target_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -1358,9 +1397,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* S_Rampage_ThrowAttack::_InternalSerialize(
+uint8_t* S_Rampage_Throwaway::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:rampage.S_Rampage_ThrowAttack)
+  // @@protoc_insertion_point(serialize_to_array_start:rampage.S_Rampage_Throwaway)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1370,16 +1409,46 @@ uint8_t* S_Rampage_ThrowAttack::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_object_id(), target);
   }
 
+  // float target_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_x = this->_internal_target_x();
+  uint32_t raw_target_x;
+  memcpy(&raw_target_x, &tmp_target_x, sizeof(tmp_target_x));
+  if (raw_target_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_target_x(), target);
+  }
+
+  // float target_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_y = this->_internal_target_y();
+  uint32_t raw_target_y;
+  memcpy(&raw_target_y, &tmp_target_y, sizeof(tmp_target_y));
+  if (raw_target_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_target_y(), target);
+  }
+
+  // float target_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_z = this->_internal_target_z();
+  uint32_t raw_target_z;
+  memcpy(&raw_target_z, &tmp_target_z, sizeof(tmp_target_z));
+  if (raw_target_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_target_z(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:rampage.S_Rampage_ThrowAttack)
+  // @@protoc_insertion_point(serialize_to_array_end:rampage.S_Rampage_Throwaway)
   return target;
 }
 
-size_t S_Rampage_ThrowAttack::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:rampage.S_Rampage_ThrowAttack)
+size_t S_Rampage_Throwaway::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:rampage.S_Rampage_Throwaway)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1391,24 +1460,51 @@ size_t S_Rampage_ThrowAttack::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_object_id());
   }
 
+  // float target_x = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_x = this->_internal_target_x();
+  uint32_t raw_target_x;
+  memcpy(&raw_target_x, &tmp_target_x, sizeof(tmp_target_x));
+  if (raw_target_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float target_y = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_y = this->_internal_target_y();
+  uint32_t raw_target_y;
+  memcpy(&raw_target_y, &tmp_target_y, sizeof(tmp_target_y));
+  if (raw_target_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float target_z = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_z = this->_internal_target_z();
+  uint32_t raw_target_z;
+  memcpy(&raw_target_z, &tmp_target_z, sizeof(tmp_target_z));
+  if (raw_target_z != 0) {
+    total_size += 1 + 4;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Rampage_ThrowAttack::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Rampage_Throwaway::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    S_Rampage_ThrowAttack::MergeImpl
+    S_Rampage_Throwaway::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Rampage_ThrowAttack::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Rampage_Throwaway::GetClassData() const { return &_class_data_; }
 
-void S_Rampage_ThrowAttack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void S_Rampage_Throwaway::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<S_Rampage_ThrowAttack *>(to)->MergeFrom(
-      static_cast<const S_Rampage_ThrowAttack &>(from));
+  static_cast<S_Rampage_Throwaway *>(to)->MergeFrom(
+      static_cast<const S_Rampage_Throwaway &>(from));
 }
 
 
-void S_Rampage_ThrowAttack::MergeFrom(const S_Rampage_ThrowAttack& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:rampage.S_Rampage_ThrowAttack)
+void S_Rampage_Throwaway::MergeFrom(const S_Rampage_Throwaway& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:rampage.S_Rampage_Throwaway)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1416,27 +1512,53 @@ void S_Rampage_ThrowAttack::MergeFrom(const S_Rampage_ThrowAttack& from) {
   if (from._internal_object_id() != 0) {
     _internal_set_object_id(from._internal_object_id());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_x = from._internal_target_x();
+  uint32_t raw_target_x;
+  memcpy(&raw_target_x, &tmp_target_x, sizeof(tmp_target_x));
+  if (raw_target_x != 0) {
+    _internal_set_target_x(from._internal_target_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_y = from._internal_target_y();
+  uint32_t raw_target_y;
+  memcpy(&raw_target_y, &tmp_target_y, sizeof(tmp_target_y));
+  if (raw_target_y != 0) {
+    _internal_set_target_y(from._internal_target_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_target_z = from._internal_target_z();
+  uint32_t raw_target_z;
+  memcpy(&raw_target_z, &tmp_target_z, sizeof(tmp_target_z));
+  if (raw_target_z != 0) {
+    _internal_set_target_z(from._internal_target_z());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void S_Rampage_ThrowAttack::CopyFrom(const S_Rampage_ThrowAttack& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:rampage.S_Rampage_ThrowAttack)
+void S_Rampage_Throwaway::CopyFrom(const S_Rampage_Throwaway& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:rampage.S_Rampage_Throwaway)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool S_Rampage_ThrowAttack::IsInitialized() const {
+bool S_Rampage_Throwaway::IsInitialized() const {
   return true;
 }
 
-void S_Rampage_ThrowAttack::InternalSwap(S_Rampage_ThrowAttack* other) {
+void S_Rampage_Throwaway::InternalSwap(S_Rampage_Throwaway* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(object_id_, other->object_id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_Rampage_Throwaway, target_z_)
+      + sizeof(S_Rampage_Throwaway::target_z_)
+      - PROTOBUF_FIELD_OFFSET(S_Rampage_Throwaway, object_id_)>(
+          reinterpret_cast<char*>(&object_id_),
+          reinterpret_cast<char*>(&other->object_id_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata S_Rampage_ThrowAttack::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata S_Rampage_Throwaway::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Rampage_2eproto_getter, &descriptor_table_Rampage_2eproto_once,
       file_level_metadata_Rampage_2eproto[6]);
@@ -1453,9 +1575,9 @@ template<> PROTOBUF_NOINLINE ::rampage::S_Rampage_BasicAttack*
 Arena::CreateMaybeMessage< ::rampage::S_Rampage_BasicAttack >(Arena* arena) {
   return Arena::CreateMessageInternal< ::rampage::S_Rampage_BasicAttack >(arena);
 }
-template<> PROTOBUF_NOINLINE ::rampage::C_Rampage_BasicAttackCheck*
-Arena::CreateMaybeMessage< ::rampage::C_Rampage_BasicAttackCheck >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::rampage::C_Rampage_BasicAttackCheck >(arena);
+template<> PROTOBUF_NOINLINE ::rampage::C_Rampage_BasicAttackHit*
+Arena::CreateMaybeMessage< ::rampage::C_Rampage_BasicAttackHit >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::rampage::C_Rampage_BasicAttackHit >(arena);
 }
 template<> PROTOBUF_NOINLINE ::rampage::S_Rampage_Roar*
 Arena::CreateMaybeMessage< ::rampage::S_Rampage_Roar >(Arena* arena) {
@@ -1469,9 +1591,9 @@ template<> PROTOBUF_NOINLINE ::rampage::S_Rampage_EnhanceAttack*
 Arena::CreateMaybeMessage< ::rampage::S_Rampage_EnhanceAttack >(Arena* arena) {
   return Arena::CreateMessageInternal< ::rampage::S_Rampage_EnhanceAttack >(arena);
 }
-template<> PROTOBUF_NOINLINE ::rampage::S_Rampage_ThrowAttack*
-Arena::CreateMaybeMessage< ::rampage::S_Rampage_ThrowAttack >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::rampage::S_Rampage_ThrowAttack >(arena);
+template<> PROTOBUF_NOINLINE ::rampage::S_Rampage_Throwaway*
+Arena::CreateMaybeMessage< ::rampage::S_Rampage_Throwaway >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::rampage::S_Rampage_Throwaway >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

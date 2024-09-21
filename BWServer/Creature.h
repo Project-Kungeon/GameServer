@@ -9,7 +9,7 @@ public:
 	virtual ~Creature();
 
 public:
-	void Damaged(CreaturePtr attacker, float damage);
+	virtual void Damaged(CreaturePtr attacker, float damage);
 	bool IsDead();
 
 	// Set&Get

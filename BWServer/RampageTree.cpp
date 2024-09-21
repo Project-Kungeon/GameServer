@@ -50,13 +50,13 @@ void RampageTree::MakeRootSelector()
 void RampageTree::MakeFindPlayerSelector()
 {
 	FindPlayerSelector->addLambda([this]()
-	{
-		if (RegularPatternCooldown < RP_COOLTIME) return false;
-	if (auto ptr = rampage.lock())
-	{
-		RegularPatternCooldown = 0;
-		return ptr->RegularPattern();
-	}
+		{
+			if (RegularPatternCooldown < RP_COOLTIME) return false;
+		if (auto ptr = rampage.lock())
+		{
+			RegularPatternCooldown = 0;
+			return ptr->RegularPattern();
+		}
 
 	return false;
 		});
@@ -85,21 +85,36 @@ void RampageTree::MakeCanAttackSelector()
 			// 스킬 사용가능할 때
 			if (SkillAttackCooldown >= SKILL_COOLTIME)
 			{
-				SkillAttackCooldown = 0;
+				
 				if (auto ptr = rampage.lock())
 				{
 					ptr->TurnToTarget(ptr->GetAggroTarget());
-					return ptr->UseSkillToAggro();
+					if (ptr->UseSkillToAggro())
+					{
+						SkillAttackCooldown = 0;
+						return true;
+					}
+					else
+					{
+						return false;
+					}
 				}
 			}
 			// 스킬을 사용하지 못하고, 일반공격이 가능할 때
 			else if (BasicAttackCooldown >= BA_COOLTIME)
 			{
-				BasicAttackCooldown = 0;
 				if (auto ptr = rampage.lock())
 				{
 					ptr->TurnToTarget(ptr->GetCloseTarget());
-					return ptr->BasicAttack();
+					if (ptr->BasicAttack())
+					{
+						BasicAttackCooldown = 0;
+						return true;
+					}
+					else
+					{
+						return false;
+					}
 				}
 			}
 		});
