@@ -8,11 +8,11 @@
 RoomPtr GRoom[UINT16_MAX];
 
 // 전역변수 GRoom 초기화
-void Room::init()
+void Room::init(boost::asio::io_context& io_context)
 {
 	for (int i = 0; i < 3; i++)
 	{
-		GRoom[i] = std::make_shared<Room>();
+		GRoom[i] = std::make_shared<Room>(io_context);
 	}
 
 }
@@ -206,6 +206,7 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 }
 
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
+// 단, exceptId에 해당하는 플레이어에게 보내지 않습니다.
 void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 {
 	// 오브젝트 리스트 탐색
@@ -229,7 +230,6 @@ void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 		}
 		
 	}
-
 }
 
 RoomPtr Room::GetRoomRef()
@@ -1002,13 +1002,104 @@ void Room::HandleArchorLS_Off(ArchorPtr archor, uint64 object_id)
 	Broadcast(sendBuffer, 0);
 }
 
+void Room::SendRampageBasicAttack(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_BasicAttack pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_BASICATTACK_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
+{
+	spdlog::debug("Rampage Move To {}", target->GetObjectId());
+
+	message::S_Move pkt;
+
+	Location loc = target->GetLocation();
+	message::PosInfo* posInfo = pkt.mutable_posinfo();
+	posInfo->set_object_id(rampage->GetObjectId());
+	posInfo->set_state(message::MOVE_STATE_RUN);
+	posInfo->set_x(loc.x);
+	posInfo->set_y(loc.y);
+	posInfo->set_z(loc.z);
+	posInfo->set_yaw(posInfo->yaw());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRamapgeRoar(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_Roar pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ROAR_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRampageEarthQuake(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_EarthQuake pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_EARTHQUAKE_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target)
+{
+	Location SelfLoc = rampage->GetLocation();
+	Location TargetLoc = target->GetLocation();
+
+	float LookX = TargetLoc.x - SelfLoc.x;
+	float LookY = TargetLoc.y - SelfLoc.y;
+	float LookZ = 0.0f;
+
+	float rotationMatrix[3][3];
+	MathUtils::makeRotationMatrixFromX(LookX, LookY, LookZ, rotationMatrix);
+	Rotator rotator = MathUtils::matrixToRotator(rotationMatrix);
+
+	monster::pattern::S_TurnToTarget pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+	pkt.set_pitch(rotator.Pitch);
+	pkt.set_roll(rotator.Roll);
+	pkt.set_yaw(rotator.Yaw);
+
+	//target->posInfo->set_yaw(rotator.Yaw);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_TURNTOTARGET_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
 void Room::HandleTick(uint32 Deltatime)
 {
-	WRITE_LOCK;
 	for (auto& item : _objects)
 	{
 		item.second->Tick(Deltatime);
 	}
+	DoTimer((uint64)22, &Room::HandleTick, (uint32)22);
 }
 
 void Room::HandleCoolTime(long long elapsed_millisecond)
@@ -1127,7 +1218,7 @@ bool Room::RemoveObject(uint64 objectId)
 		return false;
 
 	ObjectPtr object = _objects[objectId];
-	object->room.store(weak_from_this());
+	object->room.store(std::weak_ptr<Room>());
 	_objects.erase(objectId);
 
 	return true;

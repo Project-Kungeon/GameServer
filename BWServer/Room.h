@@ -2,12 +2,18 @@
 #include "Member.h"
 #include "Message.pb.h"
 #include "Skill.pb.h"
+#include "MonsterPattern.pb.h"
+#include "JobQueue.h"
 using namespace std;
 
-class Room : public std::enable_shared_from_this<Room>
+class Room : public JobQueue
 {
 public:
-	static void init();
+	Room(boost::asio::io_context& io_context)
+		: JobQueue(io_context)
+	{}
+
+	static void init(boost::asio::io_context& io_context);
 	bool Join(ObjectPtr object);
 	bool Leave(ObjectPtr object);
 	std::weak_ptr<Player> FindClosePlayerBySelf(CreaturePtr Self, const float Distance);
@@ -42,6 +48,12 @@ public:
 	void HandleArchorR_Off(ArchorPtr archor, uint64 object_id);
 	void HandleArchorLS(skill::C_Archor_LS& pkt);
 	void HandleArchorLS_Off(ArchorPtr archor, uint64 object_id);
+
+	void SendRampageBasicAttack(RampagePtr rampage);
+	void SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target);
+	void SendRamapgeRoar(RampagePtr rampage);
+	void SendRampageEarthQuake(RampagePtr rampage);
+	void SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target);
 
 	// Tick
 public:

@@ -11,10 +11,7 @@ public:
 
 private:
 	tcp::acceptor _acceptor;
-	Room _room;
 	asio::io_context& _io_context;
-	asio::strand<asio::io_context::executor_type> _strand;
-	TickGenerator _tickGenerator;
 };
 
 typedef std::shared_ptr<GameServer> GameServerPtr;

@@ -8,11 +8,8 @@ bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_Enter
 	// Create Player
 	PlayerPtr player = ObjectUtils::CreatePlayer(static_pointer_cast<GameSession>(session), pkt.player_type());
 	// Serialize Response Packet
-	bool success = GRoom[0]->HandleEnterPlayer(player);
-	if (success == true)
-	{
-		static_pointer_cast<GameSession>(session)->isEnterGame = true;
-	}
+	GRoom[0]->DoAsync(&Room::HandleEnterPlayer, (player));
+	static_pointer_cast<GameSession>(session)->isEnterGame = true;
 
 	return true;
 }
@@ -35,7 +32,7 @@ bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
 		if (auto room = room_weak_ptr.lock()) {
 			// noti this player's moveinfo for all clients
 			spdlog::trace("Room acquired, handling move.");
-			room->HandleMove(pkt);
+			room->DoAsync(&Room::HandleMove, pkt);
 			return true;
 		}
 

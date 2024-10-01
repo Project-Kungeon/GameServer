@@ -9,13 +9,14 @@
 
 int main()
 {
+    boost::asio::io_context io_context;
     ServerPacketHandler::Init();
-    Room::init();
+    Room::init(io_context);
     spdlog::set_level(spdlog::level::trace);
     spdlog::info("SpdLog Test");
 
     int port = 4242;
-    boost::asio::io_context io_context;
+    
     boost::asio::io_context io_context_tick;
 
     GameServer server(io_context, port);
@@ -23,11 +24,11 @@ int main()
     spdlog::info("Server Start {}", port);
     std::cout << "Server Start " << port << '\n';
 
-    // MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
-    // GRoom[0]->SpawnMonster(monster);
+    MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
+    GRoom[0]->SpawnMonster(monster);
 
     //int count = 2;
-    
+    GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
 
     std::vector<std::thread> thread_pool;
     for (int i = 0; i < 1; ++i) {

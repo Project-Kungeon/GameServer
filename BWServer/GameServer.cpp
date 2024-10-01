@@ -4,15 +4,13 @@
 GameServer::GameServer(asio::io_context& io_context, int port)
 	: _acceptor(io_context, tcp::endpoint(tcp::v4(), port))
 	, _io_context(io_context)
-	, _strand(asio::make_strand(io_context))
-	, _tickGenerator(io_context, 30, GRoom[0])
 {
-	// _tickGenerator.start(nullptr);
+	 //_tickGenerator.start(nullptr);
 }
 
 void GameServer::StartAccept()
 {
-	Session* session = new Session(_io_context, _room);
+	GameSession* session = new GameSession(_io_context);
 	SessionPtr sessionPtr(session);
 	_acceptor.async_accept(sessionPtr->GetSocket(), boost::bind(
 		&GameServer::OnAccept,

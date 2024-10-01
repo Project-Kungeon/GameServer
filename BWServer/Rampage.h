@@ -17,6 +17,7 @@ public:
 public:
     void Init();
     virtual void Tick(uint32 DeltaTime) override;
+    virtual RampagePtr GetRampagePtr();
     bool isAttack() { GetReadLock(); return isAttacking; }
     void Damaged(CreaturePtr attacker, float damage) override;
 
