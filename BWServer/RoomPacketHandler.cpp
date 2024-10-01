@@ -7,7 +7,6 @@ bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_Enter
 {
 	// Create Player
 	PlayerPtr player = ObjectUtils::CreatePlayer(static_pointer_cast<GameSession>(session), pkt.player_type());
-
 	// Serialize Response Packet
 	bool success = GRoom[0]->HandleEnterPlayer(player);
 	if (success == true)
@@ -20,22 +19,28 @@ bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_Enter
 
 bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
 {
-	// cast into GameSession ( for getting object info)
+	// cast into GameSession (for getting object info)
 	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
 
 	// 플레이어 정보가 들어오지 않았다면 일단 패스
 	if (!gameSession->isEnterGame) return false;
 
-	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
-	if (player == nullptr) return false;
+	// if is not lock.. get player
+	PlayerPtr weak_player = gameSession->player.load();
+	spdlog::trace("Acquiring player...");
+	if (auto player = weak_player)  // weak_ptr.lock()은 shared_ptr을 반환
+	{
+		spdlog::trace("Player acquired.");
+		auto room_weak_ptr = player->room.load();
+		if (auto room = room_weak_ptr.lock()) {
+			// noti this player's moveinfo for all clients
+			spdlog::trace("Room acquired, handling move.");
+			room->HandleMove(pkt);
+			return true;
+		}
 
-	RoomPtr room = player->room.load().lock();
-	if(room == nullptr) return false;
-
-	// noti this player's moveinfo for all clients 
-	room->HandleMove(pkt);
-	
-
-	return true;
+		spdlog::trace("Room is nullptr.");
+	}
+	spdlog::trace("Player is nullptr.");
+	return false;
 }

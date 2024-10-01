@@ -4,7 +4,11 @@
 GameServer::GameServer(asio::io_context& io_context, int port)
 	: _acceptor(io_context, tcp::endpoint(tcp::v4(), port))
 	, _io_context(io_context)
-{}
+	, _strand(asio::make_strand(io_context))
+	, _tickGenerator(io_context, 30, GRoom[0])
+{
+	// _tickGenerator.start(nullptr);
+}
 
 void GameServer::StartAccept()
 {

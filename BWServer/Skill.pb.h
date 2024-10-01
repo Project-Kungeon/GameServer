@@ -1672,7 +1672,6 @@ class C_Warrior_LS final :
     kXFieldNumber = 2,
     kYFieldNumber = 3,
     kZFieldNumber = 4,
-    kYawFieldNumber = 5,
   };
   // uint64 object_id = 1;
   void clear_object_id();
@@ -1710,15 +1709,6 @@ class C_Warrior_LS final :
   void _internal_set_z(float value);
   public:
 
-  // float yaw = 5;
-  void clear_yaw();
-  float yaw() const;
-  void set_yaw(float value);
-  private:
-  float _internal_yaw() const;
-  void _internal_set_yaw(float value);
-  public:
-
   // @@protoc_insertion_point(class_scope:skill.C_Warrior_LS)
  private:
   class _Internal;
@@ -1730,7 +1720,6 @@ class C_Warrior_LS final :
   float x_;
   float y_;
   float z_;
-  float yaw_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
@@ -6565,26 +6554,6 @@ inline void C_Warrior_LS::_internal_set_z(float value) {
 inline void C_Warrior_LS::set_z(float value) {
   _internal_set_z(value);
   // @@protoc_insertion_point(field_set:skill.C_Warrior_LS.z)
-}
-
-// float yaw = 5;
-inline void C_Warrior_LS::clear_yaw() {
-  yaw_ = 0;
-}
-inline float C_Warrior_LS::_internal_yaw() const {
-  return yaw_;
-}
-inline float C_Warrior_LS::yaw() const {
-  // @@protoc_insertion_point(field_get:skill.C_Warrior_LS.yaw)
-  return _internal_yaw();
-}
-inline void C_Warrior_LS::_internal_set_yaw(float value) {
-  
-  yaw_ = value;
-}
-inline void C_Warrior_LS::set_yaw(float value) {
-  _internal_set_yaw(value);
-  // @@protoc_insertion_point(field_set:skill.C_Warrior_LS.yaw)
 }
 
 // -------------------------------------------------------------------

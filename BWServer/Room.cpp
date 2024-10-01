@@ -208,22 +208,26 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
 void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 {
-	
 	// 오브젝트 리스트 탐색
 	for (auto& item : _objects)
 	{
 		// 플레이어 캐스팅
-		PlayerPtr player = dynamic_pointer_cast<Player>(item.second);
-		if (player == nullptr) continue;
-
-		// 브로드캐스트 제외 대상은 보내지 않습니다.
-		if (player->objectInfo->object_id() == exceptId) continue;
-
-		if (GameSessionPtr session = player->session.lock())
+		// RTTI 최소화를 위한 리팩토링
+		if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
 		{
-			spdlog::info("Broadcast to {} player", item.first);
-			session->Send(buffer);
+			PlayerPtr player = static_pointer_cast<Player>(item.second);
+			if (player == nullptr) continue;
+
+			// 브로드캐스트 제외 대상은 보내지 않습니다.
+			if (player->objectInfo->object_id() == exceptId) continue;
+
+			if (GameSessionPtr session = player->session.lock())
+			{
+				spdlog::info("Broadcast to {} player", item.first);
+				session->Send(buffer);
+			}
 		}
+		
 	}
 
 }
@@ -258,7 +262,7 @@ void Room::HandleMove(message::C_Move pkt)
 		return;
 
 	PlayerPtr player = dynamic_pointer_cast<Player>(_objects[object_id]);
-	player->posInfo->CopyFrom(pkt.posinfo());
+	player->SetPosInfo(pkt.posinfo());
 
 	// make buffer for notification that all client received.
 	{
@@ -294,9 +298,11 @@ void Room::HandleAttack(message::C_Attack pkt)
 		{
 			if (_objects.find(victim_id) != _objects.end())
 			{
-				auto victim = static_pointer_cast<Creature>(_objects[attacker_id]);
-				victim->Damaged(attacker, damage);
-				attackPkt.add_target_ids(victim_id);
+				if (auto victim = dynamic_pointer_cast<Creature>(_objects[victim_id]))
+				{
+					victim->Damaged(attacker, damage);
+					attackPkt.add_target_ids(victim_id);
+				}
 			}
 			
 		}
@@ -419,6 +425,51 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 	char* rawBuffer = new char[requiredSize];
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_RES, skillPkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleWarriorLS(skill::C_Warrior_LS pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->GetLS_Cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->LS_COOLTIME);
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+		}
+		else
+		{
+			player->UseSkillLS();
+		}
+	}
+
+	skill::S_Warrior_LS skillPkt;
+	skillPkt.set_object_id(pkt.object_id());
+	skillPkt.set_x(pkt.x());
+	skillPkt.set_y(pkt.y());
+	skillPkt.set_z(pkt.z());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_LS_RES, skillPkt);
 
 	Broadcast(sendBuffer, 0);
 }
@@ -953,6 +1004,7 @@ void Room::HandleArchorLS_Off(ArchorPtr archor, uint64 object_id)
 
 void Room::HandleTick(uint32 Deltatime)
 {
+	WRITE_LOCK;
 	for (auto& item : _objects)
 	{
 		item.second->Tick(Deltatime);
@@ -1060,8 +1112,9 @@ bool Room::AddObject(ObjectPtr object)
 	{
 		return false;
 	}
-	_objects.insert({ object->objectInfo->object_id(), object });
 	object->room.store(GetRoomRef());
+	_objects.insert({ object->objectInfo->object_id(), object });
+	
 
 	return true;
 }
@@ -1074,8 +1127,7 @@ bool Room::RemoveObject(uint64 objectId)
 		return false;
 
 	ObjectPtr object = _objects[objectId];
-	object->room.store(std::weak_ptr<Room>());
-
+	object->room.store(weak_from_this());
 	_objects.erase(objectId);
 
 	return true;

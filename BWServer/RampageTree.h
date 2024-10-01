@@ -13,12 +13,14 @@ public:
     void MakeRootSelector();
     void MakeFindPlayerSelector();
     void MakeCanAttackSelector();
+    void MakeCanNotAttackSelector();
     void Tick(uint32 DeltaTime);
 
 private:
     Selector* RootSelector;
     Selector* FindPlayerSelector;
     Selector* CanAttackSelector;
+    Selector* CanNotAttackSelector;
 
     std::weak_ptr<Rampage> rampage;
 

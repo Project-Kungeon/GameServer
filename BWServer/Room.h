@@ -24,6 +24,8 @@ public:
 	void HandleWarriorAttack(skill::C_Warrior_Attack pkt);
 	void HandleWarriorR(skill::C_Warrior_R pkt);
 	void HandleWarriorE(skill::C_Warrior_E pkt);
+	void HandleWarriorLS(skill::C_Warrior_LS pkt);
+
 
 	void HandleAssassinAttack(skill::C_ASSASSIN_Attack pkt);
 	void HandleAssassinQ(skill::C_ASSASSIN_Q pkt);
@@ -52,7 +54,7 @@ private:
 	bool RemoveObject(uint64 objectId);
 
 private:
-	set<MemberPtr> _members;
+	USE_LOCK;
 	unordered_map<uint64, ObjectPtr> _objects;
 };
 

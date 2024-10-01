@@ -86,6 +86,12 @@
     <ClCompile Include="MonsterPattern.pb.cc">
       <Filter>Packets\build</Filter>
     </ClCompile>
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="JobQueue.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -186,6 +192,12 @@
     </ClInclude>
     <ClInclude Include="MonsterPattern.pb.h">
       <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="JobQueue.h">
+      <Filter>Main\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

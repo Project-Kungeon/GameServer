@@ -50,5 +50,7 @@ private:
 
 	Room& _room;
 	asio::strand<asio::io_context::executor_type> _strand;
+
+	USE_LOCK;
 };
 

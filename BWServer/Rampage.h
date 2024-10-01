@@ -18,7 +18,7 @@ public:
     void Init();
     virtual void Tick(uint32 DeltaTime) override;
     bool isAttack() { GetReadLock(); return isAttacking; }
-    virtual void Damaged(CreaturePtr attacker, float damage) override;
+    void Damaged(CreaturePtr attacker, float damage) override;
 
 public:
     // Detect Function
@@ -39,7 +39,7 @@ public:
     bool RegularPattern();
     bool UseSkillToAggro();
     bool BasicAttack();
-    bool CanNotAttack();
+    bool MoveToTarget(std::weak_ptr<Creature> Target);
 
     // Pattern Function
     void Roar();

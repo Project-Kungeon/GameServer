@@ -24,80 +24,103 @@ public:
 
 		GPacketHandler[message::HEADER::LOGIN_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Login");
 			return HandlePacket<message::C_Login>(LobbyPacketHandler::Handle_C_Login, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ENTER_ROOM_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_EnterRoom");
 			return HandlePacket<message::C_EnterRoom>(RoomPacketHandler::Handle_C_EnterRoom, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::PLAYER_MOVE_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Move");
 			return HandlePacket<message::C_Move>(RoomPacketHandler::Handle_C_Move, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::PLAYER_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Attack");
 			return HandlePacket<message::C_Attack>(BattlePacketHandler::Handle_C_Attack, session, buffer, offset);
 		};
 
 		// Warrior
 		GPacketHandler[message::HEADER::WARRIOR_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Warrior_Attack");
 			return HandlePacket<skill::C_Warrior_Attack>(BattlePacketHandler::Handle_C_WarriorAttack, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::WARRIOR_E_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Warrior_E");
 			return HandlePacket<skill::C_Warrior_E>(BattlePacketHandler::Handle_C_WarriorE, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::WARRIOR_R_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Warrior_R");
 			return HandlePacket<skill::C_Warrior_R>(BattlePacketHandler::Handle_C_WarriorR, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::WARRIOR_LS_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::debug("Handle C_Warrior_LS");
+			return HandlePacket<skill::C_Warrior_LS>(BattlePacketHandler::Handle_C_WarriorLS, session, buffer, offset);
 		};
 
 		// Assassin
 		GPacketHandler[message::HEADER::ASSASSIN_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_ASSASSIN_Attack");
 			return HandlePacket<skill::C_ASSASSIN_Attack>(BattlePacketHandler::Handle_C_AssassinAttack, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ASSASSIN_Q_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_ASSASSIN_Q");
 			return HandlePacket<skill::C_ASSASSIN_Q>(BattlePacketHandler::Handle_C_AssassinQ, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ASSASSIN_R_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_ASSASSIN_R");
 			return HandlePacket<skill::C_ASSASSIN_R>(BattlePacketHandler::Handle_C_AssassinR, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ASSASSIN_LS_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_ASSASSIN_LS");
 			return HandlePacket<skill::C_ASSASSIN_LS>(BattlePacketHandler::Handle_C_AssassinLS, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ASSASSIN_E_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Assassin_E");
 			return HandlePacket<skill::C_Assassin_E>(BattlePacketHandler::Handle_C_AssassinE, session, buffer, offset);
 		};
 		
 		// Archor
 		GPacketHandler[message::HEADER::ARCHOR_ATTACK_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Archor_Attack");
 			return HandlePacket<skill::C_Archor_Attack>(BattlePacketHandler::Handle_C_ArchorAttack, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ARCHOR_Q_CHARGING_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Archor_Q_Charging");
 			return HandlePacket<skill::C_Archor_Q_Charging>(BattlePacketHandler::Handle_C_ArchorQ_Charging, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ARCHOR_Q_SHOT_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Archor_Q_Shot");
 			return HandlePacket<skill::C_Archor_Q_Shot>(BattlePacketHandler::Handle_C_ArchorQ_Shot, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ARCHOR_E_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Archor_E");
 			return HandlePacket<skill::C_Archor_E>(BattlePacketHandler::Handle_C_ArchorE, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ARCHOR_R_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Archor_R");
 			return HandlePacket<skill::C_Archor_R>(BattlePacketHandler::Handle_C_ArchorR, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ARCHOR_LS_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
+			spdlog::debug("Handle C_Archor_LS");
 			return HandlePacket<skill::C_Archor_LS>(BattlePacketHandler::Handle_C_ArchorLS, session, buffer, offset);
 		};
 	}

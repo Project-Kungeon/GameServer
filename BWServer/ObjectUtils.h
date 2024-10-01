@@ -1,6 +1,5 @@
 #pragma once
 #include "Message.pb.h"
-#include <atomic>
 class ObjectUtils
 {
 public:

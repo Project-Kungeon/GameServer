@@ -51,6 +51,11 @@ public:
 		return loc;
 	}
 
+	void SetPosInfo(message::PosInfo NewPosInfo)
+	{
+		posInfo->CopyFrom(NewPosInfo);
+	}
+
 protected:
 	bool _isPlayer = false;
 
