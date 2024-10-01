@@ -4,7 +4,7 @@
 
 RampageTree::RampageTree(std::weak_ptr<Rampage> rampage)
 	: rampage(rampage),
-	RootSelector(new Selector), FindPlayerSelector(new Selector), CanAttackSelector(new Selector)
+	RootSelector(new Selector), FindPlayerSelector(new Selector), CanAttackSelector(new Selector), CanNotAttackSelector(new Selector)
 {
 }
 
@@ -21,6 +21,7 @@ void RampageTree::Init()
 	MakeRootSelector();
 	MakeFindPlayerSelector();
 	MakeCanAttackSelector();
+	MakeCanNotAttackSelector();
 }
 
 void RampageTree::MakeRootSelector()
@@ -74,7 +75,10 @@ void RampageTree::MakeFindPlayerSelector()
 	FindPlayerSelector->addLambda([this]()
 		{
 			if (auto ptr = rampage.lock())
-				return ptr->CanNotAttack();
+			{
+				return CanNotAttackSelector->execute();
+			}
+			return false;
 		});
 }
 
@@ -88,6 +92,7 @@ void RampageTree::MakeCanAttackSelector()
 				
 				if (auto ptr = rampage.lock())
 				{
+					SkillAttackCooldown = 0;
 					ptr->TurnToTarget(ptr->GetAggroTarget());
 					if (ptr->UseSkillToAggro())
 					{
@@ -120,11 +125,24 @@ void RampageTree::MakeCanAttackSelector()
 		});
 }
 
+void RampageTree::MakeCanNotAttackSelector()
+{
+	CanNotAttackSelector->addLambda([this]()
+		{
+			//if (auto ptr = rampage.lock())
+			//{
+			//	return ptr->MoveToTarget(ptr->GetCloseTarget());
+			//}
+
+			return false;
+		});
+}
+
 void RampageTree::Tick(uint32 DeltaTime)
 {
 	if (DetectCooldown < DETECT_COOLTIME) DetectCooldown += DeltaTime;
-	if (RegularPatternCooldown < RP_COOLTIME) DetectCooldown += DeltaTime;
-	if (SkillAttackCooldown < SKILL_COOLTIME) DetectCooldown += DeltaTime;
-	if (BasicAttackCooldown < BA_COOLTIME) DetectCooldown += DeltaTime;
+	if (RegularPatternCooldown < RP_COOLTIME) RegularPatternCooldown += DeltaTime;
+	if (SkillAttackCooldown < SKILL_COOLTIME) SkillAttackCooldown += DeltaTime;
+	if (BasicAttackCooldown < BA_COOLTIME) BasicAttackCooldown += DeltaTime;
 	RootSelector->execute();
 }

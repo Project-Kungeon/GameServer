@@ -28,6 +28,7 @@ tcp::socket& Session::GetSocket()
 
 void Session::Send(asio::mutable_buffer& buffer)
 {
+	WRITE_LOCK;
 	AsyncWrite(static_cast<const char*>(buffer.data()), buffer.size());
 }
 

@@ -66,7 +66,6 @@ message C_Warrior_LS
 	float x = 2;
 	float y = 3;
 	float z = 4;
-	float yaw = 5;
 }
 
 message S_Warrior_LS

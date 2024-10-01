@@ -190,7 +190,9 @@
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="GameSessionManager.cpp" />
+    <ClCompile Include="JobQueue.cpp" />
     <ClCompile Include="LobbyPacketHandler.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Message.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -242,7 +244,9 @@
     <ClInclude Include="GameServer.h" />
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
+    <ClInclude Include="JobQueue.h" />
     <ClInclude Include="LobbyPacketHandler.h" />
+    <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Message.pb.h" />
     <ClInclude Include="Monster.h" />

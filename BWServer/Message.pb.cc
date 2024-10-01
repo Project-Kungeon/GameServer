@@ -416,7 +416,7 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\030\001 \001(\004\022\030\n\020picked_object_id\030\002 \001(\004\022$\n\titem"
   "_info\030\003 \001(\0132\021.message.ItemInfo\"7\n\010S_Pick"
   "Up\022\021\n\tobject_id\030\001 \001(\004\022\030\n\020picked_object_i"
-  "d\030\002 \001(\004*\226\n\n\006HEADER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_RE"
+  "d\030\002 \001(\004*\313\n\n\006HEADER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_RE"
   "Q\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n\016ENTER_ROOM_REQ\020\003\022\022"
   "\n\016ENTER_ROOM_RES\020\004\022\022\n\016LEAVE_ROOM_REQ\020\005\022\022"
   "\n\016LEAVE_ROOM_RES\020\006\022\022\n\016LEAVE_GAME_REQ\020\007\022\022"
@@ -448,7 +448,9 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "E_RES\020\350\007\022\025\n\020RAMPAGE_ROAR_RES\020\371U\022\033\n\026RAMPA"
   "GE_EARTHQUAKE_RES\020\372U\022\035\n\030RAMPAGE_TURNTOTA"
   "RGET_RES\020\373U\022\032\n\025RAMPAGE_THROWAWAY_RES\020\374U\022"
-  "\037\n\032RAMPAGE_ENHANCEDATTACK_RES\020\375Ub\006proto3"
+  "\037\n\032RAMPAGE_ENHANCEDATTACK_RES\020\375U\022\034\n\027RAMP"
+  "AGE_BASICATTACK_RES\020\376U\022\025\n\020MONSTER_MOVE_R"
+  "ES\020\221Nb\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[2] = {
   &::descriptor_table_Enum_2eproto,
@@ -456,7 +458,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_dep
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 2240, descriptor_table_protodef_Message_2eproto,
+    false, false, 2293, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
     &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 2, 16,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
@@ -530,11 +532,13 @@ bool HEADER_IsValid(int value) {
     case 3112:
     case 3113:
     case 3114:
+    case 10001:
     case 11001:
     case 11002:
     case 11003:
     case 11004:
     case 11005:
+    case 11006:
       return true;
     default:
       return false;

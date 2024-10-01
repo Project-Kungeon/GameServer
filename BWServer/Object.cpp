@@ -29,4 +29,5 @@ Object::~Object()
 
 void Object::Tick(uint32 DeltaTime)
 {
+	GetWriteLock();
 }

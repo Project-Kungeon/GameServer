@@ -70,8 +70,7 @@ message::ObjectInfo ObjectUtils::toObjectInfo(ObjectPtr objectPtr)
 message::CreatureInfo ObjectUtils::toCreatureInfo(CreaturePtr creaturePtr)
 {
 	message::CreatureInfo creatureInfo;
-	message::ObjectInfo* objectInfo = creatureInfo.mutable_object_info();
-	objectInfo->CopyFrom(toObjectInfo(static_pointer_cast<Object>(creaturePtr)));
+	creatureInfo.mutable_object_info()->CopyFrom(toObjectInfo(static_pointer_cast<Object>(creaturePtr)));
 	creatureInfo.set_creature_type(creaturePtr->GetCreatureType());
 	creatureInfo.set_hp(creaturePtr->GetHp());
 	creatureInfo.set_maxhp(creaturePtr->GetMaxHp());
