@@ -22,7 +22,7 @@ class Session
 	, public std::enable_shared_from_this<Session>
 {
 public:
-	Session(asio::io_context& io_context, Room& room);
+	Session(asio::io_context& io_context);
 	SessionPtr GetSessionPtr();
 
 	void Start();
@@ -48,9 +48,6 @@ private:
 	const static int SendBufferSize = 2048;
 	char _sendBuffer[SendBufferSize];
 
-	Room& _room;
 	asio::strand<asio::io_context::executor_type> _strand;
-
-	USE_LOCK;
 };
 

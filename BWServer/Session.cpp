@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "Session.h"
 
-Session::Session(asio::io_context& io_context, Room& room)
+Session::Session(asio::io_context& io_context)
 	: _socket(io_context)
-	, _room(room)
 	, _strand(asio::make_strand(io_context))
 {
 	memset(_recvBuffer, 0, RecvBufferSize);
@@ -28,7 +27,6 @@ tcp::socket& Session::GetSocket()
 
 void Session::Send(asio::mutable_buffer& buffer)
 {
-	WRITE_LOCK;
 	AsyncWrite(static_cast<const char*>(buffer.data()), buffer.size());
 }
 

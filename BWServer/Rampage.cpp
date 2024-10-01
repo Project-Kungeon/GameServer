@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Rampage.h"
+#include "Room.h"
 
 
 Rampage::Rampage()
@@ -28,6 +29,11 @@ void Rampage::Tick(uint32 DeltaTime)
 	if(Tree)
 		Tree->Tick(DeltaTime);
 	
+}
+
+RampagePtr Rampage::GetRampagePtr()
+{
+	return static_pointer_cast<Rampage>(shared_from_this());
 }
 
 void Rampage::Damaged(CreaturePtr attacker, float damage)
@@ -116,18 +122,12 @@ bool Rampage::BasicAttack()
 {
 	if (auto Target = CloseTarget.lock())
 	{
-		// TODO : BA Packet
-		spdlog::debug("Rampage Basic Attack To {}", Target->GetObjectId());
-		RoomPtr roomPtr = room.load(memory_order_acquire).lock();
-		monster::pattern::S_Rampage_BasicAttack pkt;
-		pkt.set_object_id(GetObjectId());
-
-		const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_BASICATTACK_RES, pkt);
-
-		roomPtr->Broadcast(sendBuffer, -1);
+		if (auto roomPtr = room.load().lock())
+		{
+			spdlog::debug("Rampage Basic Attack To {}", Target->GetObjectId());
+			roomPtr->DoAsync(&Room::SendRampageBasicAttack, GetRampagePtr());
+			return true;
+		}
 	}
 
 	return false;
@@ -138,28 +138,11 @@ bool Rampage::MoveToTarget(std::weak_ptr<Creature> Target)
 	if (auto TargetPtr = Target.lock())
 	{
 		//TurnToTarget(Target);
-
-		spdlog::debug("Rampage Move To {}", TargetPtr->GetObjectId());
-		RoomPtr roomPtr = room.load(memory_order_acquire).lock();
-		message::S_Move pkt;
-
-		Location loc = TargetPtr->GetLocation();
-		message::PosInfo* posInfo = pkt.mutable_posinfo();
-		posInfo->set_object_id(GetObjectId());
-		posInfo->set_state(message::MOVE_STATE_RUN);
-		posInfo->set_x(loc.x);
-		posInfo->set_y(loc.y);
-		posInfo->set_z(loc.z);
-		posInfo->set_yaw(posInfo->yaw());
-
-		const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
-
-		roomPtr->Broadcast(sendBuffer, -1);
-
-		return true;
+		if (auto roomPtr = room.load().lock())
+		{
+			roomPtr->DoAsync(&Room::SendRampageMoveToTarget, GetRampagePtr(), TargetPtr);
+			return true;
+		}
 	}
 
 	return false;
@@ -167,66 +150,31 @@ bool Rampage::MoveToTarget(std::weak_ptr<Creature> Target)
 
 void Rampage::Roar()
 {
-	spdlog::debug("Rampage used Roar!");
-	RoomPtr roomPtr = room.load(memory_order_acquire).lock();
-	monster::pattern::S_Rampage_Roar pkt;
-	pkt.set_object_id(GetObjectId());
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ROAR_RES, pkt);
-
-	roomPtr->Broadcast(sendBuffer, -1);
+	if (auto roomPtr = room.load().lock())
+	{
+		spdlog::debug("Rampage used Roar!");
+		roomPtr->DoAsync(&Room::SendRamapgeRoar, GetRampagePtr());
+	}
 }
 
 void Rampage::EarthQuake()
 {
-	spdlog::debug("Rampage used EarthQuake!");
-	RoomPtr roomPtr = room.load(memory_order_acquire).lock();
-	monster::pattern::S_Rampage_EarthQuake pkt;
-	pkt.set_object_id(GetObjectId());
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_EARTHQUAKE_RES, pkt);
-
-	roomPtr->Broadcast(sendBuffer, -1);
+	if (auto roomPtr = room.load().lock())
+	{
+		spdlog::debug("Rampage used EarthQuake!");
+		roomPtr->DoAsync(&Room::SendRampageEarthQuake, GetRampagePtr());
+	}
 }
 
 void Rampage::TurnToTarget(std::weak_ptr<Creature> Target)
 {
 	if (auto target = Target.lock())
 	{
-		spdlog::debug("Rampage Turned To Target {}", target->GetObjectId());
-		Location SelfLoc = GetLocation();
-		Location TargetLoc = target->GetLocation();
-		
-		float LookX = TargetLoc.x - SelfLoc.x;
-		float LookY = TargetLoc.y - SelfLoc.y;
-		float LookZ = 0.0f;
-
-		float rotationMatrix[3][3];
-		MathUtils::makeRotationMatrixFromX(LookX, LookY, LookZ, rotationMatrix);
-		Rotator rotator = MathUtils::matrixToRotator(rotationMatrix);
-
-		RoomPtr roomPtr = room.load(memory_order_acquire).lock();
-		monster::pattern::S_TurnToTarget pkt;
-		pkt.set_object_id(GetObjectId());
-		pkt.set_pitch(rotator.Pitch);
-		pkt.set_roll(rotator.Roll);
-		pkt.set_yaw(rotator.Yaw);
-
-		//target->posInfo->set_yaw(rotator.Yaw);
-
-		const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_TURNTOTARGET_RES, pkt);
-
-		roomPtr->Broadcast(sendBuffer, -1);
-
+		if (auto roomPtr = room.load().lock())
+		{
+			spdlog::debug("Rampage Turned To Target {}", target->GetObjectId());
+			roomPtr->DoAsync(&Room::SendRamapgeTurnToTarget, GetRampagePtr(), target);
+		}
 	}
 }
 

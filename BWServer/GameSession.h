@@ -6,6 +6,10 @@
 class GameSession : public Session
 {
 public:
+	GameSession(asio::io_context& io_context)
+		: Session(io_context)
+	{};
+
 	virtual void OnConnected() override;
 	virtual void OnDisconnected() override;
 
