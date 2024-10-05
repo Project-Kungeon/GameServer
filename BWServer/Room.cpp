@@ -713,7 +713,7 @@ void Room::HandleAssassinE(skill::C_Assassin_E pkt)
 	
 }
 
-void Room::HandleArchorAttack(skill::C_Archor_Attack& pkt)
+void Room::HandleArchorAttack(skill::C_Archor_Attack pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -740,7 +740,7 @@ void Room::HandleArchorAttack(skill::C_Archor_Attack& pkt)
 	}
 }
 
-void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt)
+void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -785,7 +785,7 @@ void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt)
 	}
 }
 
-void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt)
+void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -836,7 +836,7 @@ void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt)
 	}
 }
 
-void Room::HandleArchorE(skill::C_Archor_E& pkt)
+void Room::HandleArchorE(skill::C_Archor_E pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -884,7 +884,7 @@ void Room::HandleArchorE(skill::C_Archor_E& pkt)
 	}
 }
 
-void Room::HandleArchorR(skill::C_Archor_R& pkt)
+void Room::HandleArchorR(skill::C_Archor_R pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -943,7 +943,7 @@ void Room::HandleArchorR_Off(ArchorPtr archor, uint64 object_id)
 	Broadcast(sendBuffer, 0);
 }
 
-void Room::HandleArchorLS(skill::C_Archor_LS& pkt)
+void Room::HandleArchorLS(skill::C_Archor_LS pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
