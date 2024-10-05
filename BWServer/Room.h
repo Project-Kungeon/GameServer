@@ -40,13 +40,13 @@ public:
 	void HandleAssassinLSOff(AssassinPtr assassin, uint64 object_id);
 	void HandleAssassinE(skill::C_Assassin_E pkt);
 
-	void HandleArchorAttack(skill::C_Archor_Attack& pkt);
-	void HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt);
-	void HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt);
-	void HandleArchorE(skill::C_Archor_E& pkt);
-	void HandleArchorR(skill::C_Archor_R& pkt);
+	void HandleArchorAttack(skill::C_Archor_Attack pkt);
+	void HandleArchorQ_Charging(skill::C_Archor_Q_Charging pkt);
+	void HandleArchorQ_Shot(skill::C_Archor_Q_Shot pkt);
+	void HandleArchorE(skill::C_Archor_E pkt);
+	void HandleArchorR(skill::C_Archor_R pkt);
 	void HandleArchorR_Off(ArchorPtr archor, uint64 object_id);
-	void HandleArchorLS(skill::C_Archor_LS& pkt);
+	void HandleArchorLS(skill::C_Archor_LS pkt);
 	void HandleArchorLS_Off(ArchorPtr archor, uint64 object_id);
 
 	void SendRampageBasicAttack(RampagePtr rampage);
