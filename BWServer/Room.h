@@ -54,6 +54,7 @@ public:
 	void SendRamapgeRoar(RampagePtr rampage);
 	void SendRampageEarthQuake(RampagePtr rampage);
 	void SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target);
+	void SendRampageEnhancedAttack(RampagePtr rampage);
 
 	// Tick
 public:
@@ -68,6 +69,15 @@ private:
 private:
 	USE_LOCK;
 	unordered_map<uint64, ObjectPtr> _objects;
+
+private:
+	std::chrono::steady_clock::time_point _lastTickTime;
+	std::chrono::steady_clock::time_point _startTime;
+	int _tickCount = 0;
+	const int _targetTicksPerSecond = 45;
+	const std::chrono::milliseconds _targetTickInterval{1000 / _targetTicksPerSecond};
+	const std::chrono::seconds _measurementPeriod{10}; // 10초 동안 측정
+	std::chrono::milliseconds _currentInterval{22}; // 초기 간격
 };
 
 extern RoomPtr GRoom[UINT16_MAX];

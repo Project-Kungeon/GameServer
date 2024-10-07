@@ -28,16 +28,6 @@ public:
             });
     }
 
-    //void DoTimer(uint64_t millisAfter, CallbackType&& callback)
-    //{
-    //    auto timer = std::make_shared<boost::asio::steady_timer>(_strand);
-    //    timer->expires_after(std::chrono::milliseconds(millisAfter));
-    //    timer->async_wait(boost::asio::bind_executor(_strand, [callback = std::move(callback)](const boost::system::error_code& error) {
-    //        if (!error) {
-    //            callback();
-    //        }
-    //        }));
-    //}
 
     template<typename T, typename Ret, typename... Args>
     void DoTimer(uint64_t millisAfter, Ret(T::* memFunc)(Args...), Args&&... args)

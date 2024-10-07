@@ -13,7 +13,6 @@ int main()
     ServerPacketHandler::Init();
     Room::init(io_context);
     spdlog::set_level(spdlog::level::trace);
-    spdlog::info("SpdLog Test");
 
     int port = 4242;
     
@@ -31,7 +30,7 @@ int main()
     GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
 
     std::vector<std::thread> thread_pool;
-    for (int i = 0; i < 1; ++i) {
+    for (int i = 0; i < 5; ++i) {
         thread_pool.emplace_back([&io_context]() {
             io_context.run();
             });

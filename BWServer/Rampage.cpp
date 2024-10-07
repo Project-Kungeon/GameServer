@@ -29,6 +29,15 @@ void Rampage::Tick(uint32 DeltaTime)
 	if(Tree)
 		Tree->Tick(DeltaTime);
 	
+	if (isMoving && MovingTime > 0)
+	{
+		MovingTime -= DeltaTime;
+	}
+	else
+	{
+		MovingTime = 0;
+		isMoving = false;
+	}
 }
 
 RampagePtr Rampage::GetRampagePtr()
@@ -79,7 +88,7 @@ double Rampage::GetDistanceToTarget(std::weak_ptr<Creature> Target)
 
 bool Rampage::RegularPattern()
 {
-	spdlog::debug("Rampage used RegularPattern!");
+	spdlog::trace("Rampage used RegularPattern!");
 	if (phase == 1)
 	{
 		Roar();
@@ -124,7 +133,7 @@ bool Rampage::BasicAttack()
 	{
 		if (auto roomPtr = room.load().lock())
 		{
-			spdlog::debug("Rampage Basic Attack To {}", Target->GetObjectId());
+			spdlog::trace("Rampage Basic Attack To {}", Target->GetObjectId());
 			roomPtr->DoAsync(&Room::SendRampageBasicAttack, GetRampagePtr());
 			return true;
 		}
@@ -133,16 +142,15 @@ bool Rampage::BasicAttack()
 	return false;
 }
 
-bool Rampage::MoveToTarget(std::weak_ptr<Creature> Target)
+bool Rampage::MoveToTarget()
 {
-	if (auto TargetPtr = Target.lock())
+	isMoving = true;
+	MovingTime = 3000;
+	if (auto roomPtr = room.load().lock())
 	{
-		//TurnToTarget(Target);
-		if (auto roomPtr = room.load().lock())
-		{
-			roomPtr->DoAsync(&Room::SendRampageMoveToTarget, GetRampagePtr(), TargetPtr);
-			return true;
-		}
+		if(auto TargetPtr = GetCloseTarget().lock())
+		roomPtr->DoAsync(&Room::SendRampageMoveToTarget, GetRampagePtr(), TargetPtr);
+		return true;
 	}
 
 	return false;
@@ -152,7 +160,7 @@ void Rampage::Roar()
 {
 	if (auto roomPtr = room.load().lock())
 	{
-		spdlog::debug("Rampage used Roar!");
+		spdlog::trace("Rampage used Roar!");
 		roomPtr->DoAsync(&Room::SendRamapgeRoar, GetRampagePtr());
 	}
 }
@@ -161,7 +169,7 @@ void Rampage::EarthQuake()
 {
 	if (auto roomPtr = room.load().lock())
 	{
-		spdlog::debug("Rampage used EarthQuake!");
+		spdlog::trace("Rampage used EarthQuake!");
 		roomPtr->DoAsync(&Room::SendRampageEarthQuake, GetRampagePtr());
 	}
 }
@@ -172,7 +180,7 @@ void Rampage::TurnToTarget(std::weak_ptr<Creature> Target)
 	{
 		if (auto roomPtr = room.load().lock())
 		{
-			spdlog::debug("Rampage Turned To Target {}", target->GetObjectId());
+			spdlog::trace("Rampage Turned To Target {}", target->GetObjectId());
 			roomPtr->DoAsync(&Room::SendRamapgeTurnToTarget, GetRampagePtr(), target);
 		}
 	}
@@ -180,12 +188,16 @@ void Rampage::TurnToTarget(std::weak_ptr<Creature> Target)
 
 void Rampage::ThrowAway()
 {
-	spdlog::debug("Rampage used ThrowAway");
+	spdlog::trace("Rampage used ThrowAway");
 }
 
 void Rampage::EnhancedAttack()
 {
-	spdlog::debug("Rampage used EnhancedAttack");
+	if (auto roomPtr = room.load().lock())
+	{
+		spdlog::trace("Rampage used EnhancedAttack");
+		roomPtr->DoAsync(&Room::SendRampageEnhancedAttack, GetRampagePtr());
+	}
 }
 
 void Rampage::cleanupExpiredPointers() {

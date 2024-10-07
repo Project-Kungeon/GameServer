@@ -34,8 +34,11 @@ void RampageTree::MakeRootSelector()
 			{
 				if (ptr->FindClosePlayer())
 				{
-					spdlog::debug("Rampage found Player {}", ptr->GetCloseTarget().lock()->GetObjectId());
-					return FindPlayerSelector->execute();
+					spdlog::trace("Rampage found Player {}", ptr->GetCloseTarget().lock()->GetObjectId());
+
+					bool result = FindPlayerSelector->execute();
+
+					return result;
 				}
 				// 만약 근처 플레이어를 찾지 못 했다면
 				else
@@ -53,13 +56,19 @@ void RampageTree::MakeFindPlayerSelector()
 	FindPlayerSelector->addLambda([this]()
 		{
 			if (RegularPatternCooldown < RP_COOLTIME) return false;
-		if (auto ptr = rampage.lock())
-		{
-			RegularPatternCooldown = 0;
-			return ptr->RegularPattern();
-		}
+			if (auto ptr = rampage.lock())
+			{
+				RegularPatternCooldown = 0;
+				bool result = ptr->RegularPattern();
+				if (result)
+				{
+					WaitCooldown = 4000;
+				}
 
-	return false;
+				return result;
+			}
+
+			return false;
 		});
 
 	FindPlayerSelector->addLambda([this]()
@@ -97,6 +106,7 @@ void RampageTree::MakeCanAttackSelector()
 					if (ptr->UseSkillToAggro())
 					{
 						SkillAttackCooldown = 0;
+						WaitCooldown = 3000;
 						return true;
 					}
 					else
@@ -106,20 +116,17 @@ void RampageTree::MakeCanAttackSelector()
 				}
 			}
 			// 스킬을 사용하지 못하고, 일반공격이 가능할 때
-			else if (BasicAttackCooldown >= BA_COOLTIME)
+			if (auto ptr = rampage.lock())
 			{
-				if (auto ptr = rampage.lock())
+				ptr->TurnToTarget(ptr->GetCloseTarget());
+				if (ptr->BasicAttack())
 				{
-					ptr->TurnToTarget(ptr->GetCloseTarget());
-					if (ptr->BasicAttack())
-					{
-						BasicAttackCooldown = 0;
-						return true;
-					}
-					else
-					{
-						return false;
-					}
+					WaitCooldown = 1500;
+					return true;
+				}
+				else
+				{
+					return false;
 				}
 			}
 		});
@@ -129,10 +136,10 @@ void RampageTree::MakeCanNotAttackSelector()
 {
 	CanNotAttackSelector->addLambda([this]()
 		{
-			//if (auto ptr = rampage.lock())
-			//{
-			//	return ptr->MoveToTarget(ptr->GetCloseTarget());
-			//}
+			if (auto ptr = rampage.lock())
+			{
+				return ptr->MoveToTarget();
+			}
 
 			return false;
 		});
@@ -143,6 +150,15 @@ void RampageTree::Tick(uint32 DeltaTime)
 	if (DetectCooldown < DETECT_COOLTIME) DetectCooldown += DeltaTime;
 	if (RegularPatternCooldown < RP_COOLTIME) RegularPatternCooldown += DeltaTime;
 	if (SkillAttackCooldown < SKILL_COOLTIME) SkillAttackCooldown += DeltaTime;
-	if (BasicAttackCooldown < BA_COOLTIME) BasicAttackCooldown += DeltaTime;
+	if (WaitCooldown > 0)
+	{
+		WaitCooldown -= DeltaTime;
+		if (WaitCooldown < 0) WaitCooldown = 0;
+		return;
+	}
+	if (auto rampagePtr = rampage.lock())
+	{
+		if (rampagePtr->isMoving) return;
+	}
 	RootSelector->execute();
 }

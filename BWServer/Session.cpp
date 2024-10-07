@@ -53,8 +53,6 @@ void Session::OnRead(const boost::system::error_code& err, size_t size)
 	else
 	{
 		spdlog::error("error code : {}, msg : {}", err.value(), err.message());
-		//std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
-		//_room.Leave(this->shared_from_this());
 	}
 }
 

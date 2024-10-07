@@ -40,7 +40,7 @@ public:
     bool RegularPattern();
     bool UseSkillToAggro();
     bool BasicAttack();
-    bool MoveToTarget(std::weak_ptr<Creature> Target);
+    bool MoveToTarget();
 
     // Pattern Function
     void Roar();
@@ -50,6 +50,9 @@ public:
     // To AggroTarget
     void ThrowAway();
     void EnhancedAttack();
+
+public:
+    bool isMoving = false;
 
 private:
     void cleanupExpiredPointers();
@@ -69,6 +72,8 @@ private:
     // Attacking Status
     bool isAttacking = false;
 
+    
+    int32 MovingTime = 0;
     
 
     const float DETECT_DISTANCE = 1000;
