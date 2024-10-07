@@ -57,3 +57,27 @@ Rotator MathUtils::matrixToRotator(const float matrix[3][3])
 
     return rotator;
 }
+
+Vector3 MathUtils::getMoveTargetLocation(float deltaTime, ObjectPtr object, ObjectPtr target)
+{
+    //Location ObjectLoc = object->GetLocation();
+    //Location TargetLoc = target->GetLocation();
+
+    //Vector3 position(ObjectLoc.x, ObjectLoc.y, ObjectLoc.z);
+    //Vector3 targetPosition(TargetLoc.x, TargetLoc.y, TargetLoc.z);
+    //Vector3 direction = (targetPosition - position).Normalized();
+
+    //// 목표 방향으로 가속
+    //velocity = velocity + direction * acceleration * deltaTime;
+
+    //// 최대 속도 제한
+    //if (velocity.Length() > maxSpeed) {
+    //    velocity = velocity.Normalized() * maxSpeed;
+    //}
+
+    //// 새 위치 계산
+    //position = position + velocity * deltaTime;
+
+    //elapsedTime += deltaTime;
+    return Vector3();
+}

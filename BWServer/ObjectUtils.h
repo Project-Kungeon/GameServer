@@ -14,20 +14,20 @@ private:
 
 	// Cooltime
 public:
-	static const uint32 WARRIOR_Q_COOLTIME = 1000;
-	static const uint32 WARRIOR_E_COOLTIME = 1000;
-	static const uint32 WARRIOR_R_COOLTIME = 1000;
-	static const uint32 WARRIOR_LS_COOLTIME = 1000;
+	static const uint32 WARRIOR_Q_COOLTIME = 3000;
+	static const uint32 WARRIOR_E_COOLTIME = 30000;
+	static const uint32 WARRIOR_R_COOLTIME = 15000;
+	static const uint32 WARRIOR_LS_COOLTIME = 10000;
 
-	static const uint32 ASSASSIN_Q_COOLTIME = 1000;
+	static const uint32 ASSASSIN_Q_COOLTIME = 3000;
 	static const uint32 ASSASSIN_E_COOLTIME = 1000;
-	static const uint32 ASSASSIN_R_COOLTIME = 1000;
-	static const uint32 ASSASSIN_LS_COOLTIME = 1000;
+	static const uint32 ASSASSIN_R_COOLTIME = 30000;
+	static const uint32 ASSASSIN_LS_COOLTIME = 15000;
 
-	static const uint32 ARCHOR_Q_COOLTIME = 1000;
-	static const uint32 ARCHOR_E_COOLTIME = 1000;
-	static const uint32 ARCHOR_R_COOLTIME = 1000;
-	static const uint32 ARCHOR_LS_COOLTIME = 1000;
+	static const uint32 ARCHOR_Q_COOLTIME = 5000;
+	static const uint32 ARCHOR_E_COOLTIME = 12000;
+	static const uint32 ARCHOR_R_COOLTIME = 20000;
+	static const uint32 ARCHOR_LS_COOLTIME = 15000;
 
 	// MaxHp
 public:

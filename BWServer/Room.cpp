@@ -1021,14 +1021,19 @@ void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
 
 	message::S_Move pkt;
 
-	Location loc = target->GetLocation();
+	Location TargetLoc = target->GetLocation();
+	int rand = RandomUtil::GetRandom(-20, 20);
+	rampage->posInfo->set_x(TargetLoc.x + rand);
+	rampage->posInfo->set_y(TargetLoc.y + rand);
+	rampage->posInfo->set_z(TargetLoc.z);
+
 	message::PosInfo* posInfo = pkt.mutable_posinfo();
+	posInfo->CopyFrom(*rampage->posInfo);
 	posInfo->set_object_id(rampage->GetObjectId());
 	posInfo->set_state(message::MOVE_STATE_RUN);
-	posInfo->set_x(loc.x);
-	posInfo->set_y(loc.y);
-	posInfo->set_z(loc.z);
-	posInfo->set_yaw(posInfo->yaw());
+	posInfo->set_yaw(0);
+	posInfo->set_pitch(0);
+	posInfo->set_roll(0);
 
 	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
 	char* rawBuffer = new char[requiredSize];
@@ -1093,13 +1098,70 @@ void Room::SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target)
 	Broadcast(sendBuffer, 0);
 }
 
+void Room::SendRampageEnhancedAttack(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_EnhanceAttack pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
 void Room::HandleTick(uint32 Deltatime)
 {
 	for (auto& item : _objects)
 	{
 		item.second->Tick(Deltatime);
 	}
-	DoTimer((uint64)22, &Room::HandleTick, (uint32)22);
+	//_tickCount++;
+
+	//auto now = std::chrono::steady_clock::now();
+	//auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - _startTime);
+
+	//if (elapsed >= _measurementPeriod) {
+	//	double actualTicksPerSecond = static_cast<double>(_tickCount) / elapsed.count();
+	//	spdlog::trace("Actual Tick: {} ticks/second", actualTicksPerSecond);
+	//	spdlog::trace("Actual Tick - Expected Tick: {} ticks/second", (actualTicksPerSecond - _expectedTicksPerSecond));
+
+	//	// 측정 초기화
+	//	_startTime = now;
+	//	_tickCount = 0;
+	//}
+	//DoTimer((uint64)Deltatime, &Room::HandleTick, (uint32)22);
+
+
+	auto now = std::chrono::steady_clock::now();
+	_tickCount++;
+
+	// 마지막 틱으로부터의 실제 경과 시간 계산
+	auto actualInterval = std::chrono::duration_cast<std::chrono::milliseconds>(now - _lastTickTime);
+
+	// 다음 틱 간격 조정
+	if (actualInterval > _targetTickInterval)
+		_currentInterval = std::max(_currentInterval - std::chrono::milliseconds(1), std::chrono::milliseconds(1));
+	else if (actualInterval < _targetTickInterval)
+		_currentInterval += std::chrono::milliseconds(1);
+
+	_lastTickTime = now;
+
+	// 측정 기간이 지났는지 확인
+	auto elapsedTotal = std::chrono::duration_cast<std::chrono::seconds>(now - _startTime);
+	if (elapsedTotal >= _measurementPeriod) {
+		double actualTicksPerSecond = static_cast<double>(_tickCount) / elapsedTotal.count();
+		spdlog::trace("Actual Tick: {} ticks/second", actualTicksPerSecond);
+		spdlog::trace("Tick Interval: {} ms", _currentInterval.count());
+		// 측정 초기화
+		_startTime = now;
+		_tickCount = 0;
+	}
+
+	// 다음 Tick 예약
+	DoTimer(_currentInterval.count(), &Room::HandleTick, (uint32)22);
+
 }
 
 void Room::HandleCoolTime(long long elapsed_millisecond)
