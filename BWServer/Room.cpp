@@ -3,15 +3,16 @@
 #include "ObjectUtils.h"
 #include "Assassin.h"
 #include "Archor.h"
+#include "Rampage.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
 // 전역변수 GRoom 초기화
-void Room::init()
+void Room::init(boost::asio::io_context& io_context)
 {
 	for (int i = 0; i < 3; i++)
 	{
-		GRoom[i] = std::make_shared<Room>();
+		GRoom[i] = std::make_shared<Room>(io_context);
 	}
 
 }
@@ -46,6 +47,7 @@ bool Room::Join(ObjectPtr object)
 	}
 
 	// 모든 클라이언트에게 New 오브젝트 스폰 명령
+	// 여기선 첫 입장이라 RTTI로 검증하고 패킷을 보낸다!
 	{
 		message::S_Spawn spawnPkt;
 		if (auto player = dynamic_pointer_cast<Player>(object))
@@ -53,7 +55,12 @@ bool Room::Join(ObjectPtr object)
 			message::PlayerInfo* playerInfo = spawnPkt.add_players();
 			playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(player));
 		}
-
+		else if (auto monster = dynamic_pointer_cast<Monster>(object))
+		{
+			message::MonsterInfo* monsterInfo = spawnPkt.add_monsters();
+			monsterInfo->CopyFrom(ObjectUtils::toMonsterInfo(monster));
+		}
+		
 		const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
 		char* rawBuffer = new char[requiredSize];
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
@@ -71,13 +78,33 @@ bool Room::Join(ObjectPtr object)
 
 		for (auto& item : _objects)
 		{
-			if (dynamic_pointer_cast<Player>(item.second) == nullptr) continue;
 			if (item.first == player->objectInfo->object_id()) continue;
-			if (auto otherPlayer = static_pointer_cast<Player>(item.second))
+
+			// RTTI 줄이기
+			if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE)
 			{
-				message::PlayerInfo* playerInfo = spawnPkt.add_players();
-				playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
+				CreaturePtr creature = static_pointer_cast<Creature>(item.second);
+				if (creature->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+				{
+					auto otherPlayer = static_pointer_cast<Player>(item.second);
+					message::PlayerInfo* otherPlayerInfo = spawnPkt.add_players();
+					otherPlayerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
+				}
+				else if (creature->GetCreatureType() == message::CREATURE_TYPE_MONSTER)
+				{
+					auto otherMonster = static_pointer_cast<Monster>(item.second);
+					message::MonsterInfo* otherMonsterInfo = spawnPkt.add_monsters();
+					otherMonsterInfo->CopyFrom(ObjectUtils::toMonsterInfo(otherMonster));
+				}
+
 			}
+			//if (dynamic_pointer_cast<Player>(item.second) == nullptr) continue;
+			//if (item.first == player->objectInfo->object_id()) continue;
+			//if (auto otherPlayer = static_pointer_cast<Player>(item.second))
+			//{
+			//	message::PlayerInfo* playerInfo = spawnPkt.add_players();
+			//	playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
+			//}
 		}
 
 		if (auto session = player->session.lock())
@@ -140,27 +167,69 @@ bool Room::Leave(ObjectPtr object)
 	return success;
 }
 
+// Lock 소유를 한 상태에서 호출해야 합니다.
+// 만약 안한다면 무슨 일이 일어날지 모름,,,
+std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float Distance)
+{
+	/*
+		Self로부터 가장 가까운 크리처 찾기(distance 내 아무것도 없으면 nullptr)
+	*/
+	Location SelfLoc = Self->GetLocation();
+	pair<double, std::weak_ptr<Player>> NearestPlayer = { 0, std::weak_ptr<Player>() };
+	for (auto& object : _objects)
+	{
+		// 만약 플레이어라면, 거리 계산을 합니다.
+		if (auto player = dynamic_pointer_cast<Player>(object.second))
+		{
+			Location targetLoc = player->GetLocation();
+			double distance_interval = sqrt(pow(abs((int)(SelfLoc.x - targetLoc.x)), 2) +
+				pow(abs((int)(SelfLoc.y - targetLoc.y)), 2) +
+				pow(abs((int)(SelfLoc.z - targetLoc.z)), 2));
+
+			if (distance_interval <= Distance)
+			{
+				// 초기값 선언
+				if (!NearestPlayer.second.lock())
+				{
+					NearestPlayer = { distance_interval, player };
+				}
+				// 거리 비교 -> 만약 기존 플레이어보다 더 가까이 있을 경우
+				else if (NearestPlayer.first > distance_interval)
+				{
+					NearestPlayer = { distance_interval, player };
+				}
+			}
+		}
+	}
+	return NearestPlayer.second;
+		
+}
+
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
+// 단, exceptId에 해당하는 플레이어에게 보내지 않습니다.
 void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 {
-	
 	// 오브젝트 리스트 탐색
 	for (auto& item : _objects)
 	{
 		// 플레이어 캐스팅
-		PlayerPtr player = dynamic_pointer_cast<Player>(item.second);
-		if (player == nullptr) continue;
-
-		// 브로드캐스트 제외 대상은 보내지 않습니다.
-		if (player->objectInfo->object_id() == exceptId) continue;
-
-		if (GameSessionPtr session = player->session.lock())
+		// RTTI 최소화를 위한 리팩토링
+		if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
 		{
-			spdlog::info("Broadcast to {} player", item.first);
-			session->Send(buffer);
-		}
-	}
+			PlayerPtr player = static_pointer_cast<Player>(item.second);
+			if (player == nullptr) continue;
 
+			// 브로드캐스트 제외 대상은 보내지 않습니다.
+			if (player->objectInfo->object_id() == exceptId) continue;
+
+			if (GameSessionPtr session = player->session.lock())
+			{
+				spdlog::info("Broadcast to {} player", item.first);
+				session->Send(buffer);
+			}
+		}
+		
+	}
 }
 
 RoomPtr Room::GetRoomRef()
@@ -178,6 +247,11 @@ bool Room::HandleLeavePlayer(PlayerPtr player)
 	return Leave(player);
 }
 
+bool Room::SpawnMonster(MonsterPtr monster)
+{
+	return Join(monster);
+}
+
 void Room::HandleMove(message::C_Move pkt)
 {
 	// is there object equals pkt's object id?
@@ -188,7 +262,7 @@ void Room::HandleMove(message::C_Move pkt)
 		return;
 
 	PlayerPtr player = dynamic_pointer_cast<Player>(_objects[object_id]);
-	player->posInfo->CopyFrom(pkt.posinfo());
+	player->SetPosInfo(pkt.posinfo());
 
 	// make buffer for notification that all client received.
 	{
@@ -224,9 +298,11 @@ void Room::HandleAttack(message::C_Attack pkt)
 		{
 			if (_objects.find(victim_id) != _objects.end())
 			{
-				auto victim = static_pointer_cast<Creature>(_objects[attacker_id]);
-				victim->Damaged(attacker, damage);
-				attackPkt.add_target_ids(victim_id);
+				if (auto victim = dynamic_pointer_cast<Creature>(_objects[victim_id]))
+				{
+					victim->Damaged(attacker, damage);
+					attackPkt.add_target_ids(victim_id);
+				}
 			}
 			
 		}
@@ -274,12 +350,12 @@ void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 
 		// 스킬 쿨타임 체크
-		if (player->skillCoolTime->r_cooltime() > 0)
+		if (player->GetR_Cooltime() > 0)
 		{
 			if (auto session = player->session.lock())
 			{
 				skill::S_CoolTime coolTimePkt;
-				coolTimePkt.set_time(player->skillCoolTime->r_cooltime());
+				coolTimePkt.set_time(player->R_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
 
@@ -319,12 +395,12 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 
 		// 스킬 쿨타임 체크
-		if (player->skillCoolTime->e_cooltime() > 0)
+		if (player->GetE_Cooltime() > 0)
 		{
 			if (auto session = player->session.lock())
 			{
 				skill::S_CoolTime coolTimePkt;
-				coolTimePkt.set_time(player->skillCoolTime->e_cooltime());
+				coolTimePkt.set_time(player->E_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
 
 				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -349,6 +425,51 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 	char* rawBuffer = new char[requiredSize];
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_RES, skillPkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleWarriorLS(skill::C_Warrior_LS pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->GetLS_Cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->LS_COOLTIME);
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+		}
+		else
+		{
+			player->UseSkillLS();
+		}
+	}
+
+	skill::S_Warrior_LS skillPkt;
+	skillPkt.set_object_id(pkt.object_id());
+	skillPkt.set_x(pkt.x());
+	skillPkt.set_y(pkt.y());
+	skillPkt.set_z(pkt.z());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_LS_RES, skillPkt);
 
 	Broadcast(sendBuffer, 0);
 }
@@ -388,12 +509,12 @@ void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
 		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
 			// 스킬 쿨타임 체크
-			if (assassin->skillCoolTime->q_cooltime() > 0)
+			if (assassin->GetQ_Cooltime() > 0)
 			{
 				if (auto session = assassin->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+					coolTimePkt.set_time(assassin->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -444,12 +565,12 @@ void Room::HandleAssassinR(skill::C_ASSASSIN_R pkt)
 		if (auto assassin = dynamic_pointer_cast<Assassin>(_objects[object_id]))
 		{
 			// 스킬 쿨타임 체크
-			if (assassin->skillCoolTime->r_cooltime() > 0)
+			if (assassin->GetR_Cooltime() > 0)
 			{
 				if (auto session = assassin->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+					coolTimePkt.set_time(assassin->R_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -497,12 +618,12 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 			if (!assassin->IsClokingMode())
 			{
 				// 스킬 쿨타임 체크
-				if (assassin->skillCoolTime->ls_cooltime() > 0)
+				if (assassin->GetLS_Cooltime())
 				{
 					if (auto session = assassin->session.lock())
 					{
 						skill::S_CoolTime coolTimePkt;
-						coolTimePkt.set_time(assassin->skillCoolTime->r_cooltime());
+						coolTimePkt.set_time(assassin->LS_COOLTIME);
 						coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
 
 						const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -592,7 +713,7 @@ void Room::HandleAssassinE(skill::C_Assassin_E pkt)
 	
 }
 
-void Room::HandleArchorAttack(skill::C_Archor_Attack& pkt)
+void Room::HandleArchorAttack(skill::C_Archor_Attack pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -619,7 +740,7 @@ void Room::HandleArchorAttack(skill::C_Archor_Attack& pkt)
 	}
 }
 
-void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt)
+void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -627,12 +748,12 @@ void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->q_cooltime() > 0)
+			if (archor->GetQ_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->q_cooltime());
+					coolTimePkt.set_time(archor->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -664,7 +785,7 @@ void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging& pkt)
 	}
 }
 
-void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt)
+void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -672,12 +793,12 @@ void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->q_cooltime() > 0)
+			if (archor->GetQ_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->q_cooltime());
+					coolTimePkt.set_time(archor->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -715,7 +836,7 @@ void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot& pkt)
 	}
 }
 
-void Room::HandleArchorE(skill::C_Archor_E& pkt)
+void Room::HandleArchorE(skill::C_Archor_E pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -723,12 +844,12 @@ void Room::HandleArchorE(skill::C_Archor_E& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->e_cooltime() > 0)
+			if (archor->GetE_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->e_cooltime());
+					coolTimePkt.set_time(archor->E_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -763,7 +884,7 @@ void Room::HandleArchorE(skill::C_Archor_E& pkt)
 	}
 }
 
-void Room::HandleArchorR(skill::C_Archor_R& pkt)
+void Room::HandleArchorR(skill::C_Archor_R pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -771,12 +892,12 @@ void Room::HandleArchorR(skill::C_Archor_R& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->r_cooltime() > 0)
+			if (archor->GetR_Cooltime()> 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->r_cooltime());
+					coolTimePkt.set_time(archor->R_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -822,7 +943,7 @@ void Room::HandleArchorR_Off(ArchorPtr archor, uint64 object_id)
 	Broadcast(sendBuffer, 0);
 }
 
-void Room::HandleArchorLS(skill::C_Archor_LS& pkt)
+void Room::HandleArchorLS(skill::C_Archor_LS pkt)
 {
 	uint64 object_id = pkt.object_id();
 	if (_objects.find(object_id) != _objects.end())
@@ -830,12 +951,12 @@ void Room::HandleArchorLS(skill::C_Archor_LS& pkt)
 		// PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
 		if (auto archor = dynamic_pointer_cast<Archor>(_objects[object_id]))
 		{
-			if (archor->skillCoolTime->ls_cooltime() > 0)
+			if (archor->GetLS_Cooltime() > 0)
 			{
 				if (auto session = archor->session.lock())
 				{
 					skill::S_CoolTime coolTimePkt;
-					coolTimePkt.set_time(archor->skillCoolTime->ls_cooltime());
+					coolTimePkt.set_time(archor->LS_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
 
 					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
@@ -881,88 +1002,259 @@ void Room::HandleArchorLS_Off(ArchorPtr archor, uint64 object_id)
 	Broadcast(sendBuffer, 0);
 }
 
-void Room::HandleCoolTime(long long elapsed_millisecond)
+void Room::SendRampageBasicAttack(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_BasicAttack pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_BASICATTACK_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
+{
+	spdlog::debug("Rampage Move To {}", target->GetObjectId());
+
+	message::S_Move pkt;
+
+	Location TargetLoc = target->GetLocation();
+	int rand = RandomUtil::GetRandom(-20, 20);
+	rampage->posInfo->set_x(TargetLoc.x + rand);
+	rampage->posInfo->set_y(TargetLoc.y + rand);
+	rampage->posInfo->set_z(TargetLoc.z);
+
+	message::PosInfo* posInfo = pkt.mutable_posinfo();
+	posInfo->CopyFrom(*rampage->posInfo);
+	posInfo->set_object_id(rampage->GetObjectId());
+	posInfo->set_state(message::MOVE_STATE_RUN);
+	posInfo->set_yaw(0);
+	posInfo->set_pitch(0);
+	posInfo->set_roll(0);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRamapgeRoar(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_Roar pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ROAR_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRampageEarthQuake(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_EarthQuake pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_EARTHQUAKE_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target)
+{
+	Location SelfLoc = rampage->GetLocation();
+	Location TargetLoc = target->GetLocation();
+
+	float LookX = TargetLoc.x - SelfLoc.x;
+	float LookY = TargetLoc.y - SelfLoc.y;
+	float LookZ = 0.0f;
+
+	float rotationMatrix[3][3];
+	MathUtils::makeRotationMatrixFromX(LookX, LookY, LookZ, rotationMatrix);
+	Rotator rotator = MathUtils::matrixToRotator(rotationMatrix);
+
+	monster::pattern::S_TurnToTarget pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+	pkt.set_pitch(rotator.Pitch);
+	pkt.set_roll(rotator.Roll);
+	pkt.set_yaw(rotator.Yaw);
+
+	//target->posInfo->set_yaw(rotator.Yaw);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_TURNTOTARGET_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::SendRampageEnhancedAttack(RampagePtr rampage)
+{
+	monster::pattern::S_Rampage_EnhanceAttack pkt;
+	pkt.set_object_id(rampage->GetObjectId());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleTick(uint32 Deltatime)
 {
 	for (auto& item : _objects)
 	{
-		const uint64 object_id = item.first;
-		if (auto player = dynamic_pointer_cast<Player>(item.second))
-		{
-			int decrement = elapsed_millisecond;
-			int qCooltime = player->skillCoolTime->q_cooltime();
-			int eCooltime = player->skillCoolTime->e_cooltime();
-			int rCooltime = player->skillCoolTime->r_cooltime();
-			int lsCooltime = player->skillCoolTime->ls_cooltime();
-			if (qCooltime > 0)
-			{
-				player->skillCoolTime->set_q_cooltime(
-					qCooltime > decrement ? 
-					qCooltime - decrement : 0
-				);
-			}
-			if (eCooltime > 0)
-			{
-				player->skillCoolTime->set_e_cooltime(
-					eCooltime > decrement ?
-					eCooltime - decrement : 0
-				);
-			}
-			if (rCooltime > 0)
-			{
-				player->skillCoolTime->set_r_cooltime(
-					rCooltime > decrement ?
-					rCooltime - decrement : 0
-				);
-			}
-			if (lsCooltime > 0)
-			{
-				player->skillCoolTime->set_ls_cooltime(
-					lsCooltime > decrement ?
-					lsCooltime - decrement : 0
-				);
-			}
-		}
+		item.second->Tick(Deltatime);
 	}
+	//_tickCount++;
+
+	//auto now = std::chrono::steady_clock::now();
+	//auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - _startTime);
+
+	//if (elapsed >= _measurementPeriod) {
+	//	double actualTicksPerSecond = static_cast<double>(_tickCount) / elapsed.count();
+	//	spdlog::trace("Actual Tick: {} ticks/second", actualTicksPerSecond);
+	//	spdlog::trace("Actual Tick - Expected Tick: {} ticks/second", (actualTicksPerSecond - _expectedTicksPerSecond));
+
+	//	// 측정 초기화
+	//	_startTime = now;
+	//	_tickCount = 0;
+	//}
+	//DoTimer((uint64)Deltatime, &Room::HandleTick, (uint32)22);
+
+
+	auto now = std::chrono::steady_clock::now();
+	_tickCount++;
+
+	// 마지막 틱으로부터의 실제 경과 시간 계산
+	auto actualInterval = std::chrono::duration_cast<std::chrono::milliseconds>(now - _lastTickTime);
+
+	// 다음 틱 간격 조정
+	if (actualInterval > _targetTickInterval)
+		_currentInterval = std::max(_currentInterval - std::chrono::milliseconds(1), std::chrono::milliseconds(1));
+	else if (actualInterval < _targetTickInterval)
+		_currentInterval += std::chrono::milliseconds(1);
+
+	_lastTickTime = now;
+
+	// 측정 기간이 지났는지 확인
+	auto elapsedTotal = std::chrono::duration_cast<std::chrono::seconds>(now - _startTime);
+	if (elapsedTotal >= _measurementPeriod) {
+		double actualTicksPerSecond = static_cast<double>(_tickCount) / elapsedTotal.count();
+		spdlog::trace("Actual Tick: {} ticks/second", actualTicksPerSecond);
+		spdlog::trace("Tick Interval: {} ms", _currentInterval.count());
+		// 측정 초기화
+		_startTime = now;
+		_tickCount = 0;
+	}
+
+	// 다음 Tick 예약
+	DoTimer(_currentInterval.count(), &Room::HandleTick, (uint32)22);
+
+}
+
+void Room::HandleCoolTime(long long elapsed_millisecond)
+{
+	//for (auto& item : _objects)
+	//{
+	//	const uint64 object_id = item.first;
+	//	if (auto player = dynamic_pointer_cast<Player>(item.second))
+	//	{
+	//		int decrement = elapsed_millisecond;
+	//		//int qCooltime = player->GetQ_Cooltime();
+	//		//int eCooltime = player->GetE_Cooltime();
+	//		//int rCooltime = player->GetR_Cooltime();
+	//		//int lsCooltime = player->GetLS_Cooltime();
+	//		
+	//		vector<uint32> Cooltimes = player->GetCooltimes();
+	//		int qCooltime = Cooltimes[0];
+	//		int eCooltime = Cooltimes[1];
+	//		int rCooltime = Cooltimes[2];
+	//		int lsCooltime = Cooltimes[3];
+	//		vector<uint32>().swap(Cooltimes);
+
+
+	//		if (qCooltime > 0)
+	//		{
+	//			player->SetQ_Cooltime(
+	//				qCooltime > decrement ? 
+	//				qCooltime - decrement : 0
+	//			);
+	//		}
+	//		if (eCooltime > 0)
+	//		{
+	//			player->SetE_Cooltime(
+	//				eCooltime > decrement ?
+	//				eCooltime - decrement : 0
+	//			);
+	//		}
+	//		if (rCooltime > 0)
+	//		{
+	//			player->SetR_Cooltime(
+	//				rCooltime > decrement ?
+	//				rCooltime - decrement : 0
+	//			);
+	//		}
+	//		if (lsCooltime > 0)
+	//		{
+	//			player->SetLS_Cooltime(
+	//				lsCooltime > decrement ?
+	//				lsCooltime - decrement : 0
+	//			);
+	//		}
+	//	}
+	//}
 }
 
 void Room::HandleBuffTime(long long elapsed_millisecond)
 {
-	std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_ls_off;
-	std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_r_off;
+	//std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_ls_off;
+	//std::vector<std::pair<std::shared_ptr<Archor>, uint64>> to_handle_r_off;
 
-	for (auto& item : _objects)
-	{
-		const uint64 object_id = item.first;
-		if (auto archor = dynamic_pointer_cast<Archor>(item.second))
-		{
-			int decrement = elapsed_millisecond;
-			if (archor->LS_Mode)
-			{
-				archor->LS_Time_Remaining = archor->LS_Time_Remaining > decrement ? archor->LS_Time_Remaining - decrement : 0;
-				if (archor->LS_Time_Remaining == 0)
-				{
-					to_handle_ls_off.push_back({ archor, object_id });
-				}
-			}
-			if (archor->R_Mode)
-			{
-				archor->R_Time_Remaining = archor->R_Time_Remaining > decrement ? archor->R_Time_Remaining - decrement : 0;
-				if (archor->R_Time_Remaining == 0)
-				{
-					to_handle_r_off.push_back({ archor, object_id });
-				}
-			}
-		}
-	}
-	// Collect all state changes first, then handle them
-	for (auto& pair : to_handle_ls_off)
-	{
-		this->HandleArchorLS_Off(pair.first, pair.second);
-	}
-	for (auto& pair : to_handle_r_off)
-	{
-		this->HandleArchorR_Off(pair.first, pair.second);
-	}
+	//for (auto& item : _objects)
+	//{
+	//	const uint64 object_id = item.first;
+	//	if (auto archor = dynamic_pointer_cast<Archor>(item.second))
+	//	{
+	//		int decrement = elapsed_millisecond;
+	//		if (archor->LS_Mode)
+	//		{
+	//			archor->LS_Time_Remaining = archor->LS_Time_Remaining > decrement ? archor->LS_Time_Remaining - decrement : 0;
+	//			if (archor->LS_Time_Remaining == 0)
+	//			{
+	//				to_handle_ls_off.push_back({ archor, object_id });
+	//			}
+	//		}
+	//		if (archor->R_Mode)
+	//		{
+	//			archor->R_Time_Remaining = archor->R_Time_Remaining > decrement ? archor->R_Time_Remaining - decrement : 0;
+	//			if (archor->R_Time_Remaining == 0)
+	//			{
+	//				to_handle_r_off.push_back({ archor, object_id });
+	//			}
+	//		}
+	//	}
+	//}
+	//// Collect all state changes first, then handle them
+	//for (auto& pair : to_handle_ls_off)
+	//{
+	//	this->HandleArchorLS_Off(pair.first, pair.second);
+	//}
+	//for (auto& pair : to_handle_r_off)
+	//{
+	//	this->HandleArchorR_Off(pair.first, pair.second);
+	//}
 }
 
 // Room의 STL에 오브젝트 추가
@@ -973,8 +1265,9 @@ bool Room::AddObject(ObjectPtr object)
 	{
 		return false;
 	}
-	_objects.insert({ object->objectInfo->object_id(), object });
 	object->room.store(GetRoomRef());
+	_objects.insert({ object->objectInfo->object_id(), object });
+	
 
 	return true;
 }
@@ -988,7 +1281,6 @@ bool Room::RemoveObject(uint64 objectId)
 
 	ObjectPtr object = _objects[objectId];
 	object->room.store(std::weak_ptr<Room>());
-
 	_objects.erase(objectId);
 
 	return true;

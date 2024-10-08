@@ -52,6 +52,9 @@ extern CreatureInfoDefaultTypeInternal _CreatureInfo_default_instance_;
 class ItemInfo;
 struct ItemInfoDefaultTypeInternal;
 extern ItemInfoDefaultTypeInternal _ItemInfo_default_instance_;
+class MonsterInfo;
+struct MonsterInfoDefaultTypeInternal;
+extern MonsterInfoDefaultTypeInternal _MonsterInfo_default_instance_;
 class ObjectInfo;
 struct ObjectInfoDefaultTypeInternal;
 extern ObjectInfoDefaultTypeInternal _ObjectInfo_default_instance_;
@@ -71,6 +74,7 @@ extern TimestampDefaultTypeInternal _Timestamp_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::message::CreatureInfo* Arena::CreateMaybeMessage<::message::CreatureInfo>(Arena*);
 template<> ::message::ItemInfo* Arena::CreateMaybeMessage<::message::ItemInfo>(Arena*);
+template<> ::message::MonsterInfo* Arena::CreateMaybeMessage<::message::MonsterInfo>(Arena*);
 template<> ::message::ObjectInfo* Arena::CreateMaybeMessage<::message::ObjectInfo>(Arena*);
 template<> ::message::PlayerInfo* Arena::CreateMaybeMessage<::message::PlayerInfo>(Arena*);
 template<> ::message::PosInfo* Arena::CreateMaybeMessage<::message::PosInfo>(Arena*);
@@ -455,6 +459,182 @@ class PosInfo final :
 };
 // -------------------------------------------------------------------
 
+class SkillCooltime final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.SkillCooltime) */ {
+ public:
+  inline SkillCooltime() : SkillCooltime(nullptr) {}
+  ~SkillCooltime() override;
+  explicit PROTOBUF_CONSTEXPR SkillCooltime(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SkillCooltime(const SkillCooltime& from);
+  SkillCooltime(SkillCooltime&& from) noexcept
+    : SkillCooltime() {
+    *this = ::std::move(from);
+  }
+
+  inline SkillCooltime& operator=(const SkillCooltime& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SkillCooltime& operator=(SkillCooltime&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SkillCooltime& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SkillCooltime* internal_default_instance() {
+    return reinterpret_cast<const SkillCooltime*>(
+               &_SkillCooltime_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(SkillCooltime& a, SkillCooltime& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SkillCooltime* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SkillCooltime* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SkillCooltime* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SkillCooltime>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SkillCooltime& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SkillCooltime& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SkillCooltime* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "message.SkillCooltime";
+  }
+  protected:
+  explicit SkillCooltime(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kQCooltimeFieldNumber = 1,
+    kECooltimeFieldNumber = 2,
+    kRCooltimeFieldNumber = 3,
+    kLsCooltimeFieldNumber = 4,
+  };
+  // uint32 q_cooltime = 1;
+  void clear_q_cooltime();
+  uint32_t q_cooltime() const;
+  void set_q_cooltime(uint32_t value);
+  private:
+  uint32_t _internal_q_cooltime() const;
+  void _internal_set_q_cooltime(uint32_t value);
+  public:
+
+  // uint32 e_cooltime = 2;
+  void clear_e_cooltime();
+  uint32_t e_cooltime() const;
+  void set_e_cooltime(uint32_t value);
+  private:
+  uint32_t _internal_e_cooltime() const;
+  void _internal_set_e_cooltime(uint32_t value);
+  public:
+
+  // uint32 r_cooltime = 3;
+  void clear_r_cooltime();
+  uint32_t r_cooltime() const;
+  void set_r_cooltime(uint32_t value);
+  private:
+  uint32_t _internal_r_cooltime() const;
+  void _internal_set_r_cooltime(uint32_t value);
+  public:
+
+  // uint32 ls_cooltime = 4;
+  void clear_ls_cooltime();
+  uint32_t ls_cooltime() const;
+  void set_ls_cooltime(uint32_t value);
+  private:
+  uint32_t _internal_ls_cooltime() const;
+  void _internal_set_ls_cooltime(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:message.SkillCooltime)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint32_t q_cooltime_;
+  uint32_t e_cooltime_;
+  uint32_t r_cooltime_;
+  uint32_t ls_cooltime_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Struct_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ObjectInfo final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.ObjectInfo) */ {
  public:
@@ -503,7 +683,7 @@ class ObjectInfo final :
                &_ObjectInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(ObjectInfo& a, ObjectInfo& b) {
     a.Swap(&b);
@@ -697,7 +877,7 @@ class CreatureInfo final :
                &_CreatureInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(CreatureInfo& a, CreatureInfo& b) {
     a.Swap(&b);
@@ -845,24 +1025,24 @@ class CreatureInfo final :
 };
 // -------------------------------------------------------------------
 
-class SkillCooltime final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.SkillCooltime) */ {
+class MonsterInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.MonsterInfo) */ {
  public:
-  inline SkillCooltime() : SkillCooltime(nullptr) {}
-  ~SkillCooltime() override;
-  explicit PROTOBUF_CONSTEXPR SkillCooltime(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline MonsterInfo() : MonsterInfo(nullptr) {}
+  ~MonsterInfo() override;
+  explicit PROTOBUF_CONSTEXPR MonsterInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  SkillCooltime(const SkillCooltime& from);
-  SkillCooltime(SkillCooltime&& from) noexcept
-    : SkillCooltime() {
+  MonsterInfo(const MonsterInfo& from);
+  MonsterInfo(MonsterInfo&& from) noexcept
+    : MonsterInfo() {
     *this = ::std::move(from);
   }
 
-  inline SkillCooltime& operator=(const SkillCooltime& from) {
+  inline MonsterInfo& operator=(const MonsterInfo& from) {
     CopyFrom(from);
     return *this;
   }
-  inline SkillCooltime& operator=(SkillCooltime&& from) noexcept {
+  inline MonsterInfo& operator=(MonsterInfo&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -885,20 +1065,20 @@ class SkillCooltime final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const SkillCooltime& default_instance() {
+  static const MonsterInfo& default_instance() {
     return *internal_default_instance();
   }
-  static inline const SkillCooltime* internal_default_instance() {
-    return reinterpret_cast<const SkillCooltime*>(
-               &_SkillCooltime_default_instance_);
+  static inline const MonsterInfo* internal_default_instance() {
+    return reinterpret_cast<const MonsterInfo*>(
+               &_MonsterInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
-  friend void swap(SkillCooltime& a, SkillCooltime& b) {
+  friend void swap(MonsterInfo& a, MonsterInfo& b) {
     a.Swap(&b);
   }
-  inline void Swap(SkillCooltime* other) {
+  inline void Swap(MonsterInfo* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -911,7 +1091,7 @@ class SkillCooltime final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(SkillCooltime* other) {
+  void UnsafeArenaSwap(MonsterInfo* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -919,13 +1099,13 @@ class SkillCooltime final :
 
   // implements Message ----------------------------------------------
 
-  SkillCooltime* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SkillCooltime>(arena);
+  MonsterInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MonsterInfo>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SkillCooltime& from);
+  void CopyFrom(const MonsterInfo& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const SkillCooltime& from);
+  void MergeFrom(const MonsterInfo& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -942,15 +1122,15 @@ class SkillCooltime final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SkillCooltime* other);
+  void InternalSwap(MonsterInfo* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "message.SkillCooltime";
+    return "message.MonsterInfo";
   }
   protected:
-  explicit SkillCooltime(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit MonsterInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -964,58 +1144,45 @@ class SkillCooltime final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kQCooltimeFieldNumber = 1,
-    kECooltimeFieldNumber = 2,
-    kRCooltimeFieldNumber = 3,
-    kLsCooltimeFieldNumber = 4,
+    kCreatureInfoFieldNumber = 1,
+    kMonsterTypeFieldNumber = 2,
   };
-  // uint32 q_cooltime = 1;
-  void clear_q_cooltime();
-  uint32_t q_cooltime() const;
-  void set_q_cooltime(uint32_t value);
+  // .message.CreatureInfo creature_info = 1;
+  bool has_creature_info() const;
   private:
-  uint32_t _internal_q_cooltime() const;
-  void _internal_set_q_cooltime(uint32_t value);
+  bool _internal_has_creature_info() const;
+  public:
+  void clear_creature_info();
+  const ::message::CreatureInfo& creature_info() const;
+  PROTOBUF_NODISCARD ::message::CreatureInfo* release_creature_info();
+  ::message::CreatureInfo* mutable_creature_info();
+  void set_allocated_creature_info(::message::CreatureInfo* creature_info);
+  private:
+  const ::message::CreatureInfo& _internal_creature_info() const;
+  ::message::CreatureInfo* _internal_mutable_creature_info();
+  public:
+  void unsafe_arena_set_allocated_creature_info(
+      ::message::CreatureInfo* creature_info);
+  ::message::CreatureInfo* unsafe_arena_release_creature_info();
+
+  // .message.MonsterType monster_type = 2;
+  void clear_monster_type();
+  ::message::MonsterType monster_type() const;
+  void set_monster_type(::message::MonsterType value);
+  private:
+  ::message::MonsterType _internal_monster_type() const;
+  void _internal_set_monster_type(::message::MonsterType value);
   public:
 
-  // uint32 e_cooltime = 2;
-  void clear_e_cooltime();
-  uint32_t e_cooltime() const;
-  void set_e_cooltime(uint32_t value);
-  private:
-  uint32_t _internal_e_cooltime() const;
-  void _internal_set_e_cooltime(uint32_t value);
-  public:
-
-  // uint32 r_cooltime = 3;
-  void clear_r_cooltime();
-  uint32_t r_cooltime() const;
-  void set_r_cooltime(uint32_t value);
-  private:
-  uint32_t _internal_r_cooltime() const;
-  void _internal_set_r_cooltime(uint32_t value);
-  public:
-
-  // uint32 ls_cooltime = 4;
-  void clear_ls_cooltime();
-  uint32_t ls_cooltime() const;
-  void set_ls_cooltime(uint32_t value);
-  private:
-  uint32_t _internal_ls_cooltime() const;
-  void _internal_set_ls_cooltime(uint32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:message.SkillCooltime)
+  // @@protoc_insertion_point(class_scope:message.MonsterInfo)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  uint32_t q_cooltime_;
-  uint32_t e_cooltime_;
-  uint32_t r_cooltime_;
-  uint32_t ls_cooltime_;
+  ::message::CreatureInfo* creature_info_;
+  int monster_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
 };
@@ -1069,7 +1236,7 @@ class PlayerInfo final :
                &_PlayerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(PlayerInfo& a, PlayerInfo& b) {
     a.Swap(&b);
@@ -1252,7 +1419,7 @@ class ItemInfo final :
                &_ItemInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(ItemInfo& a, ItemInfo& b) {
     a.Swap(&b);
@@ -1595,6 +1762,90 @@ inline void PosInfo::_internal_set_state(::message::MoveState value) {
 inline void PosInfo::set_state(::message::MoveState value) {
   _internal_set_state(value);
   // @@protoc_insertion_point(field_set:message.PosInfo.state)
+}
+
+// -------------------------------------------------------------------
+
+// SkillCooltime
+
+// uint32 q_cooltime = 1;
+inline void SkillCooltime::clear_q_cooltime() {
+  q_cooltime_ = 0u;
+}
+inline uint32_t SkillCooltime::_internal_q_cooltime() const {
+  return q_cooltime_;
+}
+inline uint32_t SkillCooltime::q_cooltime() const {
+  // @@protoc_insertion_point(field_get:message.SkillCooltime.q_cooltime)
+  return _internal_q_cooltime();
+}
+inline void SkillCooltime::_internal_set_q_cooltime(uint32_t value) {
+  
+  q_cooltime_ = value;
+}
+inline void SkillCooltime::set_q_cooltime(uint32_t value) {
+  _internal_set_q_cooltime(value);
+  // @@protoc_insertion_point(field_set:message.SkillCooltime.q_cooltime)
+}
+
+// uint32 e_cooltime = 2;
+inline void SkillCooltime::clear_e_cooltime() {
+  e_cooltime_ = 0u;
+}
+inline uint32_t SkillCooltime::_internal_e_cooltime() const {
+  return e_cooltime_;
+}
+inline uint32_t SkillCooltime::e_cooltime() const {
+  // @@protoc_insertion_point(field_get:message.SkillCooltime.e_cooltime)
+  return _internal_e_cooltime();
+}
+inline void SkillCooltime::_internal_set_e_cooltime(uint32_t value) {
+  
+  e_cooltime_ = value;
+}
+inline void SkillCooltime::set_e_cooltime(uint32_t value) {
+  _internal_set_e_cooltime(value);
+  // @@protoc_insertion_point(field_set:message.SkillCooltime.e_cooltime)
+}
+
+// uint32 r_cooltime = 3;
+inline void SkillCooltime::clear_r_cooltime() {
+  r_cooltime_ = 0u;
+}
+inline uint32_t SkillCooltime::_internal_r_cooltime() const {
+  return r_cooltime_;
+}
+inline uint32_t SkillCooltime::r_cooltime() const {
+  // @@protoc_insertion_point(field_get:message.SkillCooltime.r_cooltime)
+  return _internal_r_cooltime();
+}
+inline void SkillCooltime::_internal_set_r_cooltime(uint32_t value) {
+  
+  r_cooltime_ = value;
+}
+inline void SkillCooltime::set_r_cooltime(uint32_t value) {
+  _internal_set_r_cooltime(value);
+  // @@protoc_insertion_point(field_set:message.SkillCooltime.r_cooltime)
+}
+
+// uint32 ls_cooltime = 4;
+inline void SkillCooltime::clear_ls_cooltime() {
+  ls_cooltime_ = 0u;
+}
+inline uint32_t SkillCooltime::_internal_ls_cooltime() const {
+  return ls_cooltime_;
+}
+inline uint32_t SkillCooltime::ls_cooltime() const {
+  // @@protoc_insertion_point(field_get:message.SkillCooltime.ls_cooltime)
+  return _internal_ls_cooltime();
+}
+inline void SkillCooltime::_internal_set_ls_cooltime(uint32_t value) {
+  
+  ls_cooltime_ = value;
+}
+inline void SkillCooltime::set_ls_cooltime(uint32_t value) {
+  _internal_set_ls_cooltime(value);
+  // @@protoc_insertion_point(field_set:message.SkillCooltime.ls_cooltime)
 }
 
 // -------------------------------------------------------------------
@@ -1997,86 +2248,116 @@ inline void CreatureInfo::set_exp(float value) {
 
 // -------------------------------------------------------------------
 
-// SkillCooltime
+// MonsterInfo
 
-// uint32 q_cooltime = 1;
-inline void SkillCooltime::clear_q_cooltime() {
-  q_cooltime_ = 0u;
+// .message.CreatureInfo creature_info = 1;
+inline bool MonsterInfo::_internal_has_creature_info() const {
+  return this != internal_default_instance() && creature_info_ != nullptr;
 }
-inline uint32_t SkillCooltime::_internal_q_cooltime() const {
-  return q_cooltime_;
+inline bool MonsterInfo::has_creature_info() const {
+  return _internal_has_creature_info();
 }
-inline uint32_t SkillCooltime::q_cooltime() const {
-  // @@protoc_insertion_point(field_get:message.SkillCooltime.q_cooltime)
-  return _internal_q_cooltime();
+inline void MonsterInfo::clear_creature_info() {
+  if (GetArenaForAllocation() == nullptr && creature_info_ != nullptr) {
+    delete creature_info_;
+  }
+  creature_info_ = nullptr;
 }
-inline void SkillCooltime::_internal_set_q_cooltime(uint32_t value) {
+inline const ::message::CreatureInfo& MonsterInfo::_internal_creature_info() const {
+  const ::message::CreatureInfo* p = creature_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::message::CreatureInfo&>(
+      ::message::_CreatureInfo_default_instance_);
+}
+inline const ::message::CreatureInfo& MonsterInfo::creature_info() const {
+  // @@protoc_insertion_point(field_get:message.MonsterInfo.creature_info)
+  return _internal_creature_info();
+}
+inline void MonsterInfo::unsafe_arena_set_allocated_creature_info(
+    ::message::CreatureInfo* creature_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(creature_info_);
+  }
+  creature_info_ = creature_info;
+  if (creature_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:message.MonsterInfo.creature_info)
+}
+inline ::message::CreatureInfo* MonsterInfo::release_creature_info() {
   
-  q_cooltime_ = value;
+  ::message::CreatureInfo* temp = creature_info_;
+  creature_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
 }
-inline void SkillCooltime::set_q_cooltime(uint32_t value) {
-  _internal_set_q_cooltime(value);
-  // @@protoc_insertion_point(field_set:message.SkillCooltime.q_cooltime)
+inline ::message::CreatureInfo* MonsterInfo::unsafe_arena_release_creature_info() {
+  // @@protoc_insertion_point(field_release:message.MonsterInfo.creature_info)
+  
+  ::message::CreatureInfo* temp = creature_info_;
+  creature_info_ = nullptr;
+  return temp;
+}
+inline ::message::CreatureInfo* MonsterInfo::_internal_mutable_creature_info() {
+  
+  if (creature_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::message::CreatureInfo>(GetArenaForAllocation());
+    creature_info_ = p;
+  }
+  return creature_info_;
+}
+inline ::message::CreatureInfo* MonsterInfo::mutable_creature_info() {
+  ::message::CreatureInfo* _msg = _internal_mutable_creature_info();
+  // @@protoc_insertion_point(field_mutable:message.MonsterInfo.creature_info)
+  return _msg;
+}
+inline void MonsterInfo::set_allocated_creature_info(::message::CreatureInfo* creature_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete creature_info_;
+  }
+  if (creature_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(creature_info);
+    if (message_arena != submessage_arena) {
+      creature_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, creature_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  creature_info_ = creature_info;
+  // @@protoc_insertion_point(field_set_allocated:message.MonsterInfo.creature_info)
 }
 
-// uint32 e_cooltime = 2;
-inline void SkillCooltime::clear_e_cooltime() {
-  e_cooltime_ = 0u;
+// .message.MonsterType monster_type = 2;
+inline void MonsterInfo::clear_monster_type() {
+  monster_type_ = 0;
 }
-inline uint32_t SkillCooltime::_internal_e_cooltime() const {
-  return e_cooltime_;
+inline ::message::MonsterType MonsterInfo::_internal_monster_type() const {
+  return static_cast< ::message::MonsterType >(monster_type_);
 }
-inline uint32_t SkillCooltime::e_cooltime() const {
-  // @@protoc_insertion_point(field_get:message.SkillCooltime.e_cooltime)
-  return _internal_e_cooltime();
+inline ::message::MonsterType MonsterInfo::monster_type() const {
+  // @@protoc_insertion_point(field_get:message.MonsterInfo.monster_type)
+  return _internal_monster_type();
 }
-inline void SkillCooltime::_internal_set_e_cooltime(uint32_t value) {
+inline void MonsterInfo::_internal_set_monster_type(::message::MonsterType value) {
   
-  e_cooltime_ = value;
+  monster_type_ = value;
 }
-inline void SkillCooltime::set_e_cooltime(uint32_t value) {
-  _internal_set_e_cooltime(value);
-  // @@protoc_insertion_point(field_set:message.SkillCooltime.e_cooltime)
-}
-
-// uint32 r_cooltime = 3;
-inline void SkillCooltime::clear_r_cooltime() {
-  r_cooltime_ = 0u;
-}
-inline uint32_t SkillCooltime::_internal_r_cooltime() const {
-  return r_cooltime_;
-}
-inline uint32_t SkillCooltime::r_cooltime() const {
-  // @@protoc_insertion_point(field_get:message.SkillCooltime.r_cooltime)
-  return _internal_r_cooltime();
-}
-inline void SkillCooltime::_internal_set_r_cooltime(uint32_t value) {
-  
-  r_cooltime_ = value;
-}
-inline void SkillCooltime::set_r_cooltime(uint32_t value) {
-  _internal_set_r_cooltime(value);
-  // @@protoc_insertion_point(field_set:message.SkillCooltime.r_cooltime)
-}
-
-// uint32 ls_cooltime = 4;
-inline void SkillCooltime::clear_ls_cooltime() {
-  ls_cooltime_ = 0u;
-}
-inline uint32_t SkillCooltime::_internal_ls_cooltime() const {
-  return ls_cooltime_;
-}
-inline uint32_t SkillCooltime::ls_cooltime() const {
-  // @@protoc_insertion_point(field_get:message.SkillCooltime.ls_cooltime)
-  return _internal_ls_cooltime();
-}
-inline void SkillCooltime::_internal_set_ls_cooltime(uint32_t value) {
-  
-  ls_cooltime_ = value;
-}
-inline void SkillCooltime::set_ls_cooltime(uint32_t value) {
-  _internal_set_ls_cooltime(value);
-  // @@protoc_insertion_point(field_set:message.SkillCooltime.ls_cooltime)
+inline void MonsterInfo::set_monster_type(::message::MonsterType value) {
+  _internal_set_monster_type(value);
+  // @@protoc_insertion_point(field_set:message.MonsterInfo.monster_type)
 }
 
 // -------------------------------------------------------------------
@@ -2405,6 +2686,8 @@ ItemInfo::mutable_description() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

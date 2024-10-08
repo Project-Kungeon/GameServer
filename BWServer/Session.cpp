@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "Session.h"
 
-Session::Session(asio::io_context& io_context, Room& room)
+Session::Session(asio::io_context& io_context)
 	: _socket(io_context)
-	, _room(room)
 	, _strand(asio::make_strand(io_context))
 {
 	memset(_recvBuffer, 0, RecvBufferSize);
@@ -54,8 +53,6 @@ void Session::OnRead(const boost::system::error_code& err, size_t size)
 	else
 	{
 		spdlog::error("error code : {}, msg : {}", err.value(), err.message());
-		//std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
-		//_room.Leave(this->shared_from_this());
 	}
 }
 

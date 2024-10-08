@@ -4,6 +4,7 @@ protoc -I=./ --cpp_out=./ ./Message.proto
 protoc -I=./ --cpp_out=./ ./Enum.proto
 protoc -I=./ --cpp_out=./ ./Struct.proto
 protoc -I=./ --cpp_out=./ ./Skill.proto 
+protoc -I=./ --cpp_out=./ ./MonsterPattern.proto 
 
 
 IF ERRORLEVEL 1 PAUSE
@@ -16,6 +17,8 @@ XCOPY /Y Message.pb.h "../../../BWServer/*"
 XCOPY /Y Message.pb.cc "../../../BWServer/*"
 XCOPY /Y Skill.pb.h "../../../BWServer/*"
 XCOPY /Y Skill.pb.cc "../../../BWServer/*"
+XCOPY /Y MonsterPattern.pb.h "../../../BWServer/*"
+XCOPY /Y MonsterPattern.pb.cc "../../../BWServer/*"
 
 
 XCOPY /Y Enum.pb.h "C:/Users/NoriS_G513/Desktop/workspace/JK1/Source/JK1/Network/*"
@@ -26,7 +29,8 @@ XCOPY /Y Message.pb.h "C:/Users/NoriS_G513/Desktop/workspace/JK1/Source/JK1/Netw
 XCOPY /Y Message.pb.cc "C:/Users/NoriS_G513/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Skill.pb.h "C:/Users/NoriS_G513/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Skill.pb.cc "C:/Users/NoriS_G513/Desktop/workspace/JK1/Source/JK1/Network/*"
-
+XCOPY /Y MonsterPattern.pb.h "C:/Users/NoriS_G513/Desktop/workspace/JK1/Source/JK1/Network/*"
+XCOPY /Y MonsterPattern.pb.cc "C:/Users/NoriS_G513/Desktop/workspace/JK1/Source/JK1/Network/*"
 
 
 DEL /Q /F *.pb.h

@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+#include "TickGenerator.h"
 
 class GameServer
 {
@@ -10,7 +11,6 @@ public:
 
 private:
 	tcp::acceptor _acceptor;
-	Room _room;
 	asio::io_context& _io_context;
 };
 

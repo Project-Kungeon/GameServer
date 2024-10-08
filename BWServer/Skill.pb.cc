@@ -138,8 +138,7 @@ PROTOBUF_CONSTEXPR C_Warrior_LS::C_Warrior_LS(
   : object_id_(uint64_t{0u})
   , x_(0)
   , y_(0)
-  , z_(0)
-  , yaw_(0){}
+  , z_(0){}
 struct C_Warrior_LSDefaultTypeInternal {
   PROTOBUF_CONSTEXPR C_Warrior_LSDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -610,7 +609,6 @@ const uint32_t TableStruct_Skill_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   PROTOBUF_FIELD_OFFSET(::skill::C_Warrior_LS, x_),
   PROTOBUF_FIELD_OFFSET(::skill::C_Warrior_LS, y_),
   PROTOBUF_FIELD_OFFSET(::skill::C_Warrior_LS, z_),
-  PROTOBUF_FIELD_OFFSET(::skill::C_Warrior_LS, yaw_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::skill::S_Warrior_LS, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -867,33 +865,33 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 52, -1, -1, sizeof(::skill::C_Warrior_R)},
   { 59, -1, -1, sizeof(::skill::S_Warrior_R)},
   { 66, -1, -1, sizeof(::skill::C_Warrior_LS)},
-  { 77, -1, -1, sizeof(::skill::S_Warrior_LS)},
-  { 88, -1, -1, sizeof(::skill::C_ASSASSIN_Attack)},
-  { 95, -1, -1, sizeof(::skill::S_ASSASSIN_Attack)},
-  { 102, -1, -1, sizeof(::skill::C_ASSASSIN_Q)},
-  { 115, -1, -1, sizeof(::skill::S_ASSASSIN_Q)},
-  { 128, -1, -1, sizeof(::skill::C_Assassin_E)},
-  { 138, -1, -1, sizeof(::skill::S_Assassin_E)},
-  { 148, -1, -1, sizeof(::skill::C_ASSASSIN_R)},
-  { 155, -1, -1, sizeof(::skill::S_ASSASSIN_R)},
-  { 162, -1, -1, sizeof(::skill::C_ASSASSIN_LS)},
-  { 169, -1, -1, sizeof(::skill::S_ASSASSIN_LS)},
-  { 176, -1, -1, sizeof(::skill::C_Assassin_LS_Off)},
-  { 183, -1, -1, sizeof(::skill::S_Assassin_LS_Off)},
-  { 190, -1, -1, sizeof(::skill::C_Archor_Attack)},
-  { 203, -1, -1, sizeof(::skill::S_Archor_Attack)},
-  { 218, -1, -1, sizeof(::skill::C_Archor_Q_Charging)},
-  { 225, -1, -1, sizeof(::skill::S_Archor_Q_Charging)},
-  { 233, -1, -1, sizeof(::skill::C_Archor_Q_Shot)},
-  { 246, -1, -1, sizeof(::skill::S_Archor_Q_Shot)},
-  { 259, -1, -1, sizeof(::skill::C_Archor_E)},
-  { 269, -1, -1, sizeof(::skill::S_Archor_E)},
-  { 279, -1, -1, sizeof(::skill::C_Archor_R)},
-  { 286, -1, -1, sizeof(::skill::S_Archor_R)},
-  { 293, -1, -1, sizeof(::skill::C_Archor_LS)},
-  { 300, -1, -1, sizeof(::skill::S_Archor_LS)},
-  { 307, -1, -1, sizeof(::skill::S_Archor_R_Off)},
-  { 314, -1, -1, sizeof(::skill::S_Archor_LS_Off)},
+  { 76, -1, -1, sizeof(::skill::S_Warrior_LS)},
+  { 87, -1, -1, sizeof(::skill::C_ASSASSIN_Attack)},
+  { 94, -1, -1, sizeof(::skill::S_ASSASSIN_Attack)},
+  { 101, -1, -1, sizeof(::skill::C_ASSASSIN_Q)},
+  { 114, -1, -1, sizeof(::skill::S_ASSASSIN_Q)},
+  { 127, -1, -1, sizeof(::skill::C_Assassin_E)},
+  { 137, -1, -1, sizeof(::skill::S_Assassin_E)},
+  { 147, -1, -1, sizeof(::skill::C_ASSASSIN_R)},
+  { 154, -1, -1, sizeof(::skill::S_ASSASSIN_R)},
+  { 161, -1, -1, sizeof(::skill::C_ASSASSIN_LS)},
+  { 168, -1, -1, sizeof(::skill::S_ASSASSIN_LS)},
+  { 175, -1, -1, sizeof(::skill::C_Assassin_LS_Off)},
+  { 182, -1, -1, sizeof(::skill::S_Assassin_LS_Off)},
+  { 189, -1, -1, sizeof(::skill::C_Archor_Attack)},
+  { 202, -1, -1, sizeof(::skill::S_Archor_Attack)},
+  { 217, -1, -1, sizeof(::skill::C_Archor_Q_Charging)},
+  { 224, -1, -1, sizeof(::skill::S_Archor_Q_Charging)},
+  { 232, -1, -1, sizeof(::skill::C_Archor_Q_Shot)},
+  { 245, -1, -1, sizeof(::skill::S_Archor_Q_Shot)},
+  { 258, -1, -1, sizeof(::skill::C_Archor_E)},
+  { 268, -1, -1, sizeof(::skill::S_Archor_E)},
+  { 278, -1, -1, sizeof(::skill::C_Archor_R)},
+  { 285, -1, -1, sizeof(::skill::S_Archor_R)},
+  { 292, -1, -1, sizeof(::skill::C_Archor_LS)},
+  { 299, -1, -1, sizeof(::skill::S_Archor_LS)},
+  { 306, -1, -1, sizeof(::skill::S_Archor_R_Off)},
+  { 313, -1, -1, sizeof(::skill::S_Archor_LS_Off)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -947,58 +945,58 @@ const char descriptor_table_protodef_Skill_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "ior_E\022\021\n\tobject_id\030\001 \001(\004\" \n\013S_Warrior_E\022"
   "\021\n\tobject_id\030\001 \001(\004\" \n\013C_Warrior_R\022\021\n\tobj"
   "ect_id\030\001 \001(\004\" \n\013S_Warrior_R\022\021\n\tobject_id"
-  "\030\001 \001(\004\"O\n\014C_Warrior_LS\022\021\n\tobject_id\030\001 \001("
-  "\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003ya"
-  "w\030\005 \001(\002\"O\n\014S_Warrior_LS\022\021\n\tobject_id\030\001 \001"
-  "(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003y"
-  "aw\030\005 \001(\002\"&\n\021C_ASSASSIN_Attack\022\021\n\tobject_"
-  "id\030\001 \001(\004\"&\n\021S_ASSASSIN_Attack\022\021\n\tobject_"
-  "id\030\001 \001(\004\"l\n\014C_ASSASSIN_Q\022\021\n\tobject_id\030\001 "
-  "\001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\r\n\005"
-  "pitch\030\005 \001(\002\022\013\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"l"
-  "\n\014S_ASSASSIN_Q\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002"
-  " \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\r\n\005pitch\030\005 \001("
-  "\002\022\013\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"B\n\014C_Assass"
-  "in_E\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030"
-  "\003 \001(\002\022\t\n\001z\030\004 \001(\002\"B\n\014S_Assassin_E\022\021\n\tobje"
-  "ct_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004"
-  " \001(\002\"!\n\014C_ASSASSIN_R\022\021\n\tobject_id\030\001 \001(\004\""
-  "!\n\014S_ASSASSIN_R\022\021\n\tobject_id\030\001 \001(\004\"\"\n\rC_"
-  "ASSASSIN_LS\022\021\n\tobject_id\030\001 \001(\004\"\"\n\rS_ASSA"
-  "SSIN_LS\022\021\n\tobject_id\030\001 \001(\004\"&\n\021C_Assassin"
-  "_LS_Off\022\021\n\tobject_id\030\001 \001(\004\"&\n\021S_Assassin"
-  "_LS_Off\022\021\n\tobject_id\030\001 \001(\004\"\204\001\n\017C_Archor_"
-  "Attack\022\021\n\tobject_id\030\001 \001(\004\022\017\n\007start_x\030\002 \001"
-  "(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007start_z\030\004 \001(\002\022\r\n\005"
-  "end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001(\002\022\r\n\005end_z\030\007 \001("
-  "\002\"\245\001\n\017S_Archor_Attack\022\021\n\tobject_id\030\001 \001(\004"
-  "\022\017\n\007start_x\030\002 \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007st"
-  "art_z\030\004 \001(\002\022\r\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001("
-  "\002\022\r\n\005end_z\030\007 \001(\002\022\016\n\006R_Mode\030\010 \001(\005\022\017\n\007LS_M"
-  "ode\030\t \001(\005\"(\n\023C_Archor_Q_Charging\022\021\n\tobje"
-  "ct_id\030\001 \001(\004\"8\n\023S_Archor_Q_Charging\022\021\n\tob"
-  "ject_id\030\001 \001(\004\022\016\n\006R_Mode\030\002 \001(\005\"\204\001\n\017C_Arch"
-  "or_Q_Shot\022\021\n\tobject_id\030\001 \001(\004\022\017\n\007start_x\030"
-  "\002 \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007start_z\030\004 \001(\002\022"
-  "\r\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001(\002\022\r\n\005end_z\030\007"
-  " \001(\002\"\204\001\n\017S_Archor_Q_Shot\022\021\n\tobject_id\030\001 "
-  "\001(\004\022\017\n\007start_x\030\002 \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n"
-  "\007start_z\030\004 \001(\002\022\r\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006"
-  " \001(\002\022\r\n\005end_z\030\007 \001(\002\"@\n\nC_Archor_E\022\021\n\tobj"
-  "ect_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030"
-  "\004 \001(\002\"@\n\nS_Archor_E\022\021\n\tobject_id\030\001 \001(\004\022\t"
-  "\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"\037\n\nC_Arc"
-  "hor_R\022\021\n\tobject_id\030\001 \001(\004\"\037\n\nS_Archor_R\022\021"
-  "\n\tobject_id\030\001 \001(\004\" \n\013C_Archor_LS\022\021\n\tobje"
-  "ct_id\030\001 \001(\004\" \n\013S_Archor_LS\022\021\n\tobject_id\030"
-  "\001 \001(\004\"#\n\016S_Archor_R_Off\022\021\n\tobject_id\030\001 \001"
-  "(\004\"$\n\017S_Archor_LS_Off\022\021\n\tobject_id\030\001 \001(\004"
-  "*2\n\tSKILLTYPE\022\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n"
-  "\001R\020\003\022\006\n\002LS\020\004b\006proto3"
+  "\030\001 \001(\004\"B\n\014C_Warrior_LS\022\021\n\tobject_id\030\001 \001("
+  "\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"O\n\014S_"
+  "Warrior_LS\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002"
+  "\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\"&\n\021C"
+  "_ASSASSIN_Attack\022\021\n\tobject_id\030\001 \001(\004\"&\n\021S"
+  "_ASSASSIN_Attack\022\021\n\tobject_id\030\001 \001(\004\"l\n\014C"
+  "_ASSASSIN_Q\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001("
+  "\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\r\n\005pitch\030\005 \001(\002\022\013"
+  "\n\003yaw\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\"l\n\014S_ASSASSIN_"
+  "Q\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001"
+  "(\002\022\t\n\001z\030\004 \001(\002\022\r\n\005pitch\030\005 \001(\002\022\013\n\003yaw\030\006 \001("
+  "\002\022\014\n\004roll\030\007 \001(\002\"B\n\014C_Assassin_E\022\021\n\tobjec"
+  "t_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 "
+  "\001(\002\"B\n\014S_Assassin_E\022\021\n\tobject_id\030\001 \001(\004\022\t"
+  "\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"!\n\014C_ASS"
+  "ASSIN_R\022\021\n\tobject_id\030\001 \001(\004\"!\n\014S_ASSASSIN"
+  "_R\022\021\n\tobject_id\030\001 \001(\004\"\"\n\rC_ASSASSIN_LS\022\021"
+  "\n\tobject_id\030\001 \001(\004\"\"\n\rS_ASSASSIN_LS\022\021\n\tob"
+  "ject_id\030\001 \001(\004\"&\n\021C_Assassin_LS_Off\022\021\n\tob"
+  "ject_id\030\001 \001(\004\"&\n\021S_Assassin_LS_Off\022\021\n\tob"
+  "ject_id\030\001 \001(\004\"\204\001\n\017C_Archor_Attack\022\021\n\tobj"
+  "ect_id\030\001 \001(\004\022\017\n\007start_x\030\002 \001(\002\022\017\n\007start_y"
+  "\030\003 \001(\002\022\017\n\007start_z\030\004 \001(\002\022\r\n\005end_x\030\005 \001(\002\022\r"
+  "\n\005end_y\030\006 \001(\002\022\r\n\005end_z\030\007 \001(\002\"\245\001\n\017S_Archo"
+  "r_Attack\022\021\n\tobject_id\030\001 \001(\004\022\017\n\007start_x\030\002"
+  " \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007start_z\030\004 \001(\002\022\r"
+  "\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001(\002\022\r\n\005end_z\030\007 "
+  "\001(\002\022\016\n\006R_Mode\030\010 \001(\005\022\017\n\007LS_Mode\030\t \001(\005\"(\n\023"
+  "C_Archor_Q_Charging\022\021\n\tobject_id\030\001 \001(\004\"8"
+  "\n\023S_Archor_Q_Charging\022\021\n\tobject_id\030\001 \001(\004"
+  "\022\016\n\006R_Mode\030\002 \001(\005\"\204\001\n\017C_Archor_Q_Shot\022\021\n\t"
+  "object_id\030\001 \001(\004\022\017\n\007start_x\030\002 \001(\002\022\017\n\007star"
+  "t_y\030\003 \001(\002\022\017\n\007start_z\030\004 \001(\002\022\r\n\005end_x\030\005 \001("
+  "\002\022\r\n\005end_y\030\006 \001(\002\022\r\n\005end_z\030\007 \001(\002\"\204\001\n\017S_Ar"
+  "chor_Q_Shot\022\021\n\tobject_id\030\001 \001(\004\022\017\n\007start_"
+  "x\030\002 \001(\002\022\017\n\007start_y\030\003 \001(\002\022\017\n\007start_z\030\004 \001("
+  "\002\022\r\n\005end_x\030\005 \001(\002\022\r\n\005end_y\030\006 \001(\002\022\r\n\005end_z"
+  "\030\007 \001(\002\"@\n\nC_Archor_E\022\021\n\tobject_id\030\001 \001(\004\022"
+  "\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"@\n\nS_Ar"
+  "chor_E\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001"
+  "y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\"\037\n\nC_Archor_R\022\021\n\tobje"
+  "ct_id\030\001 \001(\004\"\037\n\nS_Archor_R\022\021\n\tobject_id\030\001"
+  " \001(\004\" \n\013C_Archor_LS\022\021\n\tobject_id\030\001 \001(\004\" "
+  "\n\013S_Archor_LS\022\021\n\tobject_id\030\001 \001(\004\"#\n\016S_Ar"
+  "chor_R_Off\022\021\n\tobject_id\030\001 \001(\004\"$\n\017S_Archo"
+  "r_LS_Off\022\021\n\tobject_id\030\001 \001(\004*2\n\tSKILLTYPE"
+  "\022\010\n\004NONE\020\000\022\005\n\001Q\020\001\022\005\n\001E\020\002\022\005\n\001R\020\003\022\006\n\002LS\020\004b"
+  "\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Skill_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Skill_2eproto = {
-    false, false, 2300, descriptor_table_protodef_Skill_2eproto,
+    false, false, 2287, descriptor_table_protodef_Skill_2eproto,
     "Skill.proto",
     &descriptor_table_Skill_2eproto_once, nullptr, 0, 37,
     schemas, file_default_instances, TableStruct_Skill_2eproto::offsets,
@@ -2690,16 +2688,16 @@ C_Warrior_LS::C_Warrior_LS(const C_Warrior_LS& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&object_id_, &from.object_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&yaw_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
   // @@protoc_insertion_point(copy_constructor:skill.C_Warrior_LS)
 }
 
 inline void C_Warrior_LS::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&object_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&yaw_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
 }
 
 C_Warrior_LS::~C_Warrior_LS() {
@@ -2726,8 +2724,8 @@ void C_Warrior_LS::Clear() {
   (void) cached_has_bits;
 
   ::memset(&object_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&yaw_) -
-      reinterpret_cast<char*>(&object_id_)) + sizeof(yaw_));
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(z_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2765,14 +2763,6 @@ const char* C_Warrior_LS::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
           z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else
-          goto handle_unusual;
-        continue;
-      // float yaw = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
-          yaw_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -2842,16 +2832,6 @@ uint8_t* C_Warrior_LS::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
   }
 
-  // float yaw = 5;
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_yaw = this->_internal_yaw();
-  uint32_t raw_yaw;
-  memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
-  if (raw_yaw != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_yaw(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2897,15 +2877,6 @@ size_t C_Warrior_LS::ByteSizeLong() const {
   uint32_t raw_z;
   memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
   if (raw_z != 0) {
-    total_size += 1 + 4;
-  }
-
-  // float yaw = 5;
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_yaw = this->_internal_yaw();
-  uint32_t raw_yaw;
-  memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
-  if (raw_yaw != 0) {
     total_size += 1 + 4;
   }
 
@@ -2955,13 +2926,6 @@ void C_Warrior_LS::MergeFrom(const C_Warrior_LS& from) {
   if (raw_z != 0) {
     _internal_set_z(from._internal_z());
   }
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_yaw = from._internal_yaw();
-  uint32_t raw_yaw;
-  memcpy(&raw_yaw, &tmp_yaw, sizeof(tmp_yaw));
-  if (raw_yaw != 0) {
-    _internal_set_yaw(from._internal_yaw());
-  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -2980,8 +2944,8 @@ void C_Warrior_LS::InternalSwap(C_Warrior_LS* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(C_Warrior_LS, yaw_)
-      + sizeof(C_Warrior_LS::yaw_)
+      PROTOBUF_FIELD_OFFSET(C_Warrior_LS, z_)
+      + sizeof(C_Warrior_LS::z_)
       - PROTOBUF_FIELD_OFFSET(C_Warrior_LS, object_id_)>(
           reinterpret_cast<char*>(&object_id_),
           reinterpret_cast<char*>(&other->object_id_));

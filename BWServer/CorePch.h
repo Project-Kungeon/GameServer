@@ -3,6 +3,8 @@
 #include "CoreMacro.h"
 
 #include <array>
+#include <cmath>
+#include <cstdio>
 #include <vector>
 #include <list>
 #include <queue>
@@ -16,6 +18,8 @@
 #include <memory>
 
 #include "RandomUtil.h"
+#include "ObjectUtils.h"
+#include "MathUtils.h"
 #include "Session.h"
 #include "GameSession.h"
 

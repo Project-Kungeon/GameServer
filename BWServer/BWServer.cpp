@@ -5,41 +5,47 @@
 #include "Room.h"
 #include "ServerPacketHandler.h"
 #include "TickGenerator.h"
+#include "Monster.h"
 
 int main()
 {
+    boost::asio::io_context io_context;
     ServerPacketHandler::Init();
-    Room::init();
+    Room::init(io_context);
     spdlog::set_level(spdlog::level::trace);
-    spdlog::info("SpdLog Test");
 
     int port = 4242;
-    boost::asio::io_context io_context;
+    
     boost::asio::io_context io_context_tick;
-    TickGenerator tickGenerator(io_context_tick, 45, GRoom[0]);
 
     GameServer server(io_context, port);
     server.StartAccept();
     spdlog::info("Server Start {}", port);
     std::cout << "Server Start " << port << '\n';
 
+    MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
+    GRoom[0]->SpawnMonster(monster);
+
     //int count = 2;
-    tickGenerator.start(nullptr);
+    GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
 
-    //std::vector<std::thread> threads;
-    //for (int i = 0; i < 5; ++i) {
-    //    threads.emplace_back([&io_context]() {
-    //        io_context.run();
-    //        });
-    //}
+    std::vector<std::thread> thread_pool;
+    for (int i = 0; i < 5; ++i) {
+        thread_pool.emplace_back([&io_context]() {
+            io_context.run();
+            });
+    }
 
-    std::thread t(boost::bind(&boost::asio::io_context::run, &io_context));
+    for (auto& thread : thread_pool) {
+        if (thread.joinable()) {
+            thread.join();
+        }
+    }
 
-    std::thread t1(boost::bind(&boost::asio::io_context::run, &io_context_tick));
-    //std::thread t2(boost::bind(&boost::asio::io_context::run, &io_context_tick));
-    io_context_tick.run();
+    //std::thread t(boost::bind(&boost::asio::io_context::run, &io_context));
 
-    t.join();
-    t1.join();
-    //t2.join();
+    //std::thread t1(boost::bind(&boost::asio::io_context::run, &io_context_tick));
+
+    //t.join();
+    //t1.join();
 }

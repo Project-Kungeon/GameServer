@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -190,7 +190,9 @@
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="GameSessionManager.cpp" />
+    <ClCompile Include="JobQueue.cpp" />
     <ClCompile Include="LobbyPacketHandler.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Message.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -198,6 +200,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterPattern.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="ObjectUtils.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">
@@ -207,6 +213,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Rampage.cpp" />
+    <ClCompile Include="RampageTree.cpp" />
     <ClCompile Include="RandomUtil.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomPacketHandler.cpp" />
@@ -236,18 +244,24 @@
     <ClInclude Include="GameServer.h" />
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
+    <ClInclude Include="JobQueue.h" />
     <ClInclude Include="LobbyPacketHandler.h" />
+    <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Message.pb.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterPattern.pb.h" />
     <ClInclude Include="ObjectUtils.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rampage.h" />
+    <ClInclude Include="RampageTree.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomPacketHandler.h" />
+    <ClInclude Include="Selector.h" />
     <ClInclude Include="ServerPacketHandler.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="Skill.pb.h" />
@@ -261,6 +275,7 @@
     <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\MonsterPattern.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Struct.proto" />
   </ItemGroup>

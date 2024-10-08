@@ -26,3 +26,8 @@ Object::~Object()
 {
 	delete objectInfo;
 }
+
+void Object::Tick(uint32 DeltaTime)
+{
+	GetWriteLock();
+}

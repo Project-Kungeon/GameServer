@@ -8,13 +8,13 @@ bool BattlePacketHandler::Handle_C_Attack(SessionPtr& session, message::C_Attack
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleAttack(pkt);
+	room->DoAsync(&Room::HandleAttack, pkt);
 	return true;
 }
 
@@ -24,13 +24,13 @@ bool BattlePacketHandler::Handle_C_WarriorAttack(SessionPtr& session, skill::C_W
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleWarriorAttack(pkt);
+	room->DoAsync(&Room::HandleWarriorAttack, pkt);
 	return true;
 }
 
@@ -40,13 +40,13 @@ bool BattlePacketHandler::Handle_C_WarriorR(SessionPtr& session, skill::C_Warrio
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleWarriorR(pkt);
+	room->DoAsync(&Room::HandleWarriorR, pkt);
 	return true;
 }
 
@@ -56,13 +56,30 @@ bool BattlePacketHandler::Handle_C_WarriorE(SessionPtr& session, skill::C_Warrio
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleWarriorE(pkt);
+	room->DoAsync(&Room::HandleWarriorE, pkt);
+	return true;
+}
+
+bool BattlePacketHandler::Handle_C_WarriorLS(SessionPtr& session, skill::C_Warrior_LS& pkt)
+{
+	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
+	if (!gameSession->isEnterGame) return false;
+
+	// if is not lock.. get player 
+	PlayerPtr player = gameSession->player.load();
+	if (player == nullptr) return false;
+
+	RoomPtr room = player->room.load().lock();
+	if (room == nullptr) return false;
+
+	room->DoAsync(&Room::HandleWarriorLS, pkt);
+
 	return true;
 }
 
@@ -72,13 +89,13 @@ bool BattlePacketHandler::Handle_C_AssassinAttack(SessionPtr& session, skill::C_
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleAssassinAttack(pkt);
+	room->DoAsync(&Room::HandleAssassinAttack, pkt);
 	return true;
 }
 
@@ -88,13 +105,13 @@ bool BattlePacketHandler::Handle_C_AssassinQ(SessionPtr& session, skill::C_ASSAS
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleAssassinQ(pkt);
+	room->DoAsync(&Room::HandleAssassinQ, pkt);
 	return true;
 }
 
@@ -104,13 +121,13 @@ bool BattlePacketHandler::Handle_C_AssassinR(SessionPtr& session, skill::C_ASSAS
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 	
-	room->HandleAssassinR(pkt);
+	room->DoAsync(&Room::HandleAssassinR, pkt);
 	return true;
 }
 
@@ -120,13 +137,13 @@ bool BattlePacketHandler::Handle_C_AssassinLS(SessionPtr& session, skill::C_ASSA
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleAssassinLS(pkt);
+	room->DoAsync(&Room::HandleAssassinLS, pkt);
 	return true;
 }
 
@@ -136,13 +153,13 @@ bool BattlePacketHandler::Handle_C_AssassinE(SessionPtr& session, skill::C_Assas
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleAssassinE(pkt);
+	room->DoAsync(&Room::HandleAssassinE, pkt);
 	return true;
 }
 
@@ -152,13 +169,13 @@ bool BattlePacketHandler::Handle_C_ArchorAttack(SessionPtr& session, skill::C_Ar
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleArchorAttack(pkt);
+	room->DoAsync(&Room::HandleArchorAttack, pkt);
 
 	return true;
 }
@@ -169,13 +186,13 @@ bool BattlePacketHandler::Handle_C_ArchorQ_Charging(SessionPtr& session, skill::
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleArchorQ_Charging(pkt);
+	room->DoAsync(&Room::HandleArchorQ_Charging, pkt);
 
 	return true;
 }
@@ -186,13 +203,13 @@ bool BattlePacketHandler::Handle_C_ArchorQ_Shot(SessionPtr& session, skill::C_Ar
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleArchorQ_Shot(pkt);
+	room->DoAsync(&Room::HandleArchorQ_Shot, pkt);
 
 	return true;
 }
@@ -203,13 +220,13 @@ bool BattlePacketHandler::Handle_C_ArchorE(SessionPtr& session, skill::C_Archor_
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleArchorE(pkt);
+	room->DoAsync(&Room::HandleArchorE, pkt);
 
 	return true;
 }
@@ -220,13 +237,13 @@ bool BattlePacketHandler::Handle_C_ArchorR(SessionPtr& session, skill::C_Archor_
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleArchorR(pkt);
+	room->DoAsync(&Room::HandleArchorR, pkt);
 
 	return true;
 }
@@ -237,13 +254,13 @@ bool BattlePacketHandler::Handle_C_ArchorLS(SessionPtr& session, skill::C_Archor
 	if (!gameSession->isEnterGame) return false;
 
 	// if is not lock.. get player 
-	PlayerPtr player = gameSession->player.load(memory_order_acquire);
+	PlayerPtr player = gameSession->player.load();
 	if (player == nullptr) return false;
 
 	RoomPtr room = player->room.load().lock();
 	if (room == nullptr) return false;
 
-	room->HandleArchorLS(pkt);
+	room->DoAsync(&Room::HandleArchorLS, pkt);
 
 	return true;
 }

@@ -77,6 +77,21 @@
     <ClCompile Include="Warrior.cpp">
       <Filter>Main\Game\Object\Creature\Player\Warrior</Filter>
     </ClCompile>
+    <ClCompile Include="Rampage.cpp">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClCompile>
+    <ClCompile Include="RampageTree.cpp">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterPattern.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="JobQueue.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -166,6 +181,24 @@
     <ClInclude Include="Warrior.h">
       <Filter>Main\Game\Object\Creature\Player\Warrior</Filter>
     </ClInclude>
+    <ClInclude Include="Rampage.h">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClInclude>
+    <ClInclude Include="Selector.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RampageTree.h">
+      <Filter>Main\Game\Object\Creature\Monster\Rampage</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterPattern.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="JobQueue.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -225,6 +258,9 @@
     <Filter Include="Main\Game\Object\Creature\Player\Archor">
       <UniqueIdentifier>{0722d116-0f3f-4454-8891-eb75eb42dd2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\Game\Object\Creature\Monster\Rampage">
+      <UniqueIdentifier>{42a576a1-65f1-47a2-8f13-712566012587}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto">
@@ -241,6 +277,9 @@
     </None>
     <None Include="..\.editorconfig" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\MonsterPattern.proto">
       <Filter>Packets\Proto</Filter>
     </None>
   </ItemGroup>
