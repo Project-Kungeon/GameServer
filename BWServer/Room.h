@@ -58,7 +58,7 @@ public:
 
 	// Tick
 public:
-	void HandleTick(uint32 Deltatime);
+	virtual void HandleTick(uint32 Deltatime);
 	void HandleCoolTime(long long elapsed_millisecond);
 	void HandleBuffTime(long long elapsed_millisecond);
 

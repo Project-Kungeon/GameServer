@@ -187,9 +187,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="GameRoom.cpp" />
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="GameSessionManager.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="JobQueue.cpp" />
     <ClCompile Include="LobbyPacketHandler.cpp" />
     <ClCompile Include="MathUtils.cpp" />
@@ -241,9 +243,11 @@
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Enum.pb.h" />
+    <ClInclude Include="GameRoom.h" />
     <ClInclude Include="GameServer.h" />
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="JobQueue.h" />
     <ClInclude Include="LobbyPacketHandler.h" />
     <ClInclude Include="MathUtils.h" />
@@ -273,7 +277,9 @@
   <ItemGroup>
     <None Include="..\.editorconfig" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\GameRound.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Item.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\MonsterPattern.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Skill.proto" />

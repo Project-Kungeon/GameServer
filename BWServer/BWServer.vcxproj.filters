@@ -92,6 +92,12 @@
     <ClCompile Include="JobQueue.cpp">
       <Filter>Main\Server</Filter>
     </ClCompile>
+    <ClCompile Include="GameRoom.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Main\Game\Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -199,6 +205,12 @@
     <ClInclude Include="JobQueue.h">
       <Filter>Main\Server</Filter>
     </ClInclude>
+    <ClInclude Include="GameRoom.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Main\Game\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -261,6 +273,9 @@
     <Filter Include="Main\Game\Object\Creature\Monster\Rampage">
       <UniqueIdentifier>{42a576a1-65f1-47a2-8f13-712566012587}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\Game\Item">
+      <UniqueIdentifier>{fed77291-c87b-4b95-bbaf-7f23ac5af241}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto">
@@ -280,6 +295,12 @@
       <Filter>Packets\Proto</Filter>
     </None>
     <None Include="..\Common\protobuf3.20.3-win64\bin\MonsterPattern.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\GameRound.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Item.proto">
       <Filter>Packets\Proto</Filter>
     </None>
   </ItemGroup>
