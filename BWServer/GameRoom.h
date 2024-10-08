@@ -1,5 +1,7 @@
 #pragma once
 #include "Room.h"
+#include "GameRound.pb.h"
+
 class GameRoom :
     public Room
 {
@@ -9,7 +11,7 @@ public:
 public:
     void BroadcastRoundStart();
     void BroadcastRoundTime();
-    void BroadcastRoundEnd();
+    void BroadcastRoundEnd(game::round::S_Round_EndInfo_EndReasonType type);
 
 private:
 
@@ -17,6 +19,8 @@ private:
     int Number_of_Players_Remaining;
 
     int64 remaining_seconds;
+
+    bool IsRoundPlaying = false;
 
 };
 
