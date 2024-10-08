@@ -1,0 +1,12 @@
+syntax = "proto3";
+package game.item;
+
+message C_Item_Use
+{
+
+}
+
+message C_Item_PickedUp
+{
+
+}
