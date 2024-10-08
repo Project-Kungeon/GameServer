@@ -98,6 +98,9 @@
     <ClCompile Include="Item.cpp">
       <Filter>Main\Game\Item</Filter>
     </ClCompile>
+    <ClCompile Include="GameRound.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Main\Game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRound.pb.h">
+      <Filter>Packets\build</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
