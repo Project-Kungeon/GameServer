@@ -6,6 +6,7 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\CorePch.cpp;C:\Users\Nor
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Creature.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Creature.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Enum.pb.cc;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Enum.pb.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameRoom.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameRoom.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameRound.pb.cc;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameRound.pb.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameServer.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameServer.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSession.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSession.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSessionManager.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSessionManager.obj

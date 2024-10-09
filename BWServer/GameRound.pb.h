@@ -51,6 +51,9 @@ namespace round {
 class S_Round_EndInfo;
 struct S_Round_EndInfoDefaultTypeInternal;
 extern S_Round_EndInfoDefaultTypeInternal _S_Round_EndInfo_default_instance_;
+class S_Round_GameOver_Countdown;
+struct S_Round_GameOver_CountdownDefaultTypeInternal;
+extern S_Round_GameOver_CountdownDefaultTypeInternal _S_Round_GameOver_Countdown_default_instance_;
 class S_Round_StartInfo;
 struct S_Round_StartInfoDefaultTypeInternal;
 extern S_Round_StartInfoDefaultTypeInternal _S_Round_StartInfo_default_instance_;
@@ -61,6 +64,7 @@ extern S_Round_TimeInfoDefaultTypeInternal _S_Round_TimeInfo_default_instance_;
 }  // namespace game
 PROTOBUF_NAMESPACE_OPEN
 template<> ::game::round::S_Round_EndInfo* Arena::CreateMaybeMessage<::game::round::S_Round_EndInfo>(Arena*);
+template<> ::game::round::S_Round_GameOver_Countdown* Arena::CreateMaybeMessage<::game::round::S_Round_GameOver_Countdown>(Arena*);
 template<> ::game::round::S_Round_StartInfo* Arena::CreateMaybeMessage<::game::round::S_Round_StartInfo>(Arena*);
 template<> ::game::round::S_Round_TimeInfo* Arena::CreateMaybeMessage<::game::round::S_Round_TimeInfo>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -596,6 +600,149 @@ class S_Round_EndInfo final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_GameRound_2eproto;
 };
+// -------------------------------------------------------------------
+
+class S_Round_GameOver_Countdown final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.round.S_Round_GameOver_Countdown) */ {
+ public:
+  inline S_Round_GameOver_Countdown() : S_Round_GameOver_Countdown(nullptr) {}
+  ~S_Round_GameOver_Countdown() override;
+  explicit PROTOBUF_CONSTEXPR S_Round_GameOver_Countdown(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Round_GameOver_Countdown(const S_Round_GameOver_Countdown& from);
+  S_Round_GameOver_Countdown(S_Round_GameOver_Countdown&& from) noexcept
+    : S_Round_GameOver_Countdown() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Round_GameOver_Countdown& operator=(const S_Round_GameOver_Countdown& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Round_GameOver_Countdown& operator=(S_Round_GameOver_Countdown&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Round_GameOver_Countdown& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Round_GameOver_Countdown* internal_default_instance() {
+    return reinterpret_cast<const S_Round_GameOver_Countdown*>(
+               &_S_Round_GameOver_Countdown_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(S_Round_GameOver_Countdown& a, S_Round_GameOver_Countdown& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Round_GameOver_Countdown* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Round_GameOver_Countdown* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Round_GameOver_Countdown* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Round_GameOver_Countdown>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Round_GameOver_Countdown& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Round_GameOver_Countdown& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Round_GameOver_Countdown* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "game.round.S_Round_GameOver_Countdown";
+  }
+  protected:
+  explicit S_Round_GameOver_Countdown(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCountFieldNumber = 1,
+  };
+  // int32 count = 1;
+  void clear_count();
+  int32_t count() const;
+  void set_count(int32_t value);
+  private:
+  int32_t _internal_count() const;
+  void _internal_set_count(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:game.round.S_Round_GameOver_Countdown)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t count_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_GameRound_2eproto;
+};
 // ===================================================================
 
 
@@ -675,9 +822,35 @@ inline void S_Round_EndInfo::set_type(::game::round::S_Round_EndInfo_EndReasonTy
   // @@protoc_insertion_point(field_set:game.round.S_Round_EndInfo.type)
 }
 
+// -------------------------------------------------------------------
+
+// S_Round_GameOver_Countdown
+
+// int32 count = 1;
+inline void S_Round_GameOver_Countdown::clear_count() {
+  count_ = 0;
+}
+inline int32_t S_Round_GameOver_Countdown::_internal_count() const {
+  return count_;
+}
+inline int32_t S_Round_GameOver_Countdown::count() const {
+  // @@protoc_insertion_point(field_get:game.round.S_Round_GameOver_Countdown.count)
+  return _internal_count();
+}
+inline void S_Round_GameOver_Countdown::_internal_set_count(int32_t value) {
+  
+  count_ = value;
+}
+inline void S_Round_GameOver_Countdown::set_count(int32_t value) {
+  _internal_set_count(value);
+  // @@protoc_insertion_point(field_set:game.round.S_Round_GameOver_Countdown.count)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
