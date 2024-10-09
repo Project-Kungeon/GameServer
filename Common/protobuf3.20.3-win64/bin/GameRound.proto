@@ -3,7 +3,7 @@ package game.round;
 
 message S_Round_StartInfo
 {
-
+    
 }
 
 message S_Round_TimeInfo
@@ -29,4 +29,9 @@ message S_Round_EndInfo
     }
 
     EndReasonType type = 1;
+}
+
+message S_Round_GameOver_Countdown
+{
+    int32 count = 1;
 }

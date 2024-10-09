@@ -20,12 +20,12 @@ public:
 	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	RoomPtr GetRoomRef();
 
-	bool HandleEnterPlayer(PlayerPtr player);
-	bool HandleLeavePlayer(PlayerPtr player);
-	bool SpawnMonster(MonsterPtr monster);
-	void HandleMove(message::C_Move pkt);
-	void HandleAttack(message::C_Attack pkt);
-	void HandleDeath(CreaturePtr creature);
+	virtual bool HandleEnterPlayer(PlayerPtr player);
+	virtual bool HandleLeavePlayer(PlayerPtr player);
+	virtual bool SpawnMonster(MonsterPtr monster);
+	virtual void HandleMove(message::C_Move pkt);
+	virtual void HandleAttack(message::C_Attack pkt);
+	virtual void HandleDeath(CreaturePtr creature);
 
 	void HandleWarriorAttack(skill::C_Warrior_Attack pkt);
 	void HandleWarriorR(skill::C_Warrior_R pkt);

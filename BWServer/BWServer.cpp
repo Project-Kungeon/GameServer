@@ -2,7 +2,7 @@
 //
 #include "pch.h"
 #include "GameServer.h"
-#include "Room.h"
+#include "GameRoom.h"
 #include "ServerPacketHandler.h"
 #include "TickGenerator.h"
 #include "Monster.h"
@@ -11,7 +11,7 @@ int main()
 {
     boost::asio::io_context io_context;
     ServerPacketHandler::Init();
-    Room::init(io_context);
+    GameRoom::init(io_context);
     spdlog::set_level(spdlog::level::trace);
 
     int port = 4242;
