@@ -21,6 +21,7 @@
 #include "RandomUtil.h"
 #include "ObjectUtils.h"
 #include "MathUtils.h"
+#include "ItemUtils.h"
 #include "Session.h"
 #include "GameSession.h"
 

@@ -52,6 +52,9 @@ extern CreatureInfoDefaultTypeInternal _CreatureInfo_default_instance_;
 class ItemInfo;
 struct ItemInfoDefaultTypeInternal;
 extern ItemInfoDefaultTypeInternal _ItemInfo_default_instance_;
+class ItemObjectInfo;
+struct ItemObjectInfoDefaultTypeInternal;
+extern ItemObjectInfoDefaultTypeInternal _ItemObjectInfo_default_instance_;
 class MonsterInfo;
 struct MonsterInfoDefaultTypeInternal;
 extern MonsterInfoDefaultTypeInternal _MonsterInfo_default_instance_;
@@ -74,6 +77,7 @@ extern TimestampDefaultTypeInternal _Timestamp_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::message::CreatureInfo* Arena::CreateMaybeMessage<::message::CreatureInfo>(Arena*);
 template<> ::message::ItemInfo* Arena::CreateMaybeMessage<::message::ItemInfo>(Arena*);
+template<> ::message::ItemObjectInfo* Arena::CreateMaybeMessage<::message::ItemObjectInfo>(Arena*);
 template<> ::message::MonsterInfo* Arena::CreateMaybeMessage<::message::MonsterInfo>(Arena*);
 template<> ::message::ObjectInfo* Arena::CreateMaybeMessage<::message::ObjectInfo>(Arena*);
 template<> ::message::PlayerInfo* Arena::CreateMaybeMessage<::message::PlayerInfo>(Arena*);
@@ -829,6 +833,169 @@ class ObjectInfo final :
 };
 // -------------------------------------------------------------------
 
+class ItemObjectInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.ItemObjectInfo) */ {
+ public:
+  inline ItemObjectInfo() : ItemObjectInfo(nullptr) {}
+  ~ItemObjectInfo() override;
+  explicit PROTOBUF_CONSTEXPR ItemObjectInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ItemObjectInfo(const ItemObjectInfo& from);
+  ItemObjectInfo(ItemObjectInfo&& from) noexcept
+    : ItemObjectInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline ItemObjectInfo& operator=(const ItemObjectInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ItemObjectInfo& operator=(ItemObjectInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ItemObjectInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ItemObjectInfo* internal_default_instance() {
+    return reinterpret_cast<const ItemObjectInfo*>(
+               &_ItemObjectInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(ItemObjectInfo& a, ItemObjectInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ItemObjectInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ItemObjectInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ItemObjectInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ItemObjectInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ItemObjectInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ItemObjectInfo& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ItemObjectInfo* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "message.ItemObjectInfo";
+  }
+  protected:
+  explicit ItemObjectInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectInfoFieldNumber = 1,
+    kItemTypeFieldNumber = 2,
+  };
+  // .message.ObjectInfo object_info = 1;
+  bool has_object_info() const;
+  private:
+  bool _internal_has_object_info() const;
+  public:
+  void clear_object_info();
+  const ::message::ObjectInfo& object_info() const;
+  PROTOBUF_NODISCARD ::message::ObjectInfo* release_object_info();
+  ::message::ObjectInfo* mutable_object_info();
+  void set_allocated_object_info(::message::ObjectInfo* object_info);
+  private:
+  const ::message::ObjectInfo& _internal_object_info() const;
+  ::message::ObjectInfo* _internal_mutable_object_info();
+  public:
+  void unsafe_arena_set_allocated_object_info(
+      ::message::ObjectInfo* object_info);
+  ::message::ObjectInfo* unsafe_arena_release_object_info();
+
+  // .message.ItemType item_type = 2;
+  void clear_item_type();
+  ::message::ItemType item_type() const;
+  void set_item_type(::message::ItemType value);
+  private:
+  ::message::ItemType _internal_item_type() const;
+  void _internal_set_item_type(::message::ItemType value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:message.ItemObjectInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::message::ObjectInfo* object_info_;
+  int item_type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Struct_2eproto;
+};
+// -------------------------------------------------------------------
+
 class CreatureInfo final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.CreatureInfo) */ {
  public:
@@ -877,7 +1044,7 @@ class CreatureInfo final :
                &_CreatureInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(CreatureInfo& a, CreatureInfo& b) {
     a.Swap(&b);
@@ -1073,7 +1240,7 @@ class MonsterInfo final :
                &_MonsterInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(MonsterInfo& a, MonsterInfo& b) {
     a.Swap(&b);
@@ -1236,7 +1403,7 @@ class PlayerInfo final :
                &_PlayerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(PlayerInfo& a, PlayerInfo& b) {
     a.Swap(&b);
@@ -1419,7 +1586,7 @@ class ItemInfo final :
                &_ItemInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(ItemInfo& a, ItemInfo& b) {
     a.Swap(&b);
@@ -1490,11 +1657,12 @@ class ItemInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDescriptionFieldNumber = 3,
+    kDescriptionFieldNumber = 4,
     kItemIdFieldNumber = 1,
     kItemTypeFieldNumber = 2,
+    kItemTableFieldNumber = 3,
   };
-  // repeated string description = 3;
+  // repeated string description = 4;
   int description_size() const;
   private:
   int _internal_description_size() const;
@@ -1536,6 +1704,15 @@ class ItemInfo final :
   void _internal_set_item_type(::message::ItemType value);
   public:
 
+  // .message.ItemTable item_table = 3;
+  void clear_item_table();
+  ::message::ItemTable item_table() const;
+  void set_item_table(::message::ItemTable value);
+  private:
+  ::message::ItemTable _internal_item_table() const;
+  void _internal_set_item_table(::message::ItemTable value);
+  public:
+
   // @@protoc_insertion_point(class_scope:message.ItemInfo)
  private:
   class _Internal;
@@ -1546,6 +1723,7 @@ class ItemInfo final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> description_;
   uint64_t item_id_;
   int item_type_;
+  int item_table_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
 };
@@ -2070,6 +2248,120 @@ inline void ObjectInfo::set_allocated_last_updated(::message::Timestamp* last_up
   }
   last_updated_ = last_updated;
   // @@protoc_insertion_point(field_set_allocated:message.ObjectInfo.last_updated)
+}
+
+// -------------------------------------------------------------------
+
+// ItemObjectInfo
+
+// .message.ObjectInfo object_info = 1;
+inline bool ItemObjectInfo::_internal_has_object_info() const {
+  return this != internal_default_instance() && object_info_ != nullptr;
+}
+inline bool ItemObjectInfo::has_object_info() const {
+  return _internal_has_object_info();
+}
+inline void ItemObjectInfo::clear_object_info() {
+  if (GetArenaForAllocation() == nullptr && object_info_ != nullptr) {
+    delete object_info_;
+  }
+  object_info_ = nullptr;
+}
+inline const ::message::ObjectInfo& ItemObjectInfo::_internal_object_info() const {
+  const ::message::ObjectInfo* p = object_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::message::ObjectInfo&>(
+      ::message::_ObjectInfo_default_instance_);
+}
+inline const ::message::ObjectInfo& ItemObjectInfo::object_info() const {
+  // @@protoc_insertion_point(field_get:message.ItemObjectInfo.object_info)
+  return _internal_object_info();
+}
+inline void ItemObjectInfo::unsafe_arena_set_allocated_object_info(
+    ::message::ObjectInfo* object_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(object_info_);
+  }
+  object_info_ = object_info;
+  if (object_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:message.ItemObjectInfo.object_info)
+}
+inline ::message::ObjectInfo* ItemObjectInfo::release_object_info() {
+  
+  ::message::ObjectInfo* temp = object_info_;
+  object_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::message::ObjectInfo* ItemObjectInfo::unsafe_arena_release_object_info() {
+  // @@protoc_insertion_point(field_release:message.ItemObjectInfo.object_info)
+  
+  ::message::ObjectInfo* temp = object_info_;
+  object_info_ = nullptr;
+  return temp;
+}
+inline ::message::ObjectInfo* ItemObjectInfo::_internal_mutable_object_info() {
+  
+  if (object_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::message::ObjectInfo>(GetArenaForAllocation());
+    object_info_ = p;
+  }
+  return object_info_;
+}
+inline ::message::ObjectInfo* ItemObjectInfo::mutable_object_info() {
+  ::message::ObjectInfo* _msg = _internal_mutable_object_info();
+  // @@protoc_insertion_point(field_mutable:message.ItemObjectInfo.object_info)
+  return _msg;
+}
+inline void ItemObjectInfo::set_allocated_object_info(::message::ObjectInfo* object_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete object_info_;
+  }
+  if (object_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(object_info);
+    if (message_arena != submessage_arena) {
+      object_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, object_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  object_info_ = object_info;
+  // @@protoc_insertion_point(field_set_allocated:message.ItemObjectInfo.object_info)
+}
+
+// .message.ItemType item_type = 2;
+inline void ItemObjectInfo::clear_item_type() {
+  item_type_ = 0;
+}
+inline ::message::ItemType ItemObjectInfo::_internal_item_type() const {
+  return static_cast< ::message::ItemType >(item_type_);
+}
+inline ::message::ItemType ItemObjectInfo::item_type() const {
+  // @@protoc_insertion_point(field_get:message.ItemObjectInfo.item_type)
+  return _internal_item_type();
+}
+inline void ItemObjectInfo::_internal_set_item_type(::message::ItemType value) {
+  
+  item_type_ = value;
+}
+inline void ItemObjectInfo::set_item_type(::message::ItemType value) {
+  _internal_set_item_type(value);
+  // @@protoc_insertion_point(field_set:message.ItemObjectInfo.item_type)
 }
 
 // -------------------------------------------------------------------
@@ -2608,7 +2900,27 @@ inline void ItemInfo::set_item_type(::message::ItemType value) {
   // @@protoc_insertion_point(field_set:message.ItemInfo.item_type)
 }
 
-// repeated string description = 3;
+// .message.ItemTable item_table = 3;
+inline void ItemInfo::clear_item_table() {
+  item_table_ = 0;
+}
+inline ::message::ItemTable ItemInfo::_internal_item_table() const {
+  return static_cast< ::message::ItemTable >(item_table_);
+}
+inline ::message::ItemTable ItemInfo::item_table() const {
+  // @@protoc_insertion_point(field_get:message.ItemInfo.item_table)
+  return _internal_item_table();
+}
+inline void ItemInfo::_internal_set_item_table(::message::ItemTable value) {
+  
+  item_table_ = value;
+}
+inline void ItemInfo::set_item_table(::message::ItemTable value) {
+  _internal_set_item_table(value);
+  // @@protoc_insertion_point(field_set:message.ItemInfo.item_table)
+}
+
+// repeated string description = 4;
 inline int ItemInfo::_internal_description_size() const {
   return description_.size();
 }
@@ -2686,6 +2998,8 @@ ItemInfo::mutable_description() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

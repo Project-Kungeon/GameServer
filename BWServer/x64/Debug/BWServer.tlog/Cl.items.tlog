@@ -10,7 +10,11 @@ C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameRound.pb.cc;C:\Users
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameServer.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameServer.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSession.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSession.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\GameSessionManager.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSessionManager.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Inventory.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Inventory.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Item.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Item.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\Item.pb.cc;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\Item.pb.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ItemObject.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\ItemObject.obj
+C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\ItemUtils.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\ItemUtils.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\JobQueue.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\JobQueue.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\LobbyPacketHandler.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\LobbyPacketHandler.obj
 C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\MathUtils.cpp;C:\Users\NoriS_G513\Desktop\workspace\BWServer\BWServer\x64\Debug\MathUtils.obj
