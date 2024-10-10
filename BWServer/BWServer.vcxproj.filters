@@ -101,6 +101,18 @@
     <ClCompile Include="GameRound.pb.cc">
       <Filter>Packets\build</Filter>
     </ClCompile>
+    <ClCompile Include="ItemObject.cpp">
+      <Filter>Main\Game\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Main\Game\Object\Creature\Player\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -217,6 +229,18 @@
     <ClInclude Include="GameRound.pb.h">
       <Filter>Packets\build</Filter>
     </ClInclude>
+    <ClInclude Include="ItemObject.h">
+      <Filter>Main\Game\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Main\Game\Object\Creature\Player\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -281,6 +305,12 @@
     </Filter>
     <Filter Include="Main\Game\Item">
       <UniqueIdentifier>{fed77291-c87b-4b95-bbaf-7f23ac5af241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Item">
+      <UniqueIdentifier>{3a463a7c-3e75-4800-9cbb-708bf559107c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature\Player\Inventory">
+      <UniqueIdentifier>{57e3763b-fa35-41c8-a8c7-a211c743265f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -195,7 +195,14 @@
     <ClCompile Include="GameServer.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="GameSessionManager.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Item.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ItemObject.cpp" />
+    <ClCompile Include="ItemUtils.cpp" />
     <ClCompile Include="JobQueue.cpp" />
     <ClCompile Include="LobbyPacketHandler.cpp" />
     <ClCompile Include="MathUtils.cpp" />
@@ -252,7 +259,11 @@
     <ClInclude Include="GameServer.h" />
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Item.pb.h" />
+    <ClInclude Include="ItemObject.h" />
+    <ClInclude Include="ItemUtils.h" />
     <ClInclude Include="JobQueue.h" />
     <ClInclude Include="LobbyPacketHandler.h" />
     <ClInclude Include="MathUtils.h" />

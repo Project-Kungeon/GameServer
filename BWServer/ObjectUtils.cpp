@@ -60,6 +60,17 @@ MonsterPtr ObjectUtils::CreateMonster(message::MonsterType type)
 	return monster;
 }
 
+ItemObjectPtr ObjectUtils::CreateItemObject(message::ItemType itemType, message::ItemTable itemTable)
+{
+	ItemObjectPtr itemObject = nullptr;
+	itemObject = std::make_shared<ItemObject>(itemType, itemTable);
+
+	// Generate ID
+	const unsigned int newId = s_idGenerator.fetch_add(1);
+
+	return itemObject;
+}
+
 message::ObjectInfo ObjectUtils::toObjectInfo(ObjectPtr objectPtr)
 {
 	message::ObjectInfo objectInfo;

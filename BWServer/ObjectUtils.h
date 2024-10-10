@@ -5,6 +5,7 @@ class ObjectUtils
 public:
 	static PlayerPtr CreatePlayer(GameSessionPtr session, message::PlayerType type);
 	static MonsterPtr CreateMonster(message::MonsterType type);
+	static ItemObjectPtr CreateItemObject(message::ItemType itemType, message::ItemTable itemTable);
 	static message::ObjectInfo toObjectInfo(ObjectPtr objectPtr);
 	static message::CreatureInfo toCreatureInfo(CreaturePtr creaturePtr);
 	static message::MonsterInfo toMonsterInfo(MonsterPtr monsterPtr);
