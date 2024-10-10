@@ -41,6 +41,7 @@ public:
     bool UseSkillToAggro();
     bool BasicAttack();
     bool MoveToTarget();
+    bool MoveToPos(int rand_x, int rand_y, int rand_z);
 
     // Pattern Function
     void Roar();

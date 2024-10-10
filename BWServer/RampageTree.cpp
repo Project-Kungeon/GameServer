@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "RampageTree.h"
 #include "Rampage.h"
+#include "RandomUtil.h"
 
 RampageTree::RampageTree(std::weak_ptr<Rampage> rampage)
 	: rampage(rampage),
@@ -26,6 +27,7 @@ void RampageTree::Init()
 
 void RampageTree::MakeRootSelector()
 {
+	// 플레이어 찾기
 	RootSelector->addLambda([this]() {
 		if (DetectCooldown >= DETECT_COOLTIME)
 		{
@@ -46,6 +48,21 @@ void RampageTree::MakeRootSelector()
 					// 랜덤한 곳으로 이동하는 코드 TODO
 				}
 			}
+		}
+		return false;
+		});
+
+	// 못 찾았다면.. 랜덤 움직이기
+	RootSelector->addLambda([this]() {
+		if (auto ptr = rampage.lock())
+		{
+			WaitCooldown = 3000;
+			spdlog::trace("Rampage didnt find Player... Find Random Pos");
+			int rand_x = RandomUtil::GetRandom(-250.0f, 250.0f);
+			int rand_y = RandomUtil::GetRandom(-250.0f, 250.0f);
+			int rand_z = RandomUtil::GetRandom(-250.0f, 250.0f);
+			ptr->MoveToPos(rand_x, rand_y, rand_z);
+			return true;
 		}
 		return false;
 		});

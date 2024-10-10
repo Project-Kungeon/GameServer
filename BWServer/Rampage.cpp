@@ -156,6 +156,17 @@ bool Rampage::MoveToTarget()
 	return false;
 }
 
+bool Rampage::MoveToPos(int rand_x, int rand_y, int rand_z)
+{
+	if (auto roomPtr = room.load().lock())
+	{
+		roomPtr->DoAsync(&Room::SendRampageMoveToPos, GetRampagePtr(), rand_x, rand_y, rand_z);
+		return true;
+	}
+
+	return false;
+}
+
 void Rampage::Roar()
 {
 	if (auto roomPtr = room.load().lock())

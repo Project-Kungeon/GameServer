@@ -112,6 +112,10 @@ void GameRoom::BroadcastRoundEnd(game::round::S_Round_EndInfo_EndReasonType type
 	case game::round::S_Round_EndInfo_EndReasonType_ROUND_TIME_OVER:
 		spdlog::info("Round Time Over!");
 		break;
+	case game::round::S_Round_EndInfo_EndReasonType_PLAYER_ALL_DEAD:
+		spdlog::info("Player all dead... Game Over!");
+		break;
+
 	}
 
 	game::round::S_Round_EndInfo pkt;
@@ -136,7 +140,7 @@ void GameRoom::BroadcastRoundGameOverCountdown(int count)
 
 	if (count > 0)
 	{
-		DoTimer(1000, &GameRoom::BroadcastRoundGameOverCountdown, count--);
+		DoTimer(1000, &GameRoom::BroadcastRoundGameOverCountdown, count - 1);
 	}
 	else
 	{

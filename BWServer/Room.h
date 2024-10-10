@@ -51,6 +51,7 @@ public:
 
 	void SendRampageBasicAttack(RampagePtr rampage);
 	void SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target);
+	void SendRampageMoveToPos(RampagePtr rampage, int rand_x, int rand_y, int rand_z);
 	void SendRamapgeRoar(RampagePtr rampage);
 	void SendRampageEarthQuake(RampagePtr rampage);
 	void SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target);
