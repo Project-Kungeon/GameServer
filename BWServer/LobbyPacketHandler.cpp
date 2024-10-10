@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "RandomUtil.h"
 #include "LobbyPacketHandler.h"
 
 bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& pkt)

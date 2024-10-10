@@ -1043,6 +1043,36 @@ void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
 	Broadcast(sendBuffer, 0);
 }
 
+void Room::SendRampageMoveToPos(RampagePtr rampage, int rand_x, int rand_y, int rand_z)
+{
+	Location Loc = rampage->GetLocation();
+
+	// 현재, z는 사용하지 않습니다.
+	spdlog::trace("Rampage Move To ({}, {}, {})", Loc.x + rand_x, Loc.y + rand_y, Loc.z);
+
+	message::S_Move pkt;
+
+	
+	rampage->posInfo->set_x(Loc.x + rand_x);
+	rampage->posInfo->set_y(Loc.y + rand_y);
+	rampage->posInfo->set_z(Loc.z);
+
+	message::PosInfo* posInfo = pkt.mutable_posinfo();
+	posInfo->CopyFrom(*rampage->posInfo);
+	posInfo->set_object_id(rampage->GetObjectId());
+	posInfo->set_state(message::MOVE_STATE_RUN);
+	posInfo->set_yaw(0);
+	posInfo->set_pitch(0);
+	posInfo->set_roll(0);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
 void Room::SendRamapgeRoar(RampagePtr rampage)
 {
 	monster::pattern::S_Rampage_Roar pkt;

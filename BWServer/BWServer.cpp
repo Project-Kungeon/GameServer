@@ -27,6 +27,7 @@ int main()
     GRoom[0]->SpawnMonster(monster);
 
     //int count = 2;
+    static_pointer_cast<GameRoom>(GRoom[0])->RoundStart();
     GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
 
     std::vector<std::thread> thread_pool;
