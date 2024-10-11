@@ -23,7 +23,6 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
-#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
 #include <google/protobuf/generated_message_reflection.h>
@@ -31,6 +30,8 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include "Enum.pb.h"
+#include "Struct.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_Item_2eproto
@@ -47,143 +48,40 @@ struct TableStruct_Item_2eproto {
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Item_2eproto;
 namespace game {
 namespace item {
+class C_Item_ConsumeableUsed;
+struct C_Item_ConsumeableUsedDefaultTypeInternal;
+extern C_Item_ConsumeableUsedDefaultTypeInternal _C_Item_ConsumeableUsed_default_instance_;
 class C_Item_PickedUp;
 struct C_Item_PickedUpDefaultTypeInternal;
 extern C_Item_PickedUpDefaultTypeInternal _C_Item_PickedUp_default_instance_;
-class C_Item_Use;
-struct C_Item_UseDefaultTypeInternal;
-extern C_Item_UseDefaultTypeInternal _C_Item_Use_default_instance_;
+class S_Item_Acquisition;
+struct S_Item_AcquisitionDefaultTypeInternal;
+extern S_Item_AcquisitionDefaultTypeInternal _S_Item_Acquisition_default_instance_;
+class S_Item_ConsumeableUsed;
+struct S_Item_ConsumeableUsedDefaultTypeInternal;
+extern S_Item_ConsumeableUsedDefaultTypeInternal _S_Item_ConsumeableUsed_default_instance_;
+class S_Item_PickedUp;
+struct S_Item_PickedUpDefaultTypeInternal;
+extern S_Item_PickedUpDefaultTypeInternal _S_Item_PickedUp_default_instance_;
 }  // namespace item
 }  // namespace game
 PROTOBUF_NAMESPACE_OPEN
+template<> ::game::item::C_Item_ConsumeableUsed* Arena::CreateMaybeMessage<::game::item::C_Item_ConsumeableUsed>(Arena*);
 template<> ::game::item::C_Item_PickedUp* Arena::CreateMaybeMessage<::game::item::C_Item_PickedUp>(Arena*);
-template<> ::game::item::C_Item_Use* Arena::CreateMaybeMessage<::game::item::C_Item_Use>(Arena*);
+template<> ::game::item::S_Item_Acquisition* Arena::CreateMaybeMessage<::game::item::S_Item_Acquisition>(Arena*);
+template<> ::game::item::S_Item_ConsumeableUsed* Arena::CreateMaybeMessage<::game::item::S_Item_ConsumeableUsed>(Arena*);
+template<> ::game::item::S_Item_PickedUp* Arena::CreateMaybeMessage<::game::item::S_Item_PickedUp>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace game {
 namespace item {
 
 // ===================================================================
 
-class C_Item_Use final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:game.item.C_Item_Use) */ {
- public:
-  inline C_Item_Use() : C_Item_Use(nullptr) {}
-  explicit PROTOBUF_CONSTEXPR C_Item_Use(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  C_Item_Use(const C_Item_Use& from);
-  C_Item_Use(C_Item_Use&& from) noexcept
-    : C_Item_Use() {
-    *this = ::std::move(from);
-  }
-
-  inline C_Item_Use& operator=(const C_Item_Use& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline C_Item_Use& operator=(C_Item_Use&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const C_Item_Use& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const C_Item_Use* internal_default_instance() {
-    return reinterpret_cast<const C_Item_Use*>(
-               &_C_Item_Use_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(C_Item_Use& a, C_Item_Use& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(C_Item_Use* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(C_Item_Use* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  C_Item_Use* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<C_Item_Use>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const C_Item_Use& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const C_Item_Use& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
-  public:
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "game.item.C_Item_Use";
-  }
-  protected:
-  explicit C_Item_Use(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:game.item.C_Item_Use)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  friend struct ::TableStruct_Item_2eproto;
-};
-// -------------------------------------------------------------------
-
 class C_Item_PickedUp final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:game.item.C_Item_PickedUp) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.item.C_Item_PickedUp) */ {
  public:
   inline C_Item_PickedUp() : C_Item_PickedUp(nullptr) {}
+  ~C_Item_PickedUp() override;
   explicit PROTOBUF_CONSTEXPR C_Item_PickedUp(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   C_Item_PickedUp(const C_Item_PickedUp& from);
@@ -227,7 +125,7 @@ class C_Item_PickedUp final :
                &_C_Item_PickedUp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    0;
 
   friend void swap(C_Item_PickedUp& a, C_Item_PickedUp& b) {
     a.Swap(&b);
@@ -256,15 +154,27 @@ class C_Item_PickedUp final :
   C_Item_PickedUp* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<C_Item_PickedUp>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const C_Item_PickedUp& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const C_Item_PickedUp& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Item_PickedUp& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Item_PickedUp& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Item_PickedUp* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -285,6 +195,28 @@ class C_Item_PickedUp final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kPlayerIdFieldNumber = 1,
+    kPickedObjectIdFieldNumber = 2,
+  };
+  // uint64 player_id = 1;
+  void clear_player_id();
+  uint64_t player_id() const;
+  void set_player_id(uint64_t value);
+  private:
+  uint64_t _internal_player_id() const;
+  void _internal_set_player_id(uint64_t value);
+  public:
+
+  // uint64 picked_object_id = 2;
+  void clear_picked_object_id();
+  uint64_t picked_object_id() const;
+  void set_picked_object_id(uint64_t value);
+  private:
+  uint64_t _internal_picked_object_id() const;
+  void _internal_set_picked_object_id(uint64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:game.item.C_Item_PickedUp)
  private:
   class _Internal;
@@ -292,6 +224,645 @@ class C_Item_PickedUp final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  uint64_t player_id_;
+  uint64_t picked_object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Item_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Item_PickedUp final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.item.S_Item_PickedUp) */ {
+ public:
+  inline S_Item_PickedUp() : S_Item_PickedUp(nullptr) {}
+  ~S_Item_PickedUp() override;
+  explicit PROTOBUF_CONSTEXPR S_Item_PickedUp(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Item_PickedUp(const S_Item_PickedUp& from);
+  S_Item_PickedUp(S_Item_PickedUp&& from) noexcept
+    : S_Item_PickedUp() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Item_PickedUp& operator=(const S_Item_PickedUp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Item_PickedUp& operator=(S_Item_PickedUp&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Item_PickedUp& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Item_PickedUp* internal_default_instance() {
+    return reinterpret_cast<const S_Item_PickedUp*>(
+               &_S_Item_PickedUp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(S_Item_PickedUp& a, S_Item_PickedUp& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Item_PickedUp* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Item_PickedUp* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Item_PickedUp* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Item_PickedUp>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Item_PickedUp& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Item_PickedUp& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Item_PickedUp* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "game.item.S_Item_PickedUp";
+  }
+  protected:
+  explicit S_Item_PickedUp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPlayerIdFieldNumber = 1,
+    kPickedObjectIdFieldNumber = 2,
+  };
+  // uint64 player_id = 1;
+  void clear_player_id();
+  uint64_t player_id() const;
+  void set_player_id(uint64_t value);
+  private:
+  uint64_t _internal_player_id() const;
+  void _internal_set_player_id(uint64_t value);
+  public:
+
+  // uint64 picked_object_id = 2;
+  void clear_picked_object_id();
+  uint64_t picked_object_id() const;
+  void set_picked_object_id(uint64_t value);
+  private:
+  uint64_t _internal_picked_object_id() const;
+  void _internal_set_picked_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:game.item.S_Item_PickedUp)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t player_id_;
+  uint64_t picked_object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Item_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Item_Acquisition final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.item.S_Item_Acquisition) */ {
+ public:
+  inline S_Item_Acquisition() : S_Item_Acquisition(nullptr) {}
+  ~S_Item_Acquisition() override;
+  explicit PROTOBUF_CONSTEXPR S_Item_Acquisition(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Item_Acquisition(const S_Item_Acquisition& from);
+  S_Item_Acquisition(S_Item_Acquisition&& from) noexcept
+    : S_Item_Acquisition() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Item_Acquisition& operator=(const S_Item_Acquisition& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Item_Acquisition& operator=(S_Item_Acquisition&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Item_Acquisition& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Item_Acquisition* internal_default_instance() {
+    return reinterpret_cast<const S_Item_Acquisition*>(
+               &_S_Item_Acquisition_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(S_Item_Acquisition& a, S_Item_Acquisition& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Item_Acquisition* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Item_Acquisition* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Item_Acquisition* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Item_Acquisition>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Item_Acquisition& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Item_Acquisition& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Item_Acquisition* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "game.item.S_Item_Acquisition";
+  }
+  protected:
+  explicit S_Item_Acquisition(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemInfoFieldNumber = 2,
+    kPlayerIdFieldNumber = 1,
+  };
+  // .message.ItemInfo item_info = 2;
+  bool has_item_info() const;
+  private:
+  bool _internal_has_item_info() const;
+  public:
+  void clear_item_info();
+  const ::message::ItemInfo& item_info() const;
+  PROTOBUF_NODISCARD ::message::ItemInfo* release_item_info();
+  ::message::ItemInfo* mutable_item_info();
+  void set_allocated_item_info(::message::ItemInfo* item_info);
+  private:
+  const ::message::ItemInfo& _internal_item_info() const;
+  ::message::ItemInfo* _internal_mutable_item_info();
+  public:
+  void unsafe_arena_set_allocated_item_info(
+      ::message::ItemInfo* item_info);
+  ::message::ItemInfo* unsafe_arena_release_item_info();
+
+  // uint64 player_id = 1;
+  void clear_player_id();
+  uint64_t player_id() const;
+  void set_player_id(uint64_t value);
+  private:
+  uint64_t _internal_player_id() const;
+  void _internal_set_player_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:game.item.S_Item_Acquisition)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::message::ItemInfo* item_info_;
+  uint64_t player_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Item_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Item_ConsumeableUsed final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.item.C_Item_ConsumeableUsed) */ {
+ public:
+  inline C_Item_ConsumeableUsed() : C_Item_ConsumeableUsed(nullptr) {}
+  ~C_Item_ConsumeableUsed() override;
+  explicit PROTOBUF_CONSTEXPR C_Item_ConsumeableUsed(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Item_ConsumeableUsed(const C_Item_ConsumeableUsed& from);
+  C_Item_ConsumeableUsed(C_Item_ConsumeableUsed&& from) noexcept
+    : C_Item_ConsumeableUsed() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Item_ConsumeableUsed& operator=(const C_Item_ConsumeableUsed& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Item_ConsumeableUsed& operator=(C_Item_ConsumeableUsed&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Item_ConsumeableUsed& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Item_ConsumeableUsed* internal_default_instance() {
+    return reinterpret_cast<const C_Item_ConsumeableUsed*>(
+               &_C_Item_ConsumeableUsed_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(C_Item_ConsumeableUsed& a, C_Item_ConsumeableUsed& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Item_ConsumeableUsed* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Item_ConsumeableUsed* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Item_ConsumeableUsed* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Item_ConsumeableUsed>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Item_ConsumeableUsed& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Item_ConsumeableUsed& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Item_ConsumeableUsed* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "game.item.C_Item_ConsumeableUsed";
+  }
+  protected:
+  explicit C_Item_ConsumeableUsed(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPlayerIdFieldNumber = 1,
+    kUsedItemIdFieldNumber = 2,
+    kItemTableFieldNumber = 3,
+  };
+  // uint64 player_id = 1;
+  void clear_player_id();
+  uint64_t player_id() const;
+  void set_player_id(uint64_t value);
+  private:
+  uint64_t _internal_player_id() const;
+  void _internal_set_player_id(uint64_t value);
+  public:
+
+  // uint64 used_item_id = 2;
+  void clear_used_item_id();
+  uint64_t used_item_id() const;
+  void set_used_item_id(uint64_t value);
+  private:
+  uint64_t _internal_used_item_id() const;
+  void _internal_set_used_item_id(uint64_t value);
+  public:
+
+  // .message.ItemTable item_table = 3;
+  void clear_item_table();
+  ::message::ItemTable item_table() const;
+  void set_item_table(::message::ItemTable value);
+  private:
+  ::message::ItemTable _internal_item_table() const;
+  void _internal_set_item_table(::message::ItemTable value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:game.item.C_Item_ConsumeableUsed)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t player_id_;
+  uint64_t used_item_id_;
+  int item_table_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Item_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Item_ConsumeableUsed final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.item.S_Item_ConsumeableUsed) */ {
+ public:
+  inline S_Item_ConsumeableUsed() : S_Item_ConsumeableUsed(nullptr) {}
+  ~S_Item_ConsumeableUsed() override;
+  explicit PROTOBUF_CONSTEXPR S_Item_ConsumeableUsed(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Item_ConsumeableUsed(const S_Item_ConsumeableUsed& from);
+  S_Item_ConsumeableUsed(S_Item_ConsumeableUsed&& from) noexcept
+    : S_Item_ConsumeableUsed() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Item_ConsumeableUsed& operator=(const S_Item_ConsumeableUsed& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Item_ConsumeableUsed& operator=(S_Item_ConsumeableUsed&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Item_ConsumeableUsed& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Item_ConsumeableUsed* internal_default_instance() {
+    return reinterpret_cast<const S_Item_ConsumeableUsed*>(
+               &_S_Item_ConsumeableUsed_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(S_Item_ConsumeableUsed& a, S_Item_ConsumeableUsed& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Item_ConsumeableUsed* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Item_ConsumeableUsed* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Item_ConsumeableUsed* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Item_ConsumeableUsed>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Item_ConsumeableUsed& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Item_ConsumeableUsed& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Item_ConsumeableUsed* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "game.item.S_Item_ConsumeableUsed";
+  }
+  protected:
+  explicit S_Item_ConsumeableUsed(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPlayerIdFieldNumber = 1,
+    kUsedItemIdFieldNumber = 2,
+  };
+  // uint64 player_id = 1;
+  void clear_player_id();
+  uint64_t player_id() const;
+  void set_player_id(uint64_t value);
+  private:
+  uint64_t _internal_player_id() const;
+  void _internal_set_player_id(uint64_t value);
+  public:
+
+  // uint64 used_item_id = 2;
+  void clear_used_item_id();
+  uint64_t used_item_id() const;
+  void set_used_item_id(uint64_t value);
+  private:
+  uint64_t _internal_used_item_id() const;
+  void _internal_set_used_item_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:game.item.S_Item_ConsumeableUsed)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t player_id_;
+  uint64_t used_item_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Item_2eproto;
 };
 // ===================================================================
@@ -303,15 +874,318 @@ class C_Item_PickedUp final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// C_Item_Use
+// C_Item_PickedUp
+
+// uint64 player_id = 1;
+inline void C_Item_PickedUp::clear_player_id() {
+  player_id_ = uint64_t{0u};
+}
+inline uint64_t C_Item_PickedUp::_internal_player_id() const {
+  return player_id_;
+}
+inline uint64_t C_Item_PickedUp::player_id() const {
+  // @@protoc_insertion_point(field_get:game.item.C_Item_PickedUp.player_id)
+  return _internal_player_id();
+}
+inline void C_Item_PickedUp::_internal_set_player_id(uint64_t value) {
+  
+  player_id_ = value;
+}
+inline void C_Item_PickedUp::set_player_id(uint64_t value) {
+  _internal_set_player_id(value);
+  // @@protoc_insertion_point(field_set:game.item.C_Item_PickedUp.player_id)
+}
+
+// uint64 picked_object_id = 2;
+inline void C_Item_PickedUp::clear_picked_object_id() {
+  picked_object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Item_PickedUp::_internal_picked_object_id() const {
+  return picked_object_id_;
+}
+inline uint64_t C_Item_PickedUp::picked_object_id() const {
+  // @@protoc_insertion_point(field_get:game.item.C_Item_PickedUp.picked_object_id)
+  return _internal_picked_object_id();
+}
+inline void C_Item_PickedUp::_internal_set_picked_object_id(uint64_t value) {
+  
+  picked_object_id_ = value;
+}
+inline void C_Item_PickedUp::set_picked_object_id(uint64_t value) {
+  _internal_set_picked_object_id(value);
+  // @@protoc_insertion_point(field_set:game.item.C_Item_PickedUp.picked_object_id)
+}
 
 // -------------------------------------------------------------------
 
-// C_Item_PickedUp
+// S_Item_PickedUp
+
+// uint64 player_id = 1;
+inline void S_Item_PickedUp::clear_player_id() {
+  player_id_ = uint64_t{0u};
+}
+inline uint64_t S_Item_PickedUp::_internal_player_id() const {
+  return player_id_;
+}
+inline uint64_t S_Item_PickedUp::player_id() const {
+  // @@protoc_insertion_point(field_get:game.item.S_Item_PickedUp.player_id)
+  return _internal_player_id();
+}
+inline void S_Item_PickedUp::_internal_set_player_id(uint64_t value) {
+  
+  player_id_ = value;
+}
+inline void S_Item_PickedUp::set_player_id(uint64_t value) {
+  _internal_set_player_id(value);
+  // @@protoc_insertion_point(field_set:game.item.S_Item_PickedUp.player_id)
+}
+
+// uint64 picked_object_id = 2;
+inline void S_Item_PickedUp::clear_picked_object_id() {
+  picked_object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Item_PickedUp::_internal_picked_object_id() const {
+  return picked_object_id_;
+}
+inline uint64_t S_Item_PickedUp::picked_object_id() const {
+  // @@protoc_insertion_point(field_get:game.item.S_Item_PickedUp.picked_object_id)
+  return _internal_picked_object_id();
+}
+inline void S_Item_PickedUp::_internal_set_picked_object_id(uint64_t value) {
+  
+  picked_object_id_ = value;
+}
+inline void S_Item_PickedUp::set_picked_object_id(uint64_t value) {
+  _internal_set_picked_object_id(value);
+  // @@protoc_insertion_point(field_set:game.item.S_Item_PickedUp.picked_object_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Item_Acquisition
+
+// uint64 player_id = 1;
+inline void S_Item_Acquisition::clear_player_id() {
+  player_id_ = uint64_t{0u};
+}
+inline uint64_t S_Item_Acquisition::_internal_player_id() const {
+  return player_id_;
+}
+inline uint64_t S_Item_Acquisition::player_id() const {
+  // @@protoc_insertion_point(field_get:game.item.S_Item_Acquisition.player_id)
+  return _internal_player_id();
+}
+inline void S_Item_Acquisition::_internal_set_player_id(uint64_t value) {
+  
+  player_id_ = value;
+}
+inline void S_Item_Acquisition::set_player_id(uint64_t value) {
+  _internal_set_player_id(value);
+  // @@protoc_insertion_point(field_set:game.item.S_Item_Acquisition.player_id)
+}
+
+// .message.ItemInfo item_info = 2;
+inline bool S_Item_Acquisition::_internal_has_item_info() const {
+  return this != internal_default_instance() && item_info_ != nullptr;
+}
+inline bool S_Item_Acquisition::has_item_info() const {
+  return _internal_has_item_info();
+}
+inline const ::message::ItemInfo& S_Item_Acquisition::_internal_item_info() const {
+  const ::message::ItemInfo* p = item_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::message::ItemInfo&>(
+      ::message::_ItemInfo_default_instance_);
+}
+inline const ::message::ItemInfo& S_Item_Acquisition::item_info() const {
+  // @@protoc_insertion_point(field_get:game.item.S_Item_Acquisition.item_info)
+  return _internal_item_info();
+}
+inline void S_Item_Acquisition::unsafe_arena_set_allocated_item_info(
+    ::message::ItemInfo* item_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(item_info_);
+  }
+  item_info_ = item_info;
+  if (item_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:game.item.S_Item_Acquisition.item_info)
+}
+inline ::message::ItemInfo* S_Item_Acquisition::release_item_info() {
+  
+  ::message::ItemInfo* temp = item_info_;
+  item_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::message::ItemInfo* S_Item_Acquisition::unsafe_arena_release_item_info() {
+  // @@protoc_insertion_point(field_release:game.item.S_Item_Acquisition.item_info)
+  
+  ::message::ItemInfo* temp = item_info_;
+  item_info_ = nullptr;
+  return temp;
+}
+inline ::message::ItemInfo* S_Item_Acquisition::_internal_mutable_item_info() {
+  
+  if (item_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::message::ItemInfo>(GetArenaForAllocation());
+    item_info_ = p;
+  }
+  return item_info_;
+}
+inline ::message::ItemInfo* S_Item_Acquisition::mutable_item_info() {
+  ::message::ItemInfo* _msg = _internal_mutable_item_info();
+  // @@protoc_insertion_point(field_mutable:game.item.S_Item_Acquisition.item_info)
+  return _msg;
+}
+inline void S_Item_Acquisition::set_allocated_item_info(::message::ItemInfo* item_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(item_info_);
+  }
+  if (item_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(item_info));
+    if (message_arena != submessage_arena) {
+      item_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, item_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  item_info_ = item_info;
+  // @@protoc_insertion_point(field_set_allocated:game.item.S_Item_Acquisition.item_info)
+}
+
+// -------------------------------------------------------------------
+
+// C_Item_ConsumeableUsed
+
+// uint64 player_id = 1;
+inline void C_Item_ConsumeableUsed::clear_player_id() {
+  player_id_ = uint64_t{0u};
+}
+inline uint64_t C_Item_ConsumeableUsed::_internal_player_id() const {
+  return player_id_;
+}
+inline uint64_t C_Item_ConsumeableUsed::player_id() const {
+  // @@protoc_insertion_point(field_get:game.item.C_Item_ConsumeableUsed.player_id)
+  return _internal_player_id();
+}
+inline void C_Item_ConsumeableUsed::_internal_set_player_id(uint64_t value) {
+  
+  player_id_ = value;
+}
+inline void C_Item_ConsumeableUsed::set_player_id(uint64_t value) {
+  _internal_set_player_id(value);
+  // @@protoc_insertion_point(field_set:game.item.C_Item_ConsumeableUsed.player_id)
+}
+
+// uint64 used_item_id = 2;
+inline void C_Item_ConsumeableUsed::clear_used_item_id() {
+  used_item_id_ = uint64_t{0u};
+}
+inline uint64_t C_Item_ConsumeableUsed::_internal_used_item_id() const {
+  return used_item_id_;
+}
+inline uint64_t C_Item_ConsumeableUsed::used_item_id() const {
+  // @@protoc_insertion_point(field_get:game.item.C_Item_ConsumeableUsed.used_item_id)
+  return _internal_used_item_id();
+}
+inline void C_Item_ConsumeableUsed::_internal_set_used_item_id(uint64_t value) {
+  
+  used_item_id_ = value;
+}
+inline void C_Item_ConsumeableUsed::set_used_item_id(uint64_t value) {
+  _internal_set_used_item_id(value);
+  // @@protoc_insertion_point(field_set:game.item.C_Item_ConsumeableUsed.used_item_id)
+}
+
+// .message.ItemTable item_table = 3;
+inline void C_Item_ConsumeableUsed::clear_item_table() {
+  item_table_ = 0;
+}
+inline ::message::ItemTable C_Item_ConsumeableUsed::_internal_item_table() const {
+  return static_cast< ::message::ItemTable >(item_table_);
+}
+inline ::message::ItemTable C_Item_ConsumeableUsed::item_table() const {
+  // @@protoc_insertion_point(field_get:game.item.C_Item_ConsumeableUsed.item_table)
+  return _internal_item_table();
+}
+inline void C_Item_ConsumeableUsed::_internal_set_item_table(::message::ItemTable value) {
+  
+  item_table_ = value;
+}
+inline void C_Item_ConsumeableUsed::set_item_table(::message::ItemTable value) {
+  _internal_set_item_table(value);
+  // @@protoc_insertion_point(field_set:game.item.C_Item_ConsumeableUsed.item_table)
+}
+
+// -------------------------------------------------------------------
+
+// S_Item_ConsumeableUsed
+
+// uint64 player_id = 1;
+inline void S_Item_ConsumeableUsed::clear_player_id() {
+  player_id_ = uint64_t{0u};
+}
+inline uint64_t S_Item_ConsumeableUsed::_internal_player_id() const {
+  return player_id_;
+}
+inline uint64_t S_Item_ConsumeableUsed::player_id() const {
+  // @@protoc_insertion_point(field_get:game.item.S_Item_ConsumeableUsed.player_id)
+  return _internal_player_id();
+}
+inline void S_Item_ConsumeableUsed::_internal_set_player_id(uint64_t value) {
+  
+  player_id_ = value;
+}
+inline void S_Item_ConsumeableUsed::set_player_id(uint64_t value) {
+  _internal_set_player_id(value);
+  // @@protoc_insertion_point(field_set:game.item.S_Item_ConsumeableUsed.player_id)
+}
+
+// uint64 used_item_id = 2;
+inline void S_Item_ConsumeableUsed::clear_used_item_id() {
+  used_item_id_ = uint64_t{0u};
+}
+inline uint64_t S_Item_ConsumeableUsed::_internal_used_item_id() const {
+  return used_item_id_;
+}
+inline uint64_t S_Item_ConsumeableUsed::used_item_id() const {
+  // @@protoc_insertion_point(field_get:game.item.S_Item_ConsumeableUsed.used_item_id)
+  return _internal_used_item_id();
+}
+inline void S_Item_ConsumeableUsed::_internal_set_used_item_id(uint64_t value) {
+  
+  used_item_id_ = value;
+}
+inline void S_Item_ConsumeableUsed::set_used_item_id(uint64_t value) {
+  _internal_set_used_item_id(value);
+  // @@protoc_insertion_point(field_set:game.item.S_Item_ConsumeableUsed.used_item_id)
+}
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

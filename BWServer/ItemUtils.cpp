@@ -3,16 +3,16 @@
 
 atomic<unsigned int> ItemUtils::s_idGenerator = 1;
 
-ItemPtr ItemUtils::CreateItem(message::ItemType itemType, message::ItemTable itemTable)
+ItemPtr ItemUtils::CreateItem(PlayerPtr player, message::ItemType itemType, message::ItemTable itemTable)
 {
 	const unsigned int newId = s_idGenerator.fetch_add(1);
-	ItemPtr new_item = std::make_shared<Item>(newId, itemType, itemTable);
+	ItemPtr new_item = std::make_shared<Item>(newId, player, itemType, itemTable);
 
 	return new_item;
 }
 
-ItemPtr ItemUtils::CreateItem(ItemObjectPtr itemObject)
+ItemPtr ItemUtils::CreateItem(PlayerPtr player, ItemObjectPtr itemObject)
 {
-	return ItemUtils::CreateItem(itemObject->GetItemType(), itemObject->GetItemTable());
+	return ItemUtils::CreateItem(player, itemObject->GetItemType(), itemObject->GetItemTable());
 }
 

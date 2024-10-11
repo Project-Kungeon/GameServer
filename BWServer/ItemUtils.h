@@ -6,8 +6,8 @@
 class ItemUtils
 {
 public:
-	static ItemPtr CreateItem(message::ItemType itemType, message::ItemTable itemTable);
-	static ItemPtr CreateItem(ItemObjectPtr itemObject);
+	static ItemPtr CreateItem(PlayerPtr player, message::ItemType itemType, message::ItemTable itemTable);
+	static ItemPtr CreateItem(PlayerPtr player, ItemObjectPtr itemObject);
 
 private:
 	static std::atomic<unsigned int> s_idGenerator;

@@ -60,6 +60,12 @@ bool Room::Join(ObjectPtr object)
 			message::MonsterInfo* monsterInfo = spawnPkt.add_monsters();
 			monsterInfo->CopyFrom(ObjectUtils::toMonsterInfo(monster));
 		}
+		else if (auto itemObject = dynamic_pointer_cast<ItemObject>(object))
+		{
+			message::ItemObjectInfo* itemObjectInfo = spawnPkt.add_itemobjects();
+			itemObjectInfo->CopyFrom(ObjectUtils::toItemObjectInfo(itemObject));
+		}
+		
 		
 		const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
 		char* rawBuffer = new char[requiredSize];
@@ -96,15 +102,13 @@ bool Room::Join(ObjectPtr object)
 					message::MonsterInfo* otherMonsterInfo = spawnPkt.add_monsters();
 					otherMonsterInfo->CopyFrom(ObjectUtils::toMonsterInfo(otherMonster));
 				}
-
 			}
-			//if (dynamic_pointer_cast<Player>(item.second) == nullptr) continue;
-			//if (item.first == player->objectInfo->object_id()) continue;
-			//if (auto otherPlayer = static_pointer_cast<Player>(item.second))
-			//{
-			//	message::PlayerInfo* playerInfo = spawnPkt.add_players();
-			//	playerInfo->CopyFrom(ObjectUtils::toPlayerInfo(otherPlayer));
-			//}
+			else if (item.second->GetObjectType() == message::OBJECT_TYPE_ITEM)
+			{
+				auto otherItemObject = static_pointer_cast<ItemObject>(item.second);
+				message::ItemObjectInfo* otherItemObjectInfo = spawnPkt.add_itemobjects();
+				otherItemObjectInfo->CopyFrom(ObjectUtils::toItemObjectInfo(otherItemObject));
+			}
 		}
 
 		if (auto session = player->session.lock())
@@ -157,11 +161,11 @@ bool Room::Leave(ObjectPtr object)
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_DESPAWN_RES, despawnPkt);
 
-		Broadcast(sendBuffer, object_id);
+		Broadcast(sendBuffer, 0);
 
-		if (auto player = dynamic_pointer_cast<Player>(object))
-			if (auto session = player->session.lock())
-				session->Send(sendBuffer);
+		//if (auto player = dynamic_pointer_cast<Player>(object))
+		//	if (auto session = player->session.lock())
+		//		session->Send(sendBuffer);
 	}
 
 	return success;
@@ -250,6 +254,11 @@ bool Room::HandleLeavePlayer(PlayerPtr player)
 bool Room::SpawnMonster(MonsterPtr monster)
 {
 	return Join(monster);
+}
+
+bool Room::SpawnObject(ObjectPtr object)
+{
+	return Join(object);
 }
 
 void Room::HandleMove(message::C_Move pkt)
@@ -1139,6 +1148,64 @@ void Room::SendRampageEnhancedAttack(RampagePtr rampage)
 	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, pkt);
 
 	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt)
+{
+	uint64 player_id = pkt.player_id();
+	uint64 item_object_id = pkt.picked_object_id();
+	if (player->GetObjectId() == player_id)
+	{
+		if (_objects.find(item_object_id) != _objects.end() && _objects[item_object_id]->GetObjectType() == message::OBJECT_TYPE_ITEM)
+		{
+			ItemObjectPtr itemObject = static_pointer_cast<ItemObject>(_objects[item_object_id]);
+			itemObject->OnPickedUp(player);
+
+			// 1. 해당 플레이어의 인벤토리에 아이템 등록
+			// 2. 사라지게 한다.
+			InventoryPtr inventory = player->GetLoadedInventory();
+			ItemPtr item = ItemUtils::CreateItem(player, itemObject);
+			bool result = inventory->PutItem(item);
+			if (result)
+			{
+				// Success
+				DoAsync(&Room::Leave, _objects[item_object_id]);
+				game::item::S_Item_Acquisition pkt;
+				pkt.set_player_id(player_id);
+				pkt.mutable_item_info()->CopyFrom(*item->GetItemInfo());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, pkt);
+
+				if (auto session = player->session.lock())
+				{
+					session->Send(sendBuffer);
+				}
+			}
+			else
+			{
+				spdlog::trace("{} Players Inventory is fulled..", player->GetObjectId());
+			}
+		}
+	}
+}
+
+void Room::HandleItemConsumeableUsed(PlayerPtr player, game::item::C_Item_ConsumeableUsed pkt)
+{
+	uint64 player_id = pkt.player_id();
+	uint64 item_id = pkt.used_item_id();
+	// message::ItemTable itemTable = pkt.item_table();
+
+	if (player->GetObjectId() == player_id)
+	{
+		player->GetLoadedInventory()->UseItem(item_id);
+	}
+}
+
+void Room::BroadcastHealCreature(CreaturePtr creature, float health)
+{
 }
 
 void Room::HandleTick(uint32 Deltatime)

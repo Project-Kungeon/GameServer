@@ -68,6 +68,9 @@ ItemObjectPtr ObjectUtils::CreateItemObject(message::ItemType itemType, message:
 	// Generate ID
 	const unsigned int newId = s_idGenerator.fetch_add(1);
 
+	itemObject->objectInfo->set_object_id(newId);
+	itemObject->posInfo->set_object_id(newId);
+
 	return itemObject;
 }
 
@@ -76,6 +79,15 @@ message::ObjectInfo ObjectUtils::toObjectInfo(ObjectPtr objectPtr)
 	message::ObjectInfo objectInfo;
 	objectInfo.CopyFrom(*objectPtr->objectInfo);
 	return objectInfo;
+}
+
+message::ItemObjectInfo ObjectUtils::toItemObjectInfo(ItemObjectPtr itemObjectPtr)
+{
+	message::ItemObjectInfo itemObjectInfo;
+	itemObjectInfo.mutable_object_info()->CopyFrom(toObjectInfo(static_pointer_cast<Object>(itemObjectPtr)));
+	itemObjectInfo.set_item_type(itemObjectPtr->GetItemType());
+
+	return itemObjectInfo;
 }
 
 message::CreatureInfo ObjectUtils::toCreatureInfo(CreaturePtr creaturePtr)

@@ -26,6 +26,9 @@ int main()
     MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
     GRoom[0]->SpawnMonster(monster);
 
+    ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
+    GRoom[0]->SpawnObject(itemObject);
+
     //int count = 2;
     static_pointer_cast<GameRoom>(GRoom[0])->RoundStart();
     GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);

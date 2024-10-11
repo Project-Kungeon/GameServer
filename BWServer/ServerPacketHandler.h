@@ -1,12 +1,14 @@
 #pragma once
 #include "Message.pb.h"
 #include "Skill.pb.h"
+#include "Item.pb.h"
 #include "Packet.h"
 
 // 핸들러 모음
 #include "LobbyPacketHandler.h"
 #include "RoomPacketHandler.h"
 #include "BattlePacketHandler.h"
+#include "InteractivePacketHandler.h"
 
 using PacketHandlerFunc = std::function<bool(SessionPtr&, asio::mutable_buffer&, int&)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
@@ -122,6 +124,17 @@ public:
 		{
 			spdlog::debug("Handle C_Archor_LS");
 			return HandlePacket<skill::C_Archor_LS>(BattlePacketHandler::Handle_C_ArchorLS, session, buffer, offset);
+		};
+
+		GPacketHandler[message::HEADER::ITEM_PICKED_UP_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::debug("Handle C_ItemPickedUp");
+			return HandlePacket<game::item::C_Item_PickedUp>(InteractivePacketHandler::Handle_C_Item_PickedUp, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::ITEM_CONSUMEABLE_USED_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::debug("Handle C_Item_ConsumeableUsed");
+			return HandlePacket<game::item::C_Item_ConsumeableUsed>(InteractivePacketHandler::Handle_C_Item_ConsumeableUsed, session, buffer, offset);
 		};
 	}
 

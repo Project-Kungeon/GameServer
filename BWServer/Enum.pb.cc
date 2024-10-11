@@ -42,13 +42,13 @@ const char descriptor_table_protodef_Enum_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "_NONE\020\000\022\023\n\017MOVE_STATE_IDLE\020\001\022\022\n\016MOVE_STA"
   "TE_RUN\020\002\022\023\n\017MOVE_STATE_JUMP\020\003\022\023\n\017MOVE_ST"
   "ATE_DASH\020\004*>\n\010ItemType\022\r\n\tNONE_Item\020\000\022\n\n"
-  "\006WEAPON\020\001\022\016\n\nConsumable\020\002\022\007\n\003Etc\020\003*&\n\tIt"
-  "emTable\022\031\n\025GENERAL_HEALTH_POSION\020\000b\006prot"
-  "o3"
+  "\006WEAPON\020\001\022\016\n\nConsumable\020\002\022\007\n\003Etc\020\003*5\n\tIt"
+  "emTable\022\r\n\tNONE_ITEM\020\000\022\031\n\025GENERAL_HEALTH"
+  "_POSION\020\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Enum_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Enum_2eproto = {
-    false, false, 602, descriptor_table_protodef_Enum_2eproto,
+    false, false, 617, descriptor_table_protodef_Enum_2eproto,
     "Enum.proto",
     &descriptor_table_Enum_2eproto_once, nullptr, 0, 0,
     schemas, file_default_instances, TableStruct_Enum_2eproto::offsets,
@@ -162,6 +162,7 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ItemTable_descriptor() {
 bool ItemTable_IsValid(int value) {
   switch (value) {
     case 0:
+    case 1:
       return true;
     default:
       return false;

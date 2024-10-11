@@ -207,12 +207,13 @@ inline bool ItemType_Parse(
     ItemType_descriptor(), name, value);
 }
 enum ItemTable : int {
-  GENERAL_HEALTH_POSION = 0,
+  NONE_ITEM = 0,
+  GENERAL_HEALTH_POSION = 1,
   ItemTable_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   ItemTable_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool ItemTable_IsValid(int value);
-constexpr ItemTable ItemTable_MIN = GENERAL_HEALTH_POSION;
+constexpr ItemTable ItemTable_MIN = NONE_ITEM;
 constexpr ItemTable ItemTable_MAX = GENERAL_HEALTH_POSION;
 constexpr int ItemTable_ARRAYSIZE = ItemTable_MAX + 1;
 
