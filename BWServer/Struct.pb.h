@@ -1657,35 +1657,10 @@ class ItemInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDescriptionFieldNumber = 4,
     kItemIdFieldNumber = 1,
     kItemTypeFieldNumber = 2,
     kItemTableFieldNumber = 3,
   };
-  // repeated string description = 4;
-  int description_size() const;
-  private:
-  int _internal_description_size() const;
-  public:
-  void clear_description();
-  const std::string& description(int index) const;
-  std::string* mutable_description(int index);
-  void set_description(int index, const std::string& value);
-  void set_description(int index, std::string&& value);
-  void set_description(int index, const char* value);
-  void set_description(int index, const char* value, size_t size);
-  std::string* add_description();
-  void add_description(const std::string& value);
-  void add_description(std::string&& value);
-  void add_description(const char* value);
-  void add_description(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& description() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_description();
-  private:
-  const std::string& _internal_description(int index) const;
-  std::string* _internal_add_description();
-  public:
-
   // uint64 item_id = 1;
   void clear_item_id();
   uint64_t item_id() const;
@@ -1720,7 +1695,6 @@ class ItemInfo final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> description_;
   uint64_t item_id_;
   int item_type_;
   int item_table_;
@@ -2918,81 +2892,6 @@ inline void ItemInfo::_internal_set_item_table(::message::ItemTable value) {
 inline void ItemInfo::set_item_table(::message::ItemTable value) {
   _internal_set_item_table(value);
   // @@protoc_insertion_point(field_set:message.ItemInfo.item_table)
-}
-
-// repeated string description = 4;
-inline int ItemInfo::_internal_description_size() const {
-  return description_.size();
-}
-inline int ItemInfo::description_size() const {
-  return _internal_description_size();
-}
-inline void ItemInfo::clear_description() {
-  description_.Clear();
-}
-inline std::string* ItemInfo::add_description() {
-  std::string* _s = _internal_add_description();
-  // @@protoc_insertion_point(field_add_mutable:message.ItemInfo.description)
-  return _s;
-}
-inline const std::string& ItemInfo::_internal_description(int index) const {
-  return description_.Get(index);
-}
-inline const std::string& ItemInfo::description(int index) const {
-  // @@protoc_insertion_point(field_get:message.ItemInfo.description)
-  return _internal_description(index);
-}
-inline std::string* ItemInfo::mutable_description(int index) {
-  // @@protoc_insertion_point(field_mutable:message.ItemInfo.description)
-  return description_.Mutable(index);
-}
-inline void ItemInfo::set_description(int index, const std::string& value) {
-  description_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:message.ItemInfo.description)
-}
-inline void ItemInfo::set_description(int index, std::string&& value) {
-  description_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:message.ItemInfo.description)
-}
-inline void ItemInfo::set_description(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  description_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:message.ItemInfo.description)
-}
-inline void ItemInfo::set_description(int index, const char* value, size_t size) {
-  description_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:message.ItemInfo.description)
-}
-inline std::string* ItemInfo::_internal_add_description() {
-  return description_.Add();
-}
-inline void ItemInfo::add_description(const std::string& value) {
-  description_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:message.ItemInfo.description)
-}
-inline void ItemInfo::add_description(std::string&& value) {
-  description_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:message.ItemInfo.description)
-}
-inline void ItemInfo::add_description(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  description_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:message.ItemInfo.description)
-}
-inline void ItemInfo::add_description(const char* value, size_t size) {
-  description_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:message.ItemInfo.description)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-ItemInfo::description() const {
-  // @@protoc_insertion_point(field_list:message.ItemInfo.description)
-  return description_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-ItemInfo::mutable_description() {
-  // @@protoc_insertion_point(field_mutable_list:message.ItemInfo.description)
-  return &description_;
 }
 
 #ifdef __GNUC__

@@ -32,6 +32,7 @@ enum HEADER
 	PLAYER_ATTACK_RES = 16;
 
 	CREATURE_DEATH_RES = 17;
+	CREATURE_HEAL_RES = 18;
 
 	WARRIOR_ATTACK_REQ = 1101;
 	WARRIOR_ATTACK_RES = 1102;
@@ -101,6 +102,11 @@ enum HEADER
 	ROUND_END_RES = 20003;
 	ROUND_GAMEOVER_COUNTDOWN_RES = 20004;
 
+	ITEM_PICKED_UP_REQ = 30001;
+	ITEM_PICKED_UP_RES = 30002;
+	ITEM_CONSUMEABLE_USED_REQ = 30003;
+	ITEM_CONSUMEABLE_USED_RES = 30004;
+
 }
 
 // 클라이언트 -> 서버 로그인
@@ -148,6 +154,7 @@ message S_Spawn
 	repeated CreatureInfo creatures = 2;
 	repeated PlayerInfo players = 3;
 	repeated MonsterInfo monsters = 4;
+	repeated ItemObjectInfo itemObjects = 5;
 }
 
 // 다른 플레이어 퇴장 패킷
@@ -180,6 +187,12 @@ message S_Attack
 	float damage = 3;
 }
 
+message S_Heal
+{
+	repeated uint64 object_id = 1;
+	float heal = 2;
+}
+
 message C_Death
 {
 	uint64 object_id = 1;
@@ -190,16 +203,5 @@ message S_Death
 	uint64 object_id = 1;
 }
 
-message C_PickUp
-{
-	uint64 object_id = 1;
-	uint64 picked_object_id = 2;
-	ItemInfo item_info = 3;
-}
 
-message S_PickUp
-{
-	uint64 object_id = 1;
-	uint64 picked_object_id = 2;
-}
 

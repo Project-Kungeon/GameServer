@@ -1,9 +1,16 @@
 #pragma once
 #include "Item.h"
+
+struct Inven_Item
+{
+	ItemPtr _item;
+	int count;
+};
+
 class Inventory
 {
 public:
-	Inventory();
+	Inventory(PlayerPtr player);
 
 public:
 	bool PutItem(ItemPtr item);
@@ -12,6 +19,7 @@ public:
 	bool MoveItem(uint64 item_id, uint64 pos);
 
 private:
-	vector<ItemPtr> _items;
+	vector<Inven_Item> _items;
+	std::weak_ptr<Player> _player;
 };
 

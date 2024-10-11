@@ -113,6 +113,9 @@
     <ClCompile Include="ItemUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="InteractivePacketHandler.cpp">
+      <Filter>Packets\handler\Interactive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -241,6 +244,9 @@
     <ClInclude Include="ItemUtils.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="InteractivePacketHandler.h">
+      <Filter>Packets\handler\Interactive</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -311,6 +317,9 @@
     </Filter>
     <Filter Include="Main\Game\Object\Creature\Player\Inventory">
       <UniqueIdentifier>{57e3763b-fa35-41c8-a8c7-a211c743265f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packets\handler\Interactive">
+      <UniqueIdentifier>{d192c879-5162-40b8-9882-c617e75c4ba7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

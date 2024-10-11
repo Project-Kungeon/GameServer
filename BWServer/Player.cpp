@@ -11,7 +11,7 @@ Player::Player()
 	skillCoolTime(new message::SkillCooltime())
 {
 	
-	_inventory.store(std::make_shared<Inventory>());
+	_inventory.store(std::make_shared<Inventory>(static_pointer_cast<Player>(shared_from_this())));
 }
 
 Player::Player(
@@ -31,7 +31,7 @@ Player::Player(
 	LS_COOLTIME(LS_COOLTIME),
 	skillCoolTime(new message::SkillCooltime())
 {
-	_inventory.store(std::make_shared<Inventory>());
+	_inventory.store(std::make_shared<Inventory>(static_pointer_cast<Player>(shared_from_this())));
 }
 
 Player::~Player()

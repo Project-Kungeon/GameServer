@@ -70,5 +70,4 @@ message ItemInfo {
 	uint64 item_id = 1;
 	ItemType item_type = 2;
 	ItemTable item_table = 3;
-	repeated string description = 4;
 }

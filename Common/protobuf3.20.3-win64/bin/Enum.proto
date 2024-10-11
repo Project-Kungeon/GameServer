@@ -50,5 +50,6 @@ enum ItemType
 
 enum ItemTable
 {
-	GENERAL_HEALTH_POSION = 0;
+	NONE_ITEM = 0;
+	GENERAL_HEALTH_POSION = 1;
 }

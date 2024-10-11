@@ -2,6 +2,7 @@
 #include "Member.h"
 #include "Message.pb.h"
 #include "Skill.pb.h"
+#include "Item.pb.h"
 #include "MonsterPattern.pb.h"
 #include "JobQueue.h"
 using namespace std;
@@ -23,6 +24,7 @@ public:
 	virtual bool HandleEnterPlayer(PlayerPtr player);
 	virtual bool HandleLeavePlayer(PlayerPtr player);
 	virtual bool SpawnMonster(MonsterPtr monster);
+	virtual bool SpawnObject(ObjectPtr monster);
 	virtual void HandleMove(message::C_Move pkt);
 	virtual void HandleAttack(message::C_Attack pkt);
 	virtual void HandleDeath(CreaturePtr creature);
@@ -56,6 +58,11 @@ public:
 	void SendRampageEarthQuake(RampagePtr rampage);
 	void SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target);
 	void SendRampageEnhancedAttack(RampagePtr rampage);
+
+	void HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt);
+	void HandleItemConsumeableUsed(PlayerPtr player, game::item::C_Item_ConsumeableUsed pkt);
+
+	void BroadcastHealCreature(CreaturePtr creature, float health);
 
 	// Tick
 public:

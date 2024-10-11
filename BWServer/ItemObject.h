@@ -9,7 +9,7 @@ public:
     ItemObject(message::ItemType itemType, message::ItemTable itemTable);
 
 public:
-    virtual void OnPickedUp(PlayerPtr player);
+    virtual bool OnPickedUp(PlayerPtr player);
     virtual void Disapear();
 
 

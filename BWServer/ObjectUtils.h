@@ -7,6 +7,7 @@ public:
 	static MonsterPtr CreateMonster(message::MonsterType type);
 	static ItemObjectPtr CreateItemObject(message::ItemType itemType, message::ItemTable itemTable);
 	static message::ObjectInfo toObjectInfo(ObjectPtr objectPtr);
+	static message::ItemObjectInfo toItemObjectInfo(ItemObjectPtr itemObjectPtr);
 	static message::CreatureInfo toCreatureInfo(CreaturePtr creaturePtr);
 	static message::MonsterInfo toMonsterInfo(MonsterPtr monsterPtr);
 	static message::PlayerInfo toPlayerInfo(PlayerPtr playerPtr);

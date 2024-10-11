@@ -147,8 +147,7 @@ struct PlayerInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PlayerInfoDefaultTypeInternal _PlayerInfo_default_instance_;
 PROTOBUF_CONSTEXPR ItemInfo::ItemInfo(
     ::_pbi::ConstantInitialized)
-  : description_()
-  , item_id_(uint64_t{0u})
+  : item_id_(uint64_t{0u})
   , item_type_(0)
 
   , item_table_(0)
@@ -255,7 +254,6 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::message::ItemInfo, item_id_),
   PROTOBUF_FIELD_OFFSET(::message::ItemInfo, item_type_),
   PROTOBUF_FIELD_OFFSET(::message::ItemInfo, item_table_),
-  PROTOBUF_FIELD_OFFSET(::message::ItemInfo, description_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::message::Timestamp)},
@@ -306,17 +304,17 @@ const char descriptor_table_protodef_Struct_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "creature_info\030\001 \001(\0132\025.message.CreatureIn"
   "fo\022(\n\013player_type\030\002 \001(\0162\023.message.Player"
   "Type\022.\n\016skill_cooltime\030\003 \001(\0132\026.message.S"
-  "killCooltime\"~\n\010ItemInfo\022\017\n\007item_id\030\001 \001("
+  "killCooltime\"i\n\010ItemInfo\022\017\n\007item_id\030\001 \001("
   "\004\022$\n\titem_type\030\002 \001(\0162\021.message.ItemType\022"
-  "&\n\nitem_table\030\003 \001(\0162\022.message.ItemTable\022"
-  "\023\n\013description\030\004 \003(\tb\006proto3"
+  "&\n\nitem_table\030\003 \001(\0162\022.message.ItemTableb"
+  "\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Struct_2eproto_deps[1] = {
   &::descriptor_table_Enum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Struct_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Struct_2eproto = {
-    false, false, 1108, descriptor_table_protodef_Struct_2eproto,
+    false, false, 1087, descriptor_table_protodef_Struct_2eproto,
     "Struct.proto",
     &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 9,
     schemas, file_default_instances, TableStruct_Struct_2eproto::offsets,
@@ -2527,14 +2525,12 @@ class ItemInfo::_Internal {
 
 ItemInfo::ItemInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  description_(arena) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:message.ItemInfo)
 }
 ItemInfo::ItemInfo(const ItemInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      description_(from.description_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&item_id_, &from.item_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&item_table_) -
@@ -2572,7 +2568,6 @@ void ItemInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  description_.Clear();
   ::memset(&item_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&item_table_) -
       reinterpret_cast<char*>(&item_id_)) + sizeof(item_table_));
@@ -2608,21 +2603,6 @@ const char* ItemInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_item_table(static_cast<::message::ItemTable>(val));
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated string description = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            auto str = _internal_add_description();
-            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "message.ItemInfo.description"));
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -2675,16 +2655,6 @@ uint8_t* ItemInfo::_InternalSerialize(
       3, this->_internal_item_table(), target);
   }
 
-  // repeated string description = 4;
-  for (int i = 0, n = this->_internal_description_size(); i < n; i++) {
-    const auto& s = this->_internal_description(i);
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "message.ItemInfo.description");
-    target = stream->WriteString(4, s, target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2700,14 +2670,6 @@ size_t ItemInfo::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
-
-  // repeated string description = 4;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(description_.size());
-  for (int i = 0, n = description_.size(); i < n; i++) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      description_.Get(i));
-  }
 
   // uint64 item_id = 1;
   if (this->_internal_item_id() != 0) {
@@ -2748,7 +2710,6 @@ void ItemInfo::MergeFrom(const ItemInfo& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  description_.MergeFrom(from.description_);
   if (from._internal_item_id() != 0) {
     _internal_set_item_id(from._internal_item_id());
   }
@@ -2775,7 +2736,6 @@ bool ItemInfo::IsInitialized() const {
 void ItemInfo::InternalSwap(ItemInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  description_.InternalSwap(&other->description_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ItemInfo, item_table_)
       + sizeof(ItemInfo::item_table_)
