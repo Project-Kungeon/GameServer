@@ -1170,19 +1170,36 @@ void Room::HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt)
 			{
 				// Success
 				DoAsync(&Room::Leave, _objects[item_object_id]);
-				game::item::S_Item_Acquisition pkt;
-				pkt.set_player_id(player_id);
-				pkt.mutable_item_info()->CopyFrom(*item->GetItemInfo());
-
-				const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, pkt);
-
-				if (auto session = player->session.lock())
 				{
-					session->Send(sendBuffer);
+					game::item::S_Item_Acquisition pkt;
+					pkt.set_player_id(player_id);
+					pkt.mutable_item_info()->CopyFrom(*item->GetItemInfo());
+
+					const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_ACQUISITION_RES, pkt);
+
+					if (auto session = player->session.lock())
+					{
+						session->Send(sendBuffer);
+					}
 				}
+
+				{
+					// 모든 플레이어에게 주워졌다는 사실을 전송..
+					game::item::S_Item_PickedUp pkt;
+					pkt.set_picked_object_id(item_object_id);
+					pkt.set_player_id(player_id);
+
+					const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+					char* rawBuffer = new char[requiredSize];
+					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+					PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_PICKED_UP_RES, pkt);
+
+					Broadcast(sendBuffer, 0);
+				}
+				
 			}
 			else
 			{

@@ -6,6 +6,7 @@
 #include "ServerPacketHandler.h"
 #include "TickGenerator.h"
 #include "Monster.h"
+#include "Warrior.h"
 
 int main()
 {
@@ -28,7 +29,6 @@ int main()
 
     ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
     GRoom[0]->SpawnObject(itemObject);
-
     //int count = 2;
     static_pointer_cast<GameRoom>(GRoom[0])->RoundStart();
     GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
