@@ -14,6 +14,7 @@ public:
 		const uint32 E_COOLTIME,
 		const uint32 R_COOLTIME,
 		const uint32 LS_COOLTIME);
+	void InitInventory();
 	virtual ~Player();
 
 public:

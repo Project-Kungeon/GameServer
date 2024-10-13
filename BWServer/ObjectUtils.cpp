@@ -28,6 +28,7 @@ PlayerPtr ObjectUtils::CreatePlayer(GameSessionPtr session, message::PlayerType 
 		player = std::make_shared<Player>();
 	}
 
+	player->InitInventory();
 	// Generate ID
 	const unsigned int newId = s_idGenerator.fetch_add(1);
 

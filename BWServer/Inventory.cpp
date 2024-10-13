@@ -10,19 +10,18 @@ Inventory::Inventory(PlayerPtr player)
 bool Inventory::PutItem(ItemPtr item)
 {
 	int empty_index = -1;
-	for (int i = 0; i < _items.max_size(); i++)
+	for (int i = 0; i < 40; i++)
 	{
 		if (empty_index == -1 && _items[i]._item == nullptr)
 		{
 			// 해당 칸 비어 있을 경우
 			empty_index = i;
-
-			if (_items[i]._item->GetItemInfo()->item_table() == item->GetItemInfo()->item_table())
-			{
-				// 만약 아이템 테이블이 같다면 개수 증가
-				_items[i].count++;
-				return true;
-			}
+		}
+		else if (_items[i]._item != nullptr && _items[i]._item->GetItemInfo()->item_table() == item->GetItemInfo()->item_table())
+		{
+			// 만약 아이템 테이블이 같다면 개수 증가
+			_items[i].count++;
+			return true;
 		}
 	}
 
@@ -42,7 +41,7 @@ bool Inventory::DeleteItem(uint64 item_id)
 
 bool Inventory::UseItem(uint64 item_id)
 {
-	for (int i = 0; i < _items.max_size(); i++)
+	for (int i = 0; i < 40; i++)
 	{
 		if (_items[i]._item != nullptr && _items[i]._item->GetItemId() == item_id)
 		{
