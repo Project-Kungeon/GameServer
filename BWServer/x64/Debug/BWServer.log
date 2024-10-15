@@ -72,7 +72,7 @@ C:\Users\Kang\Desktop\workspace\BWServer\lib\Include\spdlog-1.13.0\include\spdlo
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.h(32,31): warning C4244: 'return': 'uint64_t'에서 'const uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Packet.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(154,1): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(174,1): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(31): message : 컴파일되는 함수 템플릿 인스턴스화 'bool ServerPacketHandler::HandlePacket<message::C_Login,bool(__cdecl *)(SessionPtr &,message::C_Login &)>(ProcessFunc,SessionPtr &,boost::asio::mutable_buffer &,int &)'에 대한 참조를 확인하세요.
           with
           [
@@ -82,11 +82,11 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(31): mes
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Archor.cpp(41,41): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Archor.cpp(50,39): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
   Assassin.cpp
+  BattlePacketHandler.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   BWServer.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BWServer.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\TickGenerator.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  BattlePacketHandler.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   CorePch.cpp
   Creature.cpp
   GameRoom.cpp
@@ -107,13 +107,13 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ItemObject.cpp(1,1): warning C
   MathUtils.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\MathUtils.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   Monster.cpp
-  Object.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
   ObjectUtils.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Selector.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Object.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   Player.cpp
   Rampage.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
@@ -143,8 +143,9 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RampageTree.cpp(63,15): warnin
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Selector.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(295,16): warning C4244: '초기화 중': 'float'에서 'uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(949,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(296,16): warning C4244: '초기화 중': 'float'에서 'uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(543,52): warning C4244: '인수': 'float'에서 'int32_t'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(947,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   RoomPacketHandler.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RoomPacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   ServerPacketHandler.cpp
@@ -152,6 +153,8 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RoomPacketHandler.cpp(1,1): wa
   TickGenerator.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\TickGenerator.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   Warrior.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Warrior.cpp(61,9): warning C4244: 'return': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Warrior.cpp(66,25): warning C4244: 'return': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다...
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RampageTree.cpp(149): warning C4715: '`RampageTree::MakeCanAttackSelector'::`2'::<lambda_1>::operator()': 모든 제어 경로에서 값을 반환하지는 않습니다.
   Enum.pb.cc

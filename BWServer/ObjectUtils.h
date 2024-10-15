@@ -33,8 +33,8 @@ public:
 
 	// MaxHp
 public:
-	static const uint32 WARRIOR_MAX_HP = 100;
+	static const uint32 WARRIOR_MAX_HP = 120;
 	static const uint32 ASSASSIN_MAX_HP = 100;
-	static const uint32 ARCHOR_MAX_HP = 80;
+	static const uint32 ARCHOR_MAX_HP =100;
 };
 

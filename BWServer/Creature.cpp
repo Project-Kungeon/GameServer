@@ -36,9 +36,15 @@ void Creature::Damaged(CreaturePtr attacker, float damage)
 	}
 }
 
+void Creature::Heal(float healValue)
+{
+	GetWriteLock();
+	this->hp = this->hp + healValue < maxHp ? this->hp + healValue : maxHp;
+}
+
 bool Creature::IsDead()
 {
-
+	GetReadLock();
 	if (!dead && hp <= 0)
 	{
 		dead = true;

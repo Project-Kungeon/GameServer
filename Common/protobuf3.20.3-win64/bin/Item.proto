@@ -34,3 +34,14 @@ message S_Item_ConsumeableUsed
 	uint64 player_id = 1;
 	uint64 used_item_id = 2;
 }
+
+message C_Item_OpenInventory
+{
+	uint64 player_id = 1;
+}
+
+message S_Item_OpenInventory
+{
+	uint64 player_id = 1;
+	repeated .message.InventorySlot slots = 2;
+}

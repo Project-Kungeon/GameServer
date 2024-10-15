@@ -71,3 +71,9 @@ message ItemInfo {
 	ItemType item_type = 2;
 	ItemTable item_table = 3;
 }
+
+message InventorySlot
+{
+	ItemInfo itemInfo = 1;
+	int32 cnt = 2;
+}

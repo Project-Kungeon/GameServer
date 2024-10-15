@@ -30,8 +30,12 @@ public:
 	virtual void HandleDeath(CreaturePtr creature);
 
 	void HandleWarriorAttack(skill::C_Warrior_Attack pkt);
+	void HandleWarriorQ(skill::C_Warrior_Q pkt);
+	void HandleWarriorQ_Hit(skill::C_Warrior_Q_Hit pkt);
+
 	void HandleWarriorR(skill::C_Warrior_R pkt);
 	void HandleWarriorE(skill::C_Warrior_E pkt);
+	void HandleWarriorE_Success(skill::C_Warrior_E_Success pkt);
 	void HandleWarriorLS(skill::C_Warrior_LS pkt);
 
 
@@ -61,6 +65,7 @@ public:
 
 	void HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt);
 	void HandleItemConsumeableUsed(PlayerPtr player, game::item::C_Item_ConsumeableUsed pkt);
+	void HandleItemOpenOpenInventory(PlayerPtr player, game::item::C_Item_OpenInventory pkt);
 
 	void BroadcastHealCreature(CreaturePtr creature, float health);
 

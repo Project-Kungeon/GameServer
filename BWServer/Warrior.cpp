@@ -50,3 +50,18 @@ void Warrior::UseSkillLS()
 {
 	Player::UseSkillLS();
 }
+
+void Warrior::IncrParryCount()
+{
+	parry_count = parry_count + 1 < MAX_PARRY_COUNT ? parry_count + 1 : MAX_PARRY_COUNT;
+}
+
+float Warrior::GetParryCount()
+{
+	return parry_count;
+}
+
+float Warrior::GetQ_DamageByParryCount()
+{
+	return parry_count * 6 + 10;
+}

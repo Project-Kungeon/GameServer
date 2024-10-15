@@ -4,9 +4,13 @@ class BattlePacketHandler
 public:
 	static bool Handle_C_Attack(SessionPtr& session, message::C_Attack& pkt);
 	static bool Handle_C_WarriorAttack(SessionPtr& session, skill::C_Warrior_Attack& pkt);
+	
+	static bool Handle_C_WarriorQ(SessionPtr& session, skill::C_Warrior_Q& pkt);
+	static bool Handle_C_WarriorQ_Hit(SessionPtr& session, skill::C_Warrior_Q_Hit& pkt);
 
 	static bool Handle_C_WarriorR(SessionPtr& session, skill::C_Warrior_R& pkt);
 	static bool Handle_C_WarriorE(SessionPtr& session, skill::C_Warrior_E& pkt);
+	static bool Handle_C_WarriorE_Success(SessionPtr& session, skill::C_Warrior_E_Success& pkt);
 	static bool Handle_C_WarriorLS(SessionPtr& session, skill::C_Warrior_LS& pkt);
 	
 

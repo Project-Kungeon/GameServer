@@ -49,6 +49,9 @@ namespace message {
 class CreatureInfo;
 struct CreatureInfoDefaultTypeInternal;
 extern CreatureInfoDefaultTypeInternal _CreatureInfo_default_instance_;
+class InventorySlot;
+struct InventorySlotDefaultTypeInternal;
+extern InventorySlotDefaultTypeInternal _InventorySlot_default_instance_;
 class ItemInfo;
 struct ItemInfoDefaultTypeInternal;
 extern ItemInfoDefaultTypeInternal _ItemInfo_default_instance_;
@@ -76,6 +79,7 @@ extern TimestampDefaultTypeInternal _Timestamp_default_instance_;
 }  // namespace message
 PROTOBUF_NAMESPACE_OPEN
 template<> ::message::CreatureInfo* Arena::CreateMaybeMessage<::message::CreatureInfo>(Arena*);
+template<> ::message::InventorySlot* Arena::CreateMaybeMessage<::message::InventorySlot>(Arena*);
 template<> ::message::ItemInfo* Arena::CreateMaybeMessage<::message::ItemInfo>(Arena*);
 template<> ::message::ItemObjectInfo* Arena::CreateMaybeMessage<::message::ItemObjectInfo>(Arena*);
 template<> ::message::MonsterInfo* Arena::CreateMaybeMessage<::message::MonsterInfo>(Arena*);
@@ -1701,6 +1705,169 @@ class ItemInfo final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
 };
+// -------------------------------------------------------------------
+
+class InventorySlot final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.InventorySlot) */ {
+ public:
+  inline InventorySlot() : InventorySlot(nullptr) {}
+  ~InventorySlot() override;
+  explicit PROTOBUF_CONSTEXPR InventorySlot(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  InventorySlot(const InventorySlot& from);
+  InventorySlot(InventorySlot&& from) noexcept
+    : InventorySlot() {
+    *this = ::std::move(from);
+  }
+
+  inline InventorySlot& operator=(const InventorySlot& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline InventorySlot& operator=(InventorySlot&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const InventorySlot& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const InventorySlot* internal_default_instance() {
+    return reinterpret_cast<const InventorySlot*>(
+               &_InventorySlot_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(InventorySlot& a, InventorySlot& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(InventorySlot* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(InventorySlot* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  InventorySlot* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<InventorySlot>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const InventorySlot& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const InventorySlot& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(InventorySlot* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "message.InventorySlot";
+  }
+  protected:
+  explicit InventorySlot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemInfoFieldNumber = 1,
+    kCntFieldNumber = 2,
+  };
+  // .message.ItemInfo itemInfo = 1;
+  bool has_iteminfo() const;
+  private:
+  bool _internal_has_iteminfo() const;
+  public:
+  void clear_iteminfo();
+  const ::message::ItemInfo& iteminfo() const;
+  PROTOBUF_NODISCARD ::message::ItemInfo* release_iteminfo();
+  ::message::ItemInfo* mutable_iteminfo();
+  void set_allocated_iteminfo(::message::ItemInfo* iteminfo);
+  private:
+  const ::message::ItemInfo& _internal_iteminfo() const;
+  ::message::ItemInfo* _internal_mutable_iteminfo();
+  public:
+  void unsafe_arena_set_allocated_iteminfo(
+      ::message::ItemInfo* iteminfo);
+  ::message::ItemInfo* unsafe_arena_release_iteminfo();
+
+  // int32 cnt = 2;
+  void clear_cnt();
+  int32_t cnt() const;
+  void set_cnt(int32_t value);
+  private:
+  int32_t _internal_cnt() const;
+  void _internal_set_cnt(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:message.InventorySlot)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::message::ItemInfo* iteminfo_;
+  int32_t cnt_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Struct_2eproto;
+};
 // ===================================================================
 
 
@@ -2894,9 +3061,125 @@ inline void ItemInfo::set_item_table(::message::ItemTable value) {
   // @@protoc_insertion_point(field_set:message.ItemInfo.item_table)
 }
 
+// -------------------------------------------------------------------
+
+// InventorySlot
+
+// .message.ItemInfo itemInfo = 1;
+inline bool InventorySlot::_internal_has_iteminfo() const {
+  return this != internal_default_instance() && iteminfo_ != nullptr;
+}
+inline bool InventorySlot::has_iteminfo() const {
+  return _internal_has_iteminfo();
+}
+inline void InventorySlot::clear_iteminfo() {
+  if (GetArenaForAllocation() == nullptr && iteminfo_ != nullptr) {
+    delete iteminfo_;
+  }
+  iteminfo_ = nullptr;
+}
+inline const ::message::ItemInfo& InventorySlot::_internal_iteminfo() const {
+  const ::message::ItemInfo* p = iteminfo_;
+  return p != nullptr ? *p : reinterpret_cast<const ::message::ItemInfo&>(
+      ::message::_ItemInfo_default_instance_);
+}
+inline const ::message::ItemInfo& InventorySlot::iteminfo() const {
+  // @@protoc_insertion_point(field_get:message.InventorySlot.itemInfo)
+  return _internal_iteminfo();
+}
+inline void InventorySlot::unsafe_arena_set_allocated_iteminfo(
+    ::message::ItemInfo* iteminfo) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(iteminfo_);
+  }
+  iteminfo_ = iteminfo;
+  if (iteminfo) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:message.InventorySlot.itemInfo)
+}
+inline ::message::ItemInfo* InventorySlot::release_iteminfo() {
+  
+  ::message::ItemInfo* temp = iteminfo_;
+  iteminfo_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::message::ItemInfo* InventorySlot::unsafe_arena_release_iteminfo() {
+  // @@protoc_insertion_point(field_release:message.InventorySlot.itemInfo)
+  
+  ::message::ItemInfo* temp = iteminfo_;
+  iteminfo_ = nullptr;
+  return temp;
+}
+inline ::message::ItemInfo* InventorySlot::_internal_mutable_iteminfo() {
+  
+  if (iteminfo_ == nullptr) {
+    auto* p = CreateMaybeMessage<::message::ItemInfo>(GetArenaForAllocation());
+    iteminfo_ = p;
+  }
+  return iteminfo_;
+}
+inline ::message::ItemInfo* InventorySlot::mutable_iteminfo() {
+  ::message::ItemInfo* _msg = _internal_mutable_iteminfo();
+  // @@protoc_insertion_point(field_mutable:message.InventorySlot.itemInfo)
+  return _msg;
+}
+inline void InventorySlot::set_allocated_iteminfo(::message::ItemInfo* iteminfo) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete iteminfo_;
+  }
+  if (iteminfo) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(iteminfo);
+    if (message_arena != submessage_arena) {
+      iteminfo = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, iteminfo, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  iteminfo_ = iteminfo;
+  // @@protoc_insertion_point(field_set_allocated:message.InventorySlot.itemInfo)
+}
+
+// int32 cnt = 2;
+inline void InventorySlot::clear_cnt() {
+  cnt_ = 0;
+}
+inline int32_t InventorySlot::_internal_cnt() const {
+  return cnt_;
+}
+inline int32_t InventorySlot::cnt() const {
+  // @@protoc_insertion_point(field_get:message.InventorySlot.cnt)
+  return _internal_cnt();
+}
+inline void InventorySlot::_internal_set_cnt(int32_t value) {
+  
+  cnt_ = value;
+}
+inline void InventorySlot::set_cnt(int32_t value) {
+  _internal_set_cnt(value);
+  // @@protoc_insertion_point(field_set:message.InventorySlot.cnt)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
