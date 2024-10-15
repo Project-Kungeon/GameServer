@@ -161,8 +161,21 @@ struct ItemInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ItemInfoDefaultTypeInternal _ItemInfo_default_instance_;
+PROTOBUF_CONSTEXPR InventorySlot::InventorySlot(
+    ::_pbi::ConstantInitialized)
+  : iteminfo_(nullptr)
+  , cnt_(0){}
+struct InventorySlotDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR InventorySlotDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~InventorySlotDefaultTypeInternal() {}
+  union {
+    InventorySlot _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 InventorySlotDefaultTypeInternal _InventorySlot_default_instance_;
 }  // namespace message
-static ::_pb::Metadata file_level_metadata_Struct_2eproto[9];
+static ::_pb::Metadata file_level_metadata_Struct_2eproto[10];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Struct_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Struct_2eproto = nullptr;
 
@@ -254,6 +267,14 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::message::ItemInfo, item_id_),
   PROTOBUF_FIELD_OFFSET(::message::ItemInfo, item_type_),
   PROTOBUF_FIELD_OFFSET(::message::ItemInfo, item_table_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::message::InventorySlot, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::message::InventorySlot, iteminfo_),
+  PROTOBUF_FIELD_OFFSET(::message::InventorySlot, cnt_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::message::Timestamp)},
@@ -265,6 +286,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 61, -1, -1, sizeof(::message::MonsterInfo)},
   { 69, -1, -1, sizeof(::message::PlayerInfo)},
   { 78, -1, -1, sizeof(::message::ItemInfo)},
+  { 87, -1, -1, sizeof(::message::InventorySlot)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -277,6 +299,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::message::_MonsterInfo_default_instance_._instance,
   &::message::_PlayerInfo_default_instance_._instance,
   &::message::_ItemInfo_default_instance_._instance,
+  &::message::_InventorySlot_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Struct_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -306,17 +329,18 @@ const char descriptor_table_protodef_Struct_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "Type\022.\n\016skill_cooltime\030\003 \001(\0132\026.message.S"
   "killCooltime\"i\n\010ItemInfo\022\017\n\007item_id\030\001 \001("
   "\004\022$\n\titem_type\030\002 \001(\0162\021.message.ItemType\022"
-  "&\n\nitem_table\030\003 \001(\0162\022.message.ItemTableb"
-  "\006proto3"
+  "&\n\nitem_table\030\003 \001(\0162\022.message.ItemTable\""
+  "A\n\rInventorySlot\022#\n\010itemInfo\030\001 \001(\0132\021.mes"
+  "sage.ItemInfo\022\013\n\003cnt\030\002 \001(\005b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Struct_2eproto_deps[1] = {
   &::descriptor_table_Enum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Struct_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Struct_2eproto = {
-    false, false, 1087, descriptor_table_protodef_Struct_2eproto,
+    false, false, 1154, descriptor_table_protodef_Struct_2eproto,
     "Struct.proto",
-    &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 9,
+    &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 10,
     schemas, file_default_instances, TableStruct_Struct_2eproto::offsets,
     file_level_metadata_Struct_2eproto, file_level_enum_descriptors_Struct_2eproto,
     file_level_service_descriptors_Struct_2eproto,
@@ -2750,6 +2774,225 @@ void ItemInfo::InternalSwap(ItemInfo* other) {
       file_level_metadata_Struct_2eproto[8]);
 }
 
+// ===================================================================
+
+class InventorySlot::_Internal {
+ public:
+  static const ::message::ItemInfo& iteminfo(const InventorySlot* msg);
+};
+
+const ::message::ItemInfo&
+InventorySlot::_Internal::iteminfo(const InventorySlot* msg) {
+  return *msg->iteminfo_;
+}
+InventorySlot::InventorySlot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:message.InventorySlot)
+}
+InventorySlot::InventorySlot(const InventorySlot& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_iteminfo()) {
+    iteminfo_ = new ::message::ItemInfo(*from.iteminfo_);
+  } else {
+    iteminfo_ = nullptr;
+  }
+  cnt_ = from.cnt_;
+  // @@protoc_insertion_point(copy_constructor:message.InventorySlot)
+}
+
+inline void InventorySlot::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&iteminfo_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&cnt_) -
+    reinterpret_cast<char*>(&iteminfo_)) + sizeof(cnt_));
+}
+
+InventorySlot::~InventorySlot() {
+  // @@protoc_insertion_point(destructor:message.InventorySlot)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void InventorySlot::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete iteminfo_;
+}
+
+void InventorySlot::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void InventorySlot::Clear() {
+// @@protoc_insertion_point(message_clear_start:message.InventorySlot)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && iteminfo_ != nullptr) {
+    delete iteminfo_;
+  }
+  iteminfo_ = nullptr;
+  cnt_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* InventorySlot::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .message.ItemInfo itemInfo = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_iteminfo(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 cnt = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          cnt_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* InventorySlot::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.InventorySlot)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .message.ItemInfo itemInfo = 1;
+  if (this->_internal_has_iteminfo()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::iteminfo(this),
+        _Internal::iteminfo(this).GetCachedSize(), target, stream);
+  }
+
+  // int32 cnt = 2;
+  if (this->_internal_cnt() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_cnt(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.InventorySlot)
+  return target;
+}
+
+size_t InventorySlot::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:message.InventorySlot)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .message.ItemInfo itemInfo = 1;
+  if (this->_internal_has_iteminfo()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *iteminfo_);
+  }
+
+  // int32 cnt = 2;
+  if (this->_internal_cnt() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_cnt());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData InventorySlot::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    InventorySlot::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*InventorySlot::GetClassData() const { return &_class_data_; }
+
+void InventorySlot::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<InventorySlot *>(to)->MergeFrom(
+      static_cast<const InventorySlot &>(from));
+}
+
+
+void InventorySlot::MergeFrom(const InventorySlot& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:message.InventorySlot)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_iteminfo()) {
+    _internal_mutable_iteminfo()->::message::ItemInfo::MergeFrom(from._internal_iteminfo());
+  }
+  if (from._internal_cnt() != 0) {
+    _internal_set_cnt(from._internal_cnt());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void InventorySlot::CopyFrom(const InventorySlot& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:message.InventorySlot)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool InventorySlot::IsInitialized() const {
+  return true;
+}
+
+void InventorySlot::InternalSwap(InventorySlot* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(InventorySlot, cnt_)
+      + sizeof(InventorySlot::cnt_)
+      - PROTOBUF_FIELD_OFFSET(InventorySlot, iteminfo_)>(
+          reinterpret_cast<char*>(&iteminfo_),
+          reinterpret_cast<char*>(&other->iteminfo_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata InventorySlot::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
+      file_level_metadata_Struct_2eproto[9]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace message
 PROTOBUF_NAMESPACE_OPEN
@@ -2788,6 +3031,10 @@ Arena::CreateMaybeMessage< ::message::PlayerInfo >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::message::ItemInfo*
 Arena::CreateMaybeMessage< ::message::ItemInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::message::ItemInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::message::InventorySlot*
+Arena::CreateMaybeMessage< ::message::InventorySlot >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::message::InventorySlot >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Room.h"
 #include "ObjectUtils.h"
+#include "Warrior.h"
 #include "Assassin.h"
 #include "Archor.h"
 #include "Rampage.h"
@@ -351,6 +352,90 @@ void Room::HandleWarriorAttack(skill::C_Warrior_Attack pkt)
 	Broadcast(sendBuffer, pkt.object_id());
 }
 
+void Room::HandleWarriorQ(skill::C_Warrior_Q pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->GetQ_Cooltime() > 0)
+		{
+
+		}
+	}
+	skill::S_Warrior_Q skillPkt;
+	skillPkt.set_object_id(pkt.object_id());
+
+	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_Q_RES, skillPkt);
+
+	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleWarriorQ_Hit(skill::C_Warrior_Q_Hit pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	const uint64 target_id = pkt.target_id();
+
+	if (_objects.find(object_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		// 스킬 쿨타임 체크
+		if (player->GetQ_Cooltime() > 0)
+		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->Q_COOLTIME);
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+				return;
+			}
+		}
+		else
+		{
+			player->UseSkillQ();
+		}
+	}
+
+
+
+	if (_objects.find(target_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+		if (player->GetPlayerType() == message::PLAYER_TYPE_WARRIOR)
+		{
+			WarriorPtr warrior = static_pointer_cast<Warrior>(player);
+			float damage = warrior->GetQ_DamageByParryCount();
+
+			{
+				skill::S_Warrior_Q_Hit skillPkt;
+				skillPkt.set_object_id(pkt.object_id());
+				skillPkt.set_target_id(pkt.target_id());
+				skillPkt.set_damage(damage);
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_Q_HIT_REQ, skillPkt);
+
+				Broadcast(sendBuffer, 0);
+			}
+		}
+	}
+}
+
 void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 {
 	const uint64 object_id = pkt.object_id();
@@ -382,8 +467,6 @@ void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 			player->UseSkillR();
 		}
 	}
-
-	
 
 	skill::S_Warrior_R skillPkt;
 	skillPkt.set_object_id(pkt.object_id());
@@ -436,6 +519,39 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_RES, skillPkt);
 
 	Broadcast(sendBuffer, 0);
+}
+
+void Room::HandleWarriorE_Success(skill::C_Warrior_E_Success pkt)
+{
+	const uint64 object_id = pkt.object_id();
+	const uint64 target_id = pkt.target_id();
+	
+
+	if (_objects.find(object_id) != _objects.end() && _objects.find(target_id) != _objects.end())
+	{
+		PlayerPtr player = static_pointer_cast<Player>(_objects[object_id]);
+
+		if (player->GetPlayerType() == message::PLAYER_TYPE_WARRIOR)
+		{
+			WarriorPtr warrior = static_pointer_cast<Warrior>(player);
+			warrior->IncrParryCount();
+
+			{
+				skill::S_Warrior_E_Success skillPkt;
+				skillPkt.set_object_id(object_id);
+				skillPkt.set_target_id(target_id);
+				skillPkt.set_parry_count(warrior->GetParryCount());
+
+				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_SUCCESS_RES, skillPkt);
+
+				Broadcast(sendBuffer, 0);
+			}
+		}
+	}
+	
 }
 
 void Room::HandleWarriorLS(skill::C_Warrior_LS pkt)
@@ -1218,11 +1334,51 @@ void Room::HandleItemConsumeableUsed(PlayerPtr player, game::item::C_Item_Consum
 	if (player->GetObjectId() == player_id)
 	{
 		player->GetLoadedInventory()->UseItem(item_id);
+
+		if (auto session = player->session.lock())
+		{
+			game::item::S_Item_ConsumeableUsed pkt1;
+			pkt1.set_player_id(player_id);
+			pkt1.set_used_item_id(item_id);
+			
+			const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+			char* rawBuffer = new char[requiredSize];
+			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+			PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_CONSUMEABLE_USED_RES, pkt);
+			session->Send(sendBuffer);
+		}
+	}
+}
+
+void Room::HandleItemOpenOpenInventory(PlayerPtr player, game::item::C_Item_OpenInventory pkt)
+{
+	if (auto inventory = player->GetLoadedInventory())
+	{
+		if (auto session = player->session.lock())
+		{
+			game::item::S_Item_OpenInventory pkt = inventory->GetInventoryList();
+
+			const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+			char* rawBuffer = new char[requiredSize];
+			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+			PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_OPENINVENTORY, pkt);
+			session->Send(sendBuffer);
+		}
 	}
 }
 
 void Room::BroadcastHealCreature(CreaturePtr creature, float health)
 {
+	message::S_Heal pkt;
+	pkt.add_object_id(creature->GetObjectId());
+	pkt.set_heal(health);
+
+	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
+	char* rawBuffer = new char[requiredSize];
+	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+	PacketUtil::Serialize(sendBuffer, message::HEADER::CREATURE_HEAL_RES, pkt);
+
+	Broadcast(sendBuffer, 0);
 }
 
 void Room::HandleTick(uint32 Deltatime)

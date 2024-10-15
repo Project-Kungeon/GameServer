@@ -29,11 +29,13 @@ void Item::OnUsed()
 {
 	if (auto player = _player.lock())
 	{
+		
 		switch (itemInfo->item_table())
 		{
 		case message::GENERAL_HEALTH_POSION:
 			if (auto room = player->room.load().lock())
 			{
+				player->Heal(25.0f);
 				room->DoAsync(&Room::BroadcastHealCreature, static_pointer_cast<Creature>(player), 25.0f);
 			}
 			break;

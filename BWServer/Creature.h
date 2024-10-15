@@ -10,7 +10,8 @@ public:
 
 public:
 	virtual void Damaged(CreaturePtr attacker, float damage);
-	bool IsDead();
+	virtual void Heal(float healValue);
+	virtual bool IsDead();
 
 	// Set&Get
 public:
