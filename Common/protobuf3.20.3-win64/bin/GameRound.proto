@@ -1,0 +1,37 @@
+syntax = "proto3";
+package game.round;
+
+message S_Round_StartInfo
+{
+    
+}
+
+message S_Round_TimeInfo
+{
+    enum TimeInfoType 
+    {
+        ROUND_WAIT = 0;
+        ROUND_START = 1;
+        TIME_UPDATE = 2;
+    }
+
+    TimeInfoType type = 1;
+    int32 remaining_seconds = 2;  // Remaining time in seconds
+}
+
+message S_Round_EndInfo
+{
+    enum EndReasonType
+    {
+        PLAYER_ALL_DEAD = 0;
+        ROUND_CLEAR = 1;
+        ROUND_TIME_OVER = 2;
+    }
+
+    EndReasonType type = 1;
+}
+
+message S_Round_GameOver_Countdown
+{
+    int32 count = 1;
+}

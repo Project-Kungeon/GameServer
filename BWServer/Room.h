@@ -2,6 +2,7 @@
 #include "Member.h"
 #include "Message.pb.h"
 #include "Skill.pb.h"
+#include "Item.pb.h"
 #include "MonsterPattern.pb.h"
 #include "JobQueue.h"
 using namespace std;
@@ -20,16 +21,21 @@ public:
 	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	RoomPtr GetRoomRef();
 
-	bool HandleEnterPlayer(PlayerPtr player);
-	bool HandleLeavePlayer(PlayerPtr player);
-	bool SpawnMonster(MonsterPtr monster);
-	void HandleMove(message::C_Move pkt);
-	void HandleAttack(message::C_Attack pkt);
-	void HandleDeath(CreaturePtr creature);
+	virtual bool HandleEnterPlayer(PlayerPtr player);
+	virtual bool HandleLeavePlayer(PlayerPtr player);
+	virtual bool SpawnMonster(MonsterPtr monster);
+	virtual bool SpawnObject(ObjectPtr monster);
+	virtual void HandleMove(message::C_Move pkt);
+	virtual void HandleAttack(message::C_Attack pkt);
+	virtual void HandleDeath(CreaturePtr creature);
 
 	void HandleWarriorAttack(skill::C_Warrior_Attack pkt);
+	void HandleWarriorQ(skill::C_Warrior_Q pkt);
+	void HandleWarriorQ_Hit(skill::C_Warrior_Q_Hit pkt);
+
 	void HandleWarriorR(skill::C_Warrior_R pkt);
 	void HandleWarriorE(skill::C_Warrior_E pkt);
+	void HandleWarriorE_Success(skill::C_Warrior_E_Success pkt);
 	void HandleWarriorLS(skill::C_Warrior_LS pkt);
 
 
@@ -51,14 +57,21 @@ public:
 
 	void SendRampageBasicAttack(RampagePtr rampage);
 	void SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target);
+	void SendRampageMoveToPos(RampagePtr rampage, int rand_x, int rand_y, int rand_z);
 	void SendRamapgeRoar(RampagePtr rampage);
 	void SendRampageEarthQuake(RampagePtr rampage);
 	void SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target);
 	void SendRampageEnhancedAttack(RampagePtr rampage);
 
+	void HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt);
+	void HandleItemConsumeableUsed(PlayerPtr player, game::item::C_Item_ConsumeableUsed pkt);
+	void HandleItemOpenOpenInventory(PlayerPtr player, game::item::C_Item_OpenInventory pkt);
+
+	void BroadcastHealCreature(CreaturePtr creature, float health);
+
 	// Tick
 public:
-	void HandleTick(uint32 Deltatime);
+	virtual void HandleTick(uint32 Deltatime);
 	void HandleCoolTime(long long elapsed_millisecond);
 	void HandleBuffTime(long long elapsed_millisecond);
 

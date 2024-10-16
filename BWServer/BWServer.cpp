@@ -2,16 +2,17 @@
 //
 #include "pch.h"
 #include "GameServer.h"
-#include "Room.h"
+#include "GameRoom.h"
 #include "ServerPacketHandler.h"
 #include "TickGenerator.h"
 #include "Monster.h"
+#include "Warrior.h"
 
 int main()
 {
     boost::asio::io_context io_context;
     ServerPacketHandler::Init();
-    Room::init(io_context);
+    GameRoom::init(io_context);
     spdlog::set_level(spdlog::level::trace);
 
     int port = 4242;
@@ -26,7 +27,10 @@ int main()
     MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
     GRoom[0]->SpawnMonster(monster);
 
+    ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
+    GRoom[0]->SpawnObject(itemObject);
     //int count = 2;
+    static_pointer_cast<GameRoom>(GRoom[0])->RoundStart();
     GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
 
     std::vector<std::thread> thread_pool;

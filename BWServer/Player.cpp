@@ -9,7 +9,7 @@ Player::Player()
 	R_COOLTIME(1000),
 	LS_COOLTIME(1000),
 	skillCoolTime(new message::SkillCooltime())
-{
+{	
 }
 
 Player::Player(
@@ -29,6 +29,11 @@ Player::Player(
 	LS_COOLTIME(LS_COOLTIME),
 	skillCoolTime(new message::SkillCooltime())
 {
+}
+
+void Player::InitInventory()
+{
+	_inventory.store(std::make_shared<Inventory>(static_pointer_cast<Player>(shared_from_this())));
 }
 
 Player::~Player()

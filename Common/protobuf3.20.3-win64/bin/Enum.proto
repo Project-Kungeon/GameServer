@@ -41,8 +41,15 @@ enum MoveState
 
 enum ItemType
 {
-	NONE_ITEM = 0;
-	WEAPON_SWORD = 1;
-	POTION_HEALTH = 1001;
+	NONE_Item = 0;
+	WEAPON = 1;
+	Consumable = 2;
+	Etc = 3;
 
+}
+
+enum ItemTable
+{
+	NONE_ITEM = 0;
+	GENERAL_HEALTH_POSION = 1;
 }

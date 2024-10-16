@@ -42,6 +42,11 @@ message ObjectInfo {
 	Timestamp last_updated = 4;
 }
 
+message ItemObjectInfo {
+	ObjectInfo object_info = 1;
+	ItemType item_type = 2;
+}
+
 message CreatureInfo {
 	ObjectInfo object_info = 1;
 	CreatureType creature_type = 2;
@@ -64,5 +69,11 @@ message PlayerInfo {
 message ItemInfo {
 	uint64 item_id = 1;
 	ItemType item_type = 2;
-	repeated string description = 3;
+	ItemTable item_table = 3;
+}
+
+message InventorySlot
+{
+	ItemInfo itemInfo = 1;
+	int32 cnt = 2;
 }

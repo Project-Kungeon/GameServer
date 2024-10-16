@@ -88,12 +88,18 @@ extern C_Warrior_AttackDefaultTypeInternal _C_Warrior_Attack_default_instance_;
 class C_Warrior_E;
 struct C_Warrior_EDefaultTypeInternal;
 extern C_Warrior_EDefaultTypeInternal _C_Warrior_E_default_instance_;
+class C_Warrior_E_Success;
+struct C_Warrior_E_SuccessDefaultTypeInternal;
+extern C_Warrior_E_SuccessDefaultTypeInternal _C_Warrior_E_Success_default_instance_;
 class C_Warrior_LS;
 struct C_Warrior_LSDefaultTypeInternal;
 extern C_Warrior_LSDefaultTypeInternal _C_Warrior_LS_default_instance_;
 class C_Warrior_Q;
 struct C_Warrior_QDefaultTypeInternal;
 extern C_Warrior_QDefaultTypeInternal _C_Warrior_Q_default_instance_;
+class C_Warrior_Q_Hit;
+struct C_Warrior_Q_HitDefaultTypeInternal;
+extern C_Warrior_Q_HitDefaultTypeInternal _C_Warrior_Q_Hit_default_instance_;
 class C_Warrior_R;
 struct C_Warrior_RDefaultTypeInternal;
 extern C_Warrior_RDefaultTypeInternal _C_Warrior_R_default_instance_;
@@ -148,12 +154,18 @@ extern S_Warrior_AttackDefaultTypeInternal _S_Warrior_Attack_default_instance_;
 class S_Warrior_E;
 struct S_Warrior_EDefaultTypeInternal;
 extern S_Warrior_EDefaultTypeInternal _S_Warrior_E_default_instance_;
+class S_Warrior_E_Success;
+struct S_Warrior_E_SuccessDefaultTypeInternal;
+extern S_Warrior_E_SuccessDefaultTypeInternal _S_Warrior_E_Success_default_instance_;
 class S_Warrior_LS;
 struct S_Warrior_LSDefaultTypeInternal;
 extern S_Warrior_LSDefaultTypeInternal _S_Warrior_LS_default_instance_;
 class S_Warrior_Q;
 struct S_Warrior_QDefaultTypeInternal;
 extern S_Warrior_QDefaultTypeInternal _S_Warrior_Q_default_instance_;
+class S_Warrior_Q_Hit;
+struct S_Warrior_Q_HitDefaultTypeInternal;
+extern S_Warrior_Q_HitDefaultTypeInternal _S_Warrior_Q_Hit_default_instance_;
 class S_Warrior_R;
 struct S_Warrior_RDefaultTypeInternal;
 extern S_Warrior_RDefaultTypeInternal _S_Warrior_R_default_instance_;
@@ -173,8 +185,10 @@ template<> ::skill::C_Assassin_E* Arena::CreateMaybeMessage<::skill::C_Assassin_
 template<> ::skill::C_Assassin_LS_Off* Arena::CreateMaybeMessage<::skill::C_Assassin_LS_Off>(Arena*);
 template<> ::skill::C_Warrior_Attack* Arena::CreateMaybeMessage<::skill::C_Warrior_Attack>(Arena*);
 template<> ::skill::C_Warrior_E* Arena::CreateMaybeMessage<::skill::C_Warrior_E>(Arena*);
+template<> ::skill::C_Warrior_E_Success* Arena::CreateMaybeMessage<::skill::C_Warrior_E_Success>(Arena*);
 template<> ::skill::C_Warrior_LS* Arena::CreateMaybeMessage<::skill::C_Warrior_LS>(Arena*);
 template<> ::skill::C_Warrior_Q* Arena::CreateMaybeMessage<::skill::C_Warrior_Q>(Arena*);
+template<> ::skill::C_Warrior_Q_Hit* Arena::CreateMaybeMessage<::skill::C_Warrior_Q_Hit>(Arena*);
 template<> ::skill::C_Warrior_R* Arena::CreateMaybeMessage<::skill::C_Warrior_R>(Arena*);
 template<> ::skill::S_ASSASSIN_Attack* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_Attack>(Arena*);
 template<> ::skill::S_ASSASSIN_LS* Arena::CreateMaybeMessage<::skill::S_ASSASSIN_LS>(Arena*);
@@ -193,8 +207,10 @@ template<> ::skill::S_Assassin_LS_Off* Arena::CreateMaybeMessage<::skill::S_Assa
 template<> ::skill::S_CoolTime* Arena::CreateMaybeMessage<::skill::S_CoolTime>(Arena*);
 template<> ::skill::S_Warrior_Attack* Arena::CreateMaybeMessage<::skill::S_Warrior_Attack>(Arena*);
 template<> ::skill::S_Warrior_E* Arena::CreateMaybeMessage<::skill::S_Warrior_E>(Arena*);
+template<> ::skill::S_Warrior_E_Success* Arena::CreateMaybeMessage<::skill::S_Warrior_E_Success>(Arena*);
 template<> ::skill::S_Warrior_LS* Arena::CreateMaybeMessage<::skill::S_Warrior_LS>(Arena*);
 template<> ::skill::S_Warrior_Q* Arena::CreateMaybeMessage<::skill::S_Warrior_Q>(Arena*);
+template<> ::skill::S_Warrior_Q_Hit* Arena::CreateMaybeMessage<::skill::S_Warrior_Q_Hit>(Arena*);
 template<> ::skill::S_Warrior_R* Arena::CreateMaybeMessage<::skill::S_Warrior_R>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace skill {
@@ -789,7 +805,6 @@ class C_Warrior_Q final :
 
   enum : int {
     kObjectIdFieldNumber = 1,
-    kTargetIdFieldNumber = 2,
   };
   // uint64 object_id = 1;
   void clear_object_id();
@@ -800,15 +815,6 @@ class C_Warrior_Q final :
   void _internal_set_object_id(uint64_t value);
   public:
 
-  // uint64 target_id = 2;
-  void clear_target_id();
-  uint64_t target_id() const;
-  void set_target_id(uint64_t value);
-  private:
-  uint64_t _internal_target_id() const;
-  void _internal_set_target_id(uint64_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:skill.C_Warrior_Q)
  private:
   class _Internal;
@@ -817,7 +823,6 @@ class C_Warrior_Q final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   uint64_t object_id_;
-  uint64_t target_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
@@ -943,6 +948,149 @@ class S_Warrior_Q final :
 
   enum : int {
     kObjectIdFieldNumber = 1,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Warrior_Q)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Warrior_Q_Hit final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Warrior_Q_Hit) */ {
+ public:
+  inline C_Warrior_Q_Hit() : C_Warrior_Q_Hit(nullptr) {}
+  ~C_Warrior_Q_Hit() override;
+  explicit PROTOBUF_CONSTEXPR C_Warrior_Q_Hit(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Warrior_Q_Hit(const C_Warrior_Q_Hit& from);
+  C_Warrior_Q_Hit(C_Warrior_Q_Hit&& from) noexcept
+    : C_Warrior_Q_Hit() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Warrior_Q_Hit& operator=(const C_Warrior_Q_Hit& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Warrior_Q_Hit& operator=(C_Warrior_Q_Hit&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Warrior_Q_Hit& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Warrior_Q_Hit* internal_default_instance() {
+    return reinterpret_cast<const C_Warrior_Q_Hit*>(
+               &_C_Warrior_Q_Hit_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(C_Warrior_Q_Hit& a, C_Warrior_Q_Hit& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Warrior_Q_Hit* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Warrior_Q_Hit* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Warrior_Q_Hit* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Warrior_Q_Hit>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Warrior_Q_Hit& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Warrior_Q_Hit& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Warrior_Q_Hit* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Warrior_Q_Hit";
+  }
+  protected:
+  explicit C_Warrior_Q_Hit(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
     kTargetIdFieldNumber = 2,
   };
   // uint64 object_id = 1;
@@ -963,7 +1111,7 @@ class S_Warrior_Q final :
   void _internal_set_target_id(uint64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:skill.S_Warrior_Q)
+  // @@protoc_insertion_point(class_scope:skill.C_Warrior_Q_Hit)
  private:
   class _Internal;
 
@@ -972,6 +1120,171 @@ class S_Warrior_Q final :
   typedef void DestructorSkippable_;
   uint64_t object_id_;
   uint64_t target_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Warrior_Q_Hit final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Warrior_Q_Hit) */ {
+ public:
+  inline S_Warrior_Q_Hit() : S_Warrior_Q_Hit(nullptr) {}
+  ~S_Warrior_Q_Hit() override;
+  explicit PROTOBUF_CONSTEXPR S_Warrior_Q_Hit(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Warrior_Q_Hit(const S_Warrior_Q_Hit& from);
+  S_Warrior_Q_Hit(S_Warrior_Q_Hit&& from) noexcept
+    : S_Warrior_Q_Hit() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Warrior_Q_Hit& operator=(const S_Warrior_Q_Hit& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Warrior_Q_Hit& operator=(S_Warrior_Q_Hit&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Warrior_Q_Hit& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Warrior_Q_Hit* internal_default_instance() {
+    return reinterpret_cast<const S_Warrior_Q_Hit*>(
+               &_S_Warrior_Q_Hit_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(S_Warrior_Q_Hit& a, S_Warrior_Q_Hit& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Warrior_Q_Hit* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Warrior_Q_Hit* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Warrior_Q_Hit* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Warrior_Q_Hit>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Warrior_Q_Hit& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Warrior_Q_Hit& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Warrior_Q_Hit* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Warrior_Q_Hit";
+  }
+  protected:
+  explicit S_Warrior_Q_Hit(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kTargetIdFieldNumber = 2,
+    kDamageFieldNumber = 3,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // uint64 target_id = 2;
+  void clear_target_id();
+  uint64_t target_id() const;
+  void set_target_id(uint64_t value);
+  private:
+  uint64_t _internal_target_id() const;
+  void _internal_set_target_id(uint64_t value);
+  public:
+
+  // float damage = 3;
+  void clear_damage();
+  float damage() const;
+  void set_damage(float value);
+  private:
+  float _internal_damage() const;
+  void _internal_set_damage(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Warrior_Q_Hit)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  uint64_t target_id_;
+  float damage_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Skill_2eproto;
 };
@@ -1025,7 +1338,7 @@ class C_Warrior_E final :
                &_C_Warrior_E_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(C_Warrior_E& a, C_Warrior_E& b) {
     a.Swap(&b);
@@ -1168,7 +1481,7 @@ class S_Warrior_E final :
                &_S_Warrior_E_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(S_Warrior_E& a, S_Warrior_E& b) {
     a.Swap(&b);
@@ -1263,6 +1576,325 @@ class S_Warrior_E final :
 };
 // -------------------------------------------------------------------
 
+class C_Warrior_E_Success final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Warrior_E_Success) */ {
+ public:
+  inline C_Warrior_E_Success() : C_Warrior_E_Success(nullptr) {}
+  ~C_Warrior_E_Success() override;
+  explicit PROTOBUF_CONSTEXPR C_Warrior_E_Success(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Warrior_E_Success(const C_Warrior_E_Success& from);
+  C_Warrior_E_Success(C_Warrior_E_Success&& from) noexcept
+    : C_Warrior_E_Success() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Warrior_E_Success& operator=(const C_Warrior_E_Success& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Warrior_E_Success& operator=(C_Warrior_E_Success&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Warrior_E_Success& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Warrior_E_Success* internal_default_instance() {
+    return reinterpret_cast<const C_Warrior_E_Success*>(
+               &_C_Warrior_E_Success_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(C_Warrior_E_Success& a, C_Warrior_E_Success& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Warrior_E_Success* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Warrior_E_Success* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Warrior_E_Success* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Warrior_E_Success>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Warrior_E_Success& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_Warrior_E_Success& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Warrior_E_Success* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.C_Warrior_E_Success";
+  }
+  protected:
+  explicit C_Warrior_E_Success(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kTargetIdFieldNumber = 2,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // uint64 target_id = 2;
+  void clear_target_id();
+  uint64_t target_id() const;
+  void set_target_id(uint64_t value);
+  private:
+  uint64_t _internal_target_id() const;
+  void _internal_set_target_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.C_Warrior_E_Success)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  uint64_t target_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
+class S_Warrior_E_Success final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.S_Warrior_E_Success) */ {
+ public:
+  inline S_Warrior_E_Success() : S_Warrior_E_Success(nullptr) {}
+  ~S_Warrior_E_Success() override;
+  explicit PROTOBUF_CONSTEXPR S_Warrior_E_Success(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  S_Warrior_E_Success(const S_Warrior_E_Success& from);
+  S_Warrior_E_Success(S_Warrior_E_Success&& from) noexcept
+    : S_Warrior_E_Success() {
+    *this = ::std::move(from);
+  }
+
+  inline S_Warrior_E_Success& operator=(const S_Warrior_E_Success& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline S_Warrior_E_Success& operator=(S_Warrior_E_Success&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const S_Warrior_E_Success& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const S_Warrior_E_Success* internal_default_instance() {
+    return reinterpret_cast<const S_Warrior_E_Success*>(
+               &_S_Warrior_E_Success_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(S_Warrior_E_Success& a, S_Warrior_E_Success& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(S_Warrior_E_Success* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(S_Warrior_E_Success* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  S_Warrior_E_Success* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Warrior_E_Success>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_Warrior_E_Success& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const S_Warrior_E_Success& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_Warrior_E_Success* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "skill.S_Warrior_E_Success";
+  }
+  protected:
+  explicit S_Warrior_E_Success(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObjectIdFieldNumber = 1,
+    kTargetIdFieldNumber = 2,
+    kParryCountFieldNumber = 3,
+  };
+  // uint64 object_id = 1;
+  void clear_object_id();
+  uint64_t object_id() const;
+  void set_object_id(uint64_t value);
+  private:
+  uint64_t _internal_object_id() const;
+  void _internal_set_object_id(uint64_t value);
+  public:
+
+  // uint64 target_id = 2;
+  void clear_target_id();
+  uint64_t target_id() const;
+  void set_target_id(uint64_t value);
+  private:
+  uint64_t _internal_target_id() const;
+  void _internal_set_target_id(uint64_t value);
+  public:
+
+  // int32 parry_count = 3;
+  void clear_parry_count();
+  int32_t parry_count() const;
+  void set_parry_count(int32_t value);
+  private:
+  int32_t _internal_parry_count() const;
+  void _internal_set_parry_count(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:skill.S_Warrior_E_Success)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t object_id_;
+  uint64_t target_id_;
+  int32_t parry_count_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Skill_2eproto;
+};
+// -------------------------------------------------------------------
+
 class C_Warrior_R final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:skill.C_Warrior_R) */ {
  public:
@@ -1311,7 +1943,7 @@ class C_Warrior_R final :
                &_C_Warrior_R_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    11;
 
   friend void swap(C_Warrior_R& a, C_Warrior_R& b) {
     a.Swap(&b);
@@ -1454,7 +2086,7 @@ class S_Warrior_R final :
                &_S_Warrior_R_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    12;
 
   friend void swap(S_Warrior_R& a, S_Warrior_R& b) {
     a.Swap(&b);
@@ -1597,7 +2229,7 @@ class C_Warrior_LS final :
                &_C_Warrior_LS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    13;
 
   friend void swap(C_Warrior_LS& a, C_Warrior_LS& b) {
     a.Swap(&b);
@@ -1773,7 +2405,7 @@ class S_Warrior_LS final :
                &_S_Warrior_LS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    14;
 
   friend void swap(S_Warrior_LS& a, S_Warrior_LS& b) {
     a.Swap(&b);
@@ -1960,7 +2592,7 @@ class C_ASSASSIN_Attack final :
                &_C_ASSASSIN_Attack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    15;
 
   friend void swap(C_ASSASSIN_Attack& a, C_ASSASSIN_Attack& b) {
     a.Swap(&b);
@@ -2103,7 +2735,7 @@ class S_ASSASSIN_Attack final :
                &_S_ASSASSIN_Attack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    16;
 
   friend void swap(S_ASSASSIN_Attack& a, S_ASSASSIN_Attack& b) {
     a.Swap(&b);
@@ -2246,7 +2878,7 @@ class C_ASSASSIN_Q final :
                &_C_ASSASSIN_Q_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    17;
 
   friend void swap(C_ASSASSIN_Q& a, C_ASSASSIN_Q& b) {
     a.Swap(&b);
@@ -2455,7 +3087,7 @@ class S_ASSASSIN_Q final :
                &_S_ASSASSIN_Q_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    18;
 
   friend void swap(S_ASSASSIN_Q& a, S_ASSASSIN_Q& b) {
     a.Swap(&b);
@@ -2664,7 +3296,7 @@ class C_Assassin_E final :
                &_C_Assassin_E_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    19;
 
   friend void swap(C_Assassin_E& a, C_Assassin_E& b) {
     a.Swap(&b);
@@ -2840,7 +3472,7 @@ class S_Assassin_E final :
                &_S_Assassin_E_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    20;
 
   friend void swap(S_Assassin_E& a, S_Assassin_E& b) {
     a.Swap(&b);
@@ -3016,7 +3648,7 @@ class C_ASSASSIN_R final :
                &_C_ASSASSIN_R_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    21;
 
   friend void swap(C_ASSASSIN_R& a, C_ASSASSIN_R& b) {
     a.Swap(&b);
@@ -3159,7 +3791,7 @@ class S_ASSASSIN_R final :
                &_S_ASSASSIN_R_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    22;
 
   friend void swap(S_ASSASSIN_R& a, S_ASSASSIN_R& b) {
     a.Swap(&b);
@@ -3302,7 +3934,7 @@ class C_ASSASSIN_LS final :
                &_C_ASSASSIN_LS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    23;
 
   friend void swap(C_ASSASSIN_LS& a, C_ASSASSIN_LS& b) {
     a.Swap(&b);
@@ -3445,7 +4077,7 @@ class S_ASSASSIN_LS final :
                &_S_ASSASSIN_LS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    24;
 
   friend void swap(S_ASSASSIN_LS& a, S_ASSASSIN_LS& b) {
     a.Swap(&b);
@@ -3588,7 +4220,7 @@ class C_Assassin_LS_Off final :
                &_C_Assassin_LS_Off_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    25;
 
   friend void swap(C_Assassin_LS_Off& a, C_Assassin_LS_Off& b) {
     a.Swap(&b);
@@ -3731,7 +4363,7 @@ class S_Assassin_LS_Off final :
                &_S_Assassin_LS_Off_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    26;
 
   friend void swap(S_Assassin_LS_Off& a, S_Assassin_LS_Off& b) {
     a.Swap(&b);
@@ -3874,7 +4506,7 @@ class C_Archor_Attack final :
                &_C_Archor_Attack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    27;
 
   friend void swap(C_Archor_Attack& a, C_Archor_Attack& b) {
     a.Swap(&b);
@@ -4083,7 +4715,7 @@ class S_Archor_Attack final :
                &_S_Archor_Attack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    28;
 
   friend void swap(S_Archor_Attack& a, S_Archor_Attack& b) {
     a.Swap(&b);
@@ -4314,7 +4946,7 @@ class C_Archor_Q_Charging final :
                &_C_Archor_Q_Charging_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    29;
 
   friend void swap(C_Archor_Q_Charging& a, C_Archor_Q_Charging& b) {
     a.Swap(&b);
@@ -4457,7 +5089,7 @@ class S_Archor_Q_Charging final :
                &_S_Archor_Q_Charging_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    30;
 
   friend void swap(S_Archor_Q_Charging& a, S_Archor_Q_Charging& b) {
     a.Swap(&b);
@@ -4611,7 +5243,7 @@ class C_Archor_Q_Shot final :
                &_C_Archor_Q_Shot_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    31;
 
   friend void swap(C_Archor_Q_Shot& a, C_Archor_Q_Shot& b) {
     a.Swap(&b);
@@ -4820,7 +5452,7 @@ class S_Archor_Q_Shot final :
                &_S_Archor_Q_Shot_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    32;
 
   friend void swap(S_Archor_Q_Shot& a, S_Archor_Q_Shot& b) {
     a.Swap(&b);
@@ -5029,7 +5661,7 @@ class C_Archor_E final :
                &_C_Archor_E_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    33;
 
   friend void swap(C_Archor_E& a, C_Archor_E& b) {
     a.Swap(&b);
@@ -5205,7 +5837,7 @@ class S_Archor_E final :
                &_S_Archor_E_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    34;
 
   friend void swap(S_Archor_E& a, S_Archor_E& b) {
     a.Swap(&b);
@@ -5381,7 +6013,7 @@ class C_Archor_R final :
                &_C_Archor_R_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    35;
 
   friend void swap(C_Archor_R& a, C_Archor_R& b) {
     a.Swap(&b);
@@ -5524,7 +6156,7 @@ class S_Archor_R final :
                &_S_Archor_R_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    36;
 
   friend void swap(S_Archor_R& a, S_Archor_R& b) {
     a.Swap(&b);
@@ -5667,7 +6299,7 @@ class C_Archor_LS final :
                &_C_Archor_LS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    37;
 
   friend void swap(C_Archor_LS& a, C_Archor_LS& b) {
     a.Swap(&b);
@@ -5810,7 +6442,7 @@ class S_Archor_LS final :
                &_S_Archor_LS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    38;
 
   friend void swap(S_Archor_LS& a, S_Archor_LS& b) {
     a.Swap(&b);
@@ -5953,7 +6585,7 @@ class S_Archor_R_Off final :
                &_S_Archor_R_Off_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    39;
 
   friend void swap(S_Archor_R_Off& a, S_Archor_R_Off& b) {
     a.Swap(&b);
@@ -6096,7 +6728,7 @@ class S_Archor_LS_Off final :
                &_S_Archor_LS_Off_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    40;
 
   friend void swap(S_Archor_LS_Off& a, S_Archor_LS_Off& b) {
     a.Swap(&b);
@@ -6312,26 +6944,6 @@ inline void C_Warrior_Q::set_object_id(uint64_t value) {
   // @@protoc_insertion_point(field_set:skill.C_Warrior_Q.object_id)
 }
 
-// uint64 target_id = 2;
-inline void C_Warrior_Q::clear_target_id() {
-  target_id_ = uint64_t{0u};
-}
-inline uint64_t C_Warrior_Q::_internal_target_id() const {
-  return target_id_;
-}
-inline uint64_t C_Warrior_Q::target_id() const {
-  // @@protoc_insertion_point(field_get:skill.C_Warrior_Q.target_id)
-  return _internal_target_id();
-}
-inline void C_Warrior_Q::_internal_set_target_id(uint64_t value) {
-  
-  target_id_ = value;
-}
-inline void C_Warrior_Q::set_target_id(uint64_t value) {
-  _internal_set_target_id(value);
-  // @@protoc_insertion_point(field_set:skill.C_Warrior_Q.target_id)
-}
-
 // -------------------------------------------------------------------
 
 // S_Warrior_Q
@@ -6356,24 +6968,112 @@ inline void S_Warrior_Q::set_object_id(uint64_t value) {
   // @@protoc_insertion_point(field_set:skill.S_Warrior_Q.object_id)
 }
 
+// -------------------------------------------------------------------
+
+// C_Warrior_Q_Hit
+
+// uint64 object_id = 1;
+inline void C_Warrior_Q_Hit::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Warrior_Q_Hit::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Warrior_Q_Hit::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Warrior_Q_Hit.object_id)
+  return _internal_object_id();
+}
+inline void C_Warrior_Q_Hit::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Warrior_Q_Hit::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Warrior_Q_Hit.object_id)
+}
+
 // uint64 target_id = 2;
-inline void S_Warrior_Q::clear_target_id() {
+inline void C_Warrior_Q_Hit::clear_target_id() {
   target_id_ = uint64_t{0u};
 }
-inline uint64_t S_Warrior_Q::_internal_target_id() const {
+inline uint64_t C_Warrior_Q_Hit::_internal_target_id() const {
   return target_id_;
 }
-inline uint64_t S_Warrior_Q::target_id() const {
-  // @@protoc_insertion_point(field_get:skill.S_Warrior_Q.target_id)
+inline uint64_t C_Warrior_Q_Hit::target_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Warrior_Q_Hit.target_id)
   return _internal_target_id();
 }
-inline void S_Warrior_Q::_internal_set_target_id(uint64_t value) {
+inline void C_Warrior_Q_Hit::_internal_set_target_id(uint64_t value) {
   
   target_id_ = value;
 }
-inline void S_Warrior_Q::set_target_id(uint64_t value) {
+inline void C_Warrior_Q_Hit::set_target_id(uint64_t value) {
   _internal_set_target_id(value);
-  // @@protoc_insertion_point(field_set:skill.S_Warrior_Q.target_id)
+  // @@protoc_insertion_point(field_set:skill.C_Warrior_Q_Hit.target_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Warrior_Q_Hit
+
+// uint64 object_id = 1;
+inline void S_Warrior_Q_Hit::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Warrior_Q_Hit::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Warrior_Q_Hit::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Warrior_Q_Hit.object_id)
+  return _internal_object_id();
+}
+inline void S_Warrior_Q_Hit::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Warrior_Q_Hit::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Warrior_Q_Hit.object_id)
+}
+
+// uint64 target_id = 2;
+inline void S_Warrior_Q_Hit::clear_target_id() {
+  target_id_ = uint64_t{0u};
+}
+inline uint64_t S_Warrior_Q_Hit::_internal_target_id() const {
+  return target_id_;
+}
+inline uint64_t S_Warrior_Q_Hit::target_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Warrior_Q_Hit.target_id)
+  return _internal_target_id();
+}
+inline void S_Warrior_Q_Hit::_internal_set_target_id(uint64_t value) {
+  
+  target_id_ = value;
+}
+inline void S_Warrior_Q_Hit::set_target_id(uint64_t value) {
+  _internal_set_target_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Warrior_Q_Hit.target_id)
+}
+
+// float damage = 3;
+inline void S_Warrior_Q_Hit::clear_damage() {
+  damage_ = 0;
+}
+inline float S_Warrior_Q_Hit::_internal_damage() const {
+  return damage_;
+}
+inline float S_Warrior_Q_Hit::damage() const {
+  // @@protoc_insertion_point(field_get:skill.S_Warrior_Q_Hit.damage)
+  return _internal_damage();
+}
+inline void S_Warrior_Q_Hit::_internal_set_damage(float value) {
+  
+  damage_ = value;
+}
+inline void S_Warrior_Q_Hit::set_damage(float value) {
+  _internal_set_damage(value);
+  // @@protoc_insertion_point(field_set:skill.S_Warrior_Q_Hit.damage)
 }
 
 // -------------------------------------------------------------------
@@ -6422,6 +7122,114 @@ inline void S_Warrior_E::_internal_set_object_id(uint64_t value) {
 inline void S_Warrior_E::set_object_id(uint64_t value) {
   _internal_set_object_id(value);
   // @@protoc_insertion_point(field_set:skill.S_Warrior_E.object_id)
+}
+
+// -------------------------------------------------------------------
+
+// C_Warrior_E_Success
+
+// uint64 object_id = 1;
+inline void C_Warrior_E_Success::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t C_Warrior_E_Success::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t C_Warrior_E_Success::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Warrior_E_Success.object_id)
+  return _internal_object_id();
+}
+inline void C_Warrior_E_Success::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void C_Warrior_E_Success::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Warrior_E_Success.object_id)
+}
+
+// uint64 target_id = 2;
+inline void C_Warrior_E_Success::clear_target_id() {
+  target_id_ = uint64_t{0u};
+}
+inline uint64_t C_Warrior_E_Success::_internal_target_id() const {
+  return target_id_;
+}
+inline uint64_t C_Warrior_E_Success::target_id() const {
+  // @@protoc_insertion_point(field_get:skill.C_Warrior_E_Success.target_id)
+  return _internal_target_id();
+}
+inline void C_Warrior_E_Success::_internal_set_target_id(uint64_t value) {
+  
+  target_id_ = value;
+}
+inline void C_Warrior_E_Success::set_target_id(uint64_t value) {
+  _internal_set_target_id(value);
+  // @@protoc_insertion_point(field_set:skill.C_Warrior_E_Success.target_id)
+}
+
+// -------------------------------------------------------------------
+
+// S_Warrior_E_Success
+
+// uint64 object_id = 1;
+inline void S_Warrior_E_Success::clear_object_id() {
+  object_id_ = uint64_t{0u};
+}
+inline uint64_t S_Warrior_E_Success::_internal_object_id() const {
+  return object_id_;
+}
+inline uint64_t S_Warrior_E_Success::object_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Warrior_E_Success.object_id)
+  return _internal_object_id();
+}
+inline void S_Warrior_E_Success::_internal_set_object_id(uint64_t value) {
+  
+  object_id_ = value;
+}
+inline void S_Warrior_E_Success::set_object_id(uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Warrior_E_Success.object_id)
+}
+
+// uint64 target_id = 2;
+inline void S_Warrior_E_Success::clear_target_id() {
+  target_id_ = uint64_t{0u};
+}
+inline uint64_t S_Warrior_E_Success::_internal_target_id() const {
+  return target_id_;
+}
+inline uint64_t S_Warrior_E_Success::target_id() const {
+  // @@protoc_insertion_point(field_get:skill.S_Warrior_E_Success.target_id)
+  return _internal_target_id();
+}
+inline void S_Warrior_E_Success::_internal_set_target_id(uint64_t value) {
+  
+  target_id_ = value;
+}
+inline void S_Warrior_E_Success::set_target_id(uint64_t value) {
+  _internal_set_target_id(value);
+  // @@protoc_insertion_point(field_set:skill.S_Warrior_E_Success.target_id)
+}
+
+// int32 parry_count = 3;
+inline void S_Warrior_E_Success::clear_parry_count() {
+  parry_count_ = 0;
+}
+inline int32_t S_Warrior_E_Success::_internal_parry_count() const {
+  return parry_count_;
+}
+inline int32_t S_Warrior_E_Success::parry_count() const {
+  // @@protoc_insertion_point(field_get:skill.S_Warrior_E_Success.parry_count)
+  return _internal_parry_count();
+}
+inline void S_Warrior_E_Success::_internal_set_parry_count(int32_t value) {
+  
+  parry_count_ = value;
+}
+inline void S_Warrior_E_Success::set_parry_count(int32_t value) {
+  _internal_set_parry_count(value);
+  // @@protoc_insertion_point(field_set:skill.S_Warrior_E_Success.parry_count)
 }
 
 // -------------------------------------------------------------------
@@ -8307,6 +9115,14 @@ inline void S_Archor_LS_Off::set_object_id(uint64_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

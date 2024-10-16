@@ -92,6 +92,30 @@
     <ClCompile Include="JobQueue.cpp">
       <Filter>Main\Server</Filter>
     </ClCompile>
+    <ClCompile Include="GameRoom.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Main\Game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRound.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemObject.cpp">
+      <Filter>Main\Game\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Main\Game\Object\Creature\Player\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractivePacketHandler.cpp">
+      <Filter>Packets\handler\Interactive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -199,6 +223,30 @@
     <ClInclude Include="JobQueue.h">
       <Filter>Main\Server</Filter>
     </ClInclude>
+    <ClInclude Include="GameRoom.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Main\Game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRound.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemObject.h">
+      <Filter>Main\Game\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Main\Game\Object\Creature\Player\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractivePacketHandler.h">
+      <Filter>Packets\handler\Interactive</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -261,6 +309,18 @@
     <Filter Include="Main\Game\Object\Creature\Monster\Rampage">
       <UniqueIdentifier>{42a576a1-65f1-47a2-8f13-712566012587}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\Game\Item">
+      <UniqueIdentifier>{fed77291-c87b-4b95-bbaf-7f23ac5af241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Item">
+      <UniqueIdentifier>{3a463a7c-3e75-4800-9cbb-708bf559107c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Object\Creature\Player\Inventory">
+      <UniqueIdentifier>{57e3763b-fa35-41c8-a8c7-a211c743265f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packets\handler\Interactive">
+      <UniqueIdentifier>{d192c879-5162-40b8-9882-c617e75c4ba7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Common\protobuf3.20.3-win64\bin\Message.proto">
@@ -280,6 +340,12 @@
       <Filter>Packets\Proto</Filter>
     </None>
     <None Include="..\Common\protobuf3.20.3-win64\bin\MonsterPattern.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\GameRound.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Item.proto">
       <Filter>Packets\Proto</Filter>
     </None>
   </ItemGroup>

@@ -30,13 +30,24 @@ message S_Warrior_Attack
 message C_Warrior_Q
 {
 	uint64 object_id = 1;
-	uint64 target_id = 2;
 }
 
 message S_Warrior_Q
 {
 	uint64 object_id = 1;
+}
+
+message C_Warrior_Q_Hit
+{
+	uint64 object_id = 1;
 	uint64 target_id = 2;
+}
+
+message S_Warrior_Q_Hit
+{
+	uint64 object_id = 1;
+	uint64 target_id = 2;
+	float damage = 3;
 }
 
 message C_Warrior_E
@@ -49,10 +60,22 @@ message S_Warrior_E
 	uint64 object_id = 1;
 }
 
+message C_Warrior_E_Success
+{
+	uint64 object_id = 1;
+	uint64 target_id = 2;
+}
+
+message S_Warrior_E_Success
+{
+	uint64 object_id = 1;
+	uint64 target_id = 2;
+	int32 parry_count = 3;
+}
+
 message C_Warrior_R
 {
 	uint64 object_id = 1;
-
 }
 
 message S_Warrior_R

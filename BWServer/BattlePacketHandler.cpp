@@ -34,6 +34,38 @@ bool BattlePacketHandler::Handle_C_WarriorAttack(SessionPtr& session, skill::C_W
 	return true;
 }
 
+bool BattlePacketHandler::Handle_C_WarriorQ(SessionPtr& session, skill::C_Warrior_Q& pkt)
+{
+	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
+	if (!gameSession->isEnterGame) return false;
+
+	// if is not lock.. get player 
+	PlayerPtr player = gameSession->player.load();
+	if (player == nullptr) return false;
+
+	RoomPtr room = player->room.load().lock();
+	if (room == nullptr) return false;
+
+	room->DoAsync(&Room::HandleWarriorQ, pkt);
+	return true;
+}
+
+bool BattlePacketHandler::Handle_C_WarriorQ_Hit(SessionPtr& session, skill::C_Warrior_Q_Hit& pkt)
+{
+	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
+	if (!gameSession->isEnterGame) return false;
+
+	// if is not lock.. get player 
+	PlayerPtr player = gameSession->player.load();
+	if (player == nullptr) return false;
+
+	RoomPtr room = player->room.load().lock();
+	if (room == nullptr) return false;
+
+	room->DoAsync(&Room::HandleWarriorQ_Hit, pkt);
+	return true;
+}
+
 bool BattlePacketHandler::Handle_C_WarriorR(SessionPtr& session, skill::C_Warrior_R& pkt)
 {
 	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
@@ -63,6 +95,22 @@ bool BattlePacketHandler::Handle_C_WarriorE(SessionPtr& session, skill::C_Warrio
 	if (room == nullptr) return false;
 
 	room->DoAsync(&Room::HandleWarriorE, pkt);
+	return true;
+}
+
+bool BattlePacketHandler::Handle_C_WarriorE_Success(SessionPtr& session, skill::C_Warrior_E_Success& pkt)
+{
+	GameSessionPtr gameSession = static_pointer_cast<GameSession>(session);
+	if (!gameSession->isEnterGame) return false;
+
+	// if is not lock.. get player 
+	PlayerPtr player = gameSession->player.load();
+	if (player == nullptr) return false;
+
+	RoomPtr room = player->room.load().lock();
+	if (room == nullptr) return false;
+
+	room->DoAsync(&Room::HandleWarriorE_Success, pkt);
 	return true;
 }
 

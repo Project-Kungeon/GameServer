@@ -1,5 +1,6 @@
 #pragma once
 #include "Creature.h"
+#include "Inventory.h"
 class Player : public Creature
 {
 public:
@@ -13,6 +14,7 @@ public:
 		const uint32 E_COOLTIME,
 		const uint32 R_COOLTIME,
 		const uint32 LS_COOLTIME);
+	void InitInventory();
 	virtual ~Player();
 
 public:
@@ -43,12 +45,15 @@ public:
 	return cooltimes;
 	}
 	message::PlayerType GetPlayerType() { GetReadLock(); return playerType; }
+	InventoryPtr GetLoadedInventory() const { return _inventory.load(); }
 
 	const uint32 GetMaxQ_Cooltime() { return Q_COOLTIME; }
 
 private:
 	message::PlayerType playerType;
 	message::SkillCooltime* skillCoolTime;
+	atomic<InventoryPtr> _inventory;
+
 
 public:
 	const uint32 Q_COOLTIME;

@@ -180,15 +180,16 @@ inline bool MoveState_Parse(
     MoveState_descriptor(), name, value);
 }
 enum ItemType : int {
-  NONE_ITEM = 0,
-  WEAPON_SWORD = 1,
-  POTION_HEALTH = 1001,
+  NONE_Item = 0,
+  WEAPON = 1,
+  Consumable = 2,
+  Etc = 3,
   ItemType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   ItemType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool ItemType_IsValid(int value);
-constexpr ItemType ItemType_MIN = NONE_ITEM;
-constexpr ItemType ItemType_MAX = POTION_HEALTH;
+constexpr ItemType ItemType_MIN = NONE_Item;
+constexpr ItemType ItemType_MAX = Etc;
 constexpr int ItemType_ARRAYSIZE = ItemType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ItemType_descriptor();
@@ -204,6 +205,31 @@ inline bool ItemType_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ItemType* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ItemType>(
     ItemType_descriptor(), name, value);
+}
+enum ItemTable : int {
+  NONE_ITEM = 0,
+  GENERAL_HEALTH_POSION = 1,
+  ItemTable_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  ItemTable_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool ItemTable_IsValid(int value);
+constexpr ItemTable ItemTable_MIN = NONE_ITEM;
+constexpr ItemTable ItemTable_MAX = GENERAL_HEALTH_POSION;
+constexpr int ItemTable_ARRAYSIZE = ItemTable_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ItemTable_descriptor();
+template<typename T>
+inline const std::string& ItemTable_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ItemTable>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ItemTable_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ItemTable_descriptor(), enum_t_value);
+}
+inline bool ItemTable_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ItemTable* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ItemTable>(
+    ItemTable_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -256,6 +282,11 @@ template <> struct is_proto_enum< ::message::ItemType> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::message::ItemType>() {
   return ::message::ItemType_descriptor();
+}
+template <> struct is_proto_enum< ::message::ItemTable> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::message::ItemTable>() {
+  return ::message::ItemTable_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

@@ -5,7 +5,9 @@ class ObjectUtils
 public:
 	static PlayerPtr CreatePlayer(GameSessionPtr session, message::PlayerType type);
 	static MonsterPtr CreateMonster(message::MonsterType type);
+	static ItemObjectPtr CreateItemObject(message::ItemType itemType, message::ItemTable itemTable);
 	static message::ObjectInfo toObjectInfo(ObjectPtr objectPtr);
+	static message::ItemObjectInfo toItemObjectInfo(ItemObjectPtr itemObjectPtr);
 	static message::CreatureInfo toCreatureInfo(CreaturePtr creaturePtr);
 	static message::MonsterInfo toMonsterInfo(MonsterPtr monsterPtr);
 	static message::PlayerInfo toPlayerInfo(PlayerPtr playerPtr);
@@ -31,8 +33,8 @@ public:
 
 	// MaxHp
 public:
-	static const uint32 WARRIOR_MAX_HP = 100;
+	static const uint32 WARRIOR_MAX_HP = 120;
 	static const uint32 ASSASSIN_MAX_HP = 100;
-	static const uint32 ARCHOR_MAX_HP = 80;
+	static const uint32 ARCHOR_MAX_HP =100;
 };
 
