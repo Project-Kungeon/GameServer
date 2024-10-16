@@ -362,7 +362,22 @@ void Room::HandleWarriorQ(skill::C_Warrior_Q pkt)
 		// 스킬 쿨타임 체크
 		if (player->GetQ_Cooltime() > 0)
 		{
+			if (auto session = player->session.lock())
+			{
+				skill::S_CoolTime coolTimePkt;
+				coolTimePkt.set_time(player->Q_COOLTIME);
+				coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
+
+				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
+				char* rawBuffer = new char[requiredSize];
+				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
+
+				session->Send(sendBuffer);
+
+				return;
+			}
 		}
 	}
 	skill::S_Warrior_Q skillPkt;
