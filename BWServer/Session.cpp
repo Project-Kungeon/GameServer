@@ -17,6 +17,7 @@ SessionPtr Session::GetSessionPtr()
 void Session::Start()
 {
 	//_room.Join(this->shared_from_this());
+	_udp_endpoint = udp::endpoint(_socket.remote_endpoint().address(), _socket.remote_endpoint().port());
 	AsyncRead();
 }
 
@@ -32,7 +33,7 @@ void Session::Send(asio::mutable_buffer& buffer)
 
 void Session::AsyncRead()
 {
-	std::cout << "Reading.." << '\n';
+	spdlog::trace("Tcp Reading..");
 	memset(_recvBuffer, 0, RecvBufferSize);
 	_socket.async_read_some(asio::buffer(_recvBuffer, RecvBufferSize), asio::bind_executor(_strand, boost::bind(&Session::OnRead, shared_from_this(),
 		asio::placeholders::error,
@@ -86,21 +87,4 @@ void Session::HandlePacket(char* ptr, size_t size)
 {
 	SessionPtr session = this->GetSessionPtr();
 	ServerPacketHandler::HandlePacket(session, ptr, size);
-
-
-	//asio::mutable_buffer buffer = asio::buffer(ptr, size);
-	//int offset = 0;
-	//PacketHeader header;
-	//PacketUtil::ParseHeader(buffer, &header, offset);
-
-	//std::cout << "HandlePacket : " << message::MessageCode_Name(header.Code) << '\n';
-	//switch (header.Code)
-	//{
-	//case message::MessageCode::LOGIN_REQ:
-	//	LobbyPacketHandler::Handle_C_Login(session, buffer, header, offset);
-	//	//HandleLoginReq(buffer, header, offset);
-	//	break;
-	//default:
-	//	break;
-	//}
 }

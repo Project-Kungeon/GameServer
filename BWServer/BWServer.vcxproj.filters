@@ -116,6 +116,9 @@
     <ClCompile Include="InteractivePacketHandler.cpp">
       <Filter>Packets\handler\Interactive</Filter>
     </ClCompile>
+    <ClCompile Include="DelayGameSession.cpp">
+      <Filter>Main\Session</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -246,6 +249,9 @@
     </ClInclude>
     <ClInclude Include="InteractivePacketHandler.h">
       <Filter>Packets\handler\Interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="DelayGameSession.h">
+      <Filter>Main\Session</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

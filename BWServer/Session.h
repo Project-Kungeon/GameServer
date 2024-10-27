@@ -12,6 +12,7 @@
 #include "ServerPacketHandler.h"
 
 using boost::asio::ip::tcp;
+using boost::asio::ip::udp;
 using namespace boost;
 
 class Session;
@@ -31,17 +32,17 @@ public:
 	virtual void Send(asio::mutable_buffer& buffer);
 
 protected:
-	void AsyncRead();
-	void OnRead(const boost::system::error_code& err, size_t size);
-	void AsyncWrite(const char* message, size_t size);
-	void OnWrite(const boost::system::error_code& err, size_t size);
-	void HandlePacket(char* ptr, size_t size);
+	virtual void AsyncRead();
+	virtual void OnRead(const boost::system::error_code& err, size_t size);
+	virtual void AsyncWrite(const char* message, size_t size);
+	virtual void OnWrite(const boost::system::error_code& err, size_t size);
+	virtual void HandlePacket(char* ptr, size_t size);
 
 	virtual void OnConnected() {};
 	virtual void OnDisconnected() {};
 
 
-private:
+protected:
 	tcp::socket _socket;
 	const static int RecvBufferSize = 2048;
 	char _recvBuffer[RecvBufferSize];
@@ -49,5 +50,8 @@ private:
 	char _sendBuffer[SendBufferSize];
 
 	asio::strand<asio::io_context::executor_type> _strand;
+
+protected:
+	udp::endpoint _udp_endpoint;
 };
 

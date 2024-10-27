@@ -4,6 +4,7 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp;C:\Use
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BWServer.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\BWServer.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\CorePch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\CorePch.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Creature.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Creature.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DelayGameSession.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\DelayGameSession.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Enum.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Enum.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\GameRoom.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameRoom.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\GameRound.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameRound.pb.obj

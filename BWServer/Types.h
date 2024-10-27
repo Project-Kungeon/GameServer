@@ -18,8 +18,11 @@ using uint64 = unsigned __int64;
 
 #define USING_SHARED_PTR(name)	using name##Ptr = std::shared_ptr<class name>;
 
+
+USING_SHARED_PTR(GameServer);
 USING_SHARED_PTR(Session);
 USING_SHARED_PTR(GameSession);
+USING_SHARED_PTR(DelayGameSession);
 USING_SHARED_PTR(Object);
 USING_SHARED_PTR(Player);
 USING_SHARED_PTR(Warrior);

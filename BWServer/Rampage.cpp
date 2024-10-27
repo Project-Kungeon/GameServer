@@ -148,9 +148,24 @@ bool Rampage::MoveToTarget()
 	MovingTime = 3000;
 	if (auto roomPtr = room.load().lock())
 	{
-		if(auto TargetPtr = GetCloseTarget().lock())
-		roomPtr->DoAsync(&Room::SendRampageMoveToTarget, GetRampagePtr(), TargetPtr);
-		return true;
+		if (auto TargetPtr = GetCloseTarget().lock())
+		{
+			Location SelfLoc = this->GetLocation();
+			Location targetLoc = TargetPtr->GetLocation();
+
+			double distance = sqrt(pow(abs((int)(SelfLoc.x - targetLoc.x)), 2) +
+				pow(abs((int)(SelfLoc.y - targetLoc.y)), 2) +
+				pow(abs((int)(SelfLoc.z - targetLoc.z)), 2));
+
+			// 너무 가까우면 움직일 필요 없음. 일단 250!
+			if (distance < 250) return false;
+			else
+			{
+				roomPtr->DoAsync(&Room::SendRampageMoveToTarget, GetRampagePtr(), TargetPtr);
+			}
+			return true;
+		}
+		
 	}
 
 	return false;

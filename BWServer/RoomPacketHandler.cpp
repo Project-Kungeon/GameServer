@@ -3,6 +3,14 @@
 #include "Room.h"
 #include "RoomPacketHandler.h"
 
+bool RoomPacketHandler::UdpHandle_C_Move(message::C_Move& pkt)
+{
+	// UDP TEST
+	GRoom[0]->DoAsync(&Room::HandleMove, pkt);
+
+	return true;
+}
+
 bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_EnterRoom& pkt)
 {
 	// Create Player
@@ -24,20 +32,15 @@ bool RoomPacketHandler::Handle_C_Move(SessionPtr& session, message::C_Move& pkt)
 
 	// if is not lock.. get player
 	PlayerPtr weak_player = gameSession->player.load();
-	spdlog::trace("Acquiring player...");
 	if (auto player = weak_player)  // weak_ptr.lock()은 shared_ptr을 반환
 	{
-		spdlog::trace("Player acquired.");
 		auto room_weak_ptr = player->room.load();
 		if (auto room = room_weak_ptr.lock()) {
 			// noti this player's moveinfo for all clients
-			spdlog::trace("Room acquired, handling move.");
 			room->DoAsync(&Room::HandleMove, pkt);
 			return true;
 		}
 
-		spdlog::trace("Room is nullptr.");
 	}
-	spdlog::trace("Player is nullptr.");
 	return false;
 }
