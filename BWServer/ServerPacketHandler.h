@@ -13,8 +13,11 @@
 using PacketHandlerFunc = std::function<bool(SessionPtr&, asio::mutable_buffer&, int&)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
+using UdpPacketHandlerFunc = std::function<bool(asio::mutable_buffer&, int&)>;
+extern UdpPacketHandlerFunc GUdpPacketHandler[UINT16_MAX];
 
 bool Handle_INVALID(SessionPtr& session, asio::mutable_buffer& buffer, int& offset);
+bool UdpHandle_INVALID(asio::mutable_buffer& buffer, int& offset);
 
 class ServerPacketHandler
 {
@@ -22,7 +25,17 @@ public:
 	static void Init()
 	{
 		for (int i = 0; i < UINT16_MAX; i++)
+		{
 			GPacketHandler[i] = Handle_INVALID;
+			GUdpPacketHandler[i] = UdpHandle_INVALID;
+		}
+		
+		// UDP
+		GUdpPacketHandler[message::HEADER::PLAYER_MOVE_REQ] = [](asio::mutable_buffer& buffer, int& offset)
+			{
+				spdlog::trace("Handle C_Move");
+				return UdpHandlePacket<message::C_Move>(RoomPacketHandler::UdpHandle_C_Move, buffer, offset);
+			};
 
 		GPacketHandler[message::HEADER::LOGIN_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
@@ -168,6 +181,16 @@ public:
 		return GPacketHandler[header.Code](session, buffer, offset);
 	}
 
+	static bool HandleUdpPacket(char* ptr, size_t size)
+	{
+		PacketHeader header;
+		asio::mutable_buffer buffer = asio::buffer(ptr, size);
+		int offset = 0;
+		PacketUtil::ParseHeader(buffer, &header, offset);
+
+		return GUdpPacketHandler[header.Code](buffer, offset);
+	}
+
 private:
 	template<typename PacketType, typename ProcessFunc>
 	static bool HandlePacket(ProcessFunc func, SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
@@ -176,6 +199,15 @@ private:
 		if (!PacketUtil::Parse(pkt, buffer, buffer.size() - offset, offset)) return false;
 
 		return func(session, pkt);
+	}
+
+	template<typename PacketType, typename ProcessFunc>
+	static bool UdpHandlePacket(ProcessFunc func, asio::mutable_buffer& buffer, int& offset)
+	{
+		PacketType pkt;
+		if (!PacketUtil::Parse(pkt, buffer, buffer.size() - offset, offset)) return false;
+
+		return func(pkt);
 	}
 	
 };
