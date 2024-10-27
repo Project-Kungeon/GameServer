@@ -10,9 +10,10 @@ public:
 	void OnAccept(SessionPtr session, const boost::system::error_code& err);
 
 public:
+	virtual void UdpSend(asio::mutable_buffer& buffer, udp::endpoint& endpoint);
 	virtual void AsyncUdpRead();
 	virtual void OnUdpRead(const boost::system::error_code& err, size_t size);
-	virtual void AsyncUdpWrite(const char* message, size_t size);
+	virtual void AsyncUdpWrite(const char* message, size_t size, udp::endpoint& endpoint);
 	virtual void OnUdpWrite(const boost::system::error_code& err, size_t size);
 
 	virtual void HandlePacket(char* ptr, size_t size);

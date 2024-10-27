@@ -15,9 +15,11 @@ public:
 	{}
 
 	static void init(boost::asio::io_context& io_context);
+	void RegisterGameServer(GameServerPtr game_server);
 	bool Join(ObjectPtr object);
 	bool Leave(ObjectPtr object);
 	std::weak_ptr<Player> FindClosePlayerBySelf(CreaturePtr Self, const float Distance);
+	void UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	RoomPtr GetRoomRef();
 
@@ -25,6 +27,7 @@ public:
 	virtual bool HandleLeavePlayer(PlayerPtr player);
 	virtual bool SpawnMonster(MonsterPtr monster);
 	virtual bool SpawnObject(ObjectPtr monster);
+	virtual void UdpHandleMove(message::C_Move pkt);
 	virtual void HandleMove(message::C_Move pkt);
 	virtual void HandleAttack(message::C_Attack pkt);
 	virtual void HandleDeath(CreaturePtr creature);
@@ -91,6 +94,8 @@ private:
 	const std::chrono::milliseconds _targetTickInterval{1000 / _targetTicksPerSecond};
 	const std::chrono::seconds _measurementPeriod{10}; // 10초 동안 측정
 	std::chrono::milliseconds _currentInterval{22}; // 초기 간격
+
+	GameServerPtr _GameServer;
 };
 
 extern RoomPtr GRoom[UINT16_MAX];

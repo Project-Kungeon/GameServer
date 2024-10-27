@@ -36,6 +36,11 @@ void GameServer::OnAccept(SessionPtr session, const boost::system::error_code& e
 	StartAccept();
 }
 
+void GameServer::UdpSend(asio::mutable_buffer& buffer, udp::endpoint& endpoint)
+{
+	AsyncUdpWrite(static_cast<const char*>(buffer.data()), buffer.size(), endpoint);
+}
+
 void GameServer::AsyncUdpRead()
 {
 	spdlog::trace("Udp Reading..");
@@ -62,14 +67,32 @@ void GameServer::OnUdpRead(const boost::system::error_code& err, size_t size)
 
 }
 
-void GameServer::AsyncUdpWrite(const char* message, size_t size)
+void GameServer::AsyncUdpWrite(const char* message, size_t size, udp::endpoint& endpoint)
 {
+	memcpy(_udpSendBuffer, message, size);
+	_udp_socket.async_send_to(asio::buffer(_udpSendBuffer, size), endpoint,
+		asio::bind_executor(_udp_strand, boost::bind(&GameServer::OnUdpWrite,
+			shared_from_this(),
+			asio::placeholders::error,
+			asio::placeholders::bytes_transferred)
+		));
+
 }
 
 void GameServer::OnUdpWrite(const boost::system::error_code& err, size_t size)
 {
+	if (!err)
+	{
+
+	}
+	else
+	{
+		std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
+		//_room.Leave(this->shared_from_this());
+	}
 }
 
 void GameServer::HandlePacket(char* ptr, size_t size)
 {
+	ServerPacketHandler::HandleUdpPacket(ptr, size);
 }
