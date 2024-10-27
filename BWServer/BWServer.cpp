@@ -19,13 +19,14 @@ int main()
     
     boost::asio::io_context io_context_tick;
 
-    GameServer server(io_context, port);
-    
+    GameServer* server = new GameServer(io_context, port);
+    GameServerPtr game_server(server);
+    game_server->StartAccept();
 
-
-    server.StartAccept();
     spdlog::info("Server Start {}", port);
-    std::cout << "Server Start " << port << '\n';
+
+    // For UDP TEST
+    GRoom[0]->RegisterGameServer(game_server);
 
     MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
     GRoom[0]->SpawnMonster(monster);

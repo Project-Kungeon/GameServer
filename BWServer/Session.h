@@ -29,6 +29,7 @@ public:
 	void Start();
 	tcp::socket& GetSocket();
 
+	udp::endpoint& GetUdpEndpoint();
 	virtual void Send(asio::mutable_buffer& buffer);
 
 protected:

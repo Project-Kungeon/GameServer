@@ -5,6 +5,7 @@
 #include "Assassin.h"
 #include "Archor.h"
 #include "Rampage.h"
+#include "GameServer.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
@@ -16,6 +17,11 @@ void Room::init(boost::asio::io_context& io_context)
 		GRoom[i] = std::make_shared<Room>(io_context);
 	}
 
+}
+
+void Room::RegisterGameServer(GameServerPtr game_server)
+{
+	_GameServer = game_server;
 }
 
 // 오브젝트의 Room 참가
@@ -210,6 +216,34 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 		
 }
 
+void Room::UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId)
+{
+	// 오브젝트 리스트 탐색
+	for (auto& item : _objects)
+	{
+		// 플레이어 캐스팅
+		// RTTI 최소화를 위한 리팩토링
+		if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+		{
+			PlayerPtr player = static_pointer_cast<Player>(item.second);
+			if (player == nullptr) continue;
+
+			// 브로드캐스트 제외 대상은 보내지 않습니다.
+			if (player->objectInfo->object_id() == exceptId) continue;
+
+			if (GameSessionPtr session = player->session.lock())
+			{
+				spdlog::info("Udp Send to {} player", item.first);
+				//session->Send(buffer);
+				auto& target_endpoint = session->GetUdpEndpoint();
+				_GameServer->UdpSend(buffer, target_endpoint);
+			}
+		}
+
+	}
+}
+
+
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
 // 단, exceptId에 해당하는 플레이어에게 보내지 않습니다.
 void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
@@ -260,6 +294,34 @@ bool Room::SpawnMonster(MonsterPtr monster)
 bool Room::SpawnObject(ObjectPtr object)
 {
 	return Join(object);
+}
+
+void Room::UdpHandleMove(message::C_Move pkt)
+{
+	// is there object equals pkt's object id?
+	const uint64 object_id = pkt.posinfo().object_id();
+
+	// no object...
+	if (_objects.find(object_id) == _objects.end())
+		return;
+
+	PlayerPtr player = dynamic_pointer_cast<Player>(_objects[object_id]);
+	player->SetPosInfo(pkt.posinfo());
+
+	// make buffer for notification that all client received.
+	{
+		message::S_Move movePkt;
+		{
+			message::PosInfo* posInfo = movePkt.mutable_posinfo();
+			posInfo->CopyFrom(pkt.posinfo());
+		}
+		const size_t requiredSize = PacketUtil::RequiredSize(movePkt);
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_MOVE_RES, movePkt);
+
+		UdpBroadcast(sendBuffer, object_id);
+	}
 }
 
 void Room::HandleMove(message::C_Move pkt)

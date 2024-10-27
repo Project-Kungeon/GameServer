@@ -6,7 +6,7 @@
 bool RoomPacketHandler::UdpHandle_C_Move(message::C_Move& pkt)
 {
 	// UDP TEST
-	GRoom[0]->DoAsync(&Room::HandleMove, pkt);
+	GRoom[0]->DoAsync(&Room::UdpHandleMove, pkt);
 
 	return true;
 }

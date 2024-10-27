@@ -89,11 +89,11 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.h(44): mes
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Archor.cpp(41,41): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Archor.cpp(50,39): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
   Assassin.cpp
-  BattlePacketHandler.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   BWServer.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BWServer.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\TickGenerator.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  BattlePacketHandler.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   CorePch.cpp
   Creature.cpp
   DelayGameSession.cpp
@@ -118,11 +118,11 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\MathUtils.cpp(1,1): warning C4
   Monster.cpp
   코드를 생성하고 있습니다...
   컴파일하고 있습니다...
+  Object.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   ObjectUtils.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Selector.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  Object.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   Player.cpp
   Rampage.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
@@ -152,9 +152,10 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RampageTree.cpp(63,15): warnin
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Selector.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(296,16): warning C4244: '초기화 중': 'float'에서 'uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(558,52): warning C4244: '인수': 'float'에서 'int32_t'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(945,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\TickGenerator.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(358,16): warning C4244: '초기화 중': 'float'에서 'uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(620,52): warning C4244: '인수': 'float'에서 'int32_t'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Room.cpp(948,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   RoomPacketHandler.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RoomPacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   ServerPacketHandler.cpp

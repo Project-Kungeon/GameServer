@@ -26,6 +26,11 @@ tcp::socket& Session::GetSocket()
 	return _socket;
 }
 
+udp::endpoint& Session::GetUdpEndpoint()
+{
+	return _udp_endpoint;
+}
+
 void Session::Send(asio::mutable_buffer& buffer)
 {
 	AsyncWrite(static_cast<const char*>(buffer.data()), buffer.size());
