@@ -36,7 +36,7 @@ public:
 				spdlog::trace("Handle C_Move");
 				return UdpHandlePacket<message::C_Move>(RoomPacketHandler::UdpHandle_C_Move, buffer, offset);
 			};
-
+		// TCP
 		GPacketHandler[message::HEADER::LOGIN_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			spdlog::trace("Handle C_Login");

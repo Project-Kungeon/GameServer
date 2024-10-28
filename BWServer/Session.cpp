@@ -17,18 +17,12 @@ SessionPtr Session::GetSessionPtr()
 void Session::Start()
 {
 	//_room.Join(this->shared_from_this());
-	_udp_endpoint = udp::endpoint(_socket.remote_endpoint().address(), _socket.remote_endpoint().port());
 	AsyncRead();
 }
 
 tcp::socket& Session::GetSocket()
 {
 	return _socket;
-}
-
-udp::endpoint& Session::GetUdpEndpoint()
-{
-	return _udp_endpoint;
 }
 
 void Session::Send(asio::mutable_buffer& buffer)

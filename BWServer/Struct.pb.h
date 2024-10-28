@@ -76,6 +76,9 @@ extern SkillCooltimeDefaultTypeInternal _SkillCooltime_default_instance_;
 class Timestamp;
 struct TimestampDefaultTypeInternal;
 extern TimestampDefaultTypeInternal _Timestamp_default_instance_;
+class Vector3;
+struct Vector3DefaultTypeInternal;
+extern Vector3DefaultTypeInternal _Vector3_default_instance_;
 }  // namespace message
 PROTOBUF_NAMESPACE_OPEN
 template<> ::message::CreatureInfo* Arena::CreateMaybeMessage<::message::CreatureInfo>(Arena*);
@@ -88,6 +91,7 @@ template<> ::message::PlayerInfo* Arena::CreateMaybeMessage<::message::PlayerInf
 template<> ::message::PosInfo* Arena::CreateMaybeMessage<::message::PosInfo>(Arena*);
 template<> ::message::SkillCooltime* Arena::CreateMaybeMessage<::message::SkillCooltime>(Arena*);
 template<> ::message::Timestamp* Arena::CreateMaybeMessage<::message::Timestamp>(Arena*);
+template<> ::message::Vector3* Arena::CreateMaybeMessage<::message::Vector3>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace message {
 
@@ -212,25 +216,15 @@ class Timestamp final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSecondsFieldNumber = 1,
-    kNanosFieldNumber = 2,
+    kMillisecondsFieldNumber = 1,
   };
-  // int64 seconds = 1;
-  void clear_seconds();
-  int64_t seconds() const;
-  void set_seconds(int64_t value);
+  // int64 milliseconds = 1;
+  void clear_milliseconds();
+  int64_t milliseconds() const;
+  void set_milliseconds(int64_t value);
   private:
-  int64_t _internal_seconds() const;
-  void _internal_set_seconds(int64_t value);
-  public:
-
-  // int32 nanos = 2;
-  void clear_nanos();
-  int32_t nanos() const;
-  void set_nanos(int32_t value);
-  private:
-  int32_t _internal_nanos() const;
-  void _internal_set_nanos(int32_t value);
+  int64_t _internal_milliseconds() const;
+  void _internal_set_milliseconds(int64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:message.Timestamp)
@@ -240,8 +234,172 @@ class Timestamp final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t seconds_;
-  int32_t nanos_;
+  int64_t milliseconds_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Struct_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Vector3 final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.Vector3) */ {
+ public:
+  inline Vector3() : Vector3(nullptr) {}
+  ~Vector3() override;
+  explicit PROTOBUF_CONSTEXPR Vector3(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Vector3(const Vector3& from);
+  Vector3(Vector3&& from) noexcept
+    : Vector3() {
+    *this = ::std::move(from);
+  }
+
+  inline Vector3& operator=(const Vector3& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Vector3& operator=(Vector3&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Vector3& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Vector3* internal_default_instance() {
+    return reinterpret_cast<const Vector3*>(
+               &_Vector3_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(Vector3& a, Vector3& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Vector3* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Vector3* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Vector3* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Vector3>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Vector3& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Vector3& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Vector3* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "message.Vector3";
+  }
+  protected:
+  explicit Vector3(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+    kZFieldNumber = 3,
+  };
+  // float x = 1;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 2;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 3;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:message.Vector3)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  float x_;
+  float y_;
+  float z_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
 };
@@ -295,7 +453,7 @@ class PosInfo final :
                &_PosInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(PosInfo& a, PosInfo& b) {
     a.Swap(&b);
@@ -515,7 +673,7 @@ class SkillCooltime final :
                &_SkillCooltime_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(SkillCooltime& a, SkillCooltime& b) {
     a.Swap(&b);
@@ -691,7 +849,7 @@ class ObjectInfo final :
                &_ObjectInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(ObjectInfo& a, ObjectInfo& b) {
     a.Swap(&b);
@@ -885,7 +1043,7 @@ class ItemObjectInfo final :
                &_ItemObjectInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(ItemObjectInfo& a, ItemObjectInfo& b) {
     a.Swap(&b);
@@ -1048,7 +1206,7 @@ class CreatureInfo final :
                &_CreatureInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(CreatureInfo& a, CreatureInfo& b) {
     a.Swap(&b);
@@ -1244,7 +1402,7 @@ class MonsterInfo final :
                &_MonsterInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(MonsterInfo& a, MonsterInfo& b) {
     a.Swap(&b);
@@ -1407,7 +1565,7 @@ class PlayerInfo final :
                &_PlayerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(PlayerInfo& a, PlayerInfo& b) {
     a.Swap(&b);
@@ -1590,7 +1748,7 @@ class ItemInfo final :
                &_ItemInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(ItemInfo& a, ItemInfo& b) {
     a.Swap(&b);
@@ -1755,7 +1913,7 @@ class InventorySlot final :
                &_InventorySlot_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(InventorySlot& a, InventorySlot& b) {
     a.Swap(&b);
@@ -1879,44 +2037,88 @@ class InventorySlot final :
 #endif  // __GNUC__
 // Timestamp
 
-// int64 seconds = 1;
-inline void Timestamp::clear_seconds() {
-  seconds_ = int64_t{0};
+// int64 milliseconds = 1;
+inline void Timestamp::clear_milliseconds() {
+  milliseconds_ = int64_t{0};
 }
-inline int64_t Timestamp::_internal_seconds() const {
-  return seconds_;
+inline int64_t Timestamp::_internal_milliseconds() const {
+  return milliseconds_;
 }
-inline int64_t Timestamp::seconds() const {
-  // @@protoc_insertion_point(field_get:message.Timestamp.seconds)
-  return _internal_seconds();
+inline int64_t Timestamp::milliseconds() const {
+  // @@protoc_insertion_point(field_get:message.Timestamp.milliseconds)
+  return _internal_milliseconds();
 }
-inline void Timestamp::_internal_set_seconds(int64_t value) {
+inline void Timestamp::_internal_set_milliseconds(int64_t value) {
   
-  seconds_ = value;
+  milliseconds_ = value;
 }
-inline void Timestamp::set_seconds(int64_t value) {
-  _internal_set_seconds(value);
-  // @@protoc_insertion_point(field_set:message.Timestamp.seconds)
+inline void Timestamp::set_milliseconds(int64_t value) {
+  _internal_set_milliseconds(value);
+  // @@protoc_insertion_point(field_set:message.Timestamp.milliseconds)
 }
 
-// int32 nanos = 2;
-inline void Timestamp::clear_nanos() {
-  nanos_ = 0;
+// -------------------------------------------------------------------
+
+// Vector3
+
+// float x = 1;
+inline void Vector3::clear_x() {
+  x_ = 0;
 }
-inline int32_t Timestamp::_internal_nanos() const {
-  return nanos_;
+inline float Vector3::_internal_x() const {
+  return x_;
 }
-inline int32_t Timestamp::nanos() const {
-  // @@protoc_insertion_point(field_get:message.Timestamp.nanos)
-  return _internal_nanos();
+inline float Vector3::x() const {
+  // @@protoc_insertion_point(field_get:message.Vector3.x)
+  return _internal_x();
 }
-inline void Timestamp::_internal_set_nanos(int32_t value) {
+inline void Vector3::_internal_set_x(float value) {
   
-  nanos_ = value;
+  x_ = value;
 }
-inline void Timestamp::set_nanos(int32_t value) {
-  _internal_set_nanos(value);
-  // @@protoc_insertion_point(field_set:message.Timestamp.nanos)
+inline void Vector3::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:message.Vector3.x)
+}
+
+// float y = 2;
+inline void Vector3::clear_y() {
+  y_ = 0;
+}
+inline float Vector3::_internal_y() const {
+  return y_;
+}
+inline float Vector3::y() const {
+  // @@protoc_insertion_point(field_get:message.Vector3.y)
+  return _internal_y();
+}
+inline void Vector3::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void Vector3::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:message.Vector3.y)
+}
+
+// float z = 3;
+inline void Vector3::clear_z() {
+  z_ = 0;
+}
+inline float Vector3::_internal_z() const {
+  return z_;
+}
+inline float Vector3::z() const {
+  // @@protoc_insertion_point(field_get:message.Vector3.z)
+  return _internal_z();
+}
+inline void Vector3::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void Vector3::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:message.Vector3.z)
 }
 
 // -------------------------------------------------------------------
@@ -3178,6 +3380,8 @@ inline void InventorySlot::set_cnt(int32_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

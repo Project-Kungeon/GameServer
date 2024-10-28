@@ -134,6 +134,10 @@ enum HEADER : int {
   PLAYER_ATTACK_RES = 16,
   CREATURE_DEATH_RES = 17,
   CREATURE_HEAL_RES = 18,
+  CREATURE_VECTORMOVE_REQ = 19,
+  CREATURE_VECTORMOVE_RES = 20,
+  SESSION_PING_REQ = 998,
+  SESSION_PING_RES = 999,
   WARRIOR_ATTACK_REQ = 1101,
   WARRIOR_ATTACK_RES = 1102,
   WARRIOR_Q_REQ = 1103,
@@ -1541,6 +1545,10 @@ class C_Move final :
 
   enum : int {
     kPosInfoFieldNumber = 1,
+    kCameraYawFieldNumber = 2,
+    kControllerYawFieldNumber = 3,
+    kMovementXFieldNumber = 4,
+    kMovementYFieldNumber = 5,
   };
   // .message.PosInfo PosInfo = 1;
   bool has_posinfo() const;
@@ -1560,6 +1568,42 @@ class C_Move final :
       ::message::PosInfo* posinfo);
   ::message::PosInfo* unsafe_arena_release_posinfo();
 
+  // float camera_yaw = 2;
+  void clear_camera_yaw();
+  float camera_yaw() const;
+  void set_camera_yaw(float value);
+  private:
+  float _internal_camera_yaw() const;
+  void _internal_set_camera_yaw(float value);
+  public:
+
+  // float controller_yaw = 3;
+  void clear_controller_yaw();
+  float controller_yaw() const;
+  void set_controller_yaw(float value);
+  private:
+  float _internal_controller_yaw() const;
+  void _internal_set_controller_yaw(float value);
+  public:
+
+  // double movement_x = 4;
+  void clear_movement_x();
+  double movement_x() const;
+  void set_movement_x(double value);
+  private:
+  double _internal_movement_x() const;
+  void _internal_set_movement_x(double value);
+  public:
+
+  // double movement_y = 5;
+  void clear_movement_y();
+  double movement_y() const;
+  void set_movement_y(double value);
+  private:
+  double _internal_movement_y() const;
+  void _internal_set_movement_y(double value);
+  public:
+
   // @@protoc_insertion_point(class_scope:message.C_Move)
  private:
   class _Internal;
@@ -1568,6 +1612,10 @@ class C_Move final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::message::PosInfo* posinfo_;
+  float camera_yaw_;
+  float controller_yaw_;
+  double movement_x_;
+  double movement_y_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
@@ -1693,6 +1741,10 @@ class S_Move final :
 
   enum : int {
     kPosInfoFieldNumber = 1,
+    kCameraYawFieldNumber = 2,
+    kControllerYawFieldNumber = 3,
+    kMovementXFieldNumber = 4,
+    kMovementYFieldNumber = 5,
   };
   // .message.PosInfo PosInfo = 1;
   bool has_posinfo() const;
@@ -1712,6 +1764,42 @@ class S_Move final :
       ::message::PosInfo* posinfo);
   ::message::PosInfo* unsafe_arena_release_posinfo();
 
+  // float camera_yaw = 2;
+  void clear_camera_yaw();
+  float camera_yaw() const;
+  void set_camera_yaw(float value);
+  private:
+  float _internal_camera_yaw() const;
+  void _internal_set_camera_yaw(float value);
+  public:
+
+  // float controller_yaw = 3;
+  void clear_controller_yaw();
+  float controller_yaw() const;
+  void set_controller_yaw(float value);
+  private:
+  float _internal_controller_yaw() const;
+  void _internal_set_controller_yaw(float value);
+  public:
+
+  // double movement_x = 4;
+  void clear_movement_x();
+  double movement_x() const;
+  void set_movement_x(double value);
+  private:
+  double _internal_movement_x() const;
+  void _internal_set_movement_x(double value);
+  public:
+
+  // double movement_y = 5;
+  void clear_movement_y();
+  double movement_y() const;
+  void set_movement_y(double value);
+  private:
+  double _internal_movement_y() const;
+  void _internal_set_movement_y(double value);
+  public:
+
   // @@protoc_insertion_point(class_scope:message.S_Move)
  private:
   class _Internal;
@@ -1720,6 +1808,10 @@ class S_Move final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::message::PosInfo* posinfo_;
+  float camera_yaw_;
+  float controller_yaw_;
+  double movement_x_;
+  double movement_y_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Message_2eproto;
 };
@@ -3077,6 +3169,86 @@ inline void C_Move::set_allocated_posinfo(::message::PosInfo* posinfo) {
   // @@protoc_insertion_point(field_set_allocated:message.C_Move.PosInfo)
 }
 
+// float camera_yaw = 2;
+inline void C_Move::clear_camera_yaw() {
+  camera_yaw_ = 0;
+}
+inline float C_Move::_internal_camera_yaw() const {
+  return camera_yaw_;
+}
+inline float C_Move::camera_yaw() const {
+  // @@protoc_insertion_point(field_get:message.C_Move.camera_yaw)
+  return _internal_camera_yaw();
+}
+inline void C_Move::_internal_set_camera_yaw(float value) {
+  
+  camera_yaw_ = value;
+}
+inline void C_Move::set_camera_yaw(float value) {
+  _internal_set_camera_yaw(value);
+  // @@protoc_insertion_point(field_set:message.C_Move.camera_yaw)
+}
+
+// float controller_yaw = 3;
+inline void C_Move::clear_controller_yaw() {
+  controller_yaw_ = 0;
+}
+inline float C_Move::_internal_controller_yaw() const {
+  return controller_yaw_;
+}
+inline float C_Move::controller_yaw() const {
+  // @@protoc_insertion_point(field_get:message.C_Move.controller_yaw)
+  return _internal_controller_yaw();
+}
+inline void C_Move::_internal_set_controller_yaw(float value) {
+  
+  controller_yaw_ = value;
+}
+inline void C_Move::set_controller_yaw(float value) {
+  _internal_set_controller_yaw(value);
+  // @@protoc_insertion_point(field_set:message.C_Move.controller_yaw)
+}
+
+// double movement_x = 4;
+inline void C_Move::clear_movement_x() {
+  movement_x_ = 0;
+}
+inline double C_Move::_internal_movement_x() const {
+  return movement_x_;
+}
+inline double C_Move::movement_x() const {
+  // @@protoc_insertion_point(field_get:message.C_Move.movement_x)
+  return _internal_movement_x();
+}
+inline void C_Move::_internal_set_movement_x(double value) {
+  
+  movement_x_ = value;
+}
+inline void C_Move::set_movement_x(double value) {
+  _internal_set_movement_x(value);
+  // @@protoc_insertion_point(field_set:message.C_Move.movement_x)
+}
+
+// double movement_y = 5;
+inline void C_Move::clear_movement_y() {
+  movement_y_ = 0;
+}
+inline double C_Move::_internal_movement_y() const {
+  return movement_y_;
+}
+inline double C_Move::movement_y() const {
+  // @@protoc_insertion_point(field_get:message.C_Move.movement_y)
+  return _internal_movement_y();
+}
+inline void C_Move::_internal_set_movement_y(double value) {
+  
+  movement_y_ = value;
+}
+inline void C_Move::set_movement_y(double value) {
+  _internal_set_movement_y(value);
+  // @@protoc_insertion_point(field_set:message.C_Move.movement_y)
+}
+
 // -------------------------------------------------------------------
 
 // S_Move
@@ -3164,6 +3336,86 @@ inline void S_Move::set_allocated_posinfo(::message::PosInfo* posinfo) {
   }
   posinfo_ = posinfo;
   // @@protoc_insertion_point(field_set_allocated:message.S_Move.PosInfo)
+}
+
+// float camera_yaw = 2;
+inline void S_Move::clear_camera_yaw() {
+  camera_yaw_ = 0;
+}
+inline float S_Move::_internal_camera_yaw() const {
+  return camera_yaw_;
+}
+inline float S_Move::camera_yaw() const {
+  // @@protoc_insertion_point(field_get:message.S_Move.camera_yaw)
+  return _internal_camera_yaw();
+}
+inline void S_Move::_internal_set_camera_yaw(float value) {
+  
+  camera_yaw_ = value;
+}
+inline void S_Move::set_camera_yaw(float value) {
+  _internal_set_camera_yaw(value);
+  // @@protoc_insertion_point(field_set:message.S_Move.camera_yaw)
+}
+
+// float controller_yaw = 3;
+inline void S_Move::clear_controller_yaw() {
+  controller_yaw_ = 0;
+}
+inline float S_Move::_internal_controller_yaw() const {
+  return controller_yaw_;
+}
+inline float S_Move::controller_yaw() const {
+  // @@protoc_insertion_point(field_get:message.S_Move.controller_yaw)
+  return _internal_controller_yaw();
+}
+inline void S_Move::_internal_set_controller_yaw(float value) {
+  
+  controller_yaw_ = value;
+}
+inline void S_Move::set_controller_yaw(float value) {
+  _internal_set_controller_yaw(value);
+  // @@protoc_insertion_point(field_set:message.S_Move.controller_yaw)
+}
+
+// double movement_x = 4;
+inline void S_Move::clear_movement_x() {
+  movement_x_ = 0;
+}
+inline double S_Move::_internal_movement_x() const {
+  return movement_x_;
+}
+inline double S_Move::movement_x() const {
+  // @@protoc_insertion_point(field_get:message.S_Move.movement_x)
+  return _internal_movement_x();
+}
+inline void S_Move::_internal_set_movement_x(double value) {
+  
+  movement_x_ = value;
+}
+inline void S_Move::set_movement_x(double value) {
+  _internal_set_movement_x(value);
+  // @@protoc_insertion_point(field_set:message.S_Move.movement_x)
+}
+
+// double movement_y = 5;
+inline void S_Move::clear_movement_y() {
+  movement_y_ = 0;
+}
+inline double S_Move::_internal_movement_y() const {
+  return movement_y_;
+}
+inline double S_Move::movement_y() const {
+  // @@protoc_insertion_point(field_get:message.S_Move.movement_y)
+  return _internal_movement_y();
+}
+inline void S_Move::_internal_set_movement_y(double value) {
+  
+  movement_y_ = value;
+}
+inline void S_Move::set_movement_y(double value) {
+  _internal_set_movement_y(value);
+  // @@protoc_insertion_point(field_set:message.S_Move.movement_y)
 }
 
 // -------------------------------------------------------------------

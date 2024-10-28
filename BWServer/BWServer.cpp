@@ -1,10 +1,9 @@
 // BWServer.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 #include "pch.h"
-#include "GameServer.h"
+#include "DelayGameServer.h"
 #include "GameRoom.h"
 #include "ServerPacketHandler.h"
-#include "TickGenerator.h"
 #include "Monster.h"
 #include "Warrior.h"
 
@@ -19,17 +18,23 @@ int main()
     
     boost::asio::io_context io_context_tick;
 
-    GameServer* server = new GameServer(io_context, port);
+    //GameServer* server = new GameServer(io_context, port);
+    //GameServerPtr game_server(server);
+    //game_server->StartAccept();
+    DelayGameServer* server = new DelayGameServer(io_context, port);
+    server->SetDelay(450);
+    server->SetLossRate(0.9);
     GameServerPtr game_server(server);
     game_server->StartAccept();
+
 
     spdlog::info("Server Start {}", port);
 
     // For UDP TEST
     GRoom[0]->RegisterGameServer(game_server);
 
-    MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
-    GRoom[0]->SpawnMonster(monster);
+    //MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
+    //GRoom[0]->SpawnMonster(monster);
 
     ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
     GRoom[0]->SpawnObject(itemObject);

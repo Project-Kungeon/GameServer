@@ -23,8 +23,7 @@ namespace _pbi = _pb::internal;
 namespace message {
 PROTOBUF_CONSTEXPR Timestamp::Timestamp(
     ::_pbi::ConstantInitialized)
-  : seconds_(int64_t{0})
-  , nanos_(0){}
+  : milliseconds_(int64_t{0}){}
 struct TimestampDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TimestampDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -34,6 +33,20 @@ struct TimestampDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TimestampDefaultTypeInternal _Timestamp_default_instance_;
+PROTOBUF_CONSTEXPR Vector3::Vector3(
+    ::_pbi::ConstantInitialized)
+  : x_(0)
+  , y_(0)
+  , z_(0){}
+struct Vector3DefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Vector3DefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Vector3DefaultTypeInternal() {}
+  union {
+    Vector3 _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Vector3DefaultTypeInternal _Vector3_default_instance_;
 PROTOBUF_CONSTEXPR PosInfo::PosInfo(
     ::_pbi::ConstantInitialized)
   : object_id_(uint64_t{0u})
@@ -175,7 +188,7 @@ struct InventorySlotDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 InventorySlotDefaultTypeInternal _InventorySlot_default_instance_;
 }  // namespace message
-static ::_pb::Metadata file_level_metadata_Struct_2eproto[10];
+static ::_pb::Metadata file_level_metadata_Struct_2eproto[11];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Struct_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Struct_2eproto = nullptr;
 
@@ -186,8 +199,16 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::message::Timestamp, seconds_),
-  PROTOBUF_FIELD_OFFSET(::message::Timestamp, nanos_),
+  PROTOBUF_FIELD_OFFSET(::message::Timestamp, milliseconds_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::message::Vector3, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::message::Vector3, x_),
+  PROTOBUF_FIELD_OFFSET(::message::Vector3, y_),
+  PROTOBUF_FIELD_OFFSET(::message::Vector3, z_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::PosInfo, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -278,19 +299,21 @@ const uint32_t TableStruct_Struct_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::message::Timestamp)},
-  { 8, -1, -1, sizeof(::message::PosInfo)},
-  { 22, -1, -1, sizeof(::message::SkillCooltime)},
-  { 32, -1, -1, sizeof(::message::ObjectInfo)},
-  { 42, -1, -1, sizeof(::message::ItemObjectInfo)},
-  { 50, -1, -1, sizeof(::message::CreatureInfo)},
-  { 61, -1, -1, sizeof(::message::MonsterInfo)},
-  { 69, -1, -1, sizeof(::message::PlayerInfo)},
-  { 78, -1, -1, sizeof(::message::ItemInfo)},
-  { 87, -1, -1, sizeof(::message::InventorySlot)},
+  { 7, -1, -1, sizeof(::message::Vector3)},
+  { 16, -1, -1, sizeof(::message::PosInfo)},
+  { 30, -1, -1, sizeof(::message::SkillCooltime)},
+  { 40, -1, -1, sizeof(::message::ObjectInfo)},
+  { 50, -1, -1, sizeof(::message::ItemObjectInfo)},
+  { 58, -1, -1, sizeof(::message::CreatureInfo)},
+  { 69, -1, -1, sizeof(::message::MonsterInfo)},
+  { 77, -1, -1, sizeof(::message::PlayerInfo)},
+  { 86, -1, -1, sizeof(::message::ItemInfo)},
+  { 95, -1, -1, sizeof(::message::InventorySlot)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::message::_Timestamp_default_instance_._instance,
+  &::message::_Vector3_default_instance_._instance,
   &::message::_PosInfo_default_instance_._instance,
   &::message::_SkillCooltime_default_instance_._instance,
   &::message::_ObjectInfo_default_instance_._instance,
@@ -303,44 +326,45 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_Struct_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014Struct.proto\022\007message\032\nEnum.proto\"+\n\tT"
-  "imestamp\022\017\n\007seconds\030\001 \001(\003\022\r\n\005nanos\030\002 \001(\005"
-  "\"\212\001\n\007PosInfo\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001"
-  "(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\022\r\n"
-  "\005pitch\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\022!\n\005state\030\010 \001("
-  "\0162\022.message.MoveState\"`\n\rSkillCooltime\022\022"
-  "\n\nq_cooltime\030\001 \001(\r\022\022\n\ne_cooltime\030\002 \001(\r\022\022"
-  "\n\nr_cooltime\030\003 \001(\r\022\023\n\013ls_cooltime\030\004 \001(\r\""
-  "\227\001\n\nObjectInfo\022\021\n\tobject_id\030\001 \001(\004\022(\n\013obj"
-  "ect_type\030\002 \001(\0162\023.message.ObjectType\022\"\n\010p"
-  "os_info\030\003 \001(\0132\020.message.PosInfo\022(\n\014last_"
-  "updated\030\004 \001(\0132\022.message.Timestamp\"`\n\016Ite"
-  "mObjectInfo\022(\n\013object_info\030\001 \001(\0132\023.messa"
-  "ge.ObjectInfo\022$\n\titem_type\030\002 \001(\0162\021.messa"
-  "ge.ItemType\"\216\001\n\014CreatureInfo\022(\n\013object_i"
-  "nfo\030\001 \001(\0132\023.message.ObjectInfo\022,\n\rcreatu"
-  "re_type\030\002 \001(\0162\025.message.CreatureType\022\n\n\002"
-  "hp\030\003 \001(\002\022\r\n\005maxHp\030\004 \001(\002\022\013\n\003exp\030\005 \001(\002\"g\n\013"
-  "MonsterInfo\022,\n\rcreature_info\030\001 \001(\0132\025.mes"
-  "sage.CreatureInfo\022*\n\014monster_type\030\002 \001(\0162"
-  "\024.message.MonsterType\"\224\001\n\nPlayerInfo\022,\n\r"
-  "creature_info\030\001 \001(\0132\025.message.CreatureIn"
-  "fo\022(\n\013player_type\030\002 \001(\0162\023.message.Player"
-  "Type\022.\n\016skill_cooltime\030\003 \001(\0132\026.message.S"
-  "killCooltime\"i\n\010ItemInfo\022\017\n\007item_id\030\001 \001("
-  "\004\022$\n\titem_type\030\002 \001(\0162\021.message.ItemType\022"
-  "&\n\nitem_table\030\003 \001(\0162\022.message.ItemTable\""
-  "A\n\rInventorySlot\022#\n\010itemInfo\030\001 \001(\0132\021.mes"
-  "sage.ItemInfo\022\013\n\003cnt\030\002 \001(\005b\006proto3"
+  "\n\014Struct.proto\022\007message\032\nEnum.proto\"!\n\tT"
+  "imestamp\022\024\n\014milliseconds\030\001 \001(\003\"*\n\007Vector"
+  "3\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"\212\001\n\007P"
+  "osInfo\022\021\n\tobject_id\030\001 \001(\004\022\t\n\001x\030\002 \001(\002\022\t\n\001"
+  "y\030\003 \001(\002\022\t\n\001z\030\004 \001(\002\022\013\n\003yaw\030\005 \001(\002\022\r\n\005pitch"
+  "\030\006 \001(\002\022\014\n\004roll\030\007 \001(\002\022!\n\005state\030\010 \001(\0162\022.me"
+  "ssage.MoveState\"`\n\rSkillCooltime\022\022\n\nq_co"
+  "oltime\030\001 \001(\r\022\022\n\ne_cooltime\030\002 \001(\r\022\022\n\nr_co"
+  "oltime\030\003 \001(\r\022\023\n\013ls_cooltime\030\004 \001(\r\"\227\001\n\nOb"
+  "jectInfo\022\021\n\tobject_id\030\001 \001(\004\022(\n\013object_ty"
+  "pe\030\002 \001(\0162\023.message.ObjectType\022\"\n\010pos_inf"
+  "o\030\003 \001(\0132\020.message.PosInfo\022(\n\014last_update"
+  "d\030\004 \001(\0132\022.message.Timestamp\"`\n\016ItemObjec"
+  "tInfo\022(\n\013object_info\030\001 \001(\0132\023.message.Obj"
+  "ectInfo\022$\n\titem_type\030\002 \001(\0162\021.message.Ite"
+  "mType\"\216\001\n\014CreatureInfo\022(\n\013object_info\030\001 "
+  "\001(\0132\023.message.ObjectInfo\022,\n\rcreature_typ"
+  "e\030\002 \001(\0162\025.message.CreatureType\022\n\n\002hp\030\003 \001"
+  "(\002\022\r\n\005maxHp\030\004 \001(\002\022\013\n\003exp\030\005 \001(\002\"g\n\013Monste"
+  "rInfo\022,\n\rcreature_info\030\001 \001(\0132\025.message.C"
+  "reatureInfo\022*\n\014monster_type\030\002 \001(\0162\024.mess"
+  "age.MonsterType\"\224\001\n\nPlayerInfo\022,\n\rcreatu"
+  "re_info\030\001 \001(\0132\025.message.CreatureInfo\022(\n\013"
+  "player_type\030\002 \001(\0162\023.message.PlayerType\022."
+  "\n\016skill_cooltime\030\003 \001(\0132\026.message.SkillCo"
+  "oltime\"i\n\010ItemInfo\022\017\n\007item_id\030\001 \001(\004\022$\n\ti"
+  "tem_type\030\002 \001(\0162\021.message.ItemType\022&\n\nite"
+  "m_table\030\003 \001(\0162\022.message.ItemTable\"A\n\rInv"
+  "entorySlot\022#\n\010itemInfo\030\001 \001(\0132\021.message.I"
+  "temInfo\022\013\n\003cnt\030\002 \001(\005b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Struct_2eproto_deps[1] = {
   &::descriptor_table_Enum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Struct_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Struct_2eproto = {
-    false, false, 1154, descriptor_table_protodef_Struct_2eproto,
+    false, false, 1188, descriptor_table_protodef_Struct_2eproto,
     "Struct.proto",
-    &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 10,
+    &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 11,
     schemas, file_default_instances, TableStruct_Struct_2eproto::offsets,
     file_level_metadata_Struct_2eproto, file_level_enum_descriptors_Struct_2eproto,
     file_level_service_descriptors_Struct_2eproto,
@@ -368,17 +392,12 @@ Timestamp::Timestamp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 Timestamp::Timestamp(const Timestamp& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&seconds_, &from.seconds_,
-    static_cast<size_t>(reinterpret_cast<char*>(&nanos_) -
-    reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
+  milliseconds_ = from.milliseconds_;
   // @@protoc_insertion_point(copy_constructor:message.Timestamp)
 }
 
 inline void Timestamp::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&seconds_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&nanos_) -
-    reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
+milliseconds_ = int64_t{0};
 }
 
 Timestamp::~Timestamp() {
@@ -404,9 +423,7 @@ void Timestamp::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&seconds_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&nanos_) -
-      reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
+  milliseconds_ = int64_t{0};
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -416,18 +433,10 @@ const char* Timestamp::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int64 seconds = 1;
+      // int64 milliseconds = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 nanos = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          nanos_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          milliseconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -461,16 +470,10 @@ uint8_t* Timestamp::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int64 seconds = 1;
-  if (this->_internal_seconds() != 0) {
+  // int64 milliseconds = 1;
+  if (this->_internal_milliseconds() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt64ToArray(1, this->_internal_seconds(), target);
-  }
-
-  // int32 nanos = 2;
-  if (this->_internal_nanos() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_nanos(), target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(1, this->_internal_milliseconds(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -489,14 +492,9 @@ size_t Timestamp::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int64 seconds = 1;
-  if (this->_internal_seconds() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_seconds());
-  }
-
-  // int32 nanos = 2;
-  if (this->_internal_nanos() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_nanos());
+  // int64 milliseconds = 1;
+  if (this->_internal_milliseconds() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_milliseconds());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -521,11 +519,8 @@ void Timestamp::MergeFrom(const Timestamp& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_seconds() != 0) {
-    _internal_set_seconds(from._internal_seconds());
-  }
-  if (from._internal_nanos() != 0) {
-    _internal_set_nanos(from._internal_nanos());
+  if (from._internal_milliseconds() != 0) {
+    _internal_set_milliseconds(from._internal_milliseconds());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -544,18 +539,276 @@ bool Timestamp::IsInitialized() const {
 void Timestamp::InternalSwap(Timestamp* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Timestamp, nanos_)
-      + sizeof(Timestamp::nanos_)
-      - PROTOBUF_FIELD_OFFSET(Timestamp, seconds_)>(
-          reinterpret_cast<char*>(&seconds_),
-          reinterpret_cast<char*>(&other->seconds_));
+  swap(milliseconds_, other->milliseconds_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Timestamp::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
       file_level_metadata_Struct_2eproto[0]);
+}
+
+// ===================================================================
+
+class Vector3::_Internal {
+ public:
+};
+
+Vector3::Vector3(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:message.Vector3)
+}
+Vector3::Vector3(const Vector3& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&x_, &from.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  // @@protoc_insertion_point(copy_constructor:message.Vector3)
+}
+
+inline void Vector3::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+}
+
+Vector3::~Vector3() {
+  // @@protoc_insertion_point(destructor:message.Vector3)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Vector3::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void Vector3::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Vector3::Clear() {
+// @@protoc_insertion_point(message_clear_start:message.Vector3)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&x_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Vector3::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // float x = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float z = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Vector3::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.Vector3)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // float x = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
+  }
+
+  // float y = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
+  }
+
+  // float z = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.Vector3)
+  return target;
+}
+
+size_t Vector3::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:message.Vector3)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // float x = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float y = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float z = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Vector3::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Vector3::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Vector3::GetClassData() const { return &_class_data_; }
+
+void Vector3::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Vector3 *>(to)->MergeFrom(
+      static_cast<const Vector3 &>(from));
+}
+
+
+void Vector3::MergeFrom(const Vector3& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:message.Vector3)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = from._internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    _internal_set_z(from._internal_z());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Vector3::CopyFrom(const Vector3& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:message.Vector3)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Vector3::IsInitialized() const {
+  return true;
+}
+
+void Vector3::InternalSwap(Vector3* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Vector3, z_)
+      + sizeof(Vector3::z_)
+      - PROTOBUF_FIELD_OFFSET(Vector3, x_)>(
+          reinterpret_cast<char*>(&x_),
+          reinterpret_cast<char*>(&other->x_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Vector3::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
+      file_level_metadata_Struct_2eproto[1]);
 }
 
 // ===================================================================
@@ -967,7 +1220,7 @@ void PosInfo::InternalSwap(PosInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PosInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[1]);
+      file_level_metadata_Struct_2eproto[2]);
 }
 
 // ===================================================================
@@ -1216,7 +1469,7 @@ void SkillCooltime::InternalSwap(SkillCooltime* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SkillCooltime::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[2]);
+      file_level_metadata_Struct_2eproto[3]);
 }
 
 // ===================================================================
@@ -1504,7 +1757,7 @@ void ObjectInfo::InternalSwap(ObjectInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ObjectInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[3]);
+      file_level_metadata_Struct_2eproto[4]);
 }
 
 // ===================================================================
@@ -1726,7 +1979,7 @@ void ItemObjectInfo::InternalSwap(ItemObjectInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemObjectInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[4]);
+      file_level_metadata_Struct_2eproto[5]);
 }
 
 // ===================================================================
@@ -2054,7 +2307,7 @@ void CreatureInfo::InternalSwap(CreatureInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreatureInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[5]);
+      file_level_metadata_Struct_2eproto[6]);
 }
 
 // ===================================================================
@@ -2276,7 +2529,7 @@ void MonsterInfo::InternalSwap(MonsterInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MonsterInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[6]);
+      file_level_metadata_Struct_2eproto[7]);
 }
 
 // ===================================================================
@@ -2538,7 +2791,7 @@ void PlayerInfo::InternalSwap(PlayerInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[7]);
+      file_level_metadata_Struct_2eproto[8]);
 }
 
 // ===================================================================
@@ -2771,7 +3024,7 @@ void ItemInfo::InternalSwap(ItemInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[8]);
+      file_level_metadata_Struct_2eproto[9]);
 }
 
 // ===================================================================
@@ -2990,7 +3243,7 @@ void InventorySlot::InternalSwap(InventorySlot* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InventorySlot::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Struct_2eproto_getter, &descriptor_table_Struct_2eproto_once,
-      file_level_metadata_Struct_2eproto[9]);
+      file_level_metadata_Struct_2eproto[10]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2999,6 +3252,10 @@ PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::message::Timestamp*
 Arena::CreateMaybeMessage< ::message::Timestamp >(Arena* arena) {
   return Arena::CreateMessageInternal< ::message::Timestamp >(arena);
+}
+template<> PROTOBUF_NOINLINE ::message::Vector3*
+Arena::CreateMaybeMessage< ::message::Vector3 >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::message::Vector3 >(arena);
 }
 template<> PROTOBUF_NOINLINE ::message::PosInfo*
 Arena::CreateMaybeMessage< ::message::PosInfo >(Arena* arena) {

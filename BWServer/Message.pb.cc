@@ -124,7 +124,11 @@ struct S_DespawnDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_DespawnDefaultTypeInternal _S_Despawn_default_instance_;
 PROTOBUF_CONSTEXPR C_Move::C_Move(
     ::_pbi::ConstantInitialized)
-  : posinfo_(nullptr){}
+  : posinfo_(nullptr)
+  , camera_yaw_(0)
+  , controller_yaw_(0)
+  , movement_x_(0)
+  , movement_y_(0){}
 struct C_MoveDefaultTypeInternal {
   PROTOBUF_CONSTEXPR C_MoveDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -136,7 +140,11 @@ struct C_MoveDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_MoveDefaultTypeInternal _C_Move_default_instance_;
 PROTOBUF_CONSTEXPR S_Move::S_Move(
     ::_pbi::ConstantInitialized)
-  : posinfo_(nullptr){}
+  : posinfo_(nullptr)
+  , camera_yaw_(0)
+  , controller_yaw_(0)
+  , movement_x_(0)
+  , movement_y_(0){}
 struct S_MoveDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_MoveDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -286,6 +294,10 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::message::C_Move, posinfo_),
+  PROTOBUF_FIELD_OFFSET(::message::C_Move, camera_yaw_),
+  PROTOBUF_FIELD_OFFSET(::message::C_Move, controller_yaw_),
+  PROTOBUF_FIELD_OFFSET(::message::C_Move, movement_x_),
+  PROTOBUF_FIELD_OFFSET(::message::C_Move, movement_y_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::S_Move, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -293,6 +305,10 @@ const uint32_t TableStruct_Message_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::message::S_Move, posinfo_),
+  PROTOBUF_FIELD_OFFSET(::message::S_Move, camera_yaw_),
+  PROTOBUF_FIELD_OFFSET(::message::S_Move, controller_yaw_),
+  PROTOBUF_FIELD_OFFSET(::message::S_Move, movement_x_),
+  PROTOBUF_FIELD_OFFSET(::message::S_Move, movement_y_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::message::C_Attack, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -344,12 +360,12 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 41, -1, -1, sizeof(::message::S_Spawn)},
   { 52, -1, -1, sizeof(::message::S_Despawn)},
   { 59, -1, -1, sizeof(::message::C_Move)},
-  { 66, -1, -1, sizeof(::message::S_Move)},
-  { 73, -1, -1, sizeof(::message::C_Attack)},
-  { 82, -1, -1, sizeof(::message::S_Attack)},
-  { 91, -1, -1, sizeof(::message::S_Heal)},
-  { 99, -1, -1, sizeof(::message::C_Death)},
-  { 106, -1, -1, sizeof(::message::S_Death)},
+  { 70, -1, -1, sizeof(::message::S_Move)},
+  { 81, -1, -1, sizeof(::message::C_Attack)},
+  { 90, -1, -1, sizeof(::message::S_Attack)},
+  { 99, -1, -1, sizeof(::message::S_Heal)},
+  { 107, -1, -1, sizeof(::message::C_Death)},
+  { 114, -1, -1, sizeof(::message::S_Death)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -384,59 +400,66 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "message.PlayerInfo\022&\n\010monsters\030\004 \003(\0132\024.m"
   "essage.MonsterInfo\022,\n\013itemObjects\030\005 \003(\0132"
   "\027.message.ItemObjectInfo\"\037\n\tS_Despawn\022\022\n"
-  "\nobject_ids\030\001 \003(\004\"+\n\006C_Move\022!\n\007PosInfo\030\001"
-  " \001(\0132\020.message.PosInfo\"+\n\006S_Move\022!\n\007PosI"
-  "nfo\030\001 \001(\0132\020.message.PosInfo\"A\n\010C_Attack\022"
-  "\021\n\tobject_id\030\001 \001(\004\022\022\n\ntarget_ids\030\002 \003(\004\022\016"
-  "\n\006damage\030\003 \001(\002\"A\n\010S_Attack\022\021\n\tobject_id\030"
-  "\001 \001(\004\022\022\n\ntarget_ids\030\002 \003(\004\022\016\n\006damage\030\003 \001("
-  "\002\")\n\006S_Heal\022\021\n\tobject_id\030\001 \003(\004\022\014\n\004heal\030\002"
-  " \001(\002\"\034\n\007C_Death\022\021\n\tobject_id\030\001 \001(\004\"\034\n\007S_"
-  "Death\022\021\n\tobject_id\030\001 \001(\004*\336\r\n\006HEADER\022\010\n\004N"
-  "ONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGIN_RES\020\002\022\022\n\016E"
-  "NTER_ROOM_REQ\020\003\022\022\n\016ENTER_ROOM_RES\020\004\022\022\n\016L"
-  "EAVE_ROOM_REQ\020\005\022\022\n\016LEAVE_ROOM_RES\020\006\022\022\n\016L"
-  "EAVE_GAME_REQ\020\007\022\022\n\016LEAVE_GAME_RES\020\010\022\024\n\020P"
-  "LAYER_SPAWN_RES\020\t\022\026\n\022PLAYER_DESPAWN_RES\020"
-  "\n\022\023\n\017PLAYER_CHAT_REQ\020\013\022\017\n\013PLAYERT_RES\020\014\022"
-  "\023\n\017PLAYER_MOVE_REQ\020\r\022\023\n\017PLAYER_MOVE_RES\020"
-  "\016\022\025\n\021PLAYER_ATTACK_REQ\020\017\022\025\n\021PLAYER_ATTAC"
-  "K_RES\020\020\022\026\n\022CREATURE_DEATH_RES\020\021\022\025\n\021CREAT"
-  "URE_HEAL_RES\020\022\022\027\n\022WARRIOR_ATTACK_REQ\020\315\010\022"
-  "\027\n\022WARRIOR_ATTACK_RES\020\316\010\022\022\n\rWARRIOR_Q_RE"
-  "Q\020\317\010\022\022\n\rWARRIOR_Q_RES\020\320\010\022\026\n\021WARRIOR_Q_HI"
-  "T_REQ\020\327\010\022\026\n\021WARRIOR_Q_HIT_RES\020\330\010\022\022\n\rWARR"
-  "IOR_E_REQ\020\321\010\022\022\n\rWARRIOR_E_RES\020\322\010\022\032\n\025WARR"
-  "IOR_E_SUCCESS_REQ\020\331\010\022\032\n\025WARRIOR_E_SUCCES"
-  "S_RES\020\332\010\022\022\n\rWARRIOR_R_REQ\020\323\010\022\022\n\rWARRIOR_"
-  "R_RES\020\324\010\022\023\n\016WARRIOR_LS_REQ\020\325\010\022\023\n\016WARRIOR"
-  "_LS_RES\020\326\010\022\030\n\023ASSASSIN_ATTACK_REQ\020\265\020\022\030\n\023"
-  "ASSASSIN_ATTACK_RES\020\266\020\022\023\n\016ASSASSIN_Q_REQ"
-  "\020\267\020\022\023\n\016ASSASSIN_Q_RES\020\270\020\022\023\n\016ASSASSIN_R_R"
-  "EQ\020\271\020\022\023\n\016ASSASSIN_R_RES\020\272\020\022\024\n\017ASSASSIN_L"
-  "S_REQ\020\273\020\022\024\n\017ASSASSIN_LS_RES\020\274\020\022\030\n\023ASSASS"
-  "IN_LS_OFF_RES\020\277\020\022\023\n\016ASSASSIN_E_REQ\020\275\020\022\023\n"
-  "\016ASSASSIN_E_RES\020\276\020\022\026\n\021ARCHOR_ATTACK_REQ\020"
-  "\235\030\022\026\n\021ARCHOR_ATTACK_RES\020\236\030\022\032\n\025ARCHOR_Q_C"
-  "HARGING_REQ\020\237\030\022\032\n\025ARCHOR_Q_CHARGING_RES\020"
-  "\240\030\022\026\n\021ARCHOR_Q_SHOT_REQ\020\241\030\022\026\n\021ARCHOR_Q_S"
-  "HOT_RES\020\242\030\022\021\n\014ARCHOR_E_REQ\020\243\030\022\021\n\014ARCHOR_"
-  "E_RES\020\244\030\022\021\n\014ARCHOR_R_REQ\020\245\030\022\021\n\014ARCHOR_R_"
-  "RES\020\246\030\022\022\n\rARCHOR_LS_REQ\020\247\030\022\022\n\rARCHOR_LS_"
-  "RES\020\250\030\022\025\n\020ARCHOR_R_OFF_RES\020\251\030\022\026\n\021ARCHOR_"
-  "LS_OFF_RES\020\252\030\022\021\n\014COOLTIME_RES\020\350\007\022\025\n\020RAMP"
-  "AGE_ROAR_RES\020\371U\022\033\n\026RAMPAGE_EARTHQUAKE_RE"
-  "S\020\372U\022\035\n\030RAMPAGE_TURNTOTARGET_RES\020\373U\022\032\n\025R"
-  "AMPAGE_THROWAWAY_RES\020\374U\022\037\n\032RAMPAGE_ENHAN"
-  "CEDATTACK_RES\020\375U\022\034\n\027RAMPAGE_BASICATTACK_"
-  "RES\020\376U\022\025\n\020MONSTER_MOVE_RES\020\221N\022\025\n\017ROUND_S"
-  "TART_RES\020\241\234\001\022\026\n\020ROUND_UPDATE_RES\020\242\234\001\022\023\n\r"
-  "ROUND_END_RES\020\243\234\001\022\"\n\034ROUND_GAMEOVER_COUN"
-  "TDOWN_RES\020\244\234\001\022\030\n\022ITEM_PICKED_UP_REQ\020\261\352\001\022"
-  "\030\n\022ITEM_PICKED_UP_RES\020\262\352\001\022\037\n\031ITEM_CONSUM"
-  "EABLE_USED_REQ\020\263\352\001\022\037\n\031ITEM_CONSUMEABLE_U"
-  "SED_RES\020\264\352\001\022\032\n\024ITEM_ACQUISITION_RES\020\265\352\001\022"
-  "\030\n\022ITEM_OPENINVENTORY\020\266\352\001b\006proto3"
+  "\nobject_ids\030\001 \003(\004\"\177\n\006C_Move\022!\n\007PosInfo\030\001"
+  " \001(\0132\020.message.PosInfo\022\022\n\ncamera_yaw\030\002 \001"
+  "(\002\022\026\n\016controller_yaw\030\003 \001(\002\022\022\n\nmovement_x"
+  "\030\004 \001(\001\022\022\n\nmovement_y\030\005 \001(\001\"\177\n\006S_Move\022!\n\007"
+  "PosInfo\030\001 \001(\0132\020.message.PosInfo\022\022\n\ncamer"
+  "a_yaw\030\002 \001(\002\022\026\n\016controller_yaw\030\003 \001(\002\022\022\n\nm"
+  "ovement_x\030\004 \001(\001\022\022\n\nmovement_y\030\005 \001(\001\"A\n\010C"
+  "_Attack\022\021\n\tobject_id\030\001 \001(\004\022\022\n\ntarget_ids"
+  "\030\002 \003(\004\022\016\n\006damage\030\003 \001(\002\"A\n\010S_Attack\022\021\n\tob"
+  "ject_id\030\001 \001(\004\022\022\n\ntarget_ids\030\002 \003(\004\022\016\n\006dam"
+  "age\030\003 \001(\002\")\n\006S_Heal\022\021\n\tobject_id\030\001 \003(\004\022\014"
+  "\n\004heal\030\002 \001(\002\"\034\n\007C_Death\022\021\n\tobject_id\030\001 \001"
+  "(\004\"\034\n\007S_Death\022\021\n\tobject_id\030\001 \001(\004*\306\016\n\006HEA"
+  "DER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGIN_RE"
+  "S\020\002\022\022\n\016ENTER_ROOM_REQ\020\003\022\022\n\016ENTER_ROOM_RE"
+  "S\020\004\022\022\n\016LEAVE_ROOM_REQ\020\005\022\022\n\016LEAVE_ROOM_RE"
+  "S\020\006\022\022\n\016LEAVE_GAME_REQ\020\007\022\022\n\016LEAVE_GAME_RE"
+  "S\020\010\022\024\n\020PLAYER_SPAWN_RES\020\t\022\026\n\022PLAYER_DESP"
+  "AWN_RES\020\n\022\023\n\017PLAYER_CHAT_REQ\020\013\022\017\n\013PLAYER"
+  "T_RES\020\014\022\023\n\017PLAYER_MOVE_REQ\020\r\022\023\n\017PLAYER_M"
+  "OVE_RES\020\016\022\025\n\021PLAYER_ATTACK_REQ\020\017\022\025\n\021PLAY"
+  "ER_ATTACK_RES\020\020\022\026\n\022CREATURE_DEATH_RES\020\021\022"
+  "\025\n\021CREATURE_HEAL_RES\020\022\022\033\n\027CREATURE_VECTO"
+  "RMOVE_REQ\020\023\022\033\n\027CREATURE_VECTORMOVE_RES\020\024"
+  "\022\025\n\020SESSION_PING_REQ\020\346\007\022\025\n\020SESSION_PING_"
+  "RES\020\347\007\022\027\n\022WARRIOR_ATTACK_REQ\020\315\010\022\027\n\022WARRI"
+  "OR_ATTACK_RES\020\316\010\022\022\n\rWARRIOR_Q_REQ\020\317\010\022\022\n\r"
+  "WARRIOR_Q_RES\020\320\010\022\026\n\021WARRIOR_Q_HIT_REQ\020\327\010"
+  "\022\026\n\021WARRIOR_Q_HIT_RES\020\330\010\022\022\n\rWARRIOR_E_RE"
+  "Q\020\321\010\022\022\n\rWARRIOR_E_RES\020\322\010\022\032\n\025WARRIOR_E_SU"
+  "CCESS_REQ\020\331\010\022\032\n\025WARRIOR_E_SUCCESS_RES\020\332\010"
+  "\022\022\n\rWARRIOR_R_REQ\020\323\010\022\022\n\rWARRIOR_R_RES\020\324\010"
+  "\022\023\n\016WARRIOR_LS_REQ\020\325\010\022\023\n\016WARRIOR_LS_RES\020"
+  "\326\010\022\030\n\023ASSASSIN_ATTACK_REQ\020\265\020\022\030\n\023ASSASSIN"
+  "_ATTACK_RES\020\266\020\022\023\n\016ASSASSIN_Q_REQ\020\267\020\022\023\n\016A"
+  "SSASSIN_Q_RES\020\270\020\022\023\n\016ASSASSIN_R_REQ\020\271\020\022\023\n"
+  "\016ASSASSIN_R_RES\020\272\020\022\024\n\017ASSASSIN_LS_REQ\020\273\020"
+  "\022\024\n\017ASSASSIN_LS_RES\020\274\020\022\030\n\023ASSASSIN_LS_OF"
+  "F_RES\020\277\020\022\023\n\016ASSASSIN_E_REQ\020\275\020\022\023\n\016ASSASSI"
+  "N_E_RES\020\276\020\022\026\n\021ARCHOR_ATTACK_REQ\020\235\030\022\026\n\021AR"
+  "CHOR_ATTACK_RES\020\236\030\022\032\n\025ARCHOR_Q_CHARGING_"
+  "REQ\020\237\030\022\032\n\025ARCHOR_Q_CHARGING_RES\020\240\030\022\026\n\021AR"
+  "CHOR_Q_SHOT_REQ\020\241\030\022\026\n\021ARCHOR_Q_SHOT_RES\020"
+  "\242\030\022\021\n\014ARCHOR_E_REQ\020\243\030\022\021\n\014ARCHOR_E_RES\020\244\030"
+  "\022\021\n\014ARCHOR_R_REQ\020\245\030\022\021\n\014ARCHOR_R_RES\020\246\030\022\022"
+  "\n\rARCHOR_LS_REQ\020\247\030\022\022\n\rARCHOR_LS_RES\020\250\030\022\025"
+  "\n\020ARCHOR_R_OFF_RES\020\251\030\022\026\n\021ARCHOR_LS_OFF_R"
+  "ES\020\252\030\022\021\n\014COOLTIME_RES\020\350\007\022\025\n\020RAMPAGE_ROAR"
+  "_RES\020\371U\022\033\n\026RAMPAGE_EARTHQUAKE_RES\020\372U\022\035\n\030"
+  "RAMPAGE_TURNTOTARGET_RES\020\373U\022\032\n\025RAMPAGE_T"
+  "HROWAWAY_RES\020\374U\022\037\n\032RAMPAGE_ENHANCEDATTAC"
+  "K_RES\020\375U\022\034\n\027RAMPAGE_BASICATTACK_RES\020\376U\022\025"
+  "\n\020MONSTER_MOVE_RES\020\221N\022\025\n\017ROUND_START_RES"
+  "\020\241\234\001\022\026\n\020ROUND_UPDATE_RES\020\242\234\001\022\023\n\rROUND_EN"
+  "D_RES\020\243\234\001\022\"\n\034ROUND_GAMEOVER_COUNTDOWN_RE"
+  "S\020\244\234\001\022\030\n\022ITEM_PICKED_UP_REQ\020\261\352\001\022\030\n\022ITEM_"
+  "PICKED_UP_RES\020\262\352\001\022\037\n\031ITEM_CONSUMEABLE_US"
+  "ED_REQ\020\263\352\001\022\037\n\031ITEM_CONSUMEABLE_USED_RES\020"
+  "\264\352\001\022\032\n\024ITEM_ACQUISITION_RES\020\265\352\001\022\030\n\022ITEM_"
+  "OPENINVENTORY\020\266\352\001b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[2] = {
   &::descriptor_table_Enum_2eproto,
@@ -444,7 +467,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_dep
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 2633, descriptor_table_protodef_Message_2eproto,
+    false, false, 2905, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
     &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 2, 15,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
@@ -483,6 +506,10 @@ bool HEADER_IsValid(int value) {
     case 16:
     case 17:
     case 18:
+    case 19:
+    case 20:
+    case 998:
+    case 999:
     case 1000:
     case 1101:
     case 1102:
@@ -1810,11 +1837,17 @@ C_Move::C_Move(const C_Move& from)
   } else {
     posinfo_ = nullptr;
   }
+  ::memcpy(&camera_yaw_, &from.camera_yaw_,
+    static_cast<size_t>(reinterpret_cast<char*>(&movement_y_) -
+    reinterpret_cast<char*>(&camera_yaw_)) + sizeof(movement_y_));
   // @@protoc_insertion_point(copy_constructor:message.C_Move)
 }
 
 inline void C_Move::SharedCtor() {
-posinfo_ = nullptr;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&posinfo_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&movement_y_) -
+    reinterpret_cast<char*>(&posinfo_)) + sizeof(movement_y_));
 }
 
 C_Move::~C_Move() {
@@ -1845,6 +1878,9 @@ void C_Move::Clear() {
     delete posinfo_;
   }
   posinfo_ = nullptr;
+  ::memset(&camera_yaw_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&movement_y_) -
+      reinterpret_cast<char*>(&camera_yaw_)) + sizeof(movement_y_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1859,6 +1895,38 @@ const char* C_Move::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_posinfo(), ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float camera_yaw = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          camera_yaw_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float controller_yaw = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          controller_yaw_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // double movement_x = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 33)) {
+          movement_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // double movement_y = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 41)) {
+          movement_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
         } else
           goto handle_unusual;
         continue;
@@ -1898,6 +1966,46 @@ uint8_t* C_Move::_InternalSerialize(
         _Internal::posinfo(this).GetCachedSize(), target, stream);
   }
 
+  // float camera_yaw = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_camera_yaw = this->_internal_camera_yaw();
+  uint32_t raw_camera_yaw;
+  memcpy(&raw_camera_yaw, &tmp_camera_yaw, sizeof(tmp_camera_yaw));
+  if (raw_camera_yaw != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_camera_yaw(), target);
+  }
+
+  // float controller_yaw = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_controller_yaw = this->_internal_controller_yaw();
+  uint32_t raw_controller_yaw;
+  memcpy(&raw_controller_yaw, &tmp_controller_yaw, sizeof(tmp_controller_yaw));
+  if (raw_controller_yaw != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_controller_yaw(), target);
+  }
+
+  // double movement_x = 4;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_x = this->_internal_movement_x();
+  uint64_t raw_movement_x;
+  memcpy(&raw_movement_x, &tmp_movement_x, sizeof(tmp_movement_x));
+  if (raw_movement_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(4, this->_internal_movement_x(), target);
+  }
+
+  // double movement_y = 5;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_y = this->_internal_movement_y();
+  uint64_t raw_movement_y;
+  memcpy(&raw_movement_y, &tmp_movement_y, sizeof(tmp_movement_y));
+  if (raw_movement_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_movement_y(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1919,6 +2027,42 @@ size_t C_Move::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *posinfo_);
+  }
+
+  // float camera_yaw = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_camera_yaw = this->_internal_camera_yaw();
+  uint32_t raw_camera_yaw;
+  memcpy(&raw_camera_yaw, &tmp_camera_yaw, sizeof(tmp_camera_yaw));
+  if (raw_camera_yaw != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float controller_yaw = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_controller_yaw = this->_internal_controller_yaw();
+  uint32_t raw_controller_yaw;
+  memcpy(&raw_controller_yaw, &tmp_controller_yaw, sizeof(tmp_controller_yaw));
+  if (raw_controller_yaw != 0) {
+    total_size += 1 + 4;
+  }
+
+  // double movement_x = 4;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_x = this->_internal_movement_x();
+  uint64_t raw_movement_x;
+  memcpy(&raw_movement_x, &tmp_movement_x, sizeof(tmp_movement_x));
+  if (raw_movement_x != 0) {
+    total_size += 1 + 8;
+  }
+
+  // double movement_y = 5;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_y = this->_internal_movement_y();
+  uint64_t raw_movement_y;
+  memcpy(&raw_movement_y, &tmp_movement_y, sizeof(tmp_movement_y));
+  if (raw_movement_y != 0) {
+    total_size += 1 + 8;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1946,6 +2090,34 @@ void C_Move::MergeFrom(const C_Move& from) {
   if (from._internal_has_posinfo()) {
     _internal_mutable_posinfo()->::message::PosInfo::MergeFrom(from._internal_posinfo());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_camera_yaw = from._internal_camera_yaw();
+  uint32_t raw_camera_yaw;
+  memcpy(&raw_camera_yaw, &tmp_camera_yaw, sizeof(tmp_camera_yaw));
+  if (raw_camera_yaw != 0) {
+    _internal_set_camera_yaw(from._internal_camera_yaw());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_controller_yaw = from._internal_controller_yaw();
+  uint32_t raw_controller_yaw;
+  memcpy(&raw_controller_yaw, &tmp_controller_yaw, sizeof(tmp_controller_yaw));
+  if (raw_controller_yaw != 0) {
+    _internal_set_controller_yaw(from._internal_controller_yaw());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_x = from._internal_movement_x();
+  uint64_t raw_movement_x;
+  memcpy(&raw_movement_x, &tmp_movement_x, sizeof(tmp_movement_x));
+  if (raw_movement_x != 0) {
+    _internal_set_movement_x(from._internal_movement_x());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_y = from._internal_movement_y();
+  uint64_t raw_movement_y;
+  memcpy(&raw_movement_y, &tmp_movement_y, sizeof(tmp_movement_y));
+  if (raw_movement_y != 0) {
+    _internal_set_movement_y(from._internal_movement_y());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1963,7 +2135,12 @@ bool C_Move::IsInitialized() const {
 void C_Move::InternalSwap(C_Move* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(posinfo_, other->posinfo_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(C_Move, movement_y_)
+      + sizeof(C_Move::movement_y_)
+      - PROTOBUF_FIELD_OFFSET(C_Move, posinfo_)>(
+          reinterpret_cast<char*>(&posinfo_),
+          reinterpret_cast<char*>(&other->posinfo_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_Move::GetMetadata() const {
@@ -2003,11 +2180,17 @@ S_Move::S_Move(const S_Move& from)
   } else {
     posinfo_ = nullptr;
   }
+  ::memcpy(&camera_yaw_, &from.camera_yaw_,
+    static_cast<size_t>(reinterpret_cast<char*>(&movement_y_) -
+    reinterpret_cast<char*>(&camera_yaw_)) + sizeof(movement_y_));
   // @@protoc_insertion_point(copy_constructor:message.S_Move)
 }
 
 inline void S_Move::SharedCtor() {
-posinfo_ = nullptr;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&posinfo_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&movement_y_) -
+    reinterpret_cast<char*>(&posinfo_)) + sizeof(movement_y_));
 }
 
 S_Move::~S_Move() {
@@ -2038,6 +2221,9 @@ void S_Move::Clear() {
     delete posinfo_;
   }
   posinfo_ = nullptr;
+  ::memset(&camera_yaw_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&movement_y_) -
+      reinterpret_cast<char*>(&camera_yaw_)) + sizeof(movement_y_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2052,6 +2238,38 @@ const char* S_Move::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_posinfo(), ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float camera_yaw = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          camera_yaw_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float controller_yaw = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          controller_yaw_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // double movement_x = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 33)) {
+          movement_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // double movement_y = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 41)) {
+          movement_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
         } else
           goto handle_unusual;
         continue;
@@ -2091,6 +2309,46 @@ uint8_t* S_Move::_InternalSerialize(
         _Internal::posinfo(this).GetCachedSize(), target, stream);
   }
 
+  // float camera_yaw = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_camera_yaw = this->_internal_camera_yaw();
+  uint32_t raw_camera_yaw;
+  memcpy(&raw_camera_yaw, &tmp_camera_yaw, sizeof(tmp_camera_yaw));
+  if (raw_camera_yaw != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_camera_yaw(), target);
+  }
+
+  // float controller_yaw = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_controller_yaw = this->_internal_controller_yaw();
+  uint32_t raw_controller_yaw;
+  memcpy(&raw_controller_yaw, &tmp_controller_yaw, sizeof(tmp_controller_yaw));
+  if (raw_controller_yaw != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_controller_yaw(), target);
+  }
+
+  // double movement_x = 4;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_x = this->_internal_movement_x();
+  uint64_t raw_movement_x;
+  memcpy(&raw_movement_x, &tmp_movement_x, sizeof(tmp_movement_x));
+  if (raw_movement_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(4, this->_internal_movement_x(), target);
+  }
+
+  // double movement_y = 5;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_y = this->_internal_movement_y();
+  uint64_t raw_movement_y;
+  memcpy(&raw_movement_y, &tmp_movement_y, sizeof(tmp_movement_y));
+  if (raw_movement_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(5, this->_internal_movement_y(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2112,6 +2370,42 @@ size_t S_Move::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *posinfo_);
+  }
+
+  // float camera_yaw = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_camera_yaw = this->_internal_camera_yaw();
+  uint32_t raw_camera_yaw;
+  memcpy(&raw_camera_yaw, &tmp_camera_yaw, sizeof(tmp_camera_yaw));
+  if (raw_camera_yaw != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float controller_yaw = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_controller_yaw = this->_internal_controller_yaw();
+  uint32_t raw_controller_yaw;
+  memcpy(&raw_controller_yaw, &tmp_controller_yaw, sizeof(tmp_controller_yaw));
+  if (raw_controller_yaw != 0) {
+    total_size += 1 + 4;
+  }
+
+  // double movement_x = 4;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_x = this->_internal_movement_x();
+  uint64_t raw_movement_x;
+  memcpy(&raw_movement_x, &tmp_movement_x, sizeof(tmp_movement_x));
+  if (raw_movement_x != 0) {
+    total_size += 1 + 8;
+  }
+
+  // double movement_y = 5;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_y = this->_internal_movement_y();
+  uint64_t raw_movement_y;
+  memcpy(&raw_movement_y, &tmp_movement_y, sizeof(tmp_movement_y));
+  if (raw_movement_y != 0) {
+    total_size += 1 + 8;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2139,6 +2433,34 @@ void S_Move::MergeFrom(const S_Move& from) {
   if (from._internal_has_posinfo()) {
     _internal_mutable_posinfo()->::message::PosInfo::MergeFrom(from._internal_posinfo());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_camera_yaw = from._internal_camera_yaw();
+  uint32_t raw_camera_yaw;
+  memcpy(&raw_camera_yaw, &tmp_camera_yaw, sizeof(tmp_camera_yaw));
+  if (raw_camera_yaw != 0) {
+    _internal_set_camera_yaw(from._internal_camera_yaw());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_controller_yaw = from._internal_controller_yaw();
+  uint32_t raw_controller_yaw;
+  memcpy(&raw_controller_yaw, &tmp_controller_yaw, sizeof(tmp_controller_yaw));
+  if (raw_controller_yaw != 0) {
+    _internal_set_controller_yaw(from._internal_controller_yaw());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_x = from._internal_movement_x();
+  uint64_t raw_movement_x;
+  memcpy(&raw_movement_x, &tmp_movement_x, sizeof(tmp_movement_x));
+  if (raw_movement_x != 0) {
+    _internal_set_movement_x(from._internal_movement_x());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_movement_y = from._internal_movement_y();
+  uint64_t raw_movement_y;
+  memcpy(&raw_movement_y, &tmp_movement_y, sizeof(tmp_movement_y));
+  if (raw_movement_y != 0) {
+    _internal_set_movement_y(from._internal_movement_y());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -2156,7 +2478,12 @@ bool S_Move::IsInitialized() const {
 void S_Move::InternalSwap(S_Move* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(posinfo_, other->posinfo_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_Move, movement_y_)
+      + sizeof(S_Move::movement_y_)
+      - PROTOBUF_FIELD_OFFSET(S_Move, posinfo_)>(
+          reinterpret_cast<char*>(&posinfo_),
+          reinterpret_cast<char*>(&other->posinfo_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_Move::GetMetadata() const {

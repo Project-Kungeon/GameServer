@@ -34,6 +34,12 @@ enum HEADER
 	CREATURE_DEATH_RES = 17;
 	CREATURE_HEAL_RES = 18;
 
+	CREATURE_VECTORMOVE_REQ = 19;
+	CREATURE_VECTORMOVE_RES = 20;
+
+	SESSION_PING_REQ = 998;
+	SESSION_PING_RES = 999;
+
 	WARRIOR_ATTACK_REQ = 1101;
 	WARRIOR_ATTACK_RES = 1102;
 
@@ -174,11 +180,20 @@ message S_Despawn
 message C_Move
 {
 	PosInfo PosInfo = 1;
+	float camera_yaw = 2;
+	float controller_yaw = 3;
+	double movement_x = 4;
+	double movement_y = 5;
 }
 
 message S_Move
 {
 	PosInfo PosInfo = 1;
+	float camera_yaw = 2;
+	float controller_yaw = 3;
+	double movement_x = 4;
+	double movement_y = 5;
+
 }
 
 message C_Attack
