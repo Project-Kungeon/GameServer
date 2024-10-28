@@ -28,6 +28,7 @@ public:
 	virtual bool SpawnMonster(MonsterPtr monster);
 	virtual bool SpawnObject(ObjectPtr monster);
 	virtual void UdpHandleMove(message::C_Move pkt);
+	virtual void SendUdpMove(message::S_Move pkt);
 	virtual void HandleMove(message::C_Move pkt);
 	virtual void HandleAttack(message::C_Attack pkt);
 	virtual void HandleDeath(CreaturePtr creature);
@@ -71,6 +72,10 @@ public:
 	void HandleItemOpenOpenInventory(PlayerPtr player, game::item::C_Item_OpenInventory pkt);
 
 	void BroadcastHealCreature(CreaturePtr creature, float health);
+
+public:
+	void BroadcastPingPacket();
+
 
 	// Tick
 public:

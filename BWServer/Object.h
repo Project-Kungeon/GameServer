@@ -37,10 +37,26 @@ public:
 		return objectInfo->object_type();
 	}
 
+	void SetMovementInfo(double x, double y)
+	{
+		movement_x = x;
+		movement_y = y;
+	}
+
+	void SetYawInfo(float camera_yaw, float controller_yaw)
+	{
+		this->camera_yaw = camera_yaw;
+		this->controller_yaw = controller_yaw;
+	}
+
 
 public:
 	message::ObjectInfo*	objectInfo;
 	message::PosInfo*		posInfo;
+	double movement_x;
+	double movement_y;
+	float controller_yaw;
+	float camera_yaw;
 	atomic<std::weak_ptr<Room>> room;
 
 public:

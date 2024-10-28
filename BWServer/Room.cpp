@@ -235,8 +235,7 @@ void Room::UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 			{
 				spdlog::info("Udp Send to {} player", item.first);
 				//session->Send(buffer);
-				auto& target_endpoint = session->GetUdpEndpoint();
-				_GameServer->UdpSend(buffer, target_endpoint);
+				_GameServer->UdpSend(buffer);
 			}
 		}
 
@@ -307,20 +306,32 @@ void Room::UdpHandleMove(message::C_Move pkt)
 
 	PlayerPtr player = dynamic_pointer_cast<Player>(_objects[object_id]);
 	player->SetPosInfo(pkt.posinfo());
+	player->SetMovementInfo(pkt.movement_x(), pkt.movement_y());
+	player->SetYawInfo(pkt.camera_yaw(), pkt.controller_yaw());
 
+	
+}
+
+void Room::SendUdpMove(message::S_Move movePkt)
+{
 	// make buffer for notification that all client received.
 	{
-		message::S_Move movePkt;
-		{
-			message::PosInfo* posInfo = movePkt.mutable_posinfo();
-			posInfo->CopyFrom(pkt.posinfo());
-		}
+		//message::S_Move movePkt;
+		//{
+		//	message::PosInfo* posInfo = movePkt.mutable_posinfo();
+		//	posInfo->CopyFrom(pkt.posinfo());
+		//	movePkt.set_camera_yaw(pkt.camera_yaw());
+		//	movePkt.set_controller_yaw(pkt.controller_yaw());
+		//	movePkt.set_movement_x(pkt.movement_x());
+		//	movePkt.set_movement_y(pkt.movement_y());
+		//}
 		const size_t requiredSize = PacketUtil::RequiredSize(movePkt);
 		char* rawBuffer = new char[requiredSize];
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_MOVE_RES, movePkt);
 
-		UdpBroadcast(sendBuffer, object_id);
+		//UdpBroadcast(sendBuffer, object_id);
+		UdpBroadcast(sendBuffer, 0);
 	}
 }
 
@@ -1463,7 +1474,34 @@ void Room::HandleTick(uint32 Deltatime)
 	for (auto& item : _objects)
 	{
 		item.second->Tick(Deltatime);
+
+		auto object = item.second;
+
+		if (object->GetObjectType() == message::OBJECT_TYPE_CREATURE)
+		{
+			auto creature = static_pointer_cast<Creature>(object);
+			if (creature->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+			{
+				message::S_Move movePkt;
+				{
+					message::PosInfo* posInfo = movePkt.mutable_posinfo();
+					posInfo->CopyFrom(*object->posInfo);
+					movePkt.set_camera_yaw(object->camera_yaw);
+					movePkt.set_controller_yaw(object->controller_yaw);
+					movePkt.set_movement_x(object->movement_x);
+					movePkt.set_movement_y(object->movement_y);
+				}
+				SendUdpMove(movePkt);
+			}
+
+
+		}
+
+		
+
 	}
+
+
 	//_tickCount++;
 
 	//auto now = std::chrono::steady_clock::now();

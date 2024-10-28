@@ -56,9 +56,6 @@
     <ClCompile Include="Skill.pb.cc">
       <Filter>Packets\build</Filter>
     </ClCompile>
-    <ClCompile Include="TickGenerator.cpp">
-      <Filter>Main\Server</Filter>
-    </ClCompile>
     <ClCompile Include="Creature.cpp">
       <Filter>Main\Game\Object\Creature</Filter>
     </ClCompile>
@@ -118,6 +115,10 @@
     </ClCompile>
     <ClCompile Include="DelayGameSession.cpp">
       <Filter>Main\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeUtils.cpp" />
+    <ClCompile Include="DelayGameServer.cpp">
+      <Filter>Main\Server</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,9 +188,6 @@
     <ClInclude Include="Skill.pb.h">
       <Filter>Packets\build</Filter>
     </ClInclude>
-    <ClInclude Include="TickGenerator.h">
-      <Filter>Main\Server</Filter>
-    </ClInclude>
     <ClInclude Include="Creature.h">
       <Filter>Main\Game\Object\Creature</Filter>
     </ClInclude>
@@ -252,6 +250,10 @@
     </ClInclude>
     <ClInclude Include="DelayGameSession.h">
       <Filter>Main\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeUtils.h" />
+    <ClInclude Include="DelayGameServer.h">
+      <Filter>Main\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -352,6 +354,9 @@
       <Filter>Packets\Proto</Filter>
     </None>
     <None Include="..\Common\protobuf3.20.3-win64\bin\Item.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\Ping.proto">
       <Filter>Packets\Proto</Filter>
     </None>
   </ItemGroup>

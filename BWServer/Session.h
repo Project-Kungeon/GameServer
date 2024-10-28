@@ -28,8 +28,6 @@ public:
 
 	void Start();
 	tcp::socket& GetSocket();
-
-	udp::endpoint& GetUdpEndpoint();
 	virtual void Send(asio::mutable_buffer& buffer);
 
 protected:
@@ -52,7 +50,6 @@ protected:
 
 	asio::strand<asio::io_context::executor_type> _strand;
 
-protected:
-	udp::endpoint _udp_endpoint;
+
 };
 

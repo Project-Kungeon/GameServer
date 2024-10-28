@@ -1,0 +1,19 @@
+syntax = "proto3";
+package session;
+
+import "Enum.proto";
+import "Struct.proto";
+
+message C_Ping
+{
+	uint64 session_id = 1;
+	.message.Timestamp created_at= 2;
+	uint64 server_to_client_interval = 3;
+}
+
+message S_Ping
+{
+	uint64 session_id = 1;
+	.message.Timestamp created_at = 2;
+	uint64 client_to_server_interval = 3;
+}
