@@ -9,6 +9,7 @@
 #include "Member.h"
 #include "Packet.h"
 #include "Message.pb.h"
+#include "Ping.pb.h"
 #include "ServerPacketHandler.h"
 
 using boost::asio::ip::tcp;
@@ -30,6 +31,9 @@ public:
 	tcp::socket& GetSocket();
 	virtual void Send(asio::mutable_buffer& buffer);
 
+	virtual void HandlePing(const ping::C_Ping& pkt);
+	virtual void HandleCompletePing(const ping::C_CompletePing& pkt);
+
 protected:
 	virtual void AsyncRead();
 	virtual void OnRead(const boost::system::error_code& err, size_t size);
@@ -50,6 +54,23 @@ protected:
 
 	asio::strand<asio::io_context::executor_type> _strand;
 
+	// 핑 체크
+protected:
+	struct RTTStats
+	{
+		uint64_t client_send_time;
+		uint64_t server_receive_time;
+		uint64_t server_send_time;
+		uint64_t client_receive_time;
 
+		void PrintRttStats() const
+		{
+			uint64_t total_rtt = client_receive_time - client_send_time;
+			uint64_t server_processing_time = server_send_time - server_receive_time;
+			uint64_t network_rtt = total_rtt - server_processing_time;
+			spdlog::trace("Total RTT : {}", total_rtt);
+		}
+	};
+	RTTStats _rtt_stats;
 };
 

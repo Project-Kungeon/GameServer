@@ -204,8 +204,8 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 				{
 					NearestPlayer = { distance_interval, player };
 				}
-				// 거리 비교 -> 만약 기존 플레이어보다 더 가까이 있을 경우
-				else if (NearestPlayer.first > distance_interval)
+				// 거리 비교 -> 만약 기존 플레이어보다 더 가까이 있을 경우, 체력이 0보다 클 경우(생존 상태)
+				else if (NearestPlayer.first > distance_interval && player->GetHp() > 0)
 				{
 					NearestPlayer = { distance_interval, player };
 				}
@@ -218,28 +218,30 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 
 void Room::UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 {
+	_GameServer->UdpSend(buffer);
+
 	// 오브젝트 리스트 탐색
-	for (auto& item : _objects)
-	{
-		// 플레이어 캐스팅
-		// RTTI 최소화를 위한 리팩토링
-		if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
-		{
-			PlayerPtr player = static_pointer_cast<Player>(item.second);
-			if (player == nullptr) continue;
+	//for (auto& item : _objects)
+	//{
+	//	// 플레이어 캐스팅
+	//	// RTTI 최소화를 위한 리팩토링
+	//	if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+	//	{
+	//		PlayerPtr player = static_pointer_cast<Player>(item.second);
+	//		if (player == nullptr) continue;
 
-			// 브로드캐스트 제외 대상은 보내지 않습니다.
-			if (player->objectInfo->object_id() == exceptId) continue;
+	//		// 브로드캐스트 제외 대상은 보내지 않습니다.
+	//		if (player->objectInfo->object_id() == exceptId) continue;
 
-			if (GameSessionPtr session = player->session.lock())
-			{
-				spdlog::info("Udp Send to {} player", item.first);
-				//session->Send(buffer);
-				_GameServer->UdpSend(buffer);
-			}
-		}
+	//		if (GameSessionPtr session = player->session.lock())
+	//		{
+	//			spdlog::info("Udp Send to {} player", item.first);
+	//			//session->Send(buffer);
+	//			_GameServer->UdpSend(buffer);
+	//		}
+	//	}
 
-	}
+	//}
 }
 
 
@@ -1486,6 +1488,7 @@ void Room::HandleTick(uint32 Deltatime)
 				{
 					message::PosInfo* posInfo = movePkt.mutable_posinfo();
 					posInfo->CopyFrom(*object->posInfo);
+					spdlog::trace("{} Player pos : {}, {}, {}", object->GetObjectId(), posInfo->x(), posInfo->y(), posInfo->z());
 					movePkt.set_camera_yaw(object->camera_yaw);
 					movePkt.set_controller_yaw(object->controller_yaw);
 					movePkt.set_movement_x(object->movement_x);

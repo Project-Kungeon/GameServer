@@ -20,6 +20,7 @@ public:
     virtual void UdpSend(asio::mutable_buffer& buffer) override;
     virtual void AsyncUdpWrite(const char* message, size_t size) override;
 
+
 private:
     bool shouldDropPacket() {
         std::uniform_real_distribution<double> dist(0.0, 1.0);
@@ -27,6 +28,7 @@ private:
     }
 
 private:
+    int session_nums = 0;
     int delay_milliseconds;
     double loss_rate;
     std::mt19937 random_engine;

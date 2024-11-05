@@ -1,19 +1,25 @@
 syntax = "proto3";
-package session;
-
-import "Enum.proto";
-import "Struct.proto";
+package ping;
 
 message C_Ping
 {
-	uint64 session_id = 1;
-	.message.Timestamp created_at= 2;
-	uint64 server_to_client_interval = 3;
+	uint64 sequence_number = 1;
+	uint64 client_send_time = 2;
 }
 
-message S_Ping
+message S_Pong
 {
-	uint64 session_id = 1;
-	.message.Timestamp created_at = 2;
-	uint64 client_to_server_interval = 3;
+	uint64 sequence_number = 1;
+	uint64 client_send_time = 2;
+	uint64 server_receive_time = 3;
+	uint64 server_send_time = 4;
+}
+
+message C_CompletePing
+{
+	uint64 sequence_number = 1;
+	uint64 client_send_time = 2;
+	uint64 server_receive_time = 3;
+	uint64 server_send_time = 4;
+	uint64 client_receive_time = 5;
 }

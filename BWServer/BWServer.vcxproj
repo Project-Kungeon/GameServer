@@ -228,6 +228,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Ping.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PingPongPacketHandler.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rampage.cpp" />
     <ClCompile Include="RampageTree.cpp" />
@@ -281,6 +286,8 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Ping.pb.h" />
+    <ClInclude Include="PingPongPacketHandler.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rampage.h" />
     <ClInclude Include="RampageTree.h" />

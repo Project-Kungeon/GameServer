@@ -120,6 +120,12 @@
     <ClCompile Include="DelayGameServer.cpp">
       <Filter>Main\Server</Filter>
     </ClCompile>
+    <ClCompile Include="Ping.pb.cc">
+      <Filter>Packets\build</Filter>
+    </ClCompile>
+    <ClCompile Include="PingPongPacketHandler.cpp">
+      <Filter>Packets\handler\pingpong</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -255,6 +261,12 @@
     <ClInclude Include="DelayGameServer.h">
       <Filter>Main\Server</Filter>
     </ClInclude>
+    <ClInclude Include="Ping.pb.h">
+      <Filter>Packets\build</Filter>
+    </ClInclude>
+    <ClInclude Include="PingPongPacketHandler.h">
+      <Filter>Packets\handler\pingpong</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -328,6 +340,9 @@
     </Filter>
     <Filter Include="Packets\handler\Interactive">
       <UniqueIdentifier>{d192c879-5162-40b8-9882-c617e75c4ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packets\handler\pingpong">
+      <UniqueIdentifier>{fba96f90-fcc9-4834-846b-d6b0a60761b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

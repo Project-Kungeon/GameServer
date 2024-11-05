@@ -108,10 +108,10 @@ bool Rampage::UseSkillToAggro()
 	// distance == -1 -> No Pointer
 	double distance = GetDistanceToTarget(AggroTarget);
 
-	if (distance > 500)
+	if (distance > 600)
 	{
 		ThrowAway();
-		return true;
+		return false;
 	}
 	else if (distance >= 0)
 	{
