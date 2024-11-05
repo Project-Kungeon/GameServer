@@ -30,8 +30,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include "Enum.pb.h"
-#include "Struct.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_Ping_2eproto
@@ -46,24 +44,28 @@ struct TableStruct_Ping_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Ping_2eproto;
-namespace session {
+namespace ping {
+class C_CompletePing;
+struct C_CompletePingDefaultTypeInternal;
+extern C_CompletePingDefaultTypeInternal _C_CompletePing_default_instance_;
 class C_Ping;
 struct C_PingDefaultTypeInternal;
 extern C_PingDefaultTypeInternal _C_Ping_default_instance_;
-class S_Ping;
-struct S_PingDefaultTypeInternal;
-extern S_PingDefaultTypeInternal _S_Ping_default_instance_;
-}  // namespace session
+class S_Pong;
+struct S_PongDefaultTypeInternal;
+extern S_PongDefaultTypeInternal _S_Pong_default_instance_;
+}  // namespace ping
 PROTOBUF_NAMESPACE_OPEN
-template<> ::session::C_Ping* Arena::CreateMaybeMessage<::session::C_Ping>(Arena*);
-template<> ::session::S_Ping* Arena::CreateMaybeMessage<::session::S_Ping>(Arena*);
+template<> ::ping::C_CompletePing* Arena::CreateMaybeMessage<::ping::C_CompletePing>(Arena*);
+template<> ::ping::C_Ping* Arena::CreateMaybeMessage<::ping::C_Ping>(Arena*);
+template<> ::ping::S_Pong* Arena::CreateMaybeMessage<::ping::S_Pong>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
-namespace session {
+namespace ping {
 
 // ===================================================================
 
 class C_Ping final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:session.C_Ping) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ping.C_Ping) */ {
  public:
   inline C_Ping() : C_Ping(nullptr) {}
   ~C_Ping() override;
@@ -164,7 +166,7 @@ class C_Ping final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "session.C_Ping";
+    return "ping.C_Ping";
   }
   protected:
   explicit C_Ping(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -181,79 +183,59 @@ class C_Ping final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kCreatedAtFieldNumber = 2,
-    kSessionIdFieldNumber = 1,
-    kServerToClientIntervalFieldNumber = 3,
+    kSequenceNumberFieldNumber = 1,
+    kClientSendTimeFieldNumber = 2,
   };
-  // .message.Timestamp created_at = 2;
-  bool has_created_at() const;
+  // uint64 sequence_number = 1;
+  void clear_sequence_number();
+  uint64_t sequence_number() const;
+  void set_sequence_number(uint64_t value);
   private:
-  bool _internal_has_created_at() const;
-  public:
-  void clear_created_at();
-  const ::message::Timestamp& created_at() const;
-  PROTOBUF_NODISCARD ::message::Timestamp* release_created_at();
-  ::message::Timestamp* mutable_created_at();
-  void set_allocated_created_at(::message::Timestamp* created_at);
-  private:
-  const ::message::Timestamp& _internal_created_at() const;
-  ::message::Timestamp* _internal_mutable_created_at();
-  public:
-  void unsafe_arena_set_allocated_created_at(
-      ::message::Timestamp* created_at);
-  ::message::Timestamp* unsafe_arena_release_created_at();
-
-  // uint64 session_id = 1;
-  void clear_session_id();
-  uint64_t session_id() const;
-  void set_session_id(uint64_t value);
-  private:
-  uint64_t _internal_session_id() const;
-  void _internal_set_session_id(uint64_t value);
+  uint64_t _internal_sequence_number() const;
+  void _internal_set_sequence_number(uint64_t value);
   public:
 
-  // uint64 server_to_client_interval = 3;
-  void clear_server_to_client_interval();
-  uint64_t server_to_client_interval() const;
-  void set_server_to_client_interval(uint64_t value);
+  // uint64 client_send_time = 2;
+  void clear_client_send_time();
+  uint64_t client_send_time() const;
+  void set_client_send_time(uint64_t value);
   private:
-  uint64_t _internal_server_to_client_interval() const;
-  void _internal_set_server_to_client_interval(uint64_t value);
+  uint64_t _internal_client_send_time() const;
+  void _internal_set_client_send_time(uint64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:session.C_Ping)
+  // @@protoc_insertion_point(class_scope:ping.C_Ping)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::message::Timestamp* created_at_;
-  uint64_t session_id_;
-  uint64_t server_to_client_interval_;
+  uint64_t sequence_number_;
+  uint64_t client_send_time_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Ping_2eproto;
 };
 // -------------------------------------------------------------------
 
-class S_Ping final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:session.S_Ping) */ {
+class S_Pong final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ping.S_Pong) */ {
  public:
-  inline S_Ping() : S_Ping(nullptr) {}
-  ~S_Ping() override;
-  explicit PROTOBUF_CONSTEXPR S_Ping(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline S_Pong() : S_Pong(nullptr) {}
+  ~S_Pong() override;
+  explicit PROTOBUF_CONSTEXPR S_Pong(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  S_Ping(const S_Ping& from);
-  S_Ping(S_Ping&& from) noexcept
-    : S_Ping() {
+  S_Pong(const S_Pong& from);
+  S_Pong(S_Pong&& from) noexcept
+    : S_Pong() {
     *this = ::std::move(from);
   }
 
-  inline S_Ping& operator=(const S_Ping& from) {
+  inline S_Pong& operator=(const S_Pong& from) {
     CopyFrom(from);
     return *this;
   }
-  inline S_Ping& operator=(S_Ping&& from) noexcept {
+  inline S_Pong& operator=(S_Pong&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -276,20 +258,20 @@ class S_Ping final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const S_Ping& default_instance() {
+  static const S_Pong& default_instance() {
     return *internal_default_instance();
   }
-  static inline const S_Ping* internal_default_instance() {
-    return reinterpret_cast<const S_Ping*>(
-               &_S_Ping_default_instance_);
+  static inline const S_Pong* internal_default_instance() {
+    return reinterpret_cast<const S_Pong*>(
+               &_S_Pong_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(S_Ping& a, S_Ping& b) {
+  friend void swap(S_Pong& a, S_Pong& b) {
     a.Swap(&b);
   }
-  inline void Swap(S_Ping* other) {
+  inline void Swap(S_Pong* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -302,7 +284,7 @@ class S_Ping final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(S_Ping* other) {
+  void UnsafeArenaSwap(S_Pong* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -310,13 +292,13 @@ class S_Ping final :
 
   // implements Message ----------------------------------------------
 
-  S_Ping* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<S_Ping>(arena);
+  S_Pong* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<S_Pong>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const S_Ping& from);
+  void CopyFrom(const S_Pong& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const S_Ping& from);
+  void MergeFrom(const S_Pong& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -333,15 +315,15 @@ class S_Ping final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(S_Ping* other);
+  void InternalSwap(S_Pong* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "session.S_Ping";
+    return "ping.S_Pong";
   }
   protected:
-  explicit S_Ping(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit S_Pong(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -355,56 +337,245 @@ class S_Ping final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kCreatedAtFieldNumber = 2,
-    kSessionIdFieldNumber = 1,
-    kClientToServerIntervalFieldNumber = 3,
+    kSequenceNumberFieldNumber = 1,
+    kClientSendTimeFieldNumber = 2,
+    kServerReceiveTimeFieldNumber = 3,
+    kServerSendTimeFieldNumber = 4,
   };
-  // .message.Timestamp created_at = 2;
-  bool has_created_at() const;
+  // uint64 sequence_number = 1;
+  void clear_sequence_number();
+  uint64_t sequence_number() const;
+  void set_sequence_number(uint64_t value);
   private:
-  bool _internal_has_created_at() const;
-  public:
-  void clear_created_at();
-  const ::message::Timestamp& created_at() const;
-  PROTOBUF_NODISCARD ::message::Timestamp* release_created_at();
-  ::message::Timestamp* mutable_created_at();
-  void set_allocated_created_at(::message::Timestamp* created_at);
-  private:
-  const ::message::Timestamp& _internal_created_at() const;
-  ::message::Timestamp* _internal_mutable_created_at();
-  public:
-  void unsafe_arena_set_allocated_created_at(
-      ::message::Timestamp* created_at);
-  ::message::Timestamp* unsafe_arena_release_created_at();
-
-  // uint64 session_id = 1;
-  void clear_session_id();
-  uint64_t session_id() const;
-  void set_session_id(uint64_t value);
-  private:
-  uint64_t _internal_session_id() const;
-  void _internal_set_session_id(uint64_t value);
+  uint64_t _internal_sequence_number() const;
+  void _internal_set_sequence_number(uint64_t value);
   public:
 
-  // uint64 client_to_server_interval = 3;
-  void clear_client_to_server_interval();
-  uint64_t client_to_server_interval() const;
-  void set_client_to_server_interval(uint64_t value);
+  // uint64 client_send_time = 2;
+  void clear_client_send_time();
+  uint64_t client_send_time() const;
+  void set_client_send_time(uint64_t value);
   private:
-  uint64_t _internal_client_to_server_interval() const;
-  void _internal_set_client_to_server_interval(uint64_t value);
+  uint64_t _internal_client_send_time() const;
+  void _internal_set_client_send_time(uint64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:session.S_Ping)
+  // uint64 server_receive_time = 3;
+  void clear_server_receive_time();
+  uint64_t server_receive_time() const;
+  void set_server_receive_time(uint64_t value);
+  private:
+  uint64_t _internal_server_receive_time() const;
+  void _internal_set_server_receive_time(uint64_t value);
+  public:
+
+  // uint64 server_send_time = 4;
+  void clear_server_send_time();
+  uint64_t server_send_time() const;
+  void set_server_send_time(uint64_t value);
+  private:
+  uint64_t _internal_server_send_time() const;
+  void _internal_set_server_send_time(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:ping.S_Pong)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::message::Timestamp* created_at_;
-  uint64_t session_id_;
-  uint64_t client_to_server_interval_;
+  uint64_t sequence_number_;
+  uint64_t client_send_time_;
+  uint64_t server_receive_time_;
+  uint64_t server_send_time_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Ping_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_CompletePing final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ping.C_CompletePing) */ {
+ public:
+  inline C_CompletePing() : C_CompletePing(nullptr) {}
+  ~C_CompletePing() override;
+  explicit PROTOBUF_CONSTEXPR C_CompletePing(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_CompletePing(const C_CompletePing& from);
+  C_CompletePing(C_CompletePing&& from) noexcept
+    : C_CompletePing() {
+    *this = ::std::move(from);
+  }
+
+  inline C_CompletePing& operator=(const C_CompletePing& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_CompletePing& operator=(C_CompletePing&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_CompletePing& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_CompletePing* internal_default_instance() {
+    return reinterpret_cast<const C_CompletePing*>(
+               &_C_CompletePing_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(C_CompletePing& a, C_CompletePing& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_CompletePing* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_CompletePing* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_CompletePing* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_CompletePing>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_CompletePing& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_CompletePing& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_CompletePing* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "ping.C_CompletePing";
+  }
+  protected:
+  explicit C_CompletePing(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSequenceNumberFieldNumber = 1,
+    kClientSendTimeFieldNumber = 2,
+    kServerReceiveTimeFieldNumber = 3,
+    kServerSendTimeFieldNumber = 4,
+    kClientReceiveTimeFieldNumber = 5,
+  };
+  // uint64 sequence_number = 1;
+  void clear_sequence_number();
+  uint64_t sequence_number() const;
+  void set_sequence_number(uint64_t value);
+  private:
+  uint64_t _internal_sequence_number() const;
+  void _internal_set_sequence_number(uint64_t value);
+  public:
+
+  // uint64 client_send_time = 2;
+  void clear_client_send_time();
+  uint64_t client_send_time() const;
+  void set_client_send_time(uint64_t value);
+  private:
+  uint64_t _internal_client_send_time() const;
+  void _internal_set_client_send_time(uint64_t value);
+  public:
+
+  // uint64 server_receive_time = 3;
+  void clear_server_receive_time();
+  uint64_t server_receive_time() const;
+  void set_server_receive_time(uint64_t value);
+  private:
+  uint64_t _internal_server_receive_time() const;
+  void _internal_set_server_receive_time(uint64_t value);
+  public:
+
+  // uint64 server_send_time = 4;
+  void clear_server_send_time();
+  uint64_t server_send_time() const;
+  void set_server_send_time(uint64_t value);
+  private:
+  uint64_t _internal_server_send_time() const;
+  void _internal_set_server_send_time(uint64_t value);
+  public:
+
+  // uint64 client_receive_time = 5;
+  void clear_client_receive_time();
+  uint64_t client_receive_time() const;
+  void set_client_receive_time(uint64_t value);
+  private:
+  uint64_t _internal_client_receive_time() const;
+  void _internal_set_client_receive_time(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:ping.C_CompletePing)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t sequence_number_;
+  uint64_t client_send_time_;
+  uint64_t server_receive_time_;
+  uint64_t server_send_time_;
+  uint64_t client_receive_time_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Ping_2eproto;
 };
@@ -419,258 +590,232 @@ class S_Ping final :
 #endif  // __GNUC__
 // C_Ping
 
-// uint64 session_id = 1;
-inline void C_Ping::clear_session_id() {
-  session_id_ = uint64_t{0u};
+// uint64 sequence_number = 1;
+inline void C_Ping::clear_sequence_number() {
+  sequence_number_ = uint64_t{0u};
 }
-inline uint64_t C_Ping::_internal_session_id() const {
-  return session_id_;
+inline uint64_t C_Ping::_internal_sequence_number() const {
+  return sequence_number_;
 }
-inline uint64_t C_Ping::session_id() const {
-  // @@protoc_insertion_point(field_get:session.C_Ping.session_id)
-  return _internal_session_id();
+inline uint64_t C_Ping::sequence_number() const {
+  // @@protoc_insertion_point(field_get:ping.C_Ping.sequence_number)
+  return _internal_sequence_number();
 }
-inline void C_Ping::_internal_set_session_id(uint64_t value) {
+inline void C_Ping::_internal_set_sequence_number(uint64_t value) {
   
-  session_id_ = value;
+  sequence_number_ = value;
 }
-inline void C_Ping::set_session_id(uint64_t value) {
-  _internal_set_session_id(value);
-  // @@protoc_insertion_point(field_set:session.C_Ping.session_id)
+inline void C_Ping::set_sequence_number(uint64_t value) {
+  _internal_set_sequence_number(value);
+  // @@protoc_insertion_point(field_set:ping.C_Ping.sequence_number)
 }
 
-// .message.Timestamp created_at = 2;
-inline bool C_Ping::_internal_has_created_at() const {
-  return this != internal_default_instance() && created_at_ != nullptr;
+// uint64 client_send_time = 2;
+inline void C_Ping::clear_client_send_time() {
+  client_send_time_ = uint64_t{0u};
 }
-inline bool C_Ping::has_created_at() const {
-  return _internal_has_created_at();
+inline uint64_t C_Ping::_internal_client_send_time() const {
+  return client_send_time_;
 }
-inline const ::message::Timestamp& C_Ping::_internal_created_at() const {
-  const ::message::Timestamp* p = created_at_;
-  return p != nullptr ? *p : reinterpret_cast<const ::message::Timestamp&>(
-      ::message::_Timestamp_default_instance_);
+inline uint64_t C_Ping::client_send_time() const {
+  // @@protoc_insertion_point(field_get:ping.C_Ping.client_send_time)
+  return _internal_client_send_time();
 }
-inline const ::message::Timestamp& C_Ping::created_at() const {
-  // @@protoc_insertion_point(field_get:session.C_Ping.created_at)
-  return _internal_created_at();
-}
-inline void C_Ping::unsafe_arena_set_allocated_created_at(
-    ::message::Timestamp* created_at) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_at_);
-  }
-  created_at_ = created_at;
-  if (created_at) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:session.C_Ping.created_at)
-}
-inline ::message::Timestamp* C_Ping::release_created_at() {
+inline void C_Ping::_internal_set_client_send_time(uint64_t value) {
   
-  ::message::Timestamp* temp = created_at_;
-  created_at_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
+  client_send_time_ = value;
 }
-inline ::message::Timestamp* C_Ping::unsafe_arena_release_created_at() {
-  // @@protoc_insertion_point(field_release:session.C_Ping.created_at)
-  
-  ::message::Timestamp* temp = created_at_;
-  created_at_ = nullptr;
-  return temp;
-}
-inline ::message::Timestamp* C_Ping::_internal_mutable_created_at() {
-  
-  if (created_at_ == nullptr) {
-    auto* p = CreateMaybeMessage<::message::Timestamp>(GetArenaForAllocation());
-    created_at_ = p;
-  }
-  return created_at_;
-}
-inline ::message::Timestamp* C_Ping::mutable_created_at() {
-  ::message::Timestamp* _msg = _internal_mutable_created_at();
-  // @@protoc_insertion_point(field_mutable:session.C_Ping.created_at)
-  return _msg;
-}
-inline void C_Ping::set_allocated_created_at(::message::Timestamp* created_at) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_at_);
-  }
-  if (created_at) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_at));
-    if (message_arena != submessage_arena) {
-      created_at = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, created_at, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  created_at_ = created_at;
-  // @@protoc_insertion_point(field_set_allocated:session.C_Ping.created_at)
-}
-
-// uint64 server_to_client_interval = 3;
-inline void C_Ping::clear_server_to_client_interval() {
-  server_to_client_interval_ = uint64_t{0u};
-}
-inline uint64_t C_Ping::_internal_server_to_client_interval() const {
-  return server_to_client_interval_;
-}
-inline uint64_t C_Ping::server_to_client_interval() const {
-  // @@protoc_insertion_point(field_get:session.C_Ping.server_to_client_interval)
-  return _internal_server_to_client_interval();
-}
-inline void C_Ping::_internal_set_server_to_client_interval(uint64_t value) {
-  
-  server_to_client_interval_ = value;
-}
-inline void C_Ping::set_server_to_client_interval(uint64_t value) {
-  _internal_set_server_to_client_interval(value);
-  // @@protoc_insertion_point(field_set:session.C_Ping.server_to_client_interval)
+inline void C_Ping::set_client_send_time(uint64_t value) {
+  _internal_set_client_send_time(value);
+  // @@protoc_insertion_point(field_set:ping.C_Ping.client_send_time)
 }
 
 // -------------------------------------------------------------------
 
-// S_Ping
+// S_Pong
 
-// uint64 session_id = 1;
-inline void S_Ping::clear_session_id() {
-  session_id_ = uint64_t{0u};
+// uint64 sequence_number = 1;
+inline void S_Pong::clear_sequence_number() {
+  sequence_number_ = uint64_t{0u};
 }
-inline uint64_t S_Ping::_internal_session_id() const {
-  return session_id_;
+inline uint64_t S_Pong::_internal_sequence_number() const {
+  return sequence_number_;
 }
-inline uint64_t S_Ping::session_id() const {
-  // @@protoc_insertion_point(field_get:session.S_Ping.session_id)
-  return _internal_session_id();
+inline uint64_t S_Pong::sequence_number() const {
+  // @@protoc_insertion_point(field_get:ping.S_Pong.sequence_number)
+  return _internal_sequence_number();
 }
-inline void S_Ping::_internal_set_session_id(uint64_t value) {
+inline void S_Pong::_internal_set_sequence_number(uint64_t value) {
   
-  session_id_ = value;
+  sequence_number_ = value;
 }
-inline void S_Ping::set_session_id(uint64_t value) {
-  _internal_set_session_id(value);
-  // @@protoc_insertion_point(field_set:session.S_Ping.session_id)
-}
-
-// .message.Timestamp created_at = 2;
-inline bool S_Ping::_internal_has_created_at() const {
-  return this != internal_default_instance() && created_at_ != nullptr;
-}
-inline bool S_Ping::has_created_at() const {
-  return _internal_has_created_at();
-}
-inline const ::message::Timestamp& S_Ping::_internal_created_at() const {
-  const ::message::Timestamp* p = created_at_;
-  return p != nullptr ? *p : reinterpret_cast<const ::message::Timestamp&>(
-      ::message::_Timestamp_default_instance_);
-}
-inline const ::message::Timestamp& S_Ping::created_at() const {
-  // @@protoc_insertion_point(field_get:session.S_Ping.created_at)
-  return _internal_created_at();
-}
-inline void S_Ping::unsafe_arena_set_allocated_created_at(
-    ::message::Timestamp* created_at) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_at_);
-  }
-  created_at_ = created_at;
-  if (created_at) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:session.S_Ping.created_at)
-}
-inline ::message::Timestamp* S_Ping::release_created_at() {
-  
-  ::message::Timestamp* temp = created_at_;
-  created_at_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::message::Timestamp* S_Ping::unsafe_arena_release_created_at() {
-  // @@protoc_insertion_point(field_release:session.S_Ping.created_at)
-  
-  ::message::Timestamp* temp = created_at_;
-  created_at_ = nullptr;
-  return temp;
-}
-inline ::message::Timestamp* S_Ping::_internal_mutable_created_at() {
-  
-  if (created_at_ == nullptr) {
-    auto* p = CreateMaybeMessage<::message::Timestamp>(GetArenaForAllocation());
-    created_at_ = p;
-  }
-  return created_at_;
-}
-inline ::message::Timestamp* S_Ping::mutable_created_at() {
-  ::message::Timestamp* _msg = _internal_mutable_created_at();
-  // @@protoc_insertion_point(field_mutable:session.S_Ping.created_at)
-  return _msg;
-}
-inline void S_Ping::set_allocated_created_at(::message::Timestamp* created_at) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_at_);
-  }
-  if (created_at) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_at));
-    if (message_arena != submessage_arena) {
-      created_at = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, created_at, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  created_at_ = created_at;
-  // @@protoc_insertion_point(field_set_allocated:session.S_Ping.created_at)
+inline void S_Pong::set_sequence_number(uint64_t value) {
+  _internal_set_sequence_number(value);
+  // @@protoc_insertion_point(field_set:ping.S_Pong.sequence_number)
 }
 
-// uint64 client_to_server_interval = 3;
-inline void S_Ping::clear_client_to_server_interval() {
-  client_to_server_interval_ = uint64_t{0u};
+// uint64 client_send_time = 2;
+inline void S_Pong::clear_client_send_time() {
+  client_send_time_ = uint64_t{0u};
 }
-inline uint64_t S_Ping::_internal_client_to_server_interval() const {
-  return client_to_server_interval_;
+inline uint64_t S_Pong::_internal_client_send_time() const {
+  return client_send_time_;
 }
-inline uint64_t S_Ping::client_to_server_interval() const {
-  // @@protoc_insertion_point(field_get:session.S_Ping.client_to_server_interval)
-  return _internal_client_to_server_interval();
+inline uint64_t S_Pong::client_send_time() const {
+  // @@protoc_insertion_point(field_get:ping.S_Pong.client_send_time)
+  return _internal_client_send_time();
 }
-inline void S_Ping::_internal_set_client_to_server_interval(uint64_t value) {
+inline void S_Pong::_internal_set_client_send_time(uint64_t value) {
   
-  client_to_server_interval_ = value;
+  client_send_time_ = value;
 }
-inline void S_Ping::set_client_to_server_interval(uint64_t value) {
-  _internal_set_client_to_server_interval(value);
-  // @@protoc_insertion_point(field_set:session.S_Ping.client_to_server_interval)
+inline void S_Pong::set_client_send_time(uint64_t value) {
+  _internal_set_client_send_time(value);
+  // @@protoc_insertion_point(field_set:ping.S_Pong.client_send_time)
+}
+
+// uint64 server_receive_time = 3;
+inline void S_Pong::clear_server_receive_time() {
+  server_receive_time_ = uint64_t{0u};
+}
+inline uint64_t S_Pong::_internal_server_receive_time() const {
+  return server_receive_time_;
+}
+inline uint64_t S_Pong::server_receive_time() const {
+  // @@protoc_insertion_point(field_get:ping.S_Pong.server_receive_time)
+  return _internal_server_receive_time();
+}
+inline void S_Pong::_internal_set_server_receive_time(uint64_t value) {
+  
+  server_receive_time_ = value;
+}
+inline void S_Pong::set_server_receive_time(uint64_t value) {
+  _internal_set_server_receive_time(value);
+  // @@protoc_insertion_point(field_set:ping.S_Pong.server_receive_time)
+}
+
+// uint64 server_send_time = 4;
+inline void S_Pong::clear_server_send_time() {
+  server_send_time_ = uint64_t{0u};
+}
+inline uint64_t S_Pong::_internal_server_send_time() const {
+  return server_send_time_;
+}
+inline uint64_t S_Pong::server_send_time() const {
+  // @@protoc_insertion_point(field_get:ping.S_Pong.server_send_time)
+  return _internal_server_send_time();
+}
+inline void S_Pong::_internal_set_server_send_time(uint64_t value) {
+  
+  server_send_time_ = value;
+}
+inline void S_Pong::set_server_send_time(uint64_t value) {
+  _internal_set_server_send_time(value);
+  // @@protoc_insertion_point(field_set:ping.S_Pong.server_send_time)
+}
+
+// -------------------------------------------------------------------
+
+// C_CompletePing
+
+// uint64 sequence_number = 1;
+inline void C_CompletePing::clear_sequence_number() {
+  sequence_number_ = uint64_t{0u};
+}
+inline uint64_t C_CompletePing::_internal_sequence_number() const {
+  return sequence_number_;
+}
+inline uint64_t C_CompletePing::sequence_number() const {
+  // @@protoc_insertion_point(field_get:ping.C_CompletePing.sequence_number)
+  return _internal_sequence_number();
+}
+inline void C_CompletePing::_internal_set_sequence_number(uint64_t value) {
+  
+  sequence_number_ = value;
+}
+inline void C_CompletePing::set_sequence_number(uint64_t value) {
+  _internal_set_sequence_number(value);
+  // @@protoc_insertion_point(field_set:ping.C_CompletePing.sequence_number)
+}
+
+// uint64 client_send_time = 2;
+inline void C_CompletePing::clear_client_send_time() {
+  client_send_time_ = uint64_t{0u};
+}
+inline uint64_t C_CompletePing::_internal_client_send_time() const {
+  return client_send_time_;
+}
+inline uint64_t C_CompletePing::client_send_time() const {
+  // @@protoc_insertion_point(field_get:ping.C_CompletePing.client_send_time)
+  return _internal_client_send_time();
+}
+inline void C_CompletePing::_internal_set_client_send_time(uint64_t value) {
+  
+  client_send_time_ = value;
+}
+inline void C_CompletePing::set_client_send_time(uint64_t value) {
+  _internal_set_client_send_time(value);
+  // @@protoc_insertion_point(field_set:ping.C_CompletePing.client_send_time)
+}
+
+// uint64 server_receive_time = 3;
+inline void C_CompletePing::clear_server_receive_time() {
+  server_receive_time_ = uint64_t{0u};
+}
+inline uint64_t C_CompletePing::_internal_server_receive_time() const {
+  return server_receive_time_;
+}
+inline uint64_t C_CompletePing::server_receive_time() const {
+  // @@protoc_insertion_point(field_get:ping.C_CompletePing.server_receive_time)
+  return _internal_server_receive_time();
+}
+inline void C_CompletePing::_internal_set_server_receive_time(uint64_t value) {
+  
+  server_receive_time_ = value;
+}
+inline void C_CompletePing::set_server_receive_time(uint64_t value) {
+  _internal_set_server_receive_time(value);
+  // @@protoc_insertion_point(field_set:ping.C_CompletePing.server_receive_time)
+}
+
+// uint64 server_send_time = 4;
+inline void C_CompletePing::clear_server_send_time() {
+  server_send_time_ = uint64_t{0u};
+}
+inline uint64_t C_CompletePing::_internal_server_send_time() const {
+  return server_send_time_;
+}
+inline uint64_t C_CompletePing::server_send_time() const {
+  // @@protoc_insertion_point(field_get:ping.C_CompletePing.server_send_time)
+  return _internal_server_send_time();
+}
+inline void C_CompletePing::_internal_set_server_send_time(uint64_t value) {
+  
+  server_send_time_ = value;
+}
+inline void C_CompletePing::set_server_send_time(uint64_t value) {
+  _internal_set_server_send_time(value);
+  // @@protoc_insertion_point(field_set:ping.C_CompletePing.server_send_time)
+}
+
+// uint64 client_receive_time = 5;
+inline void C_CompletePing::clear_client_receive_time() {
+  client_receive_time_ = uint64_t{0u};
+}
+inline uint64_t C_CompletePing::_internal_client_receive_time() const {
+  return client_receive_time_;
+}
+inline uint64_t C_CompletePing::client_receive_time() const {
+  // @@protoc_insertion_point(field_get:ping.C_CompletePing.client_receive_time)
+  return _internal_client_receive_time();
+}
+inline void C_CompletePing::_internal_set_client_receive_time(uint64_t value) {
+  
+  client_receive_time_ = value;
+}
+inline void C_CompletePing::set_client_receive_time(uint64_t value) {
+  _internal_set_client_receive_time(value);
+  // @@protoc_insertion_point(field_set:ping.C_CompletePing.client_receive_time)
 }
 
 #ifdef __GNUC__
@@ -678,10 +823,12 @@ inline void S_Ping::set_client_to_server_interval(uint64_t value) {
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace session
+}  // namespace ping
 
 // @@protoc_insertion_point(global_scope)
 

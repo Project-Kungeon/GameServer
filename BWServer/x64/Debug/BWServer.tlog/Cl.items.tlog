@@ -27,6 +27,8 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\MonsterPattern.pb.cc;C:\Users\
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ObjectUtils.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\ObjectUtils.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Object.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\pch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\pch.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Ping.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Ping.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\PingPongPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\PingPongPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Player.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Player.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Rampage.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RampageTree.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\RampageTree.obj

@@ -9,6 +9,7 @@
 #include "RoomPacketHandler.h"
 #include "BattlePacketHandler.h"
 #include "InteractivePacketHandler.h"
+#include "PingPongPacketHandler.h"
 
 using PacketHandlerFunc = std::function<bool(SessionPtr&, asio::mutable_buffer&, int&)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
@@ -56,6 +57,16 @@ public:
 		{
 			spdlog::trace("Handle C_Attack");
 			return HandlePacket<message::C_Attack>(BattlePacketHandler::Handle_C_Attack, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::SESSION_PING_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::trace("Handle C_Ping");
+			return HandlePacket<ping::C_Ping>(PingPongPacketHandler::Handle_C_Ping, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::SESSION_COMPLETE_PING_RES] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::trace("Handle C_CompletePing");
+			return HandlePacket<ping::C_CompletePing>(PingPongPacketHandler::Handle_C_CompletePing, session, buffer, offset);
 		};
 
 		// Warrior
