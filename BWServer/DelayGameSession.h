@@ -7,6 +7,9 @@ public:
     DelayGameSession(asio::io_context& io_context);
     virtual void AsyncWrite(const char* message, size_t size) override;
 
+protected:
+    virtual void OnRead(const boost::system::error_code& err, size_t size) override;
+
 public:
     // 지연 시간 설정
     void SetDelay(int milliseconds);

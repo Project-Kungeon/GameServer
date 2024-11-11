@@ -21,6 +21,7 @@ public:
 	std::weak_ptr<Player> FindClosePlayerBySelf(CreaturePtr Self, const float Distance);
 	void UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
+	void DelayBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	RoomPtr GetRoomRef();
 
 	virtual bool HandleEnterPlayer(PlayerPtr player);

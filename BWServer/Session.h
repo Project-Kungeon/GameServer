@@ -31,6 +31,10 @@ public:
 	tcp::socket& GetSocket();
 	virtual void Send(asio::mutable_buffer& buffer);
 
+	// 의도적인 딜레이
+	// Outgoing 전용
+	virtual void DelaySend(asio::mutable_buffer& buffer, uint64 delay_milliseconds);
+
 	virtual void HandlePing(const ping::C_Ping& pkt);
 	virtual void HandleCompletePing(const ping::C_CompletePing& pkt);
 
@@ -44,6 +48,8 @@ protected:
 	virtual void OnConnected() {};
 	virtual void OnDisconnected() {};
 
+protected:
+	virtual void DelayAsyncWrite(const char* message, size_t size, uint64 delay_milliseconds);
 
 protected:
 	tcp::socket _socket;
@@ -58,19 +64,26 @@ protected:
 protected:
 	struct RTTStats
 	{
-		uint64_t client_send_time;
-		uint64_t server_receive_time;
-		uint64_t server_send_time;
-		uint64_t client_receive_time;
+		uint64 client_send_time;
+		uint64 server_receive_time;
+		uint64 server_send_time;
+		uint64 client_receive_time;
 
 		void PrintRttStats() const
 		{
-			uint64_t total_rtt = client_receive_time - client_send_time;
-			uint64_t server_processing_time = server_send_time - server_receive_time;
-			uint64_t network_rtt = total_rtt - server_processing_time;
+			uint64 total_rtt = client_receive_time - client_send_time;
+			uint64 server_processing_time = server_send_time - server_receive_time;
+			uint64 network_rtt = total_rtt - server_processing_time;
 			spdlog::trace("Total RTT : {}", total_rtt);
 		}
 	};
 	RTTStats _rtt_stats;
+
+public:
+	uint64 GetTotalRtt() { return _rtt_stats.client_receive_time - _rtt_stats.client_send_time; }
+
+private:
+	// Outgoing 최대 지연 시간
+	static const uint64 MAX_OUT_GOING_LATENCY = 250;
 };
 

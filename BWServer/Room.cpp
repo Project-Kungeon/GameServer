@@ -272,6 +272,41 @@ void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 	}
 }
 
+void Room::DelayBroadcast(asio::mutable_buffer& buffer, uint64 exceptId)
+{
+	// 세션
+	queue<pair<GameSessionPtr, uint64>> queue_sessions;
+	uint64 max_ping = 0;
+	
+	for (auto& item : _objects)
+	{
+		// 플레이어 캐스팅
+		// RTTI 최소화를 위한 리팩토링
+		if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+		{
+			PlayerPtr player = static_pointer_cast<Player>(item.second);
+			if (player == nullptr) continue;
+
+			// 브로드캐스트 제외 대상은 보내지 않습니다.
+			if (player->objectInfo->object_id() == exceptId) continue;
+
+			if (GameSessionPtr session = player->session.lock())
+			{
+				uint64 rtt = session->GetTotalRtt();
+				queue_sessions.push({ session, rtt });
+				max_ping = max(max_ping, rtt);
+			}
+		}
+	}
+	while (!queue_sessions.empty())
+	{
+		auto session_ping = queue_sessions.front();
+		queue_sessions.pop();
+		session_ping.first->DelaySend(buffer, max_ping - session_ping.second);
+	}
+	
+}
+
 RoomPtr Room::GetRoomRef()
 {
 	return static_pointer_cast<Room>(shared_from_this());
@@ -311,6 +346,17 @@ void Room::UdpHandleMove(message::C_Move pkt)
 	player->SetMovementInfo(pkt.movement_x(), pkt.movement_y());
 	player->SetYawInfo(pkt.camera_yaw(), pkt.controller_yaw());
 
+	message::S_Move movePkt;
+	{
+		message::PosInfo* posInfo = movePkt.mutable_posinfo();
+		posInfo->CopyFrom(pkt.posinfo());
+		//spdlog::trace("{} Player pos : {}, {}, {}", pkt.GetObjectId(), posInfo->x(), posInfo->y(), posInfo->z());
+		movePkt.set_camera_yaw(pkt.camera_yaw());
+		movePkt.set_controller_yaw(pkt.controller_yaw());
+		movePkt.set_movement_x(pkt.movement_x());
+		movePkt.set_movement_y(pkt.movement_y());
+	}
+	SendUdpMove(movePkt);
 	
 }
 
@@ -1227,7 +1273,8 @@ void Room::SendRampageBasicAttack(RampagePtr rampage)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_BASICATTACK_RES, pkt);
 
-	Broadcast(sendBuffer, 0);
+	// Outgoing Delay
+	DelayBroadcast(sendBuffer, 0);
 }
 
 void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
@@ -1255,7 +1302,8 @@ void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
 
-	Broadcast(sendBuffer, 0);
+	// Outgoing Delay
+	DelayBroadcast(sendBuffer, 0);
 }
 
 void Room::SendRampageMoveToPos(RampagePtr rampage, int rand_x, int rand_y, int rand_z)
@@ -1285,7 +1333,8 @@ void Room::SendRampageMoveToPos(RampagePtr rampage, int rand_x, int rand_y, int 
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
 
-	Broadcast(sendBuffer, 0);
+	// Outgoing Delay
+	DelayBroadcast(sendBuffer, 0);
 }
 
 void Room::SendRamapgeRoar(RampagePtr rampage)
@@ -1298,7 +1347,8 @@ void Room::SendRamapgeRoar(RampagePtr rampage)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ROAR_RES, pkt);
 
-	Broadcast(sendBuffer, 0);
+	// Outgoing Delay
+	DelayBroadcast(sendBuffer, 0);
 }
 
 void Room::SendRampageEarthQuake(RampagePtr rampage)
@@ -1311,7 +1361,8 @@ void Room::SendRampageEarthQuake(RampagePtr rampage)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_EARTHQUAKE_RES, pkt);
 
-	Broadcast(sendBuffer, 0);
+	// Outgoing Delay
+	DelayBroadcast(sendBuffer, 0);
 }
 
 void Room::SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target)
@@ -1340,7 +1391,8 @@ void Room::SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_TURNTOTARGET_RES, pkt);
 
-	Broadcast(sendBuffer, 0);
+	// Outgoing Delay
+	DelayBroadcast(sendBuffer, 0);
 }
 
 void Room::SendRampageEnhancedAttack(RampagePtr rampage)
@@ -1353,7 +1405,8 @@ void Room::SendRampageEnhancedAttack(RampagePtr rampage)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, pkt);
 
-	Broadcast(sendBuffer, 0);
+	// Outgoing Delay
+	DelayBroadcast(sendBuffer, 0);
 }
 
 void Room::HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt)
@@ -1473,39 +1526,41 @@ void Room::BroadcastHealCreature(CreaturePtr creature, float health)
 
 void Room::HandleTick(uint32 Deltatime)
 {
+	// 45틱 기준
 	for (auto& item : _objects)
 	{
 		item.second->Tick(Deltatime);
-
-		auto object = item.second;
-
-		if (object->GetObjectType() == message::OBJECT_TYPE_CREATURE)
-		{
-			auto creature = static_pointer_cast<Creature>(object);
-			if (creature->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
-			{
-				message::S_Move movePkt;
-				{
-					message::PosInfo* posInfo = movePkt.mutable_posinfo();
-					posInfo->CopyFrom(*object->posInfo);
-					spdlog::trace("{} Player pos : {}, {}, {}", object->GetObjectId(), posInfo->x(), posInfo->y(), posInfo->z());
-					movePkt.set_camera_yaw(object->camera_yaw);
-					movePkt.set_controller_yaw(object->controller_yaw);
-					movePkt.set_movement_x(object->movement_x);
-					movePkt.set_movement_y(object->movement_y);
-				}
-				SendUdpMove(movePkt);
-			}
-
-
-		}
-
-		
-
 	}
 
+	if (_tickCount % 15 == 0)
+	{
+		for (auto& item : _objects)
+		{
+			auto object = item.second;
 
-	//_tickCount++;
+			if (object->GetObjectType() == message::OBJECT_TYPE_CREATURE)
+			{
+				auto creature = static_pointer_cast<Creature>(object);
+				if (creature->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+				{
+					message::S_Move movePkt;
+					{
+						message::PosInfo* posInfo = movePkt.mutable_posinfo();
+						posInfo->CopyFrom(*object->posInfo);
+						spdlog::trace("{} Player pos : {}, {}, {}", object->GetObjectId(), posInfo->x(), posInfo->y(), posInfo->z());
+						movePkt.set_camera_yaw(object->camera_yaw);
+						movePkt.set_controller_yaw(object->controller_yaw);
+						movePkt.set_movement_x(object->movement_x);
+						movePkt.set_movement_y(object->movement_y);
+					}
+					SendUdpMove(movePkt);
+				}
+
+
+			}
+		}
+	}
+
 
 	//auto now = std::chrono::steady_clock::now();
 	//auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - _startTime);

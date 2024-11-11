@@ -30,6 +30,11 @@ void Session::Send(asio::mutable_buffer& buffer)
 	AsyncWrite(static_cast<const char*>(buffer.data()), buffer.size());
 }
 
+void Session::DelaySend(asio::mutable_buffer& buffer, uint64 delay_milliseconds)
+{
+	DelayAsyncWrite(static_cast<const char*>(buffer.data()), buffer.size(), delay_milliseconds);
+}
+
 void Session::HandlePing(const ping::C_Ping& pkt)
 {
 	// 서버 -> 클라 통신 시간 기록
@@ -121,4 +126,27 @@ void Session::HandlePacket(char* ptr, size_t size)
 {
 	SessionPtr session = this->GetSessionPtr();
 	ServerPacketHandler::HandlePacket(session, ptr, size);
+}
+
+void Session::DelayAsyncWrite(const char* message, size_t size, uint64 delay_milliseconds)
+{
+	// 타이머를 사용하여 지연 구현
+	auto _delay_timer = std::make_shared<boost::asio::steady_timer>(_strand);
+
+	_delay_timer->expires_after(std::chrono::milliseconds(MAX_OUT_GOING_LATENCY > delay_milliseconds ? delay_milliseconds : MAX_OUT_GOING_LATENCY));
+	_delay_timer->async_wait(
+		asio::bind_executor(_strand,
+			[_delay_timer, self = shared_from_this(), this, message, size](const boost::system::error_code& error)
+			{
+				if (!error)
+				{
+					AsyncWrite(message, size);
+				}
+				else
+				{
+					spdlog::error("Timer error: {}", error.message());
+				}
+			}
+		)
+	);
 }
