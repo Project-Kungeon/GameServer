@@ -22,7 +22,7 @@ int main()
     //GameServerPtr game_server(server);
     //game_server->StartAccept();
     DelayGameServer* server = new DelayGameServer(io_context, port);
-    server->SetDelay(350);
+    server->SetDelay(150);
     server->SetLossRate(0.6);
     GameServerPtr game_server(server);
     game_server->StartAccept();
@@ -33,8 +33,8 @@ int main()
     // For UDP TEST
     GRoom[0]->RegisterGameServer(game_server);
 
-    MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
-    GRoom[0]->SpawnMonster(monster);
+    //MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
+    //GRoom[0]->SpawnMonster(monster);
 
     ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
     GRoom[0]->SpawnObject(itemObject);

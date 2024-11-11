@@ -53,6 +53,29 @@ void DelayGameSession::AsyncWrite(const char* message, size_t size)
     );
 }
 
+void DelayGameSession::OnRead(const boost::system::error_code& err, size_t size)
+{
+    auto _delay_timer = std::make_shared<boost::asio::steady_timer>(_strand);
+
+    _delay_timer->expires_after(std::chrono::milliseconds(delay_milliseconds));
+    _delay_timer->async_wait(
+        asio::bind_executor(_strand,
+            [_delay_timer, self = shared_from_this(), this, err, size](const boost::system::error_code& error)
+            {
+                if (!error)
+                {
+                    GameSession::OnRead(err, size);
+                    
+                }
+                else
+                {
+                    spdlog::error("Timer error: {}", error.message());
+                }
+            }
+        )
+    );
+}
+
 void DelayGameSession::SetDelay(int milliseconds)
 {
     delay_milliseconds = milliseconds;
