@@ -8,7 +8,7 @@ GameServer::GameServer(asio::io_context& io_context, int port)
 	, _udp_strand(asio::make_strand(io_context))
 {
 	 //_tickGenerator.start(nullptr);
-	AsyncUdpRead();
+	/*AsyncUdpRead();*/
 }
 
 void GameServer::StartAccept()

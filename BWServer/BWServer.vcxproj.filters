@@ -126,6 +126,9 @@
     <ClCompile Include="PingPongPacketHandler.cpp">
       <Filter>Packets\handler\pingpong</Filter>
     </ClCompile>
+    <ClCompile Include="DBConnection.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -266,6 +269,9 @@
     </ClInclude>
     <ClInclude Include="PingPongPacketHandler.h">
       <Filter>Packets\handler\pingpong</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConnection.h">
+      <Filter>Main\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

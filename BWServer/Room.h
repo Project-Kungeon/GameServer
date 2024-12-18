@@ -16,7 +16,7 @@ public:
 
 	static void init(boost::asio::io_context& io_context);
 	void RegisterGameServer(GameServerPtr game_server);
-	bool Join(ObjectPtr object);
+	bool Join(ObjectPtr object, bool pos_setted);
 	bool Leave(ObjectPtr object);
 	std::weak_ptr<Player> FindClosePlayerBySelf(CreaturePtr Self, const float Distance);
 	void UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);

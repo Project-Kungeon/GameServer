@@ -59,6 +59,16 @@ void Rampage::Damaged(CreaturePtr attacker, float damage)
 	FindTopDamageDealerToAggro();
 }
 
+void Rampage::Death()
+{
+	ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
+	itemObject->posInfo->set_x(posInfo->x() + RandomUtil::GetRandom(-100, 100));
+	itemObject->posInfo->set_y(posInfo->y() + RandomUtil::GetRandom(-100, 100));
+	itemObject->posInfo->set_z(posInfo->z());
+	GRoom[0]->SpawnObject(itemObject);
+	
+}
+
 bool Rampage::FindClosePlayer()
 {
 	spdlog::debug("Rampage used FindClosePlayer!");

@@ -181,6 +181,7 @@
     <ClCompile Include="BWServer.cpp" />
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="DBConnection.cpp" />
     <ClCompile Include="DelayGameServer.cpp" />
     <ClCompile Include="DelayGameSession.cpp" />
     <ClCompile Include="Enum.pb.cc">
@@ -261,6 +262,7 @@
     <ClInclude Include="CoreMacro.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="Creature.h" />
+    <ClInclude Include="DBConnection.h" />
     <ClInclude Include="DelayGameServer.h" />
     <ClInclude Include="DelayGameSession.h" />
     <ClInclude Include="Enum.pb.h" />
