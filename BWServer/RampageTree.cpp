@@ -34,6 +34,7 @@ void RampageTree::MakeRootSelector()
 			DetectCooldown = 0;
 			if (auto ptr = rampage.lock())
 			{
+				if (ptr->IsDead()) return false;
 				if (ptr->FindClosePlayer())
 				{
 					spdlog::trace("Rampage found Player {}", ptr->GetCloseTarget().lock()->GetObjectId());
@@ -56,6 +57,7 @@ void RampageTree::MakeRootSelector()
 	RootSelector->addLambda([this]() {
 		if (auto ptr = rampage.lock())
 		{
+			if (ptr->IsDead()) return false;
 			WaitCooldown = 3000;
 			spdlog::trace("Rampage didnt find Player... Find Random Pos");
 			int rand_x = RandomUtil::GetRandom(-250.0f, 250.0f);
@@ -75,6 +77,7 @@ void RampageTree::MakeFindPlayerSelector()
 			if (RegularPatternCooldown < RP_COOLTIME) return false;
 			if (auto ptr = rampage.lock())
 			{
+				if (ptr->IsDead()) return false;
 				RegularPatternCooldown = 0;
 				bool result = ptr->RegularPattern();
 				if (result)
@@ -92,6 +95,7 @@ void RampageTree::MakeFindPlayerSelector()
 		{
 			if (auto ptr = rampage.lock())
 			{
+				if (ptr->IsDead()) return false;
 				return CanAttackSelector->execute();
 			}
 
@@ -102,6 +106,7 @@ void RampageTree::MakeFindPlayerSelector()
 		{
 			if (auto ptr = rampage.lock())
 			{
+				if (ptr->IsDead()) return false;
 				return CanNotAttackSelector->execute();
 			}
 			return false;
@@ -118,6 +123,7 @@ void RampageTree::MakeCanAttackSelector()
 				
 				if (auto ptr = rampage.lock())
 				{
+					if (ptr->IsDead()) return false;
 					SkillAttackCooldown = 0;
 					ptr->TurnToTarget(ptr->GetAggroTarget());
 					if (ptr->UseSkillToAggro())
@@ -135,6 +141,7 @@ void RampageTree::MakeCanAttackSelector()
 			// 스킬을 사용하지 못하고, 일반공격이 가능할 때
 			if (auto ptr = rampage.lock())
 			{
+				if (ptr->IsDead()) return false;
 				ptr->TurnToTarget(ptr->GetCloseTarget());
 				if (ptr->BasicAttack())
 				{
@@ -155,6 +162,7 @@ void RampageTree::MakeCanNotAttackSelector()
 		{
 			if (auto ptr = rampage.lock())
 			{
+				if (ptr->IsDead()) return false;
 				return ptr->MoveToTarget();
 			}
 

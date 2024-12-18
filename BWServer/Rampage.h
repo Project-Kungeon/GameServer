@@ -20,6 +20,7 @@ public:
     virtual RampagePtr GetRampagePtr();
     bool isAttack() { GetReadLock(); return isAttacking; }
     void Damaged(CreaturePtr attacker, float damage) override;
+    void Death() override;
 
 public:
     // Detect Function

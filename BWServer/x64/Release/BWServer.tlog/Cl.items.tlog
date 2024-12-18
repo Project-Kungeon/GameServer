@@ -4,6 +4,8 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp;C:\Use
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BWServer.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\BWServer.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\CorePch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\CorePch.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Creature.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Creature.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DelayGameServer.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\DelayGameServer.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DelayGameSession.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\DelayGameSession.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Enum.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Enum.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\GameRoom.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\GameRoom.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\GameRound.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\GameRound.pb.obj
@@ -25,6 +27,8 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\MonsterPattern.pb.cc;C:\Users\
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ObjectUtils.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\ObjectUtils.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Object.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\pch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\pch.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Ping.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Ping.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\PingPongPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\PingPongPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Player.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Player.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Rampage.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Rampage.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\RampageTree.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\RampageTree.obj
@@ -35,5 +39,5 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerPacketHandler.cpp;C:\Use
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Session.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Session.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Skill.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Skill.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Struct.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Struct.pb.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\TickGenerator.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\TickGenerator.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\TimeUtils.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\TimeUtils.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Warrior.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Release\Warrior.obj

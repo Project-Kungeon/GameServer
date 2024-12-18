@@ -25,15 +25,18 @@ void Room::RegisterGameServer(GameServerPtr game_server)
 }
 
 // 오브젝트의 Room 참가
-bool Room::Join(ObjectPtr object)
+bool Room::Join(ObjectPtr object, bool pos_setted)
 {
 	//_members.insert(member);
 	bool success = AddObject(object);
-
-	object->posInfo->set_x(RandomUtil::GetRandom(0.f, 500.f));
-	object->posInfo->set_y(RandomUtil::GetRandom(0.f, 500.f));
-	object->posInfo->set_z(100.f);
-	object->posInfo->set_yaw(RandomUtil::GetRandom(0.f, 100.f));
+	if (!pos_setted)
+	{
+		object->posInfo->set_x(RandomUtil::GetRandom(0.f, 500.f));
+		object->posInfo->set_y(RandomUtil::GetRandom(0.f, 500.f));
+		object->posInfo->set_z(100.f);
+		object->posInfo->set_yaw(RandomUtil::GetRandom(0.f, 100.f));
+	}
+	
 
 	// 접속한 오브젝트가 플레이어라면..
 	if (auto player = dynamic_pointer_cast<Player>(object))
@@ -192,6 +195,7 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 		// 만약 플레이어라면, 거리 계산을 합니다.
 		if (auto player = dynamic_pointer_cast<Player>(object.second))
 		{
+			if (player->IsDead()) continue;
 			Location targetLoc = player->GetLocation();
 			double distance_interval = sqrt(pow(abs((int)(SelfLoc.x - targetLoc.x)), 2) +
 				pow(abs((int)(SelfLoc.y - targetLoc.y)), 2) +
@@ -314,7 +318,7 @@ RoomPtr Room::GetRoomRef()
 
 bool Room::HandleEnterPlayer(PlayerPtr player)
 {
-	return Join(player);
+	return Join(player, false);
 }
 
 bool Room::HandleLeavePlayer(PlayerPtr player)
@@ -324,12 +328,12 @@ bool Room::HandleLeavePlayer(PlayerPtr player)
 
 bool Room::SpawnMonster(MonsterPtr monster)
 {
-	return Join(monster);
+	return Join(monster, false);
 }
 
 bool Room::SpawnObject(ObjectPtr object)
 {
-	return Join(object);
+	return Join(object, true);
 }
 
 void Room::UdpHandleMove(message::C_Move pkt)

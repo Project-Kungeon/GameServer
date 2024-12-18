@@ -47,12 +47,22 @@ bool Creature::IsDead()
 	GetReadLock();
 	if (!dead && hp <= 0)
 	{
+		Death();
 		dead = true;
 		spdlog::info("{} is dead..", this->GetObjectId());
 		return true;
 	}
+	else if (hp <= 0)
+	{
+		return true;
+	}
 	
 	return false;
+}
+
+void Creature::Death()
+{
+	
 }
 
 void Creature::Tick(uint32 DeltaTime)

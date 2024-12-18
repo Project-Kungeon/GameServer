@@ -8,7 +8,7 @@ Monster::Monster()
 }
 
 Monster::Monster(message::MonsterType monsterType, float hp, float maxHp, float dropExp)
-	: Creature(message::CREATURE_TYPE_MONSTER, 1000, 1000, 100), monsterType(monsterType), dropExp(dropExp)
+	: Creature(message::CREATURE_TYPE_MONSTER, hp, maxHp, dropExp), monsterType(monsterType), dropExp(dropExp)
 {
 }
 
