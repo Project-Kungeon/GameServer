@@ -18,14 +18,14 @@
 #include <memory>
 #include <chrono>
 
-#include "RandomUtil.h"
-#include "ObjectUtils.h"
-#include "MathUtils.h"
-#include "ItemUtils.h"
-#include "TimeUtils.h"
-#include "Session.h"
-#include "GameSession.h"
-#include "DelayGameSession.h"
+#include "Util/RandomUtil.h"
+#include "Util/ObjectUtils.h"
+#include "Util/MathUtils.h"
+#include "Util/ItemUtils.h"
+#include "Util/TimeUtils.h"
+#include "ServerCore/Session/Session.h"
+#include "ServerCore/Session/GameSession.h"
+#include "ServerCore/Session/DelayGameSession.h"
 
 #include "spdlog/spdlog.h" 
 #include "spdlog/sinks/basic_file_sink.h" 
