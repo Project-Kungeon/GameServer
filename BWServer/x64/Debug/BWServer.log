@@ -144,10 +144,59 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DelayGameServer.h(1,1): warnin
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\GameServer.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 '/BWServer.cpp'을(를) 컴파일하는 중)
   
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 '/BWServer.cpp'을(를) 컴파일하는 중)
+  
   BattlePacketHandler.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BattlePacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  CoreGlobal.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 '/CoreGlobal.cpp'을(를) 컴파일하는 중)
+  
   CorePch.cpp
   Creature.cpp
+  DBConnection.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DBConnection.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 '/DBConnection.cpp'을(를) 컴파일하는 중)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(4689,18): warning C4244: '=': 'wchar_t'에서 'char'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/DBConnection.cpp'을(를) 컴파일하는 중)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(4689,18):
+      템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
+          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DBConnection.cpp(166,24):
+          컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DBConnection.cpp(166,24):
+              'DBConnection::HandleError'에서 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string'에 대한 첫 번째 참조를 확인하세요.
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(793,17):
+          컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(949,18):
+          컴파일되는 함수 템플릿 인스턴스화 '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)'에 대한 참조를 확인하세요.
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  DBConnectionPool.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 '/DBConnectionPool.cpp'을(를) 컴파일하는 중)
+  
   DelayGameServer.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DelayGameServer.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\DelayGameServer.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
@@ -174,12 +223,12 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Inventory.cpp(1,1): warning C4
   ItemObject.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ItemObject.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   ItemUtils.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
   JobQueue.cpp
   LobbyPacketHandler.cpp
   MathUtils.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\MathUtils.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
   Monster.cpp
   Object.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Object.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.

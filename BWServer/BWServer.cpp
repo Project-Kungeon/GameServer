@@ -1,11 +1,10 @@
 // BWServer.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 #include "pch.h"
-#include "DelayGameServer.h"
-#include "GameRoom.h"
-#include "ServerPacketHandler.h"
-#include "Monster.h"
-#include "Warrior.h"
+#include "Server/DelayGameServer.h"
+#include "Server/GameRoom.h"
+#include "Network/Packet/Handlers/ServerPacketHandler.h"
+#include "ServerCore/DB/DBConnectionPool.h"
 
 int main()
 {
@@ -24,15 +23,15 @@ int main()
     GameServer* server = new GameServer(io_context, port);
     GameServerPtr game_server(server);
     game_server->StartAccept();
-
-
+    
+    ASSERT_CRASH(GDBConnectionPool->Connect(10, L"DRIVER={MariaDB ODBC 3.2 Driver};SERVER=localhost;PORT=3306;DATABASE=GameDB;UID=root;PWD=1342;"));
     spdlog::info("Server Start {}", port);
 
     // For UDP TEST
     GRoom[0]->RegisterGameServer(game_server);
 
-    MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
-    GRoom[0]->SpawnMonster(monster);
+    //MonsterPtr monster = ObjectUtils::CreateMonster(message::MONSTER_TYPE_RAMPAGE);
+    //GRoom[0]->SpawnMonster(monster);
 
     //ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
     //GRoom[0]->SpawnObject(itemObject);
@@ -51,11 +50,4 @@ int main()
             thread.join();
         }
     }
-
-    //std::thread t(boost::bind(&boost::asio::io_context::run, &io_context));
-
-    //std::thread t1(boost::bind(&boost::asio::io_context::run, &io_context_tick));
-
-    //t.join();
-    //t1.join();
 }

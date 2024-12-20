@@ -129,6 +129,12 @@
     <ClCompile Include="DBConnection.cpp">
       <Filter>Main\Server</Filter>
     </ClCompile>
+    <ClCompile Include="DBConnectionPool.cpp">
+      <Filter>Main\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreGlobal.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Struct.pb.h">
@@ -271,6 +277,15 @@
       <Filter>Packets\handler\pingpong</Filter>
     </ClInclude>
     <ClInclude Include="DBConnection.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConnectionPool.h">
+      <Filter>Main\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreGlobal.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="DBBind.h">
       <Filter>Main\Server</Filter>
     </ClInclude>
   </ItemGroup>
