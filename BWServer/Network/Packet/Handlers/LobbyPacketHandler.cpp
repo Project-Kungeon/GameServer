@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "LobbyPacketHandler.h"
 
-bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& pkt)
+#include "DB/DBBind.h"
+#include "DB/DBConnectionPool.h"
+
+/*bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& pkt)
 {
 	// Deserialize Request Packet
 	spdlog::info("Player Login!");
@@ -28,4 +31,26 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, message::C_Login& p
 	session->Send(sendBuffer);
 
 	return true;
+}*/
+bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, account::login::C_Login& pkt)
+{
+	/*
+	DBConnection* dbConn = GDBConnectionPool->Pop();
+	DBBind<1, 1> dbBind(*dbConn, L"SELECT Id FROM [Users] WHERE email = (?)");
+
+	WCHAR name[100];
+	MultiByteToWideChar(CP_UTF8, 0, pkt.email().at(0).c_str(), -1, name, 100);
+	dbBind.BindParam(0, name);
+
+	long id = 0;
+	dbBind.BindCol(0, OUT id);
+	dbBind.Execute();
+	*/
+
+	return false;
 }
+
+/*bool LobbyPacketHandler::Handle_C_Register(SessionPtr& session, account::login::C_Register& pkt)
+{
+	return false;
+}*/

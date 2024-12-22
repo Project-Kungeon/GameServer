@@ -1,5 +1,7 @@
 #pragma once
 #include "ServerCore/DB/DBConnectionPool.h"
+
+
 DBConnectionPool* GDBConnectionPool = nullptr;
 
 class CoreGlobal
@@ -7,8 +9,8 @@ class CoreGlobal
 public:
 	CoreGlobal()
 	{
-		spdlog::info("Init ConnectionPool...");
-		GDBConnectionPool = new DBConnectionPool();
+		/*spdlog::info("Init ConnectionPool...");
+		GDBConnectionPool = new DBConnectionPool();*/
 	}
 
 	~CoreGlobal()

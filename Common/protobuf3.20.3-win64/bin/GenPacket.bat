@@ -8,25 +8,28 @@ protoc -I=./ --cpp_out=./ ./MonsterPattern.proto
 protoc -I=./ --cpp_out=./ ./GameRound.proto 
 protoc -I=./ --cpp_out=./ ./Item.proto 
 protoc -I=./ --cpp_out=./ ./Ping.proto 
+protoc -I=./ --cpp_out=./ ./Login.proto 
 
 IF ERRORLEVEL 1 PAUSE
 
-XCOPY /Y Enum.pb.h "../../../BWServer/*"
-XCOPY /Y Enum.pb.cc "../../../BWServer/*"
-XCOPY /Y Struct.pb.h "../../../BWServer/*"
-XCOPY /Y Struct.pb.cc "../../../BWServer/*"
-XCOPY /Y Message.pb.h "../../../BWServer/*"
-XCOPY /Y Message.pb.cc "../../../BWServer/*"
-XCOPY /Y Skill.pb.h "../../../BWServer/*"
-XCOPY /Y Skill.pb.cc "../../../BWServer/*"
-XCOPY /Y MonsterPattern.pb.h "../../../BWServer/*"
-XCOPY /Y MonsterPattern.pb.cc "../../../BWServer/*"
-XCOPY /Y GameRound.pb.h "../../../BWServer/*"
-XCOPY /Y GameRound.pb.cc "../../../BWServer/*"
-XCOPY /Y Item.pb.h "../../../BWServer/*"
-XCOPY /Y Item.pb.cc "../../../BWServer/*"
-XCOPY /Y Ping.pb.h "../../../BWServer/*"
-XCOPY /Y Ping.pb.cc "../../../BWServer/*"
+XCOPY /Y Enum.pb.h "../../../BWServer/build/*"
+XCOPY /Y Enum.pb.cc "../../../BWServer/build/*"
+XCOPY /Y Struct.pb.h "../../../BWServer/build/*"
+XCOPY /Y Struct.pb.cc "../../../BWServer/build/*"
+XCOPY /Y Message.pb.h "../../../BWServer/build/*"
+XCOPY /Y Message.pb.cc "../../../BWServer/build/*"
+XCOPY /Y Skill.pb.h "../../../BWServer/build/*"
+XCOPY /Y Skill.pb.cc "../../../BWServer/build/*"
+XCOPY /Y MonsterPattern.pb.h "../../../BWServer/build/*"
+XCOPY /Y MonsterPattern.pb.cc "../../../BWServer/build/*"
+XCOPY /Y GameRound.pb.h "../../../BWServer/build/*"
+XCOPY /Y GameRound.pb.cc "../../../BWServer/build/*"
+XCOPY /Y Item.pb.h "../../../BWServer/build/*"
+XCOPY /Y Item.pb.cc "../../../BWServer/build/*"
+XCOPY /Y Ping.pb.h "../../../BWServer/build/*"
+XCOPY /Y Ping.pb.cc "../../../BWServer/build/*"
+XCOPY /Y Login.pb.h "../../../BWServer/build/*"
+XCOPY /Y Login.pb.cc "../../../BWServer/build/*"
 
 
 XCOPY /Y Enum.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
@@ -45,6 +48,8 @@ XCOPY /Y Item.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Item.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Ping.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Ping.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
+XCOPY /Y Login.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
+XCOPY /Y Login.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 
 DEL /Q /F *.pb.h
 DEL /Q /F *.pb.cc

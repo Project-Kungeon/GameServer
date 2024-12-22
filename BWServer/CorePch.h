@@ -17,6 +17,8 @@
 #include <iostream>
 #include <memory>
 #include <chrono>
+#include <exception>
+#include <deque>
 
 #include "Util/RandomUtil.h"
 #include "Util/ObjectUtils.h"
@@ -30,4 +32,6 @@
 #include "spdlog/spdlog.h" 
 #include "spdlog/sinks/basic_file_sink.h" 
 #include "spdlog/sinks/rotating_file_sink.h" 
-#include "spdlog/sinks/daily_file_sink.h" 
+#include "spdlog/sinks/daily_file_sink.h"
+
+#include <bcrypt/Lib_BCrypt.hpp>

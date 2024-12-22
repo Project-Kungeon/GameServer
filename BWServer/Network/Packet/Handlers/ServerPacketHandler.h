@@ -2,6 +2,7 @@
 #include "Message.pb.h"
 #include "Skill.pb.h"
 #include "Item.pb.h"
+#include "Login.pb.h"
 #include "Network/Packet/Packet.h"
 
 // 핸들러 모음
@@ -41,7 +42,7 @@ public:
 		GPacketHandler[message::HEADER::LOGIN_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			spdlog::trace("Handle C_Login");
-			return HandlePacket<message::C_Login>(LobbyPacketHandler::Handle_C_Login, session, buffer, offset);
+			return HandlePacket<account::login::C_Login>(LobbyPacketHandler::Handle_C_Login, session, buffer, offset);
 		};
 		GPacketHandler[message::HEADER::ENTER_ROOM_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{

@@ -114,6 +114,72 @@ bool DBConnection::BindParam(SQLUSMALLINT paramIndex, SQLSMALLINT cType, SQLSMAL
 	return true;
 }
 
+bool DBConnection::BindParam(int32 paramIndex, const BYTE* bin, int32 size, SQLLEN* index)
+{
+	if (bin == nullptr)
+	{
+		*index = SQL_NULL_DATA;
+		size = 1;
+	}
+	else
+		*index = size;
+
+	if (size > BINARY_MAX)
+		return BindParam(paramIndex, SQL_C_BINARY, SQL_LONGVARBINARY, size, (BYTE*)bin, index);
+	else
+		return BindParam(paramIndex, SQL_C_BINARY, SQL_BINARY, size, (BYTE*)bin, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, bool* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_TINYINT, sizeof(bool), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, float* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_FLOAT, sizeof(float), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, double* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_DOUBLE, sizeof(double), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, int8* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_TINYINT, sizeof(int8), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, int16* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_SHORT, sizeof(int16), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, int32* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_LONG, sizeof(int32), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, int64* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_SBIGINT, sizeof(int64), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, TIMESTAMP_STRUCT* value, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_TYPE_TIMESTAMP, sizeof(TIMESTAMP_STRUCT), value, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, WCHAR* str, int32 size, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_C_WCHAR, size, str, index);
+}
+
+bool DBConnection::BindCol(int32 columnIndex, BYTE* bin, int32 size, SQLLEN* index)
+{
+	return BindCol(columnIndex, SQL_BINARY, size, bin, index);
+}
+
 bool DBConnection::BindCol(SQLUSMALLINT columnIndex, SQLSMALLINT cType, SQLULEN len, SQLPOINTER value, SQLLEN* index)
 {
 	SQLRETURN ret = ::SQLBindCol(_statement, columnIndex, cType, value, len, index);
