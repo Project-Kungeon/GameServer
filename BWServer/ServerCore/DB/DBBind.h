@@ -1,4 +1,5 @@
 #pragma once
+#include "DBConnection.h"
 #include "pch.h"
 
 template<int32 C>
@@ -21,7 +22,7 @@ public:
 		::memset(_columnIndex, 0, sizeof(_columnIndex));
 		_paramFlag = 0;
 		_columnFlag = 0;
-		dbConnection.Unbind();
+		dbConnection.UnBind();
 	}
 
 	bool Validate()
@@ -57,14 +58,14 @@ public:
 	template<typename T, int32 N>
 	void BindParam(int32 idx, T(&value)[N])
 	{
-		_dbConnection.BindParam(idx + 1, (const BYTE*)value, size32(T) * N, &_paramIndex[idx]);
+		_dbConnection.BindParam(idx + 1, (const BYTE*)value, sizeof(T) * N, &_paramIndex[idx]);
 		_paramFlag |= (1LL << idx);
 	}
 
 	template<typename T>
 	void BindParam(int32 idx, T* value, int32 N)
 	{
-		_dbConnection.BindParam(idx + 1, (const BYTE*)value, size32(T) * N, &_paramIndex[idx]);
+		_dbConnection.BindParam(idx + 1, (const BYTE*)value, sizeof(T) * N, &_paramIndex[idx]);
 		_paramFlag |= (1LL << idx);
 	}
 
@@ -91,7 +92,7 @@ public:
 	template<typename T, int32 N>
 	void BindCol(int32 idx, T(&value)[N])
 	{
-		_dbConnection.BindCol(idx + 1, value, size32(T) * N, &_columnIndex[idx]);
+		_dbConnection.BindCol(idx + 1, value, sizeof(T) * N, &_columnIndex[idx]);
 		_columnFlag |= (1LL << idx);
 	}
 

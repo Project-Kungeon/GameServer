@@ -1,7 +1,14 @@
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\Enum.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Enum.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\Item.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Item.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\Login.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Login.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\Message.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Message.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\MonsterPattern.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\MonsterPattern.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\Ping.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Ping.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\Skill.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Skill.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\build\Struct.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Struct.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\BWServer.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\BWServer.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\CoreGlobal.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\CoreGlobal.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\CorePch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\CorePch.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Enum.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Enum.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Objects\Creatures\Creature.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Creature.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Objects\Creatures\Monster\Monster.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Monster.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Objects\Creatures\Monster\Rampage.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Rampage.obj
@@ -19,9 +26,6 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\GameRoom.cpp;C:\Us
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\GameRound.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameRound.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\GameServer.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameServer.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\Room.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Room.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Item.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Item.pb.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Message.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Message.pb.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\MonsterPattern.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\MonsterPattern.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\BattlePacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\BattlePacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\InteractivePacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\InteractivePacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\LobbyPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\LobbyPacketHandler.obj
@@ -29,7 +33,6 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\PingPo
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\RoomPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\RoomPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\ServerPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\pch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\pch.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Ping.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Ping.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\DBConnection.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnectionPool.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\DBConnectionPool.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\JobQueue\JobQueue.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\JobQueue.obj
@@ -37,8 +40,6 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\DelayGameSe
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\GameSession.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSession.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\GameSessionManager.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSessionManager.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\Session.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Session.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Skill.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Skill.pb.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Struct.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Struct.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Util\ItemUtils.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\ItemUtils.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Util\MathUtils.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\MathUtils.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Util\ObjectUtils.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\ObjectUtils.obj
