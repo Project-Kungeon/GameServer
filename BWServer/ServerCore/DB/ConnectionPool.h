@@ -29,12 +29,14 @@
 	#define _DEBUG(x)
 #endif
 
+#include "ConnectionFactory.h"
+#include <deque>
+#include <set>
 
-#include "pch.h"
-#include "MySQLConnection.h"
 using namespace std;
 
 namespace active911 {
+	class Connection;
 	class MySQLConnection;
 
 
@@ -45,20 +47,9 @@ namespace active911 {
 			return "Unable to allocate connection";
 		}; 
 	};
+	
 
-
-	class Connection {
-		public:
-			Connection(){};
-			virtual ~Connection(){};
-
-		};
-
-		class ConnectionFactory {
-
-		public:
-			virtual std::shared_ptr<Connection> create()=0;
-		};
+		
 
 		struct ConnectionPoolStats {
 
@@ -72,12 +63,14 @@ namespace active911 {
 
 	public:
 
+		static void Init(size_t pool_size, std::shared_ptr<ConnectionFactory> factory);
+
 		ConnectionPoolStats get_stats() {
 
 			// Lock
-			USE_LOCK;
-
-			// Get stats
+                   			//			USE_LOCK;
+                   			//
+                   			//			// Get stats
 			ConnectionPoolStats stats;
 			stats.pool_size=this->pool.size();
 			stats.borrowed_size=this->borrowed.size();			
@@ -130,7 +123,7 @@ namespace active911 {
 						try {
 
 							// If we are able to create a new connection, return it
-							_DEBUG("Creating new connection to replace discarded connection");
+							//_DEBUG("Creating new connection to replace discarded connection");
 							std::shared_ptr<Connection> conn=this->factory->create();
 							this->borrowed.erase(it);
 							this->borrowed.insert(conn);
@@ -186,4 +179,18 @@ namespace active911 {
 		
 
 	};
+	
+}
+
+extern active911::ConnectionPool<active911::MySQLConnection>* GConnectionPool;
+
+template <class T>
+void active911::ConnectionPool<T>::Init(size_t pool_size, std::shared_ptr<ConnectionFactory> factory)
+{
+	GConnectionPool = new ConnectionPool<T>(pool_size, factory);
+	// Fill the pool
+	while(GConnectionPool->pool.size() < GConnectionPool->pool_size){
+
+		GConnectionPool->pool.push_back(GConnectionPool->factory->create());
+	}
 }

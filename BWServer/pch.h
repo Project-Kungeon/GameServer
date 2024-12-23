@@ -8,4 +8,6 @@
 #pragma comment(lib, "MySQL\\Release\\mysqlcppconn.lib")
 #endif
 
+#pragma comment(lib, "bcrypt.lib")
+
 #include "CorePch.h"

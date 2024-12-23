@@ -16,6 +16,17 @@ public:
 public:
 	bool isEnterGame = false;
 	atomic<std::shared_ptr<Player>> player;
+
+public:
+	void AssignSessionId();
 	
+private:
+	std::string _session_id;
+
+public:
+	std::string session_id() const
+	{
+		return _session_id;
+	}
 };
 

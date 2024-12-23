@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "ConnectionPool.h"
+
 #include "pch.h"
-#include "mysql/mysql_connection.h"
-#include "mysql/cppconn/driver.h"
-#include "mysql/cppconn/exception.h"
-#include "mysql/cppconn/resultset.h"
-#include "mysql/cppconn/prepared_statement.h"
-#include "mysql/cppconn/statement.h"
+#include "ConnectionFactory.h"
 
 namespace active911
 {
+    class Connection {
+    public:
+        Connection(){};
+        virtual ~Connection(){};
+
+    };
+    
     class MySQLConnection : public Connection
     {
     public:
@@ -59,26 +61,29 @@ namespace active911
         };
 
         // Any exceptions thrown here should be caught elsewhere
-        std::shared_ptr<Connection> create() {
-
-            // Get the driver
-            sql::Driver *driver;
-            driver=get_driver_instance();
-
-            // Create the connection
-            std::shared_ptr<MySQLConnection>conn(new MySQLConnection());
-
-            // Connect
-            conn->sql_connection=std::shared_ptr<sql::Connection>(driver->connect(this->server,this->username,this->password));
-
-            return static_pointer_cast<Connection>(conn);
-        };
+        std::shared_ptr<Connection> create();
 
     private:
-        string server;
-        string username;
-        string password;
+        std::string server;
+        std::string username;
+        std::string password;
     };
+
+    inline std::shared_ptr<Connection> MySQLConnectionFactory::create()
+    {
+
+        // Get the driver
+        sql::Driver *driver;
+        driver=get_driver_instance();
+
+        // Create the connection
+        std::shared_ptr<MySQLConnection>conn(new MySQLConnection());
+
+        // Connect
+        conn->sql_connection=std::shared_ptr<sql::Connection>(driver->connect(this->server,this->username,this->password));
+
+        return static_pointer_cast<Connection>(conn);
+    }
 }
 
 
