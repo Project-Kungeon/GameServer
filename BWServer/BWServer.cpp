@@ -1,23 +1,23 @@
 // BWServer.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 #include "pch.h"
-
-/*#include "DB/MySQLConnection.h"
-#include "ServerCore/DB/DBConnectionPool.h"*/
+#include "DB/ConnectionPool.h"
+#include "DB/MySQLConnection.h"
+#include "DB/ConnectionFactory.h"
 
 #include "Server/DelayGameServer.h"
 #include "Server/GameRoom.h"
 #include "Network/Packet/Handlers/ServerPacketHandler.h"
 
 
-#include "mysql_connection.h"
+/*#include "mysql_connection.h"
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
-#include <cppconn/prepared_statement.h>
+#include <cppconn/prepared_statement.h>*/
 
 int main()
 {
-    try
+    /*try
     {
         sql::Driver* driver = get_driver_instance();
         const string server1 = "tcp://127.0.0.1:3306";
@@ -31,7 +31,12 @@ int main()
         std::cout << "Error code: " << e.getErrorCode() << std::endl;    // MySQL 에러 코드
         std::cout << "SQL State: " << e.getSQLState() << std::endl;      // SQL State 코드
         std::cout << "Error msg: " << e.what() << std::endl;             // 에러 메시지
-    }
+    }*/
+
+    std::shared_ptr<active911::MySQLConnectionFactory>connection_factory(new active911::MySQLConnectionFactory
+    ("localhost:3306", "root", "1342"));
+    active911::ConnectionPool<active911::MySQLConnection>::Init(5, connection_factory);
+    
     std::string password = "test123";
     std::string hash = BCrypt::generateHash(password);
     
@@ -53,13 +58,7 @@ int main()
     GameServer* server = new GameServer(io_context, port);
     GameServerPtr game_server(server);
     game_server->StartAccept();
-
     
-
-    /*std::shared_ptr<active911::MySQLConnectionFactory>connection_factory(new active911::MySQLConnectionFactory
-        ("localhost:3306", "root", "1342"));
-    std::shared_ptr<active911::ConnectionPool<active911::MySQLConnection>> GConnectionPool(new active911::ConnectionPool<active911::MySQLConnection>(5, connection_factory));*/
-
     
     //ASSERT_CRASH(GDBConnectionPool->Connect(10, L"DRIVER={MariaDB ODBC 3.2 Driver};SERVER=localhost;PORT=3306;DATABASE=GameDB;UID=root;PWD=1342;"));
     spdlog::info("Server Start {}", port);
@@ -88,3 +87,4 @@ int main()
         }
     }
 }
+

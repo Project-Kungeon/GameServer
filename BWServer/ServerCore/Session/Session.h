@@ -51,6 +51,9 @@ protected:
 protected:
 	virtual void DelayAsyncWrite(const char* message, size_t size, uint64 delay_milliseconds);
 
+private:
+	uint64 _session_id;
+	
 protected:
 	tcp::socket _socket;
 	const static int RecvBufferSize = 2048;

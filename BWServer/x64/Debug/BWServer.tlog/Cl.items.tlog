@@ -33,8 +33,7 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\PingPo
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\RoomPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\RoomPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\ServerPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\pch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\pch.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\DBConnection.obj
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnectionPool.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\DBConnectionPool.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\ConnectionPool.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\JobQueue\JobQueue.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\JobQueue.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\DelayGameSession.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\DelayGameSession.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\GameSession.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameSession.obj

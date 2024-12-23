@@ -26,10 +26,7 @@ public:
 		return sizeof(PacketHeader) + msg.ByteSizeLong();
 	}
 
-	static bool Serialize(
-		const asio::mutable_buffer& buffer,
-		const short packetCode,
-		const google::protobuf::Message& msg)
+	static bool Serialize(const asio::mutable_buffer& buffer, const short packetCode, const google::protobuf::Message& msg)
 	{
 		const size_t requiredSize = RequiredSize(msg);
 		if (buffer.size() < requiredSize)
@@ -41,27 +38,22 @@ public:
 
 		memcpy(buffer.data(), &header, sizeof(PacketHeader));
 
+		// buffer.data() : 헤더의 시작점
+		// buffer.data()) + sizeof(PacketHeader) : 헤더의 끝점 = payload 시작점
 		char* payloadPtr = static_cast<char*>(buffer.data()) + sizeof(PacketHeader);
-
-		// buffer      proto packet       ȯ
-		if (!msg.SerializeToArray(payloadPtr,
-			static_cast<int>(buffer.size()) - sizeof(PacketHeader)))
+		if (!msg.SerializeToArray(payloadPtr, static_cast<int>(buffer.size()) - sizeof(PacketHeader)))
 			return false;
 
 		return true;
 	}
 
-	static bool ParseHeader(
-		const asio::mutable_buffer& buffer,
-		PacketHeader* header,
-		int& offset
-	)
+	static bool ParseHeader(const asio::mutable_buffer& buffer, PacketHeader* header, int& offset)
 	{
-		//  а   ִ   κ          ٱ  ̶  
+		// 읽고 있는 부분이 버퍼 바깥으로 나갈 경우
 		if (buffer.size() <= offset)
 			return false;
 
-		//                Ͱ                            
+		// 남은 버퍼 데이터가 헤더 사이즈보다 작을 경우
 		const size_t remainedSize = buffer.size() - offset;
 		if (remainedSize < sizeof(PacketHeader))
 			return false;
@@ -73,8 +65,8 @@ public:
 		return true;
 	}
 
-	// payloadSize :                    
-	// offset :             ۵Ǵ  payload       
+	// payloadSize : 헤더를 제외한 사이즈
+	// offset : 헤더 이후부터 시작되는 payload 시작점
 	static bool Parse(google::protobuf::Message& msg, const asio::mutable_buffer& buffer, const int payloadSize, int& offset)
 	{
 		if (buffer.size() < sizeof(PacketHeader))
@@ -90,10 +82,8 @@ public:
 		}
 		else
 		{
-			spdlog::error("Can not parsing Packet!");
+			spdlog::error("Failed to parse packet");
 			return false;
 		}
 	}
-
-
 };
