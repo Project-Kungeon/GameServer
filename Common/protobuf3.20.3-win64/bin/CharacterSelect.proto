@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+package account.character.select;
+
+message C_CharacterList
+{
+  
+}
+
+message S_CharacterList
+{
+  
+}
+
+message C_CreateCharacter
+{
+  
+}
+
+message S_CreateCharacter
+{
+  
+}
+
+message C_SelectCharacter
+{
+  
+}
+
+message S_SelectCharacter
+{
+  
+}
