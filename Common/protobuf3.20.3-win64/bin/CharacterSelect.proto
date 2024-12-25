@@ -1,14 +1,21 @@
-﻿syntax = "proto3";
+syntax = "proto3";
 package account.character.select;
 
 message C_CharacterList
 {
-  
+  repeated string session_id = 1;
+}
+
+message CharacterInfo
+{
+  uint64 pk = 1;
+  repeated string nickname = 2;
+  uint32 class_type = 3;
 }
 
 message S_CharacterList
 {
-  
+  repeated CharacterInfo character_info_list = 1;
 }
 
 message C_CreateCharacter

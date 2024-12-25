@@ -34,6 +34,10 @@
   1개 파일이 복사되었습니다.
   C:Login.pb.cc
   1개 파일이 복사되었습니다.
+  C:CharacterSelect.pb.h
+  1개 파일이 복사되었습니다.
+  C:CharacterSelect.pb.cc
+  1개 파일이 복사되었습니다.
   C:Enum.pb.h
   1개 파일이 복사되었습니다.
   C:Enum.pb.cc
@@ -69,6 +73,10 @@
   C:Login.pb.h
   1개 파일이 복사되었습니다.
   C:Login.pb.cc
+  1개 파일이 복사되었습니다.
+  C:CharacterSelect.pb.h
+  1개 파일이 복사되었습니다.
+  C:CharacterSelect.pb.cc
   1개 파일이 복사되었습니다.
   C:\Users\Kang\Desktop\workspace\BWServer\Common\protobuf3.20.3-win64\bin\*.h을(를) 찾을 수 없습니다.
   pch.cpp
@@ -113,28 +121,29 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\Server
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\DelayGameSession.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 'pch.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(220,53): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(221,53): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'pch.cpp'을(를) 컴파일하는 중)
-      C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(220,53):
+      C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(221,53):
       템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
-          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(39,12):
+          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(40,12):
           컴파일되는 함수 템플릿 인스턴스화 'bool ServerPacketHandler::UdpHandlePacket<message::C_Move,bool(__cdecl *)(message::C_Move &)>(ProcessFunc,boost::asio::mutable_buffer &,int &)'에 대한 참조를 확인하세요.
           with
           [
               ProcessFunc=bool (__cdecl *)(message::C_Move &)
           ]
   
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(211,53): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(212,53): warning C4267: '인수': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'pch.cpp'을(를) 컴파일하는 중)
-      C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(211,53):
+      C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(212,53):
       템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
-          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(45,11):
+          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\ServerPacketHandler.h(46,11):
           컴파일되는 함수 템플릿 인스턴스화 'bool ServerPacketHandler::HandlePacket<account::login::C_Login,bool(__cdecl *)(SessionPtr &,account::login::C_Login &)>(ProcessFunc,SessionPtr &,boost::asio::mutable_buffer &,int &)'에 대한 참조를 확인하세요.
           with
           [
               ProcessFunc=bool (__cdecl *)(SessionPtr &,account::login::C_Login &)
           ]
   
+  CharacterSelect.pb.cc
   Enum.pb.cc
   Item.pb.cc
   Login.pb.cc
@@ -157,10 +166,14 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\DelayGameServer.h(
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\GameServer.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 '/BWServer.cpp'을(를) 컴파일하는 중)
   
-  CoreGlobal.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  (소스 파일 '/CoreGlobal.cpp'을(를) 컴파일하는 중)
+  ConnectionPool.cpp
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.cpp(1,10): warning C4652: DLL 라이브러리(/MD)' 컴파일러 옵션이 미리 컴파일된 헤더와 일치하지 않습니다. 현재 명령줄 옵션이 미리 컴파일된 헤더에 정의된 것을 재정의합니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.cpp(1,10): warning C4652: 디버그 DLL 라이브러리(/MDd)' 컴파일러 옵션이 미리 컴파일된 헤더와 일치하지 않습니다. 현재 명령줄 옵션이 미리 컴파일된 헤더에 정의된 것을 재정의합니다.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.cpp(1,10): warning C4651: 미리 컴파일된 헤더에 대해 '/D_DEBUG'을(를) 지정했으나 현재 컴파일에 대해서는 지정하지 않았습니다.
+  (소스 파일 '/ServerCore/DB/ConnectionPool.cpp'을(를) 컴파일하는 중)
   
+  코드를 생성하고 있습니다...
+  CoreGlobal.cpp
   CorePch.cpp
   Creature.cpp
   Monster.cpp
@@ -266,55 +279,22 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\Battle
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Objects\Creatures\Monster\RampageTree.cpp(155,1): warning C4715: '`RampageTree::MakeCanAttackSelector'::`2'::<lambda_1>::operator()': 모든 제어 경로에서 값을 반환하지는 않습니다.
   컴파일하고 있습니다...
   LobbyPacketHandler.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\LobbyPacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.h(132,31): warning C4101: 'e' :참조되지 않은 지역 변수입니다.
   (소스 파일 '/Network/Packet/Handlers/LobbyPacketHandler.cpp'을(를) 컴파일하는 중)
+      C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.h(132,31):
+      템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
+          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.h(192,25):
+          컴파일되는 클래스 템플릿 인스턴스화 'active911::ConnectionPool<active911::MySQLConnection>'에 대한 참조를 확인하세요.
+          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\ConnectionPool.h(109,22):
+          클래스 템플릿 멤버 함수 'std::shared_ptr<active911::MySQLConnection> active911::ConnectionPool<active911::MySQLConnection>::borrow(void)'을(를) 컴파일하는 중입니다.
+              C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\LobbyPacketHandler.cpp(10,51):
+              'LobbyPacketHandler::Handle_C_Login'에서 'active911::ConnectionPool<active911::MySQLConnection>::borrow'에 대한 첫 번째 참조를 확인하세요.
   
   PingPongPacketHandler.cpp
   RoomPacketHandler.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\RoomPacketHandler.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   ServerPacketHandler.cpp
-  DBConnection.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  (소스 파일 '/ServerCore/DB/DBConnection.cpp'을(를) 컴파일하는 중)
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(4689,18): warning C4244: '=': 'wchar_t'에서 'char'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  (소스 파일 '/ServerCore/DB/DBConnection.cpp'을(를) 컴파일하는 중)
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(4689,18):
-      템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
-          C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.cpp(226,24):
-          컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
-          with
-          [
-              _Elem=wchar_t,
-              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
-              _Alloc=std::allocator<char>
-          ]
-              C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.cpp(226,24):
-              'DBConnection::HandleError'에서 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string'에 대한 첫 번째 참조를 확인하세요.
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(793,17):
-          컴파일되는 함수 템플릿 인스턴스화 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)'에 대한 참조를 확인하세요.
-          with
-          [
-              _Size_type=unsigned __int64,
-              _Iter=wchar_t *,
-              _Sent=wchar_t *,
-              _Size=unsigned __int64
-          ]
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(949,18):
-          컴파일되는 함수 템플릿 인스턴스화 '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)'에 대한 참조를 확인하세요.
-          with
-          [
-              _OutIt=char *,
-              _Size=unsigned __int64,
-              _InIt=wchar_t *,
-              _SizeTy=unsigned __int64
-          ]
-  
-  DBConnectionPool.cpp
-C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\DB\DBConnection.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  (소스 파일 '/ServerCore/DB/DBConnectionPool.cpp'을(를) 컴파일하는 중)
-  
   JobQueue.cpp
   DelayGameSession.cpp
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\ServerCore\Session\DelayGameSession.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
@@ -335,28 +315,88 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Util\Selector.h(1,1): warning 
   RandomUtil.cpp
   TimeUtils.cpp
   코드를 생성하고 있습니다...
-mysqlcppconn-static.lib(mysql_driver.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_driver.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_connection.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_connection.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_native_driver_wrapper.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_native_driver_wrapper.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_uri.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_uri.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_metadata.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_metadata.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_warning.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_warning.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_prepared_statement.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_prepared_statement.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_statement.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_statement.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_debug.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_debug.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_client_api.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_client_api.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_native_connection_wrapper.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_native_connection_wrapper.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_util.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_util.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_art_resultset.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_art_resultset.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_resultbind.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_resultbind.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_ps_resultset.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_ps_resultset.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_ps_resultset_metadata.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_ps_resultset_metadata.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_parameter_metadata.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_parameter_metadata.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_resultset.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_resultset.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_native_resultset_wrapper.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_native_resultset_wrapper.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_native_statement_wrapper.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_native_statement_wrapper.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_art_rset_metadata.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_art_rset_metadata.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-mysqlcppconn-static.lib(mysql_resultset_metadata.obj) : warning LNK4099: '' PDB를 'mysqlcppconn-static.lib(mysql_resultset_metadata.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-     C:\Users\Kang\Desktop\workspace\BWServer\x64\Debug\BWServer.lib 라이브러리 및 C:\Users\Kang\Desktop\workspace\BWServer\x64\Debug\BWServer.exp 개체를 생성하고 있습니다.
-LINK : warning LNK4098: 'MSVCRT' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.
-  BWServer.vcxproj -> C:\Users\Kang\Desktop\workspace\BWServer\x64\Debug\BWServer.exe
+LINK : warning LNK4098: 'MSVCRTD' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.
+ItemUtils.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+ObjectUtils.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+pch.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+DelayGameSession.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+GameSession.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Session.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+InteractivePacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+LobbyPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+RoomPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+ServerPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+GameRound.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+GameServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Room.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+BattlePacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+ItemObject.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Object.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+DelayGameServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+GameRoom.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Archor.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Inventory.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Player.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Item.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+BWServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Creature.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Rampage.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+RampageTree.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+MonsterPattern.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Ping.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Skill.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Struct.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+CharacterSelect.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Item.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Login.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+Message.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__invalid_parameter
+ItemUtils.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+ObjectUtils.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+pch.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+DelayGameSession.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+GameSession.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Session.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+InteractivePacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+LobbyPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+RoomPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+ServerPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+GameRound.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+GameServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Room.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+BattlePacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+ItemObject.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Object.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+DelayGameServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+GameRoom.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Archor.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Inventory.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Player.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Item.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+BWServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Creature.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Rampage.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+RampageTree.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+MonsterPattern.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Ping.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Skill.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Struct.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+CharacterSelect.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Item.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Login.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Message.pb.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__CrtDbgReport
+Session.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+LobbyPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+ServerPacketHandler.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+pch.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+DelayGameSession.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+DelayGameServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+GameRoom.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+GameServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+Room.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+BWServer.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+Creature.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+Rampage.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+RampageTree.obj : error LNK2001: 확인할 수 없는 외부 기호 __imp__calloc_dbg
+msvcprtd.lib(locale0_implib.obj) : error LNK2019: __imp__free_dbg"public: static void __cdecl std::_Fac_node::operator delete(void *)" (??3_Fac_node@std@@SAXPEAX@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+msvcprtd.lib(locale0_implib.obj) : error LNK2019: __imp__malloc_dbg"public: static void * __cdecl std::_Fac_node::operator new(unsigned __int64)" (??2_Fac_node@std@@SAPEAX_K@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+C:\Users\Kang\Desktop\workspace\BWServer\x64\Debug\BWServer.exe : fatal error LNK1120: 5개의 확인할 수 없는 외부 참조입니다.

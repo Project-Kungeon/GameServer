@@ -33,6 +33,7 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, account::login::C_L
 				
 				packet_login.set_is_success(1);
 				auto game_session = static_pointer_cast<GameSession>(session);
+				game_session->SetUserPk(results->getUInt64("pk"));
 				game_session->AssignSessionId();
 				auto session_id_str = packet_login.add_session_id();
 				*session_id_str = game_session->session_id();
