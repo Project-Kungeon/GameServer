@@ -42,8 +42,6 @@
     <ClCompile Include="Network\Packet\Handlers\PingPongPacketHandler.cpp" />
     <ClCompile Include="Network\Packet\Handlers\RoomPacketHandler.cpp" />
     <ClCompile Include="Network\Packet\Handlers\ServerPacketHandler.cpp" />
-    <ClCompile Include="ServerCore\DB\DBConnection.cpp" />
-    <ClCompile Include="ServerCore\DB\DBConnectionPool.cpp" />
     <ClCompile Include="ServerCore\JobQueue\JobQueue.cpp" />
     <ClCompile Include="ServerCore\Session\DelayGameSession.cpp" />
     <ClCompile Include="ServerCore\Session\GameSession.cpp" />
@@ -54,6 +52,9 @@
     <ClCompile Include="Util\ObjectUtils.cpp" />
     <ClCompile Include="Util\RandomUtil.cpp" />
     <ClCompile Include="Util\TimeUtils.cpp" />
+    <ClCompile Include="ServerCore\DB\ConnectionPool.cpp" />
+    <ClCompile Include="build\CharacterSelect.pb.cc" />
+    <ClCompile Include="Network\Packet\Handlers\CharacterSelectPacketHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Member.h">
@@ -106,9 +107,6 @@
     <ClInclude Include="Network\Packet\Handlers\RoomPacketHandler.h" />
     <ClInclude Include="Network\Packet\Handlers\ServerPacketHandler.h" />
     <ClInclude Include="Network\Packet\Packet.h" />
-    <ClInclude Include="ServerCore\DB\DBBind.h" />
-    <ClInclude Include="ServerCore\DB\DBConnection.h" />
-    <ClInclude Include="ServerCore\DB\DBConnectionPool.h" />
     <ClInclude Include="ServerCore\JobQueue\JobQueue.h" />
     <ClInclude Include="ServerCore\Session\DelayGameSession.h" />
     <ClInclude Include="ServerCore\Session\GameSession.h" />
@@ -122,6 +120,9 @@
     <ClInclude Include="Util\TimeUtils.h" />
     <ClInclude Include="ServerCore\DB\ConnectionPool.h" />
     <ClInclude Include="ServerCore\DB\MySQLConnection.h" />
+    <ClInclude Include="ServerCore\DB\ConnectionFactory.h" />
+    <ClInclude Include="build\CharacterSelect.pb.h" />
+    <ClInclude Include="Network\Packet\Handlers\CharacterSelectPacketHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">
@@ -227,6 +228,9 @@
       <Filter>Packets\Proto</Filter>
     </None>
     <None Include="..\Common\protobuf3.20.3-win64\bin\Ping.proto">
+      <Filter>Packets\Proto</Filter>
+    </None>
+    <None Include="..\Common\protobuf3.20.3-win64\bin\CharacterSelect.proto">
       <Filter>Packets\Proto</Filter>
     </None>
   </ItemGroup>

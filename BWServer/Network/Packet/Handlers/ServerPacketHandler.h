@@ -11,6 +11,7 @@
 #include "BattlePacketHandler.h"
 #include "InteractivePacketHandler.h"
 #include "PingPongPacketHandler.h"
+#include "CharacterSelectPacketHandler.h"
 
 using PacketHandlerFunc = std::function<bool(SessionPtr&, asio::mutable_buffer&, int&)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];

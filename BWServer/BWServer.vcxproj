@@ -142,7 +142,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)\Include\mysql;$(SolutionDir)Include\bcrypt</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -178,6 +178,9 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="build\CharacterSelect.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="build\Enum.pb.cc">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -2261,6 +2264,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Network\Packet\Handlers\CharacterSelectPacketHandler.cpp" />
     <ClCompile Include="Network\Packet\Handlers\InteractivePacketHandler.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -3448,6 +3452,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="build\CharacterSelect.pb.h" />
     <ClInclude Include="build\Enum.pb.h" />
     <ClInclude Include="build\Item.pb.h" />
     <ClInclude Include="build\Login.pb.h" />
@@ -3478,6 +3483,7 @@
     <ClInclude Include="Game\Server\Room.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Network\Packet\Handlers\BattlePacketHandler.h" />
+    <ClInclude Include="Network\Packet\Handlers\CharacterSelectPacketHandler.h" />
     <ClInclude Include="Network\Packet\Handlers\InteractivePacketHandler.h" />
     <ClInclude Include="Network\Packet\Handlers\LobbyPacketHandler.h" />
     <ClInclude Include="Network\Packet\Handlers\PingPongPacketHandler.h" />
@@ -3503,6 +3509,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" />
+    <None Include="..\Common\protobuf3.20.3-win64\bin\CharacterSelect.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\Enum.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\GameRound.proto" />
     <None Include="..\Common\protobuf3.20.3-win64\bin\GenPacket.bat" />

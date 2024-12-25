@@ -9,6 +9,7 @@ protoc -I=./ --cpp_out=./ ./GameRound.proto
 protoc -I=./ --cpp_out=./ ./Item.proto 
 protoc -I=./ --cpp_out=./ ./Ping.proto 
 protoc -I=./ --cpp_out=./ ./Login.proto 
+protoc -I=./ --cpp_out=./ ./CharacterSelect.proto 
 
 IF ERRORLEVEL 1 PAUSE
 
@@ -30,6 +31,8 @@ XCOPY /Y Ping.pb.h "../../../BWServer/build/*"
 XCOPY /Y Ping.pb.cc "../../../BWServer/build/*"
 XCOPY /Y Login.pb.h "../../../BWServer/build/*"
 XCOPY /Y Login.pb.cc "../../../BWServer/build/*"
+XCOPY /Y CharacterSelect.pb.h "../../../BWServer/build/*"
+XCOPY /Y CharacterSelect.pb.cc "../../../BWServer/build/*"
 
 
 XCOPY /Y Enum.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
@@ -50,6 +53,8 @@ XCOPY /Y Ping.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Ping.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Login.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Login.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
+XCOPY /Y CharacterSelect.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
+XCOPY /Y CharacterSelect.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 
 DEL /Q /F *.pb.h
 DEL /Q /F *.pb.cc

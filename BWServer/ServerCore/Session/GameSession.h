@@ -19,14 +19,21 @@ public:
 
 public:
 	void AssignSessionId();
+	void SetUserPk(uint64 userPk) { _user_pk = userPk; }
 	
 private:
 	std::string _session_id;
+	uint64 _user_pk;
 
 public:
 	std::string session_id() const
 	{
 		return _session_id;
+	}
+
+	uint64 user_pk() const
+	{
+		return _user_pk;
 	}
 };
 
