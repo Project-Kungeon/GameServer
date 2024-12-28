@@ -28,6 +28,7 @@ C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\GameRound.pb.cc;C:
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\GameServer.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\GameServer.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Game\Server\Room.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\Room.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\BattlePacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\BattlePacketHandler.obj
+C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\CharacterSelectPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\CharacterSelectPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\InteractivePacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\InteractivePacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\LobbyPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\LobbyPacketHandler.obj
 C:\Users\Kang\Desktop\workspace\BWServer\BWServer\Network\Packet\Handlers\PingPongPacketHandler.cpp;C:\Users\Kang\Desktop\workspace\BWServer\BWServer\x64\Debug\PingPongPacketHandler.obj
