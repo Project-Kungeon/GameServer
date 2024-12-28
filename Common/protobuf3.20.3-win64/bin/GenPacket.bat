@@ -8,8 +8,8 @@ protoc -I=./ --cpp_out=./ ./MonsterPattern.proto
 protoc -I=./ --cpp_out=./ ./GameRound.proto 
 protoc -I=./ --cpp_out=./ ./Item.proto 
 protoc -I=./ --cpp_out=./ ./Ping.proto 
-protoc -I=./ --cpp_out=./ ./Login.proto 
-protoc -I=./ --cpp_out=./ ./CharacterSelect.proto 
+protoc -I=./ --cpp_out=./ --java_out=./ ./Login.proto 
+protoc -I=./ --cpp_out=./ --java_out=./ ./CharacterSelect.proto
 
 IF ERRORLEVEL 1 PAUSE
 

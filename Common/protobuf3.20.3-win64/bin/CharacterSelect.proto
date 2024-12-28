@@ -30,7 +30,7 @@ message S_CreateCharacter
 
 message C_SelectCharacter
 {
-  
+  uint64 character_pk = 1;
 }
 
 message S_SelectCharacter

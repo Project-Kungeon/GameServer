@@ -6,6 +6,7 @@
 
 atomic<unsigned int> ObjectUtils::s_idGenerator = 1;
 
+// TODO : 클래스 타입 외 스탯 정보 등등을 불러와야 함
 PlayerPtr ObjectUtils::CreatePlayer(GameSessionPtr session, message::PlayerType type)
 {
 	PlayerPtr player = nullptr;

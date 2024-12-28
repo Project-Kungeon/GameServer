@@ -50,6 +50,16 @@ public:
 			spdlog::trace("Handle C_EnterRoom");
 			return HandlePacket<message::C_EnterRoom>(RoomPacketHandler::Handle_C_EnterRoom, session, buffer, offset);
 		};
+		GPacketHandler[message::HEADER::CHARACTER_LIST_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::trace("Handle C_CharacterList");
+			return HandlePacket<account::character::select::C_CharacterList>(CharacterSelectPacketHandler::Handle_C_CharacterList, session, buffer, offset);
+		};
+		GPacketHandler[message::HEADER::CHARACTER_SELECT_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::trace("Handle C_SelectCharacter");
+			return HandlePacket<account::character::select::C_SelectCharacter>(CharacterSelectPacketHandler::Handle_C_SelectCharacter, session, buffer, offset);
+		};
 		GPacketHandler[message::HEADER::PLAYER_MOVE_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
 		{
 			spdlog::trace("Handle C_Move");

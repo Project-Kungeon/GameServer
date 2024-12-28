@@ -84,7 +84,8 @@ struct S_CreateCharacterDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_CreateCharacterDefaultTypeInternal _S_CreateCharacter_default_instance_;
 PROTOBUF_CONSTEXPR C_SelectCharacter::C_SelectCharacter(
-    ::_pbi::ConstantInitialized){}
+    ::_pbi::ConstantInitialized)
+  : character_pk_(uint64_t{0u}){}
 struct C_SelectCharacterDefaultTypeInternal {
   PROTOBUF_CONSTEXPR C_SelectCharacterDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -154,6 +155,7 @@ const uint32_t TableStruct_CharacterSelect_2eproto::offsets[] PROTOBUF_SECTION_V
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::account::character::select::C_SelectCharacter, character_pk_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::account::character::select::S_SelectCharacter, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -168,7 +170,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 23, -1, -1, sizeof(::account::character::select::C_CreateCharacter)},
   { 29, -1, -1, sizeof(::account::character::select::S_CreateCharacter)},
   { 35, -1, -1, sizeof(::account::character::select::C_SelectCharacter)},
-  { 41, -1, -1, sizeof(::account::character::select::S_SelectCharacter)},
+  { 42, -1, -1, sizeof(::account::character::select::S_SelectCharacter)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -189,12 +191,12 @@ const char descriptor_table_protodef_CharacterSelect_2eproto[] PROTOBUF_SECTION_
   "_CharacterList\022D\n\023character_info_list\030\001 "
   "\003(\0132\'.account.character.select.Character"
   "Info\"\023\n\021C_CreateCharacter\"\023\n\021S_CreateCha"
-  "racter\"\023\n\021C_SelectCharacter\"\023\n\021S_SelectC"
-  "haracterb\006proto3"
+  "racter\")\n\021C_SelectCharacter\022\024\n\014character"
+  "_pk\030\001 \001(\004\"\023\n\021S_SelectCharacterb\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_CharacterSelect_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_CharacterSelect_2eproto = {
-    false, false, 336, descriptor_table_protodef_CharacterSelect_2eproto,
+    false, false, 358, descriptor_table_protodef_CharacterSelect_2eproto,
     "CharacterSelect.proto",
     &descriptor_table_CharacterSelect_2eproto_once, nullptr, 0, 7,
     schemas, file_default_instances, TableStruct_CharacterSelect_2eproto::offsets,
@@ -901,30 +903,162 @@ class C_SelectCharacter::_Internal {
 
 C_SelectCharacter::C_SelectCharacter(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
   // @@protoc_insertion_point(arena_constructor:account.character.select.C_SelectCharacter)
 }
 C_SelectCharacter::C_SelectCharacter(const C_SelectCharacter& from)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  character_pk_ = from.character_pk_;
   // @@protoc_insertion_point(copy_constructor:account.character.select.C_SelectCharacter)
 }
 
+inline void C_SelectCharacter::SharedCtor() {
+character_pk_ = uint64_t{0u};
+}
 
+C_SelectCharacter::~C_SelectCharacter() {
+  // @@protoc_insertion_point(destructor:account.character.select.C_SelectCharacter)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
 
+inline void C_SelectCharacter::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
 
+void C_SelectCharacter::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void C_SelectCharacter::Clear() {
+// @@protoc_insertion_point(message_clear_start:account.character.select.C_SelectCharacter)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  character_pk_ = uint64_t{0u};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* C_SelectCharacter::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint64 character_pk = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          character_pk_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* C_SelectCharacter::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:account.character.select.C_SelectCharacter)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint64 character_pk = 1;
+  if (this->_internal_character_pk() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_character_pk(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:account.character.select.C_SelectCharacter)
+  return target;
+}
+
+size_t C_SelectCharacter::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:account.character.select.C_SelectCharacter)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint64 character_pk = 1;
+  if (this->_internal_character_pk() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_character_pk());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_SelectCharacter::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    C_SelectCharacter::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_SelectCharacter::GetClassData() const { return &_class_data_; }
 
+void C_SelectCharacter::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<C_SelectCharacter *>(to)->MergeFrom(
+      static_cast<const C_SelectCharacter &>(from));
+}
 
 
+void C_SelectCharacter::MergeFrom(const C_SelectCharacter& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:account.character.select.C_SelectCharacter)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
+  if (from._internal_character_pk() != 0) {
+    _internal_set_character_pk(from._internal_character_pk());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
 
+void C_SelectCharacter::CopyFrom(const C_SelectCharacter& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:account.character.select.C_SelectCharacter)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
 
+bool C_SelectCharacter::IsInitialized() const {
+  return true;
+}
+
+void C_SelectCharacter::InternalSwap(C_SelectCharacter* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(character_pk_, other->character_pk_);
+}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_SelectCharacter::GetMetadata() const {
   return ::_pbi::AssignDescriptors(

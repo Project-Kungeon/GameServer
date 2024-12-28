@@ -810,9 +810,10 @@ class S_CreateCharacter final :
 // -------------------------------------------------------------------
 
 class C_SelectCharacter final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:account.character.select.C_SelectCharacter) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:account.character.select.C_SelectCharacter) */ {
  public:
   inline C_SelectCharacter() : C_SelectCharacter(nullptr) {}
+  ~C_SelectCharacter() override;
   explicit PROTOBUF_CONSTEXPR C_SelectCharacter(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   C_SelectCharacter(const C_SelectCharacter& from);
@@ -885,15 +886,27 @@ class C_SelectCharacter final :
   C_SelectCharacter* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<C_SelectCharacter>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const C_SelectCharacter& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const C_SelectCharacter& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_SelectCharacter& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_SelectCharacter& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_SelectCharacter* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -914,6 +927,18 @@ class C_SelectCharacter final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kCharacterPkFieldNumber = 1,
+  };
+  // uint64 character_pk = 1;
+  void clear_character_pk();
+  uint64_t character_pk() const;
+  void set_character_pk(uint64_t value);
+  private:
+  uint64_t _internal_character_pk() const;
+  void _internal_set_character_pk(uint64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:account.character.select.C_SelectCharacter)
  private:
   class _Internal;
@@ -921,6 +946,8 @@ class C_SelectCharacter final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  uint64_t character_pk_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CharacterSelect_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1299,6 +1326,26 @@ S_CharacterList::character_info_list() const {
 // -------------------------------------------------------------------
 
 // C_SelectCharacter
+
+// uint64 character_pk = 1;
+inline void C_SelectCharacter::clear_character_pk() {
+  character_pk_ = uint64_t{0u};
+}
+inline uint64_t C_SelectCharacter::_internal_character_pk() const {
+  return character_pk_;
+}
+inline uint64_t C_SelectCharacter::character_pk() const {
+  // @@protoc_insertion_point(field_get:account.character.select.C_SelectCharacter.character_pk)
+  return _internal_character_pk();
+}
+inline void C_SelectCharacter::_internal_set_character_pk(uint64_t value) {
+  
+  character_pk_ = value;
+}
+inline void C_SelectCharacter::set_character_pk(uint64_t value) {
+  _internal_set_character_pk(value);
+  // @@protoc_insertion_point(field_set:account.character.select.C_SelectCharacter.character_pk)
+}
 
 // -------------------------------------------------------------------
 
