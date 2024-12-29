@@ -1,4 +1,4 @@
-﻿#include "ClientPacketHandler.h"
+#include "ClientPacketHandler.h"
 #include "LobbyPacketHandler.h"
 
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
@@ -17,4 +17,9 @@ void ClientPacketHandler::Init()
     {
         return HandlePacket<account::login::S_Login>(LobbyPacketHandler::Handle_S_Login, session, buffer, header, offset);
     };
+
+    GPacketHandler[message::HEADER::CHARACTER_LIST_RES] = [](SessionPtr& session, asio::mutable_buffer& buffer, PacketHeader& header, int& offset)
+        {
+            return Handle_INVALID;
+        };
 }
