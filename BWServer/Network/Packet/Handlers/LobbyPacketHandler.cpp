@@ -60,13 +60,19 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, account::login::C_L
 	
 	GConnectionPool->unborrow(conn);
 	
-	const size_t requiredSize = PacketUtil::RequiredSize(packet_login);
+	/*const size_t requiredSize = PacketUtil::RequiredSize(packet_login);
 
 	char* rawBuffer = new char[requiredSize];
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::LOGIN_RES, packet_login);
 
-	session->Send(sendBuffer);
+
+	session->Send(sendBuffer);*/
+
+	const size_t requiredSize = PacketUtil::RequiredSize(packet_login);
+	auto msg = PacketUtil::MakeSendBuffer(packet_login,message::HEADER::LOGIN_RES);
+	session->Send(msg, requiredSize);
+	
 	return true;
 }
 

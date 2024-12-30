@@ -27,6 +27,11 @@ public:
 	virtual void HandleCompletePing(const ping::C_CompletePing& pkt);
 
 protected:
+	virtual void AsyncHeaderRead();
+	virtual void AsyncBodyRead();
+	virtual void OnHeaderRead(const boost::system::error_code& err, size_t size);
+	virtual void OnBodyRead(const boost::system::error_code& err, std::shared_ptr<char[]> bufferPtr, size_t size);
+	
 	virtual void AsyncRead();
 	virtual void OnRead(const boost::system::error_code& err, size_t size);
 	virtual void AsyncWrite(const char* message, size_t size);
@@ -41,6 +46,12 @@ private:
 	
 protected:
 	tcp::socket _socket;
+	const static int HeaderSize = 4;
+	char _headerBuffer[HeaderSize];
+	int _offset = 0;
+	
+	PacketHeader header;
+	
 	const static int RecvBufferSize = 2048;
 	char _recvBuffer[RecvBufferSize];
 	const static int SendBufferSize = 2048;

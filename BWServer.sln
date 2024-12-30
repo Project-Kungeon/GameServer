@@ -8,6 +8,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BWServerTest", "BWServerTest\BWServerTest.vcxproj", "{C577AC09-C202-43DF-9AF0-05769C32C87D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DummyClients", "DummyClients\DummyClients.vcxproj", "{668E574A-C229-4847-B99B-5EB1B3460B25}"
+	ProjectSection(ProjectDependencies) = postProject
+		{097BFA6E-42E5-4813-8F94-972159EA09F3} = {097BFA6E-42E5-4813-8F94-972159EA09F3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

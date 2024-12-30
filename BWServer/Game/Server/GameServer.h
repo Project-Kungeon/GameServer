@@ -16,16 +16,6 @@ public:
 	virtual void StartAccept();
 	virtual void OnAccept(SessionPtr session, const boost::system::error_code& err);
 
-public:
-	virtual void UdpSend(asio::mutable_buffer& buffer);
-	virtual void UdpSend(std::shared_ptr<asio::mutable_buffer> buffer);
-	virtual void AsyncUdpRead();
-	virtual void OnUdpRead(const boost::system::error_code& err, size_t size);
-	virtual void AsyncUdpWrite(const char* message, size_t size);
-	virtual void OnUdpWrite(const boost::system::error_code& err, size_t size);
-
-	virtual void HandlePacket(char* ptr, size_t size);
-
 protected:
 	tcp::acceptor _acceptor;
 	asio::io_context& _io_context;
