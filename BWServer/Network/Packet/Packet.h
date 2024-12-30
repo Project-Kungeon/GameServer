@@ -86,4 +86,15 @@ public:
 			return false;
 		}
 	}
+
+	static std::shared_ptr<char[]> MakeSendBuffer(google::protobuf::Message& msg, const short packetCode)
+	{
+		const size_t requiredSize = PacketUtil::RequiredSize(msg);
+
+		std::shared_ptr<char[]> rawBuffer = std::make_shared<char[]>(requiredSize);
+		auto sendBuffer = asio::buffer(rawBuffer.get(), requiredSize);
+		PacketUtil::Serialize(sendBuffer, packetCode, msg);
+
+		return rawBuffer;
+	}
 };

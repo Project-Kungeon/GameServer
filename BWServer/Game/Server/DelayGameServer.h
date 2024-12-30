@@ -17,10 +17,6 @@ public:
 public:
     virtual void StartAccept() override;
 
-    virtual void UdpSend(asio::mutable_buffer& buffer) override;
-    virtual void AsyncUdpWrite(const char* message, size_t size) override;
-
-
 private:
     bool shouldDropPacket() {
         std::uniform_real_distribution<double> dist(0.0, 1.0);

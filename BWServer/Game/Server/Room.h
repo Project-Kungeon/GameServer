@@ -28,8 +28,7 @@ public:
 	virtual bool HandleLeavePlayer(PlayerPtr player);
 	virtual bool SpawnMonster(MonsterPtr monster);
 	virtual bool SpawnObject(ObjectPtr monster);
-	virtual void UdpHandleMove(message::C_Move pkt);
-	virtual void SendUdpMove(message::S_Move pkt);
+	virtual void SendMove(message::S_Move pkt);
 	virtual void HandleMove(message::C_Move pkt);
 	virtual void HandleAttack(message::C_Attack pkt);
 	virtual void HandleDeath(CreaturePtr creature);

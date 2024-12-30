@@ -30,6 +30,7 @@ public:
 	void Start();
 	tcp::socket& GetSocket();
 	virtual void Send(asio::mutable_buffer& buffer);
+	virtual void Send(std::shared_ptr<char[]> data, std::size_t size);
 
 	// 의도적인 딜레이
 	// Outgoing 전용
@@ -42,6 +43,8 @@ protected:
 	virtual void AsyncRead();
 	virtual void OnRead(const boost::system::error_code& err, size_t size);
 	virtual void AsyncWrite(const char* message, size_t size);
+	virtual void AsyncWrite(std::shared_ptr<char[]> message, size_t size);
+	virtual void OnWrite(std::shared_ptr<char[]> message, const boost::system::error_code& err, size_t size);
 	virtual void OnWrite(const boost::system::error_code& err, size_t size);
 	virtual void HandlePacket(char* ptr, size_t size);
 

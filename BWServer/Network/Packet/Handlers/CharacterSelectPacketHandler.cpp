@@ -51,7 +51,8 @@ bool CharacterSelectPacketHandler::Handle_C_SelectCharacter(SessionPtr& session,
     sql_conn->setSchema("GameDB");
 	
     std::unique_ptr<sql::PreparedStatement> pstmt(sql_conn->prepareStatement("SELECT pk, name, class_type FROM character_list WHERE pk = ?"));
-    //pstmt->setUInt64(1, pkt.char);  // 1은 첫 번째 물음표(?)를 의미합니다
+   
+    pstmt->setUInt64(1, pkt.character_pk());  // 1은 첫 번째 물음표(?)를 의미합니다
     std::unique_ptr<sql::ResultSet> results(pstmt->executeQuery());
     GConnectionPool->unborrow(conn);
 

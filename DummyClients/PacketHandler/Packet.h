@@ -72,7 +72,7 @@ public:
 		if (buffer.size() < sizeof(PacketHeader))
 			return false;
 
-		const char* payloadPtr = static_cast<char*>(buffer.data()) + offset;
+		const char* payloadPtr = static_cast<char*>(buffer.data());
 		const size_t remainedSize = buffer.size() - offset;
 		const bool parseResult = msg.ParseFromArray(payloadPtr, payloadSize);
 		if (parseResult)

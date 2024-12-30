@@ -2,14 +2,6 @@
 #include "Server/Room.h"
 #include "RoomPacketHandler.h"
 
-bool RoomPacketHandler::UdpHandle_C_Move(message::C_Move& pkt)
-{
-	// UDP TEST
-	GRoom[0]->DoAsync(&Room::UdpHandleMove, pkt);
-
-	return true;
-}
-
 bool RoomPacketHandler::Handle_C_EnterRoom(SessionPtr& session, message::C_EnterRoom& pkt)
 {
 	// Create Player

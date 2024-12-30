@@ -30,6 +30,11 @@ void Session::Send(asio::mutable_buffer& buffer)
 	AsyncWrite(static_cast<const char*>(buffer.data()), buffer.size());
 }
 
+void Session::Send(std::shared_ptr<char[]> data, std::size_t size)
+{
+	AsyncWrite(data, size);
+}
+
 void Session::DelaySend(asio::mutable_buffer& buffer, uint64 delay_milliseconds)
 {
 	DelayAsyncWrite(static_cast<const char*>(buffer.data()), buffer.size(), delay_milliseconds);
@@ -98,15 +103,42 @@ void Session::OnRead(const boost::system::error_code& err, size_t size)
 
 void Session::AsyncWrite(const char* message, size_t size)
 {
-	memcpy(_sendBuffer, message, size);
+	// memcpy(_sendBuffer, message, size);
 	asio::async_write(_socket,
-		asio::buffer(_sendBuffer, size),
+		asio::buffer(message, size),
 		asio::bind_executor(_strand, boost::bind(&Session::OnWrite,
 			shared_from_this(),
 			asio::placeholders::error,
 			asio::placeholders::bytes_transferred)
 		)
 	);
+}
+
+void Session::AsyncWrite(std::shared_ptr<char[]> message, size_t size)
+{
+	asio::async_write(_socket,
+		asio::buffer(message.get(), size),
+		asio::bind_executor(_strand, boost::bind(&Session::OnWrite,
+			shared_from_this(),
+			message,
+			asio::placeholders::error,
+			asio::placeholders::bytes_transferred)
+		)
+	);
+}
+
+void Session::OnWrite(std::shared_ptr<char[]> message, const boost::system::error_code& err, size_t size)
+{
+	message = nullptr;
+	if (!err)
+	{
+		
+	}
+	else
+	{
+		std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
+		//_room.Leave(this->shared_from_this());
+	}
 }
 
 void Session::OnWrite(const boost::system::error_code& err, size_t size)

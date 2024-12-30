@@ -8,7 +8,7 @@
 #include "Server/DelayGameServer.h"
 #include "Server/GameRoom.h"
 #include "Network/Packet/Handlers/ServerPacketHandler.h"
-
+#include <windows.h>
 
 /*#include "mysql_connection.h"
 #include <cppconn/driver.h>
@@ -33,15 +33,13 @@ int main()
         std::cout << "Error msg: " << e.what() << std::endl;             // 에러 메시지
     }*/
 
+    // 부하테스트를 위한 코어 수 제한
+    SetProcessAffinityMask(GetCurrentProcess(), 0x3);
+    
     std::shared_ptr<active911::MySQLConnectionFactory>connection_factory(new active911::MySQLConnectionFactory
     ("localhost:3306", "root", "1342"));
-    active911::ConnectionPool<active911::MySQLConnection>::Init(5, connection_factory);
+    active911::ConnectionPool<active911::MySQLConnection>::Init(40, connection_factory);
     
-    std::string password = "test123";
-    std::string hash = BCrypt::generateHash(password);
-    
-    std::cout << "Hash: " << hash << std::endl;
-    std::cout << "Verify: " << BCrypt::validatePassword(password, hash) << std::endl;
     
     boost::asio::io_context io_context;
     ServerPacketHandler::Init();
@@ -75,7 +73,7 @@ int main()
     GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
 
     std::vector<std::thread> thread_pool;
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 40; ++i) {
         thread_pool.emplace_back([&io_context]() {
             io_context.run();
             });

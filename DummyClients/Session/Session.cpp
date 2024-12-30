@@ -65,6 +65,61 @@ void Session::HandleCompletePing(const ping::C_CompletePing& pkt)
 	_rtt_stats.PrintRttStats();
 }
 
+void Session::AsyncHeaderRead()
+{
+	spdlog::info("Header Reading..");
+	memset(_headerBuffer, 0, HeaderSize);
+	boost::asio::async_read(_socket, asio::buffer(_headerBuffer, HeaderSize),
+		asio::bind_executor(
+			_strand, [this](boost::system::error_code ec, std::size_t length)
+			{
+				OnHeaderRead(ec, length);
+			}
+	));
+}
+
+void Session::AsyncBodyRead()
+{
+	spdlog::info("Body Reading..");
+	std::shared_ptr<char[]> bufferPtr = std::make_shared<char[]>(header.Length);
+	memset(bufferPtr.get(), 0, header.Length);
+
+	boost::asio::async_read(_socket, asio::buffer(bufferPtr.get(), header.Length),
+		asio::bind_executor(
+			_strand, [this, bufferPtr](boost::system::error_code ec, std::size_t length)
+			{
+				OnBodyRead(ec, bufferPtr, length);
+			}
+	));
+}
+
+void Session::OnHeaderRead(const boost::system::error_code& err, size_t size)
+{
+	if (!err)
+	{
+		asio::mutable_buffer buffer = asio::buffer(_headerBuffer, HeaderSize);
+		PacketUtil::ParseHeader(buffer, &header, _offset);
+		AsyncBodyRead();
+	}
+	else
+	{
+		
+	}
+}
+
+void Session::OnBodyRead(const boost::system::error_code& err, std::shared_ptr<char[]> bufferPtr, size_t size)
+{
+	if (!err)
+	{
+		std::string addr = GetSocket().remote_endpoint().address().to_string();
+		spdlog::info("OnRead IP: {}, Size: {}", addr, size);
+		SessionPtr session = this->GetSessionPtr();
+		GPacketHandler[header.Code](session, bufferPtr, header, _offset);
+		_offset = 0;
+		AsyncHeaderRead();
+	}
+}
+
 void Session::AsyncRead()
 {
 	spdlog::trace("Tcp Reading..");
@@ -120,13 +175,18 @@ void Session::OnWrite(const boost::system::error_code& err, size_t size)
 void Session::HandlePacket(char* ptr, size_t size)
 {
 	SessionPtr session = this->GetSessionPtr();
-	ClientPacketHandler::HandlePacket(session, ptr, size);
+	//ClientPacketHandler::HandlePacket(session, ptr, size);
 }
 
 void Session::OnConnected(const boost::system::error_code& err)
 {
 	if (!err)
 	{
-		AsyncRead();
+		spdlog::trace("Connected!");
+		AsyncHeaderRead();
+	}
+	else
+	{
+		spdlog::error("{}", err.message());
 	}
 }

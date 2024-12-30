@@ -219,34 +219,6 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 		
 }
 
-void Room::UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId)
-{
-	_GameServer->UdpSend(buffer);
-
-	// 오브젝트 리스트 탐색
-	//for (auto& item : _objects)
-	//{
-	//	// 플레이어 캐스팅
-	//	// RTTI 최소화를 위한 리팩토링
-	//	if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
-	//	{
-	//		PlayerPtr player = static_pointer_cast<Player>(item.second);
-	//		if (player == nullptr) continue;
-
-	//		// 브로드캐스트 제외 대상은 보내지 않습니다.
-	//		if (player->objectInfo->object_id() == exceptId) continue;
-
-	//		if (GameSessionPtr session = player->session.lock())
-	//		{
-	//			spdlog::info("Udp Send to {} player", item.first);
-	//			//session->Send(buffer);
-	//			_GameServer->UdpSend(buffer);
-	//		}
-	//	}
-
-	//}
-}
-
 
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
 // 단, exceptId에 해당하는 플레이어에게 보내지 않습니다.
@@ -335,35 +307,7 @@ bool Room::SpawnObject(ObjectPtr object)
 	return Join(object, true);
 }
 
-void Room::UdpHandleMove(message::C_Move pkt)
-{
-	// is there object equals pkt's object id?
-	const uint64 object_id = pkt.posinfo().object_id();
-
-	// no object...
-	if (_objects.find(object_id) == _objects.end())
-		return;
-
-	PlayerPtr player = dynamic_pointer_cast<Player>(_objects[object_id]);
-	player->SetPosInfo(pkt.posinfo());
-	player->SetMovementInfo(pkt.movement_x(), pkt.movement_y());
-	player->SetYawInfo(pkt.camera_yaw(), pkt.controller_yaw());
-
-	message::S_Move movePkt;
-	{
-		message::PosInfo* posInfo = movePkt.mutable_posinfo();
-		posInfo->CopyFrom(pkt.posinfo());
-		//spdlog::trace("{} Player pos : {}, {}, {}", pkt.GetObjectId(), posInfo->x(), posInfo->y(), posInfo->z());
-		movePkt.set_camera_yaw(pkt.camera_yaw());
-		movePkt.set_controller_yaw(pkt.controller_yaw());
-		movePkt.set_movement_x(pkt.movement_x());
-		movePkt.set_movement_y(pkt.movement_y());
-	}
-	SendUdpMove(movePkt);
-	
-}
-
-void Room::SendUdpMove(message::S_Move movePkt)
+void Room::SendMove(message::S_Move movePkt)
 {
 	// make buffer for notification that all client received.
 	{
@@ -382,7 +326,7 @@ void Room::SendUdpMove(message::S_Move movePkt)
 		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_MOVE_RES, movePkt);
 
 		//UdpBroadcast(sendBuffer, object_id);
-		UdpBroadcast(sendBuffer, 0);
+		Broadcast(sendBuffer, 0);
 	}
 }
 
@@ -1556,7 +1500,7 @@ void Room::HandleTick(uint32 Deltatime)
 						movePkt.set_movement_x(object->movement_x);
 						movePkt.set_movement_y(object->movement_y);
 					}
-					SendUdpMove(movePkt);
+					SendMove(movePkt);
 				}
 
 
