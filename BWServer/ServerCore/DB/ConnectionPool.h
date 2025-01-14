@@ -1,4 +1,4 @@
-﻿/* Copyright 2013 Active911 Inc.
+/* Copyright 2013 Active911 Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -113,32 +113,32 @@ namespace active911 {
 
 			// Check for a free connection
 			if(this->pool.size()==0){
-
+				return nullptr;
 				// Are there any crashed connections listed as "borrowed"?
-				for(std::set<std::shared_ptr<Connection> >::iterator it=this->borrowed.begin(); it!=this->borrowed.end(); ++it){
+				//for(std::set<std::shared_ptr<Connection> >::iterator it=this->borrowed.begin(); it!=this->borrowed.end(); ++it){
 
-					if((*it)) {
+				//	if((*it)) {
 
-						// This connection has been abandoned! Destroy it and create a new connection
-						try {
+				//		// This connection has been abandoned! Destroy it and create a new connection
+				//		try {
 
-							// If we are able to create a new connection, return it
-							//_DEBUG("Creating new connection to replace discarded connection");
-							std::shared_ptr<Connection> conn=this->factory->create();
-							this->borrowed.erase(it);
-							this->borrowed.insert(conn);
-							return static_pointer_cast<T>(conn);
+				//			// If we are able to create a new connection, return it
+				//			//_DEBUG("Creating new connection to replace discarded connection");
+				//			std::shared_ptr<Connection> conn=this->factory->create();
+				//			this->borrowed.erase(it);
+				//			this->borrowed.insert(conn);
+				//			return static_pointer_cast<T>(conn);
 
-						} catch(std::exception& e) {
+				//		} catch(std::exception& e) {
 
-							// Error creating a replacement connection
-							throw ConnectionUnavailable();
-						}
-					}
-				}
+				//			// Error creating a replacement connection
+				//			throw ConnectionUnavailable();
+				//		}
+				//	}
+				//}
 
-				// Nothing available
-				throw ConnectionUnavailable();
+				//// Nothing available
+				//throw ConnectionUnavailable();
 			}
 
 			// Take one off the front

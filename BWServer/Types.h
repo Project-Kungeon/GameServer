@@ -15,6 +15,7 @@ using uint8 = unsigned __int8;
 using uint16 = unsigned __int16;
 using uint32 = unsigned __int32;
 using uint64 = unsigned __int64;
+using BufferPtr = boost::shared_ptr<char[]>;
 
 #define USING_SHARED_PTR(name)	using name##Ptr = std::shared_ptr<class name>;
 
@@ -34,6 +35,7 @@ USING_SHARED_PTR(GameRoom);
 USING_SHARED_PTR(Inventory);
 USING_SHARED_PTR(Item);
 USING_SHARED_PTR(ItemObject);
+USING_SHARED_PTR(AuctionItem);
 
 
 USING_SHARED_PTR(Assassin);

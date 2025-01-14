@@ -3,6 +3,7 @@
 #include "Skill.pb.h"
 #include "Item.pb.h"
 #include "Login.pb.h"
+#include "Auction.pb.h"
 #include "Network/Packet/Packet.h"
 
 // 핸들러 모음
