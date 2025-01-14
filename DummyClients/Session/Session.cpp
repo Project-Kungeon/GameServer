@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "Session.h"
 
+std::atomic<unsigned long long> Session::packet_generated = 0;
+std::atomic<uint64> Session::_email_id = 0;
+
 Session::Session(asio::io_context& io_context, const std::string& host, int port)
 	: _socket(io_context)
 	, _strand(asio::make_strand(io_context))
@@ -67,7 +70,7 @@ void Session::HandleCompletePing(const ping::C_CompletePing& pkt)
 
 void Session::AsyncHeaderRead()
 {
-	spdlog::info("Header Reading..");
+	spdlog::trace("Header Reading..");
 	memset(_headerBuffer, 0, HeaderSize);
 	boost::asio::async_read(_socket, asio::buffer(_headerBuffer, HeaderSize),
 		asio::bind_executor(
@@ -80,7 +83,7 @@ void Session::AsyncHeaderRead()
 
 void Session::AsyncBodyRead()
 {
-	spdlog::info("Body Reading..");
+	spdlog::trace("Body Reading..");
 	std::shared_ptr<char[]> bufferPtr = std::make_shared<char[]>(header.Length);
 	memset(bufferPtr.get(), 0, header.Length);
 
@@ -112,10 +115,11 @@ void Session::OnBodyRead(const boost::system::error_code& err, std::shared_ptr<c
 	if (!err)
 	{
 		std::string addr = GetSocket().remote_endpoint().address().to_string();
-		spdlog::info("OnRead IP: {}, Size: {}", addr, size);
+		spdlog::trace("OnRead IP: {}, Size: {}", addr, size);
 		SessionPtr session = this->GetSessionPtr();
 		GPacketHandler[header.Code](session, bufferPtr, header, _offset);
 		_offset = 0;
+		Session::packet_generated.fetch_add(1);
 		AsyncHeaderRead();
 	}
 }
@@ -183,6 +187,18 @@ void Session::OnConnected(const boost::system::error_code& err)
 	if (!err)
 	{
 		spdlog::trace("Connected!");
+		account::login::C_Login loginPkt;
+		uint64 email_id = _email_id.load();
+		_email_id.fetch_add(1);
+		loginPkt.add_email("test" + std::to_string(email_id) + "@test.com");
+		loginPkt.add_password("test123");
+
+		const size_t requiredSize = PacketUtil::RequiredSize(loginPkt);
+
+		char* rawBuffer = new char[requiredSize];
+		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::LOGIN_REQ, loginPkt);
+		this->Send(sendBuffer);
 		AsyncHeaderRead();
 	}
 	else

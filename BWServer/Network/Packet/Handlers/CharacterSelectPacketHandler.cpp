@@ -11,7 +11,13 @@ bool CharacterSelectPacketHandler::Handle_C_CharacterList(SessionPtr& session,
     if (user_pk == NULL) return false;
     
     std::shared_ptr<active911::MySQLConnection> conn = GConnectionPool->borrow();
+    while (conn == nullptr)
+    {
+        conn = GConnectionPool->borrow();
+    }
+
     std::shared_ptr<sql::Connection> sql_conn = conn->sql_connection;
+
     sql_conn->setSchema("GameDB");
 	
     std::unique_ptr<sql::PreparedStatement> pstmt(sql_conn->prepareStatement("SELECT pk, name, class_type FROM character_list WHERE user_pk = ?"));
@@ -30,13 +36,17 @@ bool CharacterSelectPacketHandler::Handle_C_CharacterList(SessionPtr& session,
     }
     
     
-    const size_t requiredSize = PacketUtil::RequiredSize(characterListPkt);
+    /*const size_t requiredSize = PacketUtil::RequiredSize(characterListPkt);
 
     char* rawBuffer = new char[requiredSize];
     auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
     PacketUtil::Serialize(sendBuffer, message::HEADER::CHARACTER_LIST_RES, characterListPkt);
 
-    session->Send(sendBuffer);
+    session->Send(sendBuffer);*/
+
+    const size_t requiredSize = PacketUtil::RequiredSize(characterListPkt);
+    auto msg = PacketUtil::MakeSendBuffer(characterListPkt,message::HEADER::CHARACTER_LIST_RES);
+    session->Send(msg, requiredSize);
 
     return true;
 }
@@ -47,6 +57,11 @@ bool CharacterSelectPacketHandler::Handle_C_SelectCharacter(SessionPtr& session,
     GameSessionPtr game_session = static_pointer_cast<GameSession>(session);
 
     std::shared_ptr<active911::MySQLConnection> conn = GConnectionPool->borrow();
+    while (conn == nullptr)
+    {
+        conn = GConnectionPool->borrow();
+    }
+
     std::shared_ptr<sql::Connection> sql_conn = conn->sql_connection;
     sql_conn->setSchema("GameDB");
 	

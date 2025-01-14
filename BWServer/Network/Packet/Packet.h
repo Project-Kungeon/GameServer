@@ -3,6 +3,9 @@
 #include <google/protobuf/message.h>
 #include <boost/asio.hpp>
 #include <boost/asio/buffer.hpp>
+#include <boost/pool/pool_alloc.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 
 #include "spdlog/spdlog.h" 
 #include "spdlog/sinks/basic_file_sink.h" 
@@ -20,6 +23,9 @@ struct PacketHeader
 
 class PacketUtil
 {
+public:
+	inline static pool_allocator<BufferPtr> buffer_allocator;
+	
 public:
 	static size_t RequiredSize(const google::protobuf::Message& msg)
 	{
@@ -87,11 +93,23 @@ public:
 		}
 	}
 
-	static std::shared_ptr<char[]> MakeSendBuffer(google::protobuf::Message& msg, const short packetCode)
+	/*static std::shared_ptr<char[]> MakeSendBuffer(google::protobuf::Message& msg, const short packetCode)
 	{
 		const size_t requiredSize = PacketUtil::RequiredSize(msg);
 
 		std::shared_ptr<char[]> rawBuffer = std::make_shared<char[]>(requiredSize);
+		auto sendBuffer = asio::buffer(rawBuffer.get(), requiredSize);
+		PacketUtil::Serialize(sendBuffer, packetCode, msg);
+
+		return rawBuffer;
+	}*/
+
+	static BufferPtr MakeSendBuffer(google::protobuf::Message& msg, const short packetCode)
+	{
+		const size_t requiredSize = PacketUtil::RequiredSize(msg);
+
+		auto rawBuffer = boost::allocate_shared<char[]>(PacketUtil::buffer_allocator, requiredSize);
+		
 		auto sendBuffer = asio::buffer(rawBuffer.get(), requiredSize);
 		PacketUtil::Serialize(sendBuffer, packetCode, msg);
 

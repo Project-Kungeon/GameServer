@@ -16,6 +16,9 @@ typedef std::shared_ptr<Session> SessionPtr;
 class Session : public std::enable_shared_from_this<Session>
 {
 public:
+	static std::atomic<unsigned long long> packet_generated;
+
+public:
 	Session(asio::io_context& io_context, const std::string& host, int port);
 	SessionPtr GetSessionPtr();
 
@@ -42,6 +45,7 @@ protected:
 	virtual void OnDisconnected() {};
 
 private:
+	static std::atomic<uint64> _email_id;
 	uint64 _session_id;
 	
 protected:

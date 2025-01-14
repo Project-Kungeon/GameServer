@@ -5,6 +5,7 @@
 #include "Objects/Creatures/Players/Archor.h"
 #include "Objects/Creatures/Monster/Rampage.h"
 #include "GameServer.h"
+#include "Packet/Packet.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
@@ -45,13 +46,16 @@ bool Room::Join(ObjectPtr object, bool pos_setted)
 		enterRoomPkt.mutable_player_info()->CopyFrom(ObjectUtils::toPlayerInfo(player));
 		if (auto session = player->session.lock())
 		{
-			const size_t requiredSize = PacketUtil::RequiredSize(enterRoomPkt);
+			/*const size_t requiredSize = PacketUtil::RequiredSize(enterRoomPkt);
 
 			char* rawBuffer = new char[requiredSize];
 			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 			PacketUtil::Serialize(sendBuffer, message::HEADER::ENTER_ROOM_RES, enterRoomPkt);
 
-			session->Send(sendBuffer);
+			session->Send(sendBuffer);*/
+			const size_t requiredSize = PacketUtil::RequiredSize(enterRoomPkt);
+			auto msg = PacketUtil::MakeSendBuffer(enterRoomPkt,message::HEADER::ENTER_ROOM_RES);
+			session->Send(msg, requiredSize);
 		}
 	}
 
@@ -122,13 +126,19 @@ bool Room::Join(ObjectPtr object, bool pos_setted)
 
 		if (auto session = player->session.lock())
 		{
-			const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
+			/*const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
 
 			char* rawBuffer = new char[requiredSize];
 			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 			PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_SPAWN_RES, spawnPkt);
 
-			session->Send(sendBuffer);
+			session->Send(sendBuffer);*/
+
+			const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
+			auto msg = PacketUtil::MakeSendBuffer(spawnPkt,message::HEADER::PLAYER_SPAWN_RES);
+			//session->Send(msg, requiredSize);
+			
+			
 		}
 	}
 
@@ -239,11 +249,36 @@ void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 
 			if (GameSessionPtr session = player->session.lock())
 			{
-				spdlog::info("Broadcast to {} player", item.first);
+				//spdlog::info("Broadcast to {} player", item.first);
 				session->Send(buffer);
 			}
 		}
 		
+	}
+}
+
+void Room::Broadcast(BufferPtr buffer, size_t requiredSize, uint64 exceptId)
+{
+	// 오브젝트 리스트 탐색
+	for (auto& item : _objects)
+	{
+		// 플레이어 캐스팅
+		// RTTI 최소화를 위한 리팩토링
+		if (item.second->GetObjectType() == message::OBJECT_TYPE_CREATURE && static_pointer_cast<Creature>(item.second)->GetCreatureType() == message::CREATURE_TYPE_PLAYER)
+		{
+			PlayerPtr player = static_pointer_cast<Player>(item.second);
+			if (player == nullptr) continue;
+
+			// 브로드캐스트 제외 대상은 보내지 않습니다.
+			if (player->objectInfo->object_id() == exceptId) continue;
+
+			if (GameSessionPtr session = player->session.lock())
+			{
+				//spdlog::info("Broadcast to {} player", item.first);
+				session->Send(buffer, requiredSize);
+			}
+		}
+
 	}
 }
 
@@ -320,13 +355,15 @@ void Room::SendMove(message::S_Move movePkt)
 		//	movePkt.set_movement_x(pkt.movement_x());
 		//	movePkt.set_movement_y(pkt.movement_y());
 		//}
-		const size_t requiredSize = PacketUtil::RequiredSize(movePkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_MOVE_RES, movePkt);
+		//const size_t requiredSize = PacketUtil::RequiredSize(movePkt);
+		//char* rawBuffer = new char[requiredSize];
+		//auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
+		//PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_MOVE_RES, movePkt);
+		//Broadcast(sendBuffer, 0);
 
-		//UdpBroadcast(sendBuffer, object_id);
-		Broadcast(sendBuffer, 0);
+		const size_t requiredSize = PacketUtil::RequiredSize(movePkt);
+		auto buffer = PacketUtil::MakeSendBuffer(movePkt, message::HEADER::PLAYER_MOVE_RES);
+		Broadcast(buffer, requiredSize, 0);
 	}
 }
 
@@ -1479,7 +1516,7 @@ void Room::HandleTick(uint32 Deltatime)
 		item.second->Tick(Deltatime);
 	}
 
-	if (_tickCount % 15 == 0)
+	if (_tickCount % 45 == 0)
 	{
 		for (auto& item : _objects)
 		{
@@ -1506,7 +1543,14 @@ void Room::HandleTick(uint32 Deltatime)
 
 			}
 		}
+		
 	}
+	//test_tick_cnt++;
+	//
+	//if (test_tick_cnt > 800)
+	//{
+	//	return;
+	//}
 
 
 	//auto now = std::chrono::steady_clock::now();
@@ -1524,33 +1568,33 @@ void Room::HandleTick(uint32 Deltatime)
 	//DoTimer((uint64)Deltatime, &Room::HandleTick, (uint32)22);
 
 
-	auto now = std::chrono::steady_clock::now();
-	_tickCount++;
+	//auto now = std::chrono::steady_clock::now();
+	//_tickCount++;
 
-	// 마지막 틱으로부터의 실제 경과 시간 계산
-	auto actualInterval = std::chrono::duration_cast<std::chrono::milliseconds>(now - _lastTickTime);
+	//// 마지막 틱으로부터의 실제 경과 시간 계산
+	//auto actualInterval = std::chrono::duration_cast<std::chrono::milliseconds>(now - _lastTickTime);
 
-	// 다음 틱 간격 조정
-	if (actualInterval > _targetTickInterval)
-		_currentInterval = std::max(_currentInterval - std::chrono::milliseconds(1), std::chrono::milliseconds(1));
-	else if (actualInterval < _targetTickInterval)
-		_currentInterval += std::chrono::milliseconds(1);
+	//// 다음 틱 간격 조정
+	//if (actualInterval > _targetTickInterval)
+	//	_currentInterval = std::max(_currentInterval - std::chrono::milliseconds(1), std::chrono::milliseconds(1));
+	//else if (actualInterval < _targetTickInterval)
+	//	_currentInterval += std::chrono::milliseconds(1);
 
-	_lastTickTime = now;
+	//_lastTickTime = now;
 
-	// 측정 기간이 지났는지 확인
-	auto elapsedTotal = std::chrono::duration_cast<std::chrono::seconds>(now - _startTime);
-	if (elapsedTotal >= _measurementPeriod) {
-		double actualTicksPerSecond = static_cast<double>(_tickCount) / elapsedTotal.count();
-		spdlog::trace("Actual Tick: {} ticks/second", actualTicksPerSecond);
-		spdlog::trace("Tick Interval: {} ms", _currentInterval.count());
-		// 측정 초기화
-		_startTime = now;
-		_tickCount = 0;
-	}
+	//// 측정 기간이 지났는지 확인
+	//auto elapsedTotal = std::chrono::duration_cast<std::chrono::seconds>(now - _startTime);
+	//if (elapsedTotal >= _measurementPeriod) {
+	//	double actualTicksPerSecond = static_cast<double>(_tickCount) / elapsedTotal.count();
+	//	spdlog::trace("Actual Tick: {} ticks/second", actualTicksPerSecond);
+	//	spdlog::trace("Tick Interval: {} ms", _currentInterval.count());
+	//	// 측정 초기화
+	//	_startTime = now;
+	//	_tickCount = 0;
+	//}
 
-	// 다음 Tick 예약
-	DoTimer(_currentInterval.count(), &Room::HandleTick, (uint32)22);
+	//// 다음 Tick 예약
+	//DoTimer(_currentInterval.count(), &Room::HandleTick, (uint32)22);
 
 }
 

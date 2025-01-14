@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Session.h"
 
+std::atomic<unsigned long long> Session::packet_generated = 0;
+
 Session::Session(asio::io_context& io_context)
 	: _socket(io_context)
 	, _strand(asio::make_strand(io_context))
@@ -31,6 +33,11 @@ void Session::Send(asio::mutable_buffer& buffer)
 }
 
 void Session::Send(std::shared_ptr<char[]> data, std::size_t size)
+{
+	//AsyncWrite(data, size);
+}
+
+void Session::Send(BufferPtr data, std::size_t size)
 {
 	AsyncWrite(data, size);
 }
@@ -114,6 +121,7 @@ void Session::AsyncWrite(const char* message, size_t size)
 	);
 }
 
+/*
 void Session::AsyncWrite(std::shared_ptr<char[]> message, size_t size)
 {
 	asio::async_write(_socket,
@@ -126,10 +134,37 @@ void Session::AsyncWrite(std::shared_ptr<char[]> message, size_t size)
 		)
 	);
 }
+*/
 
-void Session::OnWrite(std::shared_ptr<char[]> message, const boost::system::error_code& err, size_t size)
+void Session::AsyncWrite(BufferPtr message, size_t size)
 {
-	message = nullptr;
+	auto self = GetSessionPtr();
+	asio::async_write(_socket,
+		asio::buffer(message.get(), size),
+		asio::bind_executor(_strand,
+			[self, message](boost::system::error_code ec, std::size_t length)
+			{
+				// message를 람다 캡처한 이유는 비동기 IO가 끝날 때까지 생명 유지를 해야 되기 때문이다.
+				self->OnWrite(message, ec, length);
+			})
+	);
+}
+
+void Session::OnWrite(BufferPtr message, const boost::system::error_code& err, size_t size)
+{
+	if (!err)
+	{
+		packet_generated.fetch_add(1);
+	}
+	else
+	{
+		std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
+		//_room.Leave(this->shared_from_this());
+	}
+}
+
+/*void Session::OnWrite(std::shared_ptr<char[]> message, const boost::system::error_code& err, size_t size)
+{
 	if (!err)
 	{
 		
@@ -139,13 +174,13 @@ void Session::OnWrite(std::shared_ptr<char[]> message, const boost::system::erro
 		std::cout << "error code : " << err.value() << ", msg : " << err.message() << std::endl;
 		//_room.Leave(this->shared_from_this());
 	}
-}
+}*/
 
 void Session::OnWrite(const boost::system::error_code& err, size_t size)
 {
 	if (!err)
 	{
-
+		packet_generated.fetch_add(1);
 	}
 	else
 	{

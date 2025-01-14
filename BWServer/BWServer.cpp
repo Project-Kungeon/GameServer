@@ -38,7 +38,7 @@ int main()
     
     std::shared_ptr<active911::MySQLConnectionFactory>connection_factory(new active911::MySQLConnectionFactory
     ("localhost:3306", "root", "1342"));
-    active911::ConnectionPool<active911::MySQLConnection>::Init(40, connection_factory);
+    active911::ConnectionPool<active911::MySQLConnection>::Init(60, connection_factory);
     
     
     boost::asio::io_context io_context;
@@ -70,10 +70,11 @@ int main()
     //ItemObjectPtr itemObject = ObjectUtils::CreateItemObject(message::ItemType::Consumable, message::ItemTable::GENERAL_HEALTH_POSION);
     //GRoom[0]->SpawnObject(itemObject);
     //int count = 2;
-    GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
+    //GRoom[0]->DoAsync(&Room::HandleTick, (uint32)22);
+    GRoom[0]->StartTickTimer();
 
     std::vector<std::thread> thread_pool;
-    for (int i = 0; i < 40; ++i) {
+    for (int i = 0; i < 10; ++i) {
         thread_pool.emplace_back([&io_context]() {
             io_context.run();
             });

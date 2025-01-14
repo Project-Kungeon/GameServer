@@ -10,6 +10,7 @@ protoc -I=./ --cpp_out=./ ./Item.proto
 protoc -I=./ --cpp_out=./ ./Ping.proto 
 protoc -I=./ --cpp_out=./ --java_out=./ ./Login.proto 
 protoc -I=./ --cpp_out=./ --java_out=./ ./CharacterSelect.proto
+protoc -I=./ --cpp_out=./ --java_out=./ ./Auction.proto
 
 IF ERRORLEVEL 1 PAUSE
 
@@ -33,7 +34,8 @@ XCOPY /Y Login.pb.h "../../../BWServer/build/*"
 XCOPY /Y Login.pb.cc "../../../BWServer/build/*"
 XCOPY /Y CharacterSelect.pb.h "../../../BWServer/build/*"
 XCOPY /Y CharacterSelect.pb.cc "../../../BWServer/build/*"
-
+XCOPY /Y Auction.pb.h "../../../BWServer/build/*"
+XCOPY /Y Auction.pb.cc "../../../BWServer/build/*"
 
 XCOPY /Y Enum.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Enum.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
@@ -55,6 +57,8 @@ XCOPY /Y Login.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y Login.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y CharacterSelect.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 XCOPY /Y CharacterSelect.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
+XCOPY /Y Auction.pb.h "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
+XCOPY /Y Auction.pb.cc "C:/Users/Kang/Desktop/workspace/JK1/Source/JK1/Network/*"
 
 DEL /Q /F *.pb.h
 DEL /Q /F *.pb.cc

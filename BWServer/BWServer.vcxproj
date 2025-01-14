@@ -178,6 +178,10 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="build\Auction.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="build\CharacterSelect.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -932,6 +936,8 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Game\Auction\AuctionItem.cpp" />
+    <ClCompile Include="Game\Auction\AuctionManager.cpp" />
     <ClCompile Include="Game\Objects\Creatures\Creature.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -3452,6 +3458,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="build\Auction.pb.h" />
     <ClInclude Include="build\CharacterSelect.pb.h" />
     <ClInclude Include="build\Enum.pb.h" />
     <ClInclude Include="build\Item.pb.h" />
@@ -3464,6 +3471,8 @@
     <ClInclude Include="CoreGlobal.h" />
     <ClInclude Include="CoreMacro.h" />
     <ClInclude Include="CorePch.h" />
+    <ClInclude Include="Game\Auction\AuctionItem.h" />
+    <ClInclude Include="Game\Auction\AuctionManager.h" />
     <ClInclude Include="Game\Objects\Creatures\Creature.h" />
     <ClInclude Include="Game\Objects\Creatures\Monster\Monster.h" />
     <ClInclude Include="Game\Objects\Creatures\Monster\Rampage.h" />
@@ -3527,8 +3536,12 @@
     <UpToDateCheckInput Include="..\Common\protobuf3.20.3-win64\bin\Struct.proto" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\Common\protobuf3.20.3-win64\bin\Auction.proto" />
     <Content Include="..\Common\protobuf3.20.3-win64\bin\CharacterSelect.proto" />
     <Content Include="..\Common\protobuf3.20.3-win64\bin\Login.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Main\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

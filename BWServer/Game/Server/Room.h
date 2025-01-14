@@ -5,6 +5,7 @@
 #include "Item.pb.h"
 #include "MonsterPattern.pb.h"
 #include "ServerCore/JobQueue/JobQueue.h"
+
 using namespace std;
 
 class Room : public JobQueue
@@ -21,6 +22,7 @@ public:
 	std::weak_ptr<Player> FindClosePlayerBySelf(CreaturePtr Self, const float Distance);
 	void UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
+	void Broadcast(BufferPtr buffer, size_t requiredSize, uint64 exceptId);
 	void DelayBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);
 	RoomPtr GetRoomRef();
 
@@ -76,7 +78,28 @@ public:
 public:
 	void BroadcastPingPacket();
 
+	std::shared_ptr<boost::asio::steady_timer> _tickTimer;
+	void StartTickTimer() {
+		if (!_tickTimer) {
+			_tickTimer = std::make_shared<boost::asio::steady_timer>(_strand);
+		}
 
+		_tickTimer->expires_after(std::chrono::milliseconds(_currentInterval.count()));
+
+		std::weak_ptr<Room> weak_self = static_pointer_cast<Room>(shared_from_this());
+		_tickTimer->async_wait(
+			boost::asio::bind_executor(_strand,
+				[weak_self](const boost::system::error_code& error) {
+					if (auto self = weak_self.lock()) {
+						if (!error) {
+							self->HandleTick(1000);  // 틱 처리
+							self->StartTickTimer(); // 다음 틱 예약
+						}
+					}
+				}
+			)
+		);
+	}
 	// Tick
 public:
 	virtual void HandleTick(uint32 Deltatime);
@@ -95,10 +118,11 @@ private:
 	std::chrono::steady_clock::time_point _lastTickTime;
 	std::chrono::steady_clock::time_point _startTime;
 	int _tickCount = 0;
+	int test_tick_cnt = 0;
 	const int _targetTicksPerSecond = 45;
 	const std::chrono::milliseconds _targetTickInterval{1000 / _targetTicksPerSecond};
 	const std::chrono::seconds _measurementPeriod{10}; // 10초 동안 측정
-	std::chrono::milliseconds _currentInterval{22}; // 초기 간격
+	std::chrono::milliseconds _currentInterval{1000}; // 초기 간격
 
 	GameServerPtr _GameServer;
 };

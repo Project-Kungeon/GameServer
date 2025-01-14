@@ -33,6 +33,7 @@
 #include "ServerCore/Session/Session.h"
 #include "ServerCore/Session/GameSession.h"
 #include "ServerCore/Session/DelayGameSession.h"
+#include "Packet/Packet.h"
 
 #include "spdlog/spdlog.h" 
 #include "spdlog/sinks/basic_file_sink.h" 
