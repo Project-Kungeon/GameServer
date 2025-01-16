@@ -3382,6 +3382,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Util\SqlUtils.cpp" />
     <ClCompile Include="Util\TimeUtils.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -3514,6 +3515,7 @@
     <ClInclude Include="Util\ObjectUtils.h" />
     <ClInclude Include="Util\RandomUtil.h" />
     <ClInclude Include="Util\Selector.h" />
+    <ClInclude Include="Util\SqlUtils.h" />
     <ClInclude Include="Util\TimeUtils.h" />
   </ItemGroup>
   <ItemGroup>
