@@ -39,6 +39,7 @@ public:
     void AsyncRemoved(PlayerPtr player, uint64 applyed_auction_id);
 
 public:
+    void AsyncUpdate();
 
 private:
     // 아이템 품목
