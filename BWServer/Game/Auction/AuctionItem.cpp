@@ -184,3 +184,40 @@ void AuctionItem::AsyncRemoved(PlayerPtr player, uint64 applyed_auction_id)
 {
 }
 
+void AuctionItem::AsyncUpdate()
+{
+    // 비우기
+    priority_queue<ItemOwnerData, vector<ItemOwnerData>, CompareAuctionItem> empty;
+    swap(owner_data_pq, empty);
+
+    // 물품 새로고침
+    auto conn = GConnectionPool->borrow();
+    while (conn == nullptr)
+    {
+        conn = GConnectionPool->borrow();
+    }
+
+    // 상위 100개 데이터만 가져오기
+    std::string auction_item_select_sql = "SELECT pk, user_pk, quantity, price, item_id, UNIX_TIMESTAMP(created_at) FROM auction_items "
+    "WHERE item_id = ? ORDER BY created_at DESC LIMIT 100";
+    auto results = SqlUtils::executeQuery(conn->sql_connection, "GameDB", auction_item_select_sql,
+        item_table);
+
+    while (results->next())
+    {
+        auto pk = results->getUInt64("pk");
+        auto user_pk = results->getUInt64("user_pk");
+        auto item_id = results->getUInt64("item_id");
+        auto quantity = results->getUInt64("quantity");
+        auto price = results->getUInt64("price");
+        auto created_at = results->getUInt64("created_at");
+
+        ItemOwnerData item_owner_data(pk, user_pk, price, quantity, created_at);
+        owner_data_pq.push(item_owner_data);
+    }
+
+    conn->sql_connection.reset();
+    GConnectionPool->unborrow(conn);
+    
+}
+
