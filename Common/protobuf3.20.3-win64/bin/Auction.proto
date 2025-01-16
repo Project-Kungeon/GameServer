@@ -27,9 +27,14 @@ message C_PurchaseItem
 {
   uint64 user_pk = 1;
   .message.ItemTable item_table = 2;
+  uint64 price = 3;
+  uint64 quantity = 4;
 }
 
 message S_PurchaseItem
 {
   bool is_success = 1;
+  .message.ItemTable item_table = 2;
+  uint64 price = 3;
+  uint64 quantity = 4;
 }

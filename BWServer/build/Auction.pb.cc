@@ -68,6 +68,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR C_PurchaseItem::C_PurchaseItem(
     ::_pbi::ConstantInitialized)
   : user_pk_(uint64_t{0u})
+  , price_(uint64_t{0u})
+  , quantity_(uint64_t{0u})
   , item_table_(0)
 {}
 struct C_PurchaseItemDefaultTypeInternal {
@@ -81,7 +83,11 @@ struct C_PurchaseItemDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_PurchaseItemDefaultTypeInternal _C_PurchaseItem_default_instance_;
 PROTOBUF_CONSTEXPR S_PurchaseItem::S_PurchaseItem(
     ::_pbi::ConstantInitialized)
-  : is_success_(false){}
+  : is_success_(false)
+  , item_table_(0)
+
+  , price_(uint64_t{0u})
+  , quantity_(uint64_t{0u}){}
 struct S_PurchaseItemDefaultTypeInternal {
   PROTOBUF_CONSTEXPR S_PurchaseItemDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -129,6 +135,8 @@ const uint32_t TableStruct_Auction_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::auction::C_PurchaseItem, user_pk_),
   PROTOBUF_FIELD_OFFSET(::auction::C_PurchaseItem, item_table_),
+  PROTOBUF_FIELD_OFFSET(::auction::C_PurchaseItem, price_),
+  PROTOBUF_FIELD_OFFSET(::auction::C_PurchaseItem, quantity_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::auction::S_PurchaseItem, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -136,6 +144,9 @@ const uint32_t TableStruct_Auction_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::auction::S_PurchaseItem, is_success_),
+  PROTOBUF_FIELD_OFFSET(::auction::S_PurchaseItem, item_table_),
+  PROTOBUF_FIELD_OFFSET(::auction::S_PurchaseItem, price_),
+  PROTOBUF_FIELD_OFFSET(::auction::S_PurchaseItem, quantity_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::auction::C_PutItem)},
@@ -143,7 +154,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 12, -1, -1, sizeof(::auction::C_GetOffItem)},
   { 18, -1, -1, sizeof(::auction::S_GetOffItem)},
   { 24, -1, -1, sizeof(::auction::C_PurchaseItem)},
-  { 32, -1, -1, sizeof(::auction::S_PurchaseItem)},
+  { 34, -1, -1, sizeof(::auction::S_PurchaseItem)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -158,17 +169,20 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_Auction_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\rAuction.proto\022\007auction\032\nEnum.proto\"\013\n\t"
   "C_PutItem\"\013\n\tS_PutItem\"\016\n\014C_GetOffItem\"\016"
-  "\n\014S_GetOffItem\"I\n\016C_PurchaseItem\022\017\n\007user"
+  "\n\014S_GetOffItem\"j\n\016C_PurchaseItem\022\017\n\007user"
   "_pk\030\001 \001(\004\022&\n\nitem_table\030\002 \001(\0162\022.message."
-  "ItemTable\"$\n\016S_PurchaseItem\022\022\n\nis_succes"
-  "s\030\001 \001(\010b\006proto3"
+  "ItemTable\022\r\n\005price\030\003 \001(\004\022\020\n\010quantity\030\004 \001"
+  "(\004\"m\n\016S_PurchaseItem\022\022\n\nis_success\030\001 \001(\010"
+  "\022&\n\nitem_table\030\002 \001(\0162\022.message.ItemTable"
+  "\022\r\n\005price\030\003 \001(\004\022\020\n\010quantity\030\004 \001(\004b\006proto"
+  "3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Auction_2eproto_deps[1] = {
   &::descriptor_table_Enum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_Auction_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Auction_2eproto = {
-    false, false, 215, descriptor_table_protodef_Auction_2eproto,
+    false, false, 321, descriptor_table_protodef_Auction_2eproto,
     "Auction.proto",
     &descriptor_table_Auction_2eproto_once, descriptor_table_Auction_2eproto_deps, 1, 6,
     schemas, file_default_instances, TableStruct_Auction_2eproto::offsets,
@@ -419,6 +433,22 @@ const char* C_PurchaseItem::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
+      // uint64 price = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          price_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint64 quantity = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          quantity_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -461,6 +491,18 @@ uint8_t* C_PurchaseItem::_InternalSerialize(
       2, this->_internal_item_table(), target);
   }
 
+  // uint64 price = 3;
+  if (this->_internal_price() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(3, this->_internal_price(), target);
+  }
+
+  // uint64 quantity = 4;
+  if (this->_internal_quantity() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(4, this->_internal_quantity(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -480,6 +522,16 @@ size_t C_PurchaseItem::ByteSizeLong() const {
   // uint64 user_pk = 1;
   if (this->_internal_user_pk() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_user_pk());
+  }
+
+  // uint64 price = 3;
+  if (this->_internal_price() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_price());
+  }
+
+  // uint64 quantity = 4;
+  if (this->_internal_quantity() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_quantity());
   }
 
   // .message.ItemTable item_table = 2;
@@ -512,6 +564,12 @@ void C_PurchaseItem::MergeFrom(const C_PurchaseItem& from) {
 
   if (from._internal_user_pk() != 0) {
     _internal_set_user_pk(from._internal_user_pk());
+  }
+  if (from._internal_price() != 0) {
+    _internal_set_price(from._internal_price());
+  }
+  if (from._internal_quantity() != 0) {
+    _internal_set_quantity(from._internal_quantity());
   }
   if (from._internal_item_table() != 0) {
     _internal_set_item_table(from._internal_item_table());
@@ -562,12 +620,17 @@ S_PurchaseItem::S_PurchaseItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 S_PurchaseItem::S_PurchaseItem(const S_PurchaseItem& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  is_success_ = from.is_success_;
+  ::memcpy(&is_success_, &from.is_success_,
+    static_cast<size_t>(reinterpret_cast<char*>(&quantity_) -
+    reinterpret_cast<char*>(&is_success_)) + sizeof(quantity_));
   // @@protoc_insertion_point(copy_constructor:auction.S_PurchaseItem)
 }
 
 inline void S_PurchaseItem::SharedCtor() {
-is_success_ = false;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&is_success_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&quantity_) -
+    reinterpret_cast<char*>(&is_success_)) + sizeof(quantity_));
 }
 
 S_PurchaseItem::~S_PurchaseItem() {
@@ -593,7 +656,9 @@ void S_PurchaseItem::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  is_success_ = false;
+  ::memset(&is_success_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&quantity_) -
+      reinterpret_cast<char*>(&is_success_)) + sizeof(quantity_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -607,6 +672,31 @@ const char* S_PurchaseItem::_InternalParse(const char* ptr, ::_pbi::ParseContext
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           is_success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .message.ItemTable item_table = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_item_table(static_cast<::message::ItemTable>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint64 price = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          price_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint64 quantity = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          quantity_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -646,6 +736,25 @@ uint8_t* S_PurchaseItem::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_is_success(), target);
   }
 
+  // .message.ItemTable item_table = 2;
+  if (this->_internal_item_table() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_item_table(), target);
+  }
+
+  // uint64 price = 3;
+  if (this->_internal_price() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(3, this->_internal_price(), target);
+  }
+
+  // uint64 quantity = 4;
+  if (this->_internal_quantity() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(4, this->_internal_quantity(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -665,6 +774,22 @@ size_t S_PurchaseItem::ByteSizeLong() const {
   // bool is_success = 1;
   if (this->_internal_is_success() != 0) {
     total_size += 1 + 1;
+  }
+
+  // .message.ItemTable item_table = 2;
+  if (this->_internal_item_table() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_item_table());
+  }
+
+  // uint64 price = 3;
+  if (this->_internal_price() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_price());
+  }
+
+  // uint64 quantity = 4;
+  if (this->_internal_quantity() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_quantity());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -692,6 +817,15 @@ void S_PurchaseItem::MergeFrom(const S_PurchaseItem& from) {
   if (from._internal_is_success() != 0) {
     _internal_set_is_success(from._internal_is_success());
   }
+  if (from._internal_item_table() != 0) {
+    _internal_set_item_table(from._internal_item_table());
+  }
+  if (from._internal_price() != 0) {
+    _internal_set_price(from._internal_price());
+  }
+  if (from._internal_quantity() != 0) {
+    _internal_set_quantity(from._internal_quantity());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -709,7 +843,12 @@ bool S_PurchaseItem::IsInitialized() const {
 void S_PurchaseItem::InternalSwap(S_PurchaseItem* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(is_success_, other->is_success_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(S_PurchaseItem, quantity_)
+      + sizeof(S_PurchaseItem::quantity_)
+      - PROTOBUF_FIELD_OFFSET(S_PurchaseItem, is_success_)>(
+          reinterpret_cast<char*>(&is_success_),
+          reinterpret_cast<char*>(&other->is_success_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_PurchaseItem::GetMetadata() const {

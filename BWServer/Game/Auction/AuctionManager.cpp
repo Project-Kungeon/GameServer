@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "AuctionManager.h"
 
-std::shared_ptr<AuctionManager> GAuctionManager = std::make_shared<AuctionManager>();
+// std::shared_ptr<AuctionManager> GAuctionManager = std::make_shared<AuctionManager>();
 
 AuctionManager::AuctionManager(asio::io_context& io_context)
     : _io_context(io_context)

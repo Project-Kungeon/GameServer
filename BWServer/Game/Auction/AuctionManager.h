@@ -14,5 +14,3 @@ private:
     asio::io_context& _io_context;
     map<uint64, AuctionItemPtr> _AuctionItems;
 };
-
-extern std::shared_ptr<AuctionManager> GAuctionManager;

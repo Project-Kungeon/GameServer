@@ -74,6 +74,24 @@ public:
         }
         return std::shared_ptr<sql::ResultSet>(pstmt->executeQuery());
     }
+
+    template <typename... Args>
+    static int executeUpdate(
+        std::shared_ptr<sql::Connection> sql_conn,
+        const sql::SQLString& schema,
+        const sql::SQLString& query,
+        Args&&... args)
+    {
+        sql_conn->setSchema(schema);
+        std::unique_ptr<sql::PreparedStatement> pstmt(sql_conn->prepareStatement(query));
+        
+        if constexpr (sizeof...(args) > 0)
+        {
+            bindParams(pstmt.get(), 1, std::forward<Args>(args)...);
+        }
+        
+        return pstmt->executeUpdate();
+    }
     
     
 };

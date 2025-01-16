@@ -30,6 +30,7 @@
 #include "Util/MathUtils.h"
 #include "Util/ItemUtils.h"
 #include "Util/TimeUtils.h"
+#include "Util/SqlUtils.h"
 #include "ServerCore/Session/Session.h"
 #include "ServerCore/Session/GameSession.h"
 #include "ServerCore/Session/DelayGameSession.h"
