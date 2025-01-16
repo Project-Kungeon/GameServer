@@ -662,6 +662,8 @@ class C_PurchaseItem final :
 
   enum : int {
     kUserPkFieldNumber = 1,
+    kPriceFieldNumber = 3,
+    kQuantityFieldNumber = 4,
     kItemTableFieldNumber = 2,
   };
   // uint64 user_pk = 1;
@@ -671,6 +673,24 @@ class C_PurchaseItem final :
   private:
   uint64_t _internal_user_pk() const;
   void _internal_set_user_pk(uint64_t value);
+  public:
+
+  // uint64 price = 3;
+  void clear_price();
+  uint64_t price() const;
+  void set_price(uint64_t value);
+  private:
+  uint64_t _internal_price() const;
+  void _internal_set_price(uint64_t value);
+  public:
+
+  // uint64 quantity = 4;
+  void clear_quantity();
+  uint64_t quantity() const;
+  void set_quantity(uint64_t value);
+  private:
+  uint64_t _internal_quantity() const;
+  void _internal_set_quantity(uint64_t value);
   public:
 
   // .message.ItemTable item_table = 2;
@@ -690,6 +710,8 @@ class C_PurchaseItem final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   uint64_t user_pk_;
+  uint64_t price_;
+  uint64_t quantity_;
   int item_table_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Auction_2eproto;
@@ -816,6 +838,9 @@ class S_PurchaseItem final :
 
   enum : int {
     kIsSuccessFieldNumber = 1,
+    kItemTableFieldNumber = 2,
+    kPriceFieldNumber = 3,
+    kQuantityFieldNumber = 4,
   };
   // bool is_success = 1;
   void clear_is_success();
@@ -826,6 +851,33 @@ class S_PurchaseItem final :
   void _internal_set_is_success(bool value);
   public:
 
+  // .message.ItemTable item_table = 2;
+  void clear_item_table();
+  ::message::ItemTable item_table() const;
+  void set_item_table(::message::ItemTable value);
+  private:
+  ::message::ItemTable _internal_item_table() const;
+  void _internal_set_item_table(::message::ItemTable value);
+  public:
+
+  // uint64 price = 3;
+  void clear_price();
+  uint64_t price() const;
+  void set_price(uint64_t value);
+  private:
+  uint64_t _internal_price() const;
+  void _internal_set_price(uint64_t value);
+  public:
+
+  // uint64 quantity = 4;
+  void clear_quantity();
+  uint64_t quantity() const;
+  void set_quantity(uint64_t value);
+  private:
+  uint64_t _internal_quantity() const;
+  void _internal_set_quantity(uint64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:auction.S_PurchaseItem)
  private:
   class _Internal;
@@ -834,6 +886,9 @@ class S_PurchaseItem final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   bool is_success_;
+  int item_table_;
+  uint64_t price_;
+  uint64_t quantity_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Auction_2eproto;
 };
@@ -904,6 +959,46 @@ inline void C_PurchaseItem::set_item_table(::message::ItemTable value) {
   // @@protoc_insertion_point(field_set:auction.C_PurchaseItem.item_table)
 }
 
+// uint64 price = 3;
+inline void C_PurchaseItem::clear_price() {
+  price_ = uint64_t{0u};
+}
+inline uint64_t C_PurchaseItem::_internal_price() const {
+  return price_;
+}
+inline uint64_t C_PurchaseItem::price() const {
+  // @@protoc_insertion_point(field_get:auction.C_PurchaseItem.price)
+  return _internal_price();
+}
+inline void C_PurchaseItem::_internal_set_price(uint64_t value) {
+  
+  price_ = value;
+}
+inline void C_PurchaseItem::set_price(uint64_t value) {
+  _internal_set_price(value);
+  // @@protoc_insertion_point(field_set:auction.C_PurchaseItem.price)
+}
+
+// uint64 quantity = 4;
+inline void C_PurchaseItem::clear_quantity() {
+  quantity_ = uint64_t{0u};
+}
+inline uint64_t C_PurchaseItem::_internal_quantity() const {
+  return quantity_;
+}
+inline uint64_t C_PurchaseItem::quantity() const {
+  // @@protoc_insertion_point(field_get:auction.C_PurchaseItem.quantity)
+  return _internal_quantity();
+}
+inline void C_PurchaseItem::_internal_set_quantity(uint64_t value) {
+  
+  quantity_ = value;
+}
+inline void C_PurchaseItem::set_quantity(uint64_t value) {
+  _internal_set_quantity(value);
+  // @@protoc_insertion_point(field_set:auction.C_PurchaseItem.quantity)
+}
+
 // -------------------------------------------------------------------
 
 // S_PurchaseItem
@@ -926,6 +1021,66 @@ inline void S_PurchaseItem::_internal_set_is_success(bool value) {
 inline void S_PurchaseItem::set_is_success(bool value) {
   _internal_set_is_success(value);
   // @@protoc_insertion_point(field_set:auction.S_PurchaseItem.is_success)
+}
+
+// .message.ItemTable item_table = 2;
+inline void S_PurchaseItem::clear_item_table() {
+  item_table_ = 0;
+}
+inline ::message::ItemTable S_PurchaseItem::_internal_item_table() const {
+  return static_cast< ::message::ItemTable >(item_table_);
+}
+inline ::message::ItemTable S_PurchaseItem::item_table() const {
+  // @@protoc_insertion_point(field_get:auction.S_PurchaseItem.item_table)
+  return _internal_item_table();
+}
+inline void S_PurchaseItem::_internal_set_item_table(::message::ItemTable value) {
+  
+  item_table_ = value;
+}
+inline void S_PurchaseItem::set_item_table(::message::ItemTable value) {
+  _internal_set_item_table(value);
+  // @@protoc_insertion_point(field_set:auction.S_PurchaseItem.item_table)
+}
+
+// uint64 price = 3;
+inline void S_PurchaseItem::clear_price() {
+  price_ = uint64_t{0u};
+}
+inline uint64_t S_PurchaseItem::_internal_price() const {
+  return price_;
+}
+inline uint64_t S_PurchaseItem::price() const {
+  // @@protoc_insertion_point(field_get:auction.S_PurchaseItem.price)
+  return _internal_price();
+}
+inline void S_PurchaseItem::_internal_set_price(uint64_t value) {
+  
+  price_ = value;
+}
+inline void S_PurchaseItem::set_price(uint64_t value) {
+  _internal_set_price(value);
+  // @@protoc_insertion_point(field_set:auction.S_PurchaseItem.price)
+}
+
+// uint64 quantity = 4;
+inline void S_PurchaseItem::clear_quantity() {
+  quantity_ = uint64_t{0u};
+}
+inline uint64_t S_PurchaseItem::_internal_quantity() const {
+  return quantity_;
+}
+inline uint64_t S_PurchaseItem::quantity() const {
+  // @@protoc_insertion_point(field_get:auction.S_PurchaseItem.quantity)
+  return _internal_quantity();
+}
+inline void S_PurchaseItem::_internal_set_quantity(uint64_t value) {
+  
+  quantity_ = value;
+}
+inline void S_PurchaseItem::set_quantity(uint64_t value) {
+  _internal_set_quantity(value);
+  // @@protoc_insertion_point(field_set:auction.S_PurchaseItem.quantity)
 }
 
 #ifdef __GNUC__

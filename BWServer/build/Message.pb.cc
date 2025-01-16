@@ -412,7 +412,7 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "ject_id\030\001 \001(\004\022\022\n\ntarget_ids\030\002 \003(\004\022\016\n\006dam"
   "age\030\003 \001(\002\")\n\006S_Heal\022\021\n\tobject_id\030\001 \003(\004\022\014"
   "\n\004heal\030\002 \001(\002\"\034\n\007C_Death\022\021\n\tobject_id\030\001 \001"
-  "(\004\"\034\n\007S_Death\022\021\n\tobject_id\030\001 \001(\004*\376\017\n\006HEA"
+  "(\004\"\034\n\007S_Death\022\021\n\tobject_id\030\001 \001(\004*\234\021\n\006HEA"
   "DER\022\010\n\004NONE\020\000\022\r\n\tLOGIN_REQ\020\001\022\r\n\tLOGIN_RE"
   "S\020\002\022\022\n\016ENTER_ROOM_REQ\020\003\022\022\n\016ENTER_ROOM_RE"
   "S\020\004\022\022\n\016LEAVE_ROOM_REQ\020\005\022\022\n\016LEAVE_ROOM_RE"
@@ -464,7 +464,11 @@ const char descriptor_table_protodef_Message_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\001\022\037\n\031ITEM_CONSUMEABLE_USED_REQ\020\263\352\001\022\037\n\031IT"
   "EM_CONSUMEABLE_USED_RES\020\264\352\001\022\032\n\024ITEM_ACQU"
   "ISITION_RES\020\265\352\001\022\030\n\022ITEM_OPENINVENTORY\020\266\352"
-  "\001b\006proto3"
+  "\001\022\032\n\024AUCTION_PURCHASE_REQ\020\231\362\001\022\032\n\024AUCTION"
+  "_PURCHASE_RES\020\232\362\001\022\027\n\021AUCTION_APPLY_REQ\020\233"
+  "\362\001\022\027\n\021AUCTION_APPLY_RES\020\234\362\001\022\030\n\022AUCTION_C"
+  "ANCEL_REQ\020\235\362\001\022\030\n\022AUCTION_CANCEL_RES\020\236\362\001b"
+  "\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_deps[2] = {
   &::descriptor_table_Enum_2eproto,
@@ -472,7 +476,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_Message_2eproto_dep
 };
 static ::_pbi::once_flag descriptor_table_Message_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Message_2eproto = {
-    false, false, 3089, descriptor_table_protodef_Message_2eproto,
+    false, false, 3247, descriptor_table_protodef_Message_2eproto,
     "Message.proto",
     &descriptor_table_Message_2eproto_once, descriptor_table_Message_2eproto_deps, 2, 15,
     schemas, file_default_instances, TableStruct_Message_2eproto::offsets,
@@ -579,6 +583,12 @@ bool HEADER_IsValid(int value) {
     case 30004:
     case 30005:
     case 30006:
+    case 31001:
+    case 31002:
+    case 31003:
+    case 31004:
+    case 31005:
+    case 31006:
       return true;
     default:
       return false;

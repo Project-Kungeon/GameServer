@@ -17,6 +17,13 @@
 #include "pch.h"
 #include "ConnectionFactory.h"
 
+#include "mysql/mysql_connection.h"
+#include "mysql/cppconn/driver.h"
+#include "mysql/cppconn/exception.h"
+#include "mysql/cppconn/resultset.h"
+#include "mysql/cppconn/prepared_statement.h"
+#include "mysql/cppconn/statement.h"
+
 namespace active911
 {
     class Connection {

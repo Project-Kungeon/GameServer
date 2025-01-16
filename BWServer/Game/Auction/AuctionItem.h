@@ -4,11 +4,12 @@
 // 가격, 올린 시각 기준으로 정렬하면 될듯
 struct ItemOwnerData
 {
+    uint64 auction_id;
     uint64 user_id;
-    uint64 character_id;
     int64 price;
     int64 quantity;
     uint64 created_at;
+    bool sold_out;
     
 };
 
