@@ -4,6 +4,7 @@
 // 가격, 올린 시각 기준으로 정렬하면 될듯
 struct ItemOwnerData
 {
+    uint64 user_id;
     uint64 character_id;
     int64 price;
     int64 quantity;
@@ -11,25 +12,37 @@ struct ItemOwnerData
     
 };
 
-class AuctionItem
+struct CompareAuctionItem
+{
+    bool operator()(const ItemOwnerData& lhs, const ItemOwnerData& rhs) const
+    {
+        if (lhs.price < rhs.price)
+            return true;
+        if (lhs.price == rhs.price)
+            return lhs.created_at < rhs.created_at;
+    }
+};
+
+class AuctionItem : public JobQueue
 {
 public:
-    AuctionItem();
-    AuctionItem(auction::C_PutItem& pkt);
-    ~AuctionItem();
+    AuctionItem(message::ItemTable item_table, asio::io_context& io_context);
+    virtual ~AuctionItem();
+
+    
+    
+public:
+    // Strand 큐에 적재할 메소드
+    void AsyncPurchased(PlayerPtr player, uint64 price, uint64 quantity);
+    void AsyncApplyed(PlayerPtr player, uint64 price, uint64 quantity);
+    void AsyncRemoved(PlayerPtr player, uint64 applyed_auction_id);
 
 public:
 
 private:
     // 아이템 품목
     message::ItemTable item_table;
-
-    // 총 가격 & 개수
-    
     
     // 등록한 플레이어, 개수, 가격
-    priority_queue<ItemOwnerData> owner_data_pq;
-    
-    // 동기화 처리
-    asio::strand<asio::io_context::executor_type> strand;
+    priority_queue<ItemOwnerData, vector<ItemOwnerData>, CompareAuctionItem> owner_data_pq;
 };
