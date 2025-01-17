@@ -36,6 +36,7 @@ USING_SHARED_PTR(Inventory);
 USING_SHARED_PTR(Item);
 USING_SHARED_PTR(ItemObject);
 USING_SHARED_PTR(AuctionItem);
+USING_SHARED_PTR(AuctionManager);
 
 
 USING_SHARED_PTR(Assassin);
