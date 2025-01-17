@@ -198,10 +198,10 @@ void AuctionItem::AsyncUpdate()
     }
 
     // 상위 100개 데이터만 가져오기
-    std::string auction_item_select_sql = "SELECT pk, user_pk, quantity, price, item_id, UNIX_TIMESTAMP(created_at) FROM auction_items "
+    std::string auction_item_select_sql = "SELECT pk, user_pk, quantity, price, item_id, UNIX_TIMESTAMP(created_at) AS created_at FROM auction_items "
     "WHERE item_id = ? ORDER BY created_at DESC LIMIT 100";
     auto results = SqlUtils::executeQuery(conn->sql_connection, "GameDB", auction_item_select_sql,
-        item_table);
+        static_cast<int>(item_table));
 
     while (results->next())
     {

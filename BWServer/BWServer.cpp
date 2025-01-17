@@ -10,6 +10,8 @@
 #include "Network/Packet/Handlers/ServerPacketHandler.h"
 #include <windows.h>
 
+#include "Auction/AuctionManager.h"
+
 /*#include "mysql_connection.h"
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
@@ -44,6 +46,7 @@ int main()
     boost::asio::io_context io_context;
     ServerPacketHandler::Init();
     GameRoom::init(io_context);
+    AuctionManager::Init(io_context);
     spdlog::set_level(spdlog::level::trace);
     
     int port = 4242;
