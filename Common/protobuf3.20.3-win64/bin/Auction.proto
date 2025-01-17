@@ -1,0 +1,40 @@
+﻿syntax = "proto3";
+package auction;
+
+import "Enum.proto";
+
+message C_PutItem
+{
+  
+}
+
+message S_PutItem
+{
+  
+}
+
+message C_GetOffItem
+{
+  
+}
+
+message S_GetOffItem
+{
+  
+}
+
+message C_PurchaseItem
+{
+  uint64 user_pk = 1;
+  .message.ItemTable item_table = 2;
+  uint64 price = 3;
+  uint64 quantity = 4;
+}
+
+message S_PurchaseItem
+{
+  bool is_success = 1;
+  .message.ItemTable item_table = 2;
+  uint64 price = 3;
+  uint64 quantity = 4;
+}

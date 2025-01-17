@@ -7,6 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BWServer", "BWServer\BWServ
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BWServerTest", "BWServerTest\BWServerTest.vcxproj", "{C577AC09-C202-43DF-9AF0-05769C32C87D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DummyClients", "DummyClients\DummyClients.vcxproj", "{668E574A-C229-4847-B99B-5EB1B3460B25}"
+	ProjectSection(ProjectDependencies) = postProject
+		{097BFA6E-42E5-4813-8F94-972159EA09F3} = {097BFA6E-42E5-4813-8F94-972159EA09F3}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +36,14 @@ Global
 		{C577AC09-C202-43DF-9AF0-05769C32C87D}.Release|x64.Build.0 = Release|x64
 		{C577AC09-C202-43DF-9AF0-05769C32C87D}.Release|x86.ActiveCfg = Release|Win32
 		{C577AC09-C202-43DF-9AF0-05769C32C87D}.Release|x86.Build.0 = Release|Win32
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Debug|x64.ActiveCfg = Debug|x64
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Debug|x64.Build.0 = Debug|x64
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Debug|x86.ActiveCfg = Debug|Win32
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Debug|x86.Build.0 = Debug|Win32
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Release|x64.ActiveCfg = Release|x64
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Release|x64.Build.0 = Release|x64
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Release|x86.ActiveCfg = Release|Win32
+		{668E574A-C229-4847-B99B-5EB1B3460B25}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

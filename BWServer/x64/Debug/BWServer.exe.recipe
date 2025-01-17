@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Kang\Desktop\workspace\BWServer\lib\BWServer.exe</FullPath>
+      <FullPath>C:\Users\Kang\Desktop\workspace\BWServer\x64\Debug\BWServer.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

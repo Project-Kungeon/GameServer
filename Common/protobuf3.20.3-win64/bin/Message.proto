@@ -34,6 +34,22 @@ enum HEADER
 	CREATURE_DEATH_RES = 17;
 	CREATURE_HEAL_RES = 18;
 
+	CREATURE_VECTORMOVE_REQ = 19;
+	CREATURE_VECTORMOVE_RES = 20;
+
+	CHARACTER_LIST_REQ = 21;
+	CHARACTER_LIST_RES = 22;
+
+	CHARACTER_SELECT_REQ = 23;
+	CHARACTER_SELECT_RES = 24;
+
+	CHARACTER_CREATE_REQ = 25;
+	CHARACTER_CREATE_RES = 26;
+
+	SESSION_PING_REQ = 997;
+	SESSION_PONG_RES = 998;
+	SESSION_COMPLETE_PING_RES = 999;
+
 	WARRIOR_ATTACK_REQ = 1101;
 	WARRIOR_ATTACK_RES = 1102;
 
@@ -114,7 +130,13 @@ enum HEADER
 	ITEM_CONSUMEABLE_USED_RES = 30004;
 	ITEM_ACQUISITION_RES = 30005;
 	ITEM_OPENINVENTORY = 30006;
-
+	
+	AUCTION_PURCHASE_REQ = 31001;
+	AUCTION_PURCHASE_RES = 31002;
+	AUCTION_APPLY_REQ = 31003;
+	AUCTION_APPLY_RES = 31004;
+	AUCTION_CANCEL_REQ = 31005;
+	AUCTION_CANCEL_RES = 31006;
 }
 
 // 클라이언트 -> 서버 로그인
@@ -174,11 +196,20 @@ message S_Despawn
 message C_Move
 {
 	PosInfo PosInfo = 1;
+	float camera_yaw = 2;
+	float controller_yaw = 3;
+	double movement_x = 4;
+	double movement_y = 5;
 }
 
 message S_Move
 {
 	PosInfo PosInfo = 1;
+	float camera_yaw = 2;
+	float controller_yaw = 3;
+	double movement_x = 4;
+	double movement_y = 5;
+
 }
 
 message C_Attack
