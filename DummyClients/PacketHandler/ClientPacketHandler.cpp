@@ -1,5 +1,6 @@
 #include "ClientPacketHandler.h"
 #include "LobbyPacketHandler.h"
+#include "RoomPacketHandler.h"
 
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
@@ -42,7 +43,7 @@ void ClientPacketHandler::Init()
         };
     GPacketHandler[message::HEADER::ENTER_ROOM_RES] = [](SessionPtr& session, std::shared_ptr<char[]> ptr, PacketHeader& header, int& offset)
         {
-            return Handle_INVALID;
+            return HandlePacket<message::S_EnterRoom>(RoomPacketHandler::Handle_S_EnterRoom, session, ptr, header, offset);;
         };
     GPacketHandler[message::HEADER::PLAYER_MOVE_RES] = [](SessionPtr& session, std::shared_ptr<char[]> ptr, PacketHeader& header, int& offset)
         {

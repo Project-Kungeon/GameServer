@@ -136,7 +136,7 @@ bool Room::Join(ObjectPtr object, bool pos_setted)
 
 			const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
 			auto msg = PacketUtil::MakeSendBuffer(spawnPkt,message::HEADER::PLAYER_SPAWN_RES);
-			//session->Send(msg, requiredSize);
+			session->Send(msg, requiredSize);
 			
 			
 		}

@@ -4,6 +4,7 @@
 #include "DB/ConnectionPool.h"
 #include "DB/MySQLConnection.h"
 #include "DB/ConnectionFactory.h"
+#include <sw/redis++/redis++.h>
 
 #include "Server/DelayGameServer.h"
 #include "Server/GameRoom.h"
@@ -11,11 +12,6 @@
 #include <windows.h>
 
 #include "Auction/AuctionManager.h"
-
-/*#include "mysql_connection.h"
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/prepared_statement.h>*/
 
 int main()
 {
