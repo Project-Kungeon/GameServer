@@ -2,7 +2,7 @@
 #include "Session.h"
 
 std::atomic<unsigned long long> Session::packet_generated = 0;
-std::atomic<uint64> Session::_email_id = 0;
+std::atomic<uint64> Session::_email_id = 1;
 
 Session::Session(asio::io_context& io_context, const std::string& host, int port)
 	: _socket(io_context)

@@ -13,6 +13,7 @@
 #include "InteractivePacketHandler.h"
 #include "PingPongPacketHandler.h"
 #include "CharacterSelectPacketHandler.h"
+#include "AuctionPacketHandler.h"
 
 using PacketHandlerFunc = std::function<bool(SessionPtr&, asio::mutable_buffer&, int&)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
@@ -186,6 +187,11 @@ public:
 				spdlog::trace("Handle C_Item_OpenInventory");
 				return HandlePacket<game::item::C_Item_OpenInventory>(InteractivePacketHandler::Handle_C_Item_OpenInventory, session, buffer, offset);
 			};
+		GPacketHandler[message::HEADER::AUCTION_SEARCH_REQ] = [](SessionPtr& session, asio::mutable_buffer& buffer, int& offset)
+		{
+			spdlog::trace("Handle C_SearchItem");
+			return HandlePacket<auction::C_SearchItem>(AuctionPacketHandler::Handle_C_SearchItem, session, buffer, offset);
+		};
 	}
 
 	static bool HandlePacket(SessionPtr& session, char* ptr, size_t size)

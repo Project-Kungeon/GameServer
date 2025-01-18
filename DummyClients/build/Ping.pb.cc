@@ -16,67 +16,62 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
-
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = _pb::internal;
-
 namespace ping {
-PROTOBUF_CONSTEXPR C_Ping::C_Ping(
-    ::_pbi::ConstantInitialized)
+constexpr C_Ping::C_Ping(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : sequence_number_(uint64_t{0u})
   , client_send_time_(uint64_t{0u}){}
 struct C_PingDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR C_PingDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr C_PingDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~C_PingDefaultTypeInternal() {}
   union {
     C_Ping _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_PingDefaultTypeInternal _C_Ping_default_instance_;
-PROTOBUF_CONSTEXPR S_Pong::S_Pong(
-    ::_pbi::ConstantInitialized)
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT C_PingDefaultTypeInternal _C_Ping_default_instance_;
+constexpr S_Pong::S_Pong(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : sequence_number_(uint64_t{0u})
   , client_send_time_(uint64_t{0u})
   , server_receive_time_(uint64_t{0u})
   , server_send_time_(uint64_t{0u}){}
 struct S_PongDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR S_PongDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr S_PongDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~S_PongDefaultTypeInternal() {}
   union {
     S_Pong _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S_PongDefaultTypeInternal _S_Pong_default_instance_;
-PROTOBUF_CONSTEXPR C_CompletePing::C_CompletePing(
-    ::_pbi::ConstantInitialized)
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT S_PongDefaultTypeInternal _S_Pong_default_instance_;
+constexpr C_CompletePing::C_CompletePing(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : sequence_number_(uint64_t{0u})
   , client_send_time_(uint64_t{0u})
   , server_receive_time_(uint64_t{0u})
   , server_send_time_(uint64_t{0u})
   , client_receive_time_(uint64_t{0u}){}
 struct C_CompletePingDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR C_CompletePingDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
+  constexpr C_CompletePingDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
   ~C_CompletePingDefaultTypeInternal() {}
   union {
     C_CompletePing _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_CompletePingDefaultTypeInternal _C_CompletePing_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT C_CompletePingDefaultTypeInternal _C_CompletePing_default_instance_;
 }  // namespace ping
-static ::_pb::Metadata file_level_metadata_Ping_2eproto[3];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Ping_2eproto = nullptr;
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Ping_2eproto = nullptr;
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_Ping_2eproto[3];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_Ping_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_Ping_2eproto = nullptr;
 
-const uint32_t TableStruct_Ping_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Ping_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::ping::C_Ping, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::ping::C_Ping, sequence_number_),
   PROTOBUF_FIELD_OFFSET(::ping::C_Ping, client_send_time_),
   ~0u,  // no _has_bits_
@@ -84,7 +79,6 @@ const uint32_t TableStruct_Ping_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::ping::S_Pong, sequence_number_),
   PROTOBUF_FIELD_OFFSET(::ping::S_Pong, client_send_time_),
   PROTOBUF_FIELD_OFFSET(::ping::S_Pong, server_receive_time_),
@@ -94,23 +88,22 @@ const uint32_t TableStruct_Ping_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::ping::C_CompletePing, sequence_number_),
   PROTOBUF_FIELD_OFFSET(::ping::C_CompletePing, client_send_time_),
   PROTOBUF_FIELD_OFFSET(::ping::C_CompletePing, server_receive_time_),
   PROTOBUF_FIELD_OFFSET(::ping::C_CompletePing, server_send_time_),
   PROTOBUF_FIELD_OFFSET(::ping::C_CompletePing, client_receive_time_),
 };
-static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::ping::C_Ping)},
-  { 8, -1, -1, sizeof(::ping::S_Pong)},
-  { 18, -1, -1, sizeof(::ping::C_CompletePing)},
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, sizeof(::ping::C_Ping)},
+  { 7, -1, sizeof(::ping::S_Pong)},
+  { 16, -1, sizeof(::ping::C_CompletePing)},
 };
 
-static const ::_pb::Message* const file_default_instances[] = {
-  &::ping::_C_Ping_default_instance_._instance,
-  &::ping::_S_Pong_default_instance_._instance,
-  &::ping::_C_CompletePing_default_instance_._instance,
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::ping::_C_Ping_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::ping::_S_Pong_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::ping::_C_CompletePing_default_instance_),
 };
 
 const char descriptor_table_protodef_Ping_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -124,21 +117,19 @@ const char descriptor_table_protodef_Ping_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "ive_time\030\003 \001(\004\022\030\n\020server_send_time\030\004 \001(\004"
   "\022\033\n\023client_receive_time\030\005 \001(\004b\006proto3"
   ;
-static ::_pbi::once_flag descriptor_table_Ping_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_Ping_2eproto = {
-    false, false, 357, descriptor_table_protodef_Ping_2eproto,
-    "Ping.proto",
-    &descriptor_table_Ping_2eproto_once, nullptr, 0, 3,
-    schemas, file_default_instances, TableStruct_Ping_2eproto::offsets,
-    file_level_metadata_Ping_2eproto, file_level_enum_descriptors_Ping_2eproto,
-    file_level_service_descriptors_Ping_2eproto,
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Ping_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Ping_2eproto = {
+  false, false, 357, descriptor_table_protodef_Ping_2eproto, "Ping.proto", 
+  &descriptor_table_Ping_2eproto_once, nullptr, 0, 3,
+  schemas, file_default_instances, TableStruct_Ping_2eproto::offsets,
+  file_level_metadata_Ping_2eproto, file_level_enum_descriptors_Ping_2eproto, file_level_service_descriptors_Ping_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Ping_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_Ping_2eproto_getter() {
   return &descriptor_table_Ping_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Ping_2eproto(&descriptor_table_Ping_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_Ping_2eproto(&descriptor_table_Ping_2eproto);
 namespace ping {
 
 // ===================================================================
@@ -147,10 +138,10 @@ class C_Ping::_Internal {
  public:
 };
 
-C_Ping::C_Ping(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+C_Ping::C_Ping(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:ping.C_Ping)
 }
 C_Ping::C_Ping(const C_Ping& from)
@@ -162,7 +153,7 @@ C_Ping::C_Ping(const C_Ping& from)
   // @@protoc_insertion_point(copy_constructor:ping.C_Ping)
 }
 
-inline void C_Ping::SharedCtor() {
+void C_Ping::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&sequence_number_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&client_send_time_) -
@@ -171,24 +162,27 @@ inline void C_Ping::SharedCtor() {
 
 C_Ping::~C_Ping() {
   // @@protoc_insertion_point(destructor:ping.C_Ping)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void C_Ping::SharedDtor() {
+void C_Ping::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
+void C_Ping::ArenaDtor(void* object) {
+  C_Ping* _this = reinterpret_cast< C_Ping* >(object);
+  (void)_this;
+}
+void C_Ping::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void C_Ping::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
 void C_Ping::Clear() {
 // @@protoc_insertion_point(message_clear_start:ping.C_Ping)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -198,71 +192,69 @@ void C_Ping::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* C_Ping::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* C_Ping::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // uint64 sequence_number = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           sequence_number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 client_send_time = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           client_send_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
-      default:
-        goto handle_unusual;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
     }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
   }  // while
-message_done:
+success:
   return ptr;
 failure:
   ptr = nullptr;
-  goto message_done;
+  goto success;
 #undef CHK_
 }
 
-uint8_t* C_Ping::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* C_Ping::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:ping.C_Ping)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // uint64 sequence_number = 1;
-  if (this->_internal_sequence_number() != 0) {
+  if (this->sequence_number() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_sequence_number(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(1, this->_internal_sequence_number(), target);
   }
 
   // uint64 client_send_time = 2;
-  if (this->_internal_client_send_time() != 0) {
+  if (this->client_send_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(2, this->_internal_client_send_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_client_send_time(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:ping.C_Ping)
@@ -273,49 +265,68 @@ size_t C_Ping::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ping.C_Ping)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // uint64 sequence_number = 1;
-  if (this->_internal_sequence_number() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_sequence_number());
+  if (this->sequence_number() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_sequence_number());
   }
 
   // uint64 client_send_time = 2;
-  if (this->_internal_client_send_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_client_send_time());
+  if (this->client_send_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_client_send_time());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_Ping::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    C_Ping::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_Ping::GetClassData() const { return &_class_data_; }
-
-void C_Ping::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<C_Ping *>(to)->MergeFrom(
-      static_cast<const C_Ping &>(from));
+void C_Ping::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ping.C_Ping)
+  GOOGLE_DCHECK_NE(&from, this);
+  const C_Ping* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<C_Ping>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ping.C_Ping)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ping.C_Ping)
+    MergeFrom(*source);
+  }
 }
-
 
 void C_Ping::MergeFrom(const C_Ping& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:ping.C_Ping)
   GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_sequence_number() != 0) {
+  if (from.sequence_number() != 0) {
     _internal_set_sequence_number(from._internal_sequence_number());
   }
-  if (from._internal_client_send_time() != 0) {
+  if (from.client_send_time() != 0) {
     _internal_set_client_send_time(from._internal_client_send_time());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_Ping::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ping.C_Ping)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void C_Ping::CopyFrom(const C_Ping& from) {
@@ -341,7 +352,7 @@ void C_Ping::InternalSwap(C_Ping* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_Ping::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_Ping_2eproto_getter, &descriptor_table_Ping_2eproto_once,
       file_level_metadata_Ping_2eproto[0]);
 }
@@ -352,10 +363,10 @@ class S_Pong::_Internal {
  public:
 };
 
-S_Pong::S_Pong(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+S_Pong::S_Pong(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:ping.S_Pong)
 }
 S_Pong::S_Pong(const S_Pong& from)
@@ -367,7 +378,7 @@ S_Pong::S_Pong(const S_Pong& from)
   // @@protoc_insertion_point(copy_constructor:ping.S_Pong)
 }
 
-inline void S_Pong::SharedCtor() {
+void S_Pong::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&sequence_number_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&server_send_time_) -
@@ -376,24 +387,27 @@ inline void S_Pong::SharedCtor() {
 
 S_Pong::~S_Pong() {
   // @@protoc_insertion_point(destructor:ping.S_Pong)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void S_Pong::SharedDtor() {
+void S_Pong::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
+void S_Pong::ArenaDtor(void* object) {
+  S_Pong* _this = reinterpret_cast< S_Pong* >(object);
+  (void)_this;
+}
+void S_Pong::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void S_Pong::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
 void S_Pong::Clear() {
 // @@protoc_insertion_point(message_clear_start:ping.S_Pong)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -403,99 +417,95 @@ void S_Pong::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* S_Pong::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* S_Pong::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // uint64 sequence_number = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           sequence_number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 client_send_time = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           client_send_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 server_receive_time = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           server_receive_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 server_send_time = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           server_send_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
-      default:
-        goto handle_unusual;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
     }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
   }  // while
-message_done:
+success:
   return ptr;
 failure:
   ptr = nullptr;
-  goto message_done;
+  goto success;
 #undef CHK_
 }
 
-uint8_t* S_Pong::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* S_Pong::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:ping.S_Pong)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // uint64 sequence_number = 1;
-  if (this->_internal_sequence_number() != 0) {
+  if (this->sequence_number() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_sequence_number(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(1, this->_internal_sequence_number(), target);
   }
 
   // uint64 client_send_time = 2;
-  if (this->_internal_client_send_time() != 0) {
+  if (this->client_send_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(2, this->_internal_client_send_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_client_send_time(), target);
   }
 
   // uint64 server_receive_time = 3;
-  if (this->_internal_server_receive_time() != 0) {
+  if (this->server_receive_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(3, this->_internal_server_receive_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(3, this->_internal_server_receive_time(), target);
   }
 
   // uint64 server_send_time = 4;
-  if (this->_internal_server_send_time() != 0) {
+  if (this->server_send_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(4, this->_internal_server_send_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(4, this->_internal_server_send_time(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:ping.S_Pong)
@@ -506,65 +516,88 @@ size_t S_Pong::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ping.S_Pong)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // uint64 sequence_number = 1;
-  if (this->_internal_sequence_number() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_sequence_number());
+  if (this->sequence_number() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_sequence_number());
   }
 
   // uint64 client_send_time = 2;
-  if (this->_internal_client_send_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_client_send_time());
+  if (this->client_send_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_client_send_time());
   }
 
   // uint64 server_receive_time = 3;
-  if (this->_internal_server_receive_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_server_receive_time());
+  if (this->server_receive_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_server_receive_time());
   }
 
   // uint64 server_send_time = 4;
-  if (this->_internal_server_send_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_server_send_time());
+  if (this->server_send_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_server_send_time());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData S_Pong::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    S_Pong::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*S_Pong::GetClassData() const { return &_class_data_; }
-
-void S_Pong::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<S_Pong *>(to)->MergeFrom(
-      static_cast<const S_Pong &>(from));
+void S_Pong::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ping.S_Pong)
+  GOOGLE_DCHECK_NE(&from, this);
+  const S_Pong* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<S_Pong>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ping.S_Pong)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ping.S_Pong)
+    MergeFrom(*source);
+  }
 }
-
 
 void S_Pong::MergeFrom(const S_Pong& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:ping.S_Pong)
   GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_sequence_number() != 0) {
+  if (from.sequence_number() != 0) {
     _internal_set_sequence_number(from._internal_sequence_number());
   }
-  if (from._internal_client_send_time() != 0) {
+  if (from.client_send_time() != 0) {
     _internal_set_client_send_time(from._internal_client_send_time());
   }
-  if (from._internal_server_receive_time() != 0) {
+  if (from.server_receive_time() != 0) {
     _internal_set_server_receive_time(from._internal_server_receive_time());
   }
-  if (from._internal_server_send_time() != 0) {
+  if (from.server_send_time() != 0) {
     _internal_set_server_send_time(from._internal_server_send_time());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void S_Pong::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ping.S_Pong)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void S_Pong::CopyFrom(const S_Pong& from) {
@@ -590,7 +623,7 @@ void S_Pong::InternalSwap(S_Pong* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata S_Pong::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_Ping_2eproto_getter, &descriptor_table_Ping_2eproto_once,
       file_level_metadata_Ping_2eproto[1]);
 }
@@ -601,10 +634,10 @@ class C_CompletePing::_Internal {
  public:
 };
 
-C_CompletePing::C_CompletePing(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+C_CompletePing::C_CompletePing(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:ping.C_CompletePing)
 }
 C_CompletePing::C_CompletePing(const C_CompletePing& from)
@@ -616,7 +649,7 @@ C_CompletePing::C_CompletePing(const C_CompletePing& from)
   // @@protoc_insertion_point(copy_constructor:ping.C_CompletePing)
 }
 
-inline void C_CompletePing::SharedCtor() {
+void C_CompletePing::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&sequence_number_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&client_receive_time_) -
@@ -625,24 +658,27 @@ inline void C_CompletePing::SharedCtor() {
 
 C_CompletePing::~C_CompletePing() {
   // @@protoc_insertion_point(destructor:ping.C_CompletePing)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void C_CompletePing::SharedDtor() {
+void C_CompletePing::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
+void C_CompletePing::ArenaDtor(void* object) {
+  C_CompletePing* _this = reinterpret_cast< C_CompletePing* >(object);
+  (void)_this;
+}
+void C_CompletePing::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void C_CompletePing::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
 void C_CompletePing::Clear() {
 // @@protoc_insertion_point(message_clear_start:ping.C_CompletePing)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -652,113 +688,108 @@ void C_CompletePing::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* C_CompletePing::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* C_CompletePing::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // uint64 sequence_number = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           sequence_number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 client_send_time = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           client_send_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 server_receive_time = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           server_receive_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 server_send_time = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           server_send_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
       // uint64 client_receive_time = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           client_receive_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
+        } else goto handle_unusual;
         continue;
-      default:
-        goto handle_unusual;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
     }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
   }  // while
-message_done:
+success:
   return ptr;
 failure:
   ptr = nullptr;
-  goto message_done;
+  goto success;
 #undef CHK_
 }
 
-uint8_t* C_CompletePing::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::PROTOBUF_NAMESPACE_ID::uint8* C_CompletePing::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:ping.C_CompletePing)
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // uint64 sequence_number = 1;
-  if (this->_internal_sequence_number() != 0) {
+  if (this->sequence_number() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_sequence_number(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(1, this->_internal_sequence_number(), target);
   }
 
   // uint64 client_send_time = 2;
-  if (this->_internal_client_send_time() != 0) {
+  if (this->client_send_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(2, this->_internal_client_send_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_client_send_time(), target);
   }
 
   // uint64 server_receive_time = 3;
-  if (this->_internal_server_receive_time() != 0) {
+  if (this->server_receive_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(3, this->_internal_server_receive_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(3, this->_internal_server_receive_time(), target);
   }
 
   // uint64 server_send_time = 4;
-  if (this->_internal_server_send_time() != 0) {
+  if (this->server_send_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(4, this->_internal_server_send_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(4, this->_internal_server_send_time(), target);
   }
 
   // uint64 client_receive_time = 5;
-  if (this->_internal_client_receive_time() != 0) {
+  if (this->client_receive_time() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(5, this->_internal_client_receive_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(5, this->_internal_client_receive_time(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:ping.C_CompletePing)
@@ -769,73 +800,98 @@ size_t C_CompletePing::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ping.C_CompletePing)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // uint64 sequence_number = 1;
-  if (this->_internal_sequence_number() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_sequence_number());
+  if (this->sequence_number() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_sequence_number());
   }
 
   // uint64 client_send_time = 2;
-  if (this->_internal_client_send_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_client_send_time());
+  if (this->client_send_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_client_send_time());
   }
 
   // uint64 server_receive_time = 3;
-  if (this->_internal_server_receive_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_server_receive_time());
+  if (this->server_receive_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_server_receive_time());
   }
 
   // uint64 server_send_time = 4;
-  if (this->_internal_server_send_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_server_send_time());
+  if (this->server_send_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_server_send_time());
   }
 
   // uint64 client_receive_time = 5;
-  if (this->_internal_client_receive_time() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_client_receive_time());
+  if (this->client_receive_time() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+        this->_internal_client_receive_time());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_CompletePing::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    C_CompletePing::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_CompletePing::GetClassData() const { return &_class_data_; }
-
-void C_CompletePing::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<C_CompletePing *>(to)->MergeFrom(
-      static_cast<const C_CompletePing &>(from));
+void C_CompletePing::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ping.C_CompletePing)
+  GOOGLE_DCHECK_NE(&from, this);
+  const C_CompletePing* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<C_CompletePing>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ping.C_CompletePing)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ping.C_CompletePing)
+    MergeFrom(*source);
+  }
 }
-
 
 void C_CompletePing::MergeFrom(const C_CompletePing& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:ping.C_CompletePing)
   GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_sequence_number() != 0) {
+  if (from.sequence_number() != 0) {
     _internal_set_sequence_number(from._internal_sequence_number());
   }
-  if (from._internal_client_send_time() != 0) {
+  if (from.client_send_time() != 0) {
     _internal_set_client_send_time(from._internal_client_send_time());
   }
-  if (from._internal_server_receive_time() != 0) {
+  if (from.server_receive_time() != 0) {
     _internal_set_server_receive_time(from._internal_server_receive_time());
   }
-  if (from._internal_server_send_time() != 0) {
+  if (from.server_send_time() != 0) {
     _internal_set_server_send_time(from._internal_server_send_time());
   }
-  if (from._internal_client_receive_time() != 0) {
+  if (from.client_receive_time() != 0) {
     _internal_set_client_receive_time(from._internal_client_receive_time());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void C_CompletePing::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ping.C_CompletePing)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void C_CompletePing::CopyFrom(const C_CompletePing& from) {
@@ -861,7 +917,7 @@ void C_CompletePing::InternalSwap(C_CompletePing* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_CompletePing::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_Ping_2eproto_getter, &descriptor_table_Ping_2eproto_once,
       file_level_metadata_Ping_2eproto[2]);
 }
@@ -869,16 +925,13 @@ void C_CompletePing::InternalSwap(C_CompletePing* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace ping
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::ping::C_Ping*
-Arena::CreateMaybeMessage< ::ping::C_Ping >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::ping::C_Ping* Arena::CreateMaybeMessage< ::ping::C_Ping >(Arena* arena) {
   return Arena::CreateMessageInternal< ::ping::C_Ping >(arena);
 }
-template<> PROTOBUF_NOINLINE ::ping::S_Pong*
-Arena::CreateMaybeMessage< ::ping::S_Pong >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::ping::S_Pong* Arena::CreateMaybeMessage< ::ping::S_Pong >(Arena* arena) {
   return Arena::CreateMessageInternal< ::ping::S_Pong >(arena);
 }
-template<> PROTOBUF_NOINLINE ::ping::C_CompletePing*
-Arena::CreateMaybeMessage< ::ping::C_CompletePing >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::ping::C_CompletePing* Arena::CreateMaybeMessage< ::ping::C_CompletePing >(Arena* arena) {
   return Arena::CreateMessageInternal< ::ping::C_CompletePing >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

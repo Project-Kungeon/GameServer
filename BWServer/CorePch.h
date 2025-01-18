@@ -24,7 +24,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
-
+#include "CoreGlobal.h"
 #include "Util/RandomUtil.h"
 #include "Util/ObjectUtils.h"
 #include "Util/MathUtils.h"
