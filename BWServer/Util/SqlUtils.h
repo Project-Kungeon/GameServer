@@ -17,6 +17,10 @@ private:
         {
             stmt->setInt64(index, value);
         }
+        else if constexpr (std::is_same_v<std::decay_t<T>, uint32>)
+        {
+            stmt->setUInt(index, value);
+        }
         else if constexpr (std::is_same_v<std::decay_t<T>, int32>)
         {
             stmt->setInt(index, value);
