@@ -1,8 +1,13 @@
+C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Auction.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Auction.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\CharacterSelect.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\CharacterSelect.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Enum.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Enum.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\GameRound.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\GameRound.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Item.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Item.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Login.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Login.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Message.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Message.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\MonsterPattern.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\MonsterPattern.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Ping.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Ping.pb.obj
+C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Skill.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Skill.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\build\Struct.pb.cc;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\Struct.pb.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\CorePch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\CorePch.obj
 C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\main.cpp;C:\Users\Kang\Desktop\workspace\BWServer\DummyClients\x64\Debug\main.obj

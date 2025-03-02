@@ -72,9 +72,9 @@ bool LobbyPacketHandler::Handle_C_Login(SessionPtr& session, account::login::C_L
 
 		session->Send(sendBuffer);*/
 	}
-	const size_t requiredSize = PacketUtil::RequiredSize(packet_login);
-	auto msg = PacketUtil::MakeSendBuffer(packet_login, message::HEADER::LOGIN_RES);
-	session->Send(msg, requiredSize);
+
+	session->SendPacket(packet_login, message::HEADER::LOGIN_RES);
+	
 	GConnectionPool->unborrow(conn);
 	
 	return true;

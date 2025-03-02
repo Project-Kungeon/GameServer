@@ -12,11 +12,13 @@
 using namespace std;
 using namespace boost;
 
+#pragma pack(push, 1)
 struct PacketHeader
 {
 	short Length;
 	short Code;
 };
+#pragma pack(pop)
 
 class PacketUtil
 {
@@ -35,7 +37,7 @@ public:
 		PacketHeader header;
 		header.Length = static_cast<short>(msg.ByteSizeLong());
 		header.Code = packetCode;
-
+		
 		memcpy(buffer.data(), &header, sizeof(PacketHeader));
 
 		// buffer.data() : 헤더의 시작점

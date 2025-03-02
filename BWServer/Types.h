@@ -21,7 +21,7 @@ using BufferPtr = boost::shared_ptr<char[]>;
 
 
 USING_SHARED_PTR(GameServer);
-USING_SHARED_PTR(Session);
+
 USING_SHARED_PTR(GameSession);
 USING_SHARED_PTR(DelayGameSession);
 USING_SHARED_PTR(Object);

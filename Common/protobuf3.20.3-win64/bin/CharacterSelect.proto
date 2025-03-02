@@ -3,7 +3,7 @@ package account.character.select;
 
 message C_CharacterList
 {
-  repeated string session_id = 1;
+  string session_id = 1;
 }
 
 message CharacterInfo

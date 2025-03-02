@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Auction.pb.h"
 
 class AuctionPacketHandler
 {

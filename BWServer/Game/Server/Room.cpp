@@ -5,7 +5,6 @@
 #include "Objects/Creatures/Players/Archor.h"
 #include "Objects/Creatures/Monster/Rampage.h"
 #include "GameServer.h"
-#include "Packet/Packet.h"
 
 RoomPtr GRoom[UINT16_MAX];
 
@@ -53,9 +52,9 @@ bool Room::Join(ObjectPtr object, bool pos_setted)
 			PacketUtil::Serialize(sendBuffer, message::HEADER::ENTER_ROOM_RES, enterRoomPkt);
 
 			session->Send(sendBuffer);*/
-			const size_t requiredSize = PacketUtil::RequiredSize(enterRoomPkt);
-			auto msg = PacketUtil::MakeSendBuffer(enterRoomPkt,message::HEADER::ENTER_ROOM_RES);
-			session->Send(msg, requiredSize);
+			
+			session->SendPacket(enterRoomPkt, message::HEADER::ENTER_ROOM_RES);
+			
 		}
 	}
 
@@ -79,13 +78,7 @@ bool Room::Join(ObjectPtr object, bool pos_setted)
 			itemObjectInfo->CopyFrom(ObjectUtils::toItemObjectInfo(itemObject));
 		}
 		
-		
-		const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
-		char* rawBuffer = new char[requiredSize];
-		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_SPAWN_RES, spawnPkt);
-		
-		Broadcast(sendBuffer, object->objectInfo->object_id());
+		Broadcast(spawnPkt, message::HEADER::PLAYER_SPAWN_RES, object->objectInfo->object_id());
 	}
 
 	// 접속한 플레이어에게 전체 오브젝트 정보를 전달
@@ -133,12 +126,8 @@ bool Room::Join(ObjectPtr object, bool pos_setted)
 			PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_SPAWN_RES, spawnPkt);
 
 			session->Send(sendBuffer);*/
-
-			const size_t requiredSize = PacketUtil::RequiredSize(spawnPkt);
-			auto msg = PacketUtil::MakeSendBuffer(spawnPkt,message::HEADER::PLAYER_SPAWN_RES);
-			session->Send(msg, requiredSize);
 			
-			
+			session->SendPacket(spawnPkt, message::HEADER::PLAYER_SPAWN_RES);
 		}
 	}
 
@@ -158,15 +147,15 @@ bool Room::Leave(ObjectPtr object)
 	if (auto player = dynamic_pointer_cast<Player>(object))
 	{
 		message::S_LeaveRoom leaveRoomPkt;
-
-		const size_t requiredSize = PacketUtil::RequiredSize(leaveRoomPkt);
+		
+		/*const size_t requiredSize = PacketUtil::RequiredSize(leaveRoomPkt);
 		char* rawBuffer = new char[requiredSize];
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-		PacketUtil::Serialize(sendBuffer, message::HEADER::LEAVE_ROOM_RES, leaveRoomPkt);
+		PacketUtil::Serialize(sendBuffer, message::HEADER::LEAVE_ROOM_RES, leaveRoomPkt);*/
 
 		if (auto session = player->session.lock())
 		{
-			session->Send(sendBuffer);
+			session->SendPacket(leaveRoomPkt, message::HEADER::LEAVE_ROOM_RES);
 		}
 	}
 
@@ -180,7 +169,7 @@ bool Room::Leave(ObjectPtr object)
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_DESPAWN_RES, despawnPkt);
 
-		Broadcast(sendBuffer, 0);
+		Broadcast(despawnPkt, message::HEADER::PLAYER_DESPAWN_RES, 0);
 
 		//if (auto player = dynamic_pointer_cast<Player>(object))
 		//	if (auto session = player->session.lock())
@@ -232,8 +221,12 @@ std::weak_ptr<Player> Room::FindClosePlayerBySelf(CreaturePtr Self, const float 
 
 // 방에 접속한 모든 클라이언트에게 버퍼 전달
 // 단, exceptId에 해당하는 플레이어에게 보내지 않습니다.
-void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
+void Room::Broadcast(google::protobuf::Message& msg, const short packetCode, uint64 exceptId)
 {
+	auto bufSize = PacketUtil::RequiredSize(msg);
+	BufferPooledVector vector_buffer(bufSize);
+	PacketUtil::Serialize(asio::buffer(vector_buffer), packetCode, msg);
+	
 	// 오브젝트 리스트 탐색
 	for (auto& item : _objects)
 	{
@@ -250,14 +243,14 @@ void Room::Broadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 			if (GameSessionPtr session = player->session.lock())
 			{
 				//spdlog::info("Broadcast to {} player", item.first);
-				session->Send(buffer);
+				session->Send(vector_buffer, bufSize);
 			}
 		}
 		
 	}
 }
 
-void Room::Broadcast(BufferPtr buffer, size_t requiredSize, uint64 exceptId)
+/*void Room::Broadcast(BufferPtr buffer, size_t requiredSize, uint64 exceptId)
 {
 	// 오브젝트 리스트 탐색
 	for (auto& item : _objects)
@@ -280,10 +273,14 @@ void Room::Broadcast(BufferPtr buffer, size_t requiredSize, uint64 exceptId)
 		}
 
 	}
-}
+}*/
 
-void Room::DelayBroadcast(asio::mutable_buffer& buffer, uint64 exceptId)
+void Room::DelayBroadcast(google::protobuf::Message& msg, const short packetCode, uint64 exceptId)
 {
+	auto bufSize = PacketUtil::RequiredSize(msg);
+	BufferPooledVector vector_buffer(bufSize);
+	PacketUtil::Serialize(asio::buffer(vector_buffer), packetCode, msg);
+	
 	// 세션
 	queue<pair<GameSessionPtr, uint64>> queue_sessions;
 	uint64 max_ping = 0;
@@ -312,7 +309,7 @@ void Room::DelayBroadcast(asio::mutable_buffer& buffer, uint64 exceptId)
 	{
 		auto session_ping = queue_sessions.front();
 		queue_sessions.pop();
-		session_ping.first->DelaySend(buffer, max_ping - session_ping.second);
+		session_ping.first->DelaySend(vector_buffer, bufSize, max_ping - session_ping.second);
 	}
 	
 }
@@ -362,8 +359,7 @@ void Room::SendMove(message::S_Move movePkt)
 		//Broadcast(sendBuffer, 0);
 
 		const size_t requiredSize = PacketUtil::RequiredSize(movePkt);
-		auto buffer = PacketUtil::MakeSendBuffer(movePkt, message::HEADER::PLAYER_MOVE_RES);
-		Broadcast(buffer, requiredSize, 0);
+		Broadcast(movePkt, message::HEADER::PLAYER_MOVE_RES, 0);
 	}
 }
 
@@ -391,7 +387,7 @@ void Room::HandleMove(message::C_Move pkt)
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_MOVE_RES, movePkt);
 
-		Broadcast(sendBuffer, object_id);
+		Broadcast(movePkt, message::HEADER::PLAYER_MOVE_RES, object_id);
 	}
 }
 
@@ -426,7 +422,7 @@ void Room::HandleAttack(message::C_Attack pkt)
 		auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 		PacketUtil::Serialize(sendBuffer, message::HEADER::PLAYER_ATTACK_RES, attackPkt);
 
-		Broadcast(sendBuffer, 0);
+		Broadcast(attackPkt, message::HEADER::PLAYER_ATTACK_RES, 0);
 	}
 
 }
@@ -441,7 +437,7 @@ void Room::HandleDeath(CreaturePtr creature)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::CREATURE_DEATH_RES, deathPkt);
 
-	Broadcast(sendBuffer, 0);
+	Broadcast(deathPkt, message::HEADER::CREATURE_DEATH_RES, 0);
 }
 
 void Room::HandleWarriorAttack(skill::C_Warrior_Attack pkt)
@@ -454,7 +450,7 @@ void Room::HandleWarriorAttack(skill::C_Warrior_Attack pkt)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_ATTACK_RES, attackPkt);
 
-	Broadcast(sendBuffer, pkt.object_id());
+	Broadcast(attackPkt, message::HEADER::WARRIOR_ATTACK_RES, pkt.object_id());
 }
 
 void Room::HandleWarriorQ(skill::C_Warrior_Q pkt)
@@ -472,15 +468,8 @@ void Room::HandleWarriorQ(skill::C_Warrior_Q pkt)
 				skill::S_CoolTime coolTimePkt;
 				coolTimePkt.set_time(player->Q_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
-
-
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-				session->Send(sendBuffer);
-
+				session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
+				
 				return;
 			}
 		}
@@ -493,7 +482,7 @@ void Room::HandleWarriorQ(skill::C_Warrior_Q pkt)
 	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_Q_RES, skillPkt);
 
-	Broadcast(sendBuffer, 0);
+	Broadcast(skillPkt, message::HEADER::WARRIOR_Q_RES, 0);
 }
 
 void Room::HandleWarriorQ_Hit(skill::C_Warrior_Q_Hit pkt)
@@ -514,12 +503,7 @@ void Room::HandleWarriorQ_Hit(skill::C_Warrior_Q_Hit pkt)
 				coolTimePkt.set_time(player->Q_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-				session->Send(sendBuffer);
+				session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 				return;
 			}
 		}
@@ -544,13 +528,7 @@ void Room::HandleWarriorQ_Hit(skill::C_Warrior_Q_Hit pkt)
 				skillPkt.set_object_id(pkt.object_id());
 				skillPkt.set_target_id(pkt.target_id());
 				skillPkt.set_damage(damage);
-
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_Q_HIT_REQ, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				Broadcast(skillPkt, message::HEADER::WARRIOR_Q_HIT_REQ, 0);
 			}
 		}
 	}
@@ -572,13 +550,7 @@ void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 				coolTimePkt.set_time(player->R_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
 
-
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-				session->Send(sendBuffer);
+				session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 				return;
 			}
 		}
@@ -591,12 +563,7 @@ void Room::HandleWarriorR(skill::C_Warrior_R pkt)
 	skill::S_Warrior_R skillPkt;
 	skillPkt.set_object_id(pkt.object_id());
 
-	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_R_RES, skillPkt);
-
-	Broadcast(sendBuffer, 0);
+	Broadcast(skillPkt, message::HEADER::WARRIOR_R_RES, 0);
 }
 
 void Room::HandleWarriorE(skill::C_Warrior_E pkt)
@@ -615,12 +582,7 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 				coolTimePkt.set_time(player->E_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
 
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-				session->Send(sendBuffer);
+				session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 				return;
 			}
 		}
@@ -633,12 +595,7 @@ void Room::HandleWarriorE(skill::C_Warrior_E pkt)
 	skill::S_Warrior_E skillPkt;
 	skillPkt.set_object_id(pkt.object_id());
 
-	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_RES, skillPkt);
-
-	Broadcast(sendBuffer, 0);
+	Broadcast(skillPkt, message::HEADER::WARRIOR_E_RES, 0);
 }
 
 void Room::HandleWarriorE_Success(skill::C_Warrior_E_Success pkt)
@@ -662,12 +619,7 @@ void Room::HandleWarriorE_Success(skill::C_Warrior_E_Success pkt)
 				skillPkt.set_target_id(target_id);
 				skillPkt.set_parry_count(warrior->GetParryCount());
 
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_E_SUCCESS_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				Broadcast(skillPkt, message::HEADER::WARRIOR_E_SUCCESS_RES, 0);
 			}
 		}
 	}
@@ -689,13 +641,8 @@ void Room::HandleWarriorLS(skill::C_Warrior_LS pkt)
 				skill::S_CoolTime coolTimePkt;
 				coolTimePkt.set_time(player->LS_COOLTIME);
 				coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
-
-				const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-				session->Send(sendBuffer);
+				
+				session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 				return;
 			}
 		}
@@ -711,12 +658,7 @@ void Room::HandleWarriorLS(skill::C_Warrior_LS pkt)
 	skillPkt.set_y(pkt.y());
 	skillPkt.set_z(pkt.z());
 
-	const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::WARRIOR_LS_RES, skillPkt);
-
-	Broadcast(sendBuffer, 0);
+	Broadcast(skillPkt, message::HEADER::WARRIOR_LS_RES, 0);
 }
 
 void Room::HandleAssassinAttack(skill::C_ASSASSIN_Attack pkt)
@@ -739,7 +681,7 @@ void Room::HandleAssassinAttack(skill::C_ASSASSIN_Attack pkt)
 			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
 			PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_ATTACK_RES, attackPkt);
 
-			Broadcast(sendBuffer, pkt.object_id());
+			Broadcast(attackPkt, message::HEADER::ASSASSIN_ATTACK_RES, pkt.object_id());
 		}
 	}
 	
@@ -762,12 +704,7 @@ void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
 					coolTimePkt.set_time(assassin->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
-					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-					session->Send(sendBuffer);
+					session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 					return;
 				}
 
@@ -787,13 +724,8 @@ void Room::HandleAssassinQ(skill::C_ASSASSIN_Q pkt)
 				skillPkt.set_pitch(pkt.pitch());
 				skillPkt.set_yaw(pkt.yaw());
 				skillPkt.set_roll(pkt.roll());
-
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_Q_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				
+				Broadcast(skillPkt, message::HEADER::ASSASSIN_Q_RES, 0);
 			}
 		}
 		
@@ -817,13 +749,8 @@ void Room::HandleAssassinR(skill::C_ASSASSIN_R pkt)
 					skill::S_CoolTime coolTimePkt;
 					coolTimePkt.set_time(assassin->R_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
-
-					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-					session->Send(sendBuffer);
+					
+					session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 					return;
 				}
 
@@ -837,13 +764,8 @@ void Room::HandleAssassinR(skill::C_ASSASSIN_R pkt)
 				assassin->UseSkillR();
 				skill::S_ASSASSIN_R skillPkt;
 				skillPkt.set_object_id(pkt.object_id());
-
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_R_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				
+				Broadcast(skillPkt, message::HEADER::ASSASSIN_R_RES, 0);
 			}
 		}
 		
@@ -871,12 +793,7 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 						coolTimePkt.set_time(assassin->LS_COOLTIME);
 						coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
 
-						const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-						char* rawBuffer = new char[requiredSize];
-						auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-						PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-						session->Send(sendBuffer);
+						session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 						return;
 					}
 
@@ -887,13 +804,8 @@ void Room::HandleAssassinLS(skill::C_ASSASSIN_LS pkt)
 					assassin->UseSkillLS();
 					skill::S_ASSASSIN_LS skillPkt;
 					skillPkt.set_object_id(pkt.object_id());
-
-					const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_LS_RES, skillPkt);
-
-					Broadcast(sendBuffer, 0);
+					
+					Broadcast(skillPkt, message::HEADER::ASSASSIN_LS_RES, 0);
 				}
 				
 			}
@@ -918,13 +830,8 @@ void Room::HandleAssassinLSOff(AssassinPtr assassin, uint64 object_id)
 	assassin->DisableLS();
 	skill::C_Assassin_LS_Off pkt;
 	pkt.set_object_id(object_id);
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_LS_OFF_RES, pkt);
-
-	Broadcast(sendBuffer, 0);
+	
+	Broadcast(pkt, message::HEADER::ASSASSIN_LS_OFF_RES, 0);
 }
 
 void Room::HandleAssassinE(skill::C_Assassin_E pkt)
@@ -945,12 +852,7 @@ void Room::HandleAssassinE(skill::C_Assassin_E pkt)
 			skillPkt.set_y(pkt.y());
 			skillPkt.set_z(pkt.z());
 
-			const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-			char* rawBuffer = new char[requiredSize];
-			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-			PacketUtil::Serialize(sendBuffer, message::HEADER::ASSASSIN_E_RES, skillPkt);
-
-			Broadcast(sendBuffer, 0);
+			Broadcast(skillPkt, message::HEADER::ASSASSIN_E_RES, 0);
 		}
 	}
 
@@ -974,13 +876,8 @@ void Room::HandleArchorAttack(skill::C_Archor_Attack pkt)
 			attackPkt.set_end_x(pkt.end_x());
 			attackPkt.set_end_y(pkt.end_y());
 			attackPkt.set_end_z(pkt.end_z());
-
-			const size_t requiredSize = PacketUtil::RequiredSize(attackPkt);
-			char* rawBuffer = new char[requiredSize];
-			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-			PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_ATTACK_RES, attackPkt);
-
-			Broadcast(sendBuffer, pkt.object_id());
+			
+			Broadcast(attackPkt, message::HEADER::ARCHOR_ATTACK_RES, pkt.object_id());
 		}
 	}
 }
@@ -1001,12 +898,7 @@ void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging pkt)
 					coolTimePkt.set_time(archor->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
 
-					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-					session->Send(sendBuffer);
+					session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 					return;
 				}
 
@@ -1017,12 +909,7 @@ void Room::HandleArchorQ_Charging(skill::C_Archor_Q_Charging pkt)
 				skillPkt.set_object_id(pkt.object_id());
 				skillPkt.set_r_mode((int)archor->R_Mode);
 
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_Q_CHARGING_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				Broadcast(skillPkt, message::HEADER::ARCHOR_Q_CHARGING_RES, 0);
 				
 			}
 			
@@ -1045,13 +932,8 @@ void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot pkt)
 					skill::S_CoolTime coolTimePkt;
 					coolTimePkt.set_time(archor->Q_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::Q);
-
-					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-					session->Send(sendBuffer);
+					
+					session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 					return;
 				}
 
@@ -1066,13 +948,8 @@ void Room::HandleArchorQ_Shot(skill::C_Archor_Q_Shot pkt)
 				skillPkt.set_end_x(pkt.end_x());
 				skillPkt.set_end_y(pkt.end_y());
 				skillPkt.set_end_z(pkt.end_z());
-
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_Q_SHOT_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				
+				Broadcast(skillPkt, message::HEADER::ARCHOR_Q_SHOT_RES, 0);
 				archor->UseSkillQ();
 
 			}
@@ -1096,13 +973,8 @@ void Room::HandleArchorE(skill::C_Archor_E pkt)
 					skill::S_CoolTime coolTimePkt;
 					coolTimePkt.set_time(archor->E_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::E);
-
-					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-					session->Send(sendBuffer);
+					
+					session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 					return;
 				}
 
@@ -1114,13 +986,8 @@ void Room::HandleArchorE(skill::C_Archor_E pkt)
 				skillPkt.set_x(pkt.x());
 				skillPkt.set_y(pkt.y());
 				skillPkt.set_z(pkt.z());
-
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_E_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				
+				Broadcast(skillPkt, message::HEADER::ARCHOR_E_RES, 0);
 				archor->UseSkillE();
 
 			}
@@ -1144,13 +1011,8 @@ void Room::HandleArchorR(skill::C_Archor_R pkt)
 					skill::S_CoolTime coolTimePkt;
 					coolTimePkt.set_time(archor->R_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::R);
-
-					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-					session->Send(sendBuffer);
+					
+					session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 					return;
 				}
 
@@ -1159,13 +1021,8 @@ void Room::HandleArchorR(skill::C_Archor_R pkt)
 			{
 				skill::S_Archor_R skillPkt;
 				skillPkt.set_object_id(pkt.object_id());
-
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_R_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				
+				Broadcast(skillPkt, message::HEADER::ARCHOR_R_RES, 0);
 				archor->UseSkillR();
 
 			}
@@ -1180,12 +1037,7 @@ void Room::HandleArchorR_Off(ArchorPtr archor, uint64 object_id)
 	skill::S_Archor_R_Off pkt;
 	pkt.set_object_id(object_id);
 
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_R_OFF_RES, pkt);
-
-	Broadcast(sendBuffer, 0);
+	Broadcast(pkt, message::HEADER::ARCHOR_R_OFF_RES, 0);
 }
 
 void Room::HandleArchorLS(skill::C_Archor_LS pkt)
@@ -1203,13 +1055,8 @@ void Room::HandleArchorLS(skill::C_Archor_LS pkt)
 					skill::S_CoolTime coolTimePkt;
 					coolTimePkt.set_time(archor->LS_COOLTIME);
 					coolTimePkt.set_skill_type(skill::SKILLTYPE::LS);
-
-					const size_t requiredSize = PacketUtil::RequiredSize(coolTimePkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::COOLTIME_RES, coolTimePkt);
-
-					session->Send(sendBuffer);
+					
+					session->SendPacket(coolTimePkt, message::HEADER::COOLTIME_RES);
 					return;
 				}
 
@@ -1218,13 +1065,8 @@ void Room::HandleArchorLS(skill::C_Archor_LS pkt)
 			{
 				skill::S_Archor_LS skillPkt;
 				skillPkt.set_object_id(pkt.object_id());
-
-				const size_t requiredSize = PacketUtil::RequiredSize(skillPkt);
-				char* rawBuffer = new char[requiredSize];
-				auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-				PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_LS_RES, skillPkt);
-
-				Broadcast(sendBuffer, 0);
+				
+				Broadcast(skillPkt, message::HEADER::ARCHOR_LS_RES, 0);
 				archor->UseSkillLS();
 
 			}
@@ -1238,27 +1080,17 @@ void Room::HandleArchorLS_Off(ArchorPtr archor, uint64 object_id)
 	archor->DisbleLS();
 	skill::S_Archor_LS_Off pkt;
 	pkt.set_object_id(object_id);
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::ARCHOR_LS_OFF_RES, pkt);
-
-	Broadcast(sendBuffer, 0);
+	
+	Broadcast(pkt, message::HEADER::ARCHOR_LS_OFF_RES, 0);
 }
 
 void Room::SendRampageBasicAttack(RampagePtr rampage)
 {
 	monster::pattern::S_Rampage_BasicAttack pkt;
 	pkt.set_object_id(rampage->GetObjectId());
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_BASICATTACK_RES, pkt);
-
+	
 	// Outgoing Delay
-	DelayBroadcast(sendBuffer, 0);
+	DelayBroadcast(pkt, message::HEADER::RAMPAGE_BASICATTACK_RES, 0);
 }
 
 void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
@@ -1281,13 +1113,8 @@ void Room::SendRampageMoveToTarget(RampagePtr rampage, CreaturePtr target)
 	posInfo->set_pitch(0);
 	posInfo->set_roll(0);
 
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
-
 	// Outgoing Delay
-	DelayBroadcast(sendBuffer, 0);
+	DelayBroadcast(pkt, message::HEADER::MONSTER_MOVE_RES, 0);
 }
 
 void Room::SendRampageMoveToPos(RampagePtr rampage, int rand_x, int rand_y, int rand_z)
@@ -1312,41 +1139,26 @@ void Room::SendRampageMoveToPos(RampagePtr rampage, int rand_x, int rand_y, int 
 	posInfo->set_pitch(0);
 	posInfo->set_roll(0);
 
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::MONSTER_MOVE_RES, pkt);
-
 	// Outgoing Delay
-	DelayBroadcast(sendBuffer, 0);
+	DelayBroadcast(pkt, message::HEADER::MONSTER_MOVE_RES, 0);
 }
 
 void Room::SendRamapgeRoar(RampagePtr rampage)
 {
 	monster::pattern::S_Rampage_Roar pkt;
 	pkt.set_object_id(rampage->GetObjectId());
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ROAR_RES, pkt);
-
+	
 	// Outgoing Delay
-	DelayBroadcast(sendBuffer, 0);
+	DelayBroadcast(pkt, message::HEADER::RAMPAGE_ROAR_RES, 0);
 }
 
 void Room::SendRampageEarthQuake(RampagePtr rampage)
 {
 	monster::pattern::S_Rampage_EarthQuake pkt;
 	pkt.set_object_id(rampage->GetObjectId());
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_EARTHQUAKE_RES, pkt);
-
+	
 	// Outgoing Delay
-	DelayBroadcast(sendBuffer, 0);
+	DelayBroadcast(pkt, message::HEADER::RAMPAGE_EARTHQUAKE_RES, 0);
 }
 
 void Room::SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target)
@@ -1370,27 +1182,17 @@ void Room::SendRamapgeTurnToTarget(RampagePtr rampage, CreaturePtr target)
 
 	//target->posInfo->set_yaw(rotator.Yaw);
 
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_TURNTOTARGET_RES, pkt);
-
 	// Outgoing Delay
-	DelayBroadcast(sendBuffer, 0);
+	DelayBroadcast(pkt, message::HEADER::RAMPAGE_TURNTOTARGET_RES, 0);
 }
 
 void Room::SendRampageEnhancedAttack(RampagePtr rampage)
 {
 	monster::pattern::S_Rampage_EnhanceAttack pkt;
 	pkt.set_object_id(rampage->GetObjectId());
-
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, pkt);
-
+	
 	// Outgoing Delay
-	DelayBroadcast(sendBuffer, 0);
+	DelayBroadcast(pkt, message::HEADER::RAMPAGE_ENHANCEDATTACK_RES, 0);
 }
 
 void Room::HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt)
@@ -1414,33 +1216,23 @@ void Room::HandleItemPickedUp(PlayerPtr player, game::item::C_Item_PickedUp pkt)
 				// Success
 				DoAsync(&Room::Leave, _objects[item_object_id]);
 				{
-					game::item::S_Item_Acquisition pkt;
-					pkt.set_player_id(player_id);
-					pkt.mutable_item_info()->CopyFrom(*item->GetItemInfo());
-
-					const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_ACQUISITION_RES, pkt);
+					game::item::S_Item_Acquisition itemAcqPkt;
+					itemAcqPkt.set_player_id(player_id);
+					itemAcqPkt.mutable_item_info()->CopyFrom(*item->GetItemInfo());
 
 					if (auto session = player->session.lock())
 					{
-						session->Send(sendBuffer);
+						session->SendPacket(itemAcqPkt, message::HEADER::ITEM_ACQUISITION_RES);
 					}
 				}
 
 				{
 					// 모든 플레이어에게 주워졌다는 사실을 전송..
-					game::item::S_Item_PickedUp pkt;
-					pkt.set_picked_object_id(item_object_id);
-					pkt.set_player_id(player_id);
+					game::item::S_Item_PickedUp itemPickedPkt;
+					itemPickedPkt.set_picked_object_id(item_object_id);
+					itemPickedPkt.set_player_id(player_id);
 
-					const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-					char* rawBuffer = new char[requiredSize];
-					auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-					PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_PICKED_UP_RES, pkt);
-
-					Broadcast(sendBuffer, 0);
+					Broadcast(itemPickedPkt, message::HEADER::ITEM_PICKED_UP_RES, 0);
 				}
 				
 			}
@@ -1464,15 +1256,11 @@ void Room::HandleItemConsumeableUsed(PlayerPtr player, game::item::C_Item_Consum
 
 		if (auto session = player->session.lock())
 		{
-			game::item::S_Item_ConsumeableUsed pkt1;
-			pkt1.set_player_id(player_id);
-			pkt1.set_used_item_id(item_id);
+			game::item::S_Item_ConsumeableUsed usePkt;
+			usePkt.set_player_id(player_id);
+			usePkt.set_used_item_id(item_id);
 			
-			const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-			char* rawBuffer = new char[requiredSize];
-			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-			PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_CONSUMEABLE_USED_RES, pkt);
-			session->Send(sendBuffer);
+			session->SendPacket(usePkt, message::HEADER::ITEM_CONSUMEABLE_USED_RES);
 		}
 	}
 }
@@ -1483,29 +1271,20 @@ void Room::HandleItemOpenOpenInventory(PlayerPtr player, game::item::C_Item_Open
 	{
 		if (auto session = player->session.lock())
 		{
-			game::item::S_Item_OpenInventory pkt = inventory->GetInventoryList();
+			game::item::S_Item_OpenInventory inventoryPkt = inventory->GetInventoryList();
 
-			const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-			char* rawBuffer = new char[requiredSize];
-			auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-			PacketUtil::Serialize(sendBuffer, message::HEADER::ITEM_OPENINVENTORY, pkt);
-			session->Send(sendBuffer);
+			session->SendPacket(inventoryPkt, message::HEADER::ITEM_OPENINVENTORY);
 		}
 	}
 }
 
 void Room::BroadcastHealCreature(CreaturePtr creature, float health)
 {
-	message::S_Heal pkt;
-	pkt.add_object_id(creature->GetObjectId());
-	pkt.set_heal(health);
+	message::S_Heal healPkt;
+	healPkt.add_object_id(creature->GetObjectId());
+	healPkt.set_heal(health);
 
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::CREATURE_HEAL_RES, pkt);
-
-	Broadcast(sendBuffer, 0);
+	Broadcast(healPkt, message::HEADER::CREATURE_HEAL_RES, 0);
 }
 
 void Room::HandleTick(uint32 Deltatime)

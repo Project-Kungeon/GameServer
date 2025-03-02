@@ -21,7 +21,7 @@ namespace character {
 namespace select {
 constexpr C_CharacterList::C_CharacterList(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : session_id_(){}
+  : session_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct C_CharacterListDefaultTypeInternal {
   constexpr C_CharacterListDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -175,7 +175,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_CharacterSelect_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\025CharacterSelect.proto\022\030account.charact"
   "er.select\"%\n\017C_CharacterList\022\022\n\nsession_"
-  "id\030\001 \003(\t\"A\n\rCharacterInfo\022\n\n\002pk\030\001 \001(\004\022\020\n"
+  "id\030\001 \001(\t\"A\n\rCharacterInfo\022\n\n\002pk\030\001 \001(\004\022\020\n"
   "\010nickname\030\002 \003(\t\022\022\n\nclass_type\030\003 \001(\r\"W\n\017S"
   "_CharacterList\022D\n\023character_info_list\030\001 "
   "\003(\0132\'.account.character.select.Character"
@@ -207,20 +207,24 @@ class C_CharacterList::_Internal {
 };
 
 C_CharacterList::C_CharacterList(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  session_id_(arena) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:account.character.select.C_CharacterList)
 }
 C_CharacterList::C_CharacterList(const C_CharacterList& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      session_id_(from.session_id_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  session_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_session_id().empty()) {
+    session_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_session_id(), 
+      GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:account.character.select.C_CharacterList)
 }
 
 void C_CharacterList::SharedCtor() {
+session_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 C_CharacterList::~C_CharacterList() {
@@ -231,6 +235,7 @@ C_CharacterList::~C_CharacterList() {
 
 void C_CharacterList::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  session_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void C_CharacterList::ArenaDtor(void* object) {
@@ -249,7 +254,7 @@ void C_CharacterList::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  session_id_.Clear();
+  session_id_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -259,18 +264,13 @@ const char* C_CharacterList::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated string session_id = 1;
+      // string session_id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            auto str = _internal_add_session_id();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "account.character.select.C_CharacterList.session_id"));
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+          auto str = _internal_mutable_session_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "account.character.select.C_CharacterList.session_id"));
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -302,14 +302,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated string session_id = 1;
-  for (int i = 0, n = this->_internal_session_id_size(); i < n; i++) {
-    const auto& s = this->_internal_session_id(i);
+  // string session_id = 1;
+  if (!this->session_id().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
+      this->_internal_session_id().data(), static_cast<int>(this->_internal_session_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "account.character.select.C_CharacterList.session_id");
-    target = stream->WriteString(1, s, target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_session_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -328,12 +328,11 @@ size_t C_CharacterList::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated string session_id = 1;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(session_id_.size());
-  for (int i = 0, n = session_id_.size(); i < n; i++) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      session_id_.Get(i));
+  // string session_id = 1;
+  if (!this->session_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_session_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -367,7 +366,9 @@ void C_CharacterList::MergeFrom(const C_CharacterList& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  session_id_.MergeFrom(from.session_id_);
+  if (!from.session_id().empty()) {
+    _internal_set_session_id(from._internal_session_id());
+  }
 }
 
 void C_CharacterList::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -391,7 +392,11 @@ bool C_CharacterList::IsInitialized() const {
 void C_CharacterList::InternalSwap(C_CharacterList* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  session_id_.InternalSwap(&other->session_id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &session_id_, GetArenaForAllocation(),
+      &other->session_id_, other->GetArenaForAllocation()
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_CharacterList::GetMetadata() const {

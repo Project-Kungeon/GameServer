@@ -91,14 +91,8 @@ void GameRoom::RoundStart()
 
 void GameRoom::BroadcastRoundStart()
 {
-	
 	game::round::S_Round_StartInfo pkt;
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::ROUND_START_RES, pkt);
-	Broadcast(sendBuffer, 0);
-
+	Broadcast(pkt, message::HEADER::ROUND_START_RES, 0);
 }
 
 void GameRoom::BroadcastRoundTime()
@@ -120,11 +114,8 @@ void GameRoom::BroadcastRoundEnd(game::round::S_Round_EndInfo_EndReasonType type
 
 	game::round::S_Round_EndInfo pkt;
 	pkt.set_type(type);
-	const size_t requiredSize = PacketUtil::RequiredSize(pkt);
-	char* rawBuffer = new char[requiredSize];
-	auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-	PacketUtil::Serialize(sendBuffer, message::HEADER::ROUND_END_RES, pkt);
-	Broadcast(sendBuffer, 0);
+
+	Broadcast(pkt, message::HEADER::ROUND_END_RES, 0);
 
 }
 

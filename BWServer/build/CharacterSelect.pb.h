@@ -205,28 +205,18 @@ class C_CharacterList final :
   enum : int {
     kSessionIdFieldNumber = 1,
   };
-  // repeated string session_id = 1;
-  int session_id_size() const;
-  private:
-  int _internal_session_id_size() const;
-  public:
+  // string session_id = 1;
   void clear_session_id();
-  const std::string& session_id(int index) const;
-  std::string* mutable_session_id(int index);
-  void set_session_id(int index, const std::string& value);
-  void set_session_id(int index, std::string&& value);
-  void set_session_id(int index, const char* value);
-  void set_session_id(int index, const char* value, size_t size);
-  std::string* add_session_id();
-  void add_session_id(const std::string& value);
-  void add_session_id(std::string&& value);
-  void add_session_id(const char* value);
-  void add_session_id(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& session_id() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_session_id();
+  const std::string& session_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_session_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_session_id();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_session_id();
+  void set_allocated_session_id(std::string* session_id);
   private:
-  const std::string& _internal_session_id(int index) const;
-  std::string* _internal_add_session_id();
+  const std::string& _internal_session_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_session_id(const std::string& value);
+  std::string* _internal_mutable_session_id();
   public:
 
   // @@protoc_insertion_point(class_scope:account.character.select.C_CharacterList)
@@ -236,7 +226,7 @@ class C_CharacterList final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> session_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CharacterSelect_2eproto;
 };
@@ -1050,78 +1040,49 @@ class S_SelectCharacter final :
 #endif  // __GNUC__
 // C_CharacterList
 
-// repeated string session_id = 1;
-inline int C_CharacterList::_internal_session_id_size() const {
-  return session_id_.size();
-}
-inline int C_CharacterList::session_id_size() const {
-  return _internal_session_id_size();
-}
+// string session_id = 1;
 inline void C_CharacterList::clear_session_id() {
-  session_id_.Clear();
+  session_id_.ClearToEmpty();
 }
-inline std::string* C_CharacterList::add_session_id() {
-  // @@protoc_insertion_point(field_add_mutable:account.character.select.C_CharacterList.session_id)
-  return _internal_add_session_id();
-}
-inline const std::string& C_CharacterList::_internal_session_id(int index) const {
-  return session_id_.Get(index);
-}
-inline const std::string& C_CharacterList::session_id(int index) const {
+inline const std::string& C_CharacterList::session_id() const {
   // @@protoc_insertion_point(field_get:account.character.select.C_CharacterList.session_id)
-  return _internal_session_id(index);
+  return _internal_session_id();
 }
-inline std::string* C_CharacterList::mutable_session_id(int index) {
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void C_CharacterList::set_session_id(ArgT0&& arg0, ArgT... args) {
+ 
+ session_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:account.character.select.C_CharacterList.session_id)
+}
+inline std::string* C_CharacterList::mutable_session_id() {
   // @@protoc_insertion_point(field_mutable:account.character.select.C_CharacterList.session_id)
-  return session_id_.Mutable(index);
+  return _internal_mutable_session_id();
 }
-inline void C_CharacterList::set_session_id(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:account.character.select.C_CharacterList.session_id)
-  session_id_.Mutable(index)->assign(value);
+inline const std::string& C_CharacterList::_internal_session_id() const {
+  return session_id_.Get();
 }
-inline void C_CharacterList::set_session_id(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:account.character.select.C_CharacterList.session_id)
-  session_id_.Mutable(index)->assign(std::move(value));
+inline void C_CharacterList::_internal_set_session_id(const std::string& value) {
+  
+  session_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void C_CharacterList::set_session_id(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  session_id_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:account.character.select.C_CharacterList.session_id)
+inline std::string* C_CharacterList::_internal_mutable_session_id() {
+  
+  return session_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline void C_CharacterList::set_session_id(int index, const char* value, size_t size) {
-  session_id_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:account.character.select.C_CharacterList.session_id)
+inline std::string* C_CharacterList::release_session_id() {
+  // @@protoc_insertion_point(field_release:account.character.select.C_CharacterList.session_id)
+  return session_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline std::string* C_CharacterList::_internal_add_session_id() {
-  return session_id_.Add();
-}
-inline void C_CharacterList::add_session_id(const std::string& value) {
-  session_id_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:account.character.select.C_CharacterList.session_id)
-}
-inline void C_CharacterList::add_session_id(std::string&& value) {
-  session_id_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:account.character.select.C_CharacterList.session_id)
-}
-inline void C_CharacterList::add_session_id(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  session_id_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:account.character.select.C_CharacterList.session_id)
-}
-inline void C_CharacterList::add_session_id(const char* value, size_t size) {
-  session_id_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:account.character.select.C_CharacterList.session_id)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-C_CharacterList::session_id() const {
-  // @@protoc_insertion_point(field_list:account.character.select.C_CharacterList.session_id)
-  return session_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-C_CharacterList::mutable_session_id() {
-  // @@protoc_insertion_point(field_mutable_list:account.character.select.C_CharacterList.session_id)
-  return &session_id_;
+inline void C_CharacterList::set_allocated_session_id(std::string* session_id) {
+  if (session_id != nullptr) {
+    
+  } else {
+    
+  }
+  session_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), session_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:account.character.select.C_CharacterList.session_id)
 }
 
 // -------------------------------------------------------------------
