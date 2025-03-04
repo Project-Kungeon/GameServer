@@ -1,0 +1,6 @@
+C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\DB\ConnectionFactory.cpp;C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\x64\Debug\ConnectionFactory.obj
+C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\DB\ConnectionPool.cpp;C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\x64\Debug\ConnectionPool.obj
+C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\JobQueue\JobQueue.cpp;C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\x64\Debug\JobQueue.obj
+C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\pch.cpp;C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\x64\Debug\pch.obj
+C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\Session\FixedSession.cpp;C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\x64\Debug\FixedSession.obj
+C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\Session\SessionBase.cpp;C:\Users\Kang\Desktop\workspace\BWServer\ServerCore\x64\Debug\SessionBase.obj

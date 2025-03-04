@@ -5,7 +5,7 @@ int main()
 {
     ClientPacketHandler::Init();
     try {
-        StressTest test("127.0.0.1", 4242, 2); // 1000명의 동시 접속 테스트
+        StressTest test("127.0.0.1", 4242, 1000); // 1000명의 동시 접속 테스트
         test.Run();
     }
     catch (std::exception& e) {

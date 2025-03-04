@@ -2,6 +2,7 @@
 #include "AuctionItem.h"
 
 #include "DB/ConnectionPool.h"
+#include "Auction.pb.h"
 
 using namespace active911;
 
@@ -156,9 +157,7 @@ void AuctionItem::AsyncPurchased(PlayerPtr player, uint64 auction_id, uint64 qua
             
                 conn->sql_connection->commit();
             }
-            auto sendBuffer = PacketUtil::MakeSendBuffer(pkt, message::HEADER::AUCTION_PURCHASE_RES);
-            auto bufSize = PacketUtil::RequiredSize(pkt);
-            session->Send(sendBuffer, bufSize);
+            session->SendPacket(pkt, message::HEADER::AUCTION_PURCHASE_RES);
                 
         }
         catch (sql::SQLException exception)

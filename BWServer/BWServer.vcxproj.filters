@@ -33,7 +33,6 @@
     <ClCompile Include="Game\Objects\Object.cpp" />
     <ClCompile Include="Game\Server\DelayGameServer.cpp" />
     <ClCompile Include="Game\Server\GameRoom.cpp" />
-    <ClCompile Include="Game\Server\GameRound.pb.cc" />
     <ClCompile Include="Game\Server\GameServer.cpp" />
     <ClCompile Include="Game\Server\Room.cpp" />
     <ClCompile Include="Network\Packet\Handlers\BattlePacketHandler.cpp" />
@@ -42,19 +41,23 @@
     <ClCompile Include="Network\Packet\Handlers\PingPongPacketHandler.cpp" />
     <ClCompile Include="Network\Packet\Handlers\RoomPacketHandler.cpp" />
     <ClCompile Include="Network\Packet\Handlers\ServerPacketHandler.cpp" />
-    <ClCompile Include="ServerCore\JobQueue\JobQueue.cpp" />
-    <ClCompile Include="ServerCore\Session\DelayGameSession.cpp" />
-    <ClCompile Include="ServerCore\Session\GameSession.cpp" />
-    <ClCompile Include="ServerCore\Session\GameSessionManager.cpp" />
-    <ClCompile Include="ServerCore\Session\Session.cpp" />
     <ClCompile Include="Util\ItemUtils.cpp" />
     <ClCompile Include="Util\MathUtils.cpp" />
     <ClCompile Include="Util\ObjectUtils.cpp" />
     <ClCompile Include="Util\RandomUtil.cpp" />
     <ClCompile Include="Util\TimeUtils.cpp" />
-    <ClCompile Include="ServerCore\DB\ConnectionPool.cpp" />
     <ClCompile Include="build\CharacterSelect.pb.cc" />
     <ClCompile Include="Network\Packet\Handlers\CharacterSelectPacketHandler.cpp" />
+    <ClCompile Include="build\Auction.pb.cc" />
+    <ClCompile Include="build\GameRound.pb.cc" />
+    <ClCompile Include="Game\Auction\AuctionItem.cpp" />
+    <ClCompile Include="Game\Auction\AuctionManager.cpp" />
+    <ClCompile Include="Util\SqlUtils.cpp" />
+    <ClCompile Include="Game\Server\Session\DelayGameSession.cpp" />
+    <ClCompile Include="Game\Server\Session\GameSession.cpp" />
+    <ClCompile Include="Game\Server\Session\GameSessionManager.cpp" />
+    <ClCompile Include="Game\Server\Session\Session.cpp" />
+    <ClCompile Include="Network\Packet\Handlers\AuctionPacketHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Member.h">
@@ -97,7 +100,6 @@
     <ClInclude Include="Game\Objects\Object.h" />
     <ClInclude Include="Game\Server\DelayGameServer.h" />
     <ClInclude Include="Game\Server\GameRoom.h" />
-    <ClInclude Include="Game\Server\GameRound.pb.h" />
     <ClInclude Include="Game\Server\GameServer.h" />
     <ClInclude Include="Game\Server\Room.h" />
     <ClInclude Include="Network\Packet\Handlers\BattlePacketHandler.h" />
@@ -107,22 +109,24 @@
     <ClInclude Include="Network\Packet\Handlers\RoomPacketHandler.h" />
     <ClInclude Include="Network\Packet\Handlers\ServerPacketHandler.h" />
     <ClInclude Include="Network\Packet\Packet.h" />
-    <ClInclude Include="ServerCore\JobQueue\JobQueue.h" />
-    <ClInclude Include="ServerCore\Session\DelayGameSession.h" />
-    <ClInclude Include="ServerCore\Session\GameSession.h" />
-    <ClInclude Include="ServerCore\Session\GameSessionManager.h" />
-    <ClInclude Include="ServerCore\Session\Session.h" />
     <ClInclude Include="Util\ItemUtils.h" />
     <ClInclude Include="Util\MathUtils.h" />
     <ClInclude Include="Util\ObjectUtils.h" />
     <ClInclude Include="Util\RandomUtil.h" />
     <ClInclude Include="Util\Selector.h" />
     <ClInclude Include="Util\TimeUtils.h" />
-    <ClInclude Include="ServerCore\DB\ConnectionPool.h" />
-    <ClInclude Include="ServerCore\DB\MySQLConnection.h" />
-    <ClInclude Include="ServerCore\DB\ConnectionFactory.h" />
     <ClInclude Include="build\CharacterSelect.pb.h" />
     <ClInclude Include="Network\Packet\Handlers\CharacterSelectPacketHandler.h" />
+    <ClInclude Include="build\Auction.pb.h" />
+    <ClInclude Include="build\GameRound.pb.h" />
+    <ClInclude Include="Game\Auction\AuctionItem.h" />
+    <ClInclude Include="Game\Auction\AuctionManager.h" />
+    <ClInclude Include="Util\SqlUtils.h" />
+    <ClInclude Include="Game\Server\Session\DelayGameSession.h" />
+    <ClInclude Include="Game\Server\Session\GameSession.h" />
+    <ClInclude Include="Game\Server\Session\GameSessionManager.h" />
+    <ClInclude Include="Game\Server\Session\Session.h" />
+    <ClInclude Include="Network\Packet\Handlers\AuctionPacketHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Packets">

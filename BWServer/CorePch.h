@@ -31,10 +31,9 @@
 #include "Util/ItemUtils.h"
 #include "Util/TimeUtils.h"
 #include "Util/SqlUtils.h"
-#include "ServerCore/Session/Session.h"
-#include "ServerCore/Session/GameSession.h"
-#include "ServerCore/Session/DelayGameSession.h"
-#include "Packet/Packet.h"
+#include "Server/Session/PacketSession.h"
+#include "Server/Session/GameSession.h"
+#include "Server/Session/DelayGameSession.h"
 
 #include "spdlog/spdlog.h" 
 #include "spdlog/sinks/basic_file_sink.h" 

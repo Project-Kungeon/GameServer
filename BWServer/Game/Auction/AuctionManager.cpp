@@ -50,10 +50,8 @@ void AuctionManager::SearchItem(PlayerPtr player, auction::C_SearchItem& pkt)
             item_element->set_price(result_set->getDouble("price"));
             item_element->set_quantity(result_set->getDouble("quantity"));
         }
-    
-        auto sendBuffer = PacketUtil::MakeSendBuffer(pkt, message::HEADER::AUCTION_SEARCH_RES);
-        auto bufSize = PacketUtil::RequiredSize(searchPkt);
-        session->Send(sendBuffer, bufSize);
+        
+        session->SendPacket(pkt, message::HEADER::AUCTION_PURCHASE_RES);
     }
     
     

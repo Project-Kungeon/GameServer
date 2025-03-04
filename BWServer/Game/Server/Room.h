@@ -4,7 +4,7 @@
 #include "Skill.pb.h"
 #include "Item.pb.h"
 #include "MonsterPattern.pb.h"
-#include "ServerCore/JobQueue/JobQueue.h"
+#include "JobQueue/JobQueue.h"
 
 using namespace std;
 
@@ -21,9 +21,9 @@ public:
 	bool Leave(ObjectPtr object);
 	std::weak_ptr<Player> FindClosePlayerBySelf(CreaturePtr Self, const float Distance);
 	void UdpBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);
-	void Broadcast(asio::mutable_buffer& buffer, uint64 exceptId);
+	void Broadcast(google::protobuf::Message& msg, const short packetCode, uint64 exceptId);
 	void Broadcast(BufferPtr buffer, size_t requiredSize, uint64 exceptId);
-	void DelayBroadcast(asio::mutable_buffer& buffer, uint64 exceptId);
+	void DelayBroadcast(google::protobuf::Message& msg, const short packetCode, uint64 exceptId);
 	RoomPtr GetRoomRef();
 
 	virtual bool HandleEnterPlayer(PlayerPtr player);

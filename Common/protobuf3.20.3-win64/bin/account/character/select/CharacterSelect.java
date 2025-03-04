@@ -19,29 +19,16 @@ public final class CharacterSelect {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated string session_id = 1;</code>
-     * @return A list containing the sessionId.
+     * <code>string session_id = 1;</code>
+     * @return The sessionId.
      */
-    java.util.List<java.lang.String>
-        getSessionIdList();
+    java.lang.String getSessionId();
     /**
-     * <code>repeated string session_id = 1;</code>
-     * @return The count of sessionId.
-     */
-    int getSessionIdCount();
-    /**
-     * <code>repeated string session_id = 1;</code>
-     * @param index The index of the element to return.
-     * @return The sessionId at the given index.
-     */
-    java.lang.String getSessionId(int index);
-    /**
-     * <code>repeated string session_id = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the sessionId at the given index.
+     * <code>string session_id = 1;</code>
+     * @return The bytes for sessionId.
      */
     com.google.protobuf.ByteString
-        getSessionIdBytes(int index);
+        getSessionIdBytes();
   }
   /**
    * Protobuf type {@code account.character.select.C_CharacterList}
@@ -56,7 +43,7 @@ public final class CharacterSelect {
       super(builder);
     }
     private C_CharacterList() {
-      sessionId_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      sessionId_ = "";
     }
 
     @java.lang.Override
@@ -70,6 +57,49 @@ public final class CharacterSelect {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
+    }
+    private C_CharacterList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sessionId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -85,38 +115,41 @@ public final class CharacterSelect {
     }
 
     public static final int SESSION_ID_FIELD_NUMBER = 1;
-    private com.google.protobuf.LazyStringList sessionId_;
+    private volatile java.lang.Object sessionId_;
     /**
-     * <code>repeated string session_id = 1;</code>
-     * @return A list containing the sessionId.
+     * <code>string session_id = 1;</code>
+     * @return The sessionId.
      */
-    public com.google.protobuf.ProtocolStringList
-        getSessionIdList() {
-      return sessionId_;
+    @java.lang.Override
+    public java.lang.String getSessionId() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sessionId_ = s;
+        return s;
+      }
     }
     /**
-     * <code>repeated string session_id = 1;</code>
-     * @return The count of sessionId.
+     * <code>string session_id = 1;</code>
+     * @return The bytes for sessionId.
      */
-    public int getSessionIdCount() {
-      return sessionId_.size();
-    }
-    /**
-     * <code>repeated string session_id = 1;</code>
-     * @param index The index of the element to return.
-     * @return The sessionId at the given index.
-     */
-    public java.lang.String getSessionId(int index) {
-      return sessionId_.get(index);
-    }
-    /**
-     * <code>repeated string session_id = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the sessionId at the given index.
-     */
+    @java.lang.Override
     public com.google.protobuf.ByteString
-        getSessionIdBytes(int index) {
-      return sessionId_.getByteString(index);
+        getSessionIdBytes() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -133,10 +166,10 @@ public final class CharacterSelect {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < sessionId_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, sessionId_.getRaw(i));
+      if (!getSessionIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, sessionId_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -145,15 +178,10 @@ public final class CharacterSelect {
       if (size != -1) return size;
 
       size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < sessionId_.size(); i++) {
-          dataSize += computeStringSizeNoTag(sessionId_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getSessionIdList().size();
+      if (!getSessionIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, sessionId_);
       }
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -168,9 +196,9 @@ public final class CharacterSelect {
       }
       account.character.select.CharacterSelect.C_CharacterList other = (account.character.select.CharacterSelect.C_CharacterList) obj;
 
-      if (!getSessionIdList()
-          .equals(other.getSessionIdList())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!getSessionId()
+          .equals(other.getSessionId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -181,11 +209,9 @@ public final class CharacterSelect {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getSessionIdCount() > 0) {
-        hash = (37 * hash) + SESSION_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getSessionIdList().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (37 * hash) + SESSION_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -302,19 +328,24 @@ public final class CharacterSelect {
 
       // Construct using account.character.select.CharacterSelect.C_CharacterList.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        sessionId_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        sessionId_ = "";
+
         return this;
       }
 
@@ -341,11 +372,6 @@ public final class CharacterSelect {
       @java.lang.Override
       public account.character.select.CharacterSelect.C_CharacterList buildPartial() {
         account.character.select.CharacterSelect.C_CharacterList result = new account.character.select.CharacterSelect.C_CharacterList(this);
-        int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          sessionId_ = sessionId_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
         result.sessionId_ = sessionId_;
         onBuilt();
         return result;
@@ -395,17 +421,11 @@ public final class CharacterSelect {
 
       public Builder mergeFrom(account.character.select.CharacterSelect.C_CharacterList other) {
         if (other == account.character.select.CharacterSelect.C_CharacterList.getDefaultInstance()) return this;
-        if (!other.sessionId_.isEmpty()) {
-          if (sessionId_.isEmpty()) {
-            sessionId_ = other.sessionId_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureSessionIdIsMutable();
-            sessionId_.addAll(other.sessionId_);
-          }
+        if (!other.getSessionId().isEmpty()) {
+          sessionId_ = other.sessionId_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -420,146 +440,92 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        account.character.select.CharacterSelect.C_CharacterList parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureSessionIdIsMutable();
-                sessionId_.add(s);
-                break;
-              } // case 10
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (account.character.select.CharacterSelect.C_CharacterList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
-      private int bitField0_;
 
-      private com.google.protobuf.LazyStringList sessionId_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureSessionIdIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          sessionId_ = new com.google.protobuf.LazyStringArrayList(sessionId_);
-          bitField0_ |= 0x00000001;
-         }
-      }
+      private java.lang.Object sessionId_ = "";
       /**
-       * <code>repeated string session_id = 1;</code>
-       * @return A list containing the sessionId.
+       * <code>string session_id = 1;</code>
+       * @return The sessionId.
        */
-      public com.google.protobuf.ProtocolStringList
-          getSessionIdList() {
-        return sessionId_.getUnmodifiableView();
+      public java.lang.String getSessionId() {
+        java.lang.Object ref = sessionId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sessionId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>repeated string session_id = 1;</code>
-       * @return The count of sessionId.
-       */
-      public int getSessionIdCount() {
-        return sessionId_.size();
-      }
-      /**
-       * <code>repeated string session_id = 1;</code>
-       * @param index The index of the element to return.
-       * @return The sessionId at the given index.
-       */
-      public java.lang.String getSessionId(int index) {
-        return sessionId_.get(index);
-      }
-      /**
-       * <code>repeated string session_id = 1;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the sessionId at the given index.
+       * <code>string session_id = 1;</code>
+       * @return The bytes for sessionId.
        */
       public com.google.protobuf.ByteString
-          getSessionIdBytes(int index) {
-        return sessionId_.getByteString(index);
+          getSessionIdBytes() {
+        java.lang.Object ref = sessionId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
       /**
-       * <code>repeated string session_id = 1;</code>
-       * @param index The index to set the value at.
+       * <code>string session_id = 1;</code>
        * @param value The sessionId to set.
        * @return This builder for chaining.
        */
       public Builder setSessionId(
-          int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureSessionIdIsMutable();
-        sessionId_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string session_id = 1;</code>
-       * @param value The sessionId to add.
-       * @return This builder for chaining.
-       */
-      public Builder addSessionId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  ensureSessionIdIsMutable();
-        sessionId_.add(value);
+  
+        sessionId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string session_id = 1;</code>
-       * @param values The sessionId to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllSessionId(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureSessionIdIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, sessionId_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string session_id = 1;</code>
+       * <code>string session_id = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearSessionId() {
-        sessionId_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
+        sessionId_ = getDefaultInstance().getSessionId();
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string session_id = 1;</code>
-       * @param value The bytes of the sessionId to add.
+       * <code>string session_id = 1;</code>
+       * @param value The bytes for sessionId to set.
        * @return This builder for chaining.
        */
-      public Builder addSessionIdBytes(
+      public Builder setSessionIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        ensureSessionIdIsMutable();
-        sessionId_.add(value);
+        
+        sessionId_ = value;
         onChanged();
         return this;
       }
@@ -596,18 +562,7 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+        return new C_CharacterList(input, extensionRegistry);
       }
     };
 
@@ -695,6 +650,66 @@ public final class CharacterSelect {
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
+    }
+    private CharacterInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              pk_ = input.readUInt64();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                nickname_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              nickname_.add(s);
+              break;
+            }
+            case 24: {
+
+              classType_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          nickname_ = nickname_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
@@ -789,7 +804,7 @@ public final class CharacterSelect {
       if (classType_ != 0) {
         output.writeUInt32(3, classType_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -814,7 +829,7 @@ public final class CharacterSelect {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, classType_);
       }
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -835,7 +850,7 @@ public final class CharacterSelect {
           .equals(other.getNicknameList())) return false;
       if (getClassType()
           != other.getClassType()) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -855,7 +870,7 @@ public final class CharacterSelect {
       }
       hash = (37 * hash) + CLASS_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + getClassType();
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -972,13 +987,18 @@ public final class CharacterSelect {
 
       // Construct using account.character.select.CharacterSelect.CharacterInfo.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -1087,7 +1107,7 @@ public final class CharacterSelect {
         if (other.getClassType() != 0) {
           setClassType(other.getClassType());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1102,46 +1122,17 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        account.character.select.CharacterSelect.CharacterInfo parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                pk_ = input.readUInt64();
-
-                break;
-              } // case 8
-              case 18: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureNicknameIsMutable();
-                nickname_.add(s);
-                break;
-              } // case 18
-              case 24: {
-                classType_ = input.readUInt32();
-
-                break;
-              } // case 24
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (account.character.select.CharacterSelect.CharacterInfo) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
       private int bitField0_;
@@ -1350,18 +1341,7 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+        return new CharacterInfo(input, extensionRegistry);
       }
     };
 
@@ -1437,6 +1417,56 @@ public final class CharacterSelect {
     getUnknownFields() {
       return this.unknownFields;
     }
+    private S_CharacterList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                characterInfoList_ = new java.util.ArrayList<account.character.select.CharacterSelect.CharacterInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              characterInfoList_.add(
+                  input.readMessage(account.character.select.CharacterSelect.CharacterInfo.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          characterInfoList_ = java.util.Collections.unmodifiableList(characterInfoList_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return account.character.select.CharacterSelect.internal_static_account_character_select_S_CharacterList_descriptor;
@@ -1507,7 +1537,7 @@ public final class CharacterSelect {
       for (int i = 0; i < characterInfoList_.size(); i++) {
         output.writeMessage(1, characterInfoList_.get(i));
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -1520,7 +1550,7 @@ public final class CharacterSelect {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, characterInfoList_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1537,7 +1567,7 @@ public final class CharacterSelect {
 
       if (!getCharacterInfoListList()
           .equals(other.getCharacterInfoListList())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -1552,7 +1582,7 @@ public final class CharacterSelect {
         hash = (37 * hash) + CHARACTER_INFO_LIST_FIELD_NUMBER;
         hash = (53 * hash) + getCharacterInfoListList().hashCode();
       }
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -1669,24 +1699,29 @@ public final class CharacterSelect {
 
       // Construct using account.character.select.CharacterSelect.S_CharacterList.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getCharacterInfoListFieldBuilder();
+        }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
         if (characterInfoListBuilder_ == null) {
           characterInfoList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          characterInfoList_ = null;
           characterInfoListBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -1797,7 +1832,7 @@ public final class CharacterSelect {
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1812,43 +1847,17 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        account.character.select.CharacterSelect.S_CharacterList parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                account.character.select.CharacterSelect.CharacterInfo m =
-                    input.readMessage(
-                        account.character.select.CharacterSelect.CharacterInfo.parser(),
-                        extensionRegistry);
-                if (characterInfoListBuilder_ == null) {
-                  ensureCharacterInfoListIsMutable();
-                  characterInfoList_.add(m);
-                } else {
-                  characterInfoListBuilder_.addMessage(m);
-                }
-                break;
-              } // case 10
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (account.character.select.CharacterSelect.S_CharacterList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
       private int bitField0_;
@@ -2125,18 +2134,7 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+        return new S_CharacterList(input, extensionRegistry);
       }
     };
 
@@ -2187,6 +2185,43 @@ public final class CharacterSelect {
     getUnknownFields() {
       return this.unknownFields;
     }
+    private C_CreateCharacter(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return account.character.select.CharacterSelect.internal_static_account_character_select_C_CreateCharacter_descriptor;
@@ -2214,7 +2249,7 @@ public final class CharacterSelect {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -2223,7 +2258,7 @@ public final class CharacterSelect {
       if (size != -1) return size;
 
       size = 0;
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -2238,7 +2273,7 @@ public final class CharacterSelect {
       }
       account.character.select.CharacterSelect.C_CreateCharacter other = (account.character.select.CharacterSelect.C_CreateCharacter) obj;
 
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -2249,7 +2284,7 @@ public final class CharacterSelect {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2366,13 +2401,18 @@ public final class CharacterSelect {
 
       // Construct using account.character.select.CharacterSelect.C_CreateCharacter.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -2451,7 +2491,7 @@ public final class CharacterSelect {
 
       public Builder mergeFrom(account.character.select.CharacterSelect.C_CreateCharacter other) {
         if (other == account.character.select.CharacterSelect.C_CreateCharacter.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -2466,30 +2506,17 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        account.character.select.CharacterSelect.C_CreateCharacter parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (account.character.select.CharacterSelect.C_CreateCharacter) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
       @java.lang.Override
@@ -2525,18 +2552,7 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+        return new C_CreateCharacter(input, extensionRegistry);
       }
     };
 
@@ -2587,6 +2603,43 @@ public final class CharacterSelect {
     getUnknownFields() {
       return this.unknownFields;
     }
+    private S_CreateCharacter(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return account.character.select.CharacterSelect.internal_static_account_character_select_S_CreateCharacter_descriptor;
@@ -2614,7 +2667,7 @@ public final class CharacterSelect {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -2623,7 +2676,7 @@ public final class CharacterSelect {
       if (size != -1) return size;
 
       size = 0;
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -2638,7 +2691,7 @@ public final class CharacterSelect {
       }
       account.character.select.CharacterSelect.S_CreateCharacter other = (account.character.select.CharacterSelect.S_CreateCharacter) obj;
 
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -2649,7 +2702,7 @@ public final class CharacterSelect {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -2766,13 +2819,18 @@ public final class CharacterSelect {
 
       // Construct using account.character.select.CharacterSelect.S_CreateCharacter.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -2851,7 +2909,7 @@ public final class CharacterSelect {
 
       public Builder mergeFrom(account.character.select.CharacterSelect.S_CreateCharacter other) {
         if (other == account.character.select.CharacterSelect.S_CreateCharacter.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -2866,30 +2924,17 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        account.character.select.CharacterSelect.S_CreateCharacter parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (account.character.select.CharacterSelect.S_CreateCharacter) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
       @java.lang.Override
@@ -2925,18 +2970,7 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+        return new S_CreateCharacter(input, extensionRegistry);
       }
     };
 
@@ -2993,6 +3027,48 @@ public final class CharacterSelect {
     getUnknownFields() {
       return this.unknownFields;
     }
+    private C_SelectCharacter(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              characterPk_ = input.readUInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return account.character.select.CharacterSelect.internal_static_account_character_select_C_SelectCharacter_descriptor;
@@ -3034,7 +3110,7 @@ public final class CharacterSelect {
       if (characterPk_ != 0L) {
         output.writeUInt64(1, characterPk_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -3047,7 +3123,7 @@ public final class CharacterSelect {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(1, characterPk_);
       }
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3064,7 +3140,7 @@ public final class CharacterSelect {
 
       if (getCharacterPk()
           != other.getCharacterPk()) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -3078,7 +3154,7 @@ public final class CharacterSelect {
       hash = (37 * hash) + CHARACTER_PK_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getCharacterPk());
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3195,13 +3271,18 @@ public final class CharacterSelect {
 
       // Construct using account.character.select.CharacterSelect.C_SelectCharacter.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -3286,7 +3367,7 @@ public final class CharacterSelect {
         if (other.getCharacterPk() != 0L) {
           setCharacterPk(other.getCharacterPk());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -3301,35 +3382,17 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        account.character.select.CharacterSelect.C_SelectCharacter parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                characterPk_ = input.readUInt64();
-
-                break;
-              } // case 8
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (account.character.select.CharacterSelect.C_SelectCharacter) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
 
@@ -3396,18 +3459,7 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+        return new C_SelectCharacter(input, extensionRegistry);
       }
     };
 
@@ -3458,6 +3510,43 @@ public final class CharacterSelect {
     getUnknownFields() {
       return this.unknownFields;
     }
+    private S_SelectCharacter(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return account.character.select.CharacterSelect.internal_static_account_character_select_S_SelectCharacter_descriptor;
@@ -3485,7 +3574,7 @@ public final class CharacterSelect {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -3494,7 +3583,7 @@ public final class CharacterSelect {
       if (size != -1) return size;
 
       size = 0;
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -3509,7 +3598,7 @@ public final class CharacterSelect {
       }
       account.character.select.CharacterSelect.S_SelectCharacter other = (account.character.select.CharacterSelect.S_SelectCharacter) obj;
 
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -3520,7 +3609,7 @@ public final class CharacterSelect {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
@@ -3637,13 +3726,18 @@ public final class CharacterSelect {
 
       // Construct using account.character.select.CharacterSelect.S_SelectCharacter.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -3722,7 +3816,7 @@ public final class CharacterSelect {
 
       public Builder mergeFrom(account.character.select.CharacterSelect.S_SelectCharacter other) {
         if (other == account.character.select.CharacterSelect.S_SelectCharacter.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -3737,30 +3831,17 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        account.character.select.CharacterSelect.S_SelectCharacter parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (account.character.select.CharacterSelect.S_SelectCharacter) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
       @java.lang.Override
@@ -3796,18 +3877,7 @@ public final class CharacterSelect {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+        return new S_SelectCharacter(input, extensionRegistry);
       }
     };
 
@@ -3873,7 +3943,7 @@ public final class CharacterSelect {
     java.lang.String[] descriptorData = {
       "\n\025CharacterSelect.proto\022\030account.charact" +
       "er.select\"%\n\017C_CharacterList\022\022\n\nsession_" +
-      "id\030\001 \003(\t\"A\n\rCharacterInfo\022\n\n\002pk\030\001 \001(\004\022\020\n" +
+      "id\030\001 \001(\t\"A\n\rCharacterInfo\022\n\n\002pk\030\001 \001(\004\022\020\n" +
       "\010nickname\030\002 \003(\t\022\022\n\nclass_type\030\003 \001(\r\"W\n\017S" +
       "_CharacterList\022D\n\023character_info_list\030\001 " +
       "\003(\0132\'.account.character.select.Character" +

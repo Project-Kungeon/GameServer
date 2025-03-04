@@ -1,4 +1,6 @@
 #pragma once
+#include "Ping.pb.h"
+
 class PingPongPacketHandler
 {
 public:

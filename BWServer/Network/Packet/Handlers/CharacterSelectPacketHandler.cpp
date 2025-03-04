@@ -34,19 +34,9 @@ bool CharacterSelectPacketHandler::Handle_C_CharacterList(SessionPtr& session,
         CharacterInfo->add_nickname(results->getString("name").c_str());
         CharacterInfo->set_class_type(results->getUInt64("class_type"));
     }
-    
-    
-    /*const size_t requiredSize = PacketUtil::RequiredSize(characterListPkt);
 
-    char* rawBuffer = new char[requiredSize];
-    auto sendBuffer = asio::buffer(rawBuffer, requiredSize);
-    PacketUtil::Serialize(sendBuffer, message::HEADER::CHARACTER_LIST_RES, characterListPkt);
-
-    session->Send(sendBuffer);*/
-
-    const size_t requiredSize = PacketUtil::RequiredSize(characterListPkt);
-    auto msg = PacketUtil::MakeSendBuffer(characterListPkt,message::HEADER::CHARACTER_LIST_RES);
-    session->Send(msg, requiredSize);
+            
+    session->SendPacket(characterListPkt, message::HEADER::CHARACTER_LIST_RES);
 
     return true;
 }

@@ -33,6 +33,7 @@ void Session::Send(asio::mutable_buffer& buffer)
 	AsyncWrite(static_cast<const char*>(buffer.data()), buffer.size());
 }
 
+
 void Session::HandlePing(const ping::C_Ping& pkt)
 {
 	// 서버 -> 클라 통신 시간 기록
@@ -167,7 +168,7 @@ void Session::OnWrite(const boost::system::error_code& err, size_t size)
 {
 	if (!err)
 	{
-
+		//cout << "OnWrite Bytes : " << size << endl;
 	}
 	else
 	{

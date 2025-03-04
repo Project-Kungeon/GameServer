@@ -31,8 +31,11 @@ int main()
         std::cout << "Error msg: " << e.what() << std::endl;             // 에러 메시지
     }*/
 
-    // 부하테스트를 위한 코어 수 제한
+    // 2코어
     SetProcessAffinityMask(GetCurrentProcess(), 0x3);
+
+    // 8코어
+    //SetProcessAffinityMask(GetCurrentProcess(), 0xFF);
     
     std::shared_ptr<active911::MySQLConnectionFactory>connection_factory(new active911::MySQLConnectionFactory
     ("localhost:3306", "root", "1342"));

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Types.h"
+#include "Auction.pb.h"
 
 class AuctionManager
 {
